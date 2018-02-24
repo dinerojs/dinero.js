@@ -1,0 +1,11 @@
+{
+  "name": "dinero.js",
+  "version": "1.0.0",
+  "description": "A library to create, calculate and format monetary values.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sarah Dayan",
+  "license": "MIT"
+}
