@@ -1,11 +1,15 @@
 {
   "name": "dinero.js",
-  "version": "1.0.0",
-  "description": "A library to create, calculate and format monetary values.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "version": "0.1.0",
+  "description": "An immutable library to create, calculate and format monetary values.",
   "author": "Sarah Dayan",
+  "keywords": ["money", "monetary", "amount", "immutable"],
+  "main": "src/dinero.js",
+  "scripts": {
+    "format": "prettier --write '**/*.*js'"
+  },
+  "devDependencies": {
+    "prettier": "1.10.2"
+  },
   "license": "MIT"
 }
