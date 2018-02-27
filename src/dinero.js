@@ -150,7 +150,7 @@ const Dinero = options => {
      * @param  {Dinero}  comparator - The Dinero object to compare to.
      * @return {Boolean}
      */
-    hasSameAmount() {
+    hasSameAmount(comparator) {
       return this.getAmount() === comparator.getAmount()
     },
     /**
