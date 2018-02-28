@@ -1,0 +1,9 @@
+{
+  "extends": "standard",
+  "rules": {
+    "space-before-function-paren": ["warn", "never"]
+  },
+  "env": {
+    "mocha": "true"
+  }
+}
