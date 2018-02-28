@@ -121,7 +121,7 @@ const Dinero = options => {
      * @return {Boolean}
      */
     isPositive() {
-      return this.getAmount() > 0
+      return this.getAmount() >= 0
     },
     /**
      * Checks if the value represented by this object is negative.
