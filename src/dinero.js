@@ -65,7 +65,7 @@ const Dinero = options => {
      */
     divide(divisor) {
       return Dinero({
-        amount: this.getAmount() * divisor,
+        amount: this.getAmount() / divisor,
         currency: this.getCurrency()
       })
     },
