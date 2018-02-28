@@ -135,7 +135,7 @@ const Dinero = options => {
      * @return {Boolean}
      */
     hasCents() {
-      return Number.isInteger(this.toUnit())
+      return !Number.isInteger(this.toUnit())
     },
     /**
      * Checks whether the currency represented by this object equals to the other.
