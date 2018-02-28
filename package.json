@@ -1,14 +1,21 @@
 {
   "name": "dinero.js",
   "version": "0.1.0",
-  "description": "An immutable library to create, calculate and format monetary values.",
+  "description":
+    "An immutable library to create, calculate and format monetary values.",
   "author": "Sarah Dayan",
   "keywords": ["money", "monetary", "amount", "immutable"],
   "main": "src/dinero.js",
   "scripts": {
-    "format": "prettier --write '**/*.*js'"
+    "format": "prettier --write '**/*.*js'",
+    "test": "mocha --require babel-core/register --recursive"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.1",
     "prettier": "1.10.2"
   },
   "license": "MIT"
