@@ -1,6 +1,19 @@
-export default {
-  defaultLocale: 'en-GB',
-  defaultDisplay: 'symbol',
-  defaultGrouping: false,
-  defaultDecimalPlaces: 2
+/**
+ * Default values for Dinero objects
+ * @type {Object}
+ */
+export const Defaults = {
+  defaultAmount: 0,
+  defaultCurrency: 'USD'
+}
+
+/**
+ * Global values for Dinero objects
+ * @type {Object}
+ */
+export const Globals = {
+  globalLocale: 'en-GB',
+  globalDisplay: 'symbol',
+  globalGrouping: false,
+  globalDecimalPlaces: 2
 }

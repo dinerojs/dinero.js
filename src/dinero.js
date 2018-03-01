@@ -1,11 +1,11 @@
-import Settings from './settings'
+import { Defaults, Globals } from './settings'
 
 const Dinero = options => {
   const { amount, currency } = Object.assign(
     {},
     {
-      amount: 0,
-      currency: 'USD'
+      amount: Defaults.defaultAmount,
+      currency: Defaults.defaultCurrency
     },
     options
   )
@@ -161,10 +161,10 @@ const Dinero = options => {
     toFormat(options) {
       options = Object.assign(
         {
-          locale: Dinero.defaultLocale,
-          display: Dinero.defaultDisplay,
-          grouping: Dinero.defaultGrouping,
-          decimalPlaces: Dinero.defaultDecimalPlaces
+          locale: Dinero.globalLocale,
+          display: Dinero.globalDisplay,
+          grouping: Dinero.globalGrouping,
+          decimalPlaces: Dinero.globalDecimalPlaces
         },
         options
       )
@@ -196,6 +196,6 @@ const Dinero = options => {
   }
 }
 
-Object.assign({}, Dinero, Settings)
+Object.assign({}, Dinero, Globals)
 
 export default Dinero
