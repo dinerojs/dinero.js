@@ -248,6 +248,8 @@ const Dinero = options => {
     /**
      * Returns this object formatted as a string.
      * @todo Better formatting options
+     * @todo Write the docs
+     * @todo Write unit tests
      * @return {String}
      */
     toFormat(options) {
