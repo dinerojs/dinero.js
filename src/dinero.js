@@ -1,5 +1,12 @@
 import { Defaults, Globals } from './settings'
 
+/**
+ * The Dinero module
+ * @module Dinero
+ * @param  {Number} options.amount - The amount in cents.
+ * @param  {String} options.currency - An ISO 4217 currency code.
+ * @return {Object}
+ */
 const Dinero = options => {
   const { amount, currency } = Object.assign(
     {},
@@ -12,6 +19,9 @@ const Dinero = options => {
   return {
     /**
      * Returns the amount.
+     * @example
+     * // returns 500
+     * Dinero({ amount: 500 }).getAmount()
      * @return {Number}
      */
     getAmount() {
@@ -19,6 +29,9 @@ const Dinero = options => {
     },
     /**
      * Returns the currency.
+     * @example
+     * // returns 'EUR'
+     * Dinero({ currency: 'EUR' }).getCurrency()
      * @return {String}
      */
     getCurrency() {
@@ -27,6 +40,9 @@ const Dinero = options => {
     /**
      * Returns a new Dinero object that represents the sum of this and an other Dinero object.
      * @param {Dinero} addend - The Dinero object to add.
+     * @example
+     * // returns a Dinero object with amount: 600
+     * Dinero({ amount: 400 }).add(Dinero({ amount: 200 }))
      * @return {Dinero}
      *
      */
@@ -39,6 +55,9 @@ const Dinero = options => {
     /**
      * Returns a new Dinero object that represents the difference of this and an other Dinero object.
      * @param  {Dinero} subtrahend - The Dinero object to subtract.
+     * @example
+     * // returns a Dinero object with amount: 200
+     * Dinero({ amount: 400 }).subtract(Dinero({ amount: 200 }))
      * @return {Dinero}
      */
     subtract(subtrahend) {
@@ -50,6 +69,9 @@ const Dinero = options => {
     /**
      * Returns a new Dinero object that represents the multiplied value by the given factor.
      * @param  {Number} multiplier - The factor to multiply by.
+     * @example
+     * // returns a Dinero object with amount: 1600
+     * Dinero({ amount: 400 }).multiply(4)
      * @return {Dinero}
      */
     multiply(multiplier) {
@@ -61,6 +83,9 @@ const Dinero = options => {
     /**
      * Returns a new Dinero object that represents the divided value by the given factor.
      * @param  {Number} divisor - The factor to divide by.
+     * @example
+     * // returns a Dinero object with amount: 100
+     * Dinero({ amount: 400 }).divide(4)
      * @return {Dinero}
      */
     divide(divisor) {
@@ -72,6 +97,15 @@ const Dinero = options => {
     /**
      * Checks whether the value represented by this object equals to the other.
      * @param  {Dinero} comparator - The Dinero object to compare to.
+     * @example
+     * // returns true
+     * Dinero({ amount: 500, currency: 'EUR' }).equalsTo(Dinero({ amount: 500, currency: 'EUR' }))
+     * // returns false
+     * Dinero({ amount: 500, currency: 'EUR' }).equalsTo(Dinero({ amount: 800, currency: 'EUR' }))
+     * // returns false
+     * Dinero({ amount: 500, currency: 'USD' }).equalsTo(Dinero({ amount: 500, currency: 'EUR' }))
+     * // returns false
+     * Dinero({ amount: 500, currency: 'USD' }).equalsTo(Dinero({ amount: 800, currency: 'EUR' }))
      * @return {Boolean}
      */
     equalsTo(comparator) {
@@ -80,6 +114,11 @@ const Dinero = options => {
     /**
      * Checks whether the value represented by this object is less than the other.
      * @param  {Dinero} comparator - The Dinero object to compare to.
+     * @example
+     * // returns true
+     * Dinero({ amount: 500 }).lessThan(Dinero({ amount: 800 }))
+     * // returns false
+     * Dinero({ amount: 800 }).lessThan(Dinero({ amount: 500 }))
      * @return {Boolean}
      */
     lessThan(comparator) {
@@ -88,6 +127,13 @@ const Dinero = options => {
     /**
      * Checks whether the value represented by this object is less than or equal to the other.
      * @param  {Dinero} comparator - The Dinero object to compare to.
+     * @example
+     * // returns true
+     * Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 800 }))
+     * // returns true
+     * Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 500 }))
+     * // returns false
+     * Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 300 }))
      * @return {Boolean}
      */
     lessThanOrEqual(comparator) {
@@ -96,6 +142,11 @@ const Dinero = options => {
     /**
      * Checks whether the value represented by this object is greater than the other.
      * @param  {Dinero} comparator - The Dinero object to compare to.
+     * @example
+     * // returns false
+     * Dinero({ amount: 500 }).greaterThan(Dinero({ amount: 800 }))
+     * // returns true
+     * Dinero({ amount: 800 }).greaterThan(Dinero({ amount: 500 }))
      * @return {Boolean}
      */
     greaterThan(comparator) {
@@ -104,6 +155,13 @@ const Dinero = options => {
     /**
      * Checks whether the value represented by this object is greater than or equal to the other.
      * @param  {Dinero} comparator - The Dinero object to compare to.
+     * @example
+     * // returns true
+     * Dinero({ amount: 500 }).greaterThanOrEqual(Dinero({ amount: 300 }))
+     * // returns true
+     * Dinero({ amount: 500 }).greaterThanOrEqual(Dinero({ amount: 500 }))
+     * // returns false
+     * Dinero({ amount: 500 }).greaterThanOrEqual(Dinero({ amount: 800 }))
      * @return {Boolean}
      */
     greaterThanOrEqual(comparator) {
@@ -111,6 +169,11 @@ const Dinero = options => {
     },
     /**
      * Checks if the value represented by this object is zero.
+     * @example
+     * // returns true
+     * Dinero({ amount: 0 }).isZero()
+     * // returns false
+     * Dinero({ amount: 100 }).isZero()
      * @return {Boolean}
      */
     isZero() {
@@ -118,6 +181,13 @@ const Dinero = options => {
     },
     /**
      * Checks if the value represented by this object is positive.
+     * @example
+     * // returns false
+     * Dinero({ amount: -10 }).isPositive()
+     * // returns true
+     * Dinero({ amount: 10 }).isPositive()
+     * // returns true
+     * Dinero({ amount: 0 }).isPositive()
      * @return {Boolean}
      */
     isPositive() {
@@ -125,6 +195,13 @@ const Dinero = options => {
     },
     /**
      * Checks if the value represented by this object is negative.
+     * @example
+     * // returns true
+     * Dinero({ amount: -10 }).isNegative()
+     * // returns false
+     * Dinero({ amount: 10 }).isNegative()
+     * // returns false
+     * Dinero({ amount: 0 }).isNegative()
      * @return {Boolean}
      */
     isNegative() {
@@ -132,6 +209,11 @@ const Dinero = options => {
     },
     /**
      * Checks if this has cents.
+     * @example
+     * // returns false
+     * Dinero({ amount: 1100 }).hasCents()
+     * // returns true
+     * Dinero({ amount: 1150 }).hasCents()
      * @return {Boolean}
      */
     hasCents() {
@@ -140,6 +222,11 @@ const Dinero = options => {
     /**
      * Checks whether the currency represented by this object equals to the other.
      * @param  {Dinero}  comparator - The Dinero object to compare to.
+     * @example
+     * // returns true
+     * Dinero({ amount: 2000, currency: 'EUR' }).hasSameCurrency(Dinero({ amount: 1000, currency: 'EUR' }))
+     * // returns false
+     * Dinero({ amount: 1000, currency: 'EUR' }).hasSameCurrency(Dinero({ amount: 1000, currency: 'USD' }))
      * @return {Boolean}
      */
     hasSameCurrency(comparator) {
@@ -148,6 +235,11 @@ const Dinero = options => {
     /**
      * Checks whether the amount represented by this object equals to the other.
      * @param  {Dinero}  comparator - The Dinero object to compare to.
+     * @example
+     * // returns true
+     * Dinero({ amount: 1000, currency: 'EUR' }).hasSameAmount(Dinero({ amount: 1000 }))
+     * // returns false
+     * Dinero({ amount: 2000, currency: 'EUR' }).hasSameAmount(Dinero({ amount: 1000, currency: 'EUR' }))
      * @return {Boolean}
      */
     hasSameAmount(comparator) {
@@ -178,6 +270,9 @@ const Dinero = options => {
     },
     /**
      * Returns the amount represented by this object in units.
+     * @example
+     * // returns 10.5
+     * Dinero({ amount: 1050 }).toUnit()
      * @return {Number}
      */
     toUnit() {
@@ -185,6 +280,9 @@ const Dinero = options => {
     },
     /**
      * Return thhe object's data as an object literal
+     * @example
+     * // returns { amount: 500, currency: 'EUR' }
+     * Dinero({ amount: 500, currency: 'EUR' }).toObject()
      * @return {Object}
      */
     toObject() {
