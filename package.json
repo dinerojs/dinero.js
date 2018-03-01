@@ -1,15 +1,14 @@
 {
   "name": "dinero.js",
   "version": "0.1.0",
-  "description":
-    "An immutable library to create, calculate and format monetary values.",
+  "description": "An immutable library to create, calculate and format monetary values.",
   "author": "Sarah Dayan",
   "keywords": ["money", "monetary", "amount", "immutable"],
   "main": "src/dinero.js",
   "scripts": {
     "format": "prettier --write '**/*.js'",
     "lint": "eslint src/**/*.js test/**/*.js",
-    "test": "mocha --require babel-core/register --recursive"
+    "docs": "rm -rf docs && ./node_modules/.bin/jsdoc src/ -r -d ./docs -t ./node_modules/minami"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -22,6 +21,8 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "jsdoc": "^3.5.5",
+    "minami": "^1.2.3",
     "mocha": "^5.0.1",
     "prettier": "1.10.2"
   },
