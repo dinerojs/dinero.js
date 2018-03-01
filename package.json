@@ -8,6 +8,7 @@
   "scripts": {
     "format": "prettier --write '**/*.js'",
     "lint": "eslint src/**/*.js test/**/*.js",
+    "test": "mocha --require babel-core/register --recursive",
     "docs": "rm -rf docs && ./node_modules/.bin/jsdoc src/ -r -d ./docs -t ./node_modules/minami"
   },
   "devDependencies": {
