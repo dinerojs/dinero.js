@@ -13,6 +13,7 @@
   "scripts": {
     "format": "prettier --write src/**/*.js test/**/*.js",
     "lint": "eslint src/**/*.js test/**/*.js",
+    "lint!": "npm run format && npm run lint",
     "test": "mocha --require babel-core/register --recursive",
     "build": "rm -rf build && node tasks/build.js"
   },
