@@ -37,5 +37,9 @@
     "rollup-plugin-babel-minify": "^4.0.0"
   },
   "main": "build/cjs/dinero.js",
+  "files": [
+      "build",
+      "src"
+  ],
   "license": "MIT"
 }
