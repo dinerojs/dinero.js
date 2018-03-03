@@ -41,10 +41,6 @@ const buildOutputs = (bundle, suffix = '') => {
     file: `build/esm/dinero${suffix}.js`,
     format: 'es'
   })
-  bundle.write({
-    file: `build/systemjs/dinero${suffix}.js`,
-    format: 'system'
-  })
 }
 
 rollup
