@@ -58,6 +58,15 @@ describe('Dinero', () => {
       ).to.deep.include({ amount: 100 })
     })
   })
+  describe('#percentage()', () => {
+    it('should return a new Dinero object representing a percentage of the original', () => {
+      expect(
+        Dinero({ amount: 10000 })
+          .percentage(50)
+          .toObject()
+      ).to.deep.include({ amount: 5000 })
+    })
+  })
   describe('#equalsTo()', () => {
     it('should return true when both amount and currencies are equal', () => {
       expect(
