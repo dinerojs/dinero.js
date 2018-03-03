@@ -204,6 +204,4 @@ const Dinero = options => {
   }
 }
 
-Object.assign({}, Dinero, Globals)
-
-export default Dinero
+export default Object.assign(Dinero, Globals)
