@@ -192,7 +192,7 @@ const Dinero = options => {
       return this.getAmount() / 100
     },
     /**
-     * Return thhe object's data as an object literal
+     * Return the object's data as an object literal
      * @return {Object}
      */
     toObject() {
