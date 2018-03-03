@@ -95,6 +95,14 @@ const Dinero = options => {
       })
     },
     /**
+     * Returns a new Dinero object that represents a percentage of this.
+     * @param  {Number} percentage - The percentage to extract.
+     * @return {Dinero}
+     */
+    percentage(percentage) {
+      return this.multiply(percentage / 100)
+    },
+    /**
      * Checks whether the value represented by this object equals to the other.
      * @param  {Dinero} comparator - The Dinero object to compare to.
      * @example
