@@ -97,6 +97,9 @@ const Dinero = options => {
     /**
      * Returns a new Dinero object that represents a percentage of this.
      * @param  {Number} percentage - The percentage to extract.
+     * @example
+     * // returns a Dinero object with amount: 5000
+     * Dinero({ amount: 10000 }).percentage(50)
      * @return {Dinero}
      */
     percentage(percentage) {
