@@ -4,7 +4,7 @@ export const Defaults = {
 }
 
 export const Globals = {
-  globalLocale: 'en-GB',
+  globalLocale: 'en-US',
   globalDisplay: 'symbol',
   globalGrouping: false,
   globalDecimalPlaces: 2
