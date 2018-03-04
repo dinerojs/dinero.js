@@ -1,4 +1,5 @@
 import { Defaults, Globals } from './settings'
+import Assert from './assert'
 
 /**
  * The Dinero module
@@ -135,6 +136,7 @@ const Dinero = options => {
      * @return {Dinero}
      */
     percentage(percentage) {
+      Assert.isPercentage(percentage)
       return this.multiply(percentage / 100)
     },
     /**
