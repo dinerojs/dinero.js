@@ -58,6 +58,9 @@ const Dinero = options => {
     },
     /**
      * Returns the locale.
+     * @example
+     * // returns 'fr-FR'
+     * Dinero().setLocale('fr-FR').getLocale()
      * @return {String}
      */
     getLocale() {
@@ -66,6 +69,9 @@ const Dinero = options => {
     /**
      * Returns a new Dinero object with an embedded locale.
      * @param {String} newLocale - The new locale as a BCP 47 language tag
+     * @example
+     * // Returns a Dinero object with locale: 'ja-JP'
+     * Dinero().setLocale('ja-JP')
      * @return {Dinero}
      */
     setLocale(newLocale) {
