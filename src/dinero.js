@@ -44,15 +44,29 @@ const Dinero = options => {
       return currency
     },
     /**
+     * Returns the locale.
+     * @return {String}
+     */
+    getLocale() {
+      return this.locale || Dinero.globalLocale
+    },
+    /**
+     * Returns a new Dinero object with an embedded locale.
+     * @param {String} newLocale - The new locale as a BCP 47 language tag
+     * @return {Dinero}
+     */
+    setLocale(newLocale) {
+      return create.call(this, { locale: newLocale })
+    },
+    /**
      * Returns a new Dinero object that represents the sum of this and an other Dinero object.
      * @param {Dinero} addend - The Dinero object to add.
      * @return {Dinero}
      *
      */
     add(addend) {
-      return Dinero({
-        amount: this.getAmount() + addend.getAmount(),
-        currency: this.getCurrency()
+      return create.call(this, {
+        amount: this.getAmount() + addend.getAmount()
       })
     },
     /**
@@ -61,9 +75,8 @@ const Dinero = options => {
      * @return {Dinero}
      */
     subtract(subtrahend) {
-      return Dinero({
-        amount: this.getAmount() - subtrahend.getAmount(),
-        currency: this.getCurrency()
+      return create.call(this, {
+        amount: this.getAmount() - subtrahend.getAmount()
       })
     },
     /**
@@ -72,10 +85,7 @@ const Dinero = options => {
      * @return {Dinero}
      */
     multiply(multiplier) {
-      return Dinero({
-        amount: this.getAmount() * multiplier,
-        currency: this.getCurrency()
-      })
+      return create.call(this, { amount: this.getAmount() * multiplier })
     },
     /**
      * Returns a new Dinero object that represents the divided value by the given factor.
@@ -83,10 +93,7 @@ const Dinero = options => {
      * @return {Dinero}
      */
     divide(divisor) {
-      return Dinero({
-        amount: this.getAmount() / divisor,
-        currency: this.getCurrency()
-      })
+      return create.call(this, { amount: this.getAmount() / divisor })
     },
     /**
      * Returns a new Dinero object that represents a percentage of this.

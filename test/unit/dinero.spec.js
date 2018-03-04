@@ -20,6 +20,47 @@ describe('Dinero', () => {
       expect(Dinero().getCurrency()).to.equal('USD')
     })
   })
+  describe('#getLocale()', () => {
+    it('should return the right locale as a string', () => {
+      expect(
+        Dinero()
+          .setLocale('fr-FR')
+          .getLocale()
+      ).to.equal('fr-FR')
+    })
+    it('should return the default locale as a string when no locale is specified', () => {
+      expect(Dinero().getLocale()).to.equal('en-US')
+    })
+    it('should return the globally set locale as a string when no locale is specified', () => {
+      Dinero.globalLocale = 'en-GB'
+      expect(Dinero().getLocale()).to.equal('en-GB')
+    })
+  })
+  describe('#setLocale()', () => {
+    it('should return a new Dinero object with the right locale as a string', () => {
+      expect(
+        Dinero()
+          .setLocale('de-DE')
+          .getLocale()
+      ).to.equal('de-DE')
+    })
+    it('should return a new Dinero object with the right locale as a string even if a locale was set globally', () => {
+      Dinero.globalLocale = 'fr-FR'
+      expect(
+        Dinero()
+          .setLocale('ja-JP')
+          .getLocale()
+      ).to.equal('ja-JP')
+    })
+    it('should carry over the locale when chaining methods', () => {
+      expect(
+        Dinero()
+          .setLocale('ja-JP')
+          .multiply(4)
+          .getLocale()
+      ).to.equal('ja-JP')
+    })
+  })
   describe('#add()', () => {
     it('should return a new Dinero object with same amount plus the amount of the other', () => {
       expect(
