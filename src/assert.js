@@ -2,6 +2,11 @@ export default {
   /**
    * Asserts if value is a valid percentage.
    * @param  {}  value - The value to assert.
+   * @example
+   * // throws
+   * Assert.isPercentage(-1)
+   * // doesn't throw
+   * Assert.isPercentage(50)
    * @throws Will throw if value is not a valid percentage.
    * @ignore
    */
