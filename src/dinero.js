@@ -9,6 +9,25 @@ const Dinero = options => {
     },
     options
   )
+
+  /**
+   * Uses ES5 function notation so `this` can be passed through call, apply and bind
+   * @ignore
+   */
+  const create = function(options) {
+    const obj = Object.assign(
+      {},
+      Object.assign({}, { amount, currency }, options),
+      Object.assign({}, { locale: this.locale }, options)
+    )
+    return Object.assign(
+      Dinero({ amount: obj.amount, currency: obj.currency }),
+      {
+        locale: obj.locale
+      }
+    )
+  }
+
   return {
     /**
      * Returns the amount.
