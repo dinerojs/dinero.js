@@ -1,5 +1,6 @@
 import { Defaults, Globals } from './settings'
 import Assert from './assert'
+import Format from './format'
 
 const Dinero = options => {
   const { amount, currency } = Object.assign(
@@ -194,23 +195,27 @@ const Dinero = options => {
      * @todo Better formatting options
      * @return {String}
      */
-    toFormat(options) {
-      options = Object.assign(
-        {
-          locale: Dinero.globalLocale,
-          display: Dinero.globalDisplay,
-          grouping: Dinero.globalGrouping,
-          decimalPlaces: Dinero.globalDecimalPlaces
-        },
-        options
-      )
-      return this.toUnit().toLocaleString(options.locale, {
-        style: 'currency',
-        currencyDisplay: options.display,
-        useGrouping: options.grouping,
-        minimumFractionDigits: options.decimalPlaces,
-        currency: this.getCurrency()
-      })
+    toFormat(format) {
+      const matches = Format.getMatches(format)
+
+      const defaults = {
+        display: Dinero.globalDisplay,
+        grouping: Dinero.globalGrouping,
+        decimalPlaces: Dinero.globalDecimalPlaces
+      }
+
+      const options =
+        matches !== null
+          ? {
+              currencyDisplay: Format.getDisplayMode(matches),
+              useGrouping: Format.isGrouping(matches),
+              minimumFractionDigits: Format.getDecimalPlaces(matches),
+              style: Format.getStyle(matches),
+              currency: this.getCurrency()
+            }
+          : defaults
+
+      return this.toUnit().toLocaleString(this.getLocale(), options)
     },
     /**
      * Returns the amount represented by this object in units.
