@@ -1,6 +1,6 @@
-import { Defaults, Globals } from './settings'
-import Assert from './assert'
-import Format from './format'
+import { Defaults, Globals } from './services/settings'
+import Assert from './services/assert'
+import Format from './services/format'
 
 const Dinero = options => {
   const { amount, currency } = Object.assign(
