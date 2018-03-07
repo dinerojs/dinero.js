@@ -1,37 +1,68 @@
-export default function Format(format, regex) {
-  const matches = regex.exec(format)
+export default function Format(format) {
+  const matches = /^(?:(\$|USD)?(?:0(,))?(?:0(?:(\.)?(0+)?))?|(?:0(,))?(?:0(?:(\.)?(0+)?))?\s?(dollar)?)$/gm.exec(
+    format
+  )
 
   return {
+    /**
+     * Returns the matches.
+     * @return {Array}
+     * @ignore
+     */
     getMatches() {
       return matches !== null
         ? matches.slice(1).filter(match => typeof match !== 'undefined')
-        : matches
+        : []
     },
-    getDecimalPlaces() {
+    /**
+     * Returns the amount of fraction digits to display.
+     * @return {Number}
+     * @ignore
+     */
+    getMinimumFractionDigits() {
       const decimalPosition = match => match === '.'
-      return typeof matches.find(decimalPosition) !== 'undefined'
-        ? matches[matches.findIndex(decimalPosition) + 1].split('').length
+      return typeof this.getMatches().find(decimalPosition) !== 'undefined'
+        ? this.getMatches()[
+            this.getMatches().findIndex(decimalPosition) + 1
+          ].split('').length
         : 0
     },
-    getDisplayMode() {
+    /**
+     * Returns the currency display mode.
+     * @return {String}
+     * @ignore
+     */
+    getCurrencyDisplay() {
       const modes = {
         USD: 'code',
         dollar: 'name',
         $: 'symbol'
       }
       return modes[
-        matches.find(match => {
+        this.getMatches().find(match => {
           return match === 'USD' || match === 'dollar' || match === '$'
         })
       ]
     },
+    /**
+     * Returns the formatting style.
+     * @return {String}
+     * @ignore
+     */
     getStyle() {
-      return typeof this.getDisplayMode(matches) !== 'undefined'
+      return typeof this.getCurrencyDisplay(this.getMatches()) !== 'undefined'
         ? 'currency'
         : 'decimal'
     },
-    isGrouping() {
-      return typeof matches.find(match => match === ',') !== 'undefined'
+    /**
+     * Returns whether grouping should be used or not.
+     * @return {Boolean}
+     * @ignore
+     */
+    getUseGrouping() {
+      return (
+        typeof this.getMatches().find(match => match === ',') !== 'undefined'
+      )
     }
   }
 }

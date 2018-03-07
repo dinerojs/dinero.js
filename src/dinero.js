@@ -192,30 +192,28 @@ const Dinero = options => {
     },
     /**
      * Returns this object formatted as a string.
-     * @todo Better formatting options
+     * @param  {String} format - The format mask to format to.
      * @return {String}
      */
     toFormat(format) {
-      const matches = Format.getMatches(format)
+      const formatter = Format(format)
 
-      const defaults = {
-        display: Dinero.globalDisplay,
-        grouping: Dinero.globalGrouping,
-        decimalPlaces: Dinero.globalDecimalPlaces
-      }
-
-      const options =
-        matches !== null
+      return this.toUnit().toLocaleString(
+        this.getLocale(),
+        formatter.getMatches().length > 0
           ? {
-              currencyDisplay: Format.getDisplayMode(matches),
-              useGrouping: Format.isGrouping(matches),
-              minimumFractionDigits: Format.getDecimalPlaces(matches),
-              style: Format.getStyle(matches),
+              currencyDisplay: formatter.getCurrencyDisplay(),
+              useGrouping: formatter.getUseGrouping(),
+              minimumFractionDigits: formatter.getMinimumFractionDigits(),
+              style: formatter.getStyle(),
               currency: this.getCurrency()
             }
-          : defaults
-
-      return this.toUnit().toLocaleString(this.getLocale(), options)
+          : {
+              display: Dinero.globalDisplay,
+              grouping: Dinero.globalGrouping,
+              decimalPlaces: Dinero.globalDecimalPlaces
+            }
+      )
     },
     /**
      * Returns the amount represented by this object in units.
