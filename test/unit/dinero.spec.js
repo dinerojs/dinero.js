@@ -34,6 +34,7 @@ describe('Dinero', () => {
     it('should return the globally set locale as a string when no locale is specified', () => {
       Dinero.globalLocale = 'en-GB'
       expect(Dinero().getLocale()).to.equal('en-GB')
+      Dinero.globalLocale = 'en-US'
     })
   })
   describe('#setLocale()', () => {
@@ -51,6 +52,7 @@ describe('Dinero', () => {
           .setLocale('ja-JP')
           .getLocale()
       ).to.equal('ja-JP')
+      Dinero.globalLocale = 'en-US'
     })
     it('should carry over the locale when chaining methods', () => {
       expect(
@@ -259,7 +261,71 @@ describe('Dinero', () => {
       ).to.be.false
     })
   })
-  describe('#toFormat()', () => {})
+  describe('#toFormat()', () => {
+    it('should return the properly formatted amount (one fraction digit)', () => {
+      expect(
+        Dinero({ amount: 200000, currency: 'EUR' })
+          .setLocale('en-US')
+          .toFormat('0.0')
+      ).to.equal('2000.0')
+    })
+    it('should return the properly formatted amount (use grouping)', () => {
+      expect(
+        Dinero({ amount: 200000, currency: 'EUR' })
+          .setLocale('en-US')
+          .toFormat('0,0')
+      ).to.equal('2,000')
+    })
+    it('should return the properly formatted amount (use grouping, two fraction digits)', () => {
+      expect(
+        Dinero({ amount: 200000, currency: 'EUR' })
+          .setLocale('en-US')
+          .toFormat('0,0.00')
+      ).to.equal('2,000.00')
+    })
+    it('should return the properly formatted amount (currency symbol)', () => {
+      expect(
+        Dinero({ amount: 200000, currency: 'EUR' })
+          .setLocale('en-US')
+          .toFormat('$0')
+      ).to.equal('€2000')
+    })
+    it('should return the properly formatted amount (currency symbol, one fraction unit)', () => {
+      expect(
+        Dinero({ amount: 200000, currency: 'EUR' })
+          .setLocale('en-US')
+          .toFormat('$0.0')
+      ).to.equal('€2000.0')
+    })
+    it('should return the properly formatted amount (currency symbol, use grouping)', () => {
+      expect(
+        Dinero({ amount: 200000, currency: 'EUR' })
+          .setLocale('en-US')
+          .toFormat('$0,0')
+      ).to.equal('€2,000')
+    })
+    it('should return the properly formatted amount, (currency symbol, use grouping, two fraction digits)', () => {
+      expect(
+        Dinero({ amount: 200000, currency: 'EUR' })
+          .setLocale('en-US')
+          .toFormat('$0,0.00')
+      ).to.equal('€2,000.00')
+    })
+    it('should return the properly formatted amount, (currency code, use grouping, two fraction digits)', () => {
+      expect(
+        Dinero({ amount: 200000, currency: 'EUR' })
+          .setLocale('en-US')
+          .toFormat('USD0,0.00')
+      ).to.equal('EUR2,000.00')
+    })
+    it('should return the properly formatted amount, (currency name, use grouping, two fraction digits)', () => {
+      expect(
+        Dinero({ amount: 200000, currency: 'EUR' })
+          .setLocale('en-US')
+          .toFormat('0,0.00 dollar')
+      ).to.equal('2,000.00 euros')
+    })
+  })
   describe('#toUnit()', () => {
     it('should return the amount divided by 100', () => {
       expect(Dinero({ amount: 1050 }).toUnit()).to.equal(10.5)

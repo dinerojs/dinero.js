@@ -1,8 +1,5 @@
 {
-  "extends": "standard",
-  "rules": {
-    "space-before-function-paren": ["warn", "never"]
-  },
+  "extends": ["standard", "prettier", "prettier/standard"],
   "env": {
     "mocha": "true"
   }

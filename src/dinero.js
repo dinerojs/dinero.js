@@ -1,5 +1,6 @@
-import { Defaults, Globals } from './settings'
-import Assert from './assert'
+import { Defaults, Globals } from './services/settings'
+import Assert from './services/assert'
+import Format from './services/format'
 
 /**
  * The Dinero module
@@ -292,28 +293,28 @@ const Dinero = options => {
     },
     /**
      * Returns this object formatted as a string.
-     * @todo Better formatting options
-     * @todo Write the docs
-     * @todo Write unit tests
+     * @param  {String} format - The format mask to format to.
      * @return {String}
      */
-    toFormat(options) {
-      options = Object.assign(
-        {
-          locale: Dinero.globalLocale,
-          display: Dinero.globalDisplay,
-          grouping: Dinero.globalGrouping,
-          decimalPlaces: Dinero.globalDecimalPlaces
-        },
-        options
+    toFormat(format) {
+      const formatter = Format(format)
+
+      return this.toUnit().toLocaleString(
+        this.getLocale(),
+        formatter.getMatches().length > 0
+          ? {
+              currencyDisplay: formatter.getCurrencyDisplay(),
+              useGrouping: formatter.getUseGrouping(),
+              minimumFractionDigits: formatter.getMinimumFractionDigits(),
+              style: formatter.getStyle(),
+              currency: this.getCurrency()
+            }
+          : {
+              display: Dinero.globalDisplay,
+              grouping: Dinero.globalGrouping,
+              decimalPlaces: Dinero.globalDecimalPlaces
+            }
       )
-      return this.toUnit().toLocaleString(options.locale, {
-        style: 'currency',
-        currencyDisplay: options.display,
-        useGrouping: options.grouping,
-        minimumFractionDigits: options.decimalPlaces,
-        currency: this.getCurrency()
-      })
     },
     /**
      * Returns the amount represented by this object in units.
