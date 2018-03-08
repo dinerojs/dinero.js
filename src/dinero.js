@@ -294,6 +294,15 @@ const Dinero = options => {
     /**
      * Returns this object formatted as a string.
      * @param  {String} format - The format mask to format to.
+     * @example
+     * // returns $2,000
+     * Dinero({ amount: 200000 }).toFormat('$0,0')
+     * // returns €50.5
+     * Dinero({ amount: 5050, currency: 'EUR' }).toFormat('$0,0.0')
+     * // returns 100 €
+     * Dinero({ amount: 10000, currency: 'EUR' }).setLocale('fr-FR').toFormat('0,0 dollar')
+     * // returns 2000
+     * Dinero({ amount: 200000, currency: 'EUR' }).toFormat()
      * @return {String}
      */
     toFormat(format) {
