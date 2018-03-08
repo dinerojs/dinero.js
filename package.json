@@ -9,7 +9,7 @@
     "amount",
     "immutable"
   ],
-  "main": "src/dinero.js",
+  "main": "build/cjs/dinero.js",
   "scripts": {
     "format": "prettier --write src/**/*.js test/**/*.js",
     "lint": "eslint src/**/*.js test/**/*.js",
@@ -37,10 +37,9 @@
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-babel-minify": "^4.0.0"
   },
-  "main": "build/cjs/dinero.js",
   "files": [
-      "build",
-      "src"
+    "build",
+    "src"
   ],
   "license": "MIT"
 }
