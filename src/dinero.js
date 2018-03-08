@@ -1,5 +1,4 @@
 import { Defaults, Globals } from './services/settings'
-import Assert from './services/assert'
 import Format from './services/format'
 
 /**
