@@ -34,6 +34,7 @@ describe('Dinero', () => {
     it('should return the globally set locale as a string when no locale is specified', () => {
       Dinero.globalLocale = 'en-GB'
       expect(Dinero().getLocale()).to.equal('en-GB')
+      Dinero.globalLocale = 'en-US'
     })
   })
   describe('#setLocale()', () => {
@@ -51,6 +52,7 @@ describe('Dinero', () => {
           .setLocale('ja-JP')
           .getLocale()
       ).to.equal('ja-JP')
+      Dinero.globalLocale = 'en-US'
     })
     it('should carry over the locale when chaining methods', () => {
       expect(
