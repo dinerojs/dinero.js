@@ -36,6 +36,36 @@ const Dinero = options => {
     )
   }
 
+  /**
+   * Uses ES5 function notation so `this` can be passed through call, apply and bind
+   * @ignore
+   */
+  const hasSameCurrency = function(comparator) {
+    return this.getCurrency() === comparator.getCurrency()
+  }
+
+  const assert = {
+    hasSameCurrency(comparator) {
+      if (!hasSameCurrency.call(this, comparator)) {
+        throw new Error(
+          'You must provide a Dinero instance with the same currency.'
+        )
+      }
+    },
+    isPercentage(percentage) {
+      if (
+        !(
+          !isNaN(parseInt(percentage)) &&
+          isFinite(percentage) &&
+          percentage <= 100 &&
+          percentage >= 0
+        )
+      ) {
+        throw new Error('You must provide a numeric value between 0 and 100.')
+      }
+    }
+  }
+
   return {
     /**
      * Returns the amount.
