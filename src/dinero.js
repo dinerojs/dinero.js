@@ -118,6 +118,7 @@ const Dinero = options => {
      *
      */
     add(addend) {
+      assert.hasSameCurrency.call(this, addend)
       return create.call(this, {
         amount: this.getAmount() + addend.getAmount()
       })
@@ -131,6 +132,7 @@ const Dinero = options => {
      * @return {Dinero}
      */
     subtract(subtrahend) {
+      assert.hasSameCurrency.call(this, subtrahend)
       return create.call(this, {
         amount: this.getAmount() - subtrahend.getAmount()
       })
@@ -166,7 +168,7 @@ const Dinero = options => {
      * @return {Dinero}
      */
     percentage(percentage) {
-      Assert.isPercentage(percentage)
+      assert.isPercentage(percentage)
       return this.multiply(percentage / 100)
     },
     /**
@@ -306,6 +308,7 @@ const Dinero = options => {
      */
     hasSameCurrency(comparator) {
       return this.getCurrency() === comparator.getCurrency()
+      return hasSameCurrency.call(this, comparator)
     },
     /**
      * Checks whether the amount represented by this object equals to the other.
