@@ -15,7 +15,7 @@
     "lint": "eslint src/**/*.js test/**/*.js",
     "lint!": "npm run format && npm run lint",
     "test": "mocha --require babel-core/register --recursive",
-    "docs": "rm -rf docs && ./node_modules/.bin/jsdoc src/ -r -d ./docs -t ./node_modules/minami",
+    "docs": "rm -rf docs && ./node_modules/.bin/jsdoc src/ -r -d ./docs -t ./node_modules/minami -c jsdoc.json",
     "build": "rm -rf build && node tasks/build.js"
   },
   "devDependencies": {
