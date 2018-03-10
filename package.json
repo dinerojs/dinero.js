@@ -9,12 +9,13 @@
     "amount",
     "immutable"
   ],
-  "main": "src/dinero.js",
+  "main": "build/cjs/dinero.js",
   "scripts": {
     "format": "prettier --write src/**/*.js test/**/*.js",
     "lint": "eslint src/**/*.js test/**/*.js",
     "lint!": "npm run format && npm run lint",
     "test": "mocha --require babel-core/register --recursive",
+    "docs": "rm -rf docs && ./node_modules/.bin/jsdoc src/ -r -d ./docs -t ./node_modules/minami -c jsdoc.json",
     "build": "rm -rf build && node tasks/build.js"
   },
   "devDependencies": {
@@ -25,21 +26,23 @@
     "babel-preset-es2015": "^6.24.1",
     "chai": "^4.1.2",
     "eslint": "^4.18.1",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "jsdoc": "^3.5.5",
+    "minami": "^1.2.3",
     "mocha": "^5.0.1",
     "prettier": "1.10.2",
     "rollup": "^0.56.3",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-babel-minify": "^4.0.0"
   },
-  "main": "build/cjs/dinero.js",
   "files": [
-      "build",
-      "src"
+    "build",
+    "src"
   ],
   "license": "MIT"
 }
