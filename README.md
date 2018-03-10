@@ -151,10 +151,6 @@ This is only a preview of what you can do. Dinero.js has extensive documentation
 
 [Read full documentation][dinero-docs]
 
-## Contributing
-
-@todo
-
 ## License
 
 Dinero.js is licensed under [MIT][license].
