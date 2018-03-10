@@ -1,0 +1,3738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+      Dinero - Documentation
+  </title>
+
+  <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+
+  
+
+  <!-- start Mixpanel -->
+  <script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+  0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+  mixpanel.init("1919205b2da72e4da3b9b6639b444d59");</script>
+  <!-- end Mixpanel -->
+</head>
+
+<body>
+  <svg style="display: none;">
+    <defs>
+      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger" class="navicon-button x">
+    <div class="navicon"></div>
+  </label>
+
+  <label for="nav-trigger" class="overlay"></label>
+
+  <div class="top-nav-wrapper">
+    <ul>
+      <li >
+        <a href="index.html">
+          
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          
+          
+        </a>
+      </li>
+
+      
+
+    </ul>
+  </div>
+
+  <nav>
+    <h3 class="reference-title">
+      Dinero.js
+    </h3>
+
+    <h3>Modules</h3><ul><li id="Dinero-nav"><a href="module-Dinero.html">Dinero</a><ul class='methods'><li data-type="method" id="Dinero-getAmount-nav"><a href="module-Dinero.html#~getAmount">getAmount</a></li><li data-type="method" id="Dinero-getCurrency-nav"><a href="module-Dinero.html#~getCurrency">getCurrency</a></li><li data-type="method" id="Dinero-getLocale-nav"><a href="module-Dinero.html#~getLocale">getLocale</a></li><li data-type="method" id="Dinero-setLocale-nav"><a href="module-Dinero.html#~setLocale">setLocale</a></li><li data-type="method" id="Dinero-add-nav"><a href="module-Dinero.html#~add">add</a></li><li data-type="method" id="Dinero-subtract-nav"><a href="module-Dinero.html#~subtract">subtract</a></li><li data-type="method" id="Dinero-multiply-nav"><a href="module-Dinero.html#~multiply">multiply</a></li><li data-type="method" id="Dinero-divide-nav"><a href="module-Dinero.html#~divide">divide</a></li><li data-type="method" id="Dinero-percentage-nav"><a href="module-Dinero.html#~percentage">percentage</a></li><li data-type="method" id="Dinero-equalsTo-nav"><a href="module-Dinero.html#~equalsTo">equalsTo</a></li><li data-type="method" id="Dinero-lessThan-nav"><a href="module-Dinero.html#~lessThan">lessThan</a></li><li data-type="method" id="Dinero-lessThanOrEqual-nav"><a href="module-Dinero.html#~lessThanOrEqual">lessThanOrEqual</a></li><li data-type="method" id="Dinero-greaterThan-nav"><a href="module-Dinero.html#~greaterThan">greaterThan</a></li><li data-type="method" id="Dinero-greaterThanOrEqual-nav"><a href="module-Dinero.html#~greaterThanOrEqual">greaterThanOrEqual</a></li><li data-type="method" id="Dinero-isZero-nav"><a href="module-Dinero.html#~isZero">isZero</a></li><li data-type="method" id="Dinero-isPositive-nav"><a href="module-Dinero.html#~isPositive">isPositive</a></li><li data-type="method" id="Dinero-isNegative-nav"><a href="module-Dinero.html#~isNegative">isNegative</a></li><li data-type="method" id="Dinero-hasCents-nav"><a href="module-Dinero.html#~hasCents">hasCents</a></li><li data-type="method" id="Dinero-hasSameCurrency-nav"><a href="module-Dinero.html#~hasSameCurrency">hasSameCurrency</a></li><li data-type="method" id="Dinero-hasSameAmount-nav"><a href="module-Dinero.html#~hasSameAmount">hasSameAmount</a></li><li data-type="method" id="Dinero-toFormat-nav"><a href="module-Dinero.html#~toFormat">toFormat</a></li><li data-type="method" id="Dinero-toUnit-nav"><a href="module-Dinero.html#~toUnit">toUnit</a></li><li data-type="method" id="Dinero-toObject-nav"><a href="module-Dinero.html#~toObject">toObject</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#Defaults">Defaults</a></li><li><a href="global.html#Globals">Globals</a></li></ul>
+  </nav>
+
+  <div id="main">
+    
+      <h1 class="page-title">
+        Dinero
+      </h1>
+    
+
+    
+
+<section>
+  <header>
+    
+      
+        
+  </header>
+
+  <article>
+    <div class="container-overview">
+      
+        
+          <div class="description">
+            <p>A Dinero object is an immutable data structure representing a specific monetary value.
+It comes with methods for creating, parsing, manipulating, testing, transforming and formatting them.</p>
+<p>A Dinero object posesses:</p>
+<ul>
+<li>An <code>amount</code>, expressed in cents.</li>
+<li>A <code>currency</code>, expressed as an <a href="https://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 currency code</a>.</li>
+<li>An optional <code>locale</code> property that affects how output strings are formatted.</li>
+</ul>
+<p>Here's an overview of the public API:</p>
+<ul>
+<li><strong>Access:</strong> <a href="module-Dinero.html#~getAmount">getAmount</a>, <a href="module-Dinero.html#~getCurrency">getCurrency</a> and <a href="module-Dinero.html#~getLocale">getLocale</a>.</li>
+<li><strong>Manipulation:</strong> <a href="module-Dinero.html#~add">add</a>, <a href="module-Dinero.html#~subtract">subtract</a>, <a href="module-Dinero.html#~multiply">multiply</a>, <a href="module-Dinero.html#~divide">divide</a> and <a href="module-Dinero.html#~percentage">percentage</a>.</li>
+<li><strong>Testing:</strong> <a href="module-Dinero.html#~equalsTo">equalsTo</a>, <a href="module-Dinero.html#~lessThan">lessThan</a>, <a href="module-Dinero.html#~lessThanOrEqual">lessThanOrEqual</a>, <a href="module-Dinero.html#~greaterThan">greaterThan</a>, <a href="module-Dinero.html#~greaterThanOrEqual">greaterThanOrEqual</a>, <a href="module-Dinero.html#~isZero">isZero</a>, <a href="module-Dinero.html#~isPositive">isPositive</a>, <a href="module-Dinero.html#~isNegative">isNegative</a>, <a href="module-Dinero.html#~hasCents">hasCents</a>, <a href="module-Dinero.html#~hasSameCurrency">hasSameCurrency</a> and <a href="module-Dinero.html#~hasSameAmount">hasSameAmount</a>.</li>
+<li><strong>Configuration:</strong> <a href="module-Dinero.html#~setLocale">setLocale</a>.</li>
+<li><strong>Conversion &amp; formatting:</strong> <a href="module-Dinero.html#~toFormat">toFormat</a>, <a href="module-Dinero.html#~toUnit">toUnit</a> and <a href="module-Dinero.html#~toObject">toObject</a>.</li>
+</ul>
+          </div>
+        
+
+        
+          
+
+
+
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>options.amount</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The amount in cents.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>options.currency</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      String
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>An ISO 4217 currency code.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line4">line 4</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+      <h3 class="subsection-title">Methods</h3>
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~getAmount">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~getAmount">
+      <span class="type-signature">(inner) </span>getAmount<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the amount.</p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line99">line 99</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#getAmount-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="getAmount-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>// returns 500
+Dinero({ amount: 500 }).getAmount()</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~getCurrency">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~getCurrency">
+      <span class="type-signature">(inner) </span>getCurrency<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the currency.</p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line111">line 111</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#getCurrency-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="getCurrency-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>// returns 'EUR'
+Dinero({ currency: 'EUR' }).getCurrency()</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~getLocale">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~getLocale">
+      <span class="type-signature">(inner) </span>getLocale<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the locale.</p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line123">line 123</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#getLocale-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="getLocale-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>// returns 'fr-FR'
+Dinero().setLocale('fr-FR').getLocale()</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~setLocale">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~setLocale">
+      <span class="type-signature">(inner) </span>setLocale<span class="signature">(newLocale)</span><span class="type-signature"> &rarr; {Dinero}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns a new Dinero object with an embedded locale.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>newLocale</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      String
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The new locale as an <a href="http://tools.ietf.org/html/rfc5646">BCP 47h language tag</a>.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line137">line 137</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#setLocale-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="setLocale-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>// Returns a Dinero object with locale 'ja-JP'
+Dinero().setLocale('ja-JP')</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~add">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~add">
+      <span class="type-signature">(inner) </span>add<span class="signature">(addend)</span><span class="type-signature"> &rarr; {Dinero}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns a new Dinero object that represents the sum of this and an other Dinero object.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>addend</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Dinero
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Dinero object to add.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line153">line 153</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h5>Throws:</h5>
+  
+      
+
+  <div class="param-desc">
+    
+      <p>Will throw if <code>addend</code> has a different currency.</p>
+    
+  </div>
+
+
+    
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#add-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="add-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>// returns a Dinero object with amount 600
+Dinero({ amount: 400 }).add(Dinero({ amount: 200 }))</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~subtract">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~subtract">
+      <span class="type-signature">(inner) </span>subtract<span class="signature">(subtrahend)</span><span class="type-signature"> &rarr; {Dinero}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns a new Dinero object that represents the difference of this and an other Dinero object.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>subtrahend</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Dinero
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Dinero object to subtract.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line172">line 172</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h5>Throws:</h5>
+  
+      
+
+  <div class="param-desc">
+    
+      <p>Will throw if <code>subtrahend</code> has a different currency.</p>
+    
+  </div>
+
+
+    
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#subtract-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="subtract-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>// returns a Dinero object with amount 200
+Dinero({ amount: 400 }).subtract(Dinero({ amount: 200 }))</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~multiply">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~multiply">
+      <span class="type-signature">(inner) </span>multiply<span class="signature">(multiplier)</span><span class="type-signature"> &rarr; {Dinero}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns a new Dinero object that represents the multiplied value by the given factor.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>multiplier</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The factor to multiply by.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line189">line 189</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#multiply-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="multiply-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>// returns a Dinero object with amount 1600
+Dinero({ amount: 400 }).multiply(4)</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~divide">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~divide">
+      <span class="type-signature">(inner) </span>divide<span class="signature">(divisor)</span><span class="type-signature"> &rarr; {Dinero}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns a new Dinero object that represents the divided value by the given factor.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>divisor</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The factor to divide by.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line203">line 203</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#divide-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="divide-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>// returns a Dinero object with amount 100
+Dinero({ amount: 400 }).divide(4)</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~percentage">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~percentage">
+      <span class="type-signature">(inner) </span>percentage<span class="signature">(percentage)</span><span class="type-signature"> &rarr; {Dinero}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns a new Dinero object that represents a percentage of this.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>percentage</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The percentage to extract (between 0 and 100).</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line219">line 219</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h5>Throws:</h5>
+  
+      
+
+  <div class="param-desc">
+    
+      <p>Will throw if <code>percentage</code> is out of range.</p>
+    
+  </div>
+
+
+    
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#percentage-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="percentage-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>// returns a Dinero object with amount 5000
+Dinero({ amount: 10000 }).percentage(50)</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~equalsTo">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~equalsTo">
+      <span class="type-signature">(inner) </span>equalsTo<span class="signature">(comparator)</span><span class="type-signature"> &rarr; {Boolean}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Checks whether the value represented by this object equals to the other.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>comparator</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Dinero
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Dinero object to compare to.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line243">line 243</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#equalsTo-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="equalsTo-examples">Examples</h5>
+    
+
+  <pre class="prettyprint"><code>// returns true
+Dinero({ amount: 500, currency: 'EUR' }).equalsTo(Dinero({ amount: 500, currency: 'EUR' }))</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns false
+Dinero({ amount: 500, currency: 'EUR' }).equalsTo(Dinero({ amount: 800, currency: 'EUR' }))</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns false
+Dinero({ amount: 500, currency: 'USD' }).equalsTo(Dinero({ amount: 500, currency: 'EUR' }))</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns false
+Dinero({ amount: 500, currency: 'USD' }).equalsTo(Dinero({ amount: 800, currency: 'EUR' }))</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~lessThan">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~lessThan">
+      <span class="type-signature">(inner) </span>lessThan<span class="signature">(comparator)</span><span class="type-signature"> &rarr; {Boolean}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Checks whether the value represented by this object is less than the other.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>comparator</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Dinero
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Dinero object to compare to.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line262">line 262</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h5>Throws:</h5>
+  
+      
+
+  <div class="param-desc">
+    
+      <p>Will throw if <code>comparator</code> has a different currency.</p>
+    
+  </div>
+
+
+    
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#lessThan-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="lessThan-examples">Examples</h5>
+    
+
+  <pre class="prettyprint"><code>// returns true
+Dinero({ amount: 500 }).lessThan(Dinero({ amount: 800 }))</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns false
+Dinero({ amount: 800 }).lessThan(Dinero({ amount: 500 }))</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~lessThanOrEqual">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~lessThanOrEqual">
+      <span class="type-signature">(inner) </span>lessThanOrEqual<span class="signature">(comparator)</span><span class="type-signature"> &rarr; {Boolean}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Checks whether the value represented by this object is less than or equal to the other.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>comparator</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Dinero
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Dinero object to compare to.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line285">line 285</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h5>Throws:</h5>
+  
+      
+
+  <div class="param-desc">
+    
+      <p>Will throw if <code>comparator</code> has a different currency.</p>
+    
+  </div>
+
+
+    
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#lessThanOrEqual-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="lessThanOrEqual-examples">Examples</h5>
+    
+
+  <pre class="prettyprint"><code>// returns true
+Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 800 }))</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns true
+Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 500 }))</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns false
+Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 300 }))</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~greaterThan">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~greaterThan">
+      <span class="type-signature">(inner) </span>greaterThan<span class="signature">(comparator)</span><span class="type-signature"> &rarr; {Boolean}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Checks whether the value represented by this object is greater than the other.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>comparator</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Dinero
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Dinero object to compare to.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line305">line 305</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h5>Throws:</h5>
+  
+      
+
+  <div class="param-desc">
+    
+      <p>Will throw if <code>comparator</code> has a different currency.</p>
+    
+  </div>
+
+
+    
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#greaterThan-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="greaterThan-examples">Examples</h5>
+    
+
+  <pre class="prettyprint"><code>// returns false
+Dinero({ amount: 500 }).greaterThan(Dinero({ amount: 800 }))</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns true
+Dinero({ amount: 800 }).greaterThan(Dinero({ amount: 500 }))</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~greaterThanOrEqual">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~greaterThanOrEqual">
+      <span class="type-signature">(inner) </span>greaterThanOrEqual<span class="signature">(comparator)</span><span class="type-signature"> &rarr; {Boolean}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Checks whether the value represented by this object is greater than or equal to the other.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>comparator</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Dinero
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Dinero object to compare to.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line328">line 328</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h5>Throws:</h5>
+  
+      
+
+  <div class="param-desc">
+    
+      <p>Will throw if <code>comparator</code> has a different currency.</p>
+    
+  </div>
+
+
+    
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#greaterThanOrEqual-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="greaterThanOrEqual-examples">Examples</h5>
+    
+
+  <pre class="prettyprint"><code>// returns true
+Dinero({ amount: 500 }).greaterThanOrEqual(Dinero({ amount: 300 }))</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns true
+Dinero({ amount: 500 }).greaterThanOrEqual(Dinero({ amount: 500 }))</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns false
+Dinero({ amount: 500 }).greaterThanOrEqual(Dinero({ amount: 800 }))</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~isZero">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~isZero">
+      <span class="type-signature">(inner) </span>isZero<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Checks if the value represented by this object is zero.</p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line344">line 344</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#isZero-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="isZero-examples">Examples</h5>
+    
+
+  <pre class="prettyprint"><code>// returns true
+Dinero({ amount: 0 }).isZero()</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns false
+Dinero({ amount: 100 }).isZero()</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~isPositive">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~isPositive">
+      <span class="type-signature">(inner) </span>isPositive<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Checks if the value represented by this object is positive.</p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line362">line 362</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#isPositive-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="isPositive-examples">Examples</h5>
+    
+
+  <pre class="prettyprint"><code>// returns false
+Dinero({ amount: -10 }).isPositive()</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns true
+Dinero({ amount: 10 }).isPositive()</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns true
+Dinero({ amount: 0 }).isPositive()</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~isNegative">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~isNegative">
+      <span class="type-signature">(inner) </span>isNegative<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Checks if the value represented by this object is negative.</p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line380">line 380</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#isNegative-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="isNegative-examples">Examples</h5>
+    
+
+  <pre class="prettyprint"><code>// returns true
+Dinero({ amount: -10 }).isNegative()</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns false
+Dinero({ amount: 10 }).isNegative()</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns false
+Dinero({ amount: 0 }).isNegative()</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~hasCents">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~hasCents">
+      <span class="type-signature">(inner) </span>hasCents<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Checks if this has cents.</p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line395">line 395</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#hasCents-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="hasCents-examples">Examples</h5>
+    
+
+  <pre class="prettyprint"><code>// returns false
+Dinero({ amount: 1100 }).hasCents()</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns true
+Dinero({ amount: 1150 }).hasCents()</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~hasSameCurrency">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~hasSameCurrency">
+      <span class="type-signature">(inner) </span>hasSameCurrency<span class="signature">(comparator)</span><span class="type-signature"> &rarr; {Boolean}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Checks whether the currency represented by this object equals to the other.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>comparator</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Dinero
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Dinero object to compare to.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line412">line 412</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#hasSameCurrency-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="hasSameCurrency-examples">Examples</h5>
+    
+
+  <pre class="prettyprint"><code>// returns true
+Dinero({ amount: 2000, currency: 'EUR' }).hasSameCurrency(Dinero({ amount: 1000, currency: 'EUR' }))</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns false
+Dinero({ amount: 1000, currency: 'EUR' }).hasSameCurrency(Dinero({ amount: 1000, currency: 'USD' }))</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~hasSameAmount">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~hasSameAmount">
+      <span class="type-signature">(inner) </span>hasSameAmount<span class="signature">(comparator)</span><span class="type-signature"> &rarr; {Boolean}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Checks whether the amount represented by this object equals to the other.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>comparator</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Dinero
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Dinero object to compare to.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line429">line 429</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#hasSameAmount-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="hasSameAmount-examples">Examples</h5>
+    
+
+  <pre class="prettyprint"><code>// returns true
+Dinero({ amount: 1000, currency: 'EUR' }).hasSameAmount(Dinero({ amount: 1000 }))</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns false
+Dinero({ amount: 2000, currency: 'EUR' }).hasSameAmount(Dinero({ amount: 1000, currency: 'EUR' }))</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~toFormat">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~toFormat">
+      <span class="type-signature">(inner) </span>toFormat<span class="signature">(format)</span><span class="type-signature"> &rarr; {String}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns this object formatted as a string.</p>
+<p>The format is a mask which defines how the output string will be formatted.
+It defines whether to display a currency, in what format, how many fraction digits to display and whether to use grouping separators.
+The output is formatted according to the applying locale.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Object</th>
+<th style="text-align:left">Format</th>
+<th style="text-align:left">String</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>Dinero({ amount: 500050 })</code></td>
+<td style="text-align:left"><code>'$0,0.00'</code></td>
+<td style="text-align:left">$5,000.50</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Dinero({ amount: 500050 })</code></td>
+<td style="text-align:left"><code>'$0,0'</code></td>
+<td style="text-align:left">$5,000</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Dinero({ amount: 500050 })</code></td>
+<td style="text-align:left"><code>'$0'</code></td>
+<td style="text-align:left">$5000</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Dinero({ amount: 500050 })</code></td>
+<td style="text-align:left"><code>'$0.0'</code></td>
+<td style="text-align:left">$5000.50</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Dinero({ amount: 500050 })</code></td>
+<td style="text-align:left"><code>'USD0,0.0'</code></td>
+<td style="text-align:left">USD5,000.5</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Dinero({ amount: 500050 })</code></td>
+<td style="text-align:left"><code>'0,0.0 dollar'</code></td>
+<td style="text-align:left">5,000.5 dollars</td>
+</tr>
+</tbody>
+</table>
+<p>Don't try to substitute the <code>$</code> sign or the <code>USD</code> code with your target currency, nor adapt the format string to the exact format you want.
+The format is a mask which defines a pattern and returns a valid, localized currency string.
+If you want to display the object in a custom way, either use <a href="module-Dinero.html#~getAmount">getAmount</a> or <a href="module-Dinero.html#~toUnit">toUnit</a> and manipulate the output string as you wish.</p>
+<p><a href="module-Dinero.html#~toFormat">toFormat</a> is syntactic sugar over JavaScript's native <code>Number.prototype.toLocaleString</code> method.
+You can use it directly instead by doing <code>Dinero().toUnit().toLocaleString(locale, options)</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>format</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      String
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The format mask to format to.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line472">line 472</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#toFormat-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="toFormat-examples">Examples</h5>
+    
+
+  <pre class="prettyprint"><code>// returns $2,000
+Dinero({ amount: 200000 }).toFormat('$0,0')</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns €50.5
+Dinero({ amount: 5050, currency: 'EUR' }).toFormat('$0,0.0')</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns 100 €
+Dinero({ amount: 10000, currency: 'EUR' }).setLocale('fr-FR').toFormat('0,0 dollar')</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns 2000
+Dinero({ amount: 200000, currency: 'EUR' }).toFormat()</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~toUnit">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~toUnit">
+      <span class="type-signature">(inner) </span>toUnit<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the amount represented by this object in units.</p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line492">line 492</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#toUnit-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="toUnit-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>// returns 10.5
+Dinero({ amount: 1050 }).toUnit()</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#~toObject">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="~toObject">
+      <span class="type-signature">(inner) </span>toObject<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Return the object's data as an object literal.</p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line504">line 504</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#toObject-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="toObject-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>// returns { amount: 500, currency: 'EUR' }
+Dinero({ amount: 500, currency: 'EUR' }).toObject()</code></pre>
+
+
+  </div>
+
+
+      
+    
+
+    
+
+    
+  </article>
+</section>
+
+
+
+
+  </div>
+
+  <br class="clear">
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+  </footer>
+
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/pagelocation.js"></script>
+
+  
+  
+</body>
+</html>
