@@ -1,12 +1,6 @@
-# Dinero.js
-
 [![MIT License][license-badge]][license] [![Build Status][travis-badge]][travis-url] [![NPM version][npm-version-badge]][npm-url] [![Coverage Status][coveralls-badge]][coveralls-url]
 
-💵 Dinero.js is a library for working with monetary values in JavaScript.
-
-```js
-Dinero({ amount: 500, currency: 'EUR' }).add(Dinero({ amount: 850, currency: 'EUR' })).toFormat();
-```
+Dinero.js is a library for working with monetary values in JavaScript.
 
 ## Features
  * Immutable and chainable API.
@@ -20,8 +14,8 @@ Dinero.js provides different builds for different environments.
 
 ### UMD (browser global)
 
-* [Download full](build/umd/dinero.js)
-* [Download minified](build/umd/dinero.min.js)
+* [Download full](../build/umd/dinero.js)
+* [Download minified](../build/umd/dinero.min.js)
 
 Include Dinero.js in a script tag and access its methods through the global `Dinero` variable.
 
@@ -40,8 +34,8 @@ var Money = Dinero;
 
 ### CommonJS (Node)
 
-* [Download full](build/cjs/dinero.js)
-* [Download minified](build/cjs/dinero.min.js)
+* [Download full](../build/cjs/dinero.js)
+* [Download minified](../build/cjs/dinero.min.js)
 
 Install via npm:
 
@@ -55,8 +49,8 @@ const Dinero = require('dinero')
 
 ### AMD (RequireJS, System.js, etc.)
 
-* [Download full](build/amd/dinero.js)
-* [Download minified](build/amd/dinero.min.js)
+* [Download full](../build/amd/dinero.js)
+* [Download minified](../build/amd/dinero.min.js)
 
 ```js
 requirejs(['dinero'], function(Dinero) {
@@ -66,14 +60,14 @@ requirejs(['dinero'], function(Dinero) {
 
 ### ES modules (modern browser, Webpack, etc.)
 
-* [Download full](build/esm/dinero.js)
-* [Download minified](build/esm/dinero.min.js)
+* [Download full](../build/esm/dinero.js)
+* [Download minified](../build/esm/dinero.min.js)
 
 ```js
 import Dinero from 'dinero'
 ```
 
-## [Documentation][dinero-docs]
+## Quick start
 
 Dinero.js makes it easy to create, calculate and format monetary values in JavaScript. You can perform arithmetic operations, extensively parse and format them, check for a number of things to make your own development process easier and safer.
 
@@ -176,4 +170,4 @@ Dinero.js is licensed under [MIT][license].
 [coveralls-badge]: https://img.shields.io/coveralls/github/sarahdayan/dinero.js.svg?branch=master
 
 [wiki:iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
-[dinero-docs]: #
+[dinero-docs]: module-Dinero.html
