@@ -35,6 +35,8 @@ const Dinero = options => {
     options
   )
 
+  const locale = Dinero.globalLocale
+
   /**
    * Uses ES5 function notation so `this` can be passed through call, apply and bind
    * @ignore
@@ -118,7 +120,7 @@ const Dinero = options => {
      * @return {String}
      */
     getLocale() {
-      return this.locale || Dinero.globalLocale
+      return this.locale || locale
     },
     /**
      * Returns a new Dinero object with an embedded locale.

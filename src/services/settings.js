@@ -1,7 +1,8 @@
 /**
  * Default values for all Dinero objects.
  *
- * You can override default values for all Dinero objects by changing them on the global `Dinero` object.
+ * You can override default values for all subsequent Dinero objects by changing them directly on the global `Dinero` object.
+ * Existing instances won't be affected.
  *
  * @property {Number} defaultAmount - The default amount for new Dinero objects.
  * @property {String} defaultCurrency - The default currency for new Dinero objects.
@@ -20,7 +21,8 @@ export const Defaults = {
 /**
  * Global settings for all Dinero objects.
  *
- * You can override global values for all Dinero objects by changing them on the global `Dinero` object.
+ * You can override global values for all subsequent Dinero objects by changing them directly on the global `Dinero` object.
+ * Existing instances won't be affected.
  *
  * @property {String}  globalLocale - The global locale for new Dinero objects.
  * @property {String}  globalCurrencyDisplay - The global currency display mode for new Dinero objects.

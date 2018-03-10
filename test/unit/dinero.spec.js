@@ -36,6 +36,11 @@ describe('Dinero', () => {
       expect(Dinero().getLocale()).to.equal('en-GB')
       Dinero.globalLocale = 'en-US'
     })
+    it('should return the initial locale when global locale is redefined', () => {
+      const price = Dinero()
+      Dinero.globalLocale = 'fr-FR'
+      expect(price.getLocale()).to.equal('en-US')
+    })
   })
   describe('#setLocale()', () => {
     it('should return a new Dinero object with the right locale as a string', () => {
