@@ -35,7 +35,7 @@ const Dinero = options => {
     options
   )
 
-  const locale = Dinero.globalLocale
+  const globalLocale = Dinero.globalLocale
   const globalFormat = Dinero.globalFormat
 
   /**
@@ -121,7 +121,7 @@ const Dinero = options => {
      * @return {String}
      */
     getLocale() {
-      return this.locale || locale
+      return this.locale || globalLocale
     },
     /**
      * Returns a new Dinero object with an embedded locale.
