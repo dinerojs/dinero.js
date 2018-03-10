@@ -1396,6 +1396,10 @@ js2xmlparser@~3.0.0:
   dependencies:
     xmlcreate "^1.0.1"
 
+jsdoc-template@sarahdayan/jsdoc-template:
+  version "3.2.0"
+  resolved "https://codeload.github.com/sarahdayan/jsdoc-template/tar.gz/0f293871f9b2a00810a92089ca2bcf331afb1537"
+
 jsdoc@^3.5.5:
   version "3.5.5"
   resolved "https://registry.yarnpkg.com/jsdoc/-/jsdoc-3.5.5.tgz#484521b126e81904d632ff83ec9aaa096708fa4d"
@@ -1500,10 +1504,6 @@ marked@~0.3.6:
 mimic-fn@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-1.2.0.tgz#820c86a39334640e99516928bd03fca88057d022"
-
-minami@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/minami/-/minami-1.2.3.tgz#99b6dcdfb2f0a54da1c9c8f7aa3a327787aaf9f8"
 
 minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
   version "3.0.4"

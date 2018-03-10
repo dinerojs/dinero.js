@@ -1,5 +1,9 @@
 {
   "plugins": ["plugins/markdown"],
+  "templates": {
+    "referenceTitle": "Dinero.js",
+    "disableSort": true
+  },
   "markdown": {
     "tags": ["link"]
   }

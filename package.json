@@ -15,7 +15,7 @@
     "lint": "eslint src/**/*.js test/**/*.js",
     "lint!": "npm run format && npm run lint",
     "test": "mocha --require babel-core/register --recursive",
-    "docs": "rm -rf docs && ./node_modules/.bin/jsdoc src/ -r -d ./docs -t ./node_modules/minami -c jsdoc.json -R ./README.md",
+    "docs": "rm -rf docs && ./node_modules/.bin/jsdoc src/ -r -d ./docs -t ./node_modules/jsdoc-template -c jsdoc.json -R ./README.md -q title=Dinero.js",
     "build": "rm -rf build && node tasks/build.js"
   },
   "devDependencies": {
@@ -33,7 +33,7 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "jsdoc": "^3.5.5",
-    "minami": "^1.2.3",
+    "jsdoc-template": "sarahdayan/jsdoc-template",
     "mocha": "^5.0.1",
     "prettier": "1.10.2",
     "rollup": "^0.56.3",
