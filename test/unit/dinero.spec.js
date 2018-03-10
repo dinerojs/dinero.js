@@ -40,6 +40,7 @@ describe('Dinero', () => {
       const price = Dinero()
       Dinero.globalLocale = 'fr-FR'
       expect(price.getLocale()).to.equal('en-US')
+      Dinero.globalLocale = 'en-US'
     })
   })
   describe('#setLocale()', () => {
