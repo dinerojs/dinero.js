@@ -36,6 +36,7 @@ const Dinero = options => {
   )
 
   const locale = Dinero.globalLocale
+  const globalFormat = Dinero.globalFormat
 
   /**
    * Uses ES5 function notation so `this` can be passed through call, apply and bind
@@ -469,24 +470,15 @@ const Dinero = options => {
      * @return {String}
      */
     toFormat(format) {
-      const formatter = Format(format)
+      const formatter = Format(format || globalFormat)
 
-      return this.toUnit().toLocaleString(
-        this.getLocale(),
-        formatter.getMatches().length > 0
-          ? {
-              currencyDisplay: formatter.getCurrencyDisplay(),
-              useGrouping: formatter.getUseGrouping(),
-              minimumFractionDigits: formatter.getMinimumFractionDigits(),
-              style: formatter.getStyle(),
-              currency: this.getCurrency()
-            }
-          : {
-              currencyDisplay: Dinero.globalCurrencyDisplay,
-              useGrouping: Dinero.globalUseGrouping,
-              minimumFractionDigits: Dinero.globalMinimumFractionDigits
-            }
-      )
+      return this.toUnit().toLocaleString(this.getLocale(), {
+        currencyDisplay: formatter.getCurrencyDisplay(),
+        useGrouping: formatter.getUseGrouping(),
+        minimumFractionDigits: formatter.getMinimumFractionDigits(),
+        style: formatter.getStyle(),
+        currency: this.getCurrency()
+      })
     },
     /**
      * Returns the amount represented by this object in units.

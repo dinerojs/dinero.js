@@ -37,7 +37,5 @@ export const Defaults = {
  */
 export const Globals = {
   globalLocale: 'en-US',
-  globalCurrencyDisplay: 'symbol',
-  globalUseGrouping: false,
-  globalMinimumFractionDigits: 2
+  globalFormat: '$0,0.00'
 }

@@ -267,6 +267,11 @@ describe('Dinero', () => {
     })
   })
   describe('#toFormat()', () => {
+    it('should return the properly formatted amount (default)', () => {
+      expect(Dinero({ amount: 200000, currency: 'EUR' }).toFormat()).to.equal(
+        '€2,000.00'
+      )
+    })
     it('should return the properly formatted amount (one fraction digit)', () => {
       expect(
         Dinero({ amount: 200000, currency: 'EUR' }).toFormat('0.0')
@@ -311,6 +316,12 @@ describe('Dinero', () => {
       expect(
         Dinero({ amount: 200000, currency: 'EUR' }).toFormat('0,0.00 dollar')
       ).to.equal('2,000.00 euros')
+    })
+    it('should return the initial format when global format is redefined', () => {
+      const price = Dinero()
+      Dinero.globalFormat = '0.0'
+      expect(price.toFormat()).to.equal('$0.00')
+      Dinero.globalFormat = '$0,0.00'
     })
   })
   describe('#toUnit()', () => {
