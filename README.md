@@ -16,9 +16,6 @@ Dinero.js provides different builds for different environments.
 
 ### UMD (browser global)
 
-* [Download full](../build/umd/dinero.js)
-* [Download minified](../build/umd/dinero.min.js)
-
 Include Dinero.js in a script tag and access its methods through the global `Dinero` variable.
 
 ```html
@@ -36,9 +33,6 @@ var Money = Dinero;
 
 ### CommonJS (Node)
 
-* [Download full](../build/cjs/dinero.js)
-* [Download minified](../build/cjs/dinero.min.js)
-
 Install via npm:
 
 ```
@@ -51,9 +45,6 @@ const Dinero = require('dinero')
 
 ### AMD (RequireJS, System.js, etc.)
 
-* [Download full](../build/amd/dinero.js)
-* [Download minified](../build/amd/dinero.min.js)
-
 ```js
 requirejs(['dinero'], function(Dinero) {
   //...
@@ -61,9 +52,6 @@ requirejs(['dinero'], function(Dinero) {
 ```
 
 ### ES modules (modern browser, Webpack, etc.)
-
-* [Download full](../build/esm/dinero.js)
-* [Download minified](../build/esm/dinero.min.js)
 
 ```js
 import Dinero from 'dinero'

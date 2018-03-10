@@ -102,31 +102,15 @@
 <li>Native Intl support (no additional locale files).</li>
 </ul>
 <h2>Download/install</h2><p>Dinero.js provides different builds for different environments.</p>
-<h3>UMD (browser global)</h3><ul>
-<li><a href="../build/umd/dinero.js">Download full</a></li>
-<li><a href="../build/umd/dinero.min.js">Download minified</a></li>
-</ul>
-<p>Include Dinero.js in a script tag and access its methods through the global <code>Dinero</code> variable.</p>
+<h3>UMD (browser global)</h3><p>Include Dinero.js in a script tag and access its methods through the global <code>Dinero</code> variable.</p>
 <pre class="prettyprint source lang-html"><code>&lt;script src=&quot;dinero.js&quot;>&lt;/script>
 &lt;script>
   Dinero();
 &lt;/script></code></pre><p>You can use an alias if you wish:</p>
-<pre class="prettyprint source lang-js"><code>var Money = Dinero;</code></pre><h3>CommonJS (Node)</h3><ul>
-<li><a href="../build/cjs/dinero.js">Download full</a></li>
-<li><a href="../build/cjs/dinero.min.js">Download minified</a></li>
-</ul>
-<p>Install via npm:</p>
-<pre class="prettyprint source"><code>npm install dinero.js --save</code></pre><pre class="prettyprint source lang-js"><code>const Dinero = require('dinero')</code></pre><h3>AMD (RequireJS, System.js, etc.)</h3><ul>
-<li><a href="../build/amd/dinero.js">Download full</a></li>
-<li><a href="../build/amd/dinero.min.js">Download minified</a></li>
-</ul>
-<pre class="prettyprint source lang-js"><code>requirejs(['dinero'], function(Dinero) {
+<pre class="prettyprint source lang-js"><code>var Money = Dinero;</code></pre><h3>CommonJS (Node)</h3><p>Install via npm:</p>
+<pre class="prettyprint source"><code>npm install dinero.js --save</code></pre><pre class="prettyprint source lang-js"><code>const Dinero = require('dinero')</code></pre><h3>AMD (RequireJS, System.js, etc.)</h3><pre class="prettyprint source lang-js"><code>requirejs(['dinero'], function(Dinero) {
   //...
-});</code></pre><h3>ES modules (modern browser, Webpack, etc.)</h3><ul>
-<li><a href="../build/esm/dinero.js">Download full</a></li>
-<li><a href="../build/esm/dinero.min.js">Download minified</a></li>
-</ul>
-<pre class="prettyprint source lang-js"><code>import Dinero from 'dinero'</code></pre><h2>Quick start</h2><p>Dinero.js makes it easy to create, calculate and format monetary values in JavaScript. You can perform arithmetic operations, extensively parse and format them, check for a number of things to make your own development process easier and safer.</p>
+});</code></pre><h3>ES modules (modern browser, Webpack, etc.)</h3><pre class="prettyprint source lang-js"><code>import Dinero from 'dinero'</code></pre><h2>Quick start</h2><p>Dinero.js makes it easy to create, calculate and format monetary values in JavaScript. You can perform arithmetic operations, extensively parse and format them, check for a number of things to make your own development process easier and safer.</p>
 <p>To get started, you need to create a new Dinero instance. Amounts are specified in <strong>cents</strong>. You can also specify an <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217 currency code</a> (default is <code>USD</code>).</p>
 <p>This represents €50:</p>
 <pre class="prettyprint source lang-js"><code>const price = Dinero({ amount: 5000, currency: 'EUR' })</code></pre><p>You can add or subtract any amount you want, by passing it another Dinero instance:</p>
