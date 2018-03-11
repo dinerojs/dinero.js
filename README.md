@@ -2,7 +2,7 @@
 
 Dinero.js is a library for working with monetary values in JavaScript.
 
-[API docs][dinero-docs]
+[See API docs][dinero-docs]
 
 ## Features
  * Immutable and chainable API.
@@ -156,4 +156,4 @@ Dinero.js is licensed under [MIT][license].
 [coveralls-badge]: https://img.shields.io/coveralls/github/sarahdayan/dinero.js.svg?branch=master
 
 [wiki:iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
-[dinero-docs]: module-Dinero.html
+[dinero-docs]: https://sarahdayan.github.io/dinero.js/module-Dinero.html
