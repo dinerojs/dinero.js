@@ -64,6 +64,7 @@ const Dinero = options => {
     return this.getCurrency() === comparator.getCurrency()
   }
 
+  /* istanbul ignore next */
   const assert = {
     hasSameCurrency(comparator) {
       if (!hasSameCurrency.call(this, comparator)) {

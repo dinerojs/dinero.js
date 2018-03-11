@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3
+
+- Ignore private methods in code coverage
+
 ## 0.1.2
 
 - Setup repo for code coverage
