@@ -9,6 +9,7 @@
     "amount",
     "immutable"
   ],
+  "repository": "https://github.com/sarahdayan/dinero.js",
   "main": "build/cjs/dinero.js",
   "scripts": {
     "format": "prettier --write src/**/*.js test/**/*.js",
