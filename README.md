@@ -35,7 +35,7 @@ var Money = Dinero;
 
 Install via npm:
 
-```
+```sh
 npm install dinero.js --save
 ```
 
