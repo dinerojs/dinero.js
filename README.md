@@ -1,4 +1,4 @@
-[![MIT License][license-badge]][license] [![Build Status][travis-badge]][travis-url] [![NPM version][npm-version-badge]][npm-url] [![Coverage Status][coveralls-badge]][coveralls-url]
+[![MIT License][license-badge]][license] [![Build Status][travis-badge]][travis-url] [![NPM version][npm-version-badge]][npm-url] [![Coverage Status][coveralls-badge]][coveralls-url] [![Known Vulnerabilities][snyk-badge]][snyk-url]
 
 Dinero.js is a library for working with monetary values in JavaScript.
 
@@ -154,6 +154,9 @@ Dinero.js is licensed under [MIT][license].
 
 [coveralls-url]: https://coveralls.io/github/sarahdayan/dinero.js?branch=master
 [coveralls-badge]: https://img.shields.io/coveralls/github/sarahdayan/dinero.js.svg?branch=master
+
+[snyk-url]: https://snyk.io/test/github/sarahdayan/dinero.js?targetFile=package.json
+[snyk-badge]: https://snyk.io/test/github/sarahdayan/dinero.js/badge.svg?targetFile=package.json
 
 [wiki:iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
 [dinero-docs]: https://sarahdayan.github.io/dinero.js/module-Dinero.html
