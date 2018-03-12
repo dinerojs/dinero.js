@@ -1,4 +1,18 @@
 language: node_js
+cache:
+  directories:
+    - ~/.npm
+notifications:
+  email: false
 node_js:
-  - "node"
-after_success: npm run coverage
+  - '9'
+  - '8'
+  - '6'
+  - '4'
+after_success:
+  - npm run coverage
+  - npm run build
+  - npm run travis-deploy-once "npm run semantic-release"
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
