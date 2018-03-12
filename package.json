@@ -13,7 +13,7 @@
   "main": "build/cjs/dinero.js",
   "scripts": {
     "commit": "git-cz",
-    "format": "prettier --write src/**/*.js test/**/*.js",
+    "format": "prettier --write 'src/**/*.js' 'test/**/*.js'",
     "lint": "eslint src/**/*.js test/**/*.js",
     "lint!": "npm run format && npm run lint",
     "test": "nyc --reporter=html --reporter=text mocha --require babel-core/register --recursive",
