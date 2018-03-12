@@ -5,10 +5,7 @@ cache:
 notifications:
   email: false
 node_js:
-  - '9'
-  - '8'
-  - '6'
-  - '4'
+  - "node"
 after_success:
   - npm run coverage
   - npm run build
