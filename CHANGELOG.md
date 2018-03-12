@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.5
+
+- Update docs
+
+## 0.1.4
+
+- Fix README
+
 ## 0.1.3
 
 - Ignore private methods in code coverage
