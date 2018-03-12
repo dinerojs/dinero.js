@@ -40,13 +40,13 @@ npm install dinero.js --save
 ```
 
 ```js
-const Dinero = require('dinero')
+const Dinero = require('dinero.js')
 ```
 
 ### AMD (RequireJS, System.js, etc.)
 
 ```js
-requirejs(['dinero'], function(Dinero) {
+requirejs(['dinero.js'], function(Dinero) {
   //...
 });
 ```
@@ -54,7 +54,7 @@ requirejs(['dinero'], function(Dinero) {
 ### ES modules (modern browser, Webpack, etc.)
 
 ```js
-import Dinero from 'dinero'
+import Dinero from 'dinero.js'
 ```
 
 ## Quick start
