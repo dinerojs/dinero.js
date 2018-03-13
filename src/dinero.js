@@ -473,7 +473,9 @@ const Dinero = options => {
     toFormat(format) {
       const formatter = Format(format || globalFormat)
 
-      return this.toUnit().toLocaleString(this.getLocale(), {
+      return this.toRoundedUnit(
+        formatter.getMinimumFractionDigits()
+      ).toLocaleString(this.getLocale(), {
         currencyDisplay: formatter.getCurrencyDisplay(),
         useGrouping: formatter.getUseGrouping(),
         minimumFractionDigits: formatter.getMinimumFractionDigits(),

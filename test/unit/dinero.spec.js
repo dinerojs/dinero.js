@@ -278,6 +278,11 @@ describe('Dinero', () => {
         Dinero({ amount: 200000, currency: 'EUR' }).toFormat('0.0')
       ).to.equal('2000.0')
     })
+    it('should return the properly formatted amount (one fraction digit, rounded)', () => {
+      expect(
+        Dinero({ amount: 1155, currency: 'EUR' }).toFormat('0.0')
+      ).to.equal('11.6')
+    })
     it('should return the properly formatted amount (use grouping)', () => {
       expect(
         Dinero({ amount: 200000, currency: 'EUR' }).toFormat('0,0')
