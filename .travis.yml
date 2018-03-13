@@ -8,6 +8,7 @@ node_js:
   - "node"
 after_success:
   - npm run coverage
+  - npm run docs
   - npm run build
   - npm run travis-deploy-once "npm run semantic-release"
 branches:
