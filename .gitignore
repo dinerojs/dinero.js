@@ -1,3 +1,4 @@
+.npmrc
 .nyc_output
 node_modules/
 build/
