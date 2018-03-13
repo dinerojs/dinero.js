@@ -330,6 +330,11 @@ describe('Dinero', () => {
       expect(Dinero({ amount: 1050 }).toUnit()).to.equal(10.5)
     })
   })
+  describe('#toRoundedUnit()', () => {
+    it('should return the amount divided by 100, rounded to one fraction digit', () => {
+      expect(Dinero({ amount: 1055 }).toRoundedUnit(1)).to.equal(10.6)
+    })
+  })
   describe('#toObject()', () => {
     it('should return an object literal with the right data', () => {
       expect(Dinero({ amount: 500, currency: 'EUR' }).toObject()).to.deep.equal(

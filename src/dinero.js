@@ -494,6 +494,20 @@ const Dinero = options => {
       return this.getAmount() / 100
     },
     /**
+     * Returns the amount represented by this object in rounded units.
+     *
+     * @example
+     * // returns 10.6
+     * Dinero({ amount: 1055 }).toRoundedUnit(1)
+     *
+     * @param  {Number} precision - The number of fraction digits to round to.
+     * @return {Number}
+     */
+    toRoundedUnit(precision) {
+      const factor = Math.pow(10, precision)
+      return Math.round(this.toUnit() * factor) / factor
+    },
+    /**
      * Return the object's data as an object literal.
      *
      * @example
