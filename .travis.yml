@@ -22,3 +22,4 @@ deploy:
   target-branch: master
   on:
     branch: master
+    condition: sender != traviscibot # ensures deploy don't trigger an infinite build loop
