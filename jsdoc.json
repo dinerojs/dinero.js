@@ -2,7 +2,12 @@
   "plugins": ["plugins/markdown"],
   "templates": {
     "referenceTitle": "Dinero.js",
-    "disableSort": true
+    "disableSort": true,
+    "search": {
+      "apiKey": "cd3d6484bf8f25f16a3b11e7bc24b702",
+      "indexName": "dinerojs",
+      "hitsPerPage": "7"
+    }
   },
   "markdown": {
     "tags": ["link"]
