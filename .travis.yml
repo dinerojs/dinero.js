@@ -8,8 +8,17 @@ node_js:
   - "node"
 after_success:
   - npm run coverage
+  - npm run docs
   - npm run build
   - npm run travis-deploy-once "npm run semantic-release"
 branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+  only:
+    - master
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_DEPLOY_TOKEN
+  keep-history: true
+  target-branch: master
+  on:
+    branch: master

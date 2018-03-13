@@ -22,6 +22,9 @@
   <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 
   
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+  
 
   <!-- start Mixpanel -->
   <script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
@@ -62,6 +65,17 @@
         </a>
       </li>
 
+      
+      <li>
+        <div class="search-wrapper">
+          <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+
+          </svg>
+          <input type="text" placeholder="Search" class="search-input">
+        </div>
+      </li>
       
 
     </ul>
@@ -144,6 +158,20 @@ export const Globals = {
   <script src="scripts/linenumber.js"></script>
   <script src="scripts/pagelocation.js"></script>
 
+  
+  <script>
+    $(function () {
+      window.docsearch({
+        apiKey: 'cd3d6484bf8f25f16a3b11e7bc24b702',
+        indexName: 'dinerojs',
+        inputSelector: '.search-input',
+        debug: false, // Set debug to true if you want to inspect the dropdown
+        algoliaOptions: {
+          hitsPerPage: 7
+        }
+      });
+    });
+  </script>
   
   
 </body>
