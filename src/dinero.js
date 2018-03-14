@@ -17,7 +17,7 @@ import Format from './services/format'
  * * **Manipulation:** {@link module:Dinero~add add}, {@link module:Dinero~subtract subtract}, {@link module:Dinero~multiply multiply}, {@link module:Dinero~divide divide} and {@link module:Dinero~percentage percentage}.
  * * **Testing:** {@link module:Dinero~equalsTo equalsTo}, {@link module:Dinero~lessThan lessThan}, {@link module:Dinero~lessThanOrEqual lessThanOrEqual}, {@link module:Dinero~greaterThan greaterThan}, {@link module:Dinero~greaterThanOrEqual greaterThanOrEqual}, {@link module:Dinero~isZero isZero}, {@link module:Dinero~isPositive isPositive}, {@link module:Dinero~isNegative isNegative}, {@link module:Dinero~hasCents hasCents}, {@link module:Dinero~hasSameCurrency hasSameCurrency} and {@link module:Dinero~hasSameAmount hasSameAmount}.
  * * **Configuration:** {@link module:Dinero~setLocale setLocale}.
- * * **Conversion & formatting:** {@link module:Dinero~toFormat toFormat}, {@link module:Dinero~toUnit toUnit} and {@link module:Dinero~toObject toObject}.
+ * * **Conversion & formatting:** {@link module:Dinero~toFormat toFormat}, {@link module:Dinero~toUnit toUnit}, {@link module:Dinero~toRoundedUnit toRoundedUnit} and {@link module:Dinero~toObject toObject}.
  *
  * @module Dinero
  * @param  {Number} options.amount - The amount in cents.
@@ -448,10 +448,10 @@ const Dinero = options => {
      *
      * Don't try to substitute the `$` sign or the `USD` code with your target currency, nor adapt the format string to the exact format you want.
      * The format is a mask which defines a pattern and returns a valid, localized currency string.
-     * If you want to display the object in a custom way, either use {@link module:Dinero~getAmount getAmount} or {@link module:Dinero~toUnit toUnit} and manipulate the output string as you wish.
+     * If you want to display the object in a custom way, either use {@link module:Dinero~getAmount getAmount}, {@link module:Dinero~toUnit toUnit} or {@link module:Dinero~toRoundedUnit toRoundedUnit} and manipulate the output string as you wish.
      *
-     * {@link module:Dinero~toFormat toFormat} is syntactic sugar over JavaScript's native `Number.prototype.toLocaleString` method.
-     * You can use it directly instead by doing `Dinero().toUnit().toLocaleString(locale, options)`.
+     * {@link module:Dinero~toFormat toFormat} is syntactic sugar over JavaScript's native `Number.prototype.toLocaleString` method, which you can use directly:
+     * `Dinero().toRoundedUnit(precision).toLocaleString(locale, options)`.
      *
      * @param  {String} format - The format mask to format to.
      *
@@ -473,7 +473,9 @@ const Dinero = options => {
     toFormat(format) {
       const formatter = Format(format || globalFormat)
 
-      return this.toUnit().toLocaleString(this.getLocale(), {
+      return this.toRoundedUnit(
+        formatter.getMinimumFractionDigits()
+      ).toLocaleString(this.getLocale(), {
         currencyDisplay: formatter.getCurrencyDisplay(),
         useGrouping: formatter.getUseGrouping(),
         minimumFractionDigits: formatter.getMinimumFractionDigits(),
@@ -492,6 +494,20 @@ const Dinero = options => {
      */
     toUnit() {
       return this.getAmount() / 100
+    },
+    /**
+     * Returns the amount represented by this object in rounded units.
+     *
+     * @example
+     * // returns 10.6
+     * Dinero({ amount: 1055 }).toRoundedUnit(1)
+     *
+     * @param  {Number} precision - The number of fraction digits to round to.
+     * @return {Number}
+     */
+    toRoundedUnit(precision) {
+      const factor = Math.pow(10, precision)
+      return Math.round(this.toUnit() * factor) / factor
     },
     /**
      * Return the object's data as an object literal.

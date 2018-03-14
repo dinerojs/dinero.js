@@ -278,6 +278,11 @@ describe('Dinero', () => {
         Dinero({ amount: 200000, currency: 'EUR' }).toFormat('0.0')
       ).to.equal('2000.0')
     })
+    it('should return the properly formatted amount (one fraction digit, rounded)', () => {
+      expect(
+        Dinero({ amount: 1155, currency: 'EUR' }).toFormat('0.0')
+      ).to.equal('11.6')
+    })
     it('should return the properly formatted amount (use grouping)', () => {
       expect(
         Dinero({ amount: 200000, currency: 'EUR' }).toFormat('0,0')
@@ -328,6 +333,11 @@ describe('Dinero', () => {
   describe('#toUnit()', () => {
     it('should return the amount divided by 100', () => {
       expect(Dinero({ amount: 1050 }).toUnit()).to.equal(10.5)
+    })
+  })
+  describe('#toRoundedUnit()', () => {
+    it('should return the amount divided by 100, rounded to one fraction digit', () => {
+      expect(Dinero({ amount: 1055 }).toRoundedUnit(1)).to.equal(10.6)
     })
   })
   describe('#toObject()', () => {
