@@ -127,7 +127,7 @@ const Dinero = options => {
     /**
      * Returns a new Dinero object with an embedded locale.
      *
-     * @param {String} newLocale - The new locale as an {@link http://tools.ietf.org/html/rfc5646 BCP 47h language tag}.
+     * @param {String} newLocale - The new locale as an {@link http://tools.ietf.org/html/rfc5646 BCP 47 language tag}.
      *
      * @example
      * // Returns a Dinero object with locale 'ja-JP'
