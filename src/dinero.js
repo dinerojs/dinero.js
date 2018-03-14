@@ -448,10 +448,10 @@ const Dinero = options => {
      *
      * Don't try to substitute the `$` sign or the `USD` code with your target currency, nor adapt the format string to the exact format you want.
      * The format is a mask which defines a pattern and returns a valid, localized currency string.
-     * If you want to display the object in a custom way, either use {@link module:Dinero~getAmount getAmount} or {@link module:Dinero~toUnit toUnit} and manipulate the output string as you wish.
+     * If you want to display the object in a custom way, either use {@link module:Dinero~getAmount getAmount}, {@link module:Dinero~toUnit toUnit} or {@link module:Dinero~toRoundedUnit toRoundedUnit} and manipulate the output string as you wish.
      *
-     * {@link module:Dinero~toFormat toFormat} is syntactic sugar over JavaScript's native `Number.prototype.toLocaleString` method.
-     * You can use it directly instead by doing `Dinero().toUnit().toLocaleString(locale, options)`.
+     * {@link module:Dinero~toFormat toFormat} is syntactic sugar over JavaScript's native `Number.prototype.toLocaleString` method, which you can use directly:
+     * `Dinero().toRoundedUnit(precision).toLocaleString(locale, options)`.
      *
      * @param  {String} format - The format mask to format to.
      *
