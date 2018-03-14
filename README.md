@@ -92,6 +92,8 @@ All transformative operations return a Dinero instance, so you can chain methods
 Dinero({ amount: 500 }).add(Dinero({ amount: 500 })).multiply(4)
 ```
 
+**Note:** because method calls are executed sequentially, mathematical operator precedence doesn't apply. When you execute the code above, the addition happens before the multiplication, evaluating to `4000`, while `500 + 500 * 4` would normally evaluate to `2500`. If you need to perform an operation before another, make sure you call it first.
+
 You can ask all kinds of questions to your Dinero instance. You'll get a `Boolean` in return:
 
 ```js
