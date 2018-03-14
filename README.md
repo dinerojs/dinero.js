@@ -147,7 +147,7 @@ Dinero.js is inspired from [Martin Fowler's monetary representation][fowler-mone
 
 Dinero.js is licensed under [MIT][license].
 
-[license]: LICENSE.md
+[license]: https://github.com/sarahdayan/dinero.js/blob/master/README.md
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
 
 [travis-url]: https://travis-ci.org/sarahdayan/dinero.js
