@@ -1,5 +1,8 @@
 import { Defaults, Globals } from './services/settings'
 import Format from './services/format'
+import Calculator from './services/calculator'
+
+const calculator = Calculator()
 
 /**
  * A Dinero object is an immutable data structure representing a specific monetary value.
@@ -154,7 +157,7 @@ const Dinero = options => {
     add(addend) {
       assert.hasSameCurrency.call(this, addend)
       return create.call(this, {
-        amount: this.getAmount() + addend.getAmount()
+        amount: calculator.add(this.getAmount(), addend.getAmount())
       })
     },
     /**
@@ -173,7 +176,7 @@ const Dinero = options => {
     subtract(subtrahend) {
       assert.hasSameCurrency.call(this, subtrahend)
       return create.call(this, {
-        amount: this.getAmount() - subtrahend.getAmount()
+        amount: calculator.subtract(this.getAmount(), subtrahend.getAmount())
       })
     },
     /**
@@ -188,7 +191,9 @@ const Dinero = options => {
      * @return {Dinero}
      */
     multiply(multiplier) {
-      return create.call(this, { amount: this.getAmount() * multiplier })
+      return create.call(this, {
+        amount: calculator.multiply(this.getAmount(), multiplier)
+      })
     },
     /**
      * Returns a new Dinero object that represents the divided value by the given factor.
@@ -202,7 +207,9 @@ const Dinero = options => {
      * @return {Dinero}
      */
     divide(divisor) {
-      return create.call(this, { amount: this.getAmount() / divisor })
+      return create.call(this, {
+        amount: calculator.divide(this.getAmount(), divisor)
+      })
     },
     /**
      * Returns a new Dinero object that represents a percentage of this.
