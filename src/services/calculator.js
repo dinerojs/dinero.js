@@ -1,12 +1,4 @@
 export default function Calculator() {
-  const add = (a, b) => a + b
-
-  const subtract = (a, b) => a - b
-
-  const multiply = (a, b) => a * b
-
-  const divide = (a, b) => a / b
-
   return {
     /**
      * Returns the sum of two numbers.
@@ -18,7 +10,7 @@ export default function Calculator() {
      * @return {Number}
      */
     add(a, b) {
-      return add(a, b)
+      return a + b
     },
     /**
      * Returns the difference of two numbers.
@@ -30,7 +22,7 @@ export default function Calculator() {
      * @return {Number}
      */
     subtract(a, b) {
-      return subtract(a, b)
+      return a - b
     },
     /**
      * Returns the product of two numbers.
@@ -42,7 +34,7 @@ export default function Calculator() {
      * @return {Number}
      */
     multiply(a, b) {
-      return multiply(a, b)
+      return a * b
     },
     /**
      * Returns the quotient of two numbers.
@@ -54,7 +46,7 @@ export default function Calculator() {
      * @return {Number}
      */
     divide(a, b) {
-      return divide(a, b)
+      return a / b
     }
   }
 }
