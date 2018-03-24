@@ -1,6 +1,7 @@
 import { Defaults, Globals } from './services/settings'
 import Format from './services/format'
 import Calculator from './services/calculator'
+import { isNumeric } from './services/helpers'
 
 const calculator = Calculator()
 
@@ -77,14 +78,7 @@ const Dinero = options => {
       }
     },
     isPercentage(percentage) {
-      if (
-        !(
-          !isNaN(parseInt(percentage)) &&
-          isFinite(percentage) &&
-          percentage <= 100 &&
-          percentage >= 0
-        )
-      ) {
+      if (!(isNumeric(percentage) && percentage <= 100 && percentage >= 0)) {
         throw new Error('You must provide a numeric value between 0 and 100.')
       }
     }
