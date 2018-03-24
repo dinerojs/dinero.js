@@ -13,7 +13,7 @@
   "main": "build/cjs/dinero.js",
   "scripts": {
     "precommit": "lint-staged",
-    "commit": "git-cz",
+    "cz": "git-cz",
     "format": "prettier --write 'src/**/*.js' 'test/**/*.js'",
     "lint": "eslint src/**/*.js test/**/*.js",
     "lint!": "npm run format && npm run lint",
