@@ -12,7 +12,8 @@
   "repository": "https://github.com/sarahdayan/dinero.js",
   "main": "build/cjs/dinero.js",
   "scripts": {
-    "commit": "git-cz",
+    "precommit": "lint-staged",
+    "cz": "git-cz",
     "format": "prettier --write 'src/**/*.js' 'test/**/*.js'",
     "lint": "eslint src/**/*.js test/**/*.js",
     "lint!": "npm run format && npm run lint",
@@ -22,6 +23,9 @@
     "build": "rm -rf build && node tasks/build.js",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
+  },
+  "lint-staged": {
+    "*.js": ["npm run lint!", "git add"]
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -40,8 +44,10 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
     "jsdoc": "^3.5.5",
     "jsdoc-template": "sarahdayan/jsdoc-template",
+    "lint-staged": "^7.0.0",
     "mocha": "^5.0.1",
     "nyc": "^11.4.1",
     "prettier": "1.10.2",

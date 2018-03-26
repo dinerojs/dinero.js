@@ -463,7 +463,7 @@ const Dinero = options => {
      * // returns €50.5
      * Dinero({ amount: 5050, currency: 'EUR' }).toFormat('$0,0.0')
      * @example
-     * // returns 100 €
+     * // returns 100 euros
      * Dinero({ amount: 10000, currency: 'EUR' }).setLocale('fr-FR').toFormat('0,0 dollar')
      * @example
      * // returns 2000
