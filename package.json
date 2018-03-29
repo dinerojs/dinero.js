@@ -25,7 +25,10 @@
     "semantic-release": "semantic-release"
   },
   "lint-staged": {
-    "*.js": ["npm run lint!", "git add"]
+    "*.js": [
+      "npm run lint!",
+      "git add"
+    ]
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -45,6 +48,7 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
+    "jest": "^22.4.3",
     "jsdoc": "^3.5.5",
     "jsdoc-template": "sarahdayan/jsdoc-template",
     "lint-staged": "^7.0.0",
