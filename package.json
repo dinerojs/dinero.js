@@ -17,15 +17,17 @@
     "format": "prettier --write 'src/**/*.js' 'test/**/*.js'",
     "lint": "eslint src/**/*.js test/**/*.js",
     "lint!": "npm run format && npm run lint",
-    "test": "nyc --reporter=html --reporter=text mocha --require babel-core/register --recursive",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test": "jest --coverage",
     "docs": "rm -rf docs && ./node_modules/.bin/jsdoc src/ -r -d ./docs -t ./node_modules/jsdoc-template -c jsdoc.json -R ./README.md -q title=Dinero.js",
     "build": "rm -rf build && node tasks/build.js",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
   "lint-staged": {
-    "*.js": ["npm run lint!", "git add"]
+    "*.js": [
+      "npm run lint!",
+      "git add"
+    ]
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -33,7 +35,6 @@
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
-    "chai": "^4.1.2",
     "commitizen": "^2.9.6",
     "coveralls": "^3.0.0",
     "cz-conventional-changelog": "^2.1.0",
@@ -45,11 +46,10 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
+    "jest": "^22.4.3",
     "jsdoc": "^3.5.5",
     "jsdoc-template": "sarahdayan/jsdoc-template",
     "lint-staged": "^7.0.0",
-    "mocha": "^5.0.1",
-    "nyc": "^11.4.1",
     "prettier": "1.10.2",
     "rollup": "^0.56.3",
     "rollup-plugin-babel": "^3.0.3",
