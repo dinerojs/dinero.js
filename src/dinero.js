@@ -154,7 +154,7 @@ const Dinero = options => {
      * // returns a Dinero object with amount 600
      * Dinero({ amount: 400 }).add(Dinero({ amount: 200 }))
      *
-     * @throws Will throw if `addend` has a different currency.
+     * @throws {Error} If `addend` has a different currency.
      *
      * @return {Dinero}
      */
@@ -173,7 +173,7 @@ const Dinero = options => {
      * // returns a Dinero object with amount 200
      * Dinero({ amount: 400 }).subtract(Dinero({ amount: 200 }))
      *
-     * @throws Will throw if `subtrahend` has a different currency.
+     * @throws {Error} If `subtrahend` has a different currency.
      *
      * @return {Dinero}
      */
@@ -220,7 +220,7 @@ const Dinero = options => {
      * // returns a Dinero object with amount 5000
      * Dinero({ amount: 10000 }).percentage(50)
      *
-     * @throws Will throw if `percentage` is out of range.
+     * @throws {Error} If `percentage` is out of range.
      *
      * @return {Dinero}
      */
@@ -310,7 +310,7 @@ const Dinero = options => {
      * // returns false
      * Dinero({ amount: 800 }).lessThan(Dinero({ amount: 500 }))
      *
-     * @throws Will throw if `comparator` has a different currency.
+     * @throws {Error} If `comparator` has a different currency.
      *
      * @return {Boolean}
      */
@@ -333,7 +333,7 @@ const Dinero = options => {
      * // returns false
      * Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 300 }))
      *
-     * @throws Will throw if `comparator` has a different currency.
+     * @throws {Error} If `comparator` has a different currency.
      *
      * @return {Boolean}
      */
@@ -353,7 +353,7 @@ const Dinero = options => {
      * // returns true
      * Dinero({ amount: 800 }).greaterThan(Dinero({ amount: 500 }))
      *
-     * @throws Will throw if `comparator` has a different currency.
+     * @throws {Error} If `comparator` has a different currency.
      *
      * @return {Boolean}
      */
@@ -376,7 +376,7 @@ const Dinero = options => {
      * // returns false
      * Dinero({ amount: 500 }).greaterThanOrEqual(Dinero({ amount: 800 }))
      *
-     * @throws Will throw if `comparator` has a different currency.
+     * @throws {Error} If `comparator` has a different currency.
      *
      * @return {Boolean}
      */
