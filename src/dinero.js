@@ -68,7 +68,7 @@ const Dinero = options => {
   const assert = {
     hasSameCurrency(comparator) {
       if (!hasSameCurrency.call(this, comparator)) {
-        throw new Error(
+        throw new TypeError(
           'You must provide a Dinero instance with the same currency.'
         )
       }
@@ -82,12 +82,14 @@ const Dinero = options => {
           percentage >= 0
         )
       ) {
-        throw new Error('You must provide a numeric value between 0 and 100.')
+        throw new RangeError(
+          'You must provide a numeric value between 0 and 100.'
+        )
       }
     },
     areValidRatios(ratios) {
       if (!(ratios.length && ratios.every(ratio => ratio > 0))) {
-        throw new Error(
+        throw new TypeError(
           'You must provide a non-empty array of numeric values greater than 0.'
         )
       }
@@ -154,7 +156,7 @@ const Dinero = options => {
      * // returns a Dinero object with amount 600
      * Dinero({ amount: 400 }).add(Dinero({ amount: 200 }))
      *
-     * @throws {Error} If `addend` has a different currency.
+     * @throws {TypeError} If `addend` has a different currency.
      *
      * @return {Dinero}
      */
@@ -173,7 +175,7 @@ const Dinero = options => {
      * // returns a Dinero object with amount 200
      * Dinero({ amount: 400 }).subtract(Dinero({ amount: 200 }))
      *
-     * @throws {Error} If `subtrahend` has a different currency.
+     * @throws {TypeError} If `subtrahend` has a different currency.
      *
      * @return {Dinero}
      */
@@ -220,7 +222,7 @@ const Dinero = options => {
      * // returns a Dinero object with amount 5000
      * Dinero({ amount: 10000 }).percentage(50)
      *
-     * @throws {Error} If `percentage` is out of range.
+     * @throws {RangeError} If `percentage` is out of range.
      *
      * @return {Dinero}
      */
@@ -252,7 +254,7 @@ const Dinero = options => {
      * // the second one with an amount of 75
      * Dinero({ amount: 100 }).allocate([1, 3])
      *
-     * @throws {Error} If ratios are invalid.
+     * @throws {TypeError} If ratios are invalid.
      *
      * @return {Dinero[]}
      */
@@ -310,7 +312,7 @@ const Dinero = options => {
      * // returns false
      * Dinero({ amount: 800 }).lessThan(Dinero({ amount: 500 }))
      *
-     * @throws {Error} If `comparator` has a different currency.
+     * @throws {TypeError} If `comparator` has a different currency.
      *
      * @return {Boolean}
      */
@@ -333,7 +335,7 @@ const Dinero = options => {
      * // returns false
      * Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 300 }))
      *
-     * @throws {Error} If `comparator` has a different currency.
+     * @throws {TypeError} If `comparator` has a different currency.
      *
      * @return {Boolean}
      */
@@ -353,7 +355,7 @@ const Dinero = options => {
      * // returns true
      * Dinero({ amount: 800 }).greaterThan(Dinero({ amount: 500 }))
      *
-     * @throws {Error} If `comparator` has a different currency.
+     * @throws {TypeError} If `comparator` has a different currency.
      *
      * @return {Boolean}
      */
@@ -376,7 +378,7 @@ const Dinero = options => {
      * // returns false
      * Dinero({ amount: 500 }).greaterThanOrEqual(Dinero({ amount: 800 }))
      *
-     * @throws {Error} If `comparator` has a different currency.
+     * @throws {TypeError} If `comparator` has a different currency.
      *
      * @return {Boolean}
      */
