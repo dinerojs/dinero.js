@@ -113,6 +113,27 @@ describe('Dinero', () => {
       ).toMatchObject({ amount: 5000 })
     })
   })
+  describe('#allocate()', () => {
+    test('should allocate the amount of the Dinero object into new ones and distribute the remainder when given percentages', () => {
+      const shares = Dinero({ amount: 1003 }).allocate([50, 50])
+      expect(shares[0].getAmount()).toBe(502)
+      expect(shares[1].getAmount()).toBe(501)
+    })
+    test('should allocate the amount of the Dinero object into new ones and distribute the remainder when given ratios', () => {
+      const shares = Dinero({ amount: 100 }).allocate([1, 3])
+      expect(shares[0].getAmount()).toBe(25)
+      expect(shares[1].getAmount()).toBe(75)
+    })
+    test('should throw when one of the ratios equals to zero', () => {
+      expect(() => Dinero({ amount: 1003 }).allocate([60, 0, 10, 30])).toThrow()
+    })
+    test('should throw when one of the ratios is negative', () => {
+      expect(() => Dinero({ amount: 1003 }).allocate([-50, -50])).toThrow()
+    })
+    test('should throw when array of ratios is empty', () => {
+      expect(() => Dinero({ amount: 1003 }).allocate([])).toThrow()
+    })
+  })
   describe('#equalsTo()', () => {
     test('should return true when both amount and currencies are equal', () => {
       expect(

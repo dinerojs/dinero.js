@@ -81,6 +81,13 @@ const Dinero = options => {
       if (!(isNumeric(percentage) && percentage <= 100 && percentage >= 0)) {
         throw new Error('You must provide a numeric value between 0 and 100.')
       }
+    },
+    areValidRatios(ratios) {
+      if (!(ratios.length && ratios.every(ratio => ratio > 0))) {
+        throw new Error(
+          'You must provide a non-empty array of numeric values greater than 0.'
+        )
+      }
     }
   }
 
@@ -221,6 +228,53 @@ const Dinero = options => {
     percentage(percentage) {
       assert.isPercentage(percentage)
       return this.multiply(percentage / 100)
+    },
+    /**
+     * Allocates the amount of a Dinero object according to a list of ratios.
+     *
+     * Sometimes you need to split monetary values but percentages can't cut it without adding or losing pennies.
+     * A good example is invoicing: let's say you need to bill $1,000.03 and you want a 50% downpayment.
+     * If you use {@link module:Dinero~percentage percentage}, you'll get an accurate Dinero object but the amount won't be billable: you can't split a penny.
+     * If you round it, you'll bill a penny extra.
+     * With {@link module:Dinero~allocate allocate}, you can split a monetary amount then distribute the remainder as evenly as possible.
+     *
+     * You can use percentage style or ratio style for `ratios`: `[25, 75]` and `[1, 3]` will do the same thing.
+     *
+     * @param  {Number[]} ratios - The ratios to allocate the money to.
+     *
+     * @example
+     * // returns an array of two Dinero objects
+     * // the first one with an amount of 502
+     * // the second one with an amount of 501
+     * Dinero({ amount: 1003 }).allocate([50, 50])
+     * @example
+     * // returns an array of two Dinero objects
+     * // the first one with an amount of 25
+     * // the second one with an amount of 75
+     * Dinero({ amount: 100 }).allocate([1, 3])
+     *
+     * @throws {Error} If ratios are invalid.
+     *
+     * @return {Dinero[]}
+     */
+    allocate(ratios) {
+      assert.areValidRatios(ratios)
+
+      const total = ratios.reduce((a, b) => a + b)
+      let remainder = this.getAmount()
+
+      const shares = ratios.map(ratio => {
+        const share = Math.floor(this.getAmount() * ratio / total)
+        remainder = remainder - share
+        return create.call(this, { amount: share })
+      })
+
+      for (let i = 0; remainder > 0; i++) {
+        shares[i] = shares[i].add(create.call(this, { amount: 1 }))
+        remainder = remainder - 1
+      }
+
+      return shares
     },
     /**
      * Checks whether the value represented by this object equals to the other.
