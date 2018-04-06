@@ -1,3 +1,7 @@
+import Calculator from './calculator'
+
+const calculator = Calculator()
+
 export default function Format(format) {
   const matches = /^(?:(\$|USD)?0(?:(,)0)?(\.)?(0+)?|0(?:(,)0)?(\.)?(0+)?\s?(dollar)?)$/gm.exec(
     format
@@ -23,7 +27,7 @@ export default function Format(format) {
       const decimalPosition = match => match === '.'
       return typeof this.getMatches().find(decimalPosition) !== 'undefined'
         ? this.getMatches()[
-            this.getMatches().findIndex(decimalPosition) + 1
+            calculator.add(this.getMatches().findIndex(decimalPosition), 1)
           ].split('').length
         : 0
     },

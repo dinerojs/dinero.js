@@ -229,7 +229,7 @@ const Dinero = options => {
      */
     percentage(percentage) {
       assert.isPercentage(percentage)
-      return this.multiply(percentage / 100)
+      return this.multiply(calculator.divide(percentage, 100))
     },
     /**
      * Allocates the amount of a Dinero object according to a list of ratios.
@@ -262,18 +262,20 @@ const Dinero = options => {
     allocate(ratios) {
       assert.areValidRatios(ratios)
 
-      const total = ratios.reduce((a, b) => a + b)
+      const total = ratios.reduce((a, b) => calculator.add(a, b))
       let remainder = this.getAmount()
 
       const shares = ratios.map(ratio => {
-        const share = Math.floor(this.getAmount() * ratio / total)
-        remainder = remainder - share
+        const share = Math.floor(
+          calculator.divide(calculator.multiply(this.getAmount(), ratio), total)
+        )
+        remainder = calculator.subtract(remainder, share)
         return create.call(this, { amount: share })
       })
 
       for (let i = 0; remainder > 0; i++) {
         shares[i] = shares[i].add(create.call(this, { amount: 1 }))
-        remainder = remainder - 1
+        remainder = calculator.subtract(remainder, 1)
       }
 
       return shares
@@ -451,7 +453,7 @@ const Dinero = options => {
      * @return {Boolean}
      */
     hasCents() {
-      return this.getAmount() % 100 !== 0
+      return calculator.modulo(this.getAmount(), 100) !== 0
     },
     /**
      * Checks whether the currency represented by this object equals to the other.
@@ -550,7 +552,7 @@ const Dinero = options => {
      * @return {Number}
      */
     toUnit() {
-      return this.getAmount() / 100
+      return calculator.divide(this.getAmount(), 100)
     },
     /**
      * Returns the amount represented by this object in rounded units.
@@ -564,7 +566,10 @@ const Dinero = options => {
      */
     toRoundedUnit(precision) {
       const factor = Math.pow(10, precision)
-      return Math.round(this.toUnit() * factor) / factor
+      return calculator.divide(
+        Math.round(calculator.multiply(this.toUnit(), factor)),
+        factor
+      )
     },
     /**
      * Return the object's data as an object literal.
