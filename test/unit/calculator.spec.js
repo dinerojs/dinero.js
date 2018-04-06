@@ -23,4 +23,9 @@ describe('Calculator', () => {
       expect(calculator.divide(20, 2)).toBe(10)
     })
   })
+  describe('#modulo()', () => {
+    test('should return the remainder of two numbers', () => {
+      expect(calculator.modulo(5, 2)).toBe(1)
+    })
+  })
 })

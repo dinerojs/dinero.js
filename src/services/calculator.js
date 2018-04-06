@@ -47,6 +47,18 @@ export default function Calculator() {
      */
     divide(a, b) {
       return a / b
+    },
+    /**
+     * Returns the remainder of two numbers.
+     * @ignore
+     *
+     * @param  {Number} a - The first number to divide.
+     * @param  {Number} b - The second number to divide.
+     *
+     * @return {Number}
+     */
+    modulo(a, b) {
+      return a % b
     }
   }
 }
