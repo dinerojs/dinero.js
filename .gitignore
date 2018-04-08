@@ -2,3 +2,5 @@
 node_modules
 build
 coverage
+npm-shrinkwrap.json
+package-json.lock
