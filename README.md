@@ -14,12 +14,24 @@ Dinero.js is a library for working with monetary values in JavaScript.
 
 Dinero.js provides different builds for different environments.
 
+The recommended way of install is via [npm][npm] or [Yarn][yarn]:
+
+```sh
+npm install dinero.js --save
+
+// or
+
+yarn add dinero.js
+```
+
+You can also [download the files directly][jsdelivr:landing] or use the [jsDelivr CDN][jsdelivr:cdn].
+
 ### UMD (browser global)
 
 Include Dinero.js in a script tag and access its methods through the global `Dinero` variable.
 
 ```html
-<script src="dinero.js"></script>
+<script src="path/to/umd/dinero.js"></script>
 <script>
   Dinero();
 </script>
@@ -33,12 +45,6 @@ var Money = Dinero;
 
 ### CommonJS (Node)
 
-Install via npm:
-
-```sh
-npm install dinero.js --save
-```
-
 ```js
 const Dinero = require('dinero.js')
 ```
@@ -46,7 +52,7 @@ const Dinero = require('dinero.js')
 ### AMD (RequireJS, System.js, etc.)
 
 ```js
-requirejs(['dinero.js'], function(Dinero) {
+requirejs(['path/to/amd/dinero'], function(Dinero) {
   //...
 });
 ```
@@ -54,7 +60,7 @@ requirejs(['dinero.js'], function(Dinero) {
 ### ES modules (modern browser, Webpack, etc.)
 
 ```js
-import Dinero from 'dinero.js'
+import Dinero from 'path/to/esm/dinero.js'
 ```
 
 ## Quick start
@@ -175,3 +181,9 @@ Dinero.js is licensed under [MIT][license].
 [luxon]: https://moment.github.io/luxon
 [moment]: https://momentjs.com
 [numeral]: http://numeraljs.com
+
+[npm]: https://www.npmjs.com
+[yarn]: https://yarnpkg.com
+
+[jsdelivr:landing]: https://www.jsdelivr.com/package/npm/dinero.js
+[jsdelivr:cdn]: https://cdn.jsdelivr.net/npm/dinero.js/build
