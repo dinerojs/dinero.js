@@ -19,7 +19,7 @@ Dinero.js provides different builds for different environments.
 Include Dinero.js in a script tag and access its methods through the global `Dinero` variable.
 
 ```html
-<script src="dinero.js"></script>
+<script src="path/to/umd/dinero.js"></script>
 <script>
   Dinero();
 </script>
@@ -46,7 +46,7 @@ const Dinero = require('dinero.js')
 ### AMD (RequireJS, System.js, etc.)
 
 ```js
-requirejs(['dinero.js'], function(Dinero) {
+requirejs(['path/to/amd/dinero'], function(Dinero) {
   //...
 });
 ```
@@ -54,7 +54,7 @@ requirejs(['dinero.js'], function(Dinero) {
 ### ES modules (modern browser, Webpack, etc.)
 
 ```js
-import Dinero from 'dinero.js'
+import Dinero from 'path/to/esm/dinero.js'
 ```
 
 ## Quick start
