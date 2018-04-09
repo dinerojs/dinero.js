@@ -179,7 +179,7 @@ Dinero.js is licensed under [MIT][license].
 
 [wiki:iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
 [dinero-docs]: https://sarahdayan.github.io/dinero.js/module-Dinero.html
-[dinero-guidelines]: https://github.com/sarahdayan/dinero.js/blob/master/README.md
+[dinero-guidelines]: https://github.com/sarahdayan/dinero.js/blob/master/CONTRIBUTING.md
 
 [fowler-money]: https://martinfowler.com/eaaCatalog/money.html
 [moneyphp]: http://moneyphp.org
