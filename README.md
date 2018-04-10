@@ -147,6 +147,10 @@ This is only a preview of what you can do. Dinero.js has extensive documentation
 
 [Read full documentation][dinero-docs]
 
+## Contributing
+
+Pull requests are welcome! Please check the [contributing guidelines][dinero-guidelines] for install instructions and general conventions.
+
 ## Acknowledgements
 
 Dinero.js is inspired from [Martin Fowler's monetary representation][fowler-money]. Design-wise, it draws inspiration from [Money PHP][moneyphp], [Luxon][luxon], [Moment.js][moment] and [Numeral.js][numeral] (even though it doesn't rely on any of them).
@@ -175,6 +179,7 @@ Dinero.js is licensed under [MIT][license].
 
 [wiki:iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
 [dinero-docs]: https://sarahdayan.github.io/dinero.js/module-Dinero.html
+[dinero-guidelines]: https://github.com/sarahdayan/dinero.js/blob/master/README.md
 
 [fowler-money]: https://martinfowler.com/eaaCatalog/money.html
 [moneyphp]: http://moneyphp.org
