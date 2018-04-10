@@ -1,5 +1,9 @@
 import { Defaults, Globals } from './services/settings'
 import Format from './services/format'
+import Calculator from './services/calculator'
+import { isNumeric } from './services/helpers'
+
+const calculator = Calculator()
 
 /**
  * A Dinero object is an immutable data structure representing a specific monetary value.
@@ -74,14 +78,7 @@ const Dinero = options => {
       }
     },
     isPercentage(percentage) {
-      if (
-        !(
-          !isNaN(parseInt(percentage)) &&
-          isFinite(percentage) &&
-          percentage <= 100 &&
-          percentage >= 0
-        )
-      ) {
+      if (!(isNumeric(percentage) && percentage <= 100 && percentage >= 0)) {
         throw new RangeError(
           'You must provide a numeric value between 0 and 100.'
         )
@@ -163,7 +160,7 @@ const Dinero = options => {
     add(addend) {
       assert.hasSameCurrency.call(this, addend)
       return create.call(this, {
-        amount: this.getAmount() + addend.getAmount()
+        amount: calculator.add(this.getAmount(), addend.getAmount())
       })
     },
     /**
@@ -182,7 +179,7 @@ const Dinero = options => {
     subtract(subtrahend) {
       assert.hasSameCurrency.call(this, subtrahend)
       return create.call(this, {
-        amount: this.getAmount() - subtrahend.getAmount()
+        amount: calculator.subtract(this.getAmount(), subtrahend.getAmount())
       })
     },
     /**
@@ -197,7 +194,9 @@ const Dinero = options => {
      * @return {Dinero}
      */
     multiply(multiplier) {
-      return create.call(this, { amount: this.getAmount() * multiplier })
+      return create.call(this, {
+        amount: calculator.multiply(this.getAmount(), multiplier)
+      })
     },
     /**
      * Returns a new Dinero object that represents the divided value by the given factor.
@@ -211,7 +210,9 @@ const Dinero = options => {
      * @return {Dinero}
      */
     divide(divisor) {
-      return create.call(this, { amount: this.getAmount() / divisor })
+      return create.call(this, {
+        amount: calculator.divide(this.getAmount(), divisor)
+      })
     },
     /**
      * Returns a new Dinero object that represents a percentage of this.
@@ -228,7 +229,7 @@ const Dinero = options => {
      */
     percentage(percentage) {
       assert.isPercentage(percentage)
-      return this.multiply(percentage / 100)
+      return this.multiply(calculator.divide(percentage, 100))
     },
     /**
      * Allocates the amount of a Dinero object according to a list of ratios.
@@ -261,18 +262,20 @@ const Dinero = options => {
     allocate(ratios) {
       assert.areValidRatios(ratios)
 
-      const total = ratios.reduce((a, b) => a + b)
+      const total = ratios.reduce((a, b) => calculator.add(a, b))
       let remainder = this.getAmount()
 
       const shares = ratios.map(ratio => {
-        const share = Math.floor(this.getAmount() * ratio / total)
-        remainder = remainder - share
+        const share = Math.floor(
+          calculator.divide(calculator.multiply(this.getAmount(), ratio), total)
+        )
+        remainder = calculator.subtract(remainder, share)
         return create.call(this, { amount: share })
       })
 
       for (let i = 0; remainder > 0; i++) {
         shares[i] = shares[i].add(create.call(this, { amount: 1 }))
-        remainder = remainder - 1
+        remainder = calculator.subtract(remainder, 1)
       }
 
       return shares
@@ -450,7 +453,7 @@ const Dinero = options => {
      * @return {Boolean}
      */
     hasCents() {
-      return this.getAmount() % 100 !== 0
+      return calculator.modulo(this.getAmount(), 100) !== 0
     },
     /**
      * Checks whether the currency represented by this object equals to the other.
@@ -549,7 +552,7 @@ const Dinero = options => {
      * @return {Number}
      */
     toUnit() {
-      return this.getAmount() / 100
+      return calculator.divide(this.getAmount(), 100)
     },
     /**
      * Returns the amount represented by this object in rounded units.
@@ -563,7 +566,10 @@ const Dinero = options => {
      */
     toRoundedUnit(precision) {
       const factor = Math.pow(10, precision)
-      return Math.round(this.toUnit() * factor) / factor
+      return calculator.divide(
+        Math.round(calculator.multiply(this.toUnit(), factor)),
+        factor
+      )
     },
     /**
      * Return the object's data as an object literal.
