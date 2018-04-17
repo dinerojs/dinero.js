@@ -1,6 +1,17 @@
 import Dinero from '../../src/dinero'
 
 describe('Dinero', () => {
+  describe('instantiation', () => {
+    test('should return a new Dinero object when arguments are valid', () => {
+      expect(Dinero({ amount: 500 })).toBeTruthy()
+    })
+    test('should throw when amount is a float', () => {
+      expect(() => Dinero({ amount: 0.1 })).toThrow()
+    })
+    test('should throw when amount is a string', () => {
+      expect(() => Dinero({ amount: '100' })).toThrow()
+    })
+  })
   describe('#getAmount()', () => {
     test('should return the right amount as a number', () => {
       expect(Dinero({ amount: 500 }).getAmount()).toBe(500)

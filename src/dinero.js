@@ -24,12 +24,44 @@ const calculator = Calculator()
  * * **Conversion & formatting:** {@link module:Dinero~toFormat toFormat}, {@link module:Dinero~toUnit toUnit}, {@link module:Dinero~toRoundedUnit toRoundedUnit} and {@link module:Dinero~toObject toObject}.
  *
  * @module Dinero
- * @param  {Number} options.amount - The amount in cents.
+ * @param  {Number} options.amount - The amount in cents (as an integer).
  * @param  {String} options.currency - An ISO 4217 currency code.
+ *
+ * @throws {TypeError} If `amount` or `Dinero.defaultAmount` is invalid.
  *
  * @return {Object}
  */
 const Dinero = options => {
+  /* istanbul ignore next */
+  const assert = {
+    hasSameCurrency(comparator) {
+      if (!hasSameCurrency.call(this, comparator)) {
+        throw new TypeError(
+          'You must provide a Dinero instance with the same currency.'
+        )
+      }
+    },
+    isPercentage(percentage) {
+      if (!(isNumeric(percentage) && percentage <= 100 && percentage >= 0)) {
+        throw new RangeError(
+          'You must provide a numeric value between 0 and 100.'
+        )
+      }
+    },
+    areValidRatios(ratios) {
+      if (!(ratios.length && ratios.every(ratio => ratio > 0))) {
+        throw new TypeError(
+          'You must provide a non-empty array of numeric values greater than 0.'
+        )
+      }
+    },
+    isInteger(number) {
+      if (!Number.isInteger(number)) {
+        throw new TypeError('You must provide an integer.')
+      }
+    }
+  }
+
   const { amount, currency } = Object.assign(
     {},
     {
@@ -38,6 +70,9 @@ const Dinero = options => {
     },
     options
   )
+
+  assert.isInteger(amount)
+
   const { globalLocale, globalFormat } = Dinero
 
   /**
@@ -64,31 +99,6 @@ const Dinero = options => {
    */
   const hasSameCurrency = function(comparator) {
     return this.getCurrency() === comparator.getCurrency()
-  }
-
-  /* istanbul ignore next */
-  const assert = {
-    hasSameCurrency(comparator) {
-      if (!hasSameCurrency.call(this, comparator)) {
-        throw new TypeError(
-          'You must provide a Dinero instance with the same currency.'
-        )
-      }
-    },
-    isPercentage(percentage) {
-      if (!(isNumeric(percentage) && percentage <= 100 && percentage >= 0)) {
-        throw new RangeError(
-          'You must provide a numeric value between 0 and 100.'
-        )
-      }
-    },
-    areValidRatios(ratios) {
-      if (!(ratios.length && ratios.every(ratio => ratio > 0))) {
-        throw new TypeError(
-          'You must provide a non-empty array of numeric values greater than 0.'
-        )
-      }
-    }
   }
 
   return {
