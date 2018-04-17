@@ -67,6 +67,8 @@ import Dinero from 'path/to/esm/dinero.js'
 
 Dinero.js makes it easy to create, calculate and format monetary values in JavaScript. You can perform arithmetic operations, extensively parse and format them, check for a number of things to make your own development process easier and safer.
 
+**Note:** The library is globally available in the docs for you to be able to test it right in the browser console.
+
 To get started, you need to create a new Dinero instance. Amounts are specified in **cents**. You can also specify an [ISO 4217 currency code][wiki:iso-4217] (default is `USD`).
 
 This represents €50:
