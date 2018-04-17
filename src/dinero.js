@@ -38,9 +38,7 @@ const Dinero = options => {
     },
     options
   )
-
-  const globalLocale = Dinero.globalLocale
-  const globalFormat = Dinero.globalFormat
+  const { globalLocale, globalFormat } = Dinero
 
   /**
    * Uses ES5 function notation so `this` can be passed through call, apply and bind
