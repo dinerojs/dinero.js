@@ -3707,8 +3707,8 @@ jsbn@~0.1.0:
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
 
 jsdoc-template@sarahdayan/jsdoc-template:
-  version "3.3.0"
-  resolved "https://codeload.github.com/sarahdayan/jsdoc-template/tar.gz/9473faaaa23f12cf4b078112e6794531a8661da0"
+  version "3.4.0"
+  resolved "https://codeload.github.com/sarahdayan/jsdoc-template/tar.gz/3be85d36a1cb33671dbe9e9705f383a7b15c6333"
 
 jsdoc@^3.5.5:
   version "3.5.5"
