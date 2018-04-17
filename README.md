@@ -200,3 +200,4 @@ Dinero.js is licensed under [MIT][license].
 
 [jsdelivr:landing]: https://www.jsdelivr.com/package/npm/dinero.js
 [jsdelivr:cdn]: https://cdn.jsdelivr.net/npm/dinero.js/build
+
