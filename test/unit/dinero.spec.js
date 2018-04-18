@@ -374,6 +374,7 @@ describe('Dinero', () => {
   describe('#toRoundedUnit()', () => {
     test('should return the amount divided by 100, rounded to one fraction digit', () => {
       expect(Dinero({ amount: 1055 }).toRoundedUnit(1)).toBe(10.6)
+      expect(Dinero({ amount: -1055 }).toRoundedUnit(1)).toBe(-10.6)
     })
   })
   describe('#toObject()', () => {
