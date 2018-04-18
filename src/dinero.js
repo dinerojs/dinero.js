@@ -1,7 +1,12 @@
 import { Defaults, Globals } from './services/settings'
 import Format from './services/format'
 import Calculator from './services/calculator'
-import { isNumeric } from './services/helpers'
+import {
+  assert,
+  assertPercentage,
+  assertValidRatios,
+  assertInteger
+} from './services/assert'
 
 const calculator = Calculator()
 
@@ -32,36 +37,6 @@ const calculator = Calculator()
  * @return {Object}
  */
 const Dinero = options => {
-  /* istanbul ignore next */
-  const assert = {
-    hasSameCurrency(comparator) {
-      if (!hasSameCurrency.call(this, comparator)) {
-        throw new TypeError(
-          'You must provide a Dinero instance with the same currency.'
-        )
-      }
-    },
-    isPercentage(percentage) {
-      if (!(isNumeric(percentage) && percentage <= 100 && percentage >= 0)) {
-        throw new RangeError(
-          'You must provide a numeric value between 0 and 100.'
-        )
-      }
-    },
-    areValidRatios(ratios) {
-      if (!(ratios.length && ratios.every(ratio => ratio > 0))) {
-        throw new TypeError(
-          'You must provide a non-empty array of numeric values greater than 0.'
-        )
-      }
-    },
-    isInteger(number) {
-      if (!Number.isInteger(number)) {
-        throw new TypeError('You must provide an integer.')
-      }
-    }
-  }
-
   const { amount, currency } = Object.assign(
     {},
     {
@@ -71,7 +46,7 @@ const Dinero = options => {
     options
   )
 
-  assert.isInteger(amount)
+  assertInteger(amount)
 
   const { globalLocale, globalFormat } = Dinero
 
@@ -97,8 +72,13 @@ const Dinero = options => {
    * Uses ES5 function notation so `this` can be passed through call, apply and bind
    * @ignore
    */
-  const hasSameCurrency = function(comparator) {
-    return this.getCurrency() === comparator.getCurrency()
+  const assertSameCurrency = function(comparator) {
+    assert(
+      this.hasSameCurrency(comparator),
+      new TypeError(
+        'You must provide a Dinero instance with the same currency.'
+      )
+    )
   }
 
   return {
@@ -166,7 +146,7 @@ const Dinero = options => {
      * @return {Dinero}
      */
     add(addend) {
-      assert.hasSameCurrency.call(this, addend)
+      assertSameCurrency.call(this, addend)
       return create.call(this, {
         amount: calculator.add(this.getAmount(), addend.getAmount())
       })
@@ -185,7 +165,7 @@ const Dinero = options => {
      * @return {Dinero}
      */
     subtract(subtrahend) {
-      assert.hasSameCurrency.call(this, subtrahend)
+      assertSameCurrency.call(this, subtrahend)
       return create.call(this, {
         amount: calculator.subtract(this.getAmount(), subtrahend.getAmount())
       })
@@ -236,7 +216,7 @@ const Dinero = options => {
      * @return {Dinero}
      */
     percentage(percentage) {
-      assert.isPercentage(percentage)
+      assertPercentage(percentage)
       return this.multiply(calculator.divide(percentage, 100))
     },
     /**
@@ -268,7 +248,7 @@ const Dinero = options => {
      * @return {Dinero[]}
      */
     allocate(ratios) {
-      assert.areValidRatios(ratios)
+      assertValidRatios(ratios)
 
       const total = ratios.reduce((a, b) => calculator.add(a, b))
       let remainder = this.getAmount()
@@ -328,7 +308,7 @@ const Dinero = options => {
      * @return {Boolean}
      */
     lessThan(comparator) {
-      assert.hasSameCurrency.call(this, comparator)
+      assertSameCurrency.call(this, comparator)
       return this.getAmount() < comparator.getAmount()
     },
     /**
@@ -351,7 +331,7 @@ const Dinero = options => {
      * @return {Boolean}
      */
     lessThanOrEqual(comparator) {
-      assert.hasSameCurrency.call(this, comparator)
+      assertSameCurrency.call(this, comparator)
       return this.getAmount() <= comparator.getAmount()
     },
     /**
@@ -371,7 +351,7 @@ const Dinero = options => {
      * @return {Boolean}
      */
     greaterThan(comparator) {
-      assert.hasSameCurrency.call(this, comparator)
+      assertSameCurrency.call(this, comparator)
       return this.getAmount() > comparator.getAmount()
     },
     /**
@@ -394,7 +374,7 @@ const Dinero = options => {
      * @return {Boolean}
      */
     greaterThanOrEqual(comparator) {
-      assert.hasSameCurrency.call(this, comparator)
+      assertSameCurrency.call(this, comparator)
       return this.getAmount() >= comparator.getAmount()
     },
     /**
@@ -478,7 +458,7 @@ const Dinero = options => {
      * @return {Boolean}
      */
     hasSameCurrency(comparator) {
-      return hasSameCurrency.call(this, comparator)
+      return this.getCurrency() === comparator.getCurrency()
     },
     /**
      * Checks whether the amount represented by this object equals to the other.
