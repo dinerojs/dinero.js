@@ -301,33 +301,47 @@ const Dinero = options => {
     /**
      * Returns a new Dinero object that represents the multiplied value by the given factor.
      *
+     * [Banker's rounding](http://wiki.c2.com/?BankersRounding) is used to handle fractional cents.
+     * This *can* lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.
+     *
      * @param  {Number} multiplier - The factor to multiply by.
      *
      * @example
      * // returns a Dinero object with amount 1600
      * Dinero({ amount: 400 }).multiply(4)
+     * // returns a Dinero object with amount 800
+     * Dinero({ amount: 400 }).multiply(2.001)
      *
      * @return {Dinero}
      */
     multiply(multiplier) {
       return create.call(this, {
-        amount: calculator.multiply(this.getAmount(), multiplier)
+        amount: calculator.bankersRound(
+          calculator.multiply(this.getAmount(), multiplier)
+        )
       })
     },
     /**
      * Returns a new Dinero object that represents the divided value by the given factor.
+     *
+     * [Banker's rounding](http://wiki.c2.com/?BankersRounding) is used to handle fractional cents.
+     * This *can* lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.
      *
      * @param  {Number} divisor - The factor to divide by.
      *
      * @example
      * // returns a Dinero object with amount 100
      * Dinero({ amount: 400 }).divide(4)
+     * // returns a Dinero object with amount 52
+     * Dinero({ amount: 105 }).divide(2)
      *
      * @return {Dinero}
      */
     divide(divisor) {
       return create.call(this, {
-        amount: calculator.divide(this.getAmount(), divisor)
+        amount: calculator.bankersRound(
+          calculator.divide(this.getAmount(), divisor)
+        )
       })
     },
     /**
