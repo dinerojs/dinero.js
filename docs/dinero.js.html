@@ -696,8 +696,12 @@ const Dinero = options => {
      */
     toRoundedUnit(precision) {
       const factor = Math.pow(10, precision)
+
       return calculator.divide(
-        Math.round(calculator.multiply(this.toUnit(), factor)),
+        calculator.multiply(
+          Math.sign(this.toUnit()),
+          Math.round(Math.abs(calculator.multiply(this.toUnit(), factor)))
+        ),
         factor
       )
     },

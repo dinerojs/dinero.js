@@ -1,6 +1,6 @@
 {
   "name": "dinero.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An immutable library to create, calculate and format monetary values.",
   "author": "Sarah Dayan",
   "keywords": [
