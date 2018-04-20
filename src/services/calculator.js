@@ -1,6 +1,12 @@
-import { isEven } from './helpers'
+import { isEven, isFloat, countFractionDigits } from './helpers'
 
 export default function Calculator() {
+  const floatMultiply = (a, b) => {
+    const getFactor = number => Math.pow(10, countFractionDigits(number))
+    const factor = Math.max(getFactor(a), getFactor(b))
+    return a * factor * (b * factor) / (factor * factor)
+  }
+
   return {
     /**
      * Returns the sum of two numbers.
@@ -36,7 +42,7 @@ export default function Calculator() {
      * @return {Number}
      */
     multiply(a, b) {
-      return a * b
+      return isFloat(a) || isFloat(b) ? floatMultiply(a, b) : a * b
     },
     /**
      * Returns the quotient of two numbers.
