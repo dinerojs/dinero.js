@@ -59,19 +59,26 @@ const Dinero = options => {
       if (!Number.isInteger(number)) {
         throw new TypeError('You must provide an integer.')
       }
+    },
+    isValidPrecision(number) {
+      if (number < 1 || number > 15) {
+        throw new TypeError('You must provide an integer between 1 and 15.')
+      }
     }
   }
 
-  const { amount, currency } = Object.assign(
-    {},
+  const { amount, currency, precision } = Object.assign(
     {
       amount: Dinero.defaultAmount,
-      currency: Dinero.defaultCurrency
+      currency: Dinero.defaultCurrency,
+      precision: Dinero.defaultPrecision
     },
     options
   )
 
   assert.isInteger(amount)
+  assert.isInteger(precision)
+  assert.isValidPrecision(precision)
 
   const { globalLocale, globalFormat } = Dinero
 
@@ -125,6 +132,18 @@ const Dinero = options => {
      */
     getCurrency() {
       return currency
+    },
+    /**
+     * Returns the precision.
+     *
+     * @example
+     * // returns 6
+     * Dinero({ precision: 6 }).getPrecision()
+     *
+     * @return {Number}
+     */
+    getPrecision() {
+      return precision
     },
     /**
      * Returns the locale.
@@ -574,7 +593,9 @@ const Dinero = options => {
      * @return {Number}
      */
     toUnit() {
-      return calculator.divide(this.getAmount(), 100)
+      const factor = Math.pow(10, this.getPrecision())
+
+      return calculator.divide(this.getAmount(), factor)
     },
     /**
      * Returns the amount represented by this object in rounded units.

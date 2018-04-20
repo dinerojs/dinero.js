@@ -2,6 +2,18 @@ import Dinero from '../../src/dinero'
 import jsc from 'jsverify'
 
 describe('Dinero', () => {
+  describe('precision', () => {
+    test('should return the correct amount for precision values in range', () => {
+      jsc.assert(
+        jsc.forall(
+          jsc.integer(1, 15),
+          a =>
+            Dinero({ amount: Math.pow(10, a + 1), precision: a }).toUnit() ===
+            10
+        )
+      )
+    })
+  })
   describe('#add()', () => {
     test('should be commutative', () => {
       jsc.assert(

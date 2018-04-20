@@ -12,6 +12,17 @@ describe('Dinero', () => {
       expect(() => Dinero({ amount: '100' })).toThrow()
     })
   })
+  describe('precision', () => {
+    test('should return a new Dinero object with proper precision', () => {
+      expect(Dinero({ amount: 10000000, precision: 6 }).toUnit()).toBe(10)
+    })
+    test('should throw when precision less than 1', () => {
+      expect(() => Dinero({ precision: 0 })).toThrow()
+    })
+    test('should throw when precision more than 15', () => {
+      expect(() => Dinero({ precision: 16 })).toThrow()
+    })
+  })
   describe('#getAmount()', () => {
     test('should return the right amount as a number', () => {
       expect(Dinero({ amount: 500 }).getAmount()).toBe(500)
@@ -26,6 +37,14 @@ describe('Dinero', () => {
     })
     test('should return the default currency as a string when no currency is specified', () => {
       expect(Dinero().getCurrency()).toBe('USD')
+    })
+  })
+  describe('#getPrecision()', () => {
+    test('should return the right precision as a number', () => {
+      expect(Dinero({ precision: 6 }).getPrecision()).toBe(6)
+    })
+    test('should return the default precision as a number when no precision is specified', () => {
+      expect(Dinero().getPrecision()).toBe(2)
     })
   })
   describe('#getLocale()', () => {
@@ -400,8 +419,8 @@ describe('Dinero', () => {
     })
   })
   describe('#toUnit()', () => {
-    test('should return the amount divided by 100', () => {
-      expect(Dinero({ amount: 1050 }).toUnit()).toBe(10.5)
+    test('should return the amount divided by the correct precision', () => {
+      expect(Dinero({ amount: 105000, precision: 4 }).toUnit()).toBe(10.5)
     })
   })
   describe('#toRoundedUnit()', () => {

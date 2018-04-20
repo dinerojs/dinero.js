@@ -15,7 +15,8 @@
  */
 export const Defaults = {
   defaultAmount: 0,
-  defaultCurrency: 'USD'
+  defaultCurrency: 'USD',
+  defaultPrecision: 2
 }
 
 /**
