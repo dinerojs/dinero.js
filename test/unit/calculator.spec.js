@@ -20,6 +20,9 @@ describe('Calculator', () => {
     test('should return the product of an integer and a float', () => {
       expect(calculator.multiply(209050, 8.61)).toBe(1799920.5)
     })
+    test('should return the product of two floats', () => {
+      expect(calculator.multiply(8.52, 8.6186)).toBe(73.430472)
+    })
   })
   describe('#divide()', () => {
     test('should return the quotient of two numbers', () => {
