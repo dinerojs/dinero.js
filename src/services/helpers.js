@@ -33,3 +33,15 @@ export function isPercentage(percentage) {
 export function areValidRatios(ratios) {
   return ratios.length > 0 && ratios.every(ratio => ratio > 0)
 }
+
+/**
+ * Returns whether a value is even.
+ * @ignore
+ *
+ * @param  {Number} value - The value to test.
+ *
+ * @return {Boolean}
+ */
+export function isEven(value) {
+  return value % 2 === 0
+}

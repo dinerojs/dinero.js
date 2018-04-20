@@ -28,4 +28,21 @@ describe('Calculator', () => {
       expect(calculator.modulo(5, 2)).toBe(1)
     })
   })
+  describe('#bankersRound()', () => {
+    test('should return normal rounding for 1.4', () => {
+      expect(calculator.bankersRound(1.4)).toBe(1)
+    })
+    test('should return normal rounding for -1.4', () => {
+      expect(calculator.bankersRound(-1.4)).toBe(-1)
+    })
+    test('should return nearest even number for 1.5', () => {
+      expect(calculator.bankersRound(1.5)).toBe(2)
+    })
+    test('should return nearest even number for 2.5', () => {
+      expect(calculator.bankersRound(2.5)).toBe(2)
+    })
+    test('should return nearest even number for -2.5', () => {
+      expect(calculator.bankersRound(-2.5)).toBe(-2)
+    })
+  })
 })

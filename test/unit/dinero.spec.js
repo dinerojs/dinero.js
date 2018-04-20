@@ -101,9 +101,21 @@ describe('Dinero', () => {
         Dinero({ amount: 400 })
           .multiply(4)
           .toObject()
-      ).toMatchObject({
-        amount: 1600
-      })
+      ).toMatchObject({ amount: 1600 })
+    })
+    test('should return a new Dinero object with an amount multiplied and rounded down', () => {
+      expect(
+        Dinero({ amount: 400 })
+          .multiply(2.001)
+          .toObject()
+      ).toMatchObject({ amount: 800 })
+    })
+    test('should return a new Dinero object with an amount multiplied and rounded up', () => {
+      expect(
+        Dinero({ amount: 400 })
+          .multiply(2.002)
+          .toObject()
+      ).toMatchObject({ amount: 801 })
     })
   })
   describe('#divide()', () => {
@@ -113,6 +125,27 @@ describe('Dinero', () => {
           .divide(4)
           .toObject()
       ).toMatchObject({ amount: 100 })
+    })
+    test('should return a new Dinero object with an amount divided and rounded down', () => {
+      expect(
+        Dinero({ amount: 400 })
+          .divide(3)
+          .toObject()
+      ).toMatchObject({ amount: 133 })
+    })
+    test('should return a new Dinero object with an amount divided and rounded up', () => {
+      expect(
+        Dinero({ amount: 400 })
+          .divide(6)
+          .toObject()
+      ).toMatchObject({ amount: 67 })
+    })
+    test('should return a new Dinero object with an amount divided and rounded to nearest even number', () => {
+      expect(
+        Dinero({ amount: 105 })
+          .divide(2)
+          .toObject()
+      ).toMatchObject({ amount: 52 })
     })
   })
   describe('#percentage()', () => {
@@ -374,6 +407,7 @@ describe('Dinero', () => {
   describe('#toRoundedUnit()', () => {
     test('should return the amount divided by 100, rounded to one fraction digit', () => {
       expect(Dinero({ amount: 1055 }).toRoundedUnit(1)).toBe(10.6)
+      expect(Dinero({ amount: -1055 }).toRoundedUnit(1)).toBe(-10.6)
     })
   })
   describe('#toObject()', () => {

@@ -43,4 +43,18 @@ describe('Helpers()', () => {
       expect(Helpers.areValidRatios([])).toBe(false)
     })
   })
+  describe('#isEven()', () => {
+    test('should return true for a positive even integer', () => {
+      expect(Helpers.isEven(202)).toBe(true)
+    })
+    test('should return true for a negative even integer', () => {
+      expect(Helpers.isEven(-202)).toBe(true)
+    })
+    test('should return false for a positive odd integer', () => {
+      expect(Helpers.isEven(101)).toBe(false)
+    })
+    test('should return false for a negative odd integer', () => {
+      expect(Helpers.isEven(-101)).toBe(false)
+    })
+  })
 })
