@@ -15,7 +15,7 @@
     "precommit": "lint-staged",
     "cz": "git-cz",
     "format": "prettier --write 'src/**/*.js' 'test/**/*.js'",
-    "lint": "eslint src/**/*.js test/**/*.js",
+    "lint": "eslint 'src/**/*.js' 'test/**/*.js'",
     "lint!": "npm run format && npm run lint",
     "test": "jest --coverage",
     "docs": "rm -rf docs && ./node_modules/.bin/jsdoc src/ -r -d ./docs -t ./node_modules/jsdoc-template -c jsdoc.json -R ./README.md -q title=Dinero.js",
