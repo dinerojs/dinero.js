@@ -85,6 +85,13 @@ describe('Dinero', () => {
           .toObject()
       ).toMatchObject({ amount: 600 })
     })
+    test('should throw when currencies are different', () => {
+      expect(() =>
+        Dinero({ amount: 200, currency: 'EUR' }).add(
+          Dinero({ amount: 600, currency: 'USD' })
+        )
+      ).toThrow()
+    })
   })
   describe('#subtract()', () => {
     test('should return a new Dinero object with same amount minus the amount of the other', () => {
@@ -93,6 +100,13 @@ describe('Dinero', () => {
           .subtract(Dinero({ amount: 200 }))
           .toObject()
       ).toMatchObject({ amount: 200 })
+    })
+    test('should throw when currencies are different', () => {
+      expect(() =>
+        Dinero({ amount: 400, currency: 'EUR' }).subtract(
+          Dinero({ amount: 200, currency: 'USD' })
+        )
+      ).toThrow()
     })
   })
   describe('#multiply()', () => {
@@ -155,6 +169,12 @@ describe('Dinero', () => {
           .percentage(50)
           .toObject()
       ).toMatchObject({ amount: 5000 })
+    })
+    test('should throw when percentage is negative', () => {
+      expect(() => Dinero({ amount: 500 }).percentage(-1)).toThrow()
+    })
+    test('should throw when percentage is out of range', () => {
+      expect(() => Dinero({ amount: 500 }).percentage(101)).toThrow()
     })
   })
   describe('#allocate()', () => {
@@ -219,6 +239,13 @@ describe('Dinero', () => {
         false
       )
     })
+    test('should throw when currencies are different', () => {
+      expect(() =>
+        Dinero({ amount: 500, currency: 'EUR' }).lessThan(
+          Dinero({ amount: 800, currency: 'USD' })
+        )
+      ).toThrow()
+    })
   })
   describe('#lessThanOrEqual()', () => {
     test('should return true when amount is less than other amount', () => {
@@ -236,6 +263,13 @@ describe('Dinero', () => {
         Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 300 }))
       ).toBe(false)
     })
+    test('should throw when currencies are different', () => {
+      expect(() =>
+        Dinero({ amount: 500, currency: 'EUR' }).lessThanOrEqual(
+          Dinero({ amount: 800, currency: 'USD' })
+        )
+      ).toThrow()
+    })
   })
   describe('#greaterThan()', () => {
     test('should return false when amount is less than other amount', () => {
@@ -247,6 +281,13 @@ describe('Dinero', () => {
       expect(Dinero({ amount: 800 }).greaterThan(Dinero({ amount: 500 }))).toBe(
         true
       )
+    })
+    test('should throw when currencies are different', () => {
+      expect(() =>
+        Dinero({ amount: 500, currency: 'EUR' }).greaterThan(
+          Dinero({ amount: 800, currency: 'USD' })
+        )
+      ).toThrow()
     })
   })
   describe('#greaterThanOrEqual()', () => {
@@ -264,6 +305,13 @@ describe('Dinero', () => {
       expect(
         Dinero({ amount: 500 }).greaterThanOrEqual(Dinero({ amount: 800 }))
       ).toBe(false)
+    })
+    test('should throw when currencies are different', () => {
+      expect(() =>
+        Dinero({ amount: 500, currency: 'EUR' }).greaterThanOrEqual(
+          Dinero({ amount: 800, currency: 'USD' })
+        )
+      ).toThrow()
     })
   })
   describe('#isZero()', () => {
