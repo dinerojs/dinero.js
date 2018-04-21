@@ -9,7 +9,7 @@ const calculator = Calculator()
  * A Dinero object is an immutable data structure representing a specific monetary value.
  * It comes with methods for creating, parsing, manipulating, testing, transforming and formatting them.
  *
- * A Dinero object posesses:
+ * A Dinero object possess:
  *
  * * An `amount`, expressed in cents.
  * * A `currency`, expressed as an {@link https://en.wikipedia.org/wiki/ISO_4217#Active_codes ISO 4217 currency code}.

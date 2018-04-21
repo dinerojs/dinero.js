@@ -85,6 +85,13 @@ describe('Dinero', () => {
           .toObject()
       ).toMatchObject({ amount: 600 })
     })
+    test('should thow because of a currency mismatch between the two operands', () => {
+      expect(() =>
+        Dinero(Dinero({ amount: 200, currency: 'USD' })).add(
+          Dinero({ amount: 200, currency: 'EUR' })
+        )
+      ).toThrow()
+    })
   })
   describe('#subtract()', () => {
     test('should return a new Dinero object with same amount minus the amount of the other', () => {
@@ -155,6 +162,15 @@ describe('Dinero', () => {
           .percentage(50)
           .toObject()
       ).toMatchObject({ amount: 5000 })
+      expect(
+        Dinero({ amount: 10000 })
+          .percentage(0)
+          .toObject()
+      ).toMatchObject({ amount: 0 })
+    })
+    test('should throw when percentage amount given is out of the 0-100 range', () => {
+      expect(() => Dinero({ amount: 10000 }).percentage(150)).toThrow()
+      expect(() => Dinero({ amount: 10000 }).percentage(-12)).toThrow()
     })
   })
   describe('#allocate()', () => {
@@ -167,6 +183,12 @@ describe('Dinero', () => {
       const shares = Dinero({ amount: 100 }).allocate([1, 3])
       expect(shares[0].getAmount()).toBe(25)
       expect(shares[1].getAmount()).toBe(75)
+    })
+    test('should allocate the whole amount despite allocating by rational numbers', () => {
+      const shares = Dinero({ amount: 100 }).allocate([1 / 3, 1 / 3, 1 / 3])
+      expect(shares[0].getAmount()).toBe(34)
+      expect(shares[1].getAmount()).toBe(33)
+      expect(shares[2].getAmount()).toBe(33)
     })
     test('should throw when one of the ratios equals to zero', () => {
       expect(() => Dinero({ amount: 1003 }).allocate([60, 0, 10, 30])).toThrow()
@@ -214,8 +236,11 @@ describe('Dinero', () => {
         true
       )
     })
-    test('should return false when amount is greater than other amount', () => {
+    test('should return false when amount is greater or equal than other amount', () => {
       expect(Dinero({ amount: 800 }).lessThan(Dinero({ amount: 500 }))).toBe(
+        false
+      )
+      expect(Dinero({ amount: 800 }).lessThan(Dinero({ amount: 800 }))).toBe(
         false
       )
     })
@@ -238,8 +263,11 @@ describe('Dinero', () => {
     })
   })
   describe('#greaterThan()', () => {
-    test('should return false when amount is less than other amount', () => {
+    test('should return false when amount is less or equal than other amount', () => {
       expect(Dinero({ amount: 500 }).greaterThan(Dinero({ amount: 800 }))).toBe(
+        false
+      )
+      expect(Dinero({ amount: 800 }).greaterThan(Dinero({ amount: 800 }))).toBe(
         false
       )
     })
