@@ -1,0 +1,10 @@
+{
+  "extends": ["standard", "prettier", "prettier/standard"],
+  "env": {
+    "es6": true
+  },
+  "rules": {
+    "no-var": "error",
+    "prefer-const": "error"
+  }
+}

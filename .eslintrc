@@ -1,6 +1,0 @@
-{
-  "extends": ["standard", "prettier", "prettier/standard"],
-  "env": {
-    "mocha": "true"
-  }
-}
