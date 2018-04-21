@@ -1391,6 +1391,7 @@ Dinero({ amount: 400 }).multiply(2.001)</code></pre>
     <p>Returns a new Dinero object that represents the divided value by the given factor.</p>
 <p><a href="http://wiki.c2.com/?BankersRounding">Banker's rounding</a> is used to handle fractional cents.
 This <em>can</em> lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.</p>
+<p>As rounding is applied, precision may be lost in the process. If you want to accurately split a Dinero object, use <a href="module-Dinero.html#~allocate">allocate</a> instead.</p>
   </div>
 
 
@@ -1488,7 +1489,7 @@ This <em>can</em> lead to accuracy issues as you chain many times. Consider a mi
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line212">line 212</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line214">line 214</a>
         </li>
       </ul>
     </dd>
@@ -1554,6 +1555,7 @@ Dinero({ amount: 105 }).divide(2)</code></pre>
 
   <div class="description">
     <p>Returns a new Dinero object that represents a percentage of this.</p>
+<p>As rounding is applied, precision may be lost in the process. If you want to accurately split a Dinero object, use <a href="module-Dinero.html#~allocate">allocate</a> instead.</p>
   </div>
 
 
@@ -1651,7 +1653,7 @@ Dinero({ amount: 105 }).divide(2)</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line232">line 232</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line236">line 236</a>
         </li>
       </ul>
     </dd>
@@ -1849,7 +1851,7 @@ With <a href="module-Dinero.html#~allocate">allocate</a>, you can split a moneta
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line264">line 264</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line268">line 268</a>
         </li>
       </ul>
     </dd>
@@ -2049,7 +2051,7 @@ Dinero({ amount: 100 }).allocate([1, 3])</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line305">line 305</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line309">line 309</a>
         </li>
       </ul>
     </dd>
@@ -2222,7 +2224,7 @@ Dinero({ amount: 500, currency: 'USD' }).equalsTo(Dinero({ amount: 800, currency
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line324">line 324</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line328">line 328</a>
         </li>
       </ul>
     </dd>
@@ -2418,7 +2420,7 @@ Dinero({ amount: 800 }).lessThan(Dinero({ amount: 500 }))</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line347">line 347</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line351">line 351</a>
         </li>
       </ul>
     </dd>
@@ -2618,7 +2620,7 @@ Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 300 }))</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line367">line 367</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line371">line 371</a>
         </li>
       </ul>
     </dd>
@@ -2814,7 +2816,7 @@ Dinero({ amount: 800 }).greaterThan(Dinero({ amount: 500 }))</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line390">line 390</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line394">line 394</a>
         </li>
       </ul>
     </dd>
@@ -2959,7 +2961,7 @@ Dinero({ amount: 500 }).greaterThanOrEqual(Dinero({ amount: 800 }))</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line406">line 406</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line410">line 410</a>
         </li>
       </ul>
     </dd>
@@ -3069,7 +3071,7 @@ Dinero({ amount: 100 }).isZero()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line424">line 424</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line428">line 428</a>
         </li>
       </ul>
     </dd>
@@ -3183,7 +3185,7 @@ Dinero({ amount: 0 }).isPositive()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line442">line 442</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line446">line 446</a>
         </li>
       </ul>
     </dd>
@@ -3297,7 +3299,7 @@ Dinero({ amount: 0 }).isNegative()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line457">line 457</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line461">line 461</a>
         </li>
       </ul>
     </dd>
@@ -3462,7 +3464,7 @@ Dinero({ amount: 1150 }).hasCents()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line474">line 474</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line478">line 478</a>
         </li>
       </ul>
     </dd>
@@ -3627,7 +3629,7 @@ Dinero({ amount: 1000, currency: 'EUR' }).hasSameCurrency(Dinero({ amount: 1000,
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line491">line 491</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line495">line 495</a>
         </li>
       </ul>
     </dd>
@@ -3841,7 +3843,7 @@ If you want to display the object in a custom way, either use <a href="module-Di
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line534">line 534</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line538">line 538</a>
         </li>
       </ul>
     </dd>
@@ -3959,7 +3961,7 @@ Dinero({ amount: 200000, currency: 'EUR' }).toFormat()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line556">line 556</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line560">line 560</a>
         </li>
       </ul>
     </dd>
@@ -4120,7 +4122,7 @@ Dinero({ amount: 1050 }).toUnit()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line569">line 569</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line573">line 573</a>
         </li>
       </ul>
     </dd>
@@ -4226,7 +4228,7 @@ Dinero({ amount: 1055 }).toRoundedUnit(1)</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line589">line 589</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line593">line 593</a>
         </li>
       </ul>
     </dd>

@@ -307,6 +307,8 @@ const Dinero = options => {
      * [Banker's rounding](http://wiki.c2.com/?BankersRounding) is used to handle fractional cents.
      * This *can* lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.
      *
+     * As rounding is applied, precision may be lost in the process. If you want to accurately split a Dinero object, use {@link module:Dinero~allocate allocate} instead.
+     *
      * @param  {Number} divisor - The factor to divide by.
      *
      * @example
@@ -326,6 +328,8 @@ const Dinero = options => {
     },
     /**
      * Returns a new Dinero object that represents a percentage of this.
+     *
+     * As rounding is applied, precision may be lost in the process. If you want to accurately split a Dinero object, use {@link module:Dinero~allocate allocate} instead.
      *
      * @param  {Number} percentage - The percentage to extract (between 0 and 100).
      *
