@@ -5,10 +5,11 @@ Dinero.js is a library for working with monetary values in JavaScript.
 [See API docs][dinero-docs]
 
 ## Features
- * Immutable and chainable API.
- * Global settings support.
- * Extended formatting options.
- * Native Intl support (no additional locale files).
+
+* Immutable and chainable API.
+* Global settings support.
+* Extended formatting options.
+* Native Intl support (no additional locale files).
 
 ## Download/install
 
@@ -40,7 +41,7 @@ Include Dinero.js in a script tag and access its methods through the global `Din
 You can use an alias if you wish:
 
 ```js
-var Money = Dinero;
+var Money = Dinero
 ```
 
 ### CommonJS (Node)
@@ -54,7 +55,7 @@ const Dinero = require('dinero.js')
 ```js
 requirejs(['path/to/amd/dinero'], function(Dinero) {
   //...
-});
+})
 ```
 
 ### ES modules (modern browser, Webpack, etc.)
@@ -97,7 +98,9 @@ All transformative operations return a Dinero instance, so you can chain methods
 
 ```js
 // returns a Dinero object with amount: 4000
-Dinero({ amount: 500 }).add(Dinero({ amount: 500 })).multiply(4)
+Dinero({ amount: 500 })
+  .add(Dinero({ amount: 500 }))
+  .multiply(4)
 ```
 
 **Note:** because method calls are executed sequentially, mathematical operator precedence doesn't apply. When you execute the code above, the addition happens before the multiplication, evaluating to `4000`, while `500 + 500 * 4` would normally evaluate to `2500`. If you need to perform an operation before another, make sure you call it first.
@@ -126,7 +129,9 @@ Just set the locale before you call `toFormat`, and you'll get a display result 
 
 ```js
 // returns 5 000 $US
-Dinero({ amount: 500000 }).setLocale('fr-FR').toFormat('$0,0')
+Dinero({ amount: 500000 })
+  .setLocale('fr-FR')
+  .toFormat('$0,0')
 ```
 
 If you don't want to set the locale all the time, you can also define it globally:
@@ -142,7 +147,10 @@ You can still pass a locale to your Dinero instance if you need, which will prev
 
 ```js
 // returns 10 $US
-Dinero({ amount: 500 }).setLocale('fr-FR').add(Dinero({ amount: 500 })).toFormat('$0,0')
+Dinero({ amount: 500 })
+  .setLocale('fr-FR')
+  .add(Dinero({ amount: 500 }))
+  .toFormat('$0,0')
 ```
 
 This is only a preview of what you can do. Dinero.js has extensive documentation with examples for all of its methods.
@@ -167,37 +175,26 @@ Dinero.js is licensed under [MIT][license].
 
 [license]: https://github.com/sarahdayan/dinero.js/blob/master/LICENSE.md
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
-
 [travis-url]: https://travis-ci.org/sarahdayan/dinero.js
 [travis-badge]: https://img.shields.io/travis/sarahdayan/dinero.js.svg
-
 [npm-url]: https://www.npmjs.com/package/dinero.js
 [npm-version-badge]: https://img.shields.io/npm/v/dinero.js.svg
-
 [coveralls-url]: https://coveralls.io/github/sarahdayan/dinero.js?branch=master
 [coveralls-badge]: https://img.shields.io/coveralls/github/sarahdayan/dinero.js.svg?branch=master
-
 [snyk-url]: https://snyk.io/test/github/sarahdayan/dinero.js?targetFile=package.json
 [snyk-badge]: https://snyk.io/test/github/sarahdayan/dinero.js/badge.svg?targetFile=package.json
-
 [semantic-release-url]: https://github.com/semantic-release/semantic-release
 [semantic-release-badge]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
-
 [wiki:iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
 [dinero-docs]: https://sarahdayan.github.io/dinero.js/module-Dinero.html
 [dinero-guidelines]: https://github.com/sarahdayan/dinero.js/blob/master/CONTRIBUTING.md
-
 [producthunt:dinerojs]: https://www.producthunt.com/posts/dinero-js
-
 [fowler-money]: https://martinfowler.com/eaaCatalog/money.html
 [moneyphp]: http://moneyphp.org
 [luxon]: https://moment.github.io/luxon
 [moment]: https://momentjs.com
 [numeral]: http://numeraljs.com
-
 [npm]: https://www.npmjs.com
 [yarn]: https://yarnpkg.com
-
 [jsdelivr:landing]: https://www.jsdelivr.com/package/npm/dinero.js
 [jsdelivr:cdn]: https://cdn.jsdelivr.net/npm/dinero.js/build
-
