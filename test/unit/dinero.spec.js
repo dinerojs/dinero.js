@@ -455,7 +455,15 @@ describe('Dinero', () => {
   describe('#toRoundedUnit()', () => {
     test('should return the amount divided by 100, rounded to one fraction digit', () => {
       expect(Dinero({ amount: 1055 }).toRoundedUnit(1)).toBe(10.6)
+    })
+    test('should return the negative amount divided by 100, rounded to one fraction digit', () => {
       expect(Dinero({ amount: -1055 }).toRoundedUnit(1)).toBe(-10.6)
+    })
+    test('should return the amount divided by 100, rounded to two fraction digits', () => {
+      expect(Dinero({ amount: 1055 }).toRoundedUnit(2)).toBe(10.55)
+    })
+    test('should return the amount divided by 100, rounded to no fraction digits', () => {
+      expect(Dinero({ amount: 1055 }).toRoundedUnit(0)).toBe(11)
     })
   })
   describe('#toObject()', () => {

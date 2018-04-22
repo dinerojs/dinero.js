@@ -48,7 +48,12 @@ const Dinero = options => {
 
   assertInteger(amount)
 
-  const { globalLocale, globalFormat, globalRoundingMode } = Dinero
+  const {
+    globalLocale,
+    globalFormat,
+    globalRoundingMode,
+    globalFormatRoundingMode
+  } = Dinero
 
   /**
    * Uses ES5 function notation so `this` can be passed through call, apply and bind
@@ -179,7 +184,7 @@ const Dinero = options => {
      * You can also specify a different `roundingMode` to better fit your needs.
      *
      * @param  {Number} multiplier   - The factor to multiply by.
-     * @param  {String} [roundingMode=HALF_EVEN] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `HALF_TOWARDS_ZERO` or `HALF_AWAY_FROM_ZERO`.
+     * @param  {String} [roundingMode=HALF_EVEN] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
      *
      * @example
      * // returns a Dinero object with amount 1600
@@ -208,7 +213,7 @@ const Dinero = options => {
      * As rounding is applied, precision may be lost in the process. If you want to accurately split a Dinero object, use {@link module:Dinero~allocate allocate} instead.
      *
      * @param  {Number} divisor - The factor to divide by.
-     * @param  {String} [roundingMode=HALF_EVEN] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `HALF_TOWARDS_ZERO` or `HALF_AWAY_FROM_ZERO`.
+     * @param  {String} [roundingMode=HALF_EVEN] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
      *
      * @example
      * // returns a Dinero object with amount 100
@@ -526,7 +531,11 @@ const Dinero = options => {
      * {@link module:Dinero~toFormat toFormat} is syntactic sugar over JavaScript's native `Number.prototype.toLocaleString` method, which you can use directly:
      * `Dinero().toRoundedUnit(precision).toLocaleString(locale, options)`.
      *
+     * By default, amounts are rounded using the **half away from zero** rule ([commercial rounding](https://en.wikipedia.org/wiki/Rounding#Round_half_away_from_zero)).
+     * You can also specify a different `roundingMode` to better fit your needs.
+     *
      * @param  {String} format - The format mask to format to.
+     * @param  {String} [roundingMode=HALF_AWAY_FROM_ZERO] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
      *
      * @example
      * // returns $2,000
@@ -540,14 +549,18 @@ const Dinero = options => {
      * @example
      * // returns 2000
      * Dinero({ amount: 200000, currency: 'EUR' }).toFormat()
+     * @example
+     * // returns $10
+     * Dinero({ amount: 1050 }).toFormat('$0', 'HALF_EVEN')
      *
      * @return {String}
      */
-    toFormat(format) {
+    toFormat(format, roundingMode = globalFormatRoundingMode) {
       const formatter = Format(format || globalFormat)
 
       return this.toRoundedUnit(
-        formatter.getMinimumFractionDigits()
+        formatter.getMinimumFractionDigits(),
+        roundingMode
       ).toLocaleString(this.getLocale(), {
         currencyDisplay: formatter.getCurrencyDisplay(),
         useGrouping: formatter.getUseGrouping(),
@@ -571,20 +584,27 @@ const Dinero = options => {
     /**
      * Returns the amount represented by this object in rounded units.
      *
+     * By default, the method uses the **half away from zero** rule ([commercial rounding](https://en.wikipedia.org/wiki/Rounding#Round_half_away_from_zero)).
+     * You can also specify a different `roundingMode` to better fit your needs.
+     *
      * @example
      * // returns 10.6
      * Dinero({ amount: 1055 }).toRoundedUnit(1)
+     * @example
+     * // returns 10
+     * Dinero({ amount: 1050 }).toRoundedUnit(0, 'HALF_EVEN')
      *
      * @param  {Number} precision - The number of fraction digits to round to.
+     * @param  {String} [roundingMode=HALF_AWAY_FROM_ZERO] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
+     *
      * @return {Number}
      */
-    toRoundedUnit(precision) {
+    toRoundedUnit(precision, roundingMode = globalFormatRoundingMode) {
       const factor = Math.pow(10, precision)
-
       return calculator.divide(
-        calculator.multiply(
-          Math.sign(this.toUnit()),
-          Math.round(Math.abs(calculator.multiply(this.toUnit(), factor)))
+        calculator.round(
+          calculator.multiply(calculator.divide(this.getAmount(), 100), factor),
+          roundingMode
         ),
         factor
       )
