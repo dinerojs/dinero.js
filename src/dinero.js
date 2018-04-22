@@ -526,9 +526,9 @@ const Dinero = options => {
      * Object                       | Format            | String
      * :--------------------------- | :---------------- | :---
      * `Dinero({ amount: 500050 })` | `'$0,0.00'`       | $5,000.50
-     * `Dinero({ amount: 500050 })` | `'$0,0'`          | $5,000
-     * `Dinero({ amount: 500050 })` | `'$0'`            | $5000
-     * `Dinero({ amount: 500050 })` | `'$0.0'`          | $5000.50
+     * `Dinero({ amount: 500050 })` | `'$0,0'`          | $5,001
+     * `Dinero({ amount: 500050 })` | `'$0'`            | $5001
+     * `Dinero({ amount: 500050 })` | `'$0.0'`          | $5000.5
      * `Dinero({ amount: 500050 })` | `'USD0,0.0'`      | USD5,000.5
      * `Dinero({ amount: 500050 })` | `'0,0.0 dollar'`  | 5,000.5 dollars
      *
