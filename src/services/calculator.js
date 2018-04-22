@@ -4,7 +4,7 @@ export default function Calculator() {
   const floatMultiply = (a, b) => {
     const getFactor = number => Math.pow(10, countFractionDigits(number))
     const factor = Math.max(getFactor(a), getFactor(b))
-    return a * factor * (b * factor) / (factor * factor)
+    return Math.round(a * factor) * Math.round(b * factor) / (factor * factor)
   }
 
   const roundingModes = {
