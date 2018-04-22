@@ -103,8 +103,8 @@ export default function Calculator() {
      * Returns a rounded number based off a specific rounding mode.
      * @ignore
      *
-     * @param {Number} number       - The number to round.
-     * @param {String} roundingMode - The rounding mode to use.
+     * @param {Number} number - The number to round.
+     * @param {String} [roundingMode='HALF_EVEN'] - The rounding mode to use.
      *
      * @returns {Number}
      */

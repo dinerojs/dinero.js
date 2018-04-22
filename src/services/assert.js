@@ -5,7 +5,7 @@ import { isPercentage, areValidRatios } from './helpers'
  * @ignore
  *
  * @param  {Boolean} condition - The expression to assert.
- * @param  {Error}   err       - The error to throw if the assertion fails.
+ * @param  {Error}   [err=Error] - The error to throw if the assertion fails.
  *
  * @throws {Error} If `condition` returns `false`.
  */

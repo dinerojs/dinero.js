@@ -62,7 +62,7 @@ export function isFloat(value) {
  * Returns how many fraction digits a number has.
  * @ignore
  *
- * @param  {Number} number - The number to test.
+ * @param  {Number} [number=0] - The number to test.
  *
  * @return {Number}
  */

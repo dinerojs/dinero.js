@@ -29,8 +29,8 @@ const calculator = Calculator()
  * * **Conversion & formatting:** {@link module:Dinero~toFormat toFormat}, {@link module:Dinero~toUnit toUnit}, {@link module:Dinero~toRoundedUnit toRoundedUnit} and {@link module:Dinero~toObject toObject}.
  *
  * @module Dinero
- * @param  {Number} options.amount - The amount in cents (as an integer).
- * @param  {String} options.currency - An ISO 4217 currency code.
+ * @param  {Number} [options.amount=0] - The amount in cents (as an integer).
+ * @param  {String} [options.currency='USD'] - An ISO 4217 currency code.
  *
  * @throws {TypeError} If `amount` or `Dinero.defaultAmount` is invalid.
  *
@@ -183,8 +183,8 @@ const Dinero = options => {
      * Rounding *can* lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.
      * You can also specify a different `roundingMode` to better fit your needs.
      *
-     * @param  {Number} multiplier   - The factor to multiply by.
-     * @param  {String} [roundingMode=HALF_EVEN] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
+     * @param  {Number} multiplier - The factor to multiply by.
+     * @param  {String} [roundingMode='HALF_EVEN'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
      *
      * @example
      * // returns a Dinero object with amount 1600
@@ -217,7 +217,7 @@ const Dinero = options => {
      * As rounding is applied, precision may be lost in the process. If you want to accurately split a Dinero object, use {@link module:Dinero~allocate allocate} instead.
      *
      * @param  {Number} divisor - The factor to divide by.
-     * @param  {String} [roundingMode=HALF_EVEN] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
+     * @param  {String} [roundingMode='HALF_EVEN'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
      *
      * @example
      * // returns a Dinero object with amount 100
@@ -542,8 +542,8 @@ const Dinero = options => {
      * By default, amounts are rounded using the **half away from zero** rule ([commercial rounding](https://en.wikipedia.org/wiki/Rounding#Round_half_away_from_zero)).
      * You can also specify a different `roundingMode` to better fit your needs.
      *
-     * @param  {String} format - The format mask to format to.
-     * @param  {String} [roundingMode=HALF_AWAY_FROM_ZERO] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
+     * @param  {String} [format='$0,0.00'] - The format mask to format to.
+     * @param  {String} [roundingMode='HALF_AWAY_FROM_ZERO'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
      *
      * @example
      * // returns $2,000
@@ -603,7 +603,7 @@ const Dinero = options => {
      * Dinero({ amount: 1050 }).toRoundedUnit(0, 'HALF_EVEN')
      *
      * @param  {Number} precision - The number of fraction digits to round to.
-     * @param  {String} [roundingMode=HALF_AWAY_FROM_ZERO] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
+     * @param  {String} [roundingMode='HALF_AWAY_FROM_ZERO'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
      *
      * @return {Number}
      */
