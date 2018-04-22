@@ -8,7 +8,7 @@ Dinero.js is a library for working with monetary values in JavaScript.
 
 * Immutable and chainable API.
 * Global settings support.
-* Extended formatting options.
+* Extended formatting and rounding options.
 * Native Intl support (no additional locale files).
 
 ## Download/install
