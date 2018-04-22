@@ -189,8 +189,12 @@ const Dinero = options => {
      * @example
      * // returns a Dinero object with amount 1600
      * Dinero({ amount: 400 }).multiply(4)
+     * @example
      * // returns a Dinero object with amount 800
      * Dinero({ amount: 400 }).multiply(2.001)
+     * @example
+     * // returns a Dinero object with amount 801
+     * Dinero({ amount: 400 }).multiply(2.00125, 'HALF_UP')
      *
      * @return {Dinero}
      */
@@ -218,8 +222,12 @@ const Dinero = options => {
      * @example
      * // returns a Dinero object with amount 100
      * Dinero({ amount: 400 }).divide(4)
+     * @example
      * // returns a Dinero object with amount 52
      * Dinero({ amount: 105 }).divide(2)
+     * @example
+     * // returns a Dinero object with amount 53
+     * Dinero({ amount: 105 }).divide(2, 'HALF_UP')
      *
      * @return {Dinero}
      */
