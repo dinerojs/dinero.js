@@ -157,7 +157,11 @@ It comes with methods for creating, parsing, manipulating, testing, transforming
       <th>Type</th>
 
       
+        <th>Attributes</th>
+      
 
+      
+        <th>Default</th>
       
 
       <th class="last">Description</th>
@@ -185,7 +189,23 @@ It comes with methods for creating, parsing, manipulating, testing, transforming
         </td>
 
         
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
 
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              0
+            
+          </td>
         
 
         <td class="description last">
@@ -214,7 +234,23 @@ It comes with methods for creating, parsing, manipulating, testing, transforming
         </td>
 
         
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
 
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              'USD'
+            
+          </td>
         
 
         <td class="description last">
@@ -403,7 +439,7 @@ It comes with methods for creating, parsing, manipulating, testing, transforming
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line94">line 94</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line99">line 99</a>
         </li>
       </ul>
     </dd>
@@ -509,7 +545,7 @@ Dinero({ amount: 500 }).getAmount()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line106">line 106</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line111">line 111</a>
         </li>
       </ul>
     </dd>
@@ -615,7 +651,7 @@ Dinero({ currency: 'EUR' }).getCurrency()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line118">line 118</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line123">line 123</a>
         </li>
       </ul>
     </dd>
@@ -776,7 +812,7 @@ Dinero().setLocale('fr-FR').getLocale()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line132">line 132</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line137">line 137</a>
         </li>
       </ul>
     </dd>
@@ -937,7 +973,7 @@ Dinero().setLocale('ja-JP')</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line148">line 148</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line153">line 153</a>
         </li>
       </ul>
     </dd>
@@ -1129,7 +1165,7 @@ Dinero({ amount: 400 }).add(Dinero({ amount: 200 }))</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line167">line 167</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line172">line 172</a>
         </li>
       </ul>
     </dd>
@@ -1214,7 +1250,7 @@ Dinero({ amount: 400 }).subtract(Dinero({ amount: 200 }))</code></pre>
       </svg>
     </a>
     <h4 class="name" id="~multiply">
-      <span class="type-signature">(inner) </span>multiply<span class="signature">(multiplier)</span><span class="type-signature"> &rarr; {Dinero}</span>
+      <span class="type-signature">(inner) </span>multiply<span class="signature">(multiplier, roundingMode<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Dinero}</span>
     </h4>
   </span>
 
@@ -1224,8 +1260,9 @@ Dinero({ amount: 400 }).subtract(Dinero({ amount: 200 }))</code></pre>
 
   <div class="description">
     <p>Returns a new Dinero object that represents the multiplied value by the given factor.</p>
-<p><a href="http://wiki.c2.com/?BankersRounding">Banker's rounding</a> is used to handle fractional cents.
-This <em>can</em> lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.</p>
+<p>By default, fractional cents are rounded using the <strong>half to even</strong> rule (<a href="http://wiki.c2.com/?BankersRounding">banker's rounding</a>).</p>
+<p>Rounding <em>can</em> lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.
+You can also specify a different <code>roundingMode</code> to better fit your needs.</p>
   </div>
 
 
@@ -1247,7 +1284,11 @@ This <em>can</em> lead to accuracy issues as you chain many times. Consider a mi
       <th>Type</th>
 
       
+        <th>Attributes</th>
+      
 
+      
+        <th>Default</th>
       
 
       <th class="last">Description</th>
@@ -1275,11 +1316,68 @@ This <em>can</em> lead to accuracy issues as you chain many times. Consider a mi
         </td>
 
         
+          <td class="attributes">
+            
 
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+          </td>
         
 
         <td class="description last">
           <p>The factor to multiply by.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>roundingMode</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      String
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              'HALF_EVEN'
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>The rounding mode to use: <code>'HALF_ODD'</code>, <code>'HALF_EVEN'</code>, <code>'HALF_UP'</code>, <code>'HALF_DOWN'</code>, <code>'HALF_TOWARDS_ZERO'</code> or <code>'HALF_AWAY_FROM_ZERO'</code>.</p>
           
         </td>
       </tr>
@@ -1323,7 +1421,7 @@ This <em>can</em> lead to accuracy issues as you chain many times. Consider a mi
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line189">line 189</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line201">line 201</a>
         </li>
       </ul>
     </dd>
@@ -1354,13 +1452,19 @@ This <em>can</em> lead to accuracy issues as you chain many times. Consider a mi
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h5 id="multiply-examples">Example</h5>
+    <h5 id="multiply-examples">Examples</h5>
     
 
   <pre class="prettyprint"><code>// returns a Dinero object with amount 1600
-Dinero({ amount: 400 }).multiply(4)
-// returns a Dinero object with amount 800
+Dinero({ amount: 400 }).multiply(4)</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns a Dinero object with amount 800
 Dinero({ amount: 400 }).multiply(2.001)</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns a Dinero object with amount 801
+Dinero({ amount: 400 }).multiply(2.00125, 'HALF_UP')</code></pre>
 
 
   </div>
@@ -1379,7 +1483,7 @@ Dinero({ amount: 400 }).multiply(2.001)</code></pre>
       </svg>
     </a>
     <h4 class="name" id="~divide">
-      <span class="type-signature">(inner) </span>divide<span class="signature">(divisor)</span><span class="type-signature"> &rarr; {Dinero}</span>
+      <span class="type-signature">(inner) </span>divide<span class="signature">(divisor, roundingMode<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Dinero}</span>
     </h4>
   </span>
 
@@ -1389,8 +1493,9 @@ Dinero({ amount: 400 }).multiply(2.001)</code></pre>
 
   <div class="description">
     <p>Returns a new Dinero object that represents the divided value by the given factor.</p>
-<p><a href="http://wiki.c2.com/?BankersRounding">Banker's rounding</a> is used to handle fractional cents.
-This <em>can</em> lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.</p>
+<p>By default, fractional cents are rounded using the <strong>half to even</strong> rule (<a href="http://wiki.c2.com/?BankersRounding">banker's rounding</a>).</p>
+<p>Rounding <em>can</em> lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.
+You can also specify a different <code>roundingMode</code> to better fit your needs.</p>
 <p>As rounding is applied, precision may be lost in the process. If you want to accurately split a Dinero object, use <a href="module-Dinero.html#~allocate">allocate</a> instead.</p>
   </div>
 
@@ -1413,7 +1518,11 @@ This <em>can</em> lead to accuracy issues as you chain many times. Consider a mi
       <th>Type</th>
 
       
+        <th>Attributes</th>
+      
 
+      
+        <th>Default</th>
       
 
       <th class="last">Description</th>
@@ -1441,11 +1550,68 @@ This <em>can</em> lead to accuracy issues as you chain many times. Consider a mi
         </td>
 
         
+          <td class="attributes">
+            
 
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+          </td>
         
 
         <td class="description last">
           <p>The factor to divide by.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>roundingMode</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      String
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              'HALF_EVEN'
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>The rounding mode to use: <code>'HALF_ODD'</code>, <code>'HALF_EVEN'</code>, <code>'HALF_UP'</code>, <code>'HALF_DOWN'</code>, <code>'HALF_TOWARDS_ZERO'</code> or <code>'HALF_AWAY_FROM_ZERO'</code>.</p>
           
         </td>
       </tr>
@@ -1489,7 +1655,7 @@ This <em>can</em> lead to accuracy issues as you chain many times. Consider a mi
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line214">line 214</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line234">line 234</a>
         </li>
       </ul>
     </dd>
@@ -1520,13 +1686,19 @@ This <em>can</em> lead to accuracy issues as you chain many times. Consider a mi
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h5 id="divide-examples">Example</h5>
+    <h5 id="divide-examples">Examples</h5>
     
 
   <pre class="prettyprint"><code>// returns a Dinero object with amount 100
-Dinero({ amount: 400 }).divide(4)
-// returns a Dinero object with amount 52
+Dinero({ amount: 400 }).divide(4)</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns a Dinero object with amount 52
 Dinero({ amount: 105 }).divide(2)</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns a Dinero object with amount 53
+Dinero({ amount: 105 }).divide(2, 'HALF_UP')</code></pre>
 
 
   </div>
@@ -1653,7 +1825,7 @@ Dinero({ amount: 105 }).divide(2)</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line236">line 236</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line257">line 257</a>
         </li>
       </ul>
     </dd>
@@ -1851,7 +2023,7 @@ With <a href="module-Dinero.html#~allocate">allocate</a>, you can split a moneta
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line268">line 268</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line289">line 289</a>
         </li>
       </ul>
     </dd>
@@ -2051,7 +2223,7 @@ Dinero({ amount: 100 }).allocate([1, 3])</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line309">line 309</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line330">line 330</a>
         </li>
       </ul>
     </dd>
@@ -2224,7 +2396,7 @@ Dinero({ amount: 500, currency: 'USD' }).equalsTo(Dinero({ amount: 800, currency
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line328">line 328</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line349">line 349</a>
         </li>
       </ul>
     </dd>
@@ -2420,7 +2592,7 @@ Dinero({ amount: 800 }).lessThan(Dinero({ amount: 500 }))</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line351">line 351</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line372">line 372</a>
         </li>
       </ul>
     </dd>
@@ -2620,7 +2792,7 @@ Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 300 }))</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line371">line 371</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line392">line 392</a>
         </li>
       </ul>
     </dd>
@@ -2816,7 +2988,7 @@ Dinero({ amount: 800 }).greaterThan(Dinero({ amount: 500 }))</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line394">line 394</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line415">line 415</a>
         </li>
       </ul>
     </dd>
@@ -2961,7 +3133,7 @@ Dinero({ amount: 500 }).greaterThanOrEqual(Dinero({ amount: 800 }))</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line410">line 410</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line431">line 431</a>
         </li>
       </ul>
     </dd>
@@ -3071,7 +3243,7 @@ Dinero({ amount: 100 }).isZero()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line428">line 428</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line449">line 449</a>
         </li>
       </ul>
     </dd>
@@ -3185,7 +3357,7 @@ Dinero({ amount: 0 }).isPositive()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line446">line 446</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line467">line 467</a>
         </li>
       </ul>
     </dd>
@@ -3299,7 +3471,7 @@ Dinero({ amount: 0 }).isNegative()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line461">line 461</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line482">line 482</a>
         </li>
       </ul>
     </dd>
@@ -3464,7 +3636,7 @@ Dinero({ amount: 1150 }).hasCents()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line478">line 478</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line499">line 499</a>
         </li>
       </ul>
     </dd>
@@ -3629,7 +3801,7 @@ Dinero({ amount: 1000, currency: 'EUR' }).hasSameCurrency(Dinero({ amount: 1000,
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line495">line 495</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line516">line 516</a>
         </li>
       </ul>
     </dd>
@@ -3687,7 +3859,7 @@ Dinero({ amount: 2000, currency: 'EUR' }).hasSameAmount(Dinero({ amount: 1000, c
       </svg>
     </a>
     <h4 class="name" id="~toFormat">
-      <span class="type-signature">(inner) </span>toFormat<span class="signature">(format)</span><span class="type-signature"> &rarr; {String}</span>
+      <span class="type-signature">(inner) </span>toFormat<span class="signature">(format<span class="signature-attributes">opt</span>, roundingMode<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {String}</span>
     </h4>
   </span>
 
@@ -3717,17 +3889,17 @@ The output is formatted according to the applying locale.</p>
 <tr>
 <td style="text-align:left"><code>Dinero({ amount: 500050 })</code></td>
 <td style="text-align:left"><code>'$0,0'</code></td>
-<td style="text-align:left">$5,000</td>
+<td style="text-align:left">$5,001</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Dinero({ amount: 500050 })</code></td>
 <td style="text-align:left"><code>'$0'</code></td>
-<td style="text-align:left">$5000</td>
+<td style="text-align:left">$5001</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Dinero({ amount: 500050 })</code></td>
 <td style="text-align:left"><code>'$0.0'</code></td>
-<td style="text-align:left">$5000.50</td>
+<td style="text-align:left">$5000.5</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Dinero({ amount: 500050 })</code></td>
@@ -3746,6 +3918,8 @@ The format is a mask which defines a pattern and returns a valid, localized curr
 If you want to display the object in a custom way, either use <a href="module-Dinero.html#~getAmount">getAmount</a>, <a href="module-Dinero.html#~toUnit">toUnit</a> or <a href="module-Dinero.html#~toRoundedUnit">toRoundedUnit</a> and manipulate the output string as you wish.</p>
 <p><a href="module-Dinero.html#~toFormat">toFormat</a> is syntactic sugar over JavaScript's native <code>Number.prototype.toLocaleString</code> method, which you can use directly:
 <code>Dinero().toRoundedUnit(precision).toLocaleString(locale, options)</code>.</p>
+<p>By default, amounts are rounded using the <strong>half away from zero</strong> rule (<a href="https://en.wikipedia.org/wiki/Rounding#Round_half_away_from_zero">commercial rounding</a>).
+You can also specify a different <code>roundingMode</code> to better fit your needs.</p>
   </div>
 
 
@@ -3767,7 +3941,11 @@ If you want to display the object in a custom way, either use <a href="module-Di
       <th>Type</th>
 
       
+        <th>Attributes</th>
+      
 
+      
+        <th>Default</th>
       
 
       <th class="last">Description</th>
@@ -3795,11 +3973,72 @@ If you want to display the object in a custom way, either use <a href="module-Di
         </td>
 
         
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
 
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              '$0,0.00'
+            
+          </td>
         
 
         <td class="description last">
           <p>The format mask to format to.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>roundingMode</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      String
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              'HALF_AWAY_FROM_ZERO'
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>The rounding mode to use: <code>'HALF_ODD'</code>, <code>'HALF_EVEN'</code>, <code>'HALF_UP'</code>, <code>'HALF_DOWN'</code>, <code>'HALF_TOWARDS_ZERO'</code> or <code>'HALF_AWAY_FROM_ZERO'</code>.</p>
           
         </td>
       </tr>
@@ -3843,7 +4082,7 @@ If you want to display the object in a custom way, either use <a href="module-Di
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line538">line 538</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line566">line 566</a>
         </li>
       </ul>
     </dd>
@@ -3891,6 +4130,10 @@ Dinero({ amount: 10000, currency: 'EUR' }).setLocale('fr-FR').toFormat('0,0 doll
 
   <pre class="prettyprint"><code>// returns 2000
 Dinero({ amount: 200000, currency: 'EUR' }).toFormat()</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns $10
+Dinero({ amount: 1050 }).toFormat('$0', 'HALF_EVEN')</code></pre>
 
 
   </div>
@@ -3961,7 +4204,7 @@ Dinero({ amount: 200000, currency: 'EUR' }).toFormat()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line560">line 560</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line589">line 589</a>
         </li>
       </ul>
     </dd>
@@ -4015,7 +4258,7 @@ Dinero({ amount: 1050 }).toUnit()</code></pre>
       </svg>
     </a>
     <h4 class="name" id="~toRoundedUnit">
-      <span class="type-signature">(inner) </span>toRoundedUnit<span class="signature">(precision)</span><span class="type-signature"> &rarr; {Number}</span>
+      <span class="type-signature">(inner) </span>toRoundedUnit<span class="signature">(precision, roundingMode<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Number}</span>
     </h4>
   </span>
 
@@ -4025,6 +4268,8 @@ Dinero({ amount: 1050 }).toUnit()</code></pre>
 
   <div class="description">
     <p>Returns the amount represented by this object in rounded units.</p>
+<p>By default, the method uses the <strong>half away from zero</strong> rule (<a href="https://en.wikipedia.org/wiki/Rounding#Round_half_away_from_zero">commercial rounding</a>).
+You can also specify a different <code>roundingMode</code> to better fit your needs.</p>
   </div>
 
 
@@ -4046,7 +4291,11 @@ Dinero({ amount: 1050 }).toUnit()</code></pre>
       <th>Type</th>
 
       
+        <th>Attributes</th>
+      
 
+      
+        <th>Default</th>
       
 
       <th class="last">Description</th>
@@ -4074,11 +4323,68 @@ Dinero({ amount: 1050 }).toUnit()</code></pre>
         </td>
 
         
+          <td class="attributes">
+            
 
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+          </td>
         
 
         <td class="description last">
           <p>The number of fraction digits to round to.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>roundingMode</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      String
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              'HALF_AWAY_FROM_ZERO'
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>The rounding mode to use: <code>'HALF_ODD'</code>, <code>'HALF_EVEN'</code>, <code>'HALF_UP'</code>, <code>'HALF_DOWN'</code>, <code>'HALF_TOWARDS_ZERO'</code> or <code>'HALF_AWAY_FROM_ZERO'</code>.</p>
           
         </td>
       </tr>
@@ -4122,7 +4428,7 @@ Dinero({ amount: 1050 }).toUnit()</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line573">line 573</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line610">line 610</a>
         </li>
       </ul>
     </dd>
@@ -4153,11 +4459,15 @@ Dinero({ amount: 1050 }).toUnit()</code></pre>
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h5 id="toRoundedUnit-examples">Example</h5>
+    <h5 id="toRoundedUnit-examples">Examples</h5>
     
 
   <pre class="prettyprint"><code>// returns 10.6
 Dinero({ amount: 1055 }).toRoundedUnit(1)</code></pre>
+
+
+  <pre class="prettyprint"><code>// returns 10
+Dinero({ amount: 1050 }).toRoundedUnit(0, 'HALF_EVEN')</code></pre>
 
 
   </div>
@@ -4228,7 +4538,7 @@ Dinero({ amount: 1055 }).toRoundedUnit(1)</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line593">line 593</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line629">line 629</a>
         </li>
       </ul>
     </dd>
