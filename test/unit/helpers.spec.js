@@ -85,4 +85,15 @@ describe('Helpers()', () => {
       expect(Helpers.countFractionDigits()).toBe(0)
     })
   })
+  describe('#isHalf()', () => {
+    test('should return true with a half number', () => {
+      expect(Helpers.isHalf(2.5)).toBe(true)
+    })
+    test('should return true with a negative half number', () => {
+      expect(Helpers.isHalf(-2.5)).toBe(true)
+    })
+    test('should return false with a non-half number', () => {
+      expect(Helpers.isHalf(2)).toBe(false)
+    })
+  })
 })

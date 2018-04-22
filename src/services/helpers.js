@@ -70,3 +70,15 @@ export function countFractionDigits(number = 0) {
   const fractionDigits = number.toString().split('.')[1]
   return fractionDigits ? fractionDigits.length : 0
 }
+
+/**
+ * Returns whether a number is half.
+ * @ignore
+ *
+ * @param {Number} number - The number to test.
+ *
+ * @return {Number}
+ */
+export function isHalf(number) {
+  return Math.abs(number) % 1 === 0.5
+}

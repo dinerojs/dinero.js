@@ -48,7 +48,7 @@ const Dinero = options => {
 
   assertInteger(amount)
 
-  const { globalLocale, globalFormat } = Dinero
+  const { globalLocale, globalFormat, globalRoundingMode } = Dinero
 
   /**
    * Uses ES5 function notation so `this` can be passed through call, apply and bind
@@ -173,10 +173,13 @@ const Dinero = options => {
     /**
      * Returns a new Dinero object that represents the multiplied value by the given factor.
      *
-     * [Banker's rounding](http://wiki.c2.com/?BankersRounding) is used to handle fractional cents.
-     * This *can* lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.
+     * By default, fractional cents are rounded using the **half to even** rule ([banker's rounding](http://wiki.c2.com/?BankersRounding)).
      *
-     * @param  {Number} multiplier - The factor to multiply by.
+     * Rounding *can* lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.
+     * You can also specify a different `roundingMode` to better fit your needs.
+     *
+     * @param  {Number} multiplier   - The factor to multiply by.
+     * @param  {String} [roundingMode=HALF_EVEN] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `HALF_TOWARDS_ZERO` or `HALF_AWAY_FROM_ZERO`.
      *
      * @example
      * // returns a Dinero object with amount 1600
@@ -186,22 +189,26 @@ const Dinero = options => {
      *
      * @return {Dinero}
      */
-    multiply(multiplier) {
+    multiply(multiplier, roundingMode = globalRoundingMode) {
       return create.call(this, {
-        amount: calculator.bankersRound(
-          calculator.multiply(this.getAmount(), multiplier)
+        amount: calculator.round(
+          calculator.multiply(this.getAmount(), multiplier),
+          roundingMode
         )
       })
     },
     /**
      * Returns a new Dinero object that represents the divided value by the given factor.
      *
-     * [Banker's rounding](http://wiki.c2.com/?BankersRounding) is used to handle fractional cents.
-     * This *can* lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.
+     * By default, fractional cents are rounded using the **half to even** rule ([banker's rounding](http://wiki.c2.com/?BankersRounding)).
+     *
+     * Rounding *can* lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.
+     * You can also specify a different `roundingMode` to better fit your needs.
      *
      * As rounding is applied, precision may be lost in the process. If you want to accurately split a Dinero object, use {@link module:Dinero~allocate allocate} instead.
      *
      * @param  {Number} divisor - The factor to divide by.
+     * @param  {String} [roundingMode=HALF_EVEN] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `HALF_TOWARDS_ZERO` or `HALF_AWAY_FROM_ZERO`.
      *
      * @example
      * // returns a Dinero object with amount 100
@@ -211,10 +218,11 @@ const Dinero = options => {
      *
      * @return {Dinero}
      */
-    divide(divisor) {
+    divide(divisor, roundingMode = globalRoundingMode) {
       return create.call(this, {
-        amount: calculator.bankersRound(
-          calculator.divide(this.getAmount(), divisor)
+        amount: calculator.round(
+          calculator.divide(this.getAmount(), divisor),
+          roundingMode
         )
       })
     },

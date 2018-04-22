@@ -1,10 +1,41 @@
-import { isEven, isFloat, countFractionDigits } from './helpers'
+import { isEven, isFloat, countFractionDigits, isHalf } from './helpers'
 
 export default function Calculator() {
   const floatMultiply = (a, b) => {
     const getFactor = number => Math.pow(10, countFractionDigits(number))
     const factor = Math.max(getFactor(a), getFactor(b))
     return a * factor * (b * factor) / (factor * factor)
+  }
+
+  const roundingModes = {
+    HALF_ODD(number) {
+      const rounded = Math.round(number)
+      return isHalf(number)
+        ? isEven(rounded) ? rounded - 1 : rounded
+        : rounded
+    },
+    HALF_EVEN(number) {
+      const rounded = Math.round(number)
+      return isHalf(number)
+        ? isEven(rounded) ? rounded : rounded - 1
+        : rounded
+    },
+    HALF_UP(number) {
+      return Math.round(number)
+    },
+    HALF_DOWN(number) {
+      return isHalf(number) ? Math.floor(number) : Math.round(number)
+    },
+    HALF_TOWARDS_ZERO(number) {
+      return isHalf(number)
+        ? Math.sign(number) * Math.floor(Math.abs(number))
+        : Math.round(number)
+    },
+    HALF_AWAY_FROM_ZERO(number) {
+      return isHalf(number)
+        ? Math.sign(number) * Math.ceil(Math.abs(number))
+        : Math.round(number)
+    }
   }
 
   return {
@@ -69,19 +100,16 @@ export default function Calculator() {
       return a % b
     },
     /**
-     * Returns a rounded number where if the input number is equidistant from the
-     * two nearest integers it is rounded to the nearest even integer.
+     * Returns a rounded number based off a specific rounding mode.
      * @ignore
      *
-     * @param  {Number} value - The number to round.
+     * @param {Number} number       - The number to round.
+     * @param {String} roundingMode - The rounding mode to use.
      *
-     * @return {Number}
+     * @returns {Number}
      */
-    bankersRound(value) {
-      const rounded = Math.round(value)
-      return Math.abs(value) % 1 === 0.5
-        ? isEven(rounded) ? rounded : rounded - 1
-        : rounded
+    round(number, roundingMode = 'HALF_EVEN') {
+      return roundingModes[roundingMode](number)
     }
   }
 }

@@ -34,21 +34,125 @@ describe('Calculator', () => {
       expect(calculator.modulo(5, 2)).toBe(1)
     })
   })
-  describe('#bankersRound()', () => {
-    test('should return normal rounding for 1.4', () => {
-      expect(calculator.bankersRound(1.4)).toBe(1)
+  describe('#round()', () => {
+    describe('default', () => {
+      test('should return normal rounding for 1.4', () => {
+        expect(calculator.round(1.4)).toBe(1)
+      })
+      test('should return normal rounding for -1.4', () => {
+        expect(calculator.round(-1.4)).toBe(-1)
+      })
+      test('should return nearest even integer for 1.5', () => {
+        expect(calculator.round(1.5)).toBe(2)
+      })
+      test('should return nearest even integer for 2.5', () => {
+        expect(calculator.round(2.5)).toBe(2)
+      })
+      test('should return nearest even integer for -2.5', () => {
+        expect(calculator.round(-2.5)).toBe(-2)
+      })
     })
-    test('should return normal rounding for -1.4', () => {
-      expect(calculator.bankersRound(-1.4)).toBe(-1)
+    describe('HALF_ODD', () => {
+      test('should return normal rounding for 1.4', () => {
+        expect(calculator.round(1.4, 'HALF_ODD')).toBe(1)
+      })
+      test('should return normal rounding for -1.4', () => {
+        expect(calculator.round(-1.4, 'HALF_ODD')).toBe(-1)
+      })
+      test('should return nearest odd integer for 1.5', () => {
+        expect(calculator.round(1.5, 'HALF_ODD')).toBe(1)
+      })
+      test('should return nearest odd integer for 2.5', () => {
+        expect(calculator.round(2.5, 'HALF_ODD')).toBe(3)
+      })
+      test('should return nearest odd integer for -2.5', () => {
+        expect(calculator.round(-2.5, 'HALF_ODD')).toBe(-3)
+      })
     })
-    test('should return nearest even number for 1.5', () => {
-      expect(calculator.bankersRound(1.5)).toBe(2)
+    describe('HALF_EVEN', () => {
+      test('should return normal rounding for 1.4', () => {
+        expect(calculator.round(1.4, 'HALF_EVEN')).toBe(1)
+      })
+      test('should return normal rounding for -1.4', () => {
+        expect(calculator.round(-1.4, 'HALF_EVEN')).toBe(-1)
+      })
+      test('should return nearest even integer for 1.5', () => {
+        expect(calculator.round(1.5, 'HALF_EVEN')).toBe(2)
+      })
+      test('should return nearest even integer for 2.5', () => {
+        expect(calculator.round(2.5, 'HALF_EVEN')).toBe(2)
+      })
+      test('should return nearest even integer for -2.5', () => {
+        expect(calculator.round(-2.5, 'HALF_EVEN')).toBe(-2)
+      })
     })
-    test('should return nearest even number for 2.5', () => {
-      expect(calculator.bankersRound(2.5)).toBe(2)
+    describe('HALF_UP', () => {
+      test('should return normal rounding for 1.4', () => {
+        expect(calculator.round(1.4, 'HALF_UP')).toBe(1)
+      })
+      test('should return normal rounding for -1.4', () => {
+        expect(calculator.round(-1.4, 'HALF_UP')).toBe(-1)
+      })
+      test('should return nearest up integer for 1.5', () => {
+        expect(calculator.round(1.5, 'HALF_UP')).toBe(2)
+      })
+      test('should return nearest up integer for 2.5', () => {
+        expect(calculator.round(2.5, 'HALF_UP')).toBe(3)
+      })
+      test('should return nearest up integer for -2.5', () => {
+        expect(calculator.round(-2.5, 'HALF_UP')).toBe(-2)
+      })
     })
-    test('should return nearest even number for -2.5', () => {
-      expect(calculator.bankersRound(-2.5)).toBe(-2)
+    describe('HALF_DOWN', () => {
+      test('should return normal rounding for 1.4', () => {
+        expect(calculator.round(1.4, 'HALF_DOWN')).toBe(1)
+      })
+      test('should return normal rounding for -1.4', () => {
+        expect(calculator.round(-1.4, 'HALF_DOWN')).toBe(-1)
+      })
+      test('should return nearest down integer for 1.5', () => {
+        expect(calculator.round(1.5, 'HALF_DOWN')).toBe(1)
+      })
+      test('should return nearest down integer for 2.5', () => {
+        expect(calculator.round(2.5, 'HALF_DOWN')).toBe(2)
+      })
+      test('should return nearest down integer for -2.5', () => {
+        expect(calculator.round(-2.5, 'HALF_DOWN')).toBe(-3)
+      })
+    })
+    describe('HALF_TOWARDS_ZERO', () => {
+      test('should return normal rounding for 1.4', () => {
+        expect(calculator.round(1.4, 'HALF_TOWARDS_ZERO')).toBe(1)
+      })
+      test('should return normal rounding for -1.4', () => {
+        expect(calculator.round(-1.4, 'HALF_TOWARDS_ZERO')).toBe(-1)
+      })
+      test('should return nearest down integer for 1.5', () => {
+        expect(calculator.round(1.5, 'HALF_TOWARDS_ZERO')).toBe(1)
+      })
+      test('should return nearest down integer for 2.5', () => {
+        expect(calculator.round(2.5, 'HALF_TOWARDS_ZERO')).toBe(2)
+      })
+      test('should return nearest down integer for -2.5', () => {
+        expect(calculator.round(-2.5, 'HALF_TOWARDS_ZERO')).toBe(-2)
+      })
+    })
+    describe('HALF_AWAY_FROM_ZERO', () => {
+      test('should return normal rounding for 1.4', () => {
+        expect(calculator.round(1.4, 'HALF_AWAY_FROM_ZERO')).toBe(1)
+      })
+      test('should return normal rounding for -1.4', () => {
+        expect(calculator.round(-1.4, 'HALF_AWAY_FROM_ZERO')).toBe(-1)
+      })
+      test('should return nearest down integer for 1.5', () => {
+        expect(calculator.round(1.5, 'HALF_AWAY_FROM_ZERO')).toBe(2)
+      })
+      test('should return nearest down integer for 2.5', () => {
+        expect(calculator.round(2.5, 'HALF_AWAY_FROM_ZERO')).toBe(3)
+      })
+      test('should return nearest down integer for -2.5', () => {
+        expect(calculator.round(-2.5, 'HALF_AWAY_FROM_ZERO')).toBe(-3)
+      })
     })
   })
 })

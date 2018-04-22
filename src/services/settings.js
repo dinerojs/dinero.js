@@ -26,6 +26,7 @@ export const Defaults = {
  *
  * @property {String}  globalLocale - The global locale for new Dinero objects (see {@link module:Dinero~setLocale setLocale} for format).
  * @property {String}  globalFormat - The global format for new Dinero objects (see {@link module:Dinero~toFormat toFormat} for format).
+ * @property {String}  globalRoundingMode - The global rounding mode for new Dinero objects (see {@link module:Dinero~multiply multiply} or {@link module:Dinero~divide divide} for format).
  *
  * @example
  * // Will set locale to 'fr-FR' for all Dinero objects.
@@ -35,5 +36,6 @@ export const Defaults = {
  */
 export const Globals = {
   globalLocale: 'en-US',
-  globalFormat: '$0,0.00'
+  globalFormat: '$0,0.00',
+  globalRoundingMode: 'HALF_EVEN'
 }
