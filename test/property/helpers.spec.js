@@ -10,7 +10,7 @@ describe('Helpers', () => {
       jsc.assert(jsc.forall(jsc.uint8, a => !Helpers.isEven(a * 2 - 1)))
     })
   })
-  describe('#isHalf()', () => {
+  describe('#isHalf', () => {
     test('should return true for half numbers', () => {
       jsc.assert(jsc.forall(jsc.uint8, a => Helpers.isHalf((a * 2 - 1) / 2)))
     })

@@ -1,7 +1,7 @@
 import * as Helpers from '../../src/services/helpers'
 
-describe('Helpers()', () => {
-  describe('#isNumeric()', () => {
+describe('Helpers', () => {
+  describe('#isNumeric', () => {
     test('should return true with an integer', () => {
       expect(Helpers.isNumeric(5)).toBe(true)
     })
@@ -18,7 +18,7 @@ describe('Helpers()', () => {
       expect(Helpers.isNumeric(Infinity)).toBe(false)
     })
   })
-  describe('#isPercentage()', () => {
+  describe('#isPercentage', () => {
     test('should return false with a negative number', () => {
       expect(Helpers.isPercentage(-5)).toBe(false)
     })
@@ -29,7 +29,7 @@ describe('Helpers()', () => {
       expect(Helpers.isPercentage(50)).toBe(true)
     })
   })
-  describe('#areValidRatios()', () => {
+  describe('#areValidRatios', () => {
     test('should return true with percentage style', () => {
       expect(Helpers.areValidRatios([50, 50])).toBe(true)
     })
@@ -43,7 +43,7 @@ describe('Helpers()', () => {
       expect(Helpers.areValidRatios([])).toBe(false)
     })
   })
-  describe('#isEven()', () => {
+  describe('#isEven', () => {
     test('should return true for a positive even integer', () => {
       expect(Helpers.isEven(202)).toBe(true)
     })
@@ -85,7 +85,7 @@ describe('Helpers()', () => {
       expect(Helpers.countFractionDigits()).toBe(0)
     })
   })
-  describe('#isHalf()', () => {
+  describe('#isHalf', () => {
     test('should return true with a half number', () => {
       expect(Helpers.isHalf(2.5)).toBe(true)
     })

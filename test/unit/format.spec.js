@@ -1,7 +1,7 @@
 import Format from '../../src/services/format'
 
 describe('Format', () => {
-  describe('#getMatches()', () => {
+  describe('#getMatches', () => {
     test('should return all matches as an array when there is a match', () => {
       expect(Format('0,0').getMatches()).toEqual([','])
     })
@@ -9,7 +9,7 @@ describe('Format', () => {
       expect(Format('abc').getMatches()).toHaveLength(0)
     })
   })
-  describe('#getMinimumFractionDigits()', () => {
+  describe('#getMinimumFractionDigits', () => {
     test('should return the number of decimal places when format contains any', () => {
       expect(Format('0.00').getMinimumFractionDigits()).toBe(2)
     })
@@ -17,7 +17,7 @@ describe('Format', () => {
       expect(Format('0,0').getMinimumFractionDigits()).toBe(0)
     })
   })
-  describe('#getCurrencyDisplay()', () => {
+  describe('#getCurrencyDisplay', () => {
     test('should return "code" when mask is valid and contains "USD"', () => {
       expect(Format('USD0,0').getCurrencyDisplay()).toBe('code')
     })
@@ -34,7 +34,7 @@ describe('Format', () => {
       expect(Format('abc').getCurrencyDisplay()).toBeUndefined()
     })
   })
-  describe('#getStyle()', () => {
+  describe('#getStyle', () => {
     test('should return "currency" when display mode is not undefined', () => {
       expect(Format('$0,0').getStyle()).toBe('currency')
     })

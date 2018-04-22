@@ -3,17 +3,17 @@ import Calculator from '../../src/services/calculator'
 const calculator = Calculator()
 
 describe('Calculator', () => {
-  describe('#add()', () => {
+  describe('#add', () => {
     test('should return the sum of two numbers', () => {
       expect(calculator.add(10, 20)).toBe(30)
     })
   })
-  describe('#subtract()', () => {
+  describe('#subtract', () => {
     test('should return the difference of two numbers', () => {
       expect(calculator.subtract(20, 10)).toBe(10)
     })
   })
-  describe('#multiply()', () => {
+  describe('#multiply', () => {
     test('should return the product of two numbers', () => {
       expect(calculator.multiply(10, 20)).toBe(200)
     })
@@ -24,17 +24,17 @@ describe('Calculator', () => {
       expect(calculator.multiply(8.52, 8.6186)).toBe(73.430472)
     })
   })
-  describe('#divide()', () => {
+  describe('#divide', () => {
     test('should return the quotient of two numbers', () => {
       expect(calculator.divide(20, 2)).toBe(10)
     })
   })
-  describe('#modulo()', () => {
+  describe('#modulo', () => {
     test('should return the remainder of two numbers', () => {
       expect(calculator.modulo(5, 2)).toBe(1)
     })
   })
-  describe('#round()', () => {
+  describe('#round', () => {
     describe('default', () => {
       test('should return normal rounding for 1.4', () => {
         expect(calculator.round(1.4)).toBe(1)

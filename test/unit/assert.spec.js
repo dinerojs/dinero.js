@@ -1,7 +1,7 @@
 import * as Assert from '../../src/services/assert'
 
-describe('Assert()', () => {
-  describe('#assert()', () => {
+describe('Assert', () => {
+  describe('#assert', () => {
     test('should throw with a condition evaluating to false', () => {
       expect(() => Assert.assert(false, new Error())).toThrow()
     })
@@ -9,7 +9,7 @@ describe('Assert()', () => {
       expect(() => Assert.assert(false)).toThrowError(Error)
     })
   })
-  describe('#assertPercentage()', () => {
+  describe('#assertPercentage', () => {
     test('should throw with a negative number', () => {
       expect(() => Assert.assertPercentage(-5)).toThrow()
     })
@@ -17,7 +17,7 @@ describe('Assert()', () => {
       expect(() => Assert.assertPercentage(101)).toThrow()
     })
   })
-  describe('#assertValidRatios()', () => {
+  describe('#assertValidRatios', () => {
     test('should throw with one ratio to 0', () => {
       expect(() => Assert.assertValidRatios([1, 0])).toThrow()
     })
@@ -25,7 +25,7 @@ describe('Assert()', () => {
       expect(() => Assert.assertValidRatios([])).toThrow()
     })
   })
-  describe('#assertInteger()', () => {
+  describe('#assertInteger', () => {
     test('should throw with a float', () => {
       expect(() => Assert.assertInteger(5.5)).toThrow()
     })

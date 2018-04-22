@@ -12,7 +12,7 @@ describe('Dinero', () => {
       expect(() => Dinero({ amount: '100' })).toThrow()
     })
   })
-  describe('#getAmount()', () => {
+  describe('#getAmount', () => {
     test('should return the right amount as a number', () => {
       expect(Dinero({ amount: 500 }).getAmount()).toBe(500)
     })
@@ -20,7 +20,7 @@ describe('Dinero', () => {
       expect(Dinero().getAmount()).toBe(0)
     })
   })
-  describe('#getCurrency()', () => {
+  describe('#getCurrency', () => {
     test('should return the right currency as a string', () => {
       expect(Dinero({ currency: 'EUR' }).getCurrency()).toBe('EUR')
     })
@@ -28,7 +28,7 @@ describe('Dinero', () => {
       expect(Dinero().getCurrency()).toBe('USD')
     })
   })
-  describe('#getLocale()', () => {
+  describe('#getLocale', () => {
     test('should return the right locale as a string', () => {
       expect(
         Dinero()
@@ -51,7 +51,7 @@ describe('Dinero', () => {
       Dinero.globalLocale = 'en-US'
     })
   })
-  describe('#setLocale()', () => {
+  describe('#setLocale', () => {
     test('should return a new Dinero object with the right locale as a string', () => {
       expect(
         Dinero()
@@ -77,7 +77,7 @@ describe('Dinero', () => {
       ).toBe('ja-JP')
     })
   })
-  describe('#add()', () => {
+  describe('#add', () => {
     test('should return a new Dinero object with same amount plus the amount of the other', () => {
       expect(
         Dinero({ amount: 400 })
@@ -93,7 +93,7 @@ describe('Dinero', () => {
       ).toThrow()
     })
   })
-  describe('#subtract()', () => {
+  describe('#subtract', () => {
     test('should return a new Dinero object with same amount minus the amount of the other', () => {
       expect(
         Dinero({ amount: 400 })
@@ -109,7 +109,7 @@ describe('Dinero', () => {
       ).toThrow()
     })
   })
-  describe('#multiply()', () => {
+  describe('#multiply', () => {
     test('should return a new Dinero object with an amount multiplied by the given factor', () => {
       expect(
         Dinero({ amount: 400 })
@@ -132,7 +132,7 @@ describe('Dinero', () => {
       ).toMatchObject({ amount: 801 })
     })
   })
-  describe('#divide()', () => {
+  describe('#divide', () => {
     test('should return a new Dinero object with an amount divided by the given factor', () => {
       expect(
         Dinero({ amount: 400 })
@@ -162,7 +162,7 @@ describe('Dinero', () => {
       ).toMatchObject({ amount: 52 })
     })
   })
-  describe('#percentage()', () => {
+  describe('#percentage', () => {
     test('should return a new Dinero object representing a percentage of the original', () => {
       expect(
         Dinero({ amount: 10000 })
@@ -177,7 +177,7 @@ describe('Dinero', () => {
       expect(() => Dinero({ amount: 500 }).percentage(101)).toThrow()
     })
   })
-  describe('#allocate()', () => {
+  describe('#allocate', () => {
     test('should allocate the amount of the Dinero object into new ones and distribute the remainder when given percentages', () => {
       const shares = Dinero({ amount: 1003 }).allocate([50, 50])
       expect(shares[0].getAmount()).toBe(502)
@@ -198,7 +198,7 @@ describe('Dinero', () => {
       expect(() => Dinero({ amount: 1003 }).allocate([])).toThrow()
     })
   })
-  describe('#equalsTo()', () => {
+  describe('#equalsTo', () => {
     test('should return true when both amount and currencies are equal', () => {
       expect(
         Dinero({ amount: 500, currency: 'EUR' }).equalsTo(
@@ -228,7 +228,7 @@ describe('Dinero', () => {
       ).toBe(false)
     })
   })
-  describe('#lessThan()', () => {
+  describe('#lessThan', () => {
     test('should return true when amount is less than other amount', () => {
       expect(Dinero({ amount: 500 }).lessThan(Dinero({ amount: 800 }))).toBe(
         true
@@ -247,7 +247,7 @@ describe('Dinero', () => {
       ).toThrow()
     })
   })
-  describe('#lessThanOrEqual()', () => {
+  describe('#lessThanOrEqual', () => {
     test('should return true when amount is less than other amount', () => {
       expect(
         Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 800 }))
@@ -271,7 +271,7 @@ describe('Dinero', () => {
       ).toThrow()
     })
   })
-  describe('#greaterThan()', () => {
+  describe('#greaterThan', () => {
     test('should return false when amount is less than other amount', () => {
       expect(Dinero({ amount: 500 }).greaterThan(Dinero({ amount: 800 }))).toBe(
         false
@@ -290,7 +290,7 @@ describe('Dinero', () => {
       ).toThrow()
     })
   })
-  describe('#greaterThanOrEqual()', () => {
+  describe('#greaterThanOrEqual', () => {
     test('should return true when amount is greater than other amount', () => {
       expect(
         Dinero({ amount: 500 }).greaterThanOrEqual(Dinero({ amount: 300 }))
@@ -314,7 +314,7 @@ describe('Dinero', () => {
       ).toThrow()
     })
   })
-  describe('#isZero()', () => {
+  describe('#isZero', () => {
     test('should return true when amount is equal to 0', () => {
       expect(Dinero({ amount: 0 }).isZero()).toBe(true)
     })
@@ -322,7 +322,7 @@ describe('Dinero', () => {
       expect(Dinero({ amount: 100 }).isZero()).toBe(false)
     })
   })
-  describe('#isPositive()', () => {
+  describe('#isPositive', () => {
     test('should return false when amount is less than 0', () => {
       expect(Dinero({ amount: -10 }).isPositive()).toBe(false)
     })
@@ -333,7 +333,7 @@ describe('Dinero', () => {
       expect(Dinero({ amount: 0 }).isPositive()).toBe(true)
     })
   })
-  describe('#isNegative()', () => {
+  describe('#isNegative', () => {
     test('should return true when amount is less than 0', () => {
       expect(Dinero({ amount: -10 }).isNegative()).toBe(true)
     })
@@ -344,7 +344,7 @@ describe('Dinero', () => {
       expect(Dinero({ amount: 0 }).isNegative()).toBe(false)
     })
   })
-  describe('#hasCents()', () => {
+  describe('#hasCents', () => {
     test('should return false when amount is a multiple of 100', () => {
       expect(Dinero({ amount: 1100 }).hasCents()).toBe(false)
     })
@@ -352,7 +352,7 @@ describe('Dinero', () => {
       expect(Dinero({ amount: 1150 }).hasCents()).toBe(true)
     })
   })
-  describe('#hasSameCurrency()', () => {
+  describe('#hasSameCurrency', () => {
     test('should return true when both currencies are equal', () => {
       expect(
         Dinero({ amount: 2000, currency: 'EUR' }).hasSameCurrency(
@@ -368,7 +368,7 @@ describe('Dinero', () => {
       ).toBe(false)
     })
   })
-  describe('#hasSameAmount()', () => {
+  describe('#hasSameAmount', () => {
     test('should return true when both amounts are equal', () => {
       expect(
         Dinero({ amount: 1000, currency: 'EUR' }).hasSameAmount(
@@ -384,7 +384,7 @@ describe('Dinero', () => {
       ).toBe(false)
     })
   })
-  describe('#toFormat()', () => {
+  describe('#toFormat', () => {
     test('should return the properly formatted amount (default)', () => {
       expect(Dinero({ amount: 200000, currency: 'EUR' }).toFormat()).toBe(
         '€2,000.00'
@@ -447,12 +447,12 @@ describe('Dinero', () => {
       Dinero.globalFormat = '$0,0.00'
     })
   })
-  describe('#toUnit()', () => {
+  describe('#toUnit', () => {
     test('should return the amount divided by 100', () => {
       expect(Dinero({ amount: 1050 }).toUnit()).toBe(10.5)
     })
   })
-  describe('#toRoundedUnit()', () => {
+  describe('#toRoundedUnit', () => {
     test('should return the amount divided by 100, rounded to one fraction digit', () => {
       expect(Dinero({ amount: 1055 }).toRoundedUnit(1)).toBe(10.6)
     })
@@ -466,7 +466,7 @@ describe('Dinero', () => {
       expect(Dinero({ amount: 1055 }).toRoundedUnit(0)).toBe(11)
     })
   })
-  describe('#toObject()', () => {
+  describe('#toObject', () => {
     test('should return an object literal with the right data', () => {
       expect(Dinero({ amount: 500, currency: 'EUR' }).toObject()).toEqual({
         amount: 500,

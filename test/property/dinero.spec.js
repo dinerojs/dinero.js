@@ -2,7 +2,7 @@ import Dinero from '../../src/dinero'
 import jsc from 'jsverify'
 
 describe('Dinero', () => {
-  describe('#add()', () => {
+  describe('#add', () => {
     test('should be commutative', () => {
       jsc.assert(
         jsc.forall(
@@ -54,7 +54,7 @@ describe('Dinero', () => {
       )
     })
   })
-  describe('#multiply()', () => {
+  describe('#multiply', () => {
     test('should be commutative', () => {
       jsc.assert(
         jsc.forall(
@@ -124,7 +124,7 @@ describe('Dinero', () => {
       )
     })
   })
-  describe('#divide()', () => {
+  describe('#divide', () => {
     test('should round when divisor is a positive non-integer', () => {
       jsc.assert(
         jsc.forall(
