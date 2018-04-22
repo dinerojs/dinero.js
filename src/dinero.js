@@ -563,8 +563,8 @@ const Dinero = options => {
      *
      * @return {String}
      */
-    toFormat(format, roundingMode = globalFormatRoundingMode) {
-      const formatter = Format(format || globalFormat)
+    toFormat(format = globalFormat, roundingMode = globalFormatRoundingMode) {
+      const formatter = Format(format)
 
       return this.toRoundedUnit(
         formatter.getMinimumFractionDigits(),
