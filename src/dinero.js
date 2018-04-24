@@ -258,9 +258,7 @@ const Dinero = options => {
      */
     percentage(percentage) {
       assertPercentage(percentage)
-      return this.multiply(
-        calculator.divide(percentage, Math.pow(10, exponent))
-      )
+      return this.multiply(calculator.divide(percentage, 100))
     },
     /**
      * Allocates the amount of a Dinero object according to a list of ratios.
