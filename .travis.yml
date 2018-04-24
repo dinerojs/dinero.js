@@ -6,9 +6,8 @@ notifications:
   email: false
 node_js:
   - "node"
-after_script:
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 after_success:
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   - npm run docs
   - npm run build
   - npm run travis-deploy-once "npm run semantic-release"
