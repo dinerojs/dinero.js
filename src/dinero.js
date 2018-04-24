@@ -48,6 +48,8 @@ const Dinero = options => {
 
   assertInteger(amount)
 
+  const exponent = 2
+
   const {
     globalLocale,
     globalFormat,
@@ -256,7 +258,9 @@ const Dinero = options => {
      */
     percentage(percentage) {
       assertPercentage(percentage)
-      return this.multiply(calculator.divide(percentage, 100))
+      return this.multiply(
+        calculator.divide(percentage, Math.pow(10, exponent))
+      )
     },
     /**
      * Allocates the amount of a Dinero object according to a list of ratios.
@@ -480,7 +484,7 @@ const Dinero = options => {
      * @return {Boolean}
      */
     hasCents() {
-      return calculator.modulo(this.getAmount(), 100) !== 0
+      return calculator.modulo(this.getAmount(), Math.pow(10, exponent)) !== 0
     },
     /**
      * Checks whether the currency represented by this object equals to the other.
@@ -587,7 +591,7 @@ const Dinero = options => {
      * @return {Number}
      */
     toUnit() {
-      return calculator.divide(this.getAmount(), 100)
+      return calculator.divide(this.getAmount(), Math.pow(10, exponent))
     },
     /**
      * Returns the amount represented by this object in rounded units.
@@ -611,7 +615,10 @@ const Dinero = options => {
       const factor = Math.pow(10, precision)
       return calculator.divide(
         calculator.round(
-          calculator.multiply(calculator.divide(this.getAmount(), 100), factor),
+          calculator.multiply(
+            calculator.divide(this.getAmount(), Math.pow(10, exponent)),
+            factor
+          ),
           roundingMode
         ),
         factor
