@@ -1,4 +1,11 @@
 import Dinero from '../../src/dinero'
+import { getJSON } from '../../src/services/helpers'
+
+jest.mock('../../src/services/helpers', () =>
+  Object.assign(require.requireActual('../../src/services/helpers'), {
+    getJSON: jest.fn()
+  })
+)
 
 describe('Dinero', () => {
   describe('instantiation', () => {
@@ -198,7 +205,39 @@ describe('Dinero', () => {
       expect(() => Dinero({ amount: 1003 }).allocate([])).toThrow()
     })
   })
-  describe('#equalsTo', () => {
+  describe('#convert', () => {
+    beforeEach(() => {
+      getJSON.mockResolvedValue({
+        base: 'USD',
+        date: '2018-03-31',
+        rates: {
+          EUR: 0.81162
+        }
+      })
+    })
+    test('should return a new converted Dinero object when base and destination currencies are valid', async () => {
+      const res = await Dinero({ amount: 500 }).convert('EUR', {
+        basePath: 'https://forex.api/latest',
+        queryString: {
+          base: '{{from}}',
+          alphabetical: true
+        },
+        ratesRoot: 'rates',
+        headers: {
+          'user-key': 'xxxxxxxxx'
+        },
+        roundingMode: 'HALF_UP'
+      })
+      expect(res.toObject()).toMatchObject({
+        amount: 406,
+        currency: 'EUR'
+      })
+    })
+    test('should throw when destination currency is not valid', async () => {
+      await expect(Dinero({ amount: 500 }).convert('EURO')).rejects.toThrow()
+    })
+  })
+  describe('#equalsTo()', () => {
     test('should return true when both amount and currencies are equal', () => {
       expect(
         Dinero({ amount: 500, currency: 'EUR' }).equalsTo(
