@@ -378,7 +378,7 @@ const Dinero = options => {
           assert(
             !isUndefined(rate),
             new TypeError(
-              `A rate for the output currency "${currency}" wasn't found.`
+              `A rate for the destination currency "${currency}" wasn't found.`
             )
           )
           return create.call(this, {
