@@ -348,6 +348,9 @@ const Dinero = options => {
      * @param  {String} [options.roundingMode='HALF_EVEN'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
      *
      * @example
+     * // your global API parameters
+     * Dinero.globalForexApi = { ... }
+     *
      * // returns a Promise containing a Dinero object with the destination currency
      * // and the initial amount converted to the new currency.
      * Dinero({ amount: 500 }).convert('EUR')
@@ -367,6 +370,22 @@ const Dinero = options => {
      *     },
      *     roundingMode: 'HALF_UP'
      *   })
+     * @example
+     * // usage with Promise.prototype.then and Promise.prototype.catch
+     * Dinero({ amount: 500 })
+     *   .convert('EUR')
+     *   .then(dinero => {
+     *     dinero.getCurrency() // returns 'EUR'
+     *   })
+     *   .catch(err => {
+     *     // handle errors
+     *   })
+     * @example
+     * // usage with async/await
+     * (async () => {
+     *   const price = await Dinero({ amount: 500 }).convert('EUR')
+     *   price.getCurrency() // returns 'EUR'
+     * })()
      *
      * @return {Promise}
      */
