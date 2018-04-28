@@ -44,11 +44,15 @@ You can use an alias if you wish:
 var Money = Dinero
 ```
 
+Any browser that supports the [Internationalization API][mdn:intl] is compatible with Dinero.js. This means [most browsers][caniuse:intl], and Internet Explorer 11.
+
 ### CommonJS (Node)
 
 ```js
 const Dinero = require('dinero.js')
 ```
+
+You will need at least Node 6+ [with full-icu support][node:full-icu].
 
 ### AMD (RequireJS, System.js, etc.)
 
@@ -185,6 +189,9 @@ Dinero.js is licensed under [MIT][license].
 [snyk-badge]: https://snyk.io/test/github/sarahdayan/dinero.js/badge.svg?targetFile=package.json
 [semantic-release-url]: https://github.com/semantic-release/semantic-release
 [semantic-release-badge]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+[mdn:intl]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl
+[caniuse:intl]: https://caniuse.com/#feat=internationalization
+[node:full-icu]: https://nodejs.org/api/intl.html#intl_embed_the_entire_icu_full_icu
 [wiki:iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
 [dinero-docs]: https://sarahdayan.github.io/dinero.js/module-Dinero.html
 [dinero-guidelines]: https://github.com/sarahdayan/dinero.js/blob/master/CONTRIBUTING.md
