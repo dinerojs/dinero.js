@@ -402,7 +402,7 @@ const Dinero = options => {
           )
           return create.call(this, {
             amount: calculator.round(
-              calculator.multiply(this.getAmount(), rate),
+              calculator.multiply(this.getAmount(), parseFloat(rate)),
               options.roundingMode
             ),
             currency
