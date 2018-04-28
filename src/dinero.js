@@ -318,10 +318,12 @@ const Dinero = options => {
      *
      * You must provide your own API to retrieve exchange rates. This method won't work if you don't set either {@link Globals global API parameters}, or local ones for your instance.
      *
-     * All APIs are different. Some require an API key, others don't. Some want you to provide it via endpoint parameters, others want you to send it via headers.
-     * The options for `convert` are flexible enough to adapt to most API use cases.
+     * Here are some forex APIs you can use:
      *
-     * There are things you will always needs to specify:
+     * * [Fixer](https://fixer.io/)
+     * * [Open Exchange Rates](https://openexchangerates.org/)
+     *
+     * You will need to specify at least:
      *
      * * a **destination currency**: the currency in which you want to convert your Dinero object. You can specify it with `currency`.
      * * a **base path**: the API endpoint to query exchange rates, without parameters. You can specify it with `options.basePath`.
