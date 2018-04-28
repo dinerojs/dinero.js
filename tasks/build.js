@@ -1,8 +1,11 @@
 const rollup = require('rollup')
 const babel = require('rollup-plugin-babel')
 const minify = require('rollup-plugin-babel-minify')
+const commonjs = require('rollup-plugin-commonjs')
+const nodeResolve = require('rollup-plugin-node-resolve')
 
 const inputPath = 'src/dinero.js'
+const inputPolyfilledPath = 'src/dinero-polyfilled'
 
 const defaultPlugins = [
   babel({
@@ -18,8 +21,18 @@ const defaultPlugins = [
       ]
     ],
     exclude: 'node_modules/**',
-    plugins: ['external-helpers', 'transform-object-assign'],
+    plugins: ['external-helpers'],
     babelrc: false
+  })
+]
+
+const polyfilledPlugins = [
+  nodeResolve({
+    jsnext: true,
+    main: true
+  }),
+  commonjs({
+    include: 'node_modules/**'
   })
 ]
 
@@ -52,6 +65,16 @@ rollup
 
 rollup
   .rollup({
+    input: inputPolyfilledPath,
+    plugins: [
+      ...defaultPlugins,
+      ...polyfilledPlugins
+    ]
+  })
+  .then(bundle => buildOutputs(bundle, '.polyfilled'))
+
+rollup
+  .rollup({
     input: inputPath,
     plugins: [
       ...defaultPlugins,
@@ -61,3 +84,16 @@ rollup
     ]
   })
   .then(bundle => buildOutputs(bundle, '.min'))
+
+rollup
+  .rollup({
+    input: inputPolyfilledPath,
+    plugins: [
+      ...defaultPlugins,
+      ...polyfilledPlugins,
+      minify({
+        comments: false
+      })
+    ]
+  })
+  .then(bundle => buildOutputs(bundle, '.polyfilled.min'))
