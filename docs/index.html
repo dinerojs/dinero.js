@@ -120,7 +120,7 @@
 <li>Extended formatting and rounding options.</li>
 <li>Native Intl support (no additional locale files).</li>
 </ul>
-<h2>Download/install</h2><p>Dinero.js provides different builds for different environments.</p>
+<h2>Download/install</h2><p>Dinero.js provides builds for different environments. It also comes with polyfilled versions for older browsers.</p>
 <p>The recommended way of install is via <a href="https://www.npmjs.com">npm</a> or <a href="https://yarnpkg.com">Yarn</a>:</p>
 <pre class="prettyprint source lang-sh"><code>npm install dinero.js --save
 
@@ -132,7 +132,7 @@ yarn add dinero.js</code></pre><p>You can also <a href="https://www.jsdelivr.com
 &lt;script>
   Dinero();
 &lt;/script></code></pre><p>You can use an alias if you wish:</p>
-<pre class="prettyprint source lang-js"><code>var Money = Dinero</code></pre><p>Any browser that supports the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl">Internationalization API</a> is compatible with Dinero.js. This means <a href="https://caniuse.com/#feat=internationalization">most browsers</a>, and Internet Explorer 11.</p>
+<pre class="prettyprint source lang-js"><code>var Money = Dinero</code></pre><p>Any browser that supports the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl">Internationalization API</a> is compatible with Dinero.js. This means <a href="https://caniuse.com/#feat=internationalization">most browsers</a>, and Internet Explorer 11 (this one requires the polyfilled version).</p>
 <h3>CommonJS (Node)</h3><pre class="prettyprint source lang-js"><code>const Dinero = require('dinero.js')</code></pre><p>You will need at least Node 6+ <a href="https://nodejs.org/api/intl.html#intl_embed_the_entire_icu_full_icu">with full-icu support</a>.</p>
 <h3>AMD (RequireJS, System.js, etc.)</h3><pre class="prettyprint source lang-js"><code>requirejs(['path/to/amd/dinero'], function(Dinero) {
   //...
