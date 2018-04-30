@@ -1,10 +1,10 @@
-import Forex from '../../src/services/forex'
+import CurrencyConverter from '../../src/services/currency-converter'
 import { getJSON } from '../../src/services/helpers'
 
 jest.mock('../../src/services/helpers')
 
 const options = {
-  basePath: 'https://forex.api/latest',
+  basePath: 'https://exchangerates.api/latest',
   queryString: {
     base: '{{from}}',
     alphabetical: true
@@ -16,7 +16,7 @@ const options = {
   roundingMode: 'HALF_UP'
 }
 
-describe('Forex', () => {
+describe('CurrencyConverter', () => {
   describe('#getExchangeRate()', () => {
     test('should return a rate as a number when input and output currencies are valid', async () => {
       getJSON.mockResolvedValue({
@@ -27,13 +27,13 @@ describe('Forex', () => {
         }
       })
       await expect(
-        Forex(options).getExchangeRate('USD', 'EUR')
+        CurrencyConverter(options).getExchangeRate('USD', 'EUR')
       ).resolves.toEqual(0.81162)
     })
     test('should throw when API returns an error', async () => {
       getJSON.mockRejectedValue(new Error())
       await expect(
-        Forex(options).getExchangeRate('USD', 'EUR')
+        CurrencyConverter(options).getExchangeRate('USD', 'EUR')
       ).rejects.toThrow()
     })
   })

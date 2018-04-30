@@ -217,7 +217,7 @@ describe('Dinero', () => {
     })
     test('should return a new converted Dinero object when base and destination currencies are valid', async () => {
       const res = await Dinero({ amount: 500 }).convert('EUR', {
-        basePath: 'https://forex.api/latest',
+        basePath: 'https://exchangerates.api/latest',
         queryString: {
           base: '{{from}}',
           alphabetical: true

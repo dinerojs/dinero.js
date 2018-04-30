@@ -1,6 +1,6 @@
 import { getJSON, objectToParams } from './helpers'
 
-export default function Forex(options) {
+export default function CurrencyConverter(options) {
   /* istanbul ignore next */
   const mergeQueryString = (querystring = '', tags) => {
     for (const tag in tags) {

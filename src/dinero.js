@@ -1,7 +1,7 @@
 import { Defaults, Globals } from './services/settings'
 import Format from './services/format'
 import Calculator from './services/calculator'
-import Forex from './services/forex'
+import CurrencyConverter from './services/currency-converter'
 import {
   assert,
   assertPercentage,
@@ -59,7 +59,10 @@ const Dinero = options => {
     globalFormatRoundingMode
   } = Dinero
 
-  const globalForexApi = Object.assign({}, Dinero.globalForexApi)
+  const globalExchangeRatesApi = Object.assign(
+    {},
+    Dinero.globalExchangeRatesApi
+  )
 
   /**
    * Uses ES5 function notation so `this` can be passed through call, apply and bind
@@ -318,7 +321,7 @@ const Dinero = options => {
      *
      * You must provide your own API to retrieve exchange rates. This method won't work if you don't set either {@link Globals global API parameters}, or local ones for your instance.
      *
-     * Here are some forex APIs you can use:
+     * Here are some exchange rates APIs you can use:
      *
      * * [Fixer](https://fixer.io/)
      * * [Open Exchange Rates](https://openexchangerates.org/)
@@ -351,7 +354,7 @@ const Dinero = options => {
      *
      * @example
      * // your global API parameters
-     * Dinero.globalForexApi = { ... }
+     * Dinero.globalExchangeRatesApi = { ... }
      *
      * // returns a Promise containing a Dinero object with the destination currency
      * // and the initial amount converted to the new currency.
@@ -361,7 +364,7 @@ const Dinero = options => {
      * // with specific API parameters and rounding mode for this specific instance.
      * Dinero({ amount: 500 })
      *   .convert('EUR', {
-     *     basePath: 'https://forex.api/latest',
+     *     basePath: 'https://exchangerates.api/latest',
      *     queryString: {
      *       base: '{{from}}',
      *       alphabetical: true
@@ -392,8 +395,8 @@ const Dinero = options => {
      * @return {Promise}
      */
     convert(currency, options) {
-      options = Object.assign({}, globalForexApi, options)
-      return Forex(options)
+      options = Object.assign({}, globalExchangeRatesApi, options)
+      return CurrencyConverter(options)
         .getExchangeRate(this.getCurrency(), currency)
         .then(rate => {
           assert(
