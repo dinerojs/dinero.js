@@ -217,7 +217,7 @@ describe('Dinero', () => {
     })
     test('should return a new converted Dinero object when base and destination currencies are valid', async () => {
       const res = await Dinero({ amount: 500 }).convert('EUR', {
-        endpoint: 'https://exchangerates.api/latest?base={{from}}',
+        endpoint: 'https://yourexchangerates.api/latest?base={{from}}',
         JSONPath: 'rates.{{to}}',
         headers: {
           'user-key': 'xxxxxxxxx'

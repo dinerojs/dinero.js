@@ -351,7 +351,7 @@ const Dinero = options => {
      *
      * ```js
      * {
-     *   endpoint: 'https://exchangerates.api/latest?base={{from}}'
+     *   endpoint: 'https://yourexchangerates.api/latest?base={{from}}'
      * }
      * ```
      *
@@ -373,7 +373,7 @@ const Dinero = options => {
      * // with specific API parameters and rounding mode for this specific instance.
      * Dinero({ amount: 500 })
      *   .convert('XBT', {
-     *     endpoint: 'https://exchangerates.api/latest?base={{from}}',
+     *     endpoint: 'https://yourexchangerates.api/latest?base={{from}}',
      *     JSONPath: 'data.rates.{{to}}',
      *     headers: {
      *       'user-key': 'xxxxxxxxx'

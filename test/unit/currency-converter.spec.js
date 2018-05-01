@@ -8,7 +8,7 @@ jest.mock('../../src/services/helpers', () =>
 )
 
 const options = {
-  endpoint: 'https://exchangerates.api/latest?base={{from}}',
+  endpoint: 'https://yourexchangerates.api/latest?base={{from}}',
   JSONPath: 'rates.{{to}}',
   headers: {
     'user-key': 'xxxxxxxxx'

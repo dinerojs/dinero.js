@@ -38,7 +38,7 @@ export const Defaults = {
  * @example
  * // Will set global exchange rates API parameters for all Dinero objects.
  * Dinero.globalExchangeRatesApi = {
- *  endpoint: 'https://exchangerates.api/latest?base={{from}}',
+ *  endpoint: 'https://yourexchangerates.api/latest?base={{from}}',
  *  JSONPath: 'data.rates.{{to}}',
  *  headers: {
  *    'user-key': 'xxxxxxxxx'
