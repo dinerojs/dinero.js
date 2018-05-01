@@ -323,33 +323,42 @@ const Dinero = options => {
      *
      * Here are some exchange rates APIs you can use:
      *
-     * * [Fixer](https://fixer.io/)
-     * * [Open Exchange Rates](https://openexchangerates.org/)
+     * * [Fixer](https://fixer.io)
+     * * [Open Exchange Rates](https://openexchangerates.org)
+     * * [Coinbase](https://api.coinbase.com/v2/exchange-rates)
+     * * More [foreign](https://github.com/toddmotto/public-apis#currency-exchange) and [crypto](https://github.com/toddmotto/public-apis#cryptocurrency) exchange rates APIs.
      *
      * You will need to specify at least:
      *
      * * a **destination currency**: the currency in which you want to convert your Dinero object. You can specify it with `currency`.
-     * * a **base path**: the API endpoint to query exchange rates, without parameters. You can specify it with `options.basePath`.
-     * * a **rates root**: the root containing the list of rates in your API's JSON response. For example, with a response of `{ "base": "USD", "rates": { "AED": 3.67296, "AFN": 70.274812 } }`, the rates root is `'rates'`. You can specify it with `options.ratesRoot`.
+     * * an **endpoint**: the API URL to query exchange rates, with parameters. You can specify it with `options.endpoint`.
+     * * a **JSON path**: the path to access the wanted rate in your API's JSON response. For example, with a response of:
+     * ```json
+     * {
+     *     "data": {
+     *       "base": "USD",
+     *       "destination": "EUR",
+     *       "rate": "0.827728919"
+     *     }
+     * }
+     * ```
+     * Then the JSON path is `'data.rate'`. You can specify it with `options.JSONPath`.
      *
      * The base currency (the currency of your Dinero object) and the destination currency can be used as "merge tags" with the mustache syntax, respectively `{{from}}` and `{{to}}`.
-     * You can use these tags to refer to these values in `options.queryString`.
+     * You can use these tags to refer to these values in `options.endpoint` and `options.JSONPath`.
      *
      * For example, if you need to specify the base currency as a query parameter, you can do the following:
      *
-     * ```
+     * ```js
      * {
-     *   queryString: {
-     *     base: '{{from}}'
-     *   }
+     *   endpoint: 'https://exchangerates.api/latest?base={{from}}'
      * }
      * ```
      *
      * @param  {String} currency - The destination currency, expressed as an {@link https://en.wikipedia.org/wiki/ISO_4217#Active_codes ISO 4217 currency code}.
-     * @param  {String} options.basePath - The base path of the API endpoint to retrieve exchange rates.
-     * @param  {Object} [options.queryString={}] - The query parameters to provide, if needed.
-     * @param  {String} [options.ratesRoot='rates'] - The JSON root for the list of rates.
-     * @param  {Object} [options.headers={}] - The HTTP headers to provide, if needed.
+     * @param  {String} options.endpoint - The API endpoint to retrieve exchange rates.
+     * @param  {String} options.JSONPath - The JSON path to the rate.
+     * @param  {Object} [options.headers] - The HTTP headers to provide, if needed.
      * @param  {String} [options.roundingMode='HALF_EVEN'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
      *
      * @example
@@ -363,13 +372,9 @@ const Dinero = options => {
      * // returns a Promise containing a Dinero object,
      * // with specific API parameters and rounding mode for this specific instance.
      * Dinero({ amount: 500 })
-     *   .convert('EUR', {
-     *     basePath: 'https://exchangerates.api/latest',
-     *     queryString: {
-     *       base: '{{from}}',
-     *       alphabetical: true
-     *     },
-     *     ratesRoot: 'rates',
+     *   .convert('XBT', {
+     *     endpoint: 'https://exchangerates.api/latest?base={{from}}',
+     *     JSONPath: 'data.rates.{{to}}',
      *     headers: {
      *       'user-key': 'xxxxxxxxx'
      *     },
@@ -402,7 +407,7 @@ const Dinero = options => {
           assert(
             !isUndefined(rate),
             new TypeError(
-              `A rate for the destination currency "${currency}" wasn't found.`
+              `No rate was found for the destination currency "${currency}".`
             )
           )
           return create.call(this, {

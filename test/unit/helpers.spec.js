@@ -129,29 +129,30 @@ describe('Helpers', () => {
       expect(request).rejects.toEqual(new Error('Network error'))
     })
   })
-  describe('#objectToParams', () => {
-    test('should return every object property as a query string', () => {
-      expect(Helpers.objectToParams({ a: 1, b: true, c: 'foo' })).toBe(
-        '?a=1&b=true&c=foo'
-      )
-    })
-    test('should not handle nested objects', () => {
-      expect(
-        decodeURIComponent(Helpers.objectToParams({ a: 1, b: { e: 15 } }))
-      ).toBe('?a=1&b=[object Object]')
-    })
-    test('should not handle nested arrays', () => {
-      expect(
-        decodeURIComponent(Helpers.objectToParams({ a: 1, b: ['a', 'b'] }))
-      ).toBe('?a=1&b=a,b')
-    })
-  })
   describe('#isUndefined', () => {
     test('should return true when the value is undefined', () => {
       expect(Helpers.isUndefined(undefined)).toBe(true)
     })
     test('should return false when the value is defined', () => {
       expect(Helpers.isUndefined('abc')).toBe(false)
+    })
+  })
+  describe('#flattenObject', () => {
+    test('should flatten the object with dots as separators', () => {
+      expect(Helpers.flattenObject({ a: 1, b: { c: 2, d: 3 } })).toMatchObject({
+        a: 1,
+        'b.c': 2,
+        'b.d': 3
+      })
+    })
+    test('should flatten the object with dashes as separators', () => {
+      expect(
+        Helpers.flattenObject({ a: 1, b: { c: 2, d: 3 } }, '-')
+      ).toMatchObject({
+        a: 1,
+        'b-c': 2,
+        'b-d': 3
+      })
     })
   })
 })

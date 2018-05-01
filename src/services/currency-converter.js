@@ -1,15 +1,12 @@
-import { getJSON, objectToParams } from './helpers'
+import { getJSON, flattenObject } from './helpers'
 
 export default function CurrencyConverter(options) {
   /* istanbul ignore next */
-  const mergeQueryString = (querystring = '', tags) => {
+  const mergeTags = (string = '', tags) => {
     for (const tag in tags) {
-      querystring = querystring.replace(
-        encodeURIComponent(`{{${tag}}}`),
-        encodeURIComponent(tags[tag])
-      )
+      string = string.replace(`{{${tag}}}`, tags[tag])
     }
-    return querystring
+    return string
   }
 
   return {
@@ -21,15 +18,11 @@ export default function CurrencyConverter(options) {
      * @ignore
      */
     getExchangeRate(from, to) {
-      return getJSON(
-        mergeQueryString(
-          options.basePath + objectToParams(options.queryString),
-          { from, to }
-        ),
-        {
-          headers: options.headers
-        }
-      ).then(data => data[options.ratesRoot][to])
+      return getJSON(mergeTags(options.endpoint, { from, to }), {
+        headers: options.headers
+      }).then(
+        data => flattenObject(data)[mergeTags(options.JSONPath, { from, to })]
+      )
     }
   }
 }

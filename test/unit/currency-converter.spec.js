@@ -1,15 +1,15 @@
 import CurrencyConverter from '../../src/services/currency-converter'
 import { getJSON } from '../../src/services/helpers'
 
-jest.mock('../../src/services/helpers')
+jest.mock('../../src/services/helpers', () =>
+  Object.assign(require.requireActual('../../src/services/helpers'), {
+    getJSON: jest.fn()
+  })
+)
 
 const options = {
-  basePath: 'https://exchangerates.api/latest',
-  queryString: {
-    base: '{{from}}',
-    alphabetical: true
-  },
-  ratesRoot: 'rates',
+  endpoint: 'https://exchangerates.api/latest?base={{from}}',
+  JSONPath: 'rates.{{to}}',
   headers: {
     'user-key': 'xxxxxxxxx'
   },

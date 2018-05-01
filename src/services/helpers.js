@@ -88,7 +88,7 @@ export function isHalf(number) {
  * @ignore
  *
  * @param  {String} url - The resource to fetch.
- * @param  {Object} options.headers - The headers to pass.
+ * @param  {Object} [options.headers] - The headers to pass.
  *
  * @throws {Error} If `request.status` is lesser than 200 or greater or equal to 400.
  * @throws {Error} If network fails.
@@ -131,27 +131,6 @@ export function setXHRHeaders(xhr, headers = {}) {
 }
 
 /**
- * Returns an object stringified into a query string.
- * @ignore
- *
- * @param {Object} object - The object to transform.
- *
- * @return {String}
- */
-export function objectToParams(object = {}) {
-  return Object.keys(object).reduce((string, key, i) => {
-    key = encodeURIComponent(key)
-    return [
-      string,
-      i === 0 ? '?' : '&',
-      key,
-      '=',
-      encodeURIComponent(object[key])
-    ].join('')
-  }, '')
-}
-
-/**
  * Returns whether a value is undefined.
  * @ignore
  *
@@ -161,4 +140,28 @@ export function objectToParams(object = {}) {
  */
 export function isUndefined(value) {
   return typeof value === 'undefined'
+}
+
+/**
+ * Returns an object flattened to one level deep.
+ * @ignore
+ *
+ * @param {Object} object - The object to flatten.
+ * @param {String} separator - The separator to use between flattened nodes.
+ *
+ * @return {Object}
+ */
+export function flattenObject(object, separator = '.') {
+  const finalObject = {}
+  Object.entries(object).forEach(item => {
+    if (typeof item[1] === 'object') {
+      const flatObject = flattenObject(item[1])
+      Object.entries(flatObject).forEach(node => {
+        finalObject[item[0] + separator + node[0]] = node[1]
+      })
+    } else {
+      finalObject[item[0]] = item[1]
+    }
+  })
+  return finalObject
 }

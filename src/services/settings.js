@@ -28,9 +28,8 @@ export const Defaults = {
  * @property {String}  globalFormat - The global format for new Dinero objects (see {@link module:Dinero~toFormat toFormat} for format).
  * @property {String}  globalRoundingMode - The global rounding mode for new Dinero objects (see {@link module:Dinero~multiply multiply} or {@link module:Dinero~divide divide} for format).
  * @property {String}  globalFormatRoundingMode - The global rounding mode to format new Dinero objects (see {@link module:Dinero~toFormat toFormat} or {@link module:Dinero~toRoundedUnit toRoundedUnit} for format).
- * @property {String}  globalExchangeRatesApi.basePath - The global exchange rates API base path for new Dinero objects (see {@link module:Dinero~convert convert} for format).
- * @property {Object}  globalExchangeRatesApi.queryString - The global exchange rates API query parameters for new Dinero objects (see {@link module:Dinero~convert convert} for format).
- * @property {String}  globalExchangeRatesApi.ratesRoot - The global exchange rates API rates root for new Dinero objects (see {@link module:Dinero~convert convert} for format).
+ * @property {String}  globalExchangeRatesApi.endpoint - The global exchange rates API endpoint for new Dinero objects (see {@link module:Dinero~convert convert} for format).
+ * @property {String}  globalExchangeRatesApi.JSONPath - The global exchange rates API JSON path for new Dinero objects (see {@link module:Dinero~convert convert} for format).
  * @property {Object}  globalExchangeRatesApi.headers - The global exchange rates API headers for new Dinero objects (see {@link module:Dinero~convert convert} for format).
  *
  * @example
@@ -39,12 +38,8 @@ export const Defaults = {
  * @example
  * // Will set global exchange rates API parameters for all Dinero objects.
  * Dinero.globalExchangeRatesApi = {
- *  basePath: 'https://exchangerates.api/latest',
- *  queryString: {
- *    base: '{{from}}',
- *    alphabetical: true
- *  },
- *  ratesRoot: 'rates',
+ *  endpoint: 'https://exchangerates.api/latest?base={{from}}',
+ *  JSONPath: 'data.rates.{{to}}',
  *  headers: {
  *    'user-key': 'xxxxxxxxx'
  *  }
@@ -58,9 +53,8 @@ export const Globals = {
   globalRoundingMode: 'HALF_EVEN',
   globalFormatRoundingMode: 'HALF_AWAY_FROM_ZERO',
   globalExchangeRatesApi: {
-    basePath: '',
-    queryString: {},
-    ratesRoot: '',
-    headers: {}
+    endpoint: undefined,
+    headers: undefined,
+    JSONPath: undefined
   }
 }
