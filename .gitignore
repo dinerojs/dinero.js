@@ -4,3 +4,4 @@ build
 coverage
 npm-shrinkwrap.json
 package-lock.json
+yarn-error.log
