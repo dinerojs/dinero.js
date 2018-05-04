@@ -6,6 +6,7 @@
  *
  * @property {Number} defaultAmount - The default amount for new Dinero objects (see {@link module:Dinero Dinero} for format).
  * @property {String} defaultCurrency - The default currency for new Dinero objects (see {@link module:Dinero Dinero} for format).
+ * @property {Number} defaultPrecision - The default precision for new Dinero objects (see {@link module:Dinero Dinero} for format).
  *
  * @example
  * // Will set currency to 'EUR' for all Dinero objects.
@@ -15,7 +16,8 @@
  */
 export const Defaults = {
   defaultAmount: 0,
-  defaultCurrency: 'USD'
+  defaultCurrency: 'USD',
+  defaultPrecision: 2
 }
 
 /**

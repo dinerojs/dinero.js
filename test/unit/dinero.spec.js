@@ -4,12 +4,19 @@ describe('Dinero', () => {
   describe('instantiation', () => {
     test('should return a new Dinero object when arguments are valid', () => {
       expect(Dinero({ amount: 500 })).toBeTruthy()
+      expect(Dinero({ precision: 2 })).toBeTruthy()
     })
     test('should throw when amount is a float', () => {
       expect(() => Dinero({ amount: 0.1 })).toThrow()
     })
     test('should throw when amount is a string', () => {
       expect(() => Dinero({ amount: '100' })).toThrow()
+    })
+    test('should throw when precision is a float', () => {
+      expect(() => Dinero({ precision: 0.5 })).toThrow()
+    })
+    test('should throw when precision is a string', () => {
+      expect(() => Dinero({ precision: '3' })).toThrow()
     })
   })
   describe('#getAmount', () => {
@@ -77,6 +84,30 @@ describe('Dinero', () => {
       ).toBe('ja-JP')
     })
   })
+  describe('#getPrecision', () => {
+    test('should return the right precision as a number', () => {
+      expect(Dinero({ precision: 3 }).getPrecision()).toBe(3)
+    })
+    test('should return the default precision as a number when no precision is specified', () => {
+      expect(Dinero().getPrecision()).toBe(2)
+    })
+  })
+  describe('#convertPrecision', () => {
+    test('should return a new Dinero object with a new precision and a converted amount', () => {
+      expect(
+        Dinero({ amount: 500, precision: 2 })
+          .convertPrecision(4)
+          .toObject()
+      ).toMatchObject({ amount: 50000, precision: 4 })
+    })
+    test('should throw when new precision is invalid', () => {
+      expect(() =>
+        Dinero({ amount: 500, precision: 2 })
+          .convertPrecision(2.5)
+          .toObject()
+      ).toThrow()
+    })
+  })
   describe('#add', () => {
     test('should return a new Dinero object with same amount plus the amount of the other', () => {
       expect(
@@ -91,6 +122,13 @@ describe('Dinero', () => {
           Dinero({ amount: 600, currency: 'USD' })
         )
       ).toThrow()
+    })
+    test('should convert before adding when precisions are different', () => {
+      expect(
+        Dinero({ amount: 400 })
+          .add(Dinero({ amount: 104545, precision: 4 }))
+          .toObject()
+      ).toMatchObject({ amount: 144545, precision: 4 })
     })
   })
   describe('#subtract', () => {
@@ -107,6 +145,13 @@ describe('Dinero', () => {
           Dinero({ amount: 200, currency: 'USD' })
         )
       ).toThrow()
+    })
+    test('should convert before subtracting when precisions are different', () => {
+      expect(
+        Dinero({ amount: 104545, precision: 4 })
+          .subtract(Dinero({ amount: 400 }))
+          .toObject()
+      ).toMatchObject({ amount: 64545, precision: 4 })
     })
   })
   describe('#multiply', () => {
@@ -227,6 +272,20 @@ describe('Dinero', () => {
         )
       ).toBe(false)
     })
+    test('should return true when both amounts are equal once converted', () => {
+      expect(
+        Dinero({ amount: 1000, currency: 'EUR', precision: 2 }).equalsTo(
+          Dinero({ amount: 10000, currency: 'EUR', precision: 3 })
+        )
+      ).toBe(true)
+    })
+    test('should return false when both amounts are not equal once converted', () => {
+      expect(
+        Dinero({ amount: 10000, currency: 'EUR', precision: 2 }).equalsTo(
+          Dinero({ amount: 10000, currency: 'EUR', precision: 3 })
+        )
+      ).toBe(false)
+    })
   })
   describe('#lessThan', () => {
     test('should return true when amount is less than other amount', () => {
@@ -246,6 +305,16 @@ describe('Dinero', () => {
         )
       ).toThrow()
     })
+    test('should return true when amount is less than other amount once normalized', () => {
+      expect(
+        Dinero({ amount: 5000, precision: 3 }).lessThan(Dinero({ amount: 800 }))
+      ).toBe(true)
+    })
+    test('should return false when amount is greater than other amount once normalized', () => {
+      expect(
+        Dinero({ amount: 800 }).lessThan(Dinero({ amount: 5000, precision: 3 }))
+      ).toBe(false)
+    })
   })
   describe('#lessThanOrEqual', () => {
     test('should return true when amount is less than other amount', () => {
@@ -258,7 +327,7 @@ describe('Dinero', () => {
         Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 500 }))
       ).toBe(true)
     })
-    test('should return true when amount is greater than other amount', () => {
+    test('should return false when amount is greater than other amount', () => {
       expect(
         Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 300 }))
       ).toBe(false)
@@ -269,6 +338,27 @@ describe('Dinero', () => {
           Dinero({ amount: 800, currency: 'USD' })
         )
       ).toThrow()
+    })
+    test('should return true when amount is less than other amount once normalized', () => {
+      expect(
+        Dinero({ amount: 5000, precision: 3 }).lessThanOrEqual(
+          Dinero({ amount: 800 })
+        )
+      ).toBe(true)
+    })
+    test('should return true when amount is equal to other amount once normalized', () => {
+      expect(
+        Dinero({ amount: 5000, precision: 3 }).lessThanOrEqual(
+          Dinero({ amount: 500 })
+        )
+      ).toBe(true)
+    })
+    test('should return false when amount is greater than other amount once normalized', () => {
+      expect(
+        Dinero({ amount: 800 }).lessThanOrEqual(
+          Dinero({ amount: 5000, precision: 3 })
+        )
+      ).toBe(false)
     })
   })
   describe('#greaterThan', () => {
@@ -288,6 +378,20 @@ describe('Dinero', () => {
           Dinero({ amount: 800, currency: 'USD' })
         )
       ).toThrow()
+    })
+    test('should return true when amount is greater than other amount once normalized', () => {
+      expect(
+        Dinero({ amount: 800 }).greaterThan(
+          Dinero({ amount: 5000, precision: 3 })
+        )
+      ).toBe(true)
+    })
+    test('should return false when amount is less than other amount once normalized', () => {
+      expect(
+        Dinero({ amount: 5000, precision: 3 }).greaterThan(
+          Dinero({ amount: 800 })
+        )
+      ).toBe(false)
     })
   })
   describe('#greaterThanOrEqual', () => {
@@ -312,6 +416,27 @@ describe('Dinero', () => {
           Dinero({ amount: 800, currency: 'USD' })
         )
       ).toThrow()
+    })
+    test('should return true when amount is greater than other amount once normalized', () => {
+      expect(
+        Dinero({ amount: 800 }).greaterThanOrEqual(
+          Dinero({ amount: 5000, precision: 3 })
+        )
+      ).toBe(true)
+    })
+    test('should return true when amount is equal to other amount once normalized', () => {
+      expect(
+        Dinero({ amount: 500 }).greaterThanOrEqual(
+          Dinero({ amount: 5000, precision: 3 })
+        )
+      ).toBe(true)
+    })
+    test('should return false when amount is less than other amount once normalized', () => {
+      expect(
+        Dinero({ amount: 5000, precision: 3 }).greaterThanOrEqual(
+          Dinero({ amount: 800 })
+        )
+      ).toBe(false)
     })
   })
   describe('#isZero', () => {
@@ -383,6 +508,20 @@ describe('Dinero', () => {
         )
       ).toBe(false)
     })
+    test('should return true when both amounts are equal once converted', () => {
+      expect(
+        Dinero({ amount: 1000, currency: 'EUR', precision: 2 }).hasSameAmount(
+          Dinero({ amount: 10000, precision: 3 })
+        )
+      ).toBe(true)
+    })
+    test('should return false when both amounts are not equal once converted', () => {
+      expect(
+        Dinero({ amount: 10000, currency: 'EUR', precision: 2 }).hasSameAmount(
+          Dinero({ amount: 10000, precision: 3 })
+        )
+      ).toBe(false)
+    })
   })
   describe('#toFormat', () => {
     test('should return the properly formatted amount (default)', () => {
@@ -451,6 +590,9 @@ describe('Dinero', () => {
     test('should return the amount divided by 100', () => {
       expect(Dinero({ amount: 1050 }).toUnit()).toBe(10.5)
     })
+    test('should return the amount divided by 10 to the power of precision', () => {
+      expect(Dinero({ amount: 10545, precision: 3 }).toUnit()).toBe(10.545)
+    })
   })
   describe('#toRoundedUnit', () => {
     test('should return the amount divided by 100, rounded to one fraction digit', () => {
@@ -468,10 +610,25 @@ describe('Dinero', () => {
   })
   describe('#toObject', () => {
     test('should return an object literal with the right data', () => {
-      expect(Dinero({ amount: 500, currency: 'EUR' }).toObject()).toEqual({
+      expect(
+        Dinero({ amount: 500, currency: 'EUR', precision: 2 }).toObject()
+      ).toEqual({
         amount: 500,
-        currency: 'EUR'
+        currency: 'EUR',
+        precision: 2
       })
+    })
+  })
+  describe('#normalizePrecision', () => {
+    test('should return an array of Dinero objects with normalized precision and converted amount', () => {
+      const normalized = Dinero.normalizePrecision([
+        Dinero({ amount: 100, precision: 2 }),
+        Dinero({ amount: 1000, precision: 3 })
+      ])
+      expect(normalized[0].getAmount() && normalized[1].getAmount()).toBe(1000)
+      expect(normalized[0].getPrecision() && normalized[1].getPrecision()).toBe(
+        3
+      )
     })
   })
 })
