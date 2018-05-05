@@ -13,7 +13,7 @@ Dinero.js is a library for working with monetary values in JavaScript.
 
 ## Download/install
 
-Dinero.js provides different builds for different environments.
+Dinero.js provides builds for different environments. It also comes with polyfilled versions for older browsers.
 
 The recommended way of install is via [npm][npm] or [Yarn][yarn]:
 
@@ -44,7 +44,7 @@ You can use an alias if you wish:
 var Money = Dinero
 ```
 
-Any browser that supports the [Internationalization API][mdn:intl] is compatible with Dinero.js. This means [most browsers][caniuse:intl], and Internet Explorer 11.
+Any browser that supports the [Internationalization API][mdn:intl] is compatible with Dinero.js. This means [most browsers][caniuse:intl], and Internet Explorer 11 (this one requires the polyfilled version).
 
 ### CommonJS (Node)
 
