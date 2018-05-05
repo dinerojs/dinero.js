@@ -168,7 +168,7 @@ Dinero({ amount: 10545, precision: 3 })
 Dinero({ amount: 1, currency: 'JPY', precision: 0 })
 ```
 
-Of course, if you're using the same currency more than once, it might be worth setting a default precision.
+If you're using the same currency more than once, it might be worth setting a default precision.
 
 ```js
 // The Iraqi dinar has up to 3 sub-units
