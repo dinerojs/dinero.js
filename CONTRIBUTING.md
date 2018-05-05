@@ -114,6 +114,10 @@ You can generate docs locally to make sure it displays properly, but don't commi
 $ npm run docs
 ```
 
+### Pull Requests
+
+Bug fixes must target `master`, new features must target `develop`. Thus, bug fixes are automatically deployed once merged. New merged features will remain on standby until `develop` is manually merged into `master`.
+
 Have fun!
 
 [dinero:issues]: https://github.com/sarahdayan/dinero.js/issues
