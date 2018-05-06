@@ -332,7 +332,7 @@ const Dinero = options => {
      *
      * * a **destination currency**: the currency in which you want to convert your Dinero object. You can specify it with `currency`.
      * * an **endpoint**: the API URL to query exchange rates, with parameters. You can specify it with `options.endpoint`.
-     * * a **JSON path**: the path to access the wanted rate in your API's JSON response. For example, with a response of:
+     * * a **property path**: the path to access the wanted rate in your API's JSON response. For example, with a response of:
      * ```json
      * {
      *     "data": {
@@ -342,10 +342,10 @@ const Dinero = options => {
      *     }
      * }
      * ```
-     * Then the JSON path is `'data.rate'`. You can specify it with `options.JSONPath`.
+     * Then the property path is `'data.rate'`. You can specify it with `options.propertyPath`.
      *
      * The base currency (the currency of your Dinero object) and the destination currency can be used as "merge tags" with the mustache syntax, respectively `{{from}}` and `{{to}}`.
-     * You can use these tags to refer to these values in `options.endpoint` and `options.JSONPath`.
+     * You can use these tags to refer to these values in `options.endpoint` and `options.propertyPath`.
      *
      * For example, if you need to specify the base currency as a query parameter, you can do the following:
      *
@@ -357,7 +357,7 @@ const Dinero = options => {
      *
      * @param  {String} currency - The destination currency, expressed as an {@link https://en.wikipedia.org/wiki/ISO_4217#Active_codes ISO 4217 currency code}.
      * @param  {String} options.endpoint - The API endpoint to retrieve exchange rates.
-     * @param  {String} options.JSONPath - The JSON path to the rate.
+     * @param  {String} options.propertyPath - The property path to the rate.
      * @param  {Object} [options.headers] - The HTTP headers to provide, if needed.
      * @param  {String} [options.roundingMode='HALF_EVEN'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
      *
@@ -374,7 +374,7 @@ const Dinero = options => {
      * Dinero({ amount: 500 })
      *   .convert('XBT', {
      *     endpoint: 'https://yourexchangerates.api/latest?base={{from}}',
-     *     JSONPath: 'data.rates.{{to}}',
+     *     propertyPath: 'data.rates.{{to}}',
      *     headers: {
      *       'user-key': 'xxxxxxxxx'
      *     },

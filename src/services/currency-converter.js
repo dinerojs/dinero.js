@@ -21,7 +21,8 @@ export default function CurrencyConverter(options) {
       return getJSON(mergeTags(options.endpoint, { from, to }), {
         headers: options.headers
       }).then(
-        data => flattenObject(data)[mergeTags(options.JSONPath, { from, to })]
+        data =>
+          flattenObject(data)[mergeTags(options.propertyPath, { from, to })]
       )
     }
   }
