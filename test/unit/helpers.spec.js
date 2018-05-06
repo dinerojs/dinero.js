@@ -1,5 +1,8 @@
 import * as Helpers from '../../src/services/helpers'
 
+let mockXHR = null
+let request = null
+
 describe('Helpers', () => {
   describe('#isNumeric', () => {
     test('should return true with an integer', () => {
@@ -94,6 +97,62 @@ describe('Helpers', () => {
     })
     test('should return false with a non-half number', () => {
       expect(Helpers.isHalf(2)).toBe(false)
+    })
+  })
+  describe('#getJSON', () => {
+    beforeEach(() => {
+      mockXHR = {
+        open: jest.fn(),
+        send: jest.fn(),
+        setRequestHeader: jest.fn(),
+        readyState: 4,
+        responseText: '',
+        status: 200,
+        statusText: ''
+      }
+      window.XMLHttpRequest = jest.fn(() => mockXHR)
+      request = Helpers.getJSON('http://my.api')
+    })
+    test('should return a resolved promise with a response text', async () => {
+      mockXHR.responseText = JSON.stringify({ a: 1, b: 2 })
+      mockXHR.onreadystatechange()
+      expect(await request).toMatchObject({ a: 1, b: 2 })
+    })
+    test('should return a rejected promise with a status text', () => {
+      mockXHR.status = 404
+      mockXHR.statusText = 'Failure'
+      mockXHR.onreadystatechange()
+      expect(request).rejects.toEqual(new Error('Failure'))
+    })
+    test('should return a rejected promise with an error', () => {
+      mockXHR.onerror()
+      expect(request).rejects.toEqual(new Error('Network error'))
+    })
+  })
+  describe('#isUndefined', () => {
+    test('should return true when the value is undefined', () => {
+      expect(Helpers.isUndefined(undefined)).toBe(true)
+    })
+    test('should return false when the value is defined', () => {
+      expect(Helpers.isUndefined('abc')).toBe(false)
+    })
+  })
+  describe('#flattenObject', () => {
+    test('should flatten the object with dots as separators', () => {
+      expect(Helpers.flattenObject({ a: 1, b: { c: 2, d: 3 } })).toMatchObject({
+        a: 1,
+        'b.c': 2,
+        'b.d': 3
+      })
+    })
+    test('should flatten the object with dashes as separators', () => {
+      expect(
+        Helpers.flattenObject({ a: 1, b: { c: 2, d: 3 } }, '-')
+      ).toMatchObject({
+        a: 1,
+        'b-c': 2,
+        'b-d': 3
+      })
     })
   })
 })

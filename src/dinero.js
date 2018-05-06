@@ -1,12 +1,14 @@
 import { Defaults, Globals } from './services/settings'
 import Format from './services/format'
 import Calculator from './services/calculator'
+import CurrencyConverter from './services/currency-converter'
 import {
   assert,
   assertPercentage,
   assertValidRatios,
   assertInteger
 } from './services/assert'
+import { isUndefined } from './services/helpers'
 
 const calculator = Calculator()
 
@@ -56,6 +58,11 @@ const Dinero = options => {
     globalRoundingMode,
     globalFormatRoundingMode
   } = Dinero
+
+  const globalExchangeRatesApi = Object.assign(
+    {},
+    Dinero.globalExchangeRatesApi
+  )
 
   /**
    * Uses ES5 function notation so `this` can be passed through call, apply and bind
@@ -308,6 +315,109 @@ const Dinero = options => {
       }
 
       return shares
+    },
+    /**
+     * Returns a Promise containing a new Dinero object converted to another currency.
+     *
+     * You must provide your own API to retrieve exchange rates. This method won't work if you don't set either {@link Globals global API parameters}, or local ones for your instance.
+     *
+     * Here are some exchange rates APIs you can use:
+     *
+     * * [Fixer](https://fixer.io)
+     * * [Open Exchange Rates](https://openexchangerates.org)
+     * * [Coinbase](https://api.coinbase.com/v2/exchange-rates)
+     * * More [foreign](https://github.com/toddmotto/public-apis#currency-exchange) and [crypto](https://github.com/toddmotto/public-apis#cryptocurrency) exchange rates APIs.
+     *
+     * You will need to specify at least:
+     *
+     * * a **destination currency**: the currency in which you want to convert your Dinero object. You can specify it with `currency`.
+     * * an **endpoint**: the API URL to query exchange rates, with parameters. You can specify it with `options.endpoint`.
+     * * a **property path**: the path to access the wanted rate in your API's JSON response. For example, with a response of:
+     * ```json
+     * {
+     *     "data": {
+     *       "base": "USD",
+     *       "destination": "EUR",
+     *       "rate": "0.827728919"
+     *     }
+     * }
+     * ```
+     * Then the property path is `'data.rate'`. You can specify it with `options.propertyPath`.
+     *
+     * The base currency (the currency of your Dinero object) and the destination currency can be used as "merge tags" with the mustache syntax, respectively `{{from}}` and `{{to}}`.
+     * You can use these tags to refer to these values in `options.endpoint` and `options.propertyPath`.
+     *
+     * For example, if you need to specify the base currency as a query parameter, you can do the following:
+     *
+     * ```js
+     * {
+     *   endpoint: 'https://yourexchangerates.api/latest?base={{from}}'
+     * }
+     * ```
+     *
+     * @param  {String} currency - The destination currency, expressed as an {@link https://en.wikipedia.org/wiki/ISO_4217#Active_codes ISO 4217 currency code}.
+     * @param  {String} options.endpoint - The API endpoint to retrieve exchange rates.
+     * @param  {String} options.propertyPath - The property path to the rate.
+     * @param  {Object} [options.headers] - The HTTP headers to provide, if needed.
+     * @param  {String} [options.roundingMode='HALF_EVEN'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
+     *
+     * @example
+     * // your global API parameters
+     * Dinero.globalExchangeRatesApi = { ... }
+     *
+     * // returns a Promise containing a Dinero object with the destination currency
+     * // and the initial amount converted to the new currency.
+     * Dinero({ amount: 500 }).convert('EUR')
+     * @example
+     * // returns a Promise containing a Dinero object,
+     * // with specific API parameters and rounding mode for this specific instance.
+     * Dinero({ amount: 500 })
+     *   .convert('XBT', {
+     *     endpoint: 'https://yourexchangerates.api/latest?base={{from}}',
+     *     propertyPath: 'data.rates.{{to}}',
+     *     headers: {
+     *       'user-key': 'xxxxxxxxx'
+     *     },
+     *     roundingMode: 'HALF_UP'
+     *   })
+     * @example
+     * // usage with Promise.prototype.then and Promise.prototype.catch
+     * Dinero({ amount: 500 })
+     *   .convert('EUR')
+     *   .then(dinero => {
+     *     dinero.getCurrency() // returns 'EUR'
+     *   })
+     *   .catch(err => {
+     *     // handle errors
+     *   })
+     * @example
+     * // usage with async/await
+     * (async () => {
+     *   const price = await Dinero({ amount: 500 }).convert('EUR')
+     *   price.getCurrency() // returns 'EUR'
+     * })()
+     *
+     * @return {Promise}
+     */
+    convert(currency, options) {
+      options = Object.assign({}, globalExchangeRatesApi, options)
+      return CurrencyConverter(options)
+        .getExchangeRate(this.getCurrency(), currency)
+        .then(rate => {
+          assert(
+            !isUndefined(rate),
+            new TypeError(
+              `No rate was found for the destination currency "${currency}".`
+            )
+          )
+          return create.call(this, {
+            amount: calculator.round(
+              calculator.multiply(this.getAmount(), parseFloat(rate)),
+              options.roundingMode
+            ),
+            currency
+          })
+        })
     },
     /**
      * Checks whether the value represented by this object equals to the other.
