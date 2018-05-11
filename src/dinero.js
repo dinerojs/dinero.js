@@ -1,4 +1,5 @@
 import { Defaults, Globals } from './services/settings'
+import Static from './services/static'
 import Format from './services/format'
 import Calculator from './services/calculator'
 import CurrencyConverter from './services/currency-converter'
@@ -16,41 +17,45 @@ const calculator = Calculator()
  * A Dinero object is an immutable data structure representing a specific monetary value.
  * It comes with methods for creating, parsing, manipulating, testing, transforming and formatting them.
  *
- * A Dinero object posesses:
+ * A Dinero object has:
  *
- * * An `amount`, expressed in cents.
+ * * An `amount`, expressed in minor currency units.
  * * A `currency`, expressed as an {@link https://en.wikipedia.org/wiki/ISO_4217#Active_codes ISO 4217 currency code}.
+ * * A `precision`, expressed as an integer, to represent the number of decimal places in the `amount`.
+ *   This is helpful when you want to represent fractional minor currency units (e.g.: $10.4545).
+ *   You can also use it to represent a currency with a different [exponent](https://en.wikipedia.org/wiki/ISO_4217#Treatment_of_minor_currency_units_.28the_.22exponent.22.29) than `2` (e.g.: Iraqi dinar with 1000 fils in 1 dinar (exponent of `3`), Japanese yen with no sub-units (exponent of `0`)).
  * * An optional `locale` property that affects how output strings are formatted.
  *
  * Here's an overview of the public API:
  *
- * * **Access:** {@link module:Dinero~getAmount getAmount}, {@link module:Dinero~getCurrency getCurrency} and {@link module:Dinero~getLocale getLocale}.
+ * * **Access:** {@link module:Dinero~getAmount getAmount}, {@link module:Dinero~getCurrency getCurrency}, {@link module:Dinero~getLocale getLocale} and {@link module:Dinero~getPrecision getPrecision}.
  * * **Manipulation:** {@link module:Dinero~add add}, {@link module:Dinero~subtract subtract}, {@link module:Dinero~multiply multiply}, {@link module:Dinero~divide divide}, {@link module:Dinero~percentage percentage} and {@link module:Dinero~allocate allocate}.
  * * **Testing:** {@link module:Dinero~equalsTo equalsTo}, {@link module:Dinero~lessThan lessThan}, {@link module:Dinero~lessThanOrEqual lessThanOrEqual}, {@link module:Dinero~greaterThan greaterThan}, {@link module:Dinero~greaterThanOrEqual greaterThanOrEqual}, {@link module:Dinero~isZero isZero}, {@link module:Dinero~isPositive isPositive}, {@link module:Dinero~isNegative isNegative}, {@link module:Dinero~hasCents hasCents}, {@link module:Dinero~hasSameCurrency hasSameCurrency} and {@link module:Dinero~hasSameAmount hasSameAmount}.
  * * **Configuration:** {@link module:Dinero~setLocale setLocale}.
- * * **Conversion & formatting:** {@link module:Dinero~toFormat toFormat}, {@link module:Dinero~toUnit toUnit}, {@link module:Dinero~toRoundedUnit toRoundedUnit} and {@link module:Dinero~toObject toObject}.
+ * * **Conversion & formatting:** {@link module:Dinero~toFormat toFormat}, {@link module:Dinero~toUnit toUnit}, {@link module:Dinero~toRoundedUnit toRoundedUnit}, {@link module:Dinero~toObject toObject}, {@link module:Dinero~convertPrecision convertPrecision} and {@link module:Dinero.normalizePrecision normalizePrecision}.
  *
  * @module Dinero
- * @param  {Number} [options.amount=0] - The amount in cents (as an integer).
+ * @param  {Number} [options.amount=0] - The amount in minor currency units (as an integer).
  * @param  {String} [options.currency='USD'] - An ISO 4217 currency code.
+ * @param  {String} [options.precision=2] - The number of decimal places to represent.
  *
- * @throws {TypeError} If `amount` or `Dinero.defaultAmount` is invalid.
+ * @throws {TypeError} If `amount` or `precision` is invalid.
  *
  * @return {Object}
  */
 const Dinero = options => {
-  const { amount, currency } = Object.assign(
+  const { amount, currency, precision } = Object.assign(
     {},
     {
       amount: Dinero.defaultAmount,
-      currency: Dinero.defaultCurrency
+      currency: Dinero.defaultCurrency,
+      precision: Dinero.defaultPrecision
     },
     options
   )
 
   assertInteger(amount)
-
-  const exponent = 2
+  assertInteger(precision)
 
   const {
     globalLocale,
@@ -71,11 +76,15 @@ const Dinero = options => {
   const create = function(options) {
     const obj = Object.assign(
       {},
-      Object.assign({}, { amount, currency }, options),
+      Object.assign({}, { amount, currency, precision }, options),
       Object.assign({}, { locale: this.locale }, options)
     )
     return Object.assign(
-      Dinero({ amount: obj.amount, currency: obj.currency }),
+      Dinero({
+        amount: obj.amount,
+        currency: obj.currency,
+        precision: obj.precision
+      }),
       {
         locale: obj.locale
       }
@@ -147,13 +156,53 @@ const Dinero = options => {
       return create.call(this, { locale: newLocale })
     },
     /**
+     * Returns the precision.
+     *
+     * @example
+     * // returns 3
+     * Dinero({ precision: 3 }).getPrecision()
+     *
+     * @return {Number}
+     */
+    getPrecision() {
+      return precision
+    },
+    /**
+     * Returns a new Dinero object with a new precision and a converted amount.
+     *
+     * @param {Number} newPrecision - The new precision.
+     *
+     * @example
+     * // Returns a Dinero object with precision 3 and amount 1000
+     * Dinero({ amount: 100, precision: 2 }).convertPrecision(3)
+     *
+     * @throws {TypeError} If `newPrecision` is invalid.
+     *
+     * @return {Dinero}
+     */
+    convertPrecision(newPrecision) {
+      assertInteger(newPrecision)
+      return create.call(this, {
+        amount: calculator.multiply(
+          this.getAmount(),
+          Math.pow(10, calculator.subtract(newPrecision, this.getPrecision()))
+        ),
+        precision: newPrecision
+      })
+    },
+    /**
      * Returns a new Dinero object that represents the sum of this and an other Dinero object.
+     *
+     * If Dinero objects have a different `precision`, they will be first converted to the highest.
      *
      * @param {Dinero} addend - The Dinero object to add.
      *
      * @example
      * // returns a Dinero object with amount 600
      * Dinero({ amount: 400 }).add(Dinero({ amount: 200 }))
+     * @example
+     * // returns a Dinero object with amount 144545 and precision 4
+     * Dinero({ amount: 400 }).add(Dinero({ amount: 104545, precision: 4 }))
      *
      * @throws {TypeError} If `addend` has a different currency.
      *
@@ -161,18 +210,25 @@ const Dinero = options => {
      */
     add(addend) {
       assertSameCurrency.call(this, addend)
+      const addends = Dinero.normalizePrecision([this, addend])
       return create.call(this, {
-        amount: calculator.add(this.getAmount(), addend.getAmount())
+        amount: calculator.add(addends[0].getAmount(), addends[1].getAmount()),
+        precision: addends[0].getPrecision()
       })
     },
     /**
      * Returns a new Dinero object that represents the difference of this and an other Dinero object.
+     *
+     * If Dinero objects have a different `precision`, they will be first converted to the highest.
      *
      * @param  {Dinero} subtrahend - The Dinero object to subtract.
      *
      * @example
      * // returns a Dinero object with amount 200
      * Dinero({ amount: 400 }).subtract(Dinero({ amount: 200 }))
+     * @example
+     * // returns a Dinero object with amount 64545 and precision 4
+     * Dinero({ amount: 104545, precision: 4 }).subtract(Dinero({ amount: 400 }))
      *
      * @throws {TypeError} If `subtrahend` has a different currency.
      *
@@ -180,14 +236,19 @@ const Dinero = options => {
      */
     subtract(subtrahend) {
       assertSameCurrency.call(this, subtrahend)
+      const subtrahends = Dinero.normalizePrecision([this, subtrahend])
       return create.call(this, {
-        amount: calculator.subtract(this.getAmount(), subtrahend.getAmount())
+        amount: calculator.subtract(
+          subtrahends[0].getAmount(),
+          subtrahends[1].getAmount()
+        ),
+        precision: subtrahends[0].getPrecision()
       })
     },
     /**
      * Returns a new Dinero object that represents the multiplied value by the given factor.
      *
-     * By default, fractional cents are rounded using the **half to even** rule ([banker's rounding](http://wiki.c2.com/?BankersRounding)).
+     * By default, fractional minor currency units are rounded using the **half to even** rule ([banker's rounding](http://wiki.c2.com/?BankersRounding)).
      *
      * Rounding *can* lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.
      * You can also specify a different `roundingMode` to better fit your needs.
@@ -218,7 +279,7 @@ const Dinero = options => {
     /**
      * Returns a new Dinero object that represents the divided value by the given factor.
      *
-     * By default, fractional cents are rounded using the **half to even** rule ([banker's rounding](http://wiki.c2.com/?BankersRounding)).
+     * By default, fractional minor currency units are rounded using the **half to even** rule ([banker's rounding](http://wiki.c2.com/?BankersRounding)).
      *
      * Rounding *can* lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent calculations for safer results.
      * You can also specify a different `roundingMode` to better fit your needs.
@@ -436,6 +497,12 @@ const Dinero = options => {
      * @example
      * // returns false
      * Dinero({ amount: 500, currency: 'USD' }).equalsTo(Dinero({ amount: 800, currency: 'EUR' }))
+     * @example
+     * // returns true
+     * Dinero({ amount: 1000, currency: 'EUR', precision: 2 }).equalsTo(Dinero({ amount: 10000, currency: 'EUR', precision: 3 }))
+     * @example
+     * // returns false
+     * Dinero({ amount: 10000, currency: 'EUR', precision: 2 }).equalsTo(Dinero({ amount: 10000, currency: 'EUR', precision: 3 }))
      *
      * @return {Boolean}
      */
@@ -453,6 +520,12 @@ const Dinero = options => {
      * @example
      * // returns false
      * Dinero({ amount: 800 }).lessThan(Dinero({ amount: 500 }))
+     * @example
+     * // returns true
+     * Dinero({ amount: 5000, precision: 3 }).lessThan(Dinero({ amount: 800 }))
+     * @example
+     * // returns false
+     * Dinero({ amount: 800 }).lessThan(Dinero({ amount: 5000, precision: 3 }))
      *
      * @throws {TypeError} If `comparator` has a different currency.
      *
@@ -460,7 +533,8 @@ const Dinero = options => {
      */
     lessThan(comparator) {
       assertSameCurrency.call(this, comparator)
-      return this.getAmount() < comparator.getAmount()
+      const comparators = Dinero.normalizePrecision([this, comparator])
+      return comparators[0].getAmount() < comparators[1].getAmount()
     },
     /**
      * Checks whether the value represented by this object is less than or equal to the other.
@@ -476,6 +550,15 @@ const Dinero = options => {
      * @example
      * // returns false
      * Dinero({ amount: 500 }).lessThanOrEqual(Dinero({ amount: 300 }))
+     * @example
+     * // returns true
+     * Dinero({ amount: 5000, precision: 3 }).lessThanOrEqual(Dinero({ amount: 800 }))
+     * @example
+     * // returns true
+     * Dinero({ amount: 5000, precision: 3 }).lessThanOrEqual(Dinero({ amount: 500 }))
+     * @example
+     * // returns false
+     * Dinero({ amount: 800 }).lessThanOrEqual(Dinero({ amount: 5000, precision: 3 }))
      *
      * @throws {TypeError} If `comparator` has a different currency.
      *
@@ -483,7 +566,8 @@ const Dinero = options => {
      */
     lessThanOrEqual(comparator) {
       assertSameCurrency.call(this, comparator)
-      return this.getAmount() <= comparator.getAmount()
+      const comparators = Dinero.normalizePrecision([this, comparator])
+      return comparators[0].getAmount() <= comparators[1].getAmount()
     },
     /**
      * Checks whether the value represented by this object is greater than the other.
@@ -496,6 +580,12 @@ const Dinero = options => {
      * @example
      * // returns true
      * Dinero({ amount: 800 }).greaterThan(Dinero({ amount: 500 }))
+     * @example
+     * // returns true
+     * Dinero({ amount: 800 }).greaterThan(Dinero({ amount: 5000, precision: 3 }))
+     * @example
+     * // returns false
+     * Dinero({ amount: 5000, precision: 3 }).greaterThan(Dinero({ amount: 800 }))
      *
      * @throws {TypeError} If `comparator` has a different currency.
      *
@@ -503,7 +593,8 @@ const Dinero = options => {
      */
     greaterThan(comparator) {
       assertSameCurrency.call(this, comparator)
-      return this.getAmount() > comparator.getAmount()
+      const comparators = Dinero.normalizePrecision([this, comparator])
+      return comparators[0].getAmount() > comparators[1].getAmount()
     },
     /**
      * Checks whether the value represented by this object is greater than or equal to the other.
@@ -519,6 +610,15 @@ const Dinero = options => {
      * @example
      * // returns false
      * Dinero({ amount: 500 }).greaterThanOrEqual(Dinero({ amount: 800 }))
+     * @example
+     * // returns true
+     * Dinero({ amount: 800 }).greaterThanOrEqual(Dinero({ amount: 5000, precision: 3 }))
+     * @example
+     * // returns true
+     * Dinero({ amount: 500 }).greaterThanOrEqual(Dinero({ amount: 5000, precision: 3 }))
+     * @example
+     * // returns false
+     * Dinero({ amount: 5000, precision: 3 }).greaterThanOrEqual(Dinero({ amount: 800 }))
      *
      * @throws {TypeError} If `comparator` has a different currency.
      *
@@ -526,7 +626,8 @@ const Dinero = options => {
      */
     greaterThanOrEqual(comparator) {
       assertSameCurrency.call(this, comparator)
-      return this.getAmount() >= comparator.getAmount()
+      const comparators = Dinero.normalizePrecision([this, comparator])
+      return comparators[0].getAmount() >= comparators[1].getAmount()
     },
     /**
      * Checks if the value represented by this object is zero.
@@ -580,7 +681,7 @@ const Dinero = options => {
       return this.getAmount() < 0
     },
     /**
-     * Checks if this has cents.
+     * Checks if this has minor currency units.
      *
      * @example
      * // returns false
@@ -592,7 +693,7 @@ const Dinero = options => {
      * @return {Boolean}
      */
     hasCents() {
-      return calculator.modulo(this.getAmount(), Math.pow(10, exponent)) !== 0
+      return calculator.modulo(this.getAmount(), Math.pow(10, precision)) !== 0
     },
     /**
      * Checks whether the currency represented by this object equals to the other.
@@ -622,11 +723,18 @@ const Dinero = options => {
      * @example
      * // returns false
      * Dinero({ amount: 2000, currency: 'EUR' }).hasSameAmount(Dinero({ amount: 1000, currency: 'EUR' }))
+     * @example
+     * // returns true
+     * Dinero({ amount: 1000, currency: 'EUR', precision: 2 }).hasSameAmount(Dinero({ amount: 10000, precision: 3 }))
+     * @example
+     * // returns false
+     * Dinero({ amount: 10000, currency: 'EUR', precision: 2 }).hasSameAmount(Dinero({ amount: 10000, precision: 3 }))
      *
      * @return {Boolean}
      */
     hasSameAmount(comparator) {
-      return this.getAmount() === comparator.getAmount()
+      const comparators = Dinero.normalizePrecision([this, comparator])
+      return comparators[0].getAmount() === comparators[1].getAmount()
     },
     /**
      * Returns this object formatted as a string.
@@ -649,7 +757,7 @@ const Dinero = options => {
      * If you want to display the object in a custom way, either use {@link module:Dinero~getAmount getAmount}, {@link module:Dinero~toUnit toUnit} or {@link module:Dinero~toRoundedUnit toRoundedUnit} and manipulate the output string as you wish.
      *
      * {@link module:Dinero~toFormat toFormat} is syntactic sugar over JavaScript's native `Number.prototype.toLocaleString` method, which you can use directly:
-     * `Dinero().toRoundedUnit(precision).toLocaleString(locale, options)`.
+     * `Dinero().toRoundedUnit(digits, roundingMode).toLocaleString(locale, options)`.
      *
      * By default, amounts are rounded using the **half away from zero** rule ([commercial rounding](https://en.wikipedia.org/wiki/Rounding#Round_half_away_from_zero)).
      * You can also specify a different `roundingMode` to better fit your needs.
@@ -695,11 +803,14 @@ const Dinero = options => {
      * @example
      * // returns 10.5
      * Dinero({ amount: 1050 }).toUnit()
+     * @example
+     * // returns 10.545
+     * Dinero({ amount: 10545, precision: 3 }).toUnit()
      *
      * @return {Number}
      */
     toUnit() {
-      return calculator.divide(this.getAmount(), Math.pow(10, exponent))
+      return calculator.divide(this.getAmount(), Math.pow(10, precision))
     },
     /**
      * Returns the amount represented by this object in rounded units.
@@ -714,17 +825,17 @@ const Dinero = options => {
      * // returns 10
      * Dinero({ amount: 1050 }).toRoundedUnit(0, 'HALF_EVEN')
      *
-     * @param  {Number} precision - The number of fraction digits to round to.
+     * @param  {Number} digits - The number of fraction digits to round to.
      * @param  {String} [roundingMode='HALF_AWAY_FROM_ZERO'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
      *
      * @return {Number}
      */
-    toRoundedUnit(precision, roundingMode = globalFormatRoundingMode) {
-      const factor = Math.pow(10, precision)
+    toRoundedUnit(digits, roundingMode = globalFormatRoundingMode) {
+      const factor = Math.pow(10, digits)
       return calculator.divide(
         calculator.round(
           calculator.multiply(
-            calculator.divide(this.getAmount(), Math.pow(10, exponent)),
+            calculator.divide(this.getAmount(), Math.pow(10, precision)),
             factor
           ),
           roundingMode
@@ -736,18 +847,19 @@ const Dinero = options => {
      * Return the object's data as an object literal.
      *
      * @example
-     * // returns { amount: 500, currency: 'EUR' }
-     * Dinero({ amount: 500, currency: 'EUR' }).toObject()
+     * // returns { amount: 500, currency: 'EUR', precision: 2 }
+     * Dinero({ amount: 500, currency: 'EUR', precision: 2 }).toObject()
      *
      * @return {Object}
      */
     toObject() {
       return {
         amount,
-        currency
+        currency,
+        precision
       }
     }
   }
 }
 
-export default Object.assign(Dinero, Defaults, Globals)
+export default Object.assign(Dinero, Defaults, Globals, Static)

@@ -74,7 +74,7 @@ Dinero.js makes it easy to create, calculate and format monetary values in JavaS
 
 **Note:** The library is globally available in the docs for you to be able to test it right in the browser console.
 
-To get started, you need to create a new Dinero instance. Amounts are specified in **cents**. You can also specify an [ISO 4217 currency code][wiki:iso-4217] (default is `USD`).
+To get started, you need to create a new Dinero instance. Amounts are specified in **minor currency units** (e.g.: "cents" for the dollar). You can also specify an [ISO 4217 currency code][wiki:iso-4217] (default is `USD`).
 
 This represents €50:
 
@@ -155,6 +155,28 @@ Dinero({ amount: 500 })
   .setLocale('fr-FR')
   .add(Dinero({ amount: 500 }))
   .toFormat('$0,0')
+```
+
+By default, new Dinero objects represent monetary values with two decimal places. If you want to represent more, or if you're using a currency with a different [exponent](https://en.wikipedia.org/wiki/ISO_4217#Treatment_of_minor_currency_units_(the_%22exponent%22)), you can specify a precision.
+
+```js
+// represents $10.4545
+Dinero({ amount: 10545, precision: 3 })
+
+// The Japanese yen doesn't have sub-units
+// this represents ¥1
+Dinero({ amount: 1, currency: 'JPY', precision: 0 })
+```
+
+If you're using the same currency more than once, it might be worth setting a default precision.
+
+```js
+// The Iraqi dinar has up to 3 sub-units
+Dinero.defaultCurrency = 'IQD'
+Dinero.defaultPrecision = 3
+
+// represents IQD1
+Dinero({ amount: 1000 })
 ```
 
 This is only a preview of what you can do. Dinero.js has extensive documentation with examples for all of its methods.
