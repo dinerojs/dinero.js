@@ -382,12 +382,12 @@ const Dinero = options => {
      *
      * You must provide your own API to retrieve exchange rates. This method won't work if you don't set either {@link Globals global API parameters}, or local ones for your instance.
      *
-     * Here are some exchange rates APIs you can use:
+     * Here are some exchange rate APIs you can use:
      *
      * * [Fixer](https://fixer.io)
      * * [Open Exchange Rates](https://openexchangerates.org)
      * * [Coinbase](https://api.coinbase.com/v2/exchange-rates)
-     * * More [foreign](https://github.com/toddmotto/public-apis#currency-exchange) and [crypto](https://github.com/toddmotto/public-apis#cryptocurrency) exchange rates APIs.
+     * * More [foreign](https://github.com/toddmotto/public-apis#currency-exchange) and [crypto](https://github.com/toddmotto/public-apis#cryptocurrency) exchange rate APIs.
      *
      * You will need to specify at least:
      *
