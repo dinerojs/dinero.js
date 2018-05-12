@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      Global - Documentation
+      services/static.js - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -95,609 +97,58 @@
     
     
       <h1 class="page-title">
-        Global
+        services/static.js
       </h1>
     
 
     
+      
 
 <section>
-  <header>
-    
-      <h2>
-        
-        
-        
-      </h2>
-
-      
-    
-  </header>
-
   <article>
-    <div class="container-overview">
-      
-        
-
-        
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-        
-      
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-
-<h4 class="name" id="Defaults">
-  <span class="type-signature">(constant) </span>Defaults<span class="type-signature"> :Object</span>
-</h4>
-
-
-
-
-  <div class="description">
-    <p>Default values for all Dinero objects.</p>
-<p>You can override default values for all subsequent Dinero objects by changing them directly on the global <code>Dinero</code> object.
-Existing instances won't be affected.</p>
-  </div>
-
-
-
-
-  <h5 class="subsection-title">Properties:</h5>
-
-  
-
-<table class="props">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-
-    <tr>
-      
-        <td class="name"><code>defaultAmount</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      Number
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The default amount for new Dinero objects (see <a href="module-Dinero.html">Dinero</a> for format).</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>defaultCurrency</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      String
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The default currency for new Dinero objects (see <a href="module-Dinero.html">Dinero</a> for format).</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>defaultPrecision</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      Number
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The default precision for new Dinero objects (see <a href="module-Dinero.html">Dinero</a> for format).</p>
-          </td>
-    </tr>
-
-  
-  </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="services_settings.js.html">services/settings.js</a>, <a href="services_settings.js.html#line17">line 17</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-  <h5>Example</h5>
-  
-
-  <pre class="prettyprint"><code>// Will set currency to 'EUR' for all Dinero objects.
-Dinero.defaultCurrency = 'EUR'</code></pre>
-
-
-
-
-          
-        
-            
-
-<h4 class="name" id="Globals">
-  <span class="type-signature">(constant) </span>Globals<span class="type-signature"> :Object</span>
-</h4>
-
-
-
-
-  <div class="description">
-    <p>Global settings for all Dinero objects.</p>
-<p>You can override global values for all subsequent Dinero objects by changing them directly on the global <code>Dinero</code> object.
-Existing instances won't be affected.</p>
-  </div>
-
-
-
-
-  <h5 class="subsection-title">Properties:</h5>
-
-  
-
-<table class="props">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-
-    <tr>
-      
-        <td class="name"><code>globalLocale</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      String
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The global locale for new Dinero objects (see <a href="module-Dinero.html#~setLocale">setLocale</a> for format).</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>globalFormat</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      String
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The global format for new Dinero objects (see <a href="module-Dinero.html#~toFormat">toFormat</a> for format).</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>globalRoundingMode</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      String
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The global rounding mode for new Dinero objects (see <a href="module-Dinero.html#~multiply">multiply</a> or <a href="module-Dinero.html#~divide">divide</a> for format).</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>globalFormatRoundingMode</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      String
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The global rounding mode to format new Dinero objects (see <a href="module-Dinero.html#~toFormat">toFormat</a> or <a href="module-Dinero.html#~toRoundedUnit">toRoundedUnit</a> for format).</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>globalExchangeRatesApi.endpoint</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      String
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The global exchange rates API endpoint for new Dinero objects (see <a href="module-Dinero.html#~convert">convert</a> for format).</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>globalExchangeRatesApi.propertyPath</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      String
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The global exchange rates API property path for new Dinero objects (see <a href="module-Dinero.html#~convert">convert</a> for format).</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>globalExchangeRatesApi.headers</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      Object
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The global exchange rates API headers for new Dinero objects (see <a href="module-Dinero.html#~convert">convert</a> for format).</p>
-          </td>
-    </tr>
-
-  
-  </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="services_settings.js.html">services/settings.js</a>, <a href="services_settings.js.html#line52">line 52</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-  <h5>Examples</h5>
-  
-
-  <pre class="prettyprint"><code>// Will set locale to 'fr-FR' for all Dinero objects.
-Dinero.globalLocale = 'fr-FR'</code></pre>
-
-
-  <pre class="prettyprint"><code>// Will set global exchange rates API parameters for all Dinero objects.
-Dinero.globalExchangeRatesApi = {
- endpoint: 'https://yourexchangerates.api/latest?base={{from}}',
- propertyPath: 'data.rates.{{to}}',
- headers: {
-   'user-key': 'xxxxxxxxx'
- }
-}</code></pre>
-
-
-
-
-          
-        
-    
-
-    
-
-    
-
-    
+    <pre class="prettyprint source linenums"><code>/**
+ * Static methods for Dinero.
+ * @ignore
+ *
+ * @type {Object}
+ */
+export default {
+  /**
+   * Returns an array of Dinero objects, normalized to the same precision (the highest).
+   *
+   * @memberof module:Dinero
+   * @method
+   *
+   * @param {Dinero[]} objects - An array of Dinero objects
+   *
+   * @example
+   * // returns an array of Dinero objects
+   * // both with a precision of 3
+   * // and an amount of 1000
+   * Dinero.normalizePrecision([
+   *   Dinero({ amount: 100, precision: 2 }),
+   *   Dinero({ amount: 1000, precision: 3 })
+   * ])
+   *
+   * @return {Dinero[]}
+   */
+  normalizePrecision(objects) {
+    const highestPrecision = objects.reduce((a, b) =>
+      Math.max(a.getPrecision(), b.getPrecision())
+    )
+    return objects.map(
+      object =>
+        object.getPrecision() !== highestPrecision
+          ? object.convertPrecision(highestPrecision)
+          : object
+    )
+  }
+}
+</code></pre>
   </article>
 </section>
 
-
+    
 
 
   </div>
