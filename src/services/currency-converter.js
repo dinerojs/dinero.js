@@ -12,10 +12,12 @@ export default function CurrencyConverter(options) {
   return {
     /**
      * Returns the exchange rate.
+     * @ignore
+     *
      * @param  {String} from - The base currency.
      * @param  {String} to   - The destination currency.
+     *
      * @return {Promise}
-     * @ignore
      */
     getExchangeRate(from, to) {
       return getJSON(mergeTags(options.endpoint, { from, to }), {

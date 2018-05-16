@@ -11,8 +11,9 @@ export default function Format(format) {
   return {
     /**
      * Returns the matches.
-     * @return {Array}
      * @ignore
+     *
+     * @return {Array}
      */
     getMatches() {
       return matches !== null
@@ -21,8 +22,9 @@ export default function Format(format) {
     },
     /**
      * Returns the amount of fraction digits to display.
-     * @return {Number}
      * @ignore
+     *
+     * @return {Number}
      */
     getMinimumFractionDigits() {
       const decimalPosition = match => match === '.'
@@ -34,8 +36,9 @@ export default function Format(format) {
     },
     /**
      * Returns the currency display mode.
-     * @return {String}
      * @ignore
+     *
+     * @return {String}
      */
     getCurrencyDisplay() {
       const modes = {
@@ -51,8 +54,9 @@ export default function Format(format) {
     },
     /**
      * Returns the formatting style.
-     * @return {String}
      * @ignore
+     *
+     * @return {String}
      */
     getStyle() {
       return !isUndefined(this.getCurrencyDisplay(this.getMatches()))
@@ -61,8 +65,9 @@ export default function Format(format) {
     },
     /**
      * Returns whether grouping should be used or not.
-     * @return {Boolean}
      * @ignore
+     *
+     * @return {Boolean}
      */
     getUseGrouping() {
       return !isUndefined(this.getMatches().find(match => match === ','))
