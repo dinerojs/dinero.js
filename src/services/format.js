@@ -1,4 +1,5 @@
 import Calculator from './calculator'
+import { isUndefined } from './helpers'
 
 const calculator = Calculator()
 
@@ -15,7 +16,7 @@ export default function Format(format) {
      */
     getMatches() {
       return matches !== null
-        ? matches.slice(1).filter(match => typeof match !== 'undefined')
+        ? matches.slice(1).filter(match => !isUndefined(match))
         : []
     },
     /**
@@ -25,7 +26,7 @@ export default function Format(format) {
      */
     getMinimumFractionDigits() {
       const decimalPosition = match => match === '.'
-      return typeof this.getMatches().find(decimalPosition) !== 'undefined'
+      return !isUndefined(this.getMatches().find(decimalPosition))
         ? this.getMatches()[
             calculator.add(this.getMatches().findIndex(decimalPosition), 1)
           ].split('').length
@@ -54,7 +55,7 @@ export default function Format(format) {
      * @ignore
      */
     getStyle() {
-      return typeof this.getCurrencyDisplay(this.getMatches()) !== 'undefined'
+      return !isUndefined(this.getCurrencyDisplay(this.getMatches()))
         ? 'currency'
         : 'decimal'
     },
@@ -64,9 +65,7 @@ export default function Format(format) {
      * @ignore
      */
     getUseGrouping() {
-      return (
-        typeof this.getMatches().find(match => match === ',') !== 'undefined'
-      )
+      return !isUndefined(this.getMatches().find(match => match === ','))
     }
   }
 }
