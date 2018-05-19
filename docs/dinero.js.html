@@ -942,10 +942,7 @@ const Dinero = options => {
       const factor = Math.pow(10, digits)
       return calculator.divide(
         calculator.round(
-          calculator.multiply(
-            calculator.divide(this.getAmount(), Math.pow(10, precision)),
-            factor
-          ),
+          calculator.multiply(this.toUnit(), factor),
           roundingMode
         ),
         factor
