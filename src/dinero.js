@@ -30,7 +30,7 @@ const calculator = Calculator()
  *
  * * **Access:** {@link module:Dinero~getAmount getAmount}, {@link module:Dinero~getCurrency getCurrency}, {@link module:Dinero~getLocale getLocale} and {@link module:Dinero~getPrecision getPrecision}.
  * * **Manipulation:** {@link module:Dinero~add add}, {@link module:Dinero~subtract subtract}, {@link module:Dinero~multiply multiply}, {@link module:Dinero~divide divide}, {@link module:Dinero~percentage percentage}, {@link module:Dinero~allocate allocate} and {@link module:Dinero~convert convert}.
- * * **Testing:** {@link module:Dinero~equalsTo equalsTo}, {@link module:Dinero~lessThan lessThan}, {@link module:Dinero~lessThanOrEqual lessThanOrEqual}, {@link module:Dinero~greaterThan greaterThan}, {@link module:Dinero~greaterThanOrEqual greaterThanOrEqual}, {@link module:Dinero~isZero isZero}, {@link module:Dinero~isPositive isPositive}, {@link module:Dinero~isNegative isNegative}, {@link module:Dinero~hasCents hasCents}, {@link module:Dinero~hasSameCurrency hasSameCurrency} and {@link module:Dinero~hasSameAmount hasSameAmount}.
+ * * **Testing:** {@link module:Dinero~equalsTo equalsTo}, {@link module:Dinero~lessThan lessThan}, {@link module:Dinero~lessThanOrEqual lessThanOrEqual}, {@link module:Dinero~greaterThan greaterThan}, {@link module:Dinero~greaterThanOrEqual greaterThanOrEqual}, {@link module:Dinero~isZero isZero}, {@link module:Dinero~isPositive isPositive}, {@link module:Dinero~isNegative isNegative}, {@link module:Dinero~hasSubUnits hasSubUnits}, {@link module:Dinero~hasSameCurrency hasSameCurrency} and {@link module:Dinero~hasSameAmount hasSameAmount}.
  * * **Configuration:** {@link module:Dinero~setLocale setLocale}.
  * * **Conversion & formatting:** {@link module:Dinero~toFormat toFormat}, {@link module:Dinero~toUnit toUnit}, {@link module:Dinero~toRoundedUnit toRoundedUnit}, {@link module:Dinero~toObject toObject}, {@link module:Dinero~convertPrecision convertPrecision} and {@link module:Dinero.normalizePrecision normalizePrecision}.
  *
@@ -682,6 +682,25 @@ const Dinero = options => {
     },
     /**
      * Checks if this has minor currency units.
+     * Deprecates {@link module:Dinero~hasCents hasCents}.
+     *
+     * @example
+     * // returns false
+     * Dinero({ amount: 1100 }).hasSubUnits()
+     * @example
+     * // returns true
+     * Dinero({ amount: 1150 }).hasSubUnits()
+     *
+     * @return {Boolean}
+     */
+    hasSubUnits() {
+      return calculator.modulo(this.getAmount(), Math.pow(10, precision)) !== 0
+    },
+    /**
+     * Checks if this has minor currency units.
+     *
+     * @deprecated since version 1.4.0, will be removed in 2.0.0
+     * Use {@link module:Dinero~hasSubUnits hasSubUnits} instead.
      *
      * @example
      * // returns false

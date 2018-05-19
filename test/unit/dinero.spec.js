@@ -512,6 +512,20 @@ describe('Dinero', () => {
       expect(Dinero({ amount: 1150 }).hasCents()).toBe(true)
     })
   })
+  describe('#hasSubUnits', () => {
+    test('should return false when amount is a multiple of 100', () => {
+      expect(Dinero({ amount: 1100 }).hasSubUnits()).toBe(false)
+    })
+    test('should return false when amount is a multiple of 10 to the power of precision', () => {
+      expect(Dinero({ amount: 110000, precision: 4 }).hasSubUnits()).toBe(false)
+    })
+    test('should return true when amount is not a multiple of 100', () => {
+      expect(Dinero({ amount: 1150 }).hasSubUnits()).toBe(true)
+    })
+    test('should return true when amount is not a multiple of 10 to the power of precision', () => {
+      expect(Dinero({ amount: 115050, precision: 4 }).hasSubUnits()).toBe(true)
+    })
+  })
   describe('#hasSameCurrency', () => {
     test('should return true when both currencies are equal', () => {
       expect(
