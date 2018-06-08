@@ -817,6 +817,39 @@ const Dinero = options => {
       })
     },
     /**
+     * Serialize this object as a string.
+     *
+     * The string output returns exactly the same string as {@link module:Dinero~toFormat toFormat} without any arguments.
+     * You can change the default formatting by setting the {@link Globals global API parameters}
+     *
+     * @example
+     * // returns $2,000
+     * Dinero.globalFormat = '$0,0'
+     * JSON.stringify(Dinero({ amount: 200000 }))
+     * @example
+     * // returns €50.5
+     * Dinero.defaultCurrency = 'EUR'
+     * Dinero.globalFormat = '$0,0.0'
+     * JSON.stringify(Dinero({ amount: 5050}))
+     * @example
+     * // returns 100 euros
+     * Dinero.globalFormat = '0,0 dollar'
+     * JSON.stringify(Dinero({ amount: 10000, currency: 'EUR' }).setLocale('fr-FR'))
+     * @example
+     * // returns 2000
+     * JSON.stringify(Dinero({ amount: 200000, currency: 'EUR' }))
+     * @example
+     * // returns $10
+     * Dinero.globalFormatRoundingMode = 'HALF_EVEN'
+     * Dinero.globalFormat = '$0'
+     * JSON.stringify(Dinero({ amount: 1050 }))
+     *
+     * @return {String}
+     */
+    toJSON() {
+      return this.toFormat()
+    },
+    /**
      * Returns the amount represented by this object in units.
      *
      * @example

@@ -635,6 +635,73 @@ describe('Dinero', () => {
       Dinero.globalFormat = '$0,0.00'
     })
   })
+  describe('#toJSON', () => {
+    test('should return the properly formatted amount (default)', () => {
+      expect(Dinero({ amount: 200000, currency: 'EUR' }).toJSON()).toBe(
+        '€2,000.00'
+      )
+    })
+    test('should return the properly formatted amount (one fraction digit)', () => {
+      Dinero.globalFormat = '0.0'
+      expect(Dinero({ amount: 200000, currency: 'EUR' }).toJSON()).toBe(
+        '2000.0'
+      )
+    })
+    test('should return the properly formatted amount (one fraction digit, rounded)', () => {
+      Dinero.globalFormat = '0.0'
+      expect(Dinero({ amount: 1155, currency: 'EUR' }).toJSON()).toBe('11.6')
+    })
+    test('should return the properly formatted amount (use grouping)', () => {
+      Dinero.globalFormat = '0,0'
+      expect(Dinero({ amount: 200000, currency: 'EUR' }).toJSON()).toBe('2,000')
+    })
+    test('should return the properly formatted amount (use grouping, two fraction digits)', () => {
+      Dinero.globalFormat = '0,0.00'
+      expect(Dinero({ amount: 200000, currency: 'EUR' }).toJSON()).toBe(
+        '2,000.00'
+      )
+    })
+    test('should return the properly formatted amount (currency symbol)', () => {
+      Dinero.globalFormat = '$0'
+      expect(Dinero({ amount: 200000, currency: 'EUR' }).toJSON()).toBe('€2000')
+    })
+    test('should return the properly formatted amount (currency symbol, one fraction unit)', () => {
+      Dinero.globalFormat = '$0.0'
+      expect(Dinero({ amount: 200000, currency: 'EUR' }).toJSON()).toBe(
+        '€2000.0'
+      )
+    })
+    test('should return the properly formatted amount (currency symbol, use grouping)', () => {
+      Dinero.globalFormat = '$0,0'
+      expect(Dinero({ amount: 200000, currency: 'EUR' }).toJSON()).toBe(
+        '€2,000'
+      )
+    })
+    test('should return the properly formatted amount, (currency symbol, use grouping, two fraction digits)', () => {
+      Dinero.globalFormat = '$0,0.00'
+      expect(Dinero({ amount: 200000, currency: 'EUR' }).toJSON()).toBe(
+        '€2,000.00'
+      )
+    })
+    test('should return the properly formatted amount, (currency code, use grouping, two fraction digits)', () => {
+      Dinero.globalFormat = 'USD0,0.00'
+      expect(Dinero({ amount: 200000, currency: 'EUR' }).toJSON()).toBe(
+        'EUR2,000.00'
+      )
+    })
+    test('should return the properly formatted amount, (currency name, use grouping, two fraction digits)', () => {
+      Dinero.globalFormat = '0,0.00 dollar'
+      expect(Dinero({ amount: 200000, currency: 'EUR' }).toJSON()).toBe(
+        '2,000.00 euros'
+      )
+    })
+    test('should return the initial format when global format is redefined', () => {
+      Dinero.globalFormat = '$0.00'
+      const price = Dinero()
+      expect(price.toJSON()).toBe('$0.00')
+      Dinero.globalFormat = '$0,0.00'
+    })
+  })
   describe('#toUnit', () => {
     test('should return the amount divided by 100', () => {
       expect(Dinero({ amount: 1050 }).toUnit()).toBe(10.5)
