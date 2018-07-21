@@ -84,5 +84,5 @@ declare interface Base {
 }
 
 declare module 'dinero.js' {
-  export = Constructor
+  export default Constructor
 }
