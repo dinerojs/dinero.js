@@ -1,3 +1,4 @@
+const fs = require('fs')
 const rollup = require('rollup')
 const babel = require('rollup-plugin-babel')
 const minify = require('rollup-plugin-babel-minify')
@@ -99,3 +100,7 @@ const buildOutputs = (bundle, suffix = '') => {
     })
   })
 }
+
+fs.mkdirSync('build')
+fs.mkdirSync('build/esm')
+fs.copyFileSync('src/dinero.d.ts', 'build/esm/dinero.d.ts')

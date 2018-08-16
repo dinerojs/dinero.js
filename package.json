@@ -12,6 +12,7 @@
   "homepage": "https://sarahdayan.github.io/dinero.js",
   "repository": "https://github.com/sarahdayan/dinero.js",
   "main": "build/cjs/dinero.js",
+  "types": "build/ems/dinero.d.ts",
   "scripts": {
     "precommit": "lint-staged",
     "cz": "git-cz",
