@@ -775,7 +775,9 @@ const Dinero = options => {
      * The format is a mask which defines a pattern and returns a valid, localized currency string.
      * If you want to display the object in a custom way, either use {@link module:Dinero~getAmount getAmount}, {@link module:Dinero~toUnit toUnit} or {@link module:Dinero~toRoundedUnit toRoundedUnit} and manipulate the output string as you wish.
      *
-     * {@link module:Dinero~toFormat toFormat} is syntactic sugar over JavaScript's native `Number.prototype.toLocaleString` method, which you can use directly:
+     * {@link module:Dinero~toFormat toFormat} wraps around `Number.prototype.toLocaleString`. For that reason, **format will vary depending on how it's implemented in the end user's environment**.
+     *
+     * You can also use `toLocaleString` directly:
      * `Dinero().toRoundedUnit(digits, roundingMode).toLocaleString(locale, options)`.
      *
      * By default, amounts are rounded using the **half away from zero** rule ([commercial rounding](https://en.wikipedia.org/wiki/Rounding#Round_half_away_from_zero)).
