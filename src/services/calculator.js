@@ -4,20 +4,24 @@ export default function Calculator() {
   const floatMultiply = (a, b) => {
     const getFactor = number => Math.pow(10, countFractionDigits(number))
     const factor = Math.max(getFactor(a), getFactor(b))
-    return Math.round(a * factor) * Math.round(b * factor) / (factor * factor)
+    return (Math.round(a * factor) * Math.round(b * factor)) / (factor * factor)
   }
 
   const roundingModes = {
     HALF_ODD(number) {
       const rounded = Math.round(number)
       return isHalf(number)
-        ? isEven(rounded) ? rounded - 1 : rounded
+        ? isEven(rounded)
+          ? rounded - 1
+          : rounded
         : rounded
     },
     HALF_EVEN(number) {
       const rounded = Math.round(number)
       return isHalf(number)
-        ? isEven(rounded) ? rounded : rounded - 1
+        ? isEven(rounded)
+          ? rounded
+          : rounded - 1
         : rounded
     },
     HALF_UP(number) {

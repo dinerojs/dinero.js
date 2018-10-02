@@ -28,7 +28,7 @@ describe('Helpers', () => {
       jsc.assert(jsc.forall(jsc.uint8, a => Helpers.isFloat(a * 2 - 1 / 2)))
     })
     test('should return false for integers', () => {
-      jsc.assert(jsc.forall(jsc.uint8, a => !Helpers.isFloat(a * 2 / 2)))
+      jsc.assert(jsc.forall(jsc.uint8, a => !Helpers.isFloat((a * 2) / 2)))
     })
   })
   describe('#isHalf', () => {
@@ -36,7 +36,7 @@ describe('Helpers', () => {
       jsc.assert(jsc.forall(jsc.uint8, a => Helpers.isHalf((a * 2 - 1) / 2)))
     })
     test('should return false for non-half numbers', () => {
-      jsc.assert(jsc.forall(jsc.uint8, a => !Helpers.isHalf(a * 2 / 2)))
+      jsc.assert(jsc.forall(jsc.uint8, a => !Helpers.isHalf((a * 2) / 2)))
     })
   })
 })
