@@ -572,69 +572,6 @@ describe('Dinero', () => {
       ).toBe(false)
     })
   })
-  describe('#toFormat', () => {
-    test('should return the properly formatted amount (default)', () => {
-      expect(Dinero({ amount: 200000, currency: 'EUR' }).toFormat()).toBe(
-        '€2,000.00'
-      )
-    })
-    test('should return the properly formatted amount (one fraction digit)', () => {
-      expect(Dinero({ amount: 200000, currency: 'EUR' }).toFormat('0.0')).toBe(
-        '2000.0'
-      )
-    })
-    test('should return the properly formatted amount (one fraction digit, rounded)', () => {
-      expect(Dinero({ amount: 1155, currency: 'EUR' }).toFormat('0.0')).toBe(
-        '11.6'
-      )
-    })
-    test('should return the properly formatted amount (use grouping)', () => {
-      expect(Dinero({ amount: 200000, currency: 'EUR' }).toFormat('0,0')).toBe(
-        '2,000'
-      )
-    })
-    test('should return the properly formatted amount (use grouping, two fraction digits)', () => {
-      expect(
-        Dinero({ amount: 200000, currency: 'EUR' }).toFormat('0,0.00')
-      ).toBe('2,000.00')
-    })
-    test('should return the properly formatted amount (currency symbol)', () => {
-      expect(Dinero({ amount: 200000, currency: 'EUR' }).toFormat('$0')).toBe(
-        '€2000'
-      )
-    })
-    test('should return the properly formatted amount (currency symbol, one fraction unit)', () => {
-      expect(Dinero({ amount: 200000, currency: 'EUR' }).toFormat('$0.0')).toBe(
-        '€2000.0'
-      )
-    })
-    test('should return the properly formatted amount (currency symbol, use grouping)', () => {
-      expect(Dinero({ amount: 200000, currency: 'EUR' }).toFormat('$0,0')).toBe(
-        '€2,000'
-      )
-    })
-    test('should return the properly formatted amount, (currency symbol, use grouping, two fraction digits)', () => {
-      expect(
-        Dinero({ amount: 200000, currency: 'EUR' }).toFormat('$0,0.00')
-      ).toBe('€2,000.00')
-    })
-    test('should return the properly formatted amount, (currency code, use grouping, two fraction digits)', () => {
-      expect(
-        Dinero({ amount: 200000, currency: 'EUR' }).toFormat('USD0,0.00')
-      ).toBe('EUR2,000.00')
-    })
-    test('should return the properly formatted amount, (currency name, use grouping, two fraction digits)', () => {
-      expect(
-        Dinero({ amount: 200000, currency: 'EUR' }).toFormat('0,0.00 dollar')
-      ).toBe('2,000.00 euros')
-    })
-    test('should return the initial format when global format is redefined', () => {
-      const price = Dinero()
-      Dinero.globalFormat = '0.0'
-      expect(price.toFormat()).toBe('$0.00')
-      Dinero.globalFormat = '$0,0.00'
-    })
-  })
   describe('#toUnit', () => {
     test('should return the amount divided by 100', () => {
       expect(Dinero({ amount: 1050 }).toUnit()).toBe(10.5)
