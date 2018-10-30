@@ -161,7 +161,7 @@ Dinero({ amount: 500 })
 By default, new Dinero objects represent monetary values with two decimal places. If you want to represent more, or if you're using a currency with a different [exponent](https://en.wikipedia.org/wiki/ISO_4217#Treatment_of_minor_currency_units_(the_%22exponent%22)), you can specify a precision.
 
 ```js
-// represents $10.4545
+// represents $10.545
 Dinero({ amount: 10545, precision: 3 })
 
 // The Japanese yen doesn't have sub-units
