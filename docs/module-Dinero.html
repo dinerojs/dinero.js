@@ -4860,7 +4860,8 @@ The output is formatted according to the applying locale.</p>
 <p>Don't try to substitute the <code>$</code> sign or the <code>USD</code> code with your target currency, nor adapt the format string to the exact format you want.
 The format is a mask which defines a pattern and returns a valid, localized currency string.
 If you want to display the object in a custom way, either use <a href="module-Dinero.html#~getAmount">getAmount</a>, <a href="module-Dinero.html#~toUnit">toUnit</a> or <a href="module-Dinero.html#~toRoundedUnit">toRoundedUnit</a> and manipulate the output string as you wish.</p>
-<p><a href="module-Dinero.html#~toFormat">toFormat</a> is syntactic sugar over JavaScript's native <code>Number.prototype.toLocaleString</code> method, which you can use directly:
+<p><a href="module-Dinero.html#~toFormat">toFormat</a> wraps around <code>Number.prototype.toLocaleString</code>. For that reason, <strong>format will vary depending on how it's implemented in the end user's environment</strong>.</p>
+<p>You can also use <code>toLocaleString</code> directly:
 <code>Dinero().toRoundedUnit(digits, roundingMode).toLocaleString(locale, options)</code>.</p>
 <p>By default, amounts are rounded using the <strong>half away from zero</strong> rule (<a href="https://en.wikipedia.org/wiki/Rounding#Round_half_away_from_zero">commercial rounding</a>).
 You can also specify a different <code>roundingMode</code> to better fit your needs.</p>
@@ -5026,7 +5027,7 @@ You can also specify a different <code>roundingMode</code> to better fit your ne
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line805">line 805</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line807">line 807</a>
         </li>
       </ul>
     </dd>
@@ -5148,7 +5149,7 @@ Dinero({ amount: 1050 }).toFormat('$0', 'HALF_EVEN')</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line831">line 831</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line833">line 833</a>
         </li>
       </ul>
     </dd>
@@ -5376,7 +5377,7 @@ You can also specify a different <code>roundingMode</code> to better fit your ne
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line852">line 852</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line854">line 854</a>
         </li>
       </ul>
     </dd>
@@ -5486,7 +5487,7 @@ Dinero({ amount: 1050 }).toRoundedUnit(0, 'HALF_EVEN')</code></pre>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line871">line 871</a>
+          <a href="dinero.js.html">dinero.js</a>, <a href="dinero.js.html#line873">line 873</a>
         </li>
       </ul>
     </dd>
