@@ -176,7 +176,7 @@ Dinero({ amount: 500 })
   .setLocale('fr-FR')
   .add(Dinero({ amount: 500 }))
   .toFormat('$0,0')</code></pre><p>By default, new Dinero objects represent monetary values with two decimal places. If you want to represent more, or if you're using a currency with a different <a href="https://en.wikipedia.org/wiki/ISO_4217#Treatment_of_minor_currency_units_(the_%22exponent%22">exponent</a>), you can specify a precision.</p>
-<pre class="prettyprint source lang-js"><code>// represents $10.4545
+<pre class="prettyprint source lang-js"><code>// represents $10.545
 Dinero({ amount: 10545, precision: 3 })
 
 // The Japanese yen doesn't have sub-units
