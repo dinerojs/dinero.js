@@ -41,7 +41,7 @@ You can make sure your environment is able to test and build by running the foll
 
 ```sh
 $ npm test  # for unit tests
-$ npm build # to build dist files
+$ npm run build # to build dist files
 ```
 
 If both commands succeed, you're good to go! 👍
