@@ -69,6 +69,16 @@ requirejs(['path/to/amd/dinero'], function(Dinero) {
 import Dinero from 'path/to/esm/dinero.js'
 ```
 
+### TypeScript
+
+For Typescript typings, you can use the definition file from [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped).
+
+```sh
+npm install @types/dinero.js --save
+```
+
+**This is a third-party file.** Please report issues and open PRs for it on the [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) repository.
+
 ## Quick start
 
 Dinero.js makes it easy to create, calculate and format monetary values in JavaScript. You can perform arithmetic operations, extensively parse and format them, check for a number of things to make your own development process easier and safer.
