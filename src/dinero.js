@@ -32,7 +32,7 @@ const calculator = Calculator()
  * * **Manipulation:** {@link module:Dinero~add add}, {@link module:Dinero~subtract subtract}, {@link module:Dinero~multiply multiply}, {@link module:Dinero~divide divide}, {@link module:Dinero~percentage percentage}, {@link module:Dinero~allocate allocate} and {@link module:Dinero~convert convert}.
  * * **Testing:** {@link module:Dinero~equalsTo equalsTo}, {@link module:Dinero~lessThan lessThan}, {@link module:Dinero~lessThanOrEqual lessThanOrEqual}, {@link module:Dinero~greaterThan greaterThan}, {@link module:Dinero~greaterThanOrEqual greaterThanOrEqual}, {@link module:Dinero~isZero isZero}, {@link module:Dinero~isPositive isPositive}, {@link module:Dinero~isNegative isNegative}, {@link module:Dinero~hasSubUnits hasSubUnits}, {@link module:Dinero~hasSameCurrency hasSameCurrency} and {@link module:Dinero~hasSameAmount hasSameAmount}.
  * * **Configuration:** {@link module:Dinero~setLocale setLocale}.
- * * **Conversion & formatting:** {@link module:Dinero~toFormat toFormat}, {@link module:Dinero~toUnit toUnit}, {@link module:Dinero~toRoundedUnit toRoundedUnit}, {@link module:Dinero~toObject toObject}, {@link module:Dinero~convertPrecision convertPrecision} and {@link module:Dinero.normalizePrecision normalizePrecision}.
+ * * **Conversion & formatting:** {@link module:Dinero~toFormat toFormat}, {@link module:Dinero~toUnit toUnit}, {@link module:Dinero~toRoundedUnit toRoundedUnit}, {@link module:Dinero~toObject toObject}, {@link module:Dinero~toJSON toJSON}, {@link module:Dinero~convertPrecision convertPrecision} and {@link module:Dinero.normalizePrecision normalizePrecision}.
  *
  * @module Dinero
  * @param  {Number} [options.amount=0] - The amount in minor currency units (as an integer).
@@ -862,7 +862,7 @@ const Dinero = options => {
       )
     },
     /**
-     * Return the object's data as an object literal.
+     * Returns the object's data as an object literal.
      *
      * @example
      * // returns { amount: 500, currency: 'EUR', precision: 2 }
@@ -876,6 +876,21 @@ const Dinero = options => {
         currency,
         precision
       }
+    },
+    /**
+     * Returns the object's data as an object literal.
+     *
+     * Alias of {@link module:Dinero~toObject toObject}.
+     * It is defined so that calling `JSON.stringify` on a Dinero object will automatically extract the relevant data.
+     *
+     * @example
+     * // returns '{"amount":500,"currency":"EUR","precision":2}'
+     * JSON.stringify(Dinero({ amount: 500, currency: 'EUR', precision: 2 }))
+     *
+     * @return {Object}
+     */
+    toJSON() {
+      return this.toObject()
     }
   }
 }

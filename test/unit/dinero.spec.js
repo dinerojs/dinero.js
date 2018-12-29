@@ -605,6 +605,18 @@ describe('Dinero', () => {
       })
     })
   })
+  describe('#toJSON', () => {
+    test('should return the same object as #toObject', () => {
+      const price = Dinero({ amount: 500, currency: 'EUR', precision: 2 })
+      expect(price.toJSON()).toEqual(price.toObject())
+    })
+    test('should make Dinero objects stable when using JSON.parse after JSON.stringify', () => {
+      const price = Dinero({ amount: 500, currency: 'EUR', precision: 2 })
+      expect(Dinero(JSON.parse(JSON.stringify(price))).equalsTo(price)).toBe(
+        true
+      )
+    })
+  })
   describe('#normalizePrecision', () => {
     test('should return an array of Dinero objects with normalized precision and converted amount', () => {
       const normalized = Dinero.normalizePrecision([
