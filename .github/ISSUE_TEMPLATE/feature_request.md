@@ -1,7 +1,8 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: enhancement
+title: ''
+labels: enhancement
 ---
 
 **Is your feature request related to a problem? Please describe.**
