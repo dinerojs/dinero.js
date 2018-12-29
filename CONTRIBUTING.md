@@ -10,6 +10,8 @@ Pushing your first contribution can be intimidating. A great way to start is by 
 
 Dinero.js is a young project, so it doesn't have a well-defined scope yet. There are [projects][dinero:projects] that widens what the library currently does, but unless explicitly specified you probably shouldn't develop new features. In doubt, [ask first][dinero:issues], this will ensure you don't do work for nothing.
 
+Besides, **PRs that introduce breaking changes are closed for now**. Working on a new version must be done at a core level and with a holistic approach. It can't be the result of a single PR without thorough conversation first.
+
 ✅ Please do:
 
 - Fix [bugs][dinero:issues].
@@ -23,6 +25,7 @@ Dinero.js is a young project, so it doesn't have a well-defined scope yet. There
 - Go against the library's philosophy (immutability, native internationalization, etc.)
 - Make changes based on personal preferences rather than problem-solving.
 - Develop features that aren't in the scope of the library (if not sure, ask before you code).
+- Introduce breaking changes.
 
 ## 💻 Install
 
