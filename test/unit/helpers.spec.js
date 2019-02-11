@@ -155,4 +155,24 @@ describe('Helpers', () => {
       })
     })
   })
+  describe('#isThenable', () => {
+    test('should return false when the value is null', () => {
+      expect(Helpers.isThenable(null)).toBe(false)
+    })
+    test('should return false when the value is undefined', () => {
+      expect(Helpers.isThenable(undefined)).toBe(false)
+    })
+    test('should return false when the value is an empty array', () => {
+      expect(Helpers.isThenable([])).toBe(false)
+    })
+    test('should return true when the value is the result of a resolved promise', () => {
+      expect(Helpers.isThenable(Promise.resolve())).toBe(true)
+    })
+    test('should return true when the value is the result of a rejected promise', () => {
+      expect(Helpers.isThenable(Promise.reject(new Error()))).toBe(true)
+    })
+    test('should return true when the value is an object that implements a `then` method', () => {
+      expect(Helpers.isThenable({ then: () => 1 })).toBe(true)
+    })
+  })
 })
