@@ -4,7 +4,7 @@
 
 <div align="center">Dinero.js is a library for working with monetary values in JavaScript.</div>
 
-<div align="center" style="margin:15px 0">
+<div align="center">
   <a href="https://github.com/sarahdayan/dinero.js/blob/master/LICENSE.md">
     <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue.svg" />
   </a>
