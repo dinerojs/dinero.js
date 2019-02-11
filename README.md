@@ -1,25 +1,25 @@
 <h1 align="center">Dinero.js</h1>
 
-<p align="center"><img title="Dinero.js" height="150" src="logo.png" /></p>
+<p align="center"><img alt="" height="150" src="logo.png" /></p>
 
 <p align="center">Dinero.js is a library for working with monetary values in JavaScript.</p>
 
 <p align="center">
   <a href="https://github.com/sarahdayan/dinero.js/blob/master/LICENSE.md">
-    <img title="MIT License" src="https://img.shields.io/badge/license-MIT-blue.svg" />
+    <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue.svg" />
   </a>
   <a href="https://travis-ci.org/sarahdayan/dinero.js">
-    <img title="Build Status" src="https://img.shields.io/travis/sarahdayan/dinero.js.svg" />
+    <img alt="Build Status" src="https://img.shields.io/travis/sarahdayan/dinero.js.svg" />
   </a>
   <a href="https://www.npmjs.com/package/dinero.js">
-    <img title="NPM version" src="https://img.shields.io/npm/v/dinero.js.svg" />
+    <img alt="NPM version" src="https://img.shields.io/npm/v/dinero.js.svg" />
   </a>
   <a href="https://coveralls.io/github/sarahdayan/dinero.js?branch=master">
-    <img title="Coverage Status" src="https://img.shields.io/coveralls/github/sarahdayan/dinero.js.svg?branch=master" />
+    <img alt="Coverage Status" src="https://img.shields.io/coveralls/github/sarahdayan/dinero.js.svg?branch=master" />
   </a>
   <a href="https://github.com/semantic-release/semantic-release
   [semantic-release-badge]: https://img.shields.io/badge/">
-    <img title="semantic-release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" />
+    <img alt="semantic-release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" />
   </a>
 </p>
 
