@@ -1,4 +1,4 @@
-import { getJSON, flattenObject } from './helpers'
+import { getJSON, flattenObject, isThenable } from './helpers'
 
 export default function CurrencyConverter(options) {
   /* istanbul ignore next */
@@ -8,6 +8,12 @@ export default function CurrencyConverter(options) {
     }
     return string
   }
+
+  /* istanbul ignore next */
+  const getRatesFromRestApi = (from, to) =>
+    getJSON(mergeTags(options.endpoint, { from, to }), {
+      headers: options.headers
+    })
 
   return {
     /**
@@ -20,9 +26,10 @@ export default function CurrencyConverter(options) {
      * @return {Promise}
      */
     getExchangeRate(from, to) {
-      return getJSON(mergeTags(options.endpoint, { from, to }), {
-        headers: options.headers
-      }).then(
+      return (isThenable(options.endpoint)
+        ? options.endpoint
+        : getRatesFromRestApi(from, to)
+      ).then(
         data =>
           flattenObject(data)[mergeTags(options.propertyPath, { from, to })]
       )

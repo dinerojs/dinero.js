@@ -165,3 +165,19 @@ export function flattenObject(object, separator = '.') {
   })
   return finalObject
 }
+
+/**
+ * Returns whether a value is thenable.
+ * @ignore
+ *
+ * @param {} value - The value to test.
+ *
+ * @return {Boolean}
+ */
+export function isThenable(value) {
+  return (
+    Boolean(value) &&
+    (typeof value === 'object' || typeof value === 'function') &&
+    typeof value.then === 'function'
+  )
+}
