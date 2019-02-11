@@ -1,8 +1,31 @@
-[![MIT License][license-badge]][license] [![Build Status][travis-badge]][travis-url] [![NPM version][npm-version-badge]][npm-url] [![Coverage Status][coveralls-badge]][coveralls-url] [![Known Vulnerabilities][snyk-badge]][snyk-url] [![semantic-release][semantic-release-badge]][semantic-release-url]
+<h1 align="center">Dinero.js</h1>
 
-Dinero.js is a library for working with monetary values in JavaScript.
+<p align="center"><img title="Dinero.js" height="150" src="logo.png" /></p>
 
-[See API docs][dinero-docs]
+<p align="center">Dinero.js is a library for working with monetary values in JavaScript.</p>
+
+<p align="center">
+  <a href="https://github.com/sarahdayan/dinero.js/blob/master/LICENSE.md">
+    <img title="MIT License" src="https://img.shields.io/badge/license-MIT-blue.svg" />
+  </a>
+  <a href="https://travis-ci.org/sarahdayan/dinero.js">
+    <img title="Build Status" src="https://img.shields.io/travis/sarahdayan/dinero.js.svg" />
+  </a>
+  <a href="https://www.npmjs.com/package/dinero.js">
+    <img title="NPM version" src="https://img.shields.io/npm/v/dinero.js.svg" />
+  </a>
+  <a href="https://coveralls.io/github/sarahdayan/dinero.js?branch=master">
+    <img title="Coverage Status" src="https://img.shields.io/coveralls/github/sarahdayan/dinero.js.svg?branch=master" />
+  </a>
+  <a href="https://github.com/semantic-release/semantic-release
+  [semantic-release-badge]: https://img.shields.io/badge/">
+    <img title="semantic-release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" />
+  </a>
+</p>
+
+<p align="center"><a href="https://sarahdayan.github.io/dinero.js/module-Dinero.html">See full API docs</a></p>
+
+<hr>
 
 ## Features
 
@@ -206,22 +229,13 @@ Show some love by [upvoting on Product Hunt][producthunt:dinerojs] if you like, 
 
 Dinero.js is inspired from [Martin Fowler's monetary representation][fowler-money]. Design-wise, it draws inspiration from [Money PHP][moneyphp], [Luxon][luxon], [Moment.js][moment] and [Numeral.js][numeral] (even though it doesn't rely on any of them).
 
+Logo by [David DeSandro][github:desandro].
+
 ## License
 
 Dinero.js is licensed under [MIT][license].
 
 [license]: https://github.com/sarahdayan/dinero.js/blob/master/LICENSE.md
-[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
-[travis-url]: https://travis-ci.org/sarahdayan/dinero.js
-[travis-badge]: https://img.shields.io/travis/sarahdayan/dinero.js.svg
-[npm-url]: https://www.npmjs.com/package/dinero.js
-[npm-version-badge]: https://img.shields.io/npm/v/dinero.js.svg
-[coveralls-url]: https://coveralls.io/github/sarahdayan/dinero.js?branch=master
-[coveralls-badge]: https://img.shields.io/coveralls/github/sarahdayan/dinero.js.svg?branch=master
-[snyk-url]: https://snyk.io/test/github/sarahdayan/dinero.js?targetFile=package.json
-[snyk-badge]: https://snyk.io/test/github/sarahdayan/dinero.js/badge.svg?targetFile=package.json
-[semantic-release-url]: https://github.com/semantic-release/semantic-release
-[semantic-release-badge]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [mdn:intl]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl
 [caniuse:intl]: https://caniuse.com/#feat=internationalization
 [node:full-icu]: https://nodejs.org/api/intl.html#intl_embed_the_entire_icu_full_icu
@@ -238,3 +252,4 @@ Dinero.js is licensed under [MIT][license].
 [yarn]: https://yarnpkg.com
 [jsdelivr:landing]: https://www.jsdelivr.com/package/npm/dinero.js
 [jsdelivr:cdn]: https://cdn.jsdelivr.net/npm/dinero.js/build
+[github:desandro]: https://github.com/desandro
