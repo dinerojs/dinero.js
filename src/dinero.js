@@ -170,7 +170,14 @@ const Dinero = options => {
     /**
      * Returns a new Dinero object with a new precision and a converted amount.
      *
+     * By default, fractional minor currency units are rounded using the **half to even** rule ([banker's rounding](http://wiki.c2.com/?BankersRounding)).
+     * This can be necessary when you need to convert objects to a smaller precision.
+     *
+     * Rounding *can* lead to accuracy issues as you chain many times. Consider a minimal amount of subsequent conversions for safer results.
+     * You can also specify a different `roundingMode` to better fit your needs.
+     *
      * @param {Number} newPrecision - The new precision.
+     * @param {String} [roundingMode='HALF_EVEN'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
      *
      * @example
      * // Returns a Dinero object with precision 3 and amount 1000
@@ -180,12 +187,15 @@ const Dinero = options => {
      *
      * @return {Dinero}
      */
-    convertPrecision(newPrecision) {
+    convertPrecision(newPrecision, roundingMode = globalFormatRoundingMode) {
       assertInteger(newPrecision)
       return create.call(this, {
-        amount: calculator.multiply(
-          this.getAmount(),
-          Math.pow(10, calculator.subtract(newPrecision, this.getPrecision()))
+        amount: calculator.round(
+          calculator.multiply(
+            this.getAmount(),
+            Math.pow(10, calculator.subtract(newPrecision, this.getPrecision()))
+          ),
+          roundingMode
         ),
         precision: newPrecision
       })
