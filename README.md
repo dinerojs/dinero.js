@@ -29,11 +29,11 @@
 
 ## Features
 
-* Immutable and chainable API.
-* Global settings support.
-* Extended formatting and rounding options.
-* Native Intl support (no additional locale files).
-* Currency conversion.
+- Immutable and chainable API.
+- Global settings support.
+- Extended formatting and rounding options.
+- Native Intl support (no additional locale files).
+- Currency conversion.
 
 ## Download/install
 
@@ -191,7 +191,7 @@ Dinero({ amount: 500 })
   .toFormat('$0,0')
 ```
 
-By default, new Dinero objects represent monetary values with two decimal places. If you want to represent more, or if you're using a currency with a different [exponent](https://en.wikipedia.org/wiki/ISO_4217#Treatment_of_minor_currency_units_(the_%22exponent%22)), you can specify a precision.
+By default, new Dinero objects represent monetary values with two decimal places. If you want to represent more, or if you're using a currency with a different [exponent](<https://en.wikipedia.org/wiki/ISO_4217#Treatment_of_minor_currency_units_(the_%22exponent%22)>), you can specify a precision.
 
 ```js
 // represents $10.545
@@ -220,6 +220,16 @@ This is only a preview of what you can do. Dinero.js has extensive documentation
 ## Contributing
 
 Pull requests are welcome! Please check the [contributing guidelines][dinero-guidelines] for install instructions and general conventions.
+
+## Community
+
+Selected content about Dinero.js:
+
+- [JSJ 351: Dinero.js with Sarah Dayan][community:jsjabber]
+- [Build a Shopping Cart with Vue and Dinero.js][community:shoppingcart]
+- [How to Handle Monetary Values in JavaScript][community:monetaryvalues]
+- [Comparison with Numeral.js][community:numeral]
+- Submit your own blog post/tutorial!
 
 ## Support
 
@@ -253,3 +263,7 @@ Dinero.js is licensed under [MIT][license].
 [jsdelivr:landing]: https://www.jsdelivr.com/package/npm/dinero.js
 [jsdelivr:cdn]: https://cdn.jsdelivr.net/npm/dinero.js/build
 [github:desandro]: https://github.com/desandro
+[community:jsjabber]: https://devchat.tv/js-jabber/jsj-351-dinero-js-with-sarah-dayan/
+[community:shoppingcart]: https://frontstuff.io/build-a-shopping-cart-with-vue-and-dinerojs
+[community:monetaryvalues]: https://frontstuff.io/how-to-handle-monetary-values-in-javascript
+[community:numeral]: https://www.reddit.com/r/javascript/comments/84mhrw/dinerojs_an_immutable_library_to_create_calculate/

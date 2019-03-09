@@ -107,6 +107,13 @@ describe('Dinero', () => {
           .toObject()
       ).toMatchObject({ amount: 50000, precision: 4 })
     })
+    test('should return a new Dinero object with a new precision and a converted rounded amount', () => {
+      expect(
+        Dinero({ amount: 14270, precision: 2 })
+          .convertPrecision(0)
+          .toObject()
+      ).toMatchObject({ amount: 143, precision: 0 })
+    })
     test('should throw when new precision is invalid', () => {
       expect(() =>
         Dinero({ amount: 500, precision: 2 })
