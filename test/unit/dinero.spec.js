@@ -281,6 +281,54 @@ describe('Dinero', () => {
         currency: 'EUR'
       })
     })
+    test('should return a new converted Dinero object when passed a promise instead of an API endpoint', async () => {
+      const res = await Dinero({ amount: 500 }).convert('EUR', {
+        endpoint: new Promise(resolve =>
+          resolve({
+            rates: {
+              EUR: 0.81162
+            }
+          })
+        )
+      })
+      expect(res.toObject()).toMatchObject({
+        amount: 406,
+        currency: 'EUR'
+      })
+    })
+    test('should return a new converted Dinero object with the globally set property path', async () => {
+      Dinero.globalExchangeRatesApi.propertyPath = 'data.rates.{{to}}'
+      const res = await Dinero({ amount: 500 }).convert('EUR', {
+        endpoint: new Promise(resolve =>
+          resolve({
+            data: {
+              rates: {
+                EUR: 0.81162
+              }
+            }
+          })
+        )
+      })
+      expect(res.toObject()).toMatchObject({
+        amount: 406,
+        currency: 'EUR'
+      })
+    })
+    test('should return a new converted Dinero object with the locally set property path event if a property path was set globally', async () => {
+      Dinero.globalExchangeRatesApi.propertyPath = 'data.rates.{{to}}'
+      const res = await Dinero({ amount: 500 }).convert('EUR', {
+        endpoint: new Promise(resolve =>
+          resolve({
+            EUR: 0.81162
+          })
+        ),
+        propertyPath: '{{to}}'
+      })
+      expect(res.toObject()).toMatchObject({
+        amount: 406,
+        currency: 'EUR'
+      })
+    })
     test('should throw when destination currency is not valid', async () => {
       await expect(Dinero({ amount: 500 }).convert('EURO')).rejects.toThrow()
     })

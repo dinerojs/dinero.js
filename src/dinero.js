@@ -390,7 +390,14 @@ const Dinero = options => {
     /**
      * Returns a Promise containing a new Dinero object converted to another currency.
      *
-     * You must provide your own API to retrieve exchange rates. This method won't work if you don't set either {@link Globals global API parameters}, or local ones for your instance.
+     * You have two options to provide the exchange rates:
+     *
+     * 1. **Use an exchange rate REST API, and let Dinero handle the fetching and conversion.**
+     *   This is a simple option if you have access to an exchange rate REST API and want Dinero to do the rest.
+     * 2. **Fetch the exchange rates on your own and provide them directly.**
+     *   This is useful if you're fetching your rates from somewhere else (a file, a database), use a different protocol or query language than REST (SOAP, GraphQL) or want to fetch rates once and cache them instead of making new requests every time.
+     *
+     * **If you want to use a REST API**, you must provide a third-party endpoint yourself. Dinero doesn't come bundled with an exchange rates endpoint.
      *
      * Here are some exchange rate APIs you can use:
      *
@@ -399,11 +406,13 @@ const Dinero = options => {
      * * [Coinbase](https://api.coinbase.com/v2/exchange-rates)
      * * More [foreign](https://github.com/toddmotto/public-apis#currency-exchange) and [crypto](https://github.com/toddmotto/public-apis#cryptocurrency) exchange rate APIs.
      *
-     * You will need to specify at least:
+     * **If you want to fetch your own rates and provide them directly**, you need to pass a promise that resolves to the exchanges rates.
+     *
+     * In both cases, you need to specify at least:
      *
      * * a **destination currency**: the currency in which you want to convert your Dinero object. You can specify it with `currency`.
-     * * an **endpoint**: the API URL to query exchange rates, with parameters. You can specify it with `options.endpoint`.
-     * * a **property path**: the path to access the wanted rate in your API's JSON response. For example, with a response of:
+     * * an **endpoint**: the API URL to query exchange rates, with parameters, or a promise that resolves to the exchange rates. You can specify it with `options.endpoint`.
+     * * a **property path**: the path to access the wanted rate in your API's JSON response (or the custom promise's payload). For example, with a response of:
      * ```json
      * {
      *     "data": {
@@ -415,7 +424,7 @@ const Dinero = options => {
      * ```
      * Then the property path is `'data.rate'`. You can specify it with `options.propertyPath`.
      *
-     * The base currency (the currency of your Dinero object) and the destination currency can be used as "merge tags" with the mustache syntax, respectively `{{from}}` and `{{to}}`.
+     * The base currency (the one of your Dinero object) and the destination currency can be used as "merge tags" with the mustache syntax, respectively `{{from}}` and `{{to}}`.
      * You can use these tags to refer to these values in `options.endpoint` and `options.propertyPath`.
      *
      * For example, if you need to specify the base currency as a query parameter, you can do the following:
@@ -427,8 +436,8 @@ const Dinero = options => {
      * ```
      *
      * @param  {String} currency - The destination currency, expressed as an {@link https://en.wikipedia.org/wiki/ISO_4217#Active_codes ISO 4217 currency code}.
-     * @param  {String} options.endpoint - The API endpoint to retrieve exchange rates.
-     * @param  {String} options.propertyPath - The property path to the rate.
+     * @param  {(String|Promise)} options.endpoint - The API endpoint to retrieve exchange rates. You can substitute this with a promise that resolves to the exchanges rates if you already have them.
+     * @param  {String} [options.propertyPath='rates.{{to}}'] - The property path to the rate.
      * @param  {Object} [options.headers] - The HTTP headers to provide, if needed.
      * @param  {String} [options.roundingMode='HALF_EVEN'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'` or `'HALF_AWAY_FROM_ZERO'`.
      *
@@ -452,6 +461,19 @@ const Dinero = options => {
      *     roundingMode: 'HALF_UP'
      *   })
      * @example
+     * // usage with exchange rates provided as a custom promise
+     * // using the default `propertyPath` format (so it doesn't have to be specified)
+     * const rates = {
+     *   rates: {
+     *     EUR: 0.81162
+     *   }
+     * }
+     *
+     * Dinero({ amount: 500 })
+     *   .convert('EUR', {
+     *     endpoint: new Promise(resolve => resolve(rates))
+     *   })
+     * @example
      * // usage with Promise.prototype.then and Promise.prototype.catch
      * Dinero({ amount: 500 })
      *   .convert('EUR')
@@ -470,8 +492,24 @@ const Dinero = options => {
      *
      * @return {Promise}
      */
-    convert(currency, options) {
-      options = Object.assign({}, globalExchangeRatesApi, options)
+    convert(
+      currency,
+      {
+        endpoint = globalExchangeRatesApi.endpoint,
+        propertyPath = globalExchangeRatesApi.propertyPath || 'rates.{{to}}',
+        headers = globalExchangeRatesApi.headers,
+        roundingMode = globalRoundingMode
+      } = {}
+    ) {
+      const options = Object.assign(
+        {},
+        {
+          endpoint,
+          propertyPath,
+          headers,
+          roundingMode
+        }
+      )
       return CurrencyConverter(options)
         .getExchangeRate(this.getCurrency(), currency)
         .then(rate => {
