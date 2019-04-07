@@ -28,11 +28,64 @@ export default {
     const highestPrecision = objects.reduce((a, b) =>
       Math.max(a.getPrecision(), b.getPrecision())
     )
-    return objects.map(
-      object =>
-        object.getPrecision() !== highestPrecision
-          ? object.convertPrecision(highestPrecision)
-          : object
+    return objects.map(object =>
+      object.getPrecision() !== highestPrecision
+        ? object.convertPrecision(highestPrecision)
+        : object
     )
+  },
+  /**
+   * Returns the minimum dinero object from an array of dinero objects
+   *
+   * @memberof module:Dinero
+   * @method
+   *
+   * @param {Dinero[]} dineroObjs - An array of Dinero objects
+   *
+   * @example
+   * // returns the minimum dinero object from an array of Dinero objects
+   * Dinero.minimum([
+   *   Dinero({ amount: 50 }),
+   *   Dinero({ amount: 100 })
+   * ])
+   *
+   * @return {Dinero[]}
+   */
+  minimum(dineroObjs) {
+    const [firstDinero, ...tailDineros] = dineroObjs
+    let minimumDinero = firstDinero
+    tailDineros.forEach(dineroObj => {
+      minimumDinero = minimumDinero.lessThan(dineroObj)
+        ? minimumDinero
+        : dineroObj
+    })
+    return minimumDinero
+  },
+  /**
+   * Returns the Maximum dinero object from an array of dinero objects
+   *
+   * @memberof module:Dinero
+   * @method
+   *
+   * @param {Dinero[]} objects - An array of Dinero objects
+   *
+   * @example
+   * // returns the maximum dinero from an array of Dinero objects
+   * Dinero.maximum([
+   *   Dinero({ amount: 100 }),
+   *   Dinero({ amount: 50 })
+   * ])
+   *
+   * @return {Dinero[]}
+   */
+  maximum(dineroObjs) {
+    const [firstDinero, ...tailDineros] = dineroObjs
+    let maximumDinero = firstDinero
+    tailDineros.forEach(dineroObj => {
+      maximumDinero = maximumDinero.greaterThan(dineroObj)
+        ? maximumDinero
+        : dineroObj
+    })
+    return maximumDinero
   }
 }
