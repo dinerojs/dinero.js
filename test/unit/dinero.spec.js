@@ -684,4 +684,44 @@ describe('Dinero', () => {
       )
     })
   })
+  describe('#minimum', () => {
+    test('should return the minimum dinero from an array of dinero objects', () => {
+      const minimumDineroExpected = Dinero({ amount: 50, precision: 2 })
+      const actualMinimum = Dinero.minimum([
+        minimumDineroExpected,
+        Dinero({ amount: 100, precision: 2 }),
+        Dinero({ amount: 150, precision: 2 })
+      ])
+      expect(actualMinimum.toJSON()).toEqual(minimumDineroExpected.toJSON())
+    })
+    test('should return the minimum dinero from an array of dinero objects, with different precision on those objects', () => {
+      const minimumDineroExpected = Dinero({ amount: 50, precision: 3 })
+      const actualMinimum = Dinero.minimum([
+        Dinero({ amount: 150, precision: 2 }),
+        minimumDineroExpected,
+        Dinero({ amount: 100, precision: 2 })
+      ])
+      expect(actualMinimum.toJSON()).toEqual(minimumDineroExpected.toJSON())
+    })
+  })
+  describe('#maximum', () => {
+    test('should return the maximum dinero from an array of dinero objects', () => {
+      const maximumDineroExpected = Dinero({ amount: 200, precision: 2 })
+      const actualMaximum = Dinero.maximum([
+        maximumDineroExpected,
+        Dinero({ amount: 50, precision: 2 }),
+        Dinero({ amount: 150, precision: 2 })
+      ])
+      expect(actualMaximum.toJSON()).toEqual(maximumDineroExpected.toJSON())
+    })
+    test('should return the maximum dinero from an array of dinero objects, with different precision on those objects', () => {
+      const maximumDineroExpected = Dinero({ amount: 200, precision: 2 })
+      const actualMaximum = Dinero.maximum([
+        Dinero({ amount: 150, precision: 2 }),
+        maximumDineroExpected,
+        Dinero({ amount: 100, precision: 3 })
+      ])
+      expect(actualMaximum.toJSON()).toEqual(maximumDineroExpected.toJSON())
+    })
+  })
 })
