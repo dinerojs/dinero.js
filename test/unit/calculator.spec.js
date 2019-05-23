@@ -154,5 +154,19 @@ describe('Calculator', () => {
         expect(calculator.round(-2.5, 'HALF_AWAY_FROM_ZERO')).toBe(-3)
       })
     })
+    describe('DOWN', () => {
+      test('should round down for 1.4', () => {
+        expect(calculator.round(1.4, 'DOWN')).toBe(1)
+      })
+      test('should round down for -1.4', () => {
+        expect(calculator.round(-1.4, 'DOWN')).toBe(-2)
+      })
+      test('should round down for 1.6', () => {
+        expect(calculator.round(1.6, 'DOWN')).toBe(1)
+      })
+      test('should round down for -1.6', () => {
+        expect(calculator.round(-1.6, 'DOWN')).toBe(-2)
+      })
+    })
   })
 })
