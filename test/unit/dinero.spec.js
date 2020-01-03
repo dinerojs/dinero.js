@@ -121,6 +121,20 @@ describe('Dinero', () => {
           .toObject()
       ).toThrow()
     })
+    test('should convert between precisions correctly', () => {
+      expect(
+        Dinero({ amount: 333336, precision: 5 })
+          .convertPrecision(2)
+          .toObject()
+      ).toMatchObject({ amount: 333, precision: 2 })
+    })
+    test('should convert from long initial precisions correctly', () => {
+      expect(
+        Dinero({ amount: 3333333336, precision: 9 })
+          .convertPrecision(2)
+          .toObject()
+      ).toMatchObject({ amount: 333, precision: 2 })
+    })
   })
   describe('#add', () => {
     test('should return a new Dinero object with same amount plus the amount of the other', () => {

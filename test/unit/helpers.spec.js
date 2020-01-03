@@ -70,6 +70,9 @@ describe('Helpers', () => {
     test('should return true with a string', () => {
       expect(Helpers.isFloat('5.5')).toBe(true)
     })
+    test('should return true with a number in scientific notation', () => {
+      expect(Helpers.isFloat(1e-15)).toBe(true)
+    })
     test('should return false with NaN', () => {
       expect(Helpers.isFloat(NaN)).toBe(false)
     })
@@ -86,6 +89,12 @@ describe('Helpers', () => {
     })
     test('should return 0 when no argument is passed', () => {
       expect(Helpers.countFractionDigits()).toBe(0)
+    })
+    test('should return the right amount when a number in scientific notation is passed', () => {
+      expect(Helpers.countFractionDigits(1e-7)).toBe(7)
+    })
+    test('should return the right amount when a smaller number in scientific notation is passed', () => {
+      expect(Helpers.countFractionDigits(1e-15)).toBe(15)
     })
   })
   describe('#isHalf', () => {
