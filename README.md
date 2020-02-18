@@ -101,6 +101,10 @@ npm install @types/dinero.js --save
 
 **This is a third-party file.** Please report issues and open PRs for it on the [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) repository.
 
+### React Native
+
+Dinero uses `Number.toLocaleString`, which is by default **not** bundled with React Native (0.60+) on Android devices. For formatting and currency symbols to display properly, you need to change the preferred build flavor of JavaScriptCore in your project, by opening `./android/app/build.gradle` and changing the line `def jscFlavor = 'org.webkit:android-jsc:+'` to `def jscFlavor = 'org.webkit:android-jsc-intl:+'`.
+
 ## Quick start
 
 Dinero.js makes it easy to create, calculate and format monetary values in JavaScript. You can perform arithmetic operations, extensively parse and format them, check for a number of things to make your own development process easier and safer.
