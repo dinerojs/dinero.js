@@ -5,12 +5,13 @@ import { isPercentage, areValidRatios } from './helpers'
  * @ignore
  *
  * @param  {Boolean} condition - The expression to assert.
- * @param  {Error}   [err=Error] - The error to throw if the assertion fails.
+ * @param  {String}  errorMessage - The message to throw if the assertion fails
+ * @param  {ErrorConstructor}   [ErrorType=Error] - The error to throw if the assertion fails.
  *
  * @throws {Error} If `condition` returns `false`.
  */
-export function assert(condition, err = new Error()) {
-  if (!condition) throw err
+export function assert(condition, errorMessage, ErrorType = Error) {
+  if (!condition) throw new ErrorType(errorMessage)
 }
 
 /**
@@ -24,7 +25,8 @@ export function assert(condition, err = new Error()) {
 export function assertPercentage(percentage) {
   assert(
     isPercentage(percentage),
-    new RangeError('You must provide a numeric value between 0 and 100.')
+    'You must provide a numeric value between 0 and 100.',
+    RangeError
   )
 }
 
@@ -39,9 +41,8 @@ export function assertPercentage(percentage) {
 export function assertValidRatios(ratios) {
   assert(
     areValidRatios(ratios),
-    new TypeError(
-      'You must provide a non-empty array of numeric values greater than 0.'
-    )
+    'You must provide a non-empty array of numeric values greater than 0.',
+    TypeError
   )
 }
 
@@ -51,11 +52,8 @@ export function assertValidRatios(ratios) {
  *
  * @param  {}  number - The value to test.
  *
- * @return {Boolean}
+ * @throws {TypeError}
  */
 export function assertInteger(number) {
-  assert(
-    Number.isInteger(number),
-    new TypeError('You must provide an integer.')
-  )
+  assert(Number.isInteger(number), 'You must provide an integer.', TypeError)
 }

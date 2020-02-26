@@ -98,9 +98,8 @@ const Dinero = options => {
   const assertSameCurrency = function(comparator) {
     assert(
       this.hasSameCurrency(comparator),
-      new TypeError(
-        'You must provide a Dinero instance with the same currency.'
-      )
+      'You must provide a Dinero instance with the same currency.',
+      TypeError
     )
   }
 
@@ -515,9 +514,8 @@ const Dinero = options => {
         .then(rate => {
           assert(
             !isUndefined(rate),
-            new TypeError(
-              `No rate was found for the destination currency "${currency}".`
-            )
+            `No rate was found for the destination currency "${currency}".`,
+            TypeError
           )
           return create.call(this, {
             amount: calculator.round(
