@@ -18,5 +18,6 @@ deploy:
   auth: $NETLIFY_AUTH
   edge: true
   dir: "docs/"
+  prod: true
   on:
     branch: master
