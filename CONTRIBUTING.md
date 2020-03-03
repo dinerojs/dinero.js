@@ -109,9 +109,7 @@ Every method should have a short description of:
 
 Examples should be provided, and you should add an extra description if required to understand what the method does. This will be used in the [generated documentation][dinero:docs]. Note that descriptions don't make up for poor naming or ambiguous methods. Only elaborate when necessary.
 
-The documentation is hosted on GitHub Pages, which means generated pages are versioned. Yet, **you shouldn't commit generated docs yourself**: this will be done automatically during the CI workflow.
-
-You can generate docs locally to make sure it displays properly, but don't commit the files.
+The documentation is automatically generated during the CI workflow, and hosted on Netlify. You can generate docs locally to make sure it displays properly.
 
 ```sh
 $ npm run docs

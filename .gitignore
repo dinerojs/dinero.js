@@ -1,6 +1,7 @@
 .npmrc
 node_modules
 build
+docs
 coverage
 npm-shrinkwrap.json
 package-lock.json
