@@ -13,10 +13,10 @@ branches:
     - master
     - develop
 deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GH_DEPLOY_TOKEN
-  keep-history: true
-  target-branch: master
+  provider: netlify
+  site: "f1d48ad6-e89c-455c-9e4e-c6b6d8ddcf6b"
+  auth: $NETLIFY_AUTH
+  edge: true
+  dir: "docs/"
   on:
     branch: master
