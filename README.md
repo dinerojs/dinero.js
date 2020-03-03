@@ -234,6 +234,35 @@ Selected content about Dinero.js:
 
 Show some love by [upvoting on Product Hunt][producthunt:dinerojs] if you like, support and/or use the library 🔼😍
 
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://sarahdayan.dev"><img src="https://avatars1.githubusercontent.com/u/5370675?v=4" width="100px;" alt=""/><br /><sub><b>Sarah Dayan</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=sarahdayan" title="Code">💻</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=sarahdayan" title="Documentation">📖</a> <a href="https://github.com/sarahdayan/dinero.js/issues?q=author%3Asarahdayan" title="Bug reports">🐛</a> <a href="#content-sarahdayan" title="Content">🖋</a> <a href="#blog-sarahdayan" title="Blogposts">📝</a> <a href="#ideas-sarahdayan" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-sarahdayan" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-sarahdayan" title="Maintenance">🚧</a> <a href="https://github.com/sarahdayan/dinero.js/pulls?q=is%3Apr+reviewed-by%3Asarahdayan" title="Reviewed Pull Requests">👀</a> <a href="#question-sarahdayan" title="Answering Questions">💬</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=sarahdayan" title="Tests">⚠️</a> <a href="#tutorial-sarahdayan" title="Tutorials">✅</a></td>
+    <td align="center"><a href="https://github.com/yacinehmito"><img src="https://avatars1.githubusercontent.com/u/6893840?v=4" width="100px;" alt=""/><br /><sub><b>Yacine Hmito</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=yacinehmito" title="Code">💻</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=yacinehmito" title="Documentation">📖</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=yacinehmito" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/scotttrinh"><img src="https://avatars1.githubusercontent.com/u/1682194?v=4" width="100px;" alt=""/><br /><sub><b>Scott Trinh</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=scotttrinh" title="Code">💻</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=scotttrinh" title="Documentation">📖</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=scotttrinh" title="Tests">⚠️</a> <a href="#ideas-scotttrinh" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://rolandasb.com"><img src="https://avatars0.githubusercontent.com/u/1409998?v=4" width="100px;" alt=""/><br /><sub><b>Rolandas Barysas</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=rolandasb" title="Code">💻</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=rolandasb" title="Documentation">📖</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=rolandasb" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://www.luizpb.com/en/"><img src="https://avatars1.githubusercontent.com/u/1798830?v=4" width="100px;" alt=""/><br /><sub><b>Luiz "Bills"</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=luizbills" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://kunst.com.br"><img src="https://avatars2.githubusercontent.com/u/8649362?v=4" width="100px;" alt=""/><br /><sub><b>Leonardo Dino</b></sub></a><br /><a href="#infra-leonardodino" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://www.kizu.ru/"><img src="https://avatars3.githubusercontent.com/u/177485?v=4" width="100px;" alt=""/><br /><sub><b>Roman Komarov</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=kizu" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://jotaoncode.com/"><img src="https://avatars3.githubusercontent.com/u/4575026?v=4" width="100px;" alt=""/><br /><sub><b>Juan Garcia</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=jotaoncode" title="Code">💻</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=jotaoncode" title="Documentation">📖</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=jotaoncode" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/frobinsonj"><img src="https://avatars3.githubusercontent.com/u/16726902?v=4" width="100px;" alt=""/><br /><sub><b>Freddy Robinson</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=frobinsonj" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://twitter.com/andybrk"><img src="https://avatars0.githubusercontent.com/u/273857?v=4" width="100px;" alt=""/><br /><sub><b>Andy Burke</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=andyburke" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/andrewiggins"><img src="https://avatars3.githubusercontent.com/u/459878?v=4" width="100px;" alt=""/><br /><sub><b>Andre Wiggins</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=andrewiggins" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.
+
 ## Acknowledgements
 
 Dinero.js is inspired from [Martin Fowler's monetary representation][fowler-money]. Design-wise, it draws inspiration from [Money PHP][moneyphp], [Luxon][luxon], [Moment.js][moment] and [Numeral.js][numeral] (even though it doesn't rely on any of them).

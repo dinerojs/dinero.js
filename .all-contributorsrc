@@ -1,0 +1,134 @@
+{
+  "projectName": "dinero.js",
+  "projectOwner": "sarahdayan",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "angular",
+  "contributorsPerLine": 6,
+  "contributors": [
+    {
+      "login": "sarahdayan",
+      "name": "Sarah Dayan",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/5370675?v=4",
+      "profile": "https://sarahdayan.dev",
+      "contributions": [
+        "code",
+        "doc",
+        "bug",
+        "content",
+        "blog",
+        "ideas",
+        "infra",
+        "maintenance",
+        "review",
+        "question",
+        "test",
+        "tutorial"
+      ]
+    },
+    {
+      "login": "yacinehmito",
+      "name": "Yacine Hmito",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/6893840?v=4",
+      "profile": "https://github.com/yacinehmito",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
+    },
+    {
+      "login": "scotttrinh",
+      "name": "Scott Trinh",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1682194?v=4",
+      "profile": "https://github.com/scotttrinh",
+      "contributions": [
+        "code",
+        "doc",
+        "test",
+        "ideas"
+      ]
+    },
+    {
+      "login": "rolandasb",
+      "name": "Rolandas Barysas",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1409998?v=4",
+      "profile": "https://rolandasb.com",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
+    },
+    {
+      "login": "luizbills",
+      "name": "Luiz \"Bills\"",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1798830?v=4",
+      "profile": "https://www.luizpb.com/en/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "leonardodino",
+      "name": "Leonardo Dino",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8649362?v=4",
+      "profile": "https://kunst.com.br",
+      "contributions": [
+        "infra"
+      ]
+    },
+    {
+      "login": "kizu",
+      "name": "Roman Komarov",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/177485?v=4",
+      "profile": "https://www.kizu.ru/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "jotaoncode",
+      "name": "Juan Garcia",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4575026?v=4",
+      "profile": "http://jotaoncode.com/",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
+    },
+    {
+      "login": "frobinsonj",
+      "name": "Freddy Robinson",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/16726902?v=4",
+      "profile": "https://github.com/frobinsonj",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "andyburke",
+      "name": "Andy Burke",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/273857?v=4",
+      "profile": "https://twitter.com/andybrk",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "andrewiggins",
+      "name": "Andre Wiggins",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/459878?v=4",
+      "profile": "https://github.com/andrewiggins",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
+}
