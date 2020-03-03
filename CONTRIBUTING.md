@@ -119,6 +119,13 @@ $ npm run docs
 
 Bug fixes must target `master`, new features must target `develop`. Thus, bug fixes are automatically deployed once merged. New merged features will remain on standby until `develop` is manually merged into `master`.
 
+## Contributors
+
+If you make a pull request to the project, you can (and should!) add yourself as a contributor. This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification, and uses the [these contribution types](https://allcontributors.org/docs/en/emoji-key).
+
+- Add yourself by running `npm run contributors:add <your-github-handle> <comma-separated-list-of-contribution-types>` (or edit the [`.all-contributorsrc`](./.all-contributorsrc) file directly).
+- Run `npm run contributors:generate`
+
 Have fun!
 
 [dinero:issues]: https://github.com/sarahdayan/dinero.js/issues
