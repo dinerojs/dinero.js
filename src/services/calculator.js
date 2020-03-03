@@ -39,6 +39,9 @@ export default function Calculator() {
       return isHalf(number)
         ? Math.sign(number) * Math.ceil(Math.abs(number))
         : Math.round(number)
+    },
+    DOWN(number) {
+      return Math.floor(number)
     }
   }
 
