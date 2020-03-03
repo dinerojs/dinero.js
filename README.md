@@ -254,6 +254,7 @@ Show some love by [upvoting on Product Hunt][producthunt:dinerojs] if you like, 
     <td align="center"><a href="https://github.com/frobinsonj"><img src="https://avatars3.githubusercontent.com/u/16726902?v=4" width="100px;" alt=""/><br /><sub><b>Freddy Robinson</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=frobinsonj" title="Documentation">📖</a></td>
     <td align="center"><a href="https://twitter.com/andybrk"><img src="https://avatars0.githubusercontent.com/u/273857?v=4" width="100px;" alt=""/><br /><sub><b>Andy Burke</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=andyburke" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/andrewiggins"><img src="https://avatars3.githubusercontent.com/u/459878?v=4" width="100px;" alt=""/><br /><sub><b>Andre Wiggins</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=andrewiggins" title="Code">💻</a></td>
+    <td align="center"><a href="https://desandro.com"><img src="https://avatars0.githubusercontent.com/u/85566?v=4" width="100px;" alt=""/><br /><sub><b>David DeSandro</b></sub></a><br /><a href="#design-desandro" title="Design">🎨</a></td>
   </tr>
 </table>
 
