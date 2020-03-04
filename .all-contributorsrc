@@ -138,6 +138,15 @@
       "contributions": [
         "design"
       ]
+    },
+    {
+      "login": "fongie",
+      "name": "Max Körlinge",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/19932622?v=4",
+      "profile": "http://maxk.se",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }

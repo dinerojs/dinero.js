@@ -101,6 +101,10 @@ npm install @types/dinero.js --save
 
 **This is a third-party file.** Please report issues and open PRs for it on the [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) repository.
 
+### React Native
+
+Dinero uses [`Number.prototype.toLocaleString`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number/toLocaleString), which by default **isn't bundled with React Native (0.60+) on Android devices**. For formatting and currency symbols to display properly, you need to change the preferred build flavor of JavaScriptCore in your project by opening `./android/app/build.gradle` and changing the line `def jscFlavor = 'org.webkit:android-jsc:+'` to `def jscFlavor = 'org.webkit:android-jsc-intl:+'`.
+
 ## Quick start
 
 Dinero.js makes it easy to create, calculate and format monetary values in JavaScript. You can perform arithmetic operations, extensively parse and format them, check for a number of things to make your own development process easier and safer.
@@ -255,6 +259,9 @@ Show some love by [upvoting on Product Hunt][producthunt:dinerojs] if you like, 
     <td align="center"><a href="https://twitter.com/andybrk"><img src="https://avatars0.githubusercontent.com/u/273857?v=4" width="100px;" alt=""/><br /><sub><b>Andy Burke</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=andyburke" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/andrewiggins"><img src="https://avatars3.githubusercontent.com/u/459878?v=4" width="100px;" alt=""/><br /><sub><b>Andre Wiggins</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=andrewiggins" title="Code">💻</a></td>
     <td align="center"><a href="https://desandro.com"><img src="https://avatars0.githubusercontent.com/u/85566?v=4" width="100px;" alt=""/><br /><sub><b>David DeSandro</b></sub></a><br /><a href="#design-desandro" title="Design">🎨</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://maxk.se"><img src="https://avatars1.githubusercontent.com/u/19932622?v=4" width="100px;" alt=""/><br /><sub><b>Max Körlinge</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=fongie" title="Documentation">📖</a></td>
   </tr>
 </table>
 
