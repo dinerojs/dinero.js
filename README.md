@@ -103,7 +103,7 @@ npm install @types/dinero.js --save
 
 ### React Native
 
-Dinero uses `Number.toLocaleString`, which is by default **not** bundled with React Native (0.60+) on Android devices. For formatting and currency symbols to display properly, you need to change the preferred build flavor of JavaScriptCore in your project, by opening `./android/app/build.gradle` and changing the line `def jscFlavor = 'org.webkit:android-jsc:+'` to `def jscFlavor = 'org.webkit:android-jsc-intl:+'`.
+Dinero uses [`Number.prototype.toLocaleString`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number/toLocaleString), which by default **isn't bundled with React Native (0.60+) on Android devices**. For formatting and currency symbols to display properly, you need to change the preferred build flavor of JavaScriptCore in your project by opening `./android/app/build.gradle` and changing the line `def jscFlavor = 'org.webkit:android-jsc:+'` to `def jscFlavor = 'org.webkit:android-jsc-intl:+'`.
 
 ## Quick start
 
