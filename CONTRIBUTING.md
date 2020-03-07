@@ -36,7 +36,7 @@ The project uses Node.js to build and test. You will need at least Node 6+ [with
 To get started, clone the project and install the dependencies from your terminal:
 
 ```sh
-$ git clone https://github.com/sarahdayan/dinero.js.git
+$ git clone https://github.com/dinerojs/dinero.js.git
 $ npm install # or yarn install, recommended
 ```
 
@@ -128,8 +128,8 @@ If you make a pull request to the project, you can (and should!) add yourself as
 
 Have fun!
 
-[dinero:issues]: https://github.com/sarahdayan/dinero.js/issues
-[dinero:projects]: https://github.com/sarahdayan/dinero.js/projects
+[dinero:issues]: https://github.com/dinerojs/dinero.js/issues
+[dinero:projects]: https://github.com/dinerojs/dinero.js/projects
 [yarn]: https://yarnpkg.com
 [prettier]: http://prettier.io
 [eslint]: http://eslint.org

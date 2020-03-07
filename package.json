@@ -9,8 +9,8 @@
     "amount",
     "immutable"
   ],
-  "homepage": "https://sarahdayan.github.io/dinero.js",
-  "repository": "https://github.com/sarahdayan/dinero.js",
+  "homepage": "https://dinerojs.com/",
+  "repository": "https://github.com/dinerojs/dinero.js",
   "main": "build/cjs/dinero.js",
   "module": "build/esm/dinero.js",
   "scripts": {
