@@ -2,7 +2,7 @@
   "plugins": ["plugins/markdown"],
   "templates": {
     "referenceTitle": "Dinero.js",
-    "repository": "https://github.com/sarahdayan/dinero.js",
+    "repository": "https://github.com/dinerojs/dinero.js",
     "cdn": "https://cdn.jsdelivr.net/npm/dinero.js/build/umd/dinero.min.js",
     "disableSort": true,
     "search": {

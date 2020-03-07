@@ -1,28 +1,28 @@
 <h1 align="center">Dinero.js</h1>
 
-<div align="center"><img alt="" height="150" src="https://raw.githubusercontent.com/sarahdayan/dinero.js/develop/logo.png" /></div>
+<div align="center"><img alt="" height="150" src="https://raw.githubusercontent.com/dinerojs/dinero.js/develop/logo.png" /></div>
 
 <div align="center">Dinero.js is a library for working with monetary values in JavaScript.</div>
 
 <div align="center" style="margin:15px 0">
-  <a href="https://github.com/sarahdayan/dinero.js/blob/master/LICENSE.md">
+  <a href="https://github.com/dinerojs/dinero.js/blob/master/LICENSE.md">
     <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue.svg" />
   </a>
-  <a href="https://travis-ci.org/sarahdayan/dinero.js">
-    <img alt="Build Status" src="https://img.shields.io/travis/sarahdayan/dinero.js.svg" />
+  <a href="https://travis-ci.org/dinerojs/dinero.js">
+    <img alt="Build Status" src="https://img.shields.io/travis/dinerojs/dinero.js.svg" />
   </a>
   <a href="https://www.npmjs.com/package/dinero.js">
     <img alt="NPM version" src="https://img.shields.io/npm/v/dinero.js.svg" />
   </a>
-  <a href="https://coveralls.io/github/sarahdayan/dinero.js?branch=master">
-    <img alt="Coverage Status" src="https://img.shields.io/coveralls/github/sarahdayan/dinero.js.svg?branch=master" />
+  <a href="https://coveralls.io/github/dinerojs/dinero.js?branch=master">
+    <img alt="Coverage Status" src="https://img.shields.io/coveralls/github/dinerojs/dinero.js.svg?branch=master" />
   </a>
   <a href="https://github.com/semantic-release/semantic-release">
     <img alt="semantic-release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" />
   </a>
 </div>
 
-<div align="center"><a href="https://sarahdayan.github.io/dinero.js/module-Dinero.html">See full API docs</a></div>
+<div align="center"><a href="https://dinerojs.com/module-dinero">See full API docs</a></div>
 
 <hr>
 
@@ -245,23 +245,23 @@ Show some love by [upvoting on Product Hunt][producthunt:dinerojs] if you like, 
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://sarahdayan.dev"><img src="https://avatars1.githubusercontent.com/u/5370675?v=4" width="100px;" alt=""/><br /><sub><b>Sarah Dayan</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=sarahdayan" title="Code">💻</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=sarahdayan" title="Documentation">📖</a> <a href="https://github.com/sarahdayan/dinero.js/issues?q=author%3Asarahdayan" title="Bug reports">🐛</a> <a href="#content-sarahdayan" title="Content">🖋</a> <a href="#blog-sarahdayan" title="Blogposts">📝</a> <a href="#ideas-sarahdayan" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-sarahdayan" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-sarahdayan" title="Maintenance">🚧</a> <a href="https://github.com/sarahdayan/dinero.js/pulls?q=is%3Apr+reviewed-by%3Asarahdayan" title="Reviewed Pull Requests">👀</a> <a href="#question-sarahdayan" title="Answering Questions">💬</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=sarahdayan" title="Tests">⚠️</a> <a href="#tutorial-sarahdayan" title="Tutorials">✅</a></td>
-    <td align="center"><a href="https://github.com/yacinehmito"><img src="https://avatars1.githubusercontent.com/u/6893840?v=4" width="100px;" alt=""/><br /><sub><b>Yacine Hmito</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=yacinehmito" title="Code">💻</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=yacinehmito" title="Documentation">📖</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=yacinehmito" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://github.com/scotttrinh"><img src="https://avatars1.githubusercontent.com/u/1682194?v=4" width="100px;" alt=""/><br /><sub><b>Scott Trinh</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=scotttrinh" title="Code">💻</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=scotttrinh" title="Documentation">📖</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=scotttrinh" title="Tests">⚠️</a> <a href="#ideas-scotttrinh" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="https://rolandasb.com"><img src="https://avatars0.githubusercontent.com/u/1409998?v=4" width="100px;" alt=""/><br /><sub><b>Rolandas Barysas</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=rolandasb" title="Code">💻</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=rolandasb" title="Documentation">📖</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=rolandasb" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://www.luizpb.com/en/"><img src="https://avatars1.githubusercontent.com/u/1798830?v=4" width="100px;" alt=""/><br /><sub><b>Luiz "Bills"</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=luizbills" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://sarahdayan.dev"><img src="https://avatars1.githubusercontent.com/u/5370675?v=4" width="100px;" alt=""/><br /><sub><b>Sarah Dayan</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=sarahdayan" title="Code">💻</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=sarahdayan" title="Documentation">📖</a> <a href="https://github.com/dinerojs/dinero.js/issues?q=author%3Asarahdayan" title="Bug reports">🐛</a> <a href="#content-sarahdayan" title="Content">🖋</a> <a href="#blog-sarahdayan" title="Blogposts">📝</a> <a href="#ideas-sarahdayan" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-sarahdayan" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-sarahdayan" title="Maintenance">🚧</a> <a href="https://github.com/dinerojs/dinero.js/pulls?q=is%3Apr+reviewed-by%3Asarahdayan" title="Reviewed Pull Requests">👀</a> <a href="#question-sarahdayan" title="Answering Questions">💬</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=sarahdayan" title="Tests">⚠️</a> <a href="#tutorial-sarahdayan" title="Tutorials">✅</a></td>
+    <td align="center"><a href="https://github.com/yacinehmito"><img src="https://avatars1.githubusercontent.com/u/6893840?v=4" width="100px;" alt=""/><br /><sub><b>Yacine Hmito</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=yacinehmito" title="Code">💻</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=yacinehmito" title="Documentation">📖</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=yacinehmito" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/scotttrinh"><img src="https://avatars1.githubusercontent.com/u/1682194?v=4" width="100px;" alt=""/><br /><sub><b>Scott Trinh</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=scotttrinh" title="Code">💻</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=scotttrinh" title="Documentation">📖</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=scotttrinh" title="Tests">⚠️</a> <a href="#ideas-scotttrinh" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://rolandasb.com"><img src="https://avatars0.githubusercontent.com/u/1409998?v=4" width="100px;" alt=""/><br /><sub><b>Rolandas Barysas</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=rolandasb" title="Code">💻</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=rolandasb" title="Documentation">📖</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=rolandasb" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://www.luizpb.com/en/"><img src="https://avatars1.githubusercontent.com/u/1798830?v=4" width="100px;" alt=""/><br /><sub><b>Luiz "Bills"</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=luizbills" title="Documentation">📖</a></td>
     <td align="center"><a href="https://kunst.com.br"><img src="https://avatars2.githubusercontent.com/u/8649362?v=4" width="100px;" alt=""/><br /><sub><b>Leonardo Dino</b></sub></a><br /><a href="#infra-leonardodino" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://www.kizu.ru/"><img src="https://avatars3.githubusercontent.com/u/177485?v=4" width="100px;" alt=""/><br /><sub><b>Roman Komarov</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=kizu" title="Documentation">📖</a></td>
-    <td align="center"><a href="http://jotaoncode.com/"><img src="https://avatars3.githubusercontent.com/u/4575026?v=4" width="100px;" alt=""/><br /><sub><b>Juan Garcia</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=jotaoncode" title="Code">💻</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=jotaoncode" title="Documentation">📖</a> <a href="https://github.com/sarahdayan/dinero.js/commits?author=jotaoncode" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://github.com/frobinsonj"><img src="https://avatars3.githubusercontent.com/u/16726902?v=4" width="100px;" alt=""/><br /><sub><b>Freddy Robinson</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=frobinsonj" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://twitter.com/andybrk"><img src="https://avatars0.githubusercontent.com/u/273857?v=4" width="100px;" alt=""/><br /><sub><b>Andy Burke</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=andyburke" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/andrewiggins"><img src="https://avatars3.githubusercontent.com/u/459878?v=4" width="100px;" alt=""/><br /><sub><b>Andre Wiggins</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=andrewiggins" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.kizu.ru/"><img src="https://avatars3.githubusercontent.com/u/177485?v=4" width="100px;" alt=""/><br /><sub><b>Roman Komarov</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=kizu" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://jotaoncode.com/"><img src="https://avatars3.githubusercontent.com/u/4575026?v=4" width="100px;" alt=""/><br /><sub><b>Juan Garcia</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=jotaoncode" title="Code">💻</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=jotaoncode" title="Documentation">📖</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=jotaoncode" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/frobinsonj"><img src="https://avatars3.githubusercontent.com/u/16726902?v=4" width="100px;" alt=""/><br /><sub><b>Freddy Robinson</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=frobinsonj" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://twitter.com/andybrk"><img src="https://avatars0.githubusercontent.com/u/273857?v=4" width="100px;" alt=""/><br /><sub><b>Andy Burke</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=andyburke" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/andrewiggins"><img src="https://avatars3.githubusercontent.com/u/459878?v=4" width="100px;" alt=""/><br /><sub><b>Andre Wiggins</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=andrewiggins" title="Code">💻</a></td>
     <td align="center"><a href="https://desandro.com"><img src="https://avatars0.githubusercontent.com/u/85566?v=4" width="100px;" alt=""/><br /><sub><b>David DeSandro</b></sub></a><br /><a href="#design-desandro" title="Design">🎨</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="http://maxk.se"><img src="https://avatars1.githubusercontent.com/u/19932622?v=4" width="100px;" alt=""/><br /><sub><b>Max Körlinge</b></sub></a><br /><a href="https://github.com/sarahdayan/dinero.js/commits?author=fongie" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://maxk.se"><img src="https://avatars1.githubusercontent.com/u/19932622?v=4" width="100px;" alt=""/><br /><sub><b>Max Körlinge</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=fongie" title="Documentation">📖</a></td>
   </tr>
 </table>
 
@@ -281,13 +281,13 @@ Logo by [David DeSandro][github:desandro].
 
 Dinero.js is licensed under [MIT][license].
 
-[license]: https://github.com/sarahdayan/dinero.js/blob/master/LICENSE.md
+[license]: https://github.com/dinerojs/dinero.js/blob/master/LICENSE.md
 [mdn:intl]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl
 [caniuse:intl]: https://caniuse.com/#feat=internationalization
 [node:full-icu]: https://nodejs.org/api/intl.html#intl_embed_the_entire_icu_full_icu
 [wiki:iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
 [dinero-docs]: https://sarahdayan.github.io/dinero.js/module-Dinero.html
-[dinero-guidelines]: https://github.com/sarahdayan/dinero.js/blob/master/CONTRIBUTING.md
+[dinero-guidelines]: https://github.com/dinerojs/dinero.js/blob/master/CONTRIBUTING.md
 [producthunt:dinerojs]: https://www.producthunt.com/posts/dinero-js
 [fowler-money]: https://martinfowler.com/eaaCatalog/money.html
 [moneyphp]: http://moneyphp.org
