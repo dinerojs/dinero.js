@@ -57,7 +57,7 @@
     "jsverify": "0.8.4",
     "lint-staged": "10.0.8",
     "prettier": "1.19.1",
-    "rollup": "0.68.2",
+    "rollup": "2.0.2",
     "rollup-plugin-babel": "3.0.7",
     "rollup-plugin-babel-minify": "5.0.0",
     "rollup-plugin-commonjs": "9.3.4",
