@@ -1,6 +1,7 @@
 .npmrc
 node_modules
 build
+!tasks/build
 docs
 coverage
 npm-shrinkwrap.json
