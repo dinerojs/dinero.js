@@ -19,7 +19,7 @@ const calculator = Calculator()
  *
  * A Dinero object has:
  *
- * * An `amount`, expressed in minor currency units.
+ * * An `amount`, expressed in minor currency units, as an integer.
  * * A `currency`, expressed as an {@link https://en.wikipedia.org/wiki/ISO_4217#Active_codes ISO 4217 currency code}.
  * * A `precision`, expressed as an integer, to represent the number of decimal places in the `amount`.
  *   This is helpful when you want to represent fractional minor currency units (e.g.: $10.4545).
@@ -34,12 +34,15 @@ const calculator = Calculator()
  * * **Configuration:** {@link module:Dinero~setLocale setLocale}.
  * * **Conversion & formatting:** {@link module:Dinero~toFormat toFormat}, {@link module:Dinero~toUnit toUnit}, {@link module:Dinero~toRoundedUnit toRoundedUnit}, {@link module:Dinero~toObject toObject}, {@link module:Dinero~toJSON toJSON}, {@link module:Dinero~convertPrecision convertPrecision} and {@link module:Dinero.normalizePrecision normalizePrecision}.
  *
+ * Dinero.js uses `number`s under the hood, so it's constrained by the [double-precision floating-point format](https://en.wikipedia.org/wiki/Double-precision_floating-point_format). Using values over [`Number.MAX_SAFE_INTEGER`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number/MAX_SAFE_INTEGER) or below [`Number.MIN_SAFE_INTEGER`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number/MIN_SAFE_INTEGER) will yield unpredictable results.
+ * Same goes with performing calculations: once the internal `amount` value exceeds those limits, precision is no longer guaranteed.
+ *
  * @module Dinero
  * @param  {Number} [options.amount=0] - The amount in minor currency units (as an integer).
  * @param  {String} [options.currency='USD'] - An ISO 4217 currency code.
  * @param  {String} [options.precision=2] - The number of decimal places to represent.
  *
- * @throws {TypeError} If `amount` or `precision` is invalid.
+ * @throws {TypeError} If `amount` or `precision` is invalid. Integers over [`Number.MAX_SAFE_INTEGER`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number/MAX_SAFE_INTEGER) or below [`Number.MIN_SAFE_INTEGER`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number/MIN_SAFE_INTEGER) are considered valid, even though they can lead to imprecise amounts.
  *
  * @return {Object}
  */
