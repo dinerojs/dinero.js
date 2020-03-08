@@ -60,7 +60,7 @@
     "rollup": "0.68.2",
     "rollup-plugin-babel": "3.0.7",
     "rollup-plugin-babel-minify": "5.0.0",
-    "rollup-plugin-commonjs": "9.3.4",
+    "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "3.4.0",
     "semantic-release": "17.0.4",
     "travis-deploy-once": "5.0.11"
