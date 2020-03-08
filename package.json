@@ -50,7 +50,7 @@
     "eslint-plugin-node": "6.0.1",
     "eslint-plugin-promise": "3.8.0",
     "eslint-plugin-standard": "3.1.0",
-    "husky": "0.14.3",
+    "husky": "4.2.3",
     "jest": "23.6.0",
     "jsdoc": "3.6.3",
     "jsdoc-template": "sarahdayan/jsdoc-template",
