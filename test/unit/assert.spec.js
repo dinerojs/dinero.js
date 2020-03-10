@@ -18,8 +18,11 @@ describe('Assert', () => {
     })
   })
   describe('#assertValidRatios', () => {
-    test('should throw with one ratio to 0', () => {
-      expect(() => Assert.assertValidRatios([1, 0])).toThrow()
+    test('should throw with all ratio to 0', () => {
+      expect(() => Assert.assertValidRatios([0, 0])).toThrow()
+    })
+    test('should throw with a negative ratio', () => {
+      expect(() => Assert.assertValidRatios([1, -1])).toThrow()
     })
     test('should throw with an empty array', () => {
       expect(() => Assert.assertValidRatios([])).toThrow()
