@@ -13,26 +13,21 @@ jobs:
   include:
     - stage: test
       name: "Running automated tests"
-      script: npm run test
+      script: npm run test && npm run coverage
     - stage: prerelease
-      name: "Sending coverage"
-      script: npm run coverage
-    - script: npm run docs
+      script: npm run docs
       name: "Building documentation"
-    - script: npm run build
-      name: "Building artifacts"
-    - stage: release
-      name: "Preparing release"
-      script: npm run semantic-release --dry-run
+      deploy:
+        provider: netlify
+        site: "f1d48ad6-e89c-455c-9e4e-c6b6d8ddcf6b"
+        auth: $NETLIFY_AUTH
+        edge: true
+        dir: "docs/"
+        prod: true
+        on:
+          branch: master
+    - script: npm run build && npm run semantic-release --dry-run
+      name: "Releasing library"
     - stage: postrelease
       name: "Purging CDN"
       script: npm run cdn:purge
-deploy:
-  provider: netlify
-  site: "f1d48ad6-e89c-455c-9e4e-c6b6d8ddcf6b"
-  auth: $NETLIFY_AUTH
-  edge: true
-  dir: "docs/"
-  prod: true
-  on:
-    branch: master
