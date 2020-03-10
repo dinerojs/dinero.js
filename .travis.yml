@@ -26,7 +26,7 @@ jobs:
         prod: true
         on:
           branch: master
-    - script: npm run build && npm run semantic-release --dry-run
+    - script: npm run build && npm run semantic-release
       name: "Releasing library"
     - stage: postrelease
       name: "Purging CDN"
