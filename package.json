@@ -20,10 +20,11 @@
     "lint": "eslint 'src/**/*.js' 'test/**/*.js'",
     "lint!": "npm run format && npm run lint",
     "test": "jest --coverage",
+    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "docs": "rm -rf docs && ./node_modules/.bin/jsdoc src/ -r -d ./docs -t ./node_modules/jsdoc-template -c jsdoc.json -R ./README.md -q title=Dinero.js",
     "build": "rm -rf build && node tasks/build/",
-    "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release",
+    "cdn:purge": "curl -Is https://purge.jsdelivr.net/npm/dinero.js/build/umd/dinero.min.js",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
@@ -59,11 +60,10 @@
     "jsverify": "0.8.4",
     "lint-staged": "10.0.8",
     "prettier": "1.19.1",
-    "rollup": "2.0.2",
+    "rollup": "2.0.3",
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-babel-minify": "9.1.1",
-    "semantic-release": "17.0.4",
-    "travis-deploy-once": "5.0.11"
+    "semantic-release": "17.0.4"
   },
   "config": {
     "commitizen": {
