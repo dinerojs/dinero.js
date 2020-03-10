@@ -20,10 +20,12 @@
     "lint": "eslint 'src/**/*.js' 'test/**/*.js'",
     "lint!": "npm run format && npm run lint",
     "test": "jest --coverage",
+    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "docs": "rm -rf docs && ./node_modules/.bin/jsdoc src/ -r -d ./docs -t ./node_modules/jsdoc-template -c jsdoc.json -R ./README.md -q title=Dinero.js",
     "build": "rm -rf build && node tasks/build/",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release",
+    "cdn:purge": "curl -Is https://purge.jsdelivr.net/npm/dinero.js/build/umd/dinero.min.js",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
