@@ -31,7 +31,11 @@ export function isPercentage(percentage) {
  * @return {Boolean}
  */
 export function areValidRatios(ratios) {
-  return ratios.length > 0 && ratios.every(ratio => ratio > 0)
+  return (
+    ratios.length > 0 &&
+    ratios.every(ratio => ratio >= 0) &&
+    ratios.some(ratio => ratio > 0)
+  )
 }
 
 /**
