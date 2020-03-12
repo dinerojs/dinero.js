@@ -351,6 +351,8 @@ const Dinero = options => {
      *
      * You can use percentage style or ratio style for `ratios`: `[25, 75]` and `[1, 3]` will do the same thing.
      *
+     * Since v1.8.0, you can use zero ratios (such as [0, 50, 50]). If there's a remainder to distribute, zero ratios are skipped and return a Dinero object with amount zero.
+     *
      * @param  {Number[]} ratios - The ratios to allocate the money to.
      *
      * @example
@@ -363,6 +365,13 @@ const Dinero = options => {
      * // the first one with an amount of 25
      * // the second one with an amount of 75
      * Dinero({ amount: 100 }).allocate([1, 3])
+     * @example
+     * // since version 1.8.0
+     * // returns an array of three Dinero objects
+     * // the first one with an amount of 0
+     * // the second one with an amount of 502
+     * // the third one with an amount of 501
+     * Dinero({ amount: 1003 }).allocate([0, 50, 50])
      *
      * @throws {TypeError} If ratios are invalid.
      *
@@ -382,9 +391,13 @@ const Dinero = options => {
         return create.call(this, { amount: share })
       })
 
-      for (let i = 0; remainder > 0; i++) {
-        shares[i] = shares[i].add(create.call(this, { amount: 1 }))
-        remainder = calculator.subtract(remainder, 1)
+      let i = 0
+      while (remainder > 0) {
+        if (ratios[i] > 0) {
+          shares[i] = shares[i].add(create.call(this, { amount: 1 }))
+          remainder = calculator.subtract(remainder, 1)
+        }
+        i += 1
       }
 
       return shares

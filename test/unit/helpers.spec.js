@@ -39,8 +39,11 @@ describe('Helpers', () => {
     test('should return true with ratio style', () => {
       expect(Helpers.areValidRatios([1, 3])).toBe(true)
     })
-    test('should return false with one ratio to 0', () => {
-      expect(Helpers.areValidRatios([1, 0])).toBe(false)
+    test('should return false with all ratio to 0', () => {
+      expect(Helpers.areValidRatios([0, 0])).toBe(false)
+    })
+    test('should return false with a negative ratio', () => {
+      expect(Helpers.areValidRatios([-1, 1])).toBe(false)
     })
     test('should return false with an empty array', () => {
       expect(Helpers.areValidRatios([])).toBe(false)
