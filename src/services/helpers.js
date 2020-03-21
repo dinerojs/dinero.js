@@ -71,8 +71,14 @@ export function isFloat(value) {
  * @return {Number}
  */
 export function countFractionDigits(number = 0) {
-  const fractionDigits = number.toString().split('.')[1]
-  return fractionDigits ? fractionDigits.length : 0
+  const stringRepresentation = number.toString()
+  if (stringRepresentation.indexOf('e-') > 0) {
+    // It's too small for a normal string representation, e.g. 1e-7 instead of 0.00000001
+    return parseInt(stringRepresentation.split('e-')[1])
+  } else {
+    const fractionDigits = stringRepresentation.split('.')[1]
+    return fractionDigits ? fractionDigits.length : 0
+  }
 }
 
 /**
