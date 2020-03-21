@@ -263,6 +263,7 @@ Show some love by [upvoting on Product Hunt][producthunt:dinerojs] if you like, 
   <tr>
     <td align="center"><a href="http://maxk.se"><img src="https://avatars1.githubusercontent.com/u/19932622?v=4" width="100px;" alt=""/><br /><sub><b>Max Körlinge</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=fongie" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/dotpack"><img src="https://avatars2.githubusercontent.com/u/1175814?v=4" width="100px;" alt=""/><br /><sub><b>Ilia Ermolin</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=dotpack" title="Code">💻</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=dotpack" title="Documentation">📖</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=dotpack" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://coina.ge"><img src="https://avatars1.githubusercontent.com/u/1531750?v=4" width="100px;" alt=""/><br /><sub><b>Kevin Brown</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=thekevinbrown" title="Code">💻</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=thekevinbrown" title="Tests">⚠️</a></td>
   </tr>
 </table>
 

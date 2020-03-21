@@ -158,6 +158,16 @@
         "doc",
         "test"
       ]
+    },
+    {
+      "login": "thekevinbrown",
+      "name": "Kevin Brown",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1531750?v=4",
+      "profile": "https://coina.ge",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ]
 }
