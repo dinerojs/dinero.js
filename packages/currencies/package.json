@@ -1,0 +1,25 @@
+{
+  "name": "@dinero.js/currencies",
+  "version": "2.0.0",
+  "description": "Common currency implementations for Dinero.js",
+  "keywords": [
+    "money",
+    "monetary",
+    "amount",
+    "immutable",
+    "currency",
+    "currencies"
+  ],
+  "homepage": "https://dinerojs.com/currencies",
+  "bugs": "https://github.com/dinerojs/dinero.js/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dinerojs/dinero.js.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Sarah Dayan",
+    "url": "https://sarahdayan.dev"
+  },
+  "main": "index.js"
+}
