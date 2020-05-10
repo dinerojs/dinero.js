@@ -1624,14 +1624,14 @@ ajv@^6.10.0, ajv@^6.10.2, ajv@^6.5.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-all-contributors-cli@6.14.0:
-  version "6.14.0"
-  resolved "https://registry.yarnpkg.com/all-contributors-cli/-/all-contributors-cli-6.14.0.tgz#9ecddabd9c1befef660f7589289b264db94bbbc8"
-  integrity sha512-rGpKRWXFaxAVWHLRBuJMvkI/86FIW7z2gvuEVTA60FPCw6Z/y0vDZgTATVEJQ4XV2+eSM5BHLZGW7YQTwTHCJQ==
+all-contributors-cli@6.14.2:
+  version "6.14.2"
+  resolved "https://registry.yarnpkg.com/all-contributors-cli/-/all-contributors-cli-6.14.2.tgz#4d7652f700a827b9a2f749720f13605ee1c2f8bd"
+  integrity sha512-DUeZrL0EsXwdYZ1msEeI0cY7DNQqggRKLMfDzgZu+l/72KLf/ZuT97wnUIGAFvSPUlfSAXIVDhivOlZRFjYH+g==
   dependencies:
     "@babel/runtime" "^7.7.6"
     async "^3.0.1"
-    chalk "^3.0.0"
+    chalk "^4.0.0"
     didyoumean "^1.2.1"
     inquirer "^7.0.4"
     json-fixer "^1.4.0"
