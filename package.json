@@ -1,0 +1,16 @@
+{
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/core": "7.7.5",
+    "@babel/preset-env": "7.7.6",
+    "@babel/preset-typescript": "7.7.4",
+    "@types/jest": "24.0.24",
+    "babel-jest": "24.9.0",
+    "jest": "24.9.0"
+  },
+  "workspaces": ["packages/*"]
+}

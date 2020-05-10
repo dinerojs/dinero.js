@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@dinero.js/*": [
+        "packages/*"
+      ]
+    },
+    "lib": [
+      "es2017"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
