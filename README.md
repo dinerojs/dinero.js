@@ -288,7 +288,7 @@ Dinero.js is licensed under [MIT][license].
 [caniuse:intl]: https://caniuse.com/#feat=internationalization
 [node:full-icu]: https://nodejs.org/api/intl.html#intl_embed_the_entire_icu_full_icu
 [wiki:iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
-[dinero-docs]: https://sarahdayan.github.io/dinero.js/module-Dinero.html
+[dinero-docs]: https://dinerojs.com/module-dinero
 [dinero-guidelines]: https://github.com/dinerojs/dinero.js/blob/master/CONTRIBUTING.md
 [producthunt:dinerojs]: https://www.producthunt.com/posts/dinero-js
 [fowler-money]: https://martinfowler.com/eaaCatalog/money.html
