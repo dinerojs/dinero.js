@@ -1,0 +1,12 @@
+import { Currency } from "../types";
+
+/**
+ * Ethiopian birr
+ */
+const ETB: Currency<number> = {
+  code: "ETB",
+  base: 10,
+  exponent: 2,
+};
+
+export default ETB;

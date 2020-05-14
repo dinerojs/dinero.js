@@ -1,0 +1,12 @@
+import { Currency } from "../types";
+
+/**
+ * Cayman Islands dollar
+ */
+const KYD: Currency<number> = {
+  code: "KYD",
+  base: 10,
+  exponent: 2,
+};
+
+export default KYD;
