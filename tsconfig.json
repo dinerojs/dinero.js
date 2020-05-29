@@ -3,8 +3,11 @@
     "baseUrl": "./",
     "paths": {
       "@dinero.js/*": [
-        "packages/*"
-      ]
+        "packages/*/src",
+      ],
+      "@dinero.js/core/*": [
+        "packages/core/src",
+      ],
     },
     "lib": [
       "es2017"
