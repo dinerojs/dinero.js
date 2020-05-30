@@ -3,6 +3,7 @@ import {
   subtract,
   multiply,
   divide,
+  down,
 } from "@dinero.js/core/calculator/number";
 
 /**
@@ -13,7 +14,7 @@ const distribute = (n: number, ratios: number[]) => {
   let remainder = n;
 
   const shares = ratios.map((ratio) => {
-    const share = Math.floor(divide(multiply(n, ratio), total));
+    const share = down(divide(multiply(n, ratio), total));
     remainder = subtract(remainder, share);
 
     return share;
