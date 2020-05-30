@@ -1,16 +1,24 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
+    "outDir": "dist",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "rootDir": ".",
     "paths": {
       "@dinero.js/*": [
         "packages/*/src",
       ],
-      "@dinero.js/core/*": [
-        "packages/core/src",
+      "@dinero.js/core/calculator/number": [
+        "packages/core/src/calculator/number",
+      ],
+      "@dinero.js/core/calculator/bigint": [
+        "packages/core/src/calculator/bigint",
       ],
     },
     "lib": [
-      "es2017"
+      "esnext"
     ]
   },
   "exclude": [
