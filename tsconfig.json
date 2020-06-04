@@ -6,19 +6,20 @@
     "module": "esnext",
     "moduleResolution": "node",
     "rootDir": ".",
+    "esModuleInterop": true,
     "paths": {
-      "@dinero.js/*": [
-        "packages/*/src",
-      ],
       "@dinero.js/core/calculator/number": [
-        "packages/core/src/calculator/number",
+        "packages/core/src/calculator/number"
       ],
       "@dinero.js/core/calculator/bigint": [
-        "packages/core/src/calculator/bigint",
+        "packages/core/src/calculator/bigint"
       ],
       "@dinero.js/fp/calculator/number": [
-        "packages/fp/src/calculator/number",
+        "packages/fp/src/calculator/number"
       ],
+      "@dinero.js/*": [
+        "packages/*/src"
+      ]
     },
     "lib": [
       "esnext"

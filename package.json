@@ -9,10 +9,12 @@
     "@babel/core": "7.7.5",
     "@babel/preset-env": "7.7.6",
     "@babel/preset-typescript": "7.7.4",
-    "@types/jest": "24.0.24",
+    "@types/jest": "25.2.3",
     "babel-jest": "24.9.0",
-    "jest": "24.9.0",
-    "prettier": "2.0.5"
+    "jest": "26.0.1",
+    "prettier": "2.0.5",
+    "ts-jest": "26.1.0",
+    "typescript": "3.9.5"
   },
   "workspaces": [
     "packages/*"
