@@ -16,6 +16,9 @@
       "@dinero.js/core/calculator/bigint": [
         "packages/core/src/calculator/bigint",
       ],
+      "@dinero.js/fp/calculator/number": [
+        "packages/fp/src/calculator/number",
+      ],
     },
     "lib": [
       "esnext"
