@@ -1,4 +1,4 @@
-import { Currency } from "../types";
+import { Currency } from "@dinero.js/currencies";
 
 /**
  * Central African CFA franc

@@ -1,4 +1,4 @@
-import { Currency } from "../types";
+import { Currency } from "@dinero.js/currencies";
 
 /**
  * Bosnia and Herzegovina convertible mark
