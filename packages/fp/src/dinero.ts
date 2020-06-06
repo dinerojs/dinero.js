@@ -10,7 +10,7 @@ import { FunctionalDinero } from '@dinero.js/fp';
  *
  * @returns The created functional Dinero object.
  */
-function createFunctionalDinero<TType>({
+function dinero<TType>({
   amount,
   currency,
   scale,
@@ -26,4 +26,4 @@ function createFunctionalDinero<TType>({
   };
 }
 
-export default createFunctionalDinero;
+export default dinero;

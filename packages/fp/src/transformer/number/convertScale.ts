@@ -5,7 +5,7 @@ import {
   subtract,
   halfEven,
 } from '@dinero.js/core/calculator/number';
-import { FunctionalDinero, createFunctionalDinero } from '@dinero.js/fp';
+import dinero, { FunctionalDinero } from '@dinero.js/fp';
 
 /**
  * Convert a set of functional Dinero objects to a new precision.
@@ -23,7 +23,7 @@ function convertScale(
 ) {
   const { amount, currency, scale } = functionalDinero.toJSON();
 
-  return createFunctionalDinero({
+  return dinero({
     amount: roundingMode(
       multiply(amount, power(currency.base, subtract(newScale, scale)))
     ),
