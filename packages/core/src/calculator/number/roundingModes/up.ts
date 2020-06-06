@@ -1,10 +1,14 @@
 import { RoundingMode } from "@dinero.js/core";
 
 /**
- * Rounds up.
+ * Round a number up.
+ *
+ * @param value The number to round.
+ *
+ * @returns The rounded number.
  */
-const up: RoundingMode<number> = (n) => {
-  return Math.floor(n);
+const up: RoundingMode<number> = (value) => {
+  return Math.ceil(value);
 };
 
 export default up;

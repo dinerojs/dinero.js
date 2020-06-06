@@ -2,10 +2,14 @@ import { RoundingMode } from "@dinero.js/core";
 import { isHalf } from "../helpers";
 
 /**
- * Rounds half values down.
+ * Round a number with half values down.
+ *
+ * @param value The number to round.
+ *
+ * @returns The rounded number.
  */
-const halfDown: RoundingMode<number> = (n) => {
-  return isHalf(n) ? Math.floor(n) : Math.round(n);
+const halfDown: RoundingMode<number> = (value) => {
+  return isHalf(value) ? Math.floor(value) : Math.round(value);
 };
 
 export default halfDown;

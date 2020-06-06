@@ -2,12 +2,16 @@ import { RoundingMode } from "@dinero.js/core";
 import { isEven, isHalf } from "../helpers";
 
 /**
- * Rounds half values to nearest odd integer.
+ * Round a number with half values to nearest odd integer.
+ *
+ * @param value The number to round.
+ *
+ * @returns The rounded number.
  */
-const halfOdd: RoundingMode<number> = (n) => {
-  const rounded = Math.round(n);
+const halfOdd: RoundingMode<number> = (value) => {
+  const rounded = Math.round(value);
 
-  if (!isHalf(n)) {
+  if (!isHalf(value)) {
     return rounded;
   }
 
