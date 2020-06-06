@@ -15,7 +15,7 @@ import {
  * @returns The bigint distributed in shares.
  */
 const distribute = (value: bigint, ratios: ReadonlyArray<bigint>) => {
-  const total = ratios.reduce((a, b) => add(a, b));
+  const total = ratios.reduce((a, b) => add(a, b), 0n);
 
   if (total === 0n) {
     return ratios;
@@ -33,7 +33,7 @@ const distribute = (value: bigint, ratios: ReadonlyArray<bigint>) => {
   let i = 0;
 
   while (remainder > 0) {
-    if (ratios[i] > 0) {
+    if (ratios[i] !== 0n) {
       shares[i] = add(shares[i], 1n);
       remainder = subtract(remainder, 1n);
     }

@@ -16,7 +16,7 @@ import {
  * @returns The number distributed in shares.
  */
 const distribute = (value: number, ratios: readonly number[]) => {
-  const total = ratios.reduce((a, b) => add(a, b));
+  const total = ratios.reduce((a, b) => add(a, b), 0);
 
   if (total === 0) {
     return ratios;
@@ -34,7 +34,7 @@ const distribute = (value: number, ratios: readonly number[]) => {
   let i = 0;
 
   while (remainder > 0) {
-    if (ratios[i] > 0) {
+    if (ratios[i] !== 0) {
       shares[i] = add(shares[i], 1);
       remainder = subtract(remainder, 1);
     }
