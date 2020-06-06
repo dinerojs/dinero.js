@@ -16,6 +16,11 @@ import {
  */
 const distribute = (value: number, ratios: number[]) => {
   const total = ratios.reduce((a, b) => add(a, b));
+
+  if (total === 0) {
+    return ratios;
+  }
+
   let remainder = value;
 
   const shares = ratios.map((ratio) => {
@@ -24,10 +29,6 @@ const distribute = (value: number, ratios: number[]) => {
 
     return share;
   });
-
-  if (remainder === value) {
-    return shares;
-  }
 
   let i = 0;
 
