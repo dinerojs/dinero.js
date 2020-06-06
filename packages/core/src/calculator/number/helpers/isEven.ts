@@ -1,10 +1,12 @@
 /**
- * Returns whether a number is even.
+ * Return whether a number is even.
  *
- * @param n The number to test.
+ * @param value The number to test.
+ *
+ * @returns Whether the number is even.
  */
-function isEven(n: number) {
-  return n % 2 === 0;
+function isEven(value: number) {
+  return value % 2 === 0;
 }
 
 export default isEven;

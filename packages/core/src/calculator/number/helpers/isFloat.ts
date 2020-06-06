@@ -1,10 +1,12 @@
 /**
- * Returns whether a number is a float.
+ * Return whether a number is a float.
  *
- * @param n The number to test.
+ * @param value The number to test.
+ *
+ * @returns Whether the number is a float.
  */
-function isFloat(n: number) {
-  return !Number.isInteger(n) && !Number.isNaN(n) && Number.isFinite(n);
+function isFloat(value: number) {
+  return !Number.isInteger(value) && !Number.isNaN(value) && Number.isFinite(value);
 }
 
 export default isFloat;

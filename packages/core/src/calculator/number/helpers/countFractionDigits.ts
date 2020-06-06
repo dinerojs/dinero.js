@@ -1,12 +1,21 @@
 /**
- * Returns how many fraction digits a number has.
+ * Return how many fraction digits a number has.
  *
- * @param n The number to test.
+ * @param value The number to test.
+ *
+ * @returns How many fraction digits the number has.
  */
-function countFractionDigits(n: number) {
-  const fractionDigits = n.toString().split(".")[1];
+function countFractionDigits(value: number) {
+  const stringRepresentation = value.toString();
 
-  return fractionDigits ? fractionDigits.length : 0;
+  if (stringRepresentation.indexOf("e-") > 0) {
+    // It's too small for a normal string representation, e.g., 1e-7 instead of 0.00000001
+    return Number.parseInt(stringRepresentation.split("e-")[1]);
+  } else {
+    const fractionDigits = stringRepresentation.split(".")[1];
+
+    return fractionDigits ? fractionDigits.length : 0;
+  }
 }
 
 export default countFractionDigits;
