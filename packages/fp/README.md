@@ -16,7 +16,7 @@ npm install @dinero.js/fp
 yarn add @dinero.js/fp
 ```
 
-## Quick start
+## ⚡️ Quick start
 
 Functional `Dinero` objects are minimal and only contain a single method. Every function in `@dinero.js/fp` is side-effect free, allowing you only to bundle exactly what you use.
 
