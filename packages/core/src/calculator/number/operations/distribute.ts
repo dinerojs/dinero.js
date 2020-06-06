@@ -7,22 +7,37 @@ import {
 } from "@dinero.js/core/calculator/number";
 
 /**
- * Returns a number in distributes shares.
+ * Returns a number in distributed shares.
+ *
+ * @param value The number to distribute.
+ * @param ratios The ratios according which to distribute.
+ *
+ * @returns The number distributed in shares.
  */
-const distribute = (n: number, ratios: number[]) => {
+const distribute = (value: number, ratios: number[]) => {
   const total = ratios.reduce((a, b) => add(a, b));
-  let remainder = n;
+  let remainder = value;
 
   const shares = ratios.map((ratio) => {
-    const share = down(divide(multiply(n, ratio), total));
+    const share = down(divide(multiply(value, ratio), total)) || 0;
     remainder = subtract(remainder, share);
 
     return share;
   });
 
-  for (let i = 0; remainder > 0; i++) {
-    shares[i] = add(shares[i], 1);
-    remainder = subtract(remainder, 1);
+  if (remainder === value) {
+    return shares;
+  }
+
+  let i = 0;
+
+  while (remainder > 0) {
+    if (ratios[i] > 0) {
+      shares[i] = add(shares[i], 1);
+      remainder = subtract(remainder, 1);
+    }
+
+    i++;
   }
 
   return shares;
