@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Macedonian denar
  */
 const MKD: Currency<number> = {
-  code: "MKD",
+  code: 'MKD',
   base: 10,
   exponent: 2,
 };

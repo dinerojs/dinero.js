@@ -1,10 +1,10 @@
-import modulo from "../modulo";
+import modulo from '../modulo';
 
-describe("modulo", () => {
-  it("performs a modulo with positive numbers", () => {
+describe('modulo', () => {
+  it('performs a modulo with positive numbers', () => {
     expect(modulo(5n, 3n, 2n)).toBe(0n);
   });
-  it("performs a modulo with negative numbers", () => {
+  it('performs a modulo with negative numbers', () => {
     expect(modulo(-5n, -4n, -2n)).toBe(-1n);
   });
 });

@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Macanese pataca
  */
 const MOP: Currency<number> = {
-  code: "MOP",
+  code: 'MOP',
   base: 10,
   exponent: 2,
 };

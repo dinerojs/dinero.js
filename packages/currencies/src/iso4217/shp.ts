@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Saint Helena pound
  */
 const SHP: Currency<number> = {
-  code: "SHP",
+  code: 'SHP',
   base: 10,
   exponent: 2,
 };

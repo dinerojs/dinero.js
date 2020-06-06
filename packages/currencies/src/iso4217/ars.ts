@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Argentine peso
  */
 const ARS: Currency<number> = {
-  code: "ARS",
+  code: 'ARS',
   base: 10,
   exponent: 2,
 };

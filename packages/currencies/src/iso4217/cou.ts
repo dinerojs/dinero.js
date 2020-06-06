@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Unidad de Valor Real
  */
 const COU: Currency<number> = {
-  code: "COU",
+  code: 'COU',
   base: 10,
   exponent: 2,
 };

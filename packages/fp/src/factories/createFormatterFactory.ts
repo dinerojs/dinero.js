@@ -1,9 +1,9 @@
-import { Formatter, Transformer, RoundingMode } from "@dinero.js/core";
-import { FunctionalDinero } from "@dinero.js/fp";
+import { Transformer, RoundingMode } from '@dinero.js/core';
+import { FunctionalDinero } from '@dinero.js/fp';
 
 type FormatOptions<TType> = {
-  digits: TType;
-  roundingMode: RoundingMode<TType>;
+  readonly digits: TType;
+  readonly roundingMode: RoundingMode<TType>;
 };
 
 /**
@@ -24,14 +24,12 @@ function createFormatterFactory<TType>(
     transformer: Transformer<TType>,
     { digits, roundingMode }: FormatOptions<TType>
   ) {
-    const formatter: Formatter<TType> = (functionalDinero) => {
+    return (functionalDinero) => {
       const { currency } = functionalDinero.toJSON();
       const amount = amountTransformer(functionalDinero, digits, roundingMode);
 
       return transformer({ amount, currency });
     };
-
-    return formatter;
   }
 
   return createFormatter;

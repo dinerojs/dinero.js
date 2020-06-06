@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Belarusian ruble
  */
 const BYN: Currency<number> = {
-  code: "BYN",
+  code: 'BYN',
   base: 10,
   exponent: 2,
 };

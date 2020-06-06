@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Botswana pula
  */
 const BWP: Currency<number> = {
-  code: "BWP",
+  code: 'BWP',
   base: 10,
   exponent: 2,
 };

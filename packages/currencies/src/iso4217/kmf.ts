@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Comoro franc
  */
 const KMF: Currency<number> = {
-  code: "KMF",
+  code: 'KMF',
   base: 10,
   exponent: 0,
 };

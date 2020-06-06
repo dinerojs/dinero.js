@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Hong Kong dollar
  */
 const HKD: Currency<number> = {
-  code: "HKD",
+  code: 'HKD',
   base: 10,
   exponent: 2,
 };

@@ -1,5 +1,5 @@
-import { RoundingMode } from "@dinero.js/core";
-import { isHalf } from "../helpers";
+import { RoundingMode } from '@dinero.js/core';
+import { isHalf } from '../helpers';
 
 /**
  * Round a number with half values down.

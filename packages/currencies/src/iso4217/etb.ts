@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Ethiopian birr
  */
 const ETB: Currency<number> = {
-  code: "ETB",
+  code: 'ETB',
   base: 10,
   exponent: 2,
 };

@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Malagasy ariary
  */
 const MGA: Currency<number> = {
-  code: "MGA",
+  code: 'MGA',
   base: 10,
   exponent: 2,
 };

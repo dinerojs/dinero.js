@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Nepalese rupee
  */
 const NPR: Currency<number> = {
-  code: "NPR",
+  code: 'NPR',
   base: 10,
   exponent: 2,
 };

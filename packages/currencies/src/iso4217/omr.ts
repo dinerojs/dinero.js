@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Omani rial
  */
 const OMR: Currency<number> = {
-  code: "OMR",
+  code: 'OMR',
   base: 10,
   exponent: 3,
 };

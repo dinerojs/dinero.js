@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Iranian rial
  */
 const IRR: Currency<number> = {
-  code: "IRR",
+  code: 'IRR',
   base: 10,
   exponent: 2,
 };

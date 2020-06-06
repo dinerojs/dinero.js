@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Bitcoin
  */
 const XBT: Currency<number> = {
-  code: "XBT",
+  code: 'XBT',
   base: 10,
   exponent: 8,
 };

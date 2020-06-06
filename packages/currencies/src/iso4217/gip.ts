@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Gibraltar pound
  */
 const GIP: Currency<number> = {
-  code: "GIP",
+  code: 'GIP',
   base: 10,
   exponent: 2,
 };

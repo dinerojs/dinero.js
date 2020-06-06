@@ -1,5 +1,5 @@
-import { modulo, power } from "@dinero.js/core/calculator/number";
-import { FunctionalDinero } from "@dinero.js/fp";
+import { modulo, power } from '@dinero.js/core/calculator/number';
+import { FunctionalDinero } from '@dinero.js/fp';
 
 /**
  * Check whether a functional Dinero object has minor currency units.

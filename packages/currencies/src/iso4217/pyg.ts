@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Paraguayan guaraní
  */
 const PYG: Currency<number> = {
-  code: "PYG",
+  code: 'PYG',
   base: 10,
   exponent: 0,
 };

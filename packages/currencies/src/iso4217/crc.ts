@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Costa Rican colón
  */
 const CRC: Currency<number> = {
-  code: "CRC",
+  code: 'CRC',
   base: 10,
   exponent: 2,
 };

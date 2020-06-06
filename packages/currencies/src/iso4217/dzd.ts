@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Algerian dinar
  */
 const DZD: Currency<number> = {
-  code: "DZD",
+  code: 'DZD',
   base: 10,
   exponent: 2,
 };

@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Czech koruna
  */
 const CZK: Currency<number> = {
-  code: "CZK",
+  code: 'CZK',
   base: 10,
   exponent: 2,
 };

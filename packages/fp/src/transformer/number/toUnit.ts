@@ -1,5 +1,5 @@
-import { divide, power } from "@dinero.js/core/calculator/number";
-import { FunctionalDinero } from "@dinero.js/fp";
+import { divide, power } from '@dinero.js/core/calculator/number';
+import { FunctionalDinero } from '@dinero.js/fp';
 
 /**
  * Get the amount of a functional Dinero object in units.

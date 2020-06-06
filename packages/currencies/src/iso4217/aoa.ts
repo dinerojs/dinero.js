@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Angolan kwanza
  */
 const AOA: Currency<number> = {
-  code: "AOA",
+  code: 'AOA',
   base: 10,
   exponent: 2,
 };

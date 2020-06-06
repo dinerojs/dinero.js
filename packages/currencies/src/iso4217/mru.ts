@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Mauritanian ouguiya
  */
 const MRU: Currency<number> = {
-  code: "MRU",
+  code: 'MRU',
   base: 10,
   exponent: 2,
 };

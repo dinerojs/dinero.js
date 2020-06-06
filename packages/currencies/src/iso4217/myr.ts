@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Malaysian ringgit
  */
 const MYR: Currency<number> = {
-  code: "MYR",
+  code: 'MYR',
   base: 10,
   exponent: 2,
 };

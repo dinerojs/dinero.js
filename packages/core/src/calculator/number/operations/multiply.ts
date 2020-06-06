@@ -1,6 +1,6 @@
-import { VariadicOperation } from "@dinero.js/core";
-import { maximum, power, halfUp } from "@dinero.js/core/calculator/number";
-import { countFractionDigits, isFloat } from "../helpers";
+import { VariadicOperation } from '@dinero.js/core';
+import { maximum, power, halfUp } from '@dinero.js/core/calculator/number';
+import { countFractionDigits, isFloat } from '../helpers';
 
 const getFactor = (value: number) => power(10, countFractionDigits(value));
 

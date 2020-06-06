@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Lebanese pound
  */
 const LBP: Currency<number> = {
-  code: "LBP",
+  code: 'LBP',
   base: 10,
   exponent: 2,
 };

@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Falkland Islands pound
  */
 const FKP: Currency<number> = {
-  code: "FKP",
+  code: 'FKP',
   base: 10,
   exponent: 2,
 };

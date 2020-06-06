@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Jordanian dinar
  */
 const JOD: Currency<number> = {
-  code: "JOD",
+  code: 'JOD',
   base: 10,
   exponent: 3,
 };

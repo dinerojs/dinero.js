@@ -1,4 +1,4 @@
-import { toRoundedUnit, createFormatterFactory } from "@dinero.js/fp";
+import { toRoundedUnit, createFormatterFactory } from '@dinero.js/fp';
 
 /**
  * Create a functional Dinero object.

@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Azerbaijani manat
  */
 const AZN: Currency<number> = {
-  code: "AZN",
+  code: 'AZN',
   base: 10,
   exponent: 2,
 };

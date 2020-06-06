@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * WIR Euro
  */
 const CHE: Currency<number> = {
-  code: "CHE",
+  code: 'CHE',
   base: 10,
   exponent: 2,
 };

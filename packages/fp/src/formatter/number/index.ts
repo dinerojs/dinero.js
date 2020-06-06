@@ -1,1 +1,1 @@
-export { default as createFormatter } from "./createFormatter";
+export { default as createFormatter } from './createFormatter';

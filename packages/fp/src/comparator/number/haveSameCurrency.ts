@@ -1,4 +1,4 @@
-import { FunctionalDinero } from "@dinero.js/fp";
+import { FunctionalDinero } from '@dinero.js/fp';
 
 /**
  * Check whether a set of functional Dinero objects have the same currency.
@@ -7,7 +7,9 @@ import { FunctionalDinero } from "@dinero.js/fp";
  *
  * @returns Whether the functional Dinero objects have the same currency.
  */
-function haveSameCurrency(...functionalDineros: FunctionalDinero<number>[]) {
+function haveSameCurrency(
+  ...functionalDineros: ReadonlyArray<FunctionalDinero<number>>
+) {
   const { currency: comparatorCurrency } = functionalDineros[0].toJSON();
 
   return functionalDineros.every((d) => {
@@ -15,6 +17,6 @@ function haveSameCurrency(...functionalDineros: FunctionalDinero<number>[]) {
 
     return subjectCurrency === comparatorCurrency;
   });
-};
+}
 
 export default haveSameCurrency;

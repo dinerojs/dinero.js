@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Peruvian sol
  */
 const PEN: Currency<number> = {
-  code: "PEN",
+  code: 'PEN',
   base: 10,
   exponent: 2,
 };

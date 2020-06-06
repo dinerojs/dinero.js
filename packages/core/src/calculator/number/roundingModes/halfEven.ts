@@ -1,5 +1,5 @@
-import { RoundingMode } from "@dinero.js/core";
-import { isEven, isHalf } from "../helpers";
+import { RoundingMode } from '@dinero.js/core';
+import { isEven, isHalf } from '../helpers';
 
 /**
  * Round a number with half values to nearest even integer.

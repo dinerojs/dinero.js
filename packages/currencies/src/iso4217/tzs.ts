@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Tanzanian shilling
  */
 const TZS: Currency<number> = {
-  code: "TZS",
+  code: 'TZS',
   base: 10,
   exponent: 2,
 };

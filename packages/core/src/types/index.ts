@@ -1,1 +1,1 @@
-export { default as DineroSnapshot } from "./DineroSnapshot";
+export { default as DineroSnapshot } from './DineroSnapshot';

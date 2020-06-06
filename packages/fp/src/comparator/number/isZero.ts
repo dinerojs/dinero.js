@@ -1,4 +1,4 @@
-import { FunctionalDinero } from "@dinero.js/fp";
+import { FunctionalDinero } from '@dinero.js/fp';
 
 /**
  * Check whether the value of a functional Dinero object is zero.

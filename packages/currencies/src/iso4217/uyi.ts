@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Uruguay Peso en Unidades Indexadas
  */
 const UYI: Currency<number> = {
-  code: "UYI",
+  code: 'UYI',
   base: 10,
   exponent: 0,
 };

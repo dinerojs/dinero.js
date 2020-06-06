@@ -1,5 +1,5 @@
-import { distribute as distributeNumbers } from "@dinero.js/core/calculator/number";
-import { FunctionalDinero, createFunctionalDinero } from "@dinero.js/fp";
+import { distribute as distributeNumbers } from '@dinero.js/core/calculator/number';
+import { FunctionalDinero, createFunctionalDinero } from '@dinero.js/fp';
 
 /**
  * Distributes the amount of a functional Dinero object across a list of ratios.
@@ -11,12 +11,12 @@ import { FunctionalDinero, createFunctionalDinero } from "@dinero.js/fp";
  */
 function percentage(
   functionalDinero: FunctionalDinero<number>,
-  ratios: number[]
+  ratios: readonly number[]
 ) {
-  const { amount } = functionalDinero.toJSON();
-  const distributedAmounts = distributeNumbers(amount, ratios);
+  const { amount: dineroAmount } = functionalDinero.toJSON();
+  const distributedAmounts = distributeNumbers(dineroAmount, ratios);
 
-  const dineros = distributedAmounts.map((amount) => {
+  return distributedAmounts.map((amount) => {
     const { currency, scale } = functionalDinero.toJSON();
 
     return createFunctionalDinero({
@@ -25,8 +25,6 @@ function percentage(
       scale,
     });
   });
-
-  return dineros;
 }
 
 export default percentage;

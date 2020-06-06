@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Trinidad and Tobago dollar
  */
 const TTD: Currency<number> = {
-  code: "TTD",
+  code: 'TTD',
   base: 10,
   exponent: 2,
 };

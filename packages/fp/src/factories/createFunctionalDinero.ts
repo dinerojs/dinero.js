@@ -1,5 +1,5 @@
-import { DineroSnapshot } from "@dinero.js/core";
-import { FunctionalDinero } from "@dinero.js/fp";
+import { DineroSnapshot } from '@dinero.js/core';
+import { FunctionalDinero } from '@dinero.js/fp';
 
 /**
  * Create a functional Dinero object.
@@ -21,8 +21,8 @@ function createFunctionalDinero<TType>({
         amount,
         currency,
         scale,
-      }
-    }
+      };
+    },
   };
 }
 

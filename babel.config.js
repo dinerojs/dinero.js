@@ -1,13 +1,14 @@
+/* eslint-disable import/no-commonjs, functional/immutable-data, functional/no-expression-statement */
 module.exports = {
   presets: [
     [
-      "@babel/preset-env",
+      '@babel/preset-env',
       {
         targets: {
-          node: "current"
-        }
-      }
+          node: 'current',
+        },
+      },
     ],
-    "@babel/preset-typescript"
-  ]
+    '@babel/preset-typescript',
+  ],
 };

@@ -1,4 +1,4 @@
-import { BinaryOperation } from "@dinero.js/core";
+import { BinaryOperation } from '@dinero.js/core';
 
 /**
  * Returns an bigint to the power of an exponent.
@@ -8,8 +8,8 @@ import { BinaryOperation } from "@dinero.js/core";
  *
  * @returns The base to the power of the exponent.
  */
-const power: BinaryOperation<bigint> = (n, exponent) => {
-  return n ** exponent;
+const power: BinaryOperation<bigint> = (base, exponent) => {
+  return base ** exponent;
 };
 
 export default power;

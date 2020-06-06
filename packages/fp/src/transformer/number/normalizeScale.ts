@@ -1,5 +1,5 @@
-import { maximum } from "@dinero.js/core/calculator/number";
-import { FunctionalDinero, convertScale } from "@dinero.js/fp";
+import { maximum } from '@dinero.js/core/calculator/number';
+import { FunctionalDinero, convertScale } from '@dinero.js/fp';
 
 /**
  * Normalize a set of functional Dinero objects to the highest scale of the set.
@@ -8,7 +8,9 @@ import { FunctionalDinero, convertScale } from "@dinero.js/fp";
  *
  * @returns A new set of functional Dinero objects.
  */
-function normalizeScale(functionalDineros: FunctionalDinero<number>[]) {
+function normalizeScale(
+  functionalDineros: ReadonlyArray<FunctionalDinero<number>>
+) {
   const highestScale = functionalDineros.reduce((acc, curr) => {
     const { scale } = curr.toJSON();
 

@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Samoan tālā
  */
 const WST: Currency<number> = {
-  code: "WST",
+  code: 'WST',
   base: 10,
   exponent: 2,
 };

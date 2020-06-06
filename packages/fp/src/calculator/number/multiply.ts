@@ -1,5 +1,5 @@
-import { multiply as multiplyNumbers } from "@dinero.js/core/calculator/number";
-import { createVariadicOperation } from "@dinero.js/fp";
+import { multiply as multiplyNumbers } from '@dinero.js/core/calculator/number';
+import { createVariadicOperation } from '@dinero.js/fp';
 
 /**
  * Multiply the passed functional Dinero objects.

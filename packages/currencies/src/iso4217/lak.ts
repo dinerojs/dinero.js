@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Lao kip
  */
 const LAK: Currency<number> = {
-  code: "LAK",
+  code: 'LAK',
   base: 10,
   exponent: 2,
 };

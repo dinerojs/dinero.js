@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Honduran lempira
  */
 const HNL: Currency<number> = {
-  code: "HNL",
+  code: 'HNL',
   base: 10,
   exponent: 2,
 };

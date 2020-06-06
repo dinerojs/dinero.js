@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Sudanese pound
  */
 const SDG: Currency<number> = {
-  code: "SDG",
+  code: 'SDG',
   base: 10,
   exponent: 2,
 };

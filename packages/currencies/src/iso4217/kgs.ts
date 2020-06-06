@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Kyrgyzstani som
  */
 const KGS: Currency<number> = {
-  code: "KGS",
+  code: 'KGS',
   base: 10,
   exponent: 2,
 };

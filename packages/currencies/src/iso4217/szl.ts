@@ -1,17 +1,17 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Swazi lilangeni
  */
 const SZL: Currency<number> = {
-  name: "lilangeni",
+  name: 'lilangeni',
   sign: {
-    default: "L",
-    alternatives: ["E"],
+    default: 'L',
+    alternatives: ['E'],
   },
   code: {
-    alpha: "SZL",
-    num: "748",
+    alpha: 'SZL',
+    num: '748',
   },
   exponent: 2,
 };

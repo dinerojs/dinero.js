@@ -1,4 +1,4 @@
-import { FunctionalDinero, normalizeScale } from "@dinero.js/fp";
+import { FunctionalDinero, normalizeScale } from '@dinero.js/fp';
 
 /**
  * Check whether the value of a functional Dinero object is lesser than or equal to another.

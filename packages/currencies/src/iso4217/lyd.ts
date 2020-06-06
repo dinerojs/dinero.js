@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Libyan dinar
  */
 const LYD: Currency<number> = {
-  code: "LYD",
+  code: 'LYD',
   base: 10,
   exponent: 3,
 };

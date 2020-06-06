@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * XRP
  */
 const XRP: Currency<number> = {
-  code: "XRP",
+  code: 'XRP',
   base: 10,
   exponent: 6,
 };

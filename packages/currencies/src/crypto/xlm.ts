@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Stellar Lumen
  */
 const XLM: Currency<number> = {
-  code: "XLM",
+  code: 'XLM',
   base: 10,
   exponent: 8,
 };

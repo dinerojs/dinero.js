@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Burundian franc
  */
 const BIF: Currency<number> = {
-  code: "BIF",
+  code: 'BIF',
   base: 10,
   exponent: 0,
 };

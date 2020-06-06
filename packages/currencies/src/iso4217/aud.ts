@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Australian dollar
  */
 const AUD: Currency<number> = {
-  code: "AUD",
+  code: 'AUD',
   base: 10,
   exponent: 2,
 };

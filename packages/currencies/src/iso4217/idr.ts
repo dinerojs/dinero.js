@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Indonesian rupiah
  */
 const IDR: Currency<number> = {
-  code: "IDR",
+  code: 'IDR',
   base: 10,
   exponent: 2,
 };

@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Myanmar kyat
  */
 const MMK: Currency<number> = {
-  code: "MMK",
+  code: 'MMK',
   base: 10,
   exponent: 2,
 };

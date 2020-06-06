@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * West African CFA franc
  */
 const XOF: Currency<number> = {
-  code: "XOF",
+  code: 'XOF',
   base: 10,
   exponent: 0,
 };

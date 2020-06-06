@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Lesotho loti
  */
 const LSL: Currency<number> = {
-  code: "LSL",
+  code: 'LSL',
   base: 10,
   exponent: 2,
 };

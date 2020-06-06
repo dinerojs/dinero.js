@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Bermudian dollar
  */
 const BMD: Currency<number> = {
-  code: "BMD",
+  code: 'BMD',
   base: 10,
   exponent: 2,
 };

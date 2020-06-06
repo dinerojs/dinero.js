@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Croatian kuna
  */
 const HRK: Currency<number> = {
-  code: "HRK",
+  code: 'HRK',
   base: 10,
   exponent: 2,
 };

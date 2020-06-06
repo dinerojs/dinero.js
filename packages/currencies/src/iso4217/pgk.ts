@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Papua New Guinean kina
  */
 const PGK: Currency<number> = {
-  code: "PGK",
+  code: 'PGK',
   base: 10,
   exponent: 2,
 };

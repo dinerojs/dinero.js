@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Turkmenistan manat
  */
 const TMT: Currency<number> = {
-  code: "TMT",
+  code: 'TMT',
   base: 10,
   exponent: 2,
 };

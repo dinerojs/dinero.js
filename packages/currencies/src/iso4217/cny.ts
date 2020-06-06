@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Renminbi (Chinese) yuan
  */
 const CNY: Currency<number> = {
-  code: "CNY",
+  code: 'CNY',
   base: 10,
   exponent: 2,
 };

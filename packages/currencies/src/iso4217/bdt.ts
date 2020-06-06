@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Bangladeshi taka
  */
 const BDT: Currency<number> = {
-  code: "BDT",
+  code: 'BDT',
   base: 10,
   exponent: 2,
 };

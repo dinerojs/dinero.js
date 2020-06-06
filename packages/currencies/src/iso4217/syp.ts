@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Syrian pound
  */
 const SYP: Currency<number> = {
-  code: "SYP",
+  code: 'SYP',
   base: 10,
   exponent: 2,
 };

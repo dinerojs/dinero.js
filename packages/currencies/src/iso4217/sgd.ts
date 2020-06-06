@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Singapore dollar
  */
 const SGD: Currency<number> = {
-  code: "SGD",
+  code: 'SGD',
   base: 10,
   exponent: 2,
 };

@@ -1,4 +1,4 @@
-import { VariadicOperation } from "@dinero.js/core";
+import { VariadicOperation } from '@dinero.js/core';
 
 /**
  * Returns the remainder of a set of bigints.

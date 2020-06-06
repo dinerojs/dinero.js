@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Sierra Leonean leone
  */
 const SLL: Currency<number> = {
-  code: "SLL",
+  code: 'SLL',
   base: 10,
   exponent: 2,
 };

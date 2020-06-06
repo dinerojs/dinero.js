@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Nicaraguan córdoba
  */
 const NIO: Currency<number> = {
-  code: "NIO",
+  code: 'NIO',
   base: 10,
   exponent: 2,
 };

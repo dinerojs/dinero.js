@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Solomon Islands dollar
  */
 const SBD: Currency<number> = {
-  code: "SBD",
+  code: 'SBD',
   base: 10,
   exponent: 2,
 };

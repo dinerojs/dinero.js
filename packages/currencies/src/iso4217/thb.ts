@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Thai baht
  */
 const THB: Currency<number> = {
-  code: "THB",
+  code: 'THB',
   base: 10,
   exponent: 2,
 };

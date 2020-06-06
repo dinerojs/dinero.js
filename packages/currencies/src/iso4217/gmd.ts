@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Gambian dalasi
  */
 const GMD: Currency<number> = {
-  code: "GMD",
+  code: 'GMD',
   base: 10,
   exponent: 2,
 };

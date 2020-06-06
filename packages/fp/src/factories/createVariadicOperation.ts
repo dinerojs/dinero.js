@@ -1,5 +1,5 @@
-import { VariadicOperation } from "@dinero.js/core";
-import { FunctionalDinero, createFunctionalDinero } from "@dinero.js/fp";
+import { VariadicOperation } from '@dinero.js/core';
+import { FunctionalDinero, createFunctionalDinero } from '@dinero.js/fp';
 
 /**
  * Create variadic arithmetic operation functions.
@@ -9,29 +9,23 @@ import { FunctionalDinero, createFunctionalDinero } from "@dinero.js/fp";
  * @returns A variadic arithmetic operation function.
  */
 function createVariadicOperation<TType>(operation: VariadicOperation<TType>) {
-  const variadicOperation = (
-    ...functionalDineros: FunctionalDinero<TType>[]
-  ) => {
+  return (...functionalDineros: ReadonlyArray<FunctionalDinero<TType>>) => {
     const amount = functionalDineros
       .map((subject) => {
-        const { amount } = subject.toJSON();
+        const { amount: subjectAmount } = subject.toJSON();
 
-        return amount;
+        return subjectAmount;
       })
       .reduce((acc, curr) => operation(acc, curr));
 
     const { currency, scale } = functionalDineros[0].toJSON();
 
-    const d = createFunctionalDinero({
+    return createFunctionalDinero({
       amount,
       currency,
       scale,
     });
-
-    return d;
   };
-
-  return variadicOperation;
 }
 
 export default createVariadicOperation;

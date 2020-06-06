@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Jamaican dollar
  */
 const JMD: Currency<number> = {
-  code: "JMD",
+  code: 'JMD',
   base: 10,
   exponent: 2,
 };

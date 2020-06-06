@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Unidad previsional
  */
 const UYW: Currency<number> = {
-  code: "UYW",
+  code: 'UYW',
   base: 10,
   exponent: 4,
 };

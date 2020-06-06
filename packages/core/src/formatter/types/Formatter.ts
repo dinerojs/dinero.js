@@ -1,4 +1,4 @@
-import { FunctionalDinero } from "@dinero.js/fp";
+import { FunctionalDinero } from '@dinero.js/fp';
 
 type Formatter<TType> = (functionalDinero: FunctionalDinero<TType>) => string;
 

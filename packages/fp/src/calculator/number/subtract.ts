@@ -1,5 +1,5 @@
-import { subtract as subtractNumbers } from "@dinero.js/core/calculator/number";
-import { createVariadicOperation } from "@dinero.js/fp";
+import { subtract as subtractNumbers } from '@dinero.js/core/calculator/number';
+import { createVariadicOperation } from '@dinero.js/fp';
 
 /**
  * Subtract the passed functional Dinero objects.

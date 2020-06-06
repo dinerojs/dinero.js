@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Surinamese dollar
  */
 const SRD: Currency<number> = {
-  code: "SRD",
+  code: 'SRD',
   base: 10,
   exponent: 2,
 };

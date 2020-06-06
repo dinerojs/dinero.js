@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Vietnamese đồng
  */
 const VND: Currency<number> = {
-  code: "VND",
+  code: 'VND',
   base: 10,
   exponent: 0,
 };

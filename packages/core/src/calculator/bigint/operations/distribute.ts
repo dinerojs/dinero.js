@@ -1,9 +1,10 @@
+/* eslint-disable functional/no-let, functional/no-loop-statement, functional/immutable-data, functional/no-expression-statement */
 import {
   add,
   subtract,
   multiply,
   divide,
-} from "@dinero.js/core/calculator/bigint";
+} from '@dinero.js/core/calculator/bigint';
 
 /**
  * Returns a bigint in distributed shares.
@@ -13,7 +14,7 @@ import {
  *
  * @returns The bigint distributed in shares.
  */
-const distribute = (value: bigint, ratios: bigint[]) => {
+const distribute = (value: bigint, ratios: ReadonlyArray<bigint>) => {
   const total = ratios.reduce((a, b) => add(a, b));
 
   if (total === 0n) {

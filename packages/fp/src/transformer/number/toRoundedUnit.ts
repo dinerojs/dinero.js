@@ -1,11 +1,11 @@
-import { RoundingMode } from "@dinero.js/core";
+import { RoundingMode } from '@dinero.js/core';
 import {
   multiply,
   divide,
   power,
   halfEven,
-} from "@dinero.js/core/calculator/number";
-import { FunctionalDinero, toUnit } from "@dinero.js/fp";
+} from '@dinero.js/core/calculator/number';
+import { FunctionalDinero, toUnit } from '@dinero.js/fp';
 
 /**
  * Get the amount of a functional Dinero object in rounded units.

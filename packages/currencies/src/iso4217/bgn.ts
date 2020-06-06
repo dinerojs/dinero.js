@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Bulgarian lev
  */
 const BGN: Currency<number> = {
-  code: "BGN",
+  code: 'BGN',
   base: 10,
   exponent: 2,
 };

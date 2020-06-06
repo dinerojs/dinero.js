@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Uruguayan peso
  */
 const UYU: Currency<number> = {
-  code: "UYU",
+  code: 'UYU',
   base: 10,
   exponent: 2,
 };

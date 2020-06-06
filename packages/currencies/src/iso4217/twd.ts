@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * New Taiwan dollar
  */
 const TWD: Currency<number> = {
-  code: "TWD",
+  code: 'TWD',
   base: 10,
   exponent: 2,
 };

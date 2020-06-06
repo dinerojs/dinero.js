@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Bhutanese ngultrum
  */
 const BTN: Currency<number> = {
-  code: "BTN",
+  code: 'BTN',
   base: 10,
   exponent: 2,
 };

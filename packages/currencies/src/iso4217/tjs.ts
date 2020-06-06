@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Tajikistani somoni
  */
 const TJS: Currency<number> = {
-  code: "TJS",
+  code: 'TJS',
   base: 10,
   exponent: 2,
 };

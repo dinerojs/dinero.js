@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Cayman Islands dollar
  */
 const KYD: Currency<number> = {
-  code: "KYD",
+  code: 'KYD',
   base: 10,
   exponent: 2,
 };

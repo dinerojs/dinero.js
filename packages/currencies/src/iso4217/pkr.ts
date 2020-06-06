@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Pakistani rupee
  */
 const PKR: Currency<number> = {
-  code: "PKR",
+  code: 'PKR',
   base: 10,
   exponent: 2,
 };

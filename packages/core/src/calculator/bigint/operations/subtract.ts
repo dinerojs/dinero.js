@@ -1,4 +1,4 @@
-import { VariadicOperation } from "@dinero.js/core";
+import { VariadicOperation } from '@dinero.js/core';
 
 /**
  * Returns the difference between a set of bigints.

@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Zcash
  */
 const ZEC: Currency<number> = {
-  code: "ZEC",
+  code: 'ZEC',
   base: 10,
   exponent: 8,
 };

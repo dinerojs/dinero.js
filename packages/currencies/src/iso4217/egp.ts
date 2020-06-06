@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Egyptian pound
  */
 const EGP: Currency<number> = {
-  code: "EGP",
+  code: 'EGP',
   base: 10,
   exponent: 2,
 };

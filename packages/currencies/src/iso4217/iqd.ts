@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Iraqi dinar
  */
 const IQD: Currency<number> = {
-  code: "IQD",
+  code: 'IQD',
   base: 10,
   exponent: 3,
 };

@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Unidad de Fomento
  */
 const CLF: Currency<number> = {
-  code: "CLF",
+  code: 'CLF',
   base: 10,
   exponent: 4,
 };

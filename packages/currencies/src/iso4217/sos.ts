@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Somali shilling
  */
 const SOS: Currency<number> = {
-  code: "SOS",
+  code: 'SOS',
   base: 10,
   exponent: 2,
 };

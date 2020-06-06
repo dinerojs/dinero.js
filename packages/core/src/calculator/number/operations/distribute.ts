@@ -1,10 +1,11 @@
+/* eslint-disable functional/no-let, functional/no-loop-statement, functional/immutable-data, functional/no-expression-statement */
 import {
   add,
   subtract,
   multiply,
   divide,
   down,
-} from "@dinero.js/core/calculator/number";
+} from '@dinero.js/core/calculator/number';
 
 /**
  * Returns a number in distributed shares.
@@ -14,7 +15,7 @@ import {
  *
  * @returns The number distributed in shares.
  */
-const distribute = (value: number, ratios: number[]) => {
+const distribute = (value: number, ratios: readonly number[]) => {
   const total = ratios.reduce((a, b) => add(a, b));
 
   if (total === 0) {

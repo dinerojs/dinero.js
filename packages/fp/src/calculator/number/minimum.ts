@@ -1,5 +1,5 @@
-import { minimum as minimumNumbers } from "@dinero.js/core/calculator/number";
-import { createVariadicOperation } from "@dinero.js/fp";
+import { minimum as minimumNumbers } from '@dinero.js/core/calculator/number';
+import { createVariadicOperation } from '@dinero.js/fp';
 
 /**
  * Get the lowest of the passed functional Dinero objects.

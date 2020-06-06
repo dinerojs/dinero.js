@@ -2,7 +2,7 @@ import {
   FunctionalDinero,
   haveSameAmount,
   haveSameCurrency,
-} from "@dinero.js/fp";
+} from '@dinero.js/fp';
 
 /**
  * Check whether the value of a functional Dinero object is equal to another.
@@ -11,12 +11,14 @@ import {
  *
  * @returns Whether the functional Dinero objects are equal.
  */
-function areEqual(...functionalDineros: FunctionalDinero<number>[]) {
+function areEqual(
+  ...functionalDineros: ReadonlyArray<FunctionalDinero<number>>
+) {
   return functionalDineros.every(
     (d) =>
       haveSameAmount(d, functionalDineros[0]) &&
       haveSameCurrency(d, functionalDineros[0])
   );
-};
+}
 
 export default areEqual;

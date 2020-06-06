@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Colombian peso
  */
 const COP: Currency<number> = {
-  code: "COP",
+  code: 'COP',
   base: 10,
   exponent: 2,
 };

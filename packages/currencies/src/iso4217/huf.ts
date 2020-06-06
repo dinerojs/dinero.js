@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Hungarian forint
  */
 const HUF: Currency<number> = {
-  code: "HUF",
+  code: 'HUF',
   base: 10,
   exponent: 2,
 };

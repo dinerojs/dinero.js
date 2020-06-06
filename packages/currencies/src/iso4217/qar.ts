@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Qatari riyal
  */
 const QAR: Currency<number> = {
-  code: "QAR",
+  code: 'QAR',
   base: 10,
   exponent: 2,
 };

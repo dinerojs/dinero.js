@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Bolivian Mvdol
  */
 const BOV: Currency<number> = {
-  code: "BOV",
+  code: 'BOV',
   base: 10,
   exponent: 2,
 };

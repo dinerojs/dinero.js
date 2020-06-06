@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Bosnia and Herzegovina convertible mark
  */
 const BAM: Currency<number> = {
-  code: "BAM",
+  code: 'BAM',
   base: 10,
   exponent: 2,
 };

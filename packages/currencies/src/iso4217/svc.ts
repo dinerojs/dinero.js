@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Salvadoran colón
  */
 const SVC: Currency<number> = {
-  code: "SVC",
+  code: 'SVC',
   base: 10,
   exponent: 2,
 };

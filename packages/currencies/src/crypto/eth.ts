@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Ether
  */
 const ETH: Currency<number> = {
-  code: "ETH",
+  code: 'ETH',
   base: 10,
   exponent: 18,
 };

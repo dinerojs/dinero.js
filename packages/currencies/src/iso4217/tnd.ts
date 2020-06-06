@@ -1,17 +1,17 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Tunisian dinar
  */
 const TND: Currency<number> = {
-  name: "dinar",
+  name: 'dinar',
   sign: {
-    default: "د.ت",
-    alternatives: ["DT"],
+    default: 'د.ت',
+    alternatives: ['DT'],
   },
   code: {
-    alpha: "TND",
-    num: "788",
+    alpha: 'TND',
+    num: '788',
   },
   exponent: 3,
 };

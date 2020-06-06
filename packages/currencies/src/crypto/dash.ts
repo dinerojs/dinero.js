@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Dash
  */
 const DASH: Currency<number> = {
-  code: "DASH",
+  code: 'DASH',
   base: 10,
   exponent: 8,
 };

@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Barbados dollar
  */
 const BBD: Currency<number> = {
-  code: "BBD",
+  code: 'BBD',
   base: 10,
   exponent: 2,
 };

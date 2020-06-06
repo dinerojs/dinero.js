@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Swedish krona
  */
 const SEK: Currency<number> = {
-  code: "SEK",
+  code: 'SEK',
   base: 10,
   exponent: 2,
 };

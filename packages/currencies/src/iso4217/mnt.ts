@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Mongolian tögrög
  */
 const MNT: Currency<number> = {
-  code: "MNT",
+  code: 'MNT',
   base: 10,
   exponent: 2,
 };

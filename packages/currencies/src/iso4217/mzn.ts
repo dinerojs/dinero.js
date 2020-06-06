@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Mozambican metical
  */
 const MZN: Currency<number> = {
-  code: "MZN",
+  code: 'MZN',
   base: 10,
   exponent: 2,
 };

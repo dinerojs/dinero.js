@@ -1,10 +1,10 @@
-import { Currency } from "@dinero.js/currencies";
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Cuban convertible peso
  */
 const CUC: Currency<number> = {
-  code: "CUC",
+  code: 'CUC',
   base: 10,
   exponent: 2,
 };
