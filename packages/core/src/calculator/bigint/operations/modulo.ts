@@ -1,14 +1,15 @@
-import { VariadicOperation } from '@dinero.js/core';
+import { BinaryOperation } from '@dinero.js/core';
 
 /**
- * Returns the remainder of a set of bigints.
+ * Returns the remainder of two bigints.
  *
- * @param values The bigints to divide.
+ * @param dividend The bigint to divide.
+ * @param divisor The bigint to divide with.
  *
- * @returns The remainder of the set of bigints.
+ * @returns The remainder of the two bigints.
  */
-const modulo: VariadicOperation<bigint> = (...values) => {
-  return values.reduce((acc, curr) => acc % curr);
+const modulo: BinaryOperation<bigint> = (dividend, divisor) => {
+  return dividend % divisor;
 };
 
 export default modulo;

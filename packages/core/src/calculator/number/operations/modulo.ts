@@ -1,14 +1,15 @@
-import { VariadicOperation } from '@dinero.js/core';
+import { BinaryOperation } from '@dinero.js/core';
 
 /**
- * Returns the remainder of a set of numbers.
+ * Returns the remainder of two numbers.
  *
- * @param values The numbers to divide.
+ * @param dividend The number to divide.
+ * @param divisor The number to divide with.
  *
- * @returns The remainder of the set of numbers.
+ * @returns The remainder of the two numbers.
  */
-const modulo: VariadicOperation<number> = (...values) => {
-  return values.reduce((acc, curr) => acc % curr);
+const modulo: BinaryOperation<number> = (dividend, divisor) => {
+  return dividend % divisor;
 };
 
 export default modulo;

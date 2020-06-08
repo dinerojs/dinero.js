@@ -7,7 +7,7 @@ import { VariadicOperation } from '@dinero.js/core';
  *
  * @returns The lowest bigint.
  */
-const minimum: VariadicOperation<bigint> = (...values) => {
+const minimum: VariadicOperation<bigint> = (values) => {
   return values.reduce((acc, curr) => (acc < curr ? acc : curr));
 };
 

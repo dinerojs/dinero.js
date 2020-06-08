@@ -7,7 +7,7 @@ import { VariadicOperation } from '@dinero.js/core';
  *
  * @returns The lowest number.
  */
-const minimum: VariadicOperation<number> = (...values) => {
+const minimum: VariadicOperation<number> = (values) => {
   return Math.min(...values);
 };
 

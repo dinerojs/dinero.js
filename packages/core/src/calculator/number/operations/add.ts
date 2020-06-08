@@ -1,14 +1,15 @@
-import { VariadicOperation } from '@dinero.js/core';
+import { BinaryOperation } from '@dinero.js/core';
 
 /**
- * Returns the sum of a set of numbers.
+ * Returns the sum of two numbers.
  *
- * @param values The numbers to add.
+ * @param augend The number to add to.
+ * @param addend The number to add.
  *
- * @returns The sum of the set of numbers.
+ * @returns The sum of the two numbers.
  */
-const add: VariadicOperation<number> = (...values) => {
-  return values.reduce((acc, curr) => acc + curr);
+const add: BinaryOperation<number> = (augend, addend) => {
+  return augend + addend;
 };
 
 export default add;

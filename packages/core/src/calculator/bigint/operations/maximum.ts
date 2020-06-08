@@ -7,7 +7,7 @@ import { VariadicOperation } from '@dinero.js/core';
  *
  * @returns The greatest bigint.
  */
-const maximum: VariadicOperation<bigint> = (...values) => {
+const maximum: VariadicOperation<bigint> = (values) => {
   return values.reduce((acc, curr) => (acc > curr ? acc : curr));
 };
 

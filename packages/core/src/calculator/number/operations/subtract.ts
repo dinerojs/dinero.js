@@ -1,14 +1,15 @@
-import { VariadicOperation } from '@dinero.js/core';
+import { BinaryOperation } from '@dinero.js/core';
 
 /**
- * Returns the difference between a set of numbers.
+ * Returns the difference between two numbers.
  *
- * @param values The numbers to subtract.
+ * @param minuend The number to subtract from.
+ * @param subtrahend The number to subtract.
  *
- * @returns The difference of the set of numbers.
+ * @returns The difference of the two numbers.
  */
-const subtract: VariadicOperation<number> = (...values) => {
-  return values.reduce((acc, curr) => acc - curr);
+const subtract: BinaryOperation<number> = (minuend, subtrahend) => {
+  return minuend - subtrahend;
 };
 
 export default subtract;

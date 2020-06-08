@@ -1,14 +1,15 @@
-import { VariadicOperation } from '@dinero.js/core';
+import { BinaryOperation } from '@dinero.js/core';
 
 /**
- * Returns the difference between a set of bigints.
+ * Returns the difference between two bigints.
  *
- * @param values The bigints to subtract.
+ * @param minuend The bigint to subtract from.
+ * @param subtrahend The bigint to subtract.
  *
- * @returns The difference of the set of bigints.
+ * @returns The difference of the two bigints.
  */
-const subtract: VariadicOperation<bigint> = (...values) => {
-  return values.reduce((acc, curr) => acc - curr);
+const subtract: BinaryOperation<bigint> = (minuend, subtrahend) => {
+  return minuend - subtrahend;
 };
 
 export default subtract;

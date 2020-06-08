@@ -1,14 +1,15 @@
-import { VariadicOperation } from '@dinero.js/core';
+import { BinaryOperation } from '@dinero.js/core';
 
 /**
- * Returns the product of a set bigints.
+ * Returns the product of two bigints.
  *
- * @param values The bigints to multiply.
+ * @param multiplier The bigint to multiply.
+ * @param multiplicand The bigint to multiply with.
  *
- * @returns The product of the set of bigints.
+ * @returns The product of the two bigints.
  */
-const multiply: VariadicOperation<bigint> = (...values) => {
-  return values.reduce((acc, curr) => acc * curr);
+const multiply: BinaryOperation<bigint> = (multiplier, multiplicand) => {
+  return multiplier * multiplicand;
 };
 
 export default multiply;

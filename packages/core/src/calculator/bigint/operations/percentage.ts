@@ -1,5 +1,5 @@
-import multiply from './multiply';
-import divide from './divide';
+import { BinaryOperation } from '@dinero.js/core';
+import { multiply, divide } from '@dinero.js/core/calculator/bigint';
 
 /**
  * Returns the percentage of a bigint.
@@ -9,7 +9,7 @@ import divide from './divide';
  *
  * @returns The percentage of the bigint.
  */
-const percentage = (value: bigint, share: bigint) => {
+const percentage: BinaryOperation<bigint> = (value, share) => {
   return divide(multiply(value, share), 100n);
 };
 

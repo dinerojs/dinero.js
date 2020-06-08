@@ -1,3 +1,3 @@
-type VariadicOperation<TType> = (...values: readonly TType[]) => TType;
+type VariadicOperation<TType> = (values: readonly TType[]) => TType;
 
 export default VariadicOperation;

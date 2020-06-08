@@ -7,7 +7,7 @@ import { VariadicOperation } from '@dinero.js/core';
  *
  * @returns The greatest number.
  */
-const maximum: VariadicOperation<number> = (...values) => {
+const maximum: VariadicOperation<number> = (values) => {
   return Math.max(...values);
 };
 
