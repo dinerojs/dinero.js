@@ -21,16 +21,16 @@ yarn add @dinero.js/fp
 Functional `Dinero` objects are minimal and only contain a single method. Every function in `@dinero.js/fp` is side-effect free, allowing you only to bundle exactly what you use.
 
 ```js
-import Dinero, { add } from "@dinero.js/fp";
+import { USD } from "@dinero.js/currencies";
+import dinero, { add } from "@dinero.js/fp";
 
-const d1 = Dinero();
-const d2 = Dinero();
-const d3 = Dinero();
+const d1 = dinero({ amount: 500, currency: USD });
+const d2 = dinero({ amount: 800, currency: USD });
 
-add(d1, d2, d3);
+add(d1, d2);
 ```
 
-**Note:** functional and object-oriented `Dinero` objects are incompatible. You can't use them together, and you shouldn't mix them in your codebase.
+**Note:** functional and chainable `Dinero` objects are incompatible. You can't use them together, and you shouldn't mix them in your codebase.
 
 ## 📚 Documentation
 
