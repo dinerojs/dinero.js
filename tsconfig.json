@@ -1,12 +1,28 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "outDir": "dist",
+    "strict": true,
+    "sourceMap": false,
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "rootDir": ".",
+    "allowJs": false,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
+    "removeComments": false,
+    "lib": [
+      "esnext",
+    ],
+    "types": [
+      "jest",
+      "node"
+    ],
+    "rootDir": ".",
     "paths": {
       "@dinero.js/core/calculator/number": [
         "packages/core/src/calculator/number"
@@ -20,10 +36,7 @@
       "@dinero.js/*": [
         "packages/*"
       ]
-    },
-    "lib": [
-      "esnext"
-    ]
+    }
   },
   "exclude": [
     "node_modules"
