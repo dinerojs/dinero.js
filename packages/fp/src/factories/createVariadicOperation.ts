@@ -1,5 +1,7 @@
 import { VariadicOperation } from '@dinero.js/core';
-import dinero, { FunctionalDinero } from '@dinero.js/fp';
+import { FunctionalDinero } from '../..';
+import { toSnapshot } from '../transformer';
+import { Dinero } from '..';
 
 /**
  * Create variadic arithmetic operation functions.
@@ -9,18 +11,18 @@ import dinero, { FunctionalDinero } from '@dinero.js/fp';
  * @returns A variadic arithmetic operation function.
  */
 function createVariadicOperation<TType>(operation: VariadicOperation<TType>) {
-  return (...functionalDineros: ReadonlyArray<FunctionalDinero<TType>>) => {
-    const amount = functionalDineros
-      .map((subject) => {
-        const { amount: subjectAmount } = subject.toJSON();
+  return (functionalDineros: ReadonlyArray<FunctionalDinero<TType>>) => {
+    const amount = operation(
+      functionalDineros.map((subject) => {
+        const { amount: subjectAmount } = toSnapshot(subject);
 
         return subjectAmount;
       })
-      .reduce((acc, curr) => operation(acc, curr));
+    );
 
-    const { currency, scale } = functionalDineros[0].toJSON();
+    const { currency, scale } = toSnapshot(functionalDineros[0]);
 
-    return dinero({
+    return Dinero({
       amount,
       currency,
       scale,
