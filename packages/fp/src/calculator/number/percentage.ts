@@ -1,5 +1,5 @@
 import { percentage as percentageNumbers } from '@dinero.js/core/calculator/number';
-import dinero, { FunctionalDinero } from '@dinero.js/fp';
+import { Dinero, FunctionalDinero, toSnapshot } from '../..';
 
 /**
  * Extract a percentage of a functional Dinero object.
@@ -10,9 +10,11 @@ import dinero, { FunctionalDinero } from '@dinero.js/fp';
  * @returns A new functional Dinero object.
  */
 function percentage(functionalDinero: FunctionalDinero<number>, share: number) {
-  const { amount, currency, scale } = functionalDinero.toJSON();
-  return dinero({
-    amount: percentageNumbers(amount, share),
+  const { amount: rawAmount, currency, scale } = toSnapshot(functionalDinero);
+  const amount = percentageNumbers(rawAmount, share);
+
+  return Dinero({
+    amount,
     currency,
     scale,
   });

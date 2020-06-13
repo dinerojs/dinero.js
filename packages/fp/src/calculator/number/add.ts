@@ -1,5 +1,5 @@
 import { add as addNumbers } from '@dinero.js/core/calculator/number';
-import { createVariadicOperation } from '@dinero.js/fp';
+import { createBinaryOperation } from '../../factories';
 
 /**
  * Add up the passed functional Dinero objects.
@@ -8,6 +8,6 @@ import { createVariadicOperation } from '@dinero.js/fp';
  *
  * @returns A new functional Dinero object.
  */
-const add = createVariadicOperation(addNumbers);
+const add = createBinaryOperation(addNumbers);
 
 export default add;

@@ -1,5 +1,5 @@
 import { distribute as distributeNumbers } from '@dinero.js/core/calculator/number';
-import dinero, { FunctionalDinero } from '@dinero.js/fp';
+import { Dinero, FunctionalDinero, toSnapshot } from '../..';
 
 /**
  * Distributes the amount of a functional Dinero object across a list of ratios.
@@ -13,13 +13,13 @@ function percentage(
   functionalDinero: FunctionalDinero<number>,
   ratios: readonly number[]
 ) {
-  const { amount: dineroAmount } = functionalDinero.toJSON();
+  const { amount: dineroAmount } = toSnapshot(functionalDinero);
   const distributedAmounts = distributeNumbers(dineroAmount, ratios);
 
   return distributedAmounts.map((amount) => {
-    const { currency, scale } = functionalDinero.toJSON();
+    const { currency, scale } = toSnapshot(functionalDinero);
 
-    return dinero({
+    return Dinero({
       amount,
       currency,
       scale,

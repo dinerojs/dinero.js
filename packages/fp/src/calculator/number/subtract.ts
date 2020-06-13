@@ -1,5 +1,5 @@
 import { subtract as subtractNumbers } from '@dinero.js/core/calculator/number';
-import { createVariadicOperation } from '@dinero.js/fp';
+import { createBinaryOperation } from '../../factories';
 
 /**
  * Subtract the passed functional Dinero objects.
@@ -8,6 +8,6 @@ import { createVariadicOperation } from '@dinero.js/fp';
  *
  * @returns A new functional Dinero object.
  */
-const subtract = createVariadicOperation(subtractNumbers);
+const subtract = createBinaryOperation(subtractNumbers);
 
 export default subtract;

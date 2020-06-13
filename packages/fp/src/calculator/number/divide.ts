@@ -1,13 +1,31 @@
-import { divide as divideNumbers } from '@dinero.js/core/calculator/number';
-import { createVariadicOperation } from '@dinero.js/fp';
+import { RoundingMode } from '@dinero.js/core';
+import {
+  divide as divideNumbers,
+  halfEven,
+} from '@dinero.js/core/calculator/number';
+import { Dinero, FunctionalDinero, toSnapshot } from '../..';
 
 /**
- * Divide the passed functional Dinero objects.
+ * Divide the passed functional Dinero object.
  *
- * @param functionalDineros The functional Dinero objects to divide.
+ * @param functionalDinero The functional Dinero object to divide.
+ * @param divisor The number to divide with.
  *
  * @returns A new functional Dinero object.
  */
-const divide = createVariadicOperation(divideNumbers);
+function divide(
+  functionalDinero: FunctionalDinero<number>,
+  divisor: number,
+  roundingMode: RoundingMode<number> = halfEven
+) {
+  const { amount: rawAmount, currency, scale } = toSnapshot(functionalDinero);
+  const amount = roundingMode(divideNumbers(rawAmount, divisor));
+
+  return Dinero({
+    amount,
+    currency,
+    scale,
+  });
+}
 
 export default divide;
