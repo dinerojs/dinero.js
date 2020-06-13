@@ -1,5 +1,6 @@
 import { divide, power } from '@dinero.js/core/calculator/number';
-import { FunctionalDinero } from '@dinero.js/fp';
+import { FunctionalDinero } from '../../..';
+import { toSnapshot } from '.';
 
 /**
  * Get the amount of a functional Dinero object in units.
@@ -9,7 +10,7 @@ import { FunctionalDinero } from '@dinero.js/fp';
  * @returns The amount in units.
  */
 function toUnit(functionalDinero: FunctionalDinero<number>) {
-  const { amount, currency, scale } = functionalDinero.toJSON();
+  const { amount, currency, scale } = toSnapshot(functionalDinero);
 
   return divide(amount, power(currency.base, scale));
 }

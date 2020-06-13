@@ -5,25 +5,27 @@ import {
   subtract,
   halfEven,
 } from '@dinero.js/core/calculator/number';
-import dinero, { FunctionalDinero } from '@dinero.js/fp';
+import { FunctionalDinero } from '../../..';
+import { Dinero } from '../..';
+import { toSnapshot } from '.';
 
 /**
- * Convert a set of functional Dinero objects to a new precision.
+ * Convert a functional Dinero object to a new precision.
  *
  * @param functionalDinero The functional Dinero object to convert.
  * @param newScale The new precision.
  * @param roundingMode The rounding mode to use.
  *
- * @returns A new set of functional Dinero objects.
+ * @returns A new functional Dinero object.
  */
 function convertScale(
   functionalDinero: FunctionalDinero<number>,
   newScale: number,
   roundingMode: RoundingMode<number> = halfEven
 ) {
-  const { amount, currency, scale } = functionalDinero.toJSON();
+  const { amount, currency, scale } = toSnapshot(functionalDinero);
 
-  return dinero({
+  return Dinero({
     amount: roundingMode(
       multiply(amount, power(currency.base, subtract(newScale, scale)))
     ),

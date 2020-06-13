@@ -5,7 +5,8 @@ import {
   power,
   halfEven,
 } from '@dinero.js/core/calculator/number';
-import { FunctionalDinero, toUnit } from '@dinero.js/fp';
+import { FunctionalDinero } from '../../..';
+import { toSnapshot, toUnit } from '.';
 
 /**
  * Get the amount of a functional Dinero object in rounded units.
@@ -21,7 +22,7 @@ function toRoundedUnit(
   digits: number,
   roundingMode: RoundingMode<number> = halfEven
 ) {
-  const { currency } = functionalDinero.toJSON();
+  const { currency } = toSnapshot(functionalDinero);
   const factor = power(currency.base, digits);
 
   return divide(
