@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import { Dinero } from '../..';
+import dinero from '../../..';
 import createVariadicOperation from '../createVariadicOperation';
 
 describe('createVariadicOperation', () => {
@@ -9,7 +9,7 @@ describe('createVariadicOperation', () => {
     );
     const add = createVariadicOperation(spy);
 
-    const d1 = Dinero({ amount: 500, currency: USD });
+    const d1 = dinero({ amount: 500, currency: USD });
 
     add([d1, d1]);
 

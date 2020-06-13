@@ -6,7 +6,7 @@ import {
   halfEven,
 } from '@dinero.js/core/calculator/number';
 import { FunctionalDinero } from '../../..';
-import { Dinero } from '../..';
+import dinero from '../../dinero';
 import { toSnapshot } from '.';
 
 /**
@@ -25,7 +25,7 @@ function convertScale(
 ) {
   const { amount, currency, scale } = toSnapshot(functionalDinero);
 
-  return Dinero({
+  return dinero({
     amount: roundingMode(
       multiply(amount, power(currency.base, subtract(newScale, scale)))
     ),

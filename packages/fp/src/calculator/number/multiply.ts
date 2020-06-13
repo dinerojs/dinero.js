@@ -3,7 +3,7 @@ import {
   multiply as multiplyNumbers,
   halfEven,
 } from '@dinero.js/core/calculator/number';
-import { Dinero, FunctionalDinero, toSnapshot } from '../..';
+import dinero, { FunctionalDinero, toSnapshot } from '../../..';
 
 /**
  * Multiply the passed functional Dinero object.
@@ -21,7 +21,7 @@ function multiply(
   const { amount: rawAmount, currency, scale } = toSnapshot(functionalDinero);
   const amount = roundingMode(multiplyNumbers(rawAmount, multiplier));
 
-  return Dinero({
+  return dinero({
     amount,
     currency,
     scale,

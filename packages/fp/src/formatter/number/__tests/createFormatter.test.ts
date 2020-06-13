@@ -1,7 +1,7 @@
 import { USD } from '@dinero.js/currencies';
 import { up } from '@dinero.js/core/calculator/number';
 import { createFormatter } from '../../../formatter';
-import { Dinero } from '../../..';
+import dinero from '../../../..';
 
 describe('createFormatter', () => {
   it('formats the functional Dinero object with the passed transformer', () => {
@@ -9,7 +9,7 @@ describe('createFormatter', () => {
       ({ amount, currency }) => `${currency.code} ${amount}`
     );
 
-    const d = Dinero({ amount: 500, currency: USD });
+    const d = dinero({ amount: 500, currency: USD });
 
     expect(format(d)).toBe('USD 5');
   });
@@ -23,7 +23,7 @@ describe('createFormatter', () => {
       formatOptions
     );
 
-    const d = Dinero({ amount: 4545, currency: USD });
+    const d = dinero({ amount: 4545, currency: USD });
 
     expect(format(d)).toBe('USD 45.5');
   });

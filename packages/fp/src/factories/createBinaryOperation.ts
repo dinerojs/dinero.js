@@ -1,7 +1,7 @@
 import { BinaryOperation } from '@dinero.js/core';
 import { FunctionalDinero } from '../..';
 import { toSnapshot } from '../transformer';
-import { Dinero } from '..';
+import dinero from '../dinero';
 
 /**
  * Create binary arithmetic operation functions.
@@ -22,7 +22,7 @@ function createBinaryOperation<TType>(operation: BinaryOperation<TType>) {
 
     const { currency, scale } = toSnapshot(d1);
 
-    return Dinero({
+    return dinero({
       amount,
       currency,
       scale,

@@ -1,6 +1,6 @@
 import { DineroOptions } from '@dinero.js/core';
-import { PartialFunctionalDinero } from '..';
-import Dinero from './dinero';
+import { PartialFunctionalDinero } from '../..';
+import dinero from '../dinero';
 
 /**
  * Create a partially applied functional Dinero object.
@@ -15,7 +15,7 @@ function partialDinero<TType>({
   scale,
 }: Omit<DineroOptions<TType>, 'amount'>): PartialFunctionalDinero<TType> {
   return (amount) => {
-    return Dinero({
+    return dinero({
       amount,
       currency,
       scale,

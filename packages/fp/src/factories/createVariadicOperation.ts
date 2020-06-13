@@ -1,7 +1,7 @@
 import { VariadicOperation } from '@dinero.js/core';
 import { FunctionalDinero } from '../..';
 import { toSnapshot } from '../transformer';
-import { Dinero } from '..';
+import dinero from '../dinero';
 
 /**
  * Create variadic arithmetic operation functions.
@@ -22,7 +22,7 @@ function createVariadicOperation<TType>(operation: VariadicOperation<TType>) {
 
     const { currency, scale } = toSnapshot(functionalDineros[0]);
 
-    return Dinero({
+    return dinero({
       amount,
       currency,
       scale,

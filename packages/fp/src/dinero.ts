@@ -10,7 +10,7 @@ import { FunctionalDinero } from '..';
  *
  * @returns The created functional Dinero object.
  */
-function Dinero<TType>({
+function dinero<TType>({
   amount,
   currency,
   scale = currency.exponent,
@@ -26,4 +26,4 @@ function Dinero<TType>({
   };
 }
 
-export default Dinero;
+export default dinero;

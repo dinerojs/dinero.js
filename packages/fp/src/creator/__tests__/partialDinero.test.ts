@@ -1,11 +1,11 @@
 import { USD } from '@dinero.js/currencies';
-import { toSnapshot } from '..';
+import { toSnapshot } from '../..';
 import partialDinero from '../partialDinero';
 
 describe('partialDinero', () => {
   it('partially applies a functional Dinero object with a currency', () => {
-    const DineroUSD = partialDinero({ currency: USD });
-    const d = DineroUSD(500);
+    const dineroUSD = partialDinero({ currency: USD });
+    const d = dineroUSD(500);
 
     const snapshot = toSnapshot(d);
 
@@ -16,8 +16,8 @@ describe('partialDinero', () => {
     });
   });
   it('partially applies a functional Dinero object with a currency and scale', () => {
-    const DineroUSD = partialDinero({ currency: USD, scale: 4 });
-    const d = DineroUSD(50000);
+    const dineroUSD = partialDinero({ currency: USD, scale: 4 });
+    const d = dineroUSD(50000);
 
     const snapshot = toSnapshot(d);
 

@@ -3,7 +3,7 @@ import {
   divide as divideNumbers,
   halfEven,
 } from '@dinero.js/core/calculator/number';
-import { Dinero, FunctionalDinero, toSnapshot } from '../..';
+import dinero, { FunctionalDinero, toSnapshot } from '../../..';
 
 /**
  * Divide the passed functional Dinero object.
@@ -21,7 +21,7 @@ function divide(
   const { amount: rawAmount, currency, scale } = toSnapshot(functionalDinero);
   const amount = roundingMode(divideNumbers(rawAmount, divisor));
 
-  return Dinero({
+  return dinero({
     amount,
     currency,
     scale,
