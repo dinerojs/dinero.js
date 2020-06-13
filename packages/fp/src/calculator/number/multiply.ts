@@ -1,5 +1,8 @@
 import { RoundingMode } from '@dinero.js/core';
-import { multiply as multiplyNumbers, halfEven } from '@dinero.js/core/calculator/number';
+import {
+  multiply as multiplyNumbers,
+  halfEven,
+} from '@dinero.js/core/calculator/number';
 import { Dinero, FunctionalDinero, toSnapshot } from '../..';
 
 /**
