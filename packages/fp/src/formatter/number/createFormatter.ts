@@ -1,9 +1,10 @@
-import { toRoundedUnit, createFormatterFactory } from '@dinero.js/fp';
+import { toRoundedUnit, createFormatterFactory } from '../../..';
 
 /**
  * Create a functional Dinero object.
  *
  * @param transformer A transformer function.
+ * @param formatOptions Formatting options for the amount transformer.
  *
  * @returns A formatter function.
  */
