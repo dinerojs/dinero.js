@@ -1,5 +1,5 @@
-import { DineroSnapshot } from '@dinero.js/core';
-import { FunctionalDinero } from '@dinero.js/fp';
+import { DineroOptions } from '@dinero.js/core';
+import { FunctionalDinero } from '..';
 
 /**
  * Create a functional Dinero object.
@@ -10,11 +10,11 @@ import { FunctionalDinero } from '@dinero.js/fp';
  *
  * @returns The created functional Dinero object.
  */
-function dinero<TType>({
+function Dinero<TType>({
   amount,
   currency,
-  scale,
-}: DineroSnapshot<TType>): FunctionalDinero<TType> {
+  scale = currency.exponent,
+}: DineroOptions<TType>): FunctionalDinero<TType> {
   return {
     toJSON() {
       return {
@@ -26,4 +26,4 @@ function dinero<TType>({
   };
 }
 
-export default dinero;
+export default Dinero;
