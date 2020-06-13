@@ -1,4 +1,4 @@
-import { FunctionalDinero, normalizeScale } from '@dinero.js/fp';
+import { FunctionalDinero, normalizeScale, toSnapshot } from '../../..';
 
 /**
  * Check whether a set of functional Dinero objects have the same amount.
@@ -8,13 +8,13 @@ import { FunctionalDinero, normalizeScale } from '@dinero.js/fp';
  * @returns Whether the functional Dinero objects have the same amount.
  */
 function haveSameAmount(
-  ...functionalDineros: ReadonlyArray<FunctionalDinero<number>>
+  functionalDineros: ReadonlyArray<FunctionalDinero<number>>
 ) {
-  const comparators = normalizeScale(functionalDineros);
-  const { amount: comparatorAmount } = comparators[0].toJSON();
+  const [firstDinero, ...otherDineros] = normalizeScale(functionalDineros);
+  const { amount: comparatorAmount } = toSnapshot(firstDinero);
 
-  return comparators.every((d) => {
-    const { amount: subjectAmount } = d.toJSON();
+  return otherDineros.every((d) => {
+    const { amount: subjectAmount } = toSnapshot(d);
 
     return subjectAmount === comparatorAmount;
   });

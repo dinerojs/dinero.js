@@ -1,5 +1,5 @@
 import { modulo, power } from '@dinero.js/core/calculator/number';
-import { FunctionalDinero } from '@dinero.js/fp';
+import { FunctionalDinero, toSnapshot } from '../../..';
 
 /**
  * Check whether a functional Dinero object has minor currency units.
@@ -9,7 +9,7 @@ import { FunctionalDinero } from '@dinero.js/fp';
  * @returns Whether the functional Dinero object has minor currency units.
  */
 function hasSubUnits(functionalDinero: FunctionalDinero<number>) {
-  const { amount, currency, scale } = functionalDinero.toJSON();
+  const { amount, currency, scale } = toSnapshot(functionalDinero);
 
   return modulo(amount, power(currency.base, scale)) !== 0;
 }

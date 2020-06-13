@@ -1,4 +1,4 @@
-import { FunctionalDinero } from '@dinero.js/fp';
+import { FunctionalDinero, toSnapshot } from '../../..';
 
 /**
  * Check whether a functional Dinero object is negative.
@@ -8,7 +8,7 @@ import { FunctionalDinero } from '@dinero.js/fp';
  * @returns Whether the functional Dinero object is negative.
  */
 function isNegative(functionalDinero: FunctionalDinero<number>) {
-  const { amount } = functionalDinero.toJSON();
+  const { amount } = toSnapshot(functionalDinero);
 
   return amount < 0;
 }

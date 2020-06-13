@@ -1,4 +1,4 @@
-import { FunctionalDinero } from '@dinero.js/fp';
+import { FunctionalDinero, toSnapshot } from '../../..';
 
 /**
  * Check whether the value of a functional Dinero object is zero.
@@ -8,7 +8,7 @@ import { FunctionalDinero } from '@dinero.js/fp';
  * @returns Whether the value of a functional Dinero object is zero.
  */
 function isZero(functionalDinero: FunctionalDinero<number>) {
-  const { amount } = functionalDinero.toJSON();
+  const { amount } = toSnapshot(functionalDinero);
 
   return amount === 0;
 }

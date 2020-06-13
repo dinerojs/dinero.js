@@ -1,4 +1,4 @@
-import { FunctionalDinero, normalizeScale } from '@dinero.js/fp';
+import { FunctionalDinero, normalizeScale, toSnapshot } from '../../..';
 
 /**
  * Check whether the value of a functional Dinero object is greater than another.
@@ -13,8 +13,8 @@ function greaterThan(
   comparator: FunctionalDinero<number>
 ) {
   const comparators = normalizeScale([subject, comparator]);
-  const { amount: subjectAmount } = comparators[0].toJSON();
-  const { amount: comparatorAmount } = comparators[1].toJSON();
+  const { amount: subjectAmount } = toSnapshot(comparators[0]);
+  const { amount: comparatorAmount } = toSnapshot(comparators[1]);
 
   return subjectAmount > comparatorAmount;
 }
