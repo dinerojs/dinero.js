@@ -12,7 +12,7 @@ describe('toRoundedUnit', () => {
 
     expect(toRoundedUnit(d, 1)).toBe(-10.6);
   });
-  it('returns the amount in currency unit, rounded to one fraction digit', () => {
+  it('returns the amount in currency unit, rounded to two fraction digits', () => {
     const d = dinero({ amount: 1055, currency: USD });
 
     expect(toRoundedUnit(d, 2)).toBe(10.55);

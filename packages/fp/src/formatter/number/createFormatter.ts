@@ -1,5 +1,5 @@
-import { toRoundedUnit } from '../../..';
 import { createFormatterFactory } from '../../factories';
+import { toRoundedUnit } from '../../transformer';
 
 /**
  * Create a functional Dinero object.

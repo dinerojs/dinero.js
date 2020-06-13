@@ -10,6 +10,7 @@ import dinero, { FunctionalDinero, toSnapshot } from '../../..';
  *
  * @param functionalDinero The functional Dinero object to multiply.
  * @param multiplier The number to multiply with.
+ * @param roundingMode The rounding mode to use.
  *
  * @returns A new functional Dinero object.
  */

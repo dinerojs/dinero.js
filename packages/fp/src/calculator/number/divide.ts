@@ -10,6 +10,7 @@ import dinero, { FunctionalDinero, toSnapshot } from '../../..';
  *
  * @param functionalDinero The functional Dinero object to divide.
  * @param divisor The number to divide with.
+ * @param roundingMode The rounding mode to use.
  *
  * @returns A new functional Dinero object.
  */

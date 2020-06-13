@@ -1,2 +1,2 @@
 export * from './src';
-export { default } from './src/dinero'
+export { default } from './src/dinero';

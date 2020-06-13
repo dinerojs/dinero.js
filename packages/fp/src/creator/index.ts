@@ -1,1 +1,1 @@
-export { default as partialDinero } from "./partialDinero";
+export { default as partialDinero } from './partialDinero';
