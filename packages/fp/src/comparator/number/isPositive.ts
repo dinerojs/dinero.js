@@ -1,3 +1,4 @@
+import { greaterThanOrEqual } from '@dinero.js/core/calculator/number';
 import { FunctionalDinero, toSnapshot } from '../../..';
 
 /**
@@ -10,7 +11,7 @@ import { FunctionalDinero, toSnapshot } from '../../..';
 function isPositive(functionalDinero: FunctionalDinero<number>) {
   const { amount } = toSnapshot(functionalDinero);
 
-  return amount >= 0;
+  return greaterThanOrEqual(amount, 0);
 }
 
 export default isPositive;

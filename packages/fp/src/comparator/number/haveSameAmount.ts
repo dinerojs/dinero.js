@@ -1,3 +1,4 @@
+import { areEqual } from '@dinero.js/core/calculator/number';
 import { FunctionalDinero, normalizeScale, toSnapshot } from '../../..';
 
 /**
@@ -16,7 +17,7 @@ function haveSameAmount(
   return otherDineros.every((d) => {
     const { amount: subjectAmount } = toSnapshot(d);
 
-    return subjectAmount === comparatorAmount;
+    return areEqual(subjectAmount, comparatorAmount);
   });
 }
 

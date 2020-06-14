@@ -1,3 +1,4 @@
+import { greaterThanOrEqual as greaterThanOrEqualNumbers } from '@dinero.js/core/calculator/number';
 import { FunctionalDinero, normalizeScale, toSnapshot } from '../../..';
 
 /**
@@ -16,7 +17,7 @@ function greaterThanOrEqual(
   const { amount: subjectAmount } = toSnapshot(comparators[0]);
   const { amount: comparatorAmount } = toSnapshot(comparators[1]);
 
-  return subjectAmount >= comparatorAmount;
+  return greaterThanOrEqualNumbers(subjectAmount, comparatorAmount);
 }
 
 export default greaterThanOrEqual;

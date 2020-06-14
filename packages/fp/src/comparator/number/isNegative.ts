@@ -1,3 +1,4 @@
+import { lessThan } from '@dinero.js/core/calculator/number';
 import { FunctionalDinero, toSnapshot } from '../../..';
 
 /**
@@ -10,7 +11,7 @@ import { FunctionalDinero, toSnapshot } from '../../..';
 function isNegative(functionalDinero: FunctionalDinero<number>) {
   const { amount } = toSnapshot(functionalDinero);
 
-  return amount < 0;
+  return lessThan(amount, 0);
 }
 
 export default isNegative;

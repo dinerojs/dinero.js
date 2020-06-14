@@ -1,4 +1,16 @@
+import { Currency } from '@dinero.js/currencies';
 import { FunctionalDinero, toSnapshot } from '../../..';
+
+function currencyEqual<TType>(
+  subjectCurrency: Currency<TType>,
+  comparatorCurrency: Currency<TType>
+) {
+  return (
+    subjectCurrency.code === comparatorCurrency.code &&
+    subjectCurrency.base === comparatorCurrency.base &&
+    subjectCurrency.exponent === comparatorCurrency.exponent
+  );
+}
 
 /**
  * Check whether a set of functional Dinero objects have the same currency.
@@ -15,8 +27,7 @@ function haveSameCurrency(
 
   return otherDineros.every((d) => {
     const { currency: subjectCurrency } = toSnapshot(d);
-
-    return subjectCurrency === comparatorCurrency;
+    return currencyEqual(subjectCurrency, comparatorCurrency);
   });
 }
 

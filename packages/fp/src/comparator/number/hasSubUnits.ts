@@ -1,4 +1,4 @@
-import { modulo, power } from '@dinero.js/core/calculator/number';
+import { modulo, power, areEqual } from '@dinero.js/core/calculator/number';
 import { FunctionalDinero, toSnapshot } from '../../..';
 
 /**
@@ -10,8 +10,9 @@ import { FunctionalDinero, toSnapshot } from '../../..';
  */
 function hasSubUnits(functionalDinero: FunctionalDinero<number>) {
   const { amount, currency, scale } = toSnapshot(functionalDinero);
+  const remainder = modulo(amount, power(currency.base, scale));
 
-  return modulo(amount, power(currency.base, scale)) !== 0;
+  return !areEqual(remainder, 0);
 }
 
 export default hasSubUnits;
