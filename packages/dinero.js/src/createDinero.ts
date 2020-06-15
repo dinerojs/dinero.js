@@ -1,30 +1,236 @@
-import { Calculator } from '@dinero.js/_/calculator';
-import { OODinero, DineroSnapshot } from '../types';
+import { DineroOptions, RoundingMode } from '@dinero.js/core';
+import { Calculator, ChainableDinero } from './types';
 
 type DineroFactoryOptions<TType> = {
   readonly calculator: Calculator<TType>;
 };
 
 const createDinero = <TType>({ calculator }: DineroFactoryOptions<TType>) => {
-  function normalizePrecision(...objects: ReadonlyArray<OODinero<TType>>) {
+  function normalizeScale(...objects: ReadonlyArray<ChainableDinero<TType>>) {
     const scales = objects.map((obj) => obj.getScale());
-    const highestPrecision = calculator.maximum(...scales);
+    const highestScale = calculator.maximum(scales);
 
     return objects.map((obj) => {
-      if (obj.getScale() !== highestPrecision) {
-        return obj.convertPrecision(highestPrecision);
+      if (obj.getScale() !== highestScale) {
+        return obj.convertScale(highestScale);
       }
 
       return obj;
     });
   }
 
-  function Dinero({
+  function add(augend: ChainableDinero<TType>, addend: ChainableDinero<TType>) {
+    return dinero({
+      amount: calculator.add(augend.getAmount(), addend.getAmount()),
+      currency: augend.getCurrency(),
+      scale: augend.getScale(),
+    });
+  }
+
+  function subtract(
+    minuend: ChainableDinero<TType>,
+    subtrahend: ChainableDinero<TType>
+  ) {
+    return dinero({
+      amount: calculator.subtract(minuend.getAmount(), subtrahend.getAmount()),
+      currency: minuend.getCurrency(),
+      scale: minuend.getScale(),
+    });
+  }
+
+  function divide(
+    dividend: ChainableDinero<TType>,
+    divisor: TType,
+    roundingMode: RoundingMode<TType> = calculator.round
+  ) {
+    return dinero({
+      amount: roundingMode(calculator.divide(dividend.getAmount(), divisor)),
+      currency: dividend.getCurrency(),
+      scale: dividend.getScale(),
+    });
+  }
+
+  function percentage(dineroObject: ChainableDinero<TType>, share: TType) {
+    return dinero({
+      amount: calculator.percentage(dineroObject.getAmount(), share),
+      currency: dineroObject.getCurrency(),
+      scale: dineroObject.getScale(),
+    });
+  }
+
+  function allocate(
+    dineroObject: ChainableDinero<TType>,
+    ratios: readonly TType[]
+  ) {
+    const shares = calculator.distribute(dineroObject.getAmount(), ratios);
+
+    return shares.map((share) =>
+      dinero({
+        amount: share,
+        currency: dineroObject.getCurrency(),
+        scale: dineroObject.getScale(),
+      })
+    );
+  }
+
+  function multiply(
+    multiplier: ChainableDinero<TType>,
+    multiplicand: TType,
+    roundingMode: RoundingMode<TType> = calculator.round
+  ) {
+    return dinero({
+      amount: roundingMode(
+        calculator.multiply(multiplier.getAmount(), multiplicand)
+      ),
+      currency: multiplier.getCurrency(),
+      scale: multiplier.getScale(),
+    });
+  }
+
+  function convertScale(
+    dineroObject: ChainableDinero<TType>,
+    newScale: TType,
+    roundingMode = calculator.round
+  ) {
+    return dinero({
+      amount: roundingMode(
+        calculator.multiply(
+          dineroObject.getAmount(),
+          calculator.power(
+            dineroObject.getCurrency().base,
+            calculator.subtract(newScale, dineroObject.getScale())
+          )
+        )
+      ),
+      currency: dineroObject.getCurrency(),
+      scale: newScale,
+    });
+  }
+
+  function equalsTo(
+    dineroObject: ChainableDinero<TType>,
+    comparator: ChainableDinero<TType>
+  ) {
+    return (
+      dineroObject.hasSameAmount(comparator) &&
+      dineroObject.hasSameCurrency(comparator)
+    );
+  }
+
+  function lessThan(
+    dineroObject: ChainableDinero<TType>,
+    comparator: ChainableDinero<TType>
+  ) {
+    const [d1, d2] = normalizeScale(dineroObject, comparator);
+
+    return calculator.lessThan(d1.getAmount(), d2.getAmount());
+  }
+
+  function lessThanOrEqual(
+    dineroObject: ChainableDinero<TType>,
+    comparator: ChainableDinero<TType>
+  ) {
+    const [d1, d2] = normalizeScale(dineroObject, comparator);
+
+    return calculator.lessThanOrEqual(d1.getAmount(), d2.getAmount());
+  }
+
+  function greaterThan(
+    dineroObject: ChainableDinero<TType>,
+    comparator: ChainableDinero<TType>
+  ) {
+    const [d1, d2] = normalizeScale(dineroObject, comparator);
+
+    return calculator.greaterThan(d1.getAmount(), d2.getAmount());
+  }
+
+  function greaterThanOrEqual(
+    dineroObject: ChainableDinero<TType>,
+    comparator: ChainableDinero<TType>
+  ) {
+    const [d1, d2] = normalizeScale(dineroObject, comparator);
+
+    return calculator.greaterThanOrEqual(d1.getAmount(), d2.getAmount());
+  }
+
+  function isZero(dineroObject: ChainableDinero<TType>) {
+    return calculator.areEqual(dineroObject.getAmount(), calculator.zero());
+  }
+
+  function isPositive(dineroObject: ChainableDinero<TType>) {
+    return calculator.greaterThanOrEqual(
+      dineroObject.getAmount(),
+      calculator.zero()
+    );
+  }
+
+  function isNegative(dineroObject: ChainableDinero<TType>) {
+    return calculator.lessThan(dineroObject.getAmount(), calculator.zero());
+  }
+
+  function hasSubUnits(dineroObject: ChainableDinero<TType>) {
+    return !calculator.areEqual(
+      calculator.modulo(
+        dineroObject.getAmount(),
+        calculator.power(
+          dineroObject.getCurrency().base,
+          dineroObject.getScale()
+        )
+      ),
+      calculator.zero()
+    );
+  }
+
+  function hasSameCurrency(
+    dineroObject: ChainableDinero<TType>,
+    comparator: ChainableDinero<TType>
+  ) {
+    return dineroObject.getCurrency() === comparator.getCurrency();
+  }
+
+  function hasSameAmount(
+    dineroObject: ChainableDinero<TType>,
+    comparator: ChainableDinero<TType>
+  ) {
+    const [d1, d2] = normalizeScale(dineroObject, comparator);
+
+    return d1.getAmount() === d2.getAmount();
+  }
+
+  function toUnit(dineroObject: ChainableDinero<TType>) {
+    return calculator.divide(
+      dineroObject.getAmount(),
+      calculator.power(dineroObject.getCurrency().base, dineroObject.getScale())
+    );
+  }
+
+  function toRoundedUnit(
+    dineroObject: ChainableDinero<TType>,
+    digits: TType,
+    roundingMode: RoundingMode<TType> = calculator.round
+  ) {
+    const factor = calculator.power(dineroObject.getCurrency().base, digits);
+
+    return calculator.divide(
+      roundingMode(calculator.multiply(toUnit(dineroObject), factor)),
+      factor
+    );
+  }
+
+  function toSnapshot(dineroObject: ChainableDinero<TType>) {
+    return {
+      amount: dineroObject.getAmount(),
+      currency: dineroObject.getCurrency(),
+      scale: dineroObject.getScale(),
+    };
+  }
+
+  function dinero({
     amount,
     currency,
-    scale,
-  }: DineroSnapshot<TType>): OODinero<TType> {
-    const d: OODinero<TType> = {
+    scale = currency.exponent,
+  }: DineroOptions<TType>): ChainableDinero<TType> {
+    const d: ChainableDinero<TType> = {
       getAmount() {
         return amount;
       },
@@ -35,72 +241,31 @@ const createDinero = <TType>({ calculator }: DineroFactoryOptions<TType>) => {
         return scale;
       },
       add(addend) {
-        return Dinero({
-          amount: calculator.add(addend.getAmount(), amount),
-          currency,
-          scale,
-        });
+        return add(d, addend);
       },
       subtract(subtrahend) {
-        return Dinero({
-          amount: calculator.subtract(subtrahend.getAmount(), amount),
-          currency,
-          scale,
-        });
+        return subtract(d, subtrahend);
       },
       multiply(multiplier, roundingMode) {
-        return Dinero({
-          amount: calculator.multiply(multiplier.getAmount(), amount),
-          currency,
-          scale,
-        });
+        return multiply(d, multiplier, roundingMode);
       },
       divide(divisor, roundingMode) {
-        return Dinero({
-          amount: calculator.divide(divisor.getAmount(), amount),
-          currency,
-          scale,
-        });
+        return divide(d, divisor, roundingMode);
       },
-      percentage(percentage) {
-        return Dinero({
-          amount: calculator.percentage(amount, percentage),
-          currency,
-          scale,
-        });
+      percentage(share) {
+        return percentage(d, share);
       },
       allocate(ratios) {
-        const shares = calculator.distribute(amount, ratios);
-
-        return shares.map((share) =>
-          Dinero({
-            amount: share,
-            currency,
-            scale,
-          })
-        );
+        return allocate(d, ratios);
       },
-      convertPrecision(newScale, roundingMode) {
-        return Dinero({
-          amount: calculator.round(
-            calculator.multiply(
-              amount,
-              calculator.power(
-                currency.base,
-                calculator.subtract(newScale, scale)
-              )
-            ),
-            roundingMode
-          ),
-          currency,
-          scale: newScale,
-        });
+      convertScale(newScale, roundingMode) {
+        return convertScale(d, newScale, roundingMode);
       },
       async convert(newCurrency, { rates, roundingMode }) {
         const r = await rates;
         const rate = r[newCurrency.code.alpha];
 
-        return Dinero({
+        return dinero({
           amount: calculator.round(
             calculator.multiply(amount, rate),
             roundingMode
@@ -110,75 +275,57 @@ const createDinero = <TType>({ calculator }: DineroFactoryOptions<TType>) => {
         });
       },
       equalsTo(comparator) {
-        return d.hasSameAmount(comparator) && d.hasSameCurrency(comparator);
+        return equalsTo(d, comparator);
       },
       lessThan(comparator) {
-        const [d1, d2] = normalizePrecision(d, comparator);
-
-        return calculator.lessThan(d1.getAmount(), d2.getAmount());
+        return lessThan(d, comparator);
       },
       lessThanOrEqual(comparator) {
-        const [d1, d2] = normalizePrecision(d, comparator);
-
-        return calculator.lessThanOrEqual(d1.getAmount(), d2.getAmount());
+        return lessThanOrEqual(d, comparator);
       },
       greaterThan(comparator) {
-        const [d1, d2] = normalizePrecision(d, comparator);
-
-        return calculator.greaterThan(d1.getAmount(), d2.getAmount());
+        return greaterThan(d, comparator);
       },
       greaterThanOrEqual(comparator) {
-        const [d1, d2] = normalizePrecision(d, comparator);
-
-        return calculator.greaterThanOrEqual(d1.getAmount(), d2.getAmount());
+        return greaterThanOrEqual(d, comparator);
       },
       isZero() {
-        return calculator.equalsTo(amount, calculator.zero());
+        return isZero(d);
       },
       isPositive() {
-        return calculator.greaterThanOrEqual(amount, calculator.zero());
+        return isPositive(d);
       },
       isNegative() {
-        return calculator.lessThan(amount, calculator.zero());
+        return isNegative(d);
       },
       hasSubUnits() {
-        return !calculator.equalsTo(
-          calculator.modulo(amount, calculator.power(currency.base, scale)),
-          calculator.zero()
-        );
+        return hasSubUnits(d);
       },
       hasSameCurrency(comparator) {
-        return currency === comparator.getCurrency();
+        return hasSameCurrency(d, comparator);
       },
       hasSameAmount(comparator) {
-        const [d1, d2] = normalizePrecision(d, comparator);
-
-        return d1.getAmount() === d2.getAmount();
+        return hasSameAmount(d, comparator);
       },
       toFormat() {},
       toUnit() {
-        return calculator.divide(
-          amount,
-          calculator.power(currency.base, scale)
-        );
+        return toUnit(d);
       },
-      toRoundedUnit() {},
-      toObject() {
-        return {
-          amount,
-          currency,
-          scale,
-        };
+      toRoundedUnit(digits, roundingMode) {
+        return toRoundedUnit(d, digits, roundingMode);
+      },
+      toSnapshot() {
+        return toSnapshot(d);
       },
       toJSON() {
-        return d.toObject();
+        return toSnapshot(d);
       },
     };
 
     return d;
   }
 
-  return Dinero;
+  return dinero;
 };
 
 export default createDinero;

@@ -1,4 +1,4 @@
-import { calculator } from '@dinero.js/_/calculator-number';
+import calculator from './calculator/number';
 import createDinero from './createDinero';
 
 const dinero = createDinero({ calculator });
