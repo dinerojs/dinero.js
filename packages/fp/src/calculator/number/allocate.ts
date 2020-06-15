@@ -9,7 +9,7 @@ import dinero, { FunctionalDinero, toSnapshot } from '../../..';
  *
  * @returns A new functional Dinero object.
  */
-function percentage(
+function allocate(
   functionalDinero: FunctionalDinero<number>,
   ratios: readonly number[]
 ) {
@@ -27,4 +27,4 @@ function percentage(
   });
 }
 
-export default percentage;
+export default allocate;
