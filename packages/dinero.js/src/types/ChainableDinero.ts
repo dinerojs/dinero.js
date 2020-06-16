@@ -1,8 +1,16 @@
-import { RoundingMode, DineroSnapshot, Transformer } from '@dinero.js/core';
+import {
+  RoundingMode,
+  DineroSnapshot,
+  Transformer,
+  Rates,
+} from '@dinero.js/core';
 import { Currency } from '@dinero.js/currencies';
 import { FunctionalDinero } from '@dinero.js/fp';
 
-type Rates<TType> = Readonly<Promise<{ readonly [key: string]: TType }>>;
+type FormatOptions<TType> = {
+  readonly digits?: TType;
+  readonly roundingMode?: RoundingMode<TType>;
+};
 
 type ChainableDinero<TType> = FunctionalDinero<TType> & {
   readonly getAmount: () => TType;
@@ -49,7 +57,10 @@ type ChainableDinero<TType> = FunctionalDinero<TType> & {
   readonly hasSubUnits: () => boolean;
   readonly hasSameCurrency: (comparator: ChainableDinero<TType>) => boolean;
   readonly hasSameAmount: (comparator: ChainableDinero<TType>) => boolean;
-  readonly toFormat: Transformer<TType>;
+  readonly toFormat: (
+    transformer: Transformer<TType>,
+    formatOptions: FormatOptions<TType>
+  ) => string;
   readonly toUnit: () => TType;
   readonly toRoundedUnit: (
     digits: TType,
