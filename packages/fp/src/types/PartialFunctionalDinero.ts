@@ -1,7 +1,7 @@
 import { FunctionalDinero } from '..';
 
-type PartialFunctionalDinero<TType> = (
-  amount: TType
-) => FunctionalDinero<TType>;
+type PartialFunctionalDinero<TAmountType> = (
+  amount: TAmountType
+) => FunctionalDinero<TAmountType>;
 
 export default PartialFunctionalDinero;

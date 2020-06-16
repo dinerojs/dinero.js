@@ -1,7 +1,7 @@
 import { ChainableDinero, Calculator } from '../types';
 
-function normalizeScale<TType>(calculator: Calculator<TType>) {
-  return (...objects: ReadonlyArray<ChainableDinero<TType>>) => {
+function normalizeScale<TAmountType>(calculator: Calculator<TAmountType>) {
+  return (...objects: ReadonlyArray<ChainableDinero<TAmountType>>) => {
     const scales = objects.map((obj) => obj.getScale());
     const highestScale = calculator.maximum(scales);
 

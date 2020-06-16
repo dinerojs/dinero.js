@@ -1,14 +1,14 @@
 import { DineroOptions, RoundingMode } from '@dinero.js/core';
 import { ChainableDinero, Calculator } from '../types';
 
-function divide<TType>(
-  dineroFactory: (options: DineroOptions<TType>) => ChainableDinero<TType>,
-  calculator: Calculator<TType>
+function divide<TAmountType>(
+  dineroFactory: (options: DineroOptions<TAmountType>) => ChainableDinero<TAmountType>,
+  calculator: Calculator<TAmountType>
 ) {
   return (
-    dividend: ChainableDinero<TType>,
-    divisor: TType,
-    roundingMode: RoundingMode<TType>
+    dividend: ChainableDinero<TAmountType>,
+    divisor: TAmountType,
+    roundingMode: RoundingMode<TAmountType>
   ) => {
     return dineroFactory({
       amount: roundingMode(calculator.divide(dividend.getAmount(), divisor)),

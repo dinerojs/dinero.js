@@ -10,10 +10,10 @@ import dinero from '../dinero';
  *
  * @returns The partially applied functional Dinero object.
  */
-function partialDinero<TType>({
+function partialDinero<TAmountType>({
   currency,
   scale,
-}: Omit<DineroOptions<TType>, 'amount'>): PartialFunctionalDinero<TType> {
+}: Omit<DineroOptions<TAmountType>, 'amount'>): PartialFunctionalDinero<TAmountType> {
   return (amount) => {
     return dinero({
       amount,

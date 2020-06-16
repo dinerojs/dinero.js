@@ -1,11 +1,11 @@
 import { DineroOptions } from '@dinero.js/core';
 import { ChainableDinero, Calculator } from '../types';
 
-function add<TType>(
-  dineroFactory: (options: DineroOptions<TType>) => ChainableDinero<TType>,
-  calculator: Calculator<TType>
+function add<TAmountType>(
+  dineroFactory: (options: DineroOptions<TAmountType>) => ChainableDinero<TAmountType>,
+  calculator: Calculator<TAmountType>
 ) {
-  return (augend: ChainableDinero<TType>, addend: ChainableDinero<TType>) => {
+  return (augend: ChainableDinero<TAmountType>, addend: ChainableDinero<TAmountType>) => {
     return dineroFactory({
       amount: calculator.add(augend.getAmount(), addend.getAmount()),
       currency: augend.getCurrency(),

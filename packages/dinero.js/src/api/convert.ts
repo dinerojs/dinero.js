@@ -2,19 +2,19 @@ import { RoundingMode, DineroOptions, Rates } from '@dinero.js/core';
 import { Currency } from '@dinero.js/currencies';
 import { ChainableDinero, Calculator } from '../types';
 
-function convert<TType>(
-  dineroFactory: (options: DineroOptions<TType>) => ChainableDinero<TType>,
-  calculator: Calculator<TType>
+function convert<TAmountType>(
+  dineroFactory: (options: DineroOptions<TAmountType>) => ChainableDinero<TAmountType>,
+  calculator: Calculator<TAmountType>
 ) {
   return async (
-    dineroObject: ChainableDinero<TType>,
-    newCurrency: Currency<TType>,
+    dineroObject: ChainableDinero<TAmountType>,
+    newCurrency: Currency<TAmountType>,
     {
       rates,
       roundingMode,
     }: {
-      readonly rates: Rates<TType>;
-      readonly roundingMode: RoundingMode<TType>;
+      readonly rates: Rates<TAmountType>;
+      readonly roundingMode: RoundingMode<TAmountType>;
     }
   ) => {
     const r = await rates;

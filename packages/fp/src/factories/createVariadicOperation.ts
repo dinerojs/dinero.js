@@ -10,8 +10,8 @@ import dinero from '../dinero';
  *
  * @returns A variadic arithmetic operation function.
  */
-function createVariadicOperation<TType>(operation: VariadicOperation<TType>) {
-  return (functionalDineros: ReadonlyArray<FunctionalDinero<TType>>) => {
+function createVariadicOperation<TAmountType>(operation: VariadicOperation<TAmountType>) {
+  return (functionalDineros: ReadonlyArray<FunctionalDinero<TAmountType>>) => {
     const amount = operation(
       functionalDineros.map((subject) => {
         const { amount: subjectAmount } = toSnapshot(subject);

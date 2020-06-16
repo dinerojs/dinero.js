@@ -1,3 +1,3 @@
-type Rates<TType> = Readonly<Promise<{ readonly [key: string]: TType }>>;
+type Rates<TAmountType> = Readonly<Promise<{ readonly [key: string]: TAmountType }>>;
 
 export default Rates;

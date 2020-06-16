@@ -1,7 +1,7 @@
 import { ChainableDinero, Calculator } from '../types';
 
-function isPositive<TType>(calculator: Calculator<TType>) {
-  return (dineroObject: ChainableDinero<TType>) => {
+function isPositive<TAmountType>(calculator: Calculator<TAmountType>) {
+  return (dineroObject: ChainableDinero<TAmountType>) => {
     return calculator.greaterThanOrEqual(
       dineroObject.getAmount(),
       calculator.zero()

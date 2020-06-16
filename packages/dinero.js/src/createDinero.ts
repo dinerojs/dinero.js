@@ -26,17 +26,17 @@ import {
   toSnapshot,
 } from './api';
 
-type DineroFactoryOptions<TType> = {
-  readonly calculator: Calculator<TType>;
+type DineroFactoryOptions<TAmountType> = {
+  readonly calculator: Calculator<TAmountType>;
 };
 
-const createDinero = <TType>({ calculator }: DineroFactoryOptions<TType>) => {
+const createDinero = <TAmountType>({ calculator }: DineroFactoryOptions<TAmountType>) => {
   function dinero({
     amount,
     currency,
     scale = currency.exponent,
-  }: DineroOptions<TType>): ChainableDinero<TType> {
-    const d: ChainableDinero<TType> = {
+  }: DineroOptions<TAmountType>): ChainableDinero<TAmountType> {
+    const d: ChainableDinero<TAmountType> = {
       getAmount() {
         return amount;
       },

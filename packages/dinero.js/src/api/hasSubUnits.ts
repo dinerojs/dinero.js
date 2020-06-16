@@ -1,7 +1,7 @@
 import { ChainableDinero, Calculator } from '../types';
 
-function hasSubUnits<TType>(calculator: Calculator<TType>) {
-  return (dineroObject: ChainableDinero<TType>) => {
+function hasSubUnits<TAmountType>(calculator: Calculator<TAmountType>) {
+  return (dineroObject: ChainableDinero<TAmountType>) => {
     return !calculator.areEqual(
       calculator.modulo(
         dineroObject.getAmount(),

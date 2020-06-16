@@ -1,11 +1,11 @@
 import { DineroOptions } from '@dinero.js/core';
 import { ChainableDinero, Calculator } from '../types';
 
-function percentage<TType>(
-  dineroFactory: (options: DineroOptions<TType>) => ChainableDinero<TType>,
-  calculator: Calculator<TType>
+function percentage<TAmountType>(
+  dineroFactory: (options: DineroOptions<TAmountType>) => ChainableDinero<TAmountType>,
+  calculator: Calculator<TAmountType>
 ) {
-  return (dineroObject: ChainableDinero<TType>, share: TType) => {
+  return (dineroObject: ChainableDinero<TAmountType>, share: TAmountType) => {
     return dineroFactory({
       amount: calculator.percentage(dineroObject.getAmount(), share),
       currency: dineroObject.getCurrency(),

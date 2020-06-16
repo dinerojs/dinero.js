@@ -10,8 +10,8 @@ import dinero from '../dinero';
  *
  * @returns A binary arithmetic operation function.
  */
-function createBinaryOperation<TType>(operation: BinaryOperation<TType>) {
-  return (d1: FunctionalDinero<TType>, d2: FunctionalDinero<TType>) => {
+function createBinaryOperation<TAmountType>(operation: BinaryOperation<TAmountType>) {
+  return (d1: FunctionalDinero<TAmountType>, d2: FunctionalDinero<TAmountType>) => {
     const amount = [d1, d2]
       .map((subject) => {
         const { amount: subjectAmount } = toSnapshot(subject);

@@ -1,3 +1,3 @@
-type RoundingMode<TType> = (n: TType) => TType;
+type RoundingMode<TAmountType> = (n: TAmountType) => TAmountType;
 
 export default RoundingMode;

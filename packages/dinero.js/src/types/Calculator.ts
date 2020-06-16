@@ -6,27 +6,27 @@ import {
   RoundingMode,
 } from '@dinero.js/core';
 
-type Calculator<TType> = {
-  readonly add: BinaryOperation<TType>;
-  readonly areEqual: BinaryBooleanOperation<TType>;
+type Calculator<TAmountType> = {
+  readonly add: BinaryOperation<TAmountType>;
+  readonly areEqual: BinaryBooleanOperation<TAmountType>;
   readonly distribute: (
-    value: TType,
-    ratios: readonly TType[]
-  ) => readonly TType[];
-  readonly divide: BinaryOperation<TType>;
-  readonly greaterThan: BinaryBooleanOperation<TType>;
-  readonly greaterThanOrEqual: BinaryBooleanOperation<TType>;
-  readonly lessThan: BinaryBooleanOperation<TType>;
-  readonly lessThanOrEqual: BinaryBooleanOperation<TType>;
-  readonly maximum: VariadicOperation<TType>;
-  readonly minimum: VariadicOperation<TType>;
-  readonly modulo: BinaryOperation<TType>;
-  readonly multiply: BinaryOperation<TType>;
-  readonly percentage: BinaryOperation<TType>;
-  readonly power: BinaryOperation<TType>;
-  readonly subtract: BinaryOperation<TType>;
-  readonly round: RoundingMode<TType>;
-  readonly zero: () => TType;
+    value: TAmountType,
+    ratios: readonly TAmountType[]
+  ) => readonly TAmountType[];
+  readonly divide: BinaryOperation<TAmountType>;
+  readonly greaterThan: BinaryBooleanOperation<TAmountType>;
+  readonly greaterThanOrEqual: BinaryBooleanOperation<TAmountType>;
+  readonly lessThan: BinaryBooleanOperation<TAmountType>;
+  readonly lessThanOrEqual: BinaryBooleanOperation<TAmountType>;
+  readonly maximum: VariadicOperation<TAmountType>;
+  readonly minimum: VariadicOperation<TAmountType>;
+  readonly modulo: BinaryOperation<TAmountType>;
+  readonly multiply: BinaryOperation<TAmountType>;
+  readonly percentage: BinaryOperation<TAmountType>;
+  readonly power: BinaryOperation<TAmountType>;
+  readonly subtract: BinaryOperation<TAmountType>;
+  readonly round: RoundingMode<TAmountType>;
+  readonly zero: () => TAmountType;
 };
 
 export default Calculator;

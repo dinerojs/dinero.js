@@ -2,11 +2,11 @@ import { Transformer, FormatOptions } from '@dinero.js/core';
 import { ChainableDinero, Calculator } from '../types';
 import toRoundedUnit from './toRoundedUnit';
 
-function toFormat<TType>(calculator: Calculator<TType>) {
+function toFormat<TAmountType>(calculator: Calculator<TAmountType>) {
   return (
-    dineroObject: ChainableDinero<TType>,
-    transformer: Transformer<TType>,
-    { digits, roundingMode }: FormatOptions<TType>
+    dineroObject: ChainableDinero<TAmountType>,
+    transformer: Transformer<TAmountType>,
+    { digits, roundingMode }: FormatOptions<TAmountType>
   ) => {
     const currency = dineroObject.getCurrency();
     const amount = toRoundedUnit(calculator)(

@@ -7,7 +7,7 @@ import { FunctionalDinero } from '../../..';
  *
  * @returns A snapshot og the object.
  */
-function toSnapshot<TType>(functionalDinero: FunctionalDinero<TType>) {
+function toSnapshot<TAmountType>(functionalDinero: FunctionalDinero<TAmountType>) {
   return functionalDinero.toJSON();
 }
 

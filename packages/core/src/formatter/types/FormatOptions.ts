@@ -1,8 +1,8 @@
 import { RoundingMode } from '../../calculator';
 
-type FormatOptions<TType> = {
-  readonly digits?: TType;
-  readonly roundingMode?: RoundingMode<TType>;
+type FormatOptions<TAmountType> = {
+  readonly digits?: TAmountType;
+  readonly roundingMode?: RoundingMode<TAmountType>;
 };
 
 export default FormatOptions;

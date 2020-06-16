@@ -1,9 +1,9 @@
 import { Currency } from '@dinero.js/currencies';
 import { FunctionalDinero, toSnapshot } from '../../..';
 
-function currencyEqual<TType>(
-  subjectCurrency: Currency<TType>,
-  comparatorCurrency: Currency<TType>
+function currencyEqual<TAmountType>(
+  subjectCurrency: Currency<TAmountType>,
+  comparatorCurrency: Currency<TAmountType>
 ) {
   return (
     subjectCurrency.code === comparatorCurrency.code &&

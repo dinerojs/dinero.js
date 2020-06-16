@@ -1,6 +1,6 @@
 import { ChainableDinero } from '../types';
 
-function toSnapshot<TType>(dineroObject: ChainableDinero<TType>) {
+function toSnapshot<TAmountType>(dineroObject: ChainableDinero<TAmountType>) {
   return {
     amount: dineroObject.getAmount(),
     currency: dineroObject.getCurrency(),

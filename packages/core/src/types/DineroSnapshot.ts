@@ -1,9 +1,9 @@
 import { Currency } from '@dinero.js/currencies';
 
-type DineroSnapshot<TType> = {
-  readonly amount: TType;
-  readonly currency: Currency<TType>;
-  readonly scale: TType;
+type DineroSnapshot<TAmountType> = {
+  readonly amount: TAmountType;
+  readonly currency: Currency<TAmountType>;
+  readonly scale: TAmountType;
 };
 
 export default DineroSnapshot;

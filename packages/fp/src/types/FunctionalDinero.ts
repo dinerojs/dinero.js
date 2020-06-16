@@ -1,7 +1,7 @@
 import { DineroSnapshot } from '@dinero.js/core';
 
-type FunctionalDinero<TType> = {
-  readonly toJSON: () => DineroSnapshot<TType>;
+type FunctionalDinero<TAmountType> = {
+  readonly toJSON: () => DineroSnapshot<TAmountType>;
 };
 
 export default FunctionalDinero;

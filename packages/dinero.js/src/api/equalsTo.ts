@@ -1,8 +1,8 @@
 import { ChainableDinero } from '../types';
 
-function equalsTo<TType>(
-  dineroObject: ChainableDinero<TType>,
-  comparator: ChainableDinero<TType>
+function equalsTo<TAmountType>(
+  dineroObject: ChainableDinero<TAmountType>,
+  comparator: ChainableDinero<TAmountType>
 ) {
   return (
     dineroObject.hasSameAmount(comparator) &&

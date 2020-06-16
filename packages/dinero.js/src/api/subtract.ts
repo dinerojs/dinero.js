@@ -1,13 +1,13 @@
 import { DineroOptions } from '@dinero.js/core';
 import { ChainableDinero, Calculator } from '../types';
 
-function subtract<TType>(
-  dineroFactory: (options: DineroOptions<TType>) => ChainableDinero<TType>,
-  calculator: Calculator<TType>
+function subtract<TAmountType>(
+  dineroFactory: (options: DineroOptions<TAmountType>) => ChainableDinero<TAmountType>,
+  calculator: Calculator<TAmountType>
 ) {
   return (
-    minuend: ChainableDinero<TType>,
-    subtrahend: ChainableDinero<TType>
+    minuend: ChainableDinero<TAmountType>,
+    subtrahend: ChainableDinero<TAmountType>
   ) => {
     return dineroFactory({
       amount: calculator.subtract(minuend.getAmount(), subtrahend.getAmount()),

@@ -1,4 +1,4 @@
-type Currency<TType> = {
+type Currency<TAmountType> = {
   /**
    * The unique code of the currency.
    */
@@ -6,11 +6,11 @@ type Currency<TType> = {
   /**
    * The base, or radix of the currency.
    */
-  readonly base: TType;
+  readonly base: TAmountType;
   /**
    * The exponent of the currency.
    */
-  readonly exponent: TType;
+  readonly exponent: TAmountType;
 };
 
 export default Currency;

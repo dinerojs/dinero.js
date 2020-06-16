@@ -1,10 +1,10 @@
 import { Currency } from '@dinero.js/currencies';
 
-type TransformerOptions<TType> = {
-  readonly amount: TType;
-  readonly currency: Currency<TType>;
+type TransformerOptions<TAmountType> = {
+  readonly amount: TAmountType;
+  readonly currency: Currency<TAmountType>;
 };
 
-type Transformer<TType> = (options: TransformerOptions<TType>) => string;
+type Transformer<TAmountType> = (options: TransformerOptions<TAmountType>) => string;
 
 export default Transformer;

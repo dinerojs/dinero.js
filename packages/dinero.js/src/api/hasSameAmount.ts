@@ -1,10 +1,10 @@
 import { ChainableDinero, Calculator } from '../types';
 import normalizeScale from './normalizeScale';
 
-function hasSameAmount<TType>(calculator: Calculator<TType>) {
+function hasSameAmount<TAmountType>(calculator: Calculator<TAmountType>) {
   return (
-    dineroObject: ChainableDinero<TType>,
-    comparator: ChainableDinero<TType>
+    dineroObject: ChainableDinero<TAmountType>,
+    comparator: ChainableDinero<TAmountType>
   ) => {
     const [d1, d2] = normalizeScale(calculator)(dineroObject, comparator);
 

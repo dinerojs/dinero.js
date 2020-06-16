@@ -1,3 +1,3 @@
-type BinaryOperation<TType> = (a: TType, b: TType) => TType;
+type BinaryOperation<TAmountType> = (a: TAmountType, b: TAmountType) => TAmountType;
 
 export default BinaryOperation;
