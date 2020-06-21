@@ -1,16 +1,16 @@
-import { DineroOptions, Calculator } from '@dinero.js/core';
-import { ChainableDinero } from './types';
 import {
+  DineroOptions,
+  Calculator,
   add,
   allocate,
   convert,
   convertScale,
   divide,
-  equalsTo,
+  equal,
   greaterThan,
   greaterThanOrEqual,
-  hasSameAmount,
-  hasSameCurrency,
+  haveSameAmount,
+  haveSameCurrency,
   hasSubUnits,
   isNegative,
   isPositive,
@@ -24,7 +24,8 @@ import {
   toUnit,
   toRoundedUnit,
   toSnapshot,
-} from './api';
+} from '@dinero.js/core';
+import { ChainableDinero } from './types';
 
 type DineroFactoryOptions<TAmount> = {
   readonly calculator: Calculator<TAmount>;
@@ -76,7 +77,7 @@ const createDinero = <TAmount>({
         });
       },
       equalsTo(comparator) {
-        return equalsTo(dinero, calculator)(d, comparator);
+        return equal(dinero, calculator)(d, comparator);
       },
       lessThan(comparator) {
         return lessThan(dinero, calculator)(d, comparator);
@@ -103,10 +104,10 @@ const createDinero = <TAmount>({
         return hasSubUnits(calculator)(d);
       },
       hasSameCurrency(comparator) {
-        return hasSameCurrency(d, comparator);
+        return haveSameCurrency([d, comparator]);
       },
       hasSameAmount(comparator) {
-        return hasSameAmount(dinero, calculator)([d, comparator]);
+        return haveSameAmount(dinero, calculator)([d, comparator]);
       },
       toFormat(transformer, { digits, roundingMode }) {
         return toFormat(calculator)(d, transformer, { digits, roundingMode });
