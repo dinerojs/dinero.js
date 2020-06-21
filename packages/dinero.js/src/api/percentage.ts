@@ -1,17 +1,11 @@
-import { DineroOptions } from '@dinero.js/core';
-import { ChainableDinero, Calculator } from '../types';
+import { DineroOptions, percentage, Calculator } from '@dinero.js/core';
+import { ChainableDinero } from '../types';
 
-function percentage<TAmountType>(
-  dineroFactory: (options: DineroOptions<TAmountType>) => ChainableDinero<TAmountType>,
-  calculator: Calculator<TAmountType>
+function chainablePercentage<TAmount>(
+  dineroFactory: (options: DineroOptions<TAmount>) => ChainableDinero<TAmount>,
+  calculator: Calculator<TAmount>
 ) {
-  return (dineroObject: ChainableDinero<TAmountType>, share: TAmountType) => {
-    return dineroFactory({
-      amount: calculator.percentage(dineroObject.getAmount(), share),
-      currency: dineroObject.getCurrency(),
-      scale: dineroObject.getScale(),
-    });
-  };
+  return percentage(dineroFactory, calculator);
 }
 
-export default percentage;
+export default chainablePercentage;

@@ -1,20 +1,11 @@
-import { DineroOptions } from '@dinero.js/core';
-import { ChainableDinero, Calculator } from '../types';
+import { DineroOptions, subtract, Calculator } from '@dinero.js/core';
+import { ChainableDinero } from '../types';
 
-function subtract<TAmountType>(
-  dineroFactory: (options: DineroOptions<TAmountType>) => ChainableDinero<TAmountType>,
-  calculator: Calculator<TAmountType>
+function chainableSubtract<TAmount>(
+  dineroFactory: (options: DineroOptions<TAmount>) => ChainableDinero<TAmount>,
+  calculator: Calculator<TAmount>
 ) {
-  return (
-    minuend: ChainableDinero<TAmountType>,
-    subtrahend: ChainableDinero<TAmountType>
-  ) => {
-    return dineroFactory({
-      amount: calculator.subtract(minuend.getAmount(), subtrahend.getAmount()),
-      currency: minuend.getCurrency(),
-      scale: minuend.getScale(),
-    });
-  };
+  return subtract(dineroFactory, calculator);
 }
 
-export default subtract;
+export default chainableSubtract;

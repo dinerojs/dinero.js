@@ -10,11 +10,11 @@ import { FunctionalDinero } from '..';
  *
  * @returns The created functional Dinero object.
  */
-function dinero<TAmountType>({
+function dinero<TAmount>({
   amount,
   currency,
   scale = currency.exponent,
-}: DineroOptions<TAmountType>): FunctionalDinero<TAmountType> {
+}: DineroOptions<TAmount>): FunctionalDinero<TAmount> {
   return {
     toJSON() {
       return {

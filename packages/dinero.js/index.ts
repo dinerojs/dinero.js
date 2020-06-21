@@ -1,2 +1,2 @@
-export { default as createDinero } from './src/createDinero';
+export * from './src';
 export { default } from './src/dinero';

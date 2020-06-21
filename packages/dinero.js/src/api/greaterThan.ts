@@ -1,15 +1,11 @@
-import { ChainableDinero, Calculator } from '../types';
-import { normalizeScale } from '.';
+import { DineroOptions, greaterThan, Calculator } from '@dinero.js/core';
+import { ChainableDinero } from '../types';
 
-function greaterThan<TAmountType>(calculator: Calculator<TAmountType>) {
-  return (
-    dineroObject: ChainableDinero<TAmountType>,
-    comparator: ChainableDinero<TAmountType>
-  ) => {
-    const [d1, d2] = normalizeScale(calculator)(dineroObject, comparator);
-
-    return calculator.greaterThan(d1.getAmount(), d2.getAmount());
-  };
+function chainableGreaterThan<TAmount>(
+  dineroFactory: (options: DineroOptions<TAmount>) => ChainableDinero<TAmount>,
+  calculator: Calculator<TAmount>
+) {
+  return greaterThan(dineroFactory, calculator);
 }
 
-export default greaterThan;
+export default chainableGreaterThan;

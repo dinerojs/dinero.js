@@ -1,5 +1,7 @@
 import { FunctionalDinero } from '@dinero.js/fp';
 
-type Formatter<TAmountType> = (functionalDinero: FunctionalDinero<TAmountType>) => string;
+type Formatter<TAmount> = (
+  functionalDinero: FunctionalDinero<TAmount>
+) => string;
 
 export default Formatter;

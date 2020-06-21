@@ -1,0 +1,27 @@
+import { Currency } from '@dinero.js/currencies';
+import { BaseDinero } from '../types';
+
+function currencyEqual<TAmount>(
+  subjectCurrency: Currency<TAmount>,
+  comparatorCurrency: Currency<TAmount>
+) {
+  return (
+    subjectCurrency.code === comparatorCurrency.code &&
+    subjectCurrency.base === comparatorCurrency.base &&
+    subjectCurrency.exponent === comparatorCurrency.exponent
+  );
+}
+
+function haveSameCurrency<TAmount, TDinero extends BaseDinero<TAmount>>(
+  dineroObjects: readonly TDinero[]
+) {
+  const [firstDinero, ...otherDineros] = dineroObjects;
+  const { currency: comparatorCurrency } = firstDinero.toJSON();
+
+  return otherDineros.every((d) => {
+    const { currency: subjectCurrency } = d.toJSON();
+    return currencyEqual(subjectCurrency, comparatorCurrency);
+  });
+}
+
+export default haveSameCurrency;

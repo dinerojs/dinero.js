@@ -1,3 +1,3 @@
-type BinaryBooleanOperation<TAmountType> = (a: TAmountType, b: TAmountType) => boolean;
+type BinaryBooleanOperation<TAmount> = (a: TAmount, b: TAmount) => boolean;
 
 export default BinaryBooleanOperation;

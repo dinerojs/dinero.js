@@ -1,23 +1,11 @@
-import { DineroOptions, RoundingMode } from '@dinero.js/core';
-import { ChainableDinero, Calculator } from '../types';
+import { DineroOptions, multiply, Calculator } from '@dinero.js/core';
+import { ChainableDinero } from '../types';
 
-function multiply<TAmountType>(
-  dineroFactory: (options: DineroOptions<TAmountType>) => ChainableDinero<TAmountType>,
-  calculator: Calculator<TAmountType>
+function chainableMultiply<TAmount>(
+  dineroFactory: (options: DineroOptions<TAmount>) => ChainableDinero<TAmount>,
+  calculator: Calculator<TAmount>
 ) {
-  return (
-    multiplier: ChainableDinero<TAmountType>,
-    multiplicand: TAmountType,
-    roundingMode: RoundingMode<TAmountType>
-  ) => {
-    return dineroFactory({
-      amount: roundingMode(
-        calculator.multiply(multiplier.getAmount(), multiplicand)
-      ),
-      currency: multiplier.getCurrency(),
-      scale: multiplier.getScale(),
-    });
-  };
+  return multiply(dineroFactory, calculator);
 }
 
-export default multiply;
+export default chainableMultiply;

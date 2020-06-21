@@ -1,11 +1,5 @@
-import { ChainableDinero } from '../types';
+import { toSnapshot } from '@dinero.js/core';
 
-function toSnapshot<TAmountType>(dineroObject: ChainableDinero<TAmountType>) {
-  return {
-    amount: dineroObject.getAmount(),
-    currency: dineroObject.getCurrency(),
-    scale: dineroObject.getScale(),
-  };
-}
+const chainableToSnapshot = toSnapshot;
 
-export default toSnapshot;
+export default chainableToSnapshot;

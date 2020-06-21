@@ -1,13 +1,11 @@
+import { equal, Calculator, DineroOptions } from '@dinero.js/core';
 import { ChainableDinero } from '../types';
 
-function equalsTo<TAmountType>(
-  dineroObject: ChainableDinero<TAmountType>,
-  comparator: ChainableDinero<TAmountType>
+function chainableEqualsTo<TAmount>(
+  dineroFactory: (options: DineroOptions<TAmount>) => ChainableDinero<TAmount>,
+  calculator: Calculator<TAmount>
 ) {
-  return (
-    dineroObject.hasSameAmount(comparator) &&
-    dineroObject.hasSameCurrency(comparator)
-  );
+  return equal(dineroFactory, calculator);
 }
 
-export default equalsTo;
+export default chainableEqualsTo;

@@ -1,10 +1,11 @@
+import { haveSameCurrency } from '@dinero.js/core';
 import { ChainableDinero } from '../types';
 
-function hasSameCurrency<TAmountType>(
-  dineroObject: ChainableDinero<TAmountType>,
-  comparator: ChainableDinero<TAmountType>
+function chainableHasSameCurrency<TAmount>(
+  dineroObject: ChainableDinero<TAmount>,
+  comparator: ChainableDinero<TAmount>
 ) {
-  return dineroObject.getCurrency() === comparator.getCurrency();
+  return haveSameCurrency([dineroObject, comparator]);
 }
 
-export default hasSameCurrency;
+export default chainableHasSameCurrency;

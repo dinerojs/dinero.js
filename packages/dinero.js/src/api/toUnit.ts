@@ -1,12 +1,7 @@
-import { ChainableDinero, Calculator } from '../types';
+import { toUnit, Calculator } from '@dinero.js/core';
 
-function toUnit<TAmountType>(calculator: Calculator<TAmountType>) {
-  return (dineroObject: ChainableDinero<TAmountType>) => {
-    return calculator.divide(
-      dineroObject.getAmount(),
-      calculator.power(dineroObject.getCurrency().base, dineroObject.getScale())
-    );
-  };
+function chainableToUnit<TAmount>(calculator: Calculator<TAmount>) {
+  return toUnit(calculator);
 }
 
-export default toUnit;
+export default chainableToUnit;

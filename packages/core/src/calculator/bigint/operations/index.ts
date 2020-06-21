@@ -1,5 +1,5 @@
 export { default as add } from './add';
-export { default as areEqual } from './areEqual';
+export { default as equal } from './equal';
 export { default as distribute } from './distribute';
 export { default as divide } from './divide';
 export { default as greaterThan } from './greaterThan';

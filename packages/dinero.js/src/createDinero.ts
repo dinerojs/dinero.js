@@ -1,5 +1,5 @@
-import { DineroOptions } from '@dinero.js/core';
-import { Calculator, ChainableDinero } from './types';
+import { DineroOptions, Calculator } from '@dinero.js/core';
+import { ChainableDinero } from './types';
 import {
   add,
   allocate,
@@ -26,17 +26,19 @@ import {
   toSnapshot,
 } from './api';
 
-type DineroFactoryOptions<TAmountType> = {
-  readonly calculator: Calculator<TAmountType>;
+type DineroFactoryOptions<TAmount> = {
+  readonly calculator: Calculator<TAmount>;
 };
 
-const createDinero = <TAmountType>({ calculator }: DineroFactoryOptions<TAmountType>) => {
+const createDinero = <TAmount>({
+  calculator,
+}: DineroFactoryOptions<TAmount>) => {
   function dinero({
     amount,
     currency,
     scale = currency.exponent,
-  }: DineroOptions<TAmountType>): ChainableDinero<TAmountType> {
-    const d: ChainableDinero<TAmountType> = {
+  }: DineroOptions<TAmount>): ChainableDinero<TAmount> {
+    const d: ChainableDinero<TAmount> = {
       getAmount() {
         return amount;
       },
@@ -74,19 +76,19 @@ const createDinero = <TAmountType>({ calculator }: DineroFactoryOptions<TAmountT
         });
       },
       equalsTo(comparator) {
-        return equalsTo(d, comparator);
+        return equalsTo(dinero, calculator)(d, comparator);
       },
       lessThan(comparator) {
-        return lessThan(calculator)(d, comparator);
+        return lessThan(dinero, calculator)(d, comparator);
       },
       lessThanOrEqual(comparator) {
-        return lessThanOrEqual(calculator)(d, comparator);
+        return lessThanOrEqual(dinero, calculator)(d, comparator);
       },
       greaterThan(comparator) {
-        return greaterThan(calculator)(d, comparator);
+        return greaterThan(dinero, calculator)(d, comparator);
       },
       greaterThanOrEqual(comparator) {
-        return greaterThanOrEqual(calculator)(d, comparator);
+        return greaterThanOrEqual(dinero, calculator)(d, comparator);
       },
       isZero() {
         return isZero(calculator)(d);
@@ -104,7 +106,7 @@ const createDinero = <TAmountType>({ calculator }: DineroFactoryOptions<TAmountT
         return hasSameCurrency(d, comparator);
       },
       hasSameAmount(comparator) {
-        return hasSameAmount(calculator)(d, comparator);
+        return hasSameAmount(dinero, calculator)([d, comparator]);
       },
       toFormat(transformer, { digits, roundingMode }) {
         return toFormat(calculator)(d, transformer, { digits, roundingMode });

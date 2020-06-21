@@ -1,9 +1,7 @@
-import { ChainableDinero, Calculator } from '../types';
+import { isZero, Calculator } from '@dinero.js/core';
 
-function isZero<TAmountType>(calculator: Calculator<TAmountType>) {
-  return (dineroObject: ChainableDinero<TAmountType>) => {
-    return calculator.areEqual(dineroObject.getAmount(), calculator.zero());
-  };
+function chainableIsZero<TAmount>(calculator: Calculator<TAmount>) {
+  return isZero(calculator);
 }
 
-export default isZero;
+export default chainableIsZero;

@@ -1,18 +1,7 @@
-import { ChainableDinero, Calculator } from '../types';
+import { hasSubUnits, Calculator } from '@dinero.js/core';
 
-function hasSubUnits<TAmountType>(calculator: Calculator<TAmountType>) {
-  return (dineroObject: ChainableDinero<TAmountType>) => {
-    return !calculator.areEqual(
-      calculator.modulo(
-        dineroObject.getAmount(),
-        calculator.power(
-          dineroObject.getCurrency().base,
-          dineroObject.getScale()
-        )
-      ),
-      calculator.zero()
-    );
-  };
+function chainableHasSubUnits<TAmount>(calculator: Calculator<TAmount>) {
+  return hasSubUnits(calculator);
 }
 
-export default hasSubUnits;
+export default chainableHasSubUnits;

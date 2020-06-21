@@ -1,21 +1,11 @@
-import { DineroOptions } from '@dinero.js/core';
-import { ChainableDinero, Calculator } from '../types';
+import { DineroOptions, allocate, Calculator } from '@dinero.js/core';
+import { ChainableDinero } from '../types';
 
-function allocate<TAmountType>(
-  dineroFactory: (options: DineroOptions<TAmountType>) => ChainableDinero<TAmountType>,
-  calculator: Calculator<TAmountType>
+function chainableAllocate<TAmount>(
+  dineroFactory: (options: DineroOptions<TAmount>) => ChainableDinero<TAmount>,
+  calculator: Calculator<TAmount>
 ) {
-  return (dineroObject: ChainableDinero<TAmountType>, ratios: readonly TAmountType[]) => {
-    const shares = calculator.distribute(dineroObject.getAmount(), ratios);
-
-    return shares.map((share) =>
-      dineroFactory({
-        amount: share,
-        currency: dineroObject.getCurrency(),
-        scale: dineroObject.getScale(),
-      })
-    );
-  };
+  return allocate(dineroFactory, calculator);
 }
 
-export default allocate;
+export default chainableAllocate;

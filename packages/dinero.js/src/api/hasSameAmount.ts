@@ -1,15 +1,11 @@
-import { ChainableDinero, Calculator } from '../types';
-import normalizeScale from './normalizeScale';
+import { haveSameAmount, DineroOptions, Calculator } from '@dinero.js/core';
+import { ChainableDinero } from '../types';
 
-function hasSameAmount<TAmountType>(calculator: Calculator<TAmountType>) {
-  return (
-    dineroObject: ChainableDinero<TAmountType>,
-    comparator: ChainableDinero<TAmountType>
-  ) => {
-    const [d1, d2] = normalizeScale(calculator)(dineroObject, comparator);
-
-    return d1.getAmount() === d2.getAmount();
-  };
+function chainableHasSameAmount<TAmount>(
+  dineroFactory: (options: DineroOptions<TAmount>) => ChainableDinero<TAmount>,
+  calculator: Calculator<TAmount>
+) {
+  return haveSameAmount(dineroFactory, calculator);
 }
 
-export default hasSameAmount;
+export default chainableHasSameAmount;

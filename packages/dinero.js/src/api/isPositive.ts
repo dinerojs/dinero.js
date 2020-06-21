@@ -1,12 +1,7 @@
-import { ChainableDinero, Calculator } from '../types';
+import { isPositive, Calculator } from '@dinero.js/core';
 
-function isPositive<TAmountType>(calculator: Calculator<TAmountType>) {
-  return (dineroObject: ChainableDinero<TAmountType>) => {
-    return calculator.greaterThanOrEqual(
-      dineroObject.getAmount(),
-      calculator.zero()
-    );
-  };
+function chainableIsPositive<TAmount>(calculator: Calculator<TAmount>) {
+  return isPositive(calculator);
 }
 
-export default isPositive;
+export default chainableIsPositive;

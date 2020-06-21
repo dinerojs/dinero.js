@@ -1,3 +1,3 @@
-type VariadicOperation<TAmountType> = (values: readonly TAmountType[]) => TAmountType;
+type VariadicOperation<TAmount> = (values: readonly TAmount[]) => TAmount;
 
 export default VariadicOperation;

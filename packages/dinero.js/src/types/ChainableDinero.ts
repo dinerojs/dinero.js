@@ -3,70 +3,72 @@ import {
   DineroSnapshot,
   Transformer,
   Rates,
+  BaseDinero,
 } from '@dinero.js/core';
 import { Currency } from '@dinero.js/currencies';
-import { FunctionalDinero } from '@dinero.js/fp';
 
-type FormatOptions<TAmountType> = {
-  readonly digits?: TAmountType;
-  readonly roundingMode?: RoundingMode<TAmountType>;
+type FormatOptions<TAmount> = {
+  readonly digits?: TAmount;
+  readonly roundingMode?: RoundingMode<TAmount>;
 };
 
-type ChainableDinero<TAmountType> = FunctionalDinero<TAmountType> & {
-  readonly getAmount: () => TAmountType;
-  readonly getCurrency: () => Currency<TAmountType>;
-  readonly getScale: () => TAmountType;
+type ChainableDinero<TAmount> = BaseDinero<TAmount> & {
+  readonly getAmount: () => TAmount;
+  readonly getCurrency: () => Currency<TAmount>;
+  readonly getScale: () => TAmount;
   readonly convertScale: (
-    newScale: TAmountType,
-    roundingMode?: RoundingMode<TAmountType>
-  ) => ChainableDinero<TAmountType>;
-  readonly add: (addend: ChainableDinero<TAmountType>) => ChainableDinero<TAmountType>;
+    newScale: TAmount,
+    roundingMode?: RoundingMode<TAmount>
+  ) => ChainableDinero<TAmount>;
+  readonly add: (addend: ChainableDinero<TAmount>) => ChainableDinero<TAmount>;
   readonly subtract: (
-    subtrahend: ChainableDinero<TAmountType>
-  ) => ChainableDinero<TAmountType>;
+    subtrahend: ChainableDinero<TAmount>
+  ) => ChainableDinero<TAmount>;
   readonly multiply: (
-    multiplier: TAmountType,
-    roundingMode?: RoundingMode<TAmountType>
-  ) => ChainableDinero<TAmountType>;
+    multiplier: TAmount,
+    roundingMode?: RoundingMode<TAmount>
+  ) => ChainableDinero<TAmount>;
   readonly divide: (
-    divisor: TAmountType,
-    roundingMode?: RoundingMode<TAmountType>
-  ) => ChainableDinero<TAmountType>;
-  readonly percentage: (percentage: TAmountType) => ChainableDinero<TAmountType>;
+    divisor: TAmount,
+    roundingMode?: RoundingMode<TAmount>
+  ) => ChainableDinero<TAmount>;
+  readonly percentage: (percentage: TAmount) => ChainableDinero<TAmount>;
   readonly allocate: (
-    ratios: readonly TAmountType[]
-  ) => ReadonlyArray<ChainableDinero<TAmountType>>;
+    ratios: readonly TAmount[]
+  ) => ReadonlyArray<ChainableDinero<TAmount>>;
   readonly convert: (
-    currency: Currency<TAmountType>,
+    currency: Currency<TAmount>,
     {
       rates,
       roundingMode,
     }: {
-      readonly rates: Rates<TAmountType>;
-      readonly roundingMode?: RoundingMode<TAmountType>;
+      readonly rates: Readonly<Promise<Rates<TAmount>>>;
+      readonly roundingMode?: RoundingMode<TAmount>;
     }
-  ) => Readonly<Promise<ChainableDinero<TAmountType>>>;
-  readonly equalsTo: (comparator: ChainableDinero<TAmountType>) => boolean;
-  readonly lessThan: (comparator: ChainableDinero<TAmountType>) => boolean;
-  readonly lessThanOrEqual: (comparator: ChainableDinero<TAmountType>) => boolean;
-  readonly greaterThan: (comparator: ChainableDinero<TAmountType>) => boolean;
-  readonly greaterThanOrEqual: (comparator: ChainableDinero<TAmountType>) => boolean;
+  ) => Readonly<Promise<ChainableDinero<TAmount>>>;
+  readonly equalsTo: (comparator: ChainableDinero<TAmount>) => boolean;
+  readonly lessThan: (comparator: ChainableDinero<TAmount>) => boolean;
+  readonly lessThanOrEqual: (comparator: ChainableDinero<TAmount>) => boolean;
+  readonly greaterThan: (comparator: ChainableDinero<TAmount>) => boolean;
+  readonly greaterThanOrEqual: (
+    comparator: ChainableDinero<TAmount>
+  ) => boolean;
   readonly isZero: () => boolean;
   readonly isPositive: () => boolean;
   readonly isNegative: () => boolean;
   readonly hasSubUnits: () => boolean;
-  readonly hasSameCurrency: (comparator: ChainableDinero<TAmountType>) => boolean;
-  readonly hasSameAmount: (comparator: ChainableDinero<TAmountType>) => boolean;
+  readonly hasSameCurrency: (comparator: ChainableDinero<TAmount>) => boolean;
+  readonly hasSameAmount: (comparator: ChainableDinero<TAmount>) => boolean;
   readonly toFormat: (
-    transformer: Transformer<TAmountType>,
-    formatOptions: FormatOptions<TAmountType>
+    transformer: Transformer<TAmount>,
+    formatOptions: FormatOptions<TAmount>
   ) => string;
-  readonly toUnit: () => TAmountType;
+  readonly toUnit: () => TAmount;
   readonly toRoundedUnit: (
-    digits: TAmountType,
-    roundingMode?: RoundingMode<TAmountType>
-  ) => TAmountType;
-  readonly toSnapshot: () => DineroSnapshot<TAmountType>;
+    digits: TAmount,
+    roundingMode?: RoundingMode<TAmount>
+  ) => TAmount;
+  readonly toSnapshot: () => DineroSnapshot<TAmount>;
 };
 
 export default ChainableDinero;

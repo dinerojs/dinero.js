@@ -1,17 +1,11 @@
-import { DineroOptions } from '@dinero.js/core';
-import { ChainableDinero, Calculator } from '../types';
+import { DineroOptions, add, Calculator } from '@dinero.js/core';
+import { ChainableDinero } from '../types';
 
-function add<TAmountType>(
-  dineroFactory: (options: DineroOptions<TAmountType>) => ChainableDinero<TAmountType>,
-  calculator: Calculator<TAmountType>
+function chainableAdd<TAmount>(
+  dineroFactory: (options: DineroOptions<TAmount>) => ChainableDinero<TAmount>,
+  calculator: Calculator<TAmount>
 ) {
-  return (augend: ChainableDinero<TAmountType>, addend: ChainableDinero<TAmountType>) => {
-    return dineroFactory({
-      amount: calculator.add(augend.getAmount(), addend.getAmount()),
-      currency: augend.getCurrency(),
-      scale: augend.getScale(),
-    });
-  };
+  return add(dineroFactory, calculator);
 }
 
-export default add;
+export default chainableAdd;

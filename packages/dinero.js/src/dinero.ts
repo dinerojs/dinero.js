@@ -1,4 +1,4 @@
-import calculator from './calculator/number';
+import calculator from './calculator';
 import createDinero from './createDinero';
 
 const dinero = createDinero({ calculator });
