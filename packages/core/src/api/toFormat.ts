@@ -16,7 +16,7 @@ function toFormat<TAmount, TDinero extends BaseDinero<TAmount>>(
   ) => {
     const { currency } = dineroObject.toJSON();
 
-    const amount = toRoundedUnit<TAmount>(calculator)(
+    const amount = toRoundedUnit<TAmount, TDinero>(calculator)(
       dineroObject,
       digits || currency.exponent,
       roundingMode || calculator.round
