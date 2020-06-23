@@ -1,11 +1,5 @@
 /* eslint-disable functional/no-let, functional/no-loop-statement, functional/immutable-data, functional/no-expression-statement */
-import {
-  add,
-  subtract,
-  multiply,
-  divide,
-  down,
-} from '@dinero.js/core/calculator/number';
+import { add, subtract, multiply, divide, down } from '../../number';
 
 /**
  * Returns a number in distributed shares.

@@ -1,5 +1,5 @@
-import { BinaryOperation } from '@dinero.js/core';
-import { multiply, divide } from '@dinero.js/core/calculator/bigint';
+import { BinaryOperation } from '../../types';
+import { divide, multiply } from '../../bigint';
 
 /**
  * Returns the percentage of a bigint.

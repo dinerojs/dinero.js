@@ -1,4 +1,4 @@
-import { RoundingMode } from '@dinero.js/core';
+import { RoundingMode } from '../../types';
 import { isHalf } from '../helpers';
 
 /**

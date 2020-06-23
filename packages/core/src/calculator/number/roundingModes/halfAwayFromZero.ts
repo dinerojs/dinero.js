@@ -1,5 +1,5 @@
-import { RoundingMode } from '@dinero.js/core';
-import { multiply } from '@dinero.js/core/calculator/number';
+import { RoundingMode } from '../../types';
+import { multiply } from '../../number';
 import { isHalf } from '../helpers';
 
 /**

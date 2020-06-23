@@ -1,5 +1,4 @@
-import { RoundingMode } from '@dinero.js/core';
-import { Calculator } from '../calculator';
+import { Calculator, RoundingMode } from '../calculator';
 import { BaseDinero } from '../types';
 import { toUnit } from '.';
 

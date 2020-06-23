@@ -1,11 +1,6 @@
-import { BinaryOperation } from '@dinero.js/core';
-import {
-  divide,
-  maximum,
-  power,
-  halfUp,
-} from '@dinero.js/core/calculator/number';
+import { divide, maximum, power, halfUp } from '../../number';
 import { countFractionDigits, isFloat } from '../helpers';
+import { BinaryOperation } from '../../types';
 
 const getFactor = (value: number) => power(10, countFractionDigits(value));
 

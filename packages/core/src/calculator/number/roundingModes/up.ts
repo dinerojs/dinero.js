@@ -1,4 +1,4 @@
-import { RoundingMode } from '@dinero.js/core';
+import { RoundingMode } from '../../types';
 
 /**
  * Round a number up.

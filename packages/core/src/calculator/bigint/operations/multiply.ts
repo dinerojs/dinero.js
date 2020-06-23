@@ -1,4 +1,4 @@
-import { BinaryOperation } from '@dinero.js/core';
+import { BinaryOperation } from '../../types';
 
 /**
  * Returns the product of two bigints.

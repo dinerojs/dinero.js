@@ -1,4 +1,4 @@
-import { BinaryBooleanOperation } from '@dinero.js/core';
+import { BinaryBooleanOperation } from '../../types';
 
 /**
  * Check whether a bigint is greater than another.

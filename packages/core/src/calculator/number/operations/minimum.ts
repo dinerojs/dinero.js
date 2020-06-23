@@ -1,4 +1,4 @@
-import { VariadicOperation } from '@dinero.js/core';
+import { VariadicOperation } from '../../types';
 
 /**
  * Returns the lowest from a set of numbers.
