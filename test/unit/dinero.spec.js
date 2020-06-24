@@ -345,6 +345,42 @@ describe('Dinero', () => {
         currency: 'EUR'
       })
     })
+    test('should return a new converted Dinero object when passed an endpointFactory', async () => {
+      Dinero.globalExchangeRatesApi = {};
+      const res = await Dinero({ amount: 500 }).convert('EUR', {
+        endpointFactory: (from, to) => {
+          expect(from).toBe('USD');
+          expect(to).toBe('EUR');
+          return new Promise(resolve =>
+            resolve({
+              rates: {
+                EUR: 0.81162
+              }
+            })
+          )
+        }
+      })
+      expect(res.toObject()).toMatchObject({
+        amount: 406,
+        currency: 'EUR'
+      })
+    })
+    test('should return a new converted Dinero object when passed an endpointFactory via a set global', async () => {
+      Dinero.globalExchangeRatesApi = { endpointFactory: (from, to) => {
+        return new Promise(resolve =>
+          resolve({
+            rates: {
+              EUR: 0.81162
+            }
+          })
+        )
+      }}
+      const res = await Dinero({ amount: 500 }).convert('EUR')
+      expect(res.toObject()).toMatchObject({
+        amount: 406,
+        currency: 'EUR'
+      })
+    })
     test('should throw when destination currency is not valid', async () => {
       await expect(Dinero({ amount: 500 }).convert('EURO')).rejects.toThrow()
     })

@@ -26,10 +26,15 @@ export default function CurrencyConverter(options) {
      * @return {Promise}
      */
     getExchangeRate(from, to) {
-      return (isThenable(options.endpoint)
-        ? options.endpoint
-        : getRatesFromRestApi(from, to)
-      ).then(
+      let getRates;
+      if (options.endpointFactory) {
+        getRates = options.endpointFactory(from, to);
+      } else {
+        getRates = isThenable(options.endpoint)
+                 ? options.endpoint
+                 : getRatesFromRestApi(from, to)
+      }
+      return getRates.then(
         data =>
           flattenObject(data)[mergeTags(options.propertyPath, { from, to })]
       )

@@ -51,5 +51,22 @@ describe('CurrencyConverter', () => {
         CurrencyConverter(options).getExchangeRate('USD', 'EUR')
       ).rejects.toThrow()
     })
+    test('should return a rate as a number when options.endpointFactory is defined', async() => {
+      await expect(
+        CurrencyConverter(
+          Object.assign({}, options, {
+            endpointFactory: (from, to) => {
+              return new Promise(resolve =>
+                resolve({
+                  rates: {
+                    EUR: 0.81162
+                  }
+                })
+              )
+            }
+          })
+        ).getExchangeRate('USD', 'EUR')
+      ).resolves.toEqual(0.81162)
+    })
   })
 })

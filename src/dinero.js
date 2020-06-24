@@ -510,6 +510,7 @@ const Dinero = options => {
     convert(
       currency,
       {
+        endpointFactory = globalExchangeRatesApi.endpointFactory,
         endpoint = globalExchangeRatesApi.endpoint,
         propertyPath = globalExchangeRatesApi.propertyPath || 'rates.{{to}}',
         headers = globalExchangeRatesApi.headers,
@@ -520,6 +521,7 @@ const Dinero = options => {
         {},
         {
           endpoint,
+          endpointFactory,
           propertyPath,
           headers,
           roundingMode
