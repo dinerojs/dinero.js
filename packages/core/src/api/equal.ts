@@ -1,9 +1,9 @@
 import { Calculator } from '../calculator';
-import { BaseDinero, DineroOptions } from '../types';
+import { BaseDinero, DineroFactory } from '../types';
 import { haveSameAmount, haveSameCurrency } from '.';
 
 function equal<TAmount, TDinero extends BaseDinero<TAmount>>(
-  dineroFactory: (options: DineroOptions<TAmount>) => TDinero,
+  dineroFactory: DineroFactory<TAmount, TDinero>,
   calculator: Pick<
     Calculator<TAmount>,
     | 'add'

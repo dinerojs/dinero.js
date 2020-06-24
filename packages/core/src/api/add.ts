@@ -1,8 +1,8 @@
-import { DineroOptions, BaseDinero } from '../types';
+import { BaseDinero, DineroFactory } from '../types';
 import { Calculator } from '../calculator';
 
 function add<TAmount, TDinero extends BaseDinero<TAmount>>(
-  dineroFactory: (options: DineroOptions<TAmount>) => TDinero,
+  dineroFactory: DineroFactory<TAmount, TDinero>,
   calculator: Pick<Calculator<TAmount>, 'add'>
 ) {
   return (augend: TDinero, addend: TDinero) => {

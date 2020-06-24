@@ -1,8 +1,8 @@
 import { Calculator } from '../calculator';
-import { DineroOptions, BaseDinero } from '../types';
+import { BaseDinero, DineroFactory } from '../types';
 
 function subtract<TAmount, TDinero extends BaseDinero<TAmount>>(
-  dineroFactory: (options: DineroOptions<TAmount>) => TDinero,
+  dineroFactory: DineroFactory<TAmount, TDinero>,
   calculator: Pick<Calculator<TAmount>, 'subtract'>
 ) {
   return (minuend: TDinero, subtrahend: TDinero) => {

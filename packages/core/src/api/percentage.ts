@@ -1,8 +1,8 @@
 import { Calculator } from '../calculator';
-import { DineroOptions, BaseDinero } from '../types';
+import { BaseDinero, DineroFactory } from '../types';
 
 function percentage<TAmount, TDinero extends BaseDinero<TAmount>>(
-  dineroFactory: (options: DineroOptions<TAmount>) => TDinero,
+  dineroFactory: DineroFactory<TAmount, TDinero>,
   calculator: Pick<Calculator<TAmount>, 'percentage'>
 ) {
   return (dineroObject: TDinero, share: TAmount) => {

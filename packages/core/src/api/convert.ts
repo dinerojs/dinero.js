@@ -1,9 +1,9 @@
 import { Currency } from '@dinero.js/currencies';
 import { Calculator, RoundingMode } from '../calculator';
-import { DineroOptions, BaseDinero, Rates } from '../types';
+import { BaseDinero, Rates, DineroFactory } from '../types';
 
 function convert<TAmount, TDinero extends BaseDinero<TAmount>>(
-  dineroFactory: (options: DineroOptions<TAmount>) => TDinero,
+  dineroFactory: DineroFactory<TAmount, TDinero>,
   calculator: Pick<Calculator<TAmount>, 'multiply'>
 ) {
   return async (
