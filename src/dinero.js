@@ -39,6 +39,8 @@ const calculator = Calculator()
  *
  * @module Dinero
  * @param  {Number} [options.amount=0] - The amount in minor currency units (as an integer).
+ * @param  {Number} [options.unit=0] - The amount in decimal units. If a non-zero value is given, it will be multiplied by 10^precision and rounded using roudingMode. If an amount is also given, that value will be used and this will be completely ignored.
+ * @param {String} [roundingMode='HALF_EVEN'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'`, `'HALF_AWAY_FROM_ZERO'` or `'DOWN'`. Note that if none is given globalFormatRoundingMode will be used. Note that this is not saved with the Dinero, and is only used when converting unit to amount at construction time.
  * @param  {String} [options.currency='USD'] - An ISO 4217 currency code.
  * @param  {String} [options.precision=2] - The number of decimal places to represent.
  *
@@ -47,10 +49,22 @@ const calculator = Calculator()
  * @return {Object}
  */
 const Dinero = options => {
+  const {
+    globalLocale,
+    globalFormat,
+    globalRoundingMode,
+    globalFormatRoundingMode
+  } = Dinero
+
+  const fromUnit = ({ unit, precision = Dinero.defaultPrecision, roundingMode = globalFormatRoundingMode }) => calculator.round(
+    calculator.multiply(unit, Math.pow(10, precision)),
+    roundingMode
+  )
+
   const { amount, currency, precision } = Object.assign(
     {},
     {
-      amount: Dinero.defaultAmount,
+      amount: Boolean(options) && Boolean(options.unit) ? fromUnit(options) : Dinero.defaultAmount,
       currency: Dinero.defaultCurrency,
       precision: Dinero.defaultPrecision
     },
@@ -59,13 +73,6 @@ const Dinero = options => {
 
   assertInteger(amount)
   assertInteger(precision)
-
-  const {
-    globalLocale,
-    globalFormat,
-    globalRoundingMode,
-    globalFormatRoundingMode
-  } = Dinero
 
   const globalExchangeRatesApi = Object.assign(
     {},

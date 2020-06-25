@@ -25,6 +25,19 @@ describe('Dinero', () => {
     test('should throw when precision is a string', () => {
       expect(() => Dinero({ precision: '3' })).toThrow()
     })
+    test('should allow construction with unit', () => {
+      expect(Dinero({ unit: 1.05 }).getAmount()).toBe(105);
+    })
+    test('should respect precision when constructing with unit', () => {
+      expect(Dinero({ unit: 1.05, precision: 3 }).getAmount()).toBe(1050);
+    })
+    test('should respect roundingMode when constructing with unit', () => {
+      expect(Dinero({ unit: 1.055, roundingMode: 'HALF_UP' }).getAmount()).toBe(106);
+      expect(Dinero({ unit: 1.055, roundingMode: 'HALF_DOWN' }).getAmount()).toBe(105);
+    })
+    test('should use amount and not unit if both are given', () => {
+      expect(Dinero({ amount: 100, unit: 1.055 }).getAmount()).toBe(100);
+    })
   })
   describe('#getAmount', () => {
     test('should return the right amount as a number', () => {
