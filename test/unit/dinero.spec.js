@@ -26,6 +26,42 @@ describe('Dinero', () => {
       expect(() => Dinero({ precision: '3' })).toThrow()
     })
   })
+  describe('default overrides', () => {
+    let originalPrecision, originalCurrency;
+    beforeAll(() => {
+      originalPrecision = Dinero.defaultPrecision
+      originalCurrency = Dinero.defaultCurrency
+    })
+    afterEach(() => {
+      Dinero.defaultPrecision = originalPrecision
+      Dinero.defaultCurrency = originalCurrency
+    })
+    test('defaultPrecision should be used when set as a number', () => {
+      Dinero.defaultPrecision = 5
+      expect(Dinero().getPrecision()).toBe(5)
+    })
+    test('defaultPrecision should be used when set as a function', () => {
+      Dinero.defaultPrecision = (currency) => 6
+      expect(Dinero().getPrecision()).toBe(6)
+    })
+    test('defaultPrecision function should receive instantiation currency', () => {
+      Dinero.defaultPrecision = jest.fn().mockReturnValue(5)
+      Dinero({ currency: 'ZAR' })
+      expect(Dinero.defaultPrecision).toHaveBeenCalledWith('ZAR')
+    })
+    test('defaultPrecision function should receive default currency when none specified', () => {
+      Dinero.defaultPrecision = jest.fn().mockReturnValue(5)
+      Dinero.defaultCurrency = 'ZAR'
+      Dinero()
+      expect(Dinero.defaultPrecision).toHaveBeenCalledWith('ZAR')
+    })
+    test('defaultPrecision function should receive default currency when options without currency specified', () => {
+      Dinero.defaultPrecision = jest.fn().mockReturnValue(5)
+      Dinero.defaultCurrency = 'ZAR'
+      Dinero({ amount: 100 })
+      expect(Dinero.defaultPrecision).toHaveBeenCalledWith('ZAR')
+    })
+  });
   describe('#getAmount', () => {
     test('should return the right amount as a number', () => {
       expect(Dinero({ amount: 500 }).getAmount()).toBe(500)

@@ -47,12 +47,18 @@ const calculator = Calculator()
  * @return {Object}
  */
 const Dinero = options => {
+  const getDefaultPrecision = (options) => {
+    if (typeof Dinero.defaultPrecision === 'function') {
+      return Dinero.defaultPrecision(Boolean(options) && Boolean(options.currency) ? options.currency : Dinero.defaultCurrency)
+    }
+    return Dinero.defaultPrecision
+  }
   const { amount, currency, precision } = Object.assign(
     {},
     {
       amount: Dinero.defaultAmount,
       currency: Dinero.defaultCurrency,
-      precision: Dinero.defaultPrecision
+      precision: getDefaultPrecision(options),
     },
     options
   )
