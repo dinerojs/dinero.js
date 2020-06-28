@@ -27,7 +27,7 @@ type Calculator<TAmount> = {
   readonly subtract: BinaryOperation<TAmount>;
   readonly round: RoundingMode<TAmount>;
   readonly zero: () => TAmount;
-  readonly isOfType: (value: number) => boolean;
+  readonly isOfType: (value: TAmount) => boolean;
 };
 
 export default Calculator;
