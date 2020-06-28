@@ -17,6 +17,7 @@ import {
   subtract,
   halfEven,
   zero,
+  isOfType,
 } from '@dinero.js/core/calculator/number';
 
 const calculator: Calculator<number> = {
@@ -37,6 +38,7 @@ const calculator: Calculator<number> = {
   subtract,
   round: halfEven,
   zero,
+  isOfType,
 };
 
 export default calculator;
