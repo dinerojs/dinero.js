@@ -43,7 +43,8 @@ type ChainableDinero<TAmount> = BaseDinero<TAmount> & {
       roundingMode,
     }: {
       readonly rates: Readonly<Promise<Rates<TAmount>>>;
-      readonly roundingMode?: RoundingMode<TAmount>;
+      readonly roundingMode: RoundingMode<TAmount>;
+      readonly preserveScale?: boolean;
     }
   ) => Readonly<Promise<ChainableDinero<TAmount>>>;
   readonly equalsTo: (comparator: ChainableDinero<TAmount>) => boolean;

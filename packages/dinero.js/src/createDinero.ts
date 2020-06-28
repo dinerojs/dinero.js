@@ -70,10 +70,11 @@ const createDinero = <TAmount>({
       convertScale(newScale, roundingMode = calculator.round) {
         return convertScale(dinero, calculator)(d, newScale, roundingMode);
       },
-      convert(newCurrency, { rates, roundingMode = calculator.round }) {
+      convert(newCurrency, { rates, roundingMode, preserveScale }) {
         return convert(dinero, calculator)(d, newCurrency, {
           rates,
           roundingMode,
+          preserveScale,
         });
       },
       equalsTo(comparator) {
