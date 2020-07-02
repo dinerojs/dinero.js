@@ -181,7 +181,9 @@ describe('Helpers', () => {
       expect(Helpers.isThenable(Promise.resolve())).toBe(true)
     })
     test('should return true when the value is the result of a rejected promise', () => {
-      expect(Helpers.isThenable(Promise.reject(new Error()))).toBe(true)
+      const rejected = Promise.reject(new Error())
+      expect(Helpers.isThenable(rejected)).toBe(true)
+      rejected.catch((e) => {});
     })
     test('should return true when the value is an object that implements a `then` method', () => {
       expect(Helpers.isThenable({ then: () => 1 })).toBe(true)

@@ -283,6 +283,17 @@ describe('Dinero', () => {
         }
       })
     })
+    test('should throw with undefined target currency', async () => {
+      expect(() => Dinero({ amount: 500 }).convert(undefined, {
+        endpoint: new Promise(resolve =>
+          resolve({
+            rates: {
+              EUR: 0.81162
+            }
+          })
+        )
+      })).toThrow(new Error('Target currency cannot be undefined'))
+    })
     test('should return a new converted Dinero object when base and destination currencies are valid', async () => {
       const res = await Dinero({ amount: 500 }).convert('EUR', {
         endpoint: 'https://yourexchangerates.api/latest?base={{from}}',

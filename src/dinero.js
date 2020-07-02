@@ -525,6 +525,11 @@ const Dinero = options => {
           roundingMode
         }
       )
+      assert(
+        !isUndefined(currency),
+        'Target currency cannot be undefined',
+        TypeError
+      )
       return CurrencyConverter(options)
         .getExchangeRate(this.getCurrency(), currency)
         .then(rate => {
