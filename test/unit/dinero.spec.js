@@ -9,6 +9,9 @@ jest.mock('../../src/services/helpers', () =>
 
 describe('Dinero', () => {
   describe('instantiation', () => {
+    test('should not allow an undefined currency', () => {
+      expect(() => Dinero({ currency: undefined })).toThrow()
+    })
     test('should return a new Dinero object when arguments are valid', () => {
       expect(Dinero({ amount: 500 })).toBeTruthy()
       expect(Dinero({ precision: 2 })).toBeTruthy()

@@ -59,6 +59,7 @@ const Dinero = options => {
 
   assertInteger(amount)
   assertInteger(precision)
+  assert(!isUndefined(currency), 'A currency cannot be undefined if given', TypeError)
 
   const {
     globalLocale,
