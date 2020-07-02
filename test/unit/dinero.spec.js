@@ -740,4 +740,9 @@ describe('Dinero', () => {
       expect(actualMaximum.toJSON()).toEqual(maximumDineroExpected.toJSON())
     })
   })
+  describe('#toString', () => {
+    test('should return a string description of the dinero', () => {
+      expect(Dinero({ amount: 150 }).toString()).toEqual("$1.50")
+    })
+  });
 })

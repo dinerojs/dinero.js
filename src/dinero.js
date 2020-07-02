@@ -881,6 +881,16 @@ const Dinero = options => {
       })
     },
     /**
+     * Returns this object formatted as a string using the global format.
+     *
+     * {@link module:Dinero~toString toString} wraps around {@link module:Dinero~toForamt toFormat} output a string version of the Dinero
+     *
+     * @return {String}
+     */
+    toString() {
+      return this.toFormat()
+    },
+    /**
      * Returns the amount represented by this object in units.
      *
      * @example
