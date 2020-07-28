@@ -39,7 +39,7 @@
     "@babel/cli": "7.8.4",
     "@babel/core": "7.9.6",
     "@babel/preset-env": "7.9.6",
-    "@rollup/plugin-commonjs": "11.1.0",
+    "@rollup/plugin-commonjs": "14.0.0",
     "@rollup/plugin-node-resolve": "7.1.3",
     "all-contributors-cli": "6.14.2",
     "babel-jest": "25.5.1",
