@@ -4,7 +4,7 @@
 
 **This package exports Dinero.js with a functional interface.** It caters to users who want to tree-shake their dependencies to control file size and those who prefer a more functional style.
 
-It comes in two implementations: `number` and `bigint`. You can adapt it for custom types or libraries (e.g., [big.js](https://github.com/MikeMcl/big.js/)) by implementing the calculator and formatter functions.
+It works out of the box with `number` types. You can adapt it for custom types or libraries (e.g., `bigint`, [big.js](https://github.com/MikeMcl/big.js/), etc.) by implementing the calculator and formatter functions.
 
 ## 📦 Install
 
