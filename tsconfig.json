@@ -24,14 +24,8 @@
     ],
     "rootDir": ".",
     "paths": {
-      "@dinero.js/core/calculator/number": [
+      "@dinero.js/core/calculator": [
         "packages/core/src/calculator/number"
-      ],
-      "@dinero.js/core/calculator/bigint": [
-        "packages/core/src/calculator/bigint"
-      ],
-      "@dinero.js/fp/calculator/number": [
-        "packages/fp/src/calculator/number"
       ],
       "@dinero.js/*": [
         "packages/*"

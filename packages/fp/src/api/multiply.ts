@@ -2,7 +2,7 @@ import { multiply } from '@dinero.js/core';
 import {
   multiply as multiplyNumbers,
   halfEven,
-} from '@dinero.js/core/calculator/number';
+} from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 
 /**

@@ -4,7 +4,7 @@ import {
   power,
   subtract,
   halfEven,
-} from '@dinero.js/core/calculator/number';
+} from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 
 /**

@@ -1,5 +1,5 @@
 import { maximum } from '@dinero.js/core';
-import { maximum as minimumNumbers } from '@dinero.js/core/calculator/number';
+import { compare } from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 
 /**
@@ -9,6 +9,6 @@ import dinero from '../dinero';
  *
  * @returns A new functional Dinero object.
  */
-const functionalMaximum = maximum(dinero, { maximum: minimumNumbers });
+const functionalMaximum = maximum(dinero, { compare });
 
 export default functionalMaximum;

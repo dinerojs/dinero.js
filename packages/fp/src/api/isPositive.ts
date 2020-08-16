@@ -1,5 +1,5 @@
 import { isPositive } from '@dinero.js/core';
-import { greaterThanOrEqual, zero } from '@dinero.js/core/calculator/number';
+import { compare, zero } from '@dinero.js/core/calculator';
 
 /**
  * Check whether a functional Dinero object is positive.
@@ -8,6 +8,6 @@ import { greaterThanOrEqual, zero } from '@dinero.js/core/calculator/number';
  *
  * @returns Whether the functional Dinero object is positive.
  */
-const functionalIsPositive = isPositive({ zero, greaterThanOrEqual });
+const functionalIsPositive = isPositive({ zero, compare });
 
 export default functionalIsPositive;

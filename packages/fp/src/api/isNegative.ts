@@ -1,5 +1,5 @@
 import { isNegative } from '@dinero.js/core';
-import { lessThan, zero } from '@dinero.js/core/calculator/number';
+import { compare, zero } from '@dinero.js/core/calculator';
 
 /**
  * Check whether a functional Dinero object is negative.
@@ -8,6 +8,6 @@ import { lessThan, zero } from '@dinero.js/core/calculator/number';
  *
  * @returns Whether the functional Dinero object is negative.
  */
-const functionalIsNegative = isNegative({ zero, lessThan });
+const functionalIsNegative = isNegative({ zero, compare });
 
 export default functionalIsNegative;

@@ -1,5 +1,5 @@
 import { percentage } from '@dinero.js/core';
-import { percentage as percentageNumbers } from '@dinero.js/core/calculator/number';
+import { percentage as percentageNumbers } from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 
 /**

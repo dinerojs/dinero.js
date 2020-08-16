@@ -1,19 +1,13 @@
 import { Calculator } from '../calculator';
 import { BaseDinero, DineroFactory } from '../types';
 import normalizeScale from './normalizeScale';
+import { greaterThan as gt } from '../helpers';
 
 function greaterThan<TAmount, TDinero extends BaseDinero<TAmount>>(
   dineroFactory: DineroFactory<TAmount, TDinero>,
   calculator: Pick<
     Calculator<TAmount>,
-    | 'greaterThan'
-    | 'add'
-    | 'maximum'
-    | 'multiply'
-    | 'power'
-    | 'subtract'
-    | 'round'
-    | 'zero'
+    'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
   >
 ) {
   return (dineroObject: TDinero, comparator: TDinero) => {
@@ -26,7 +20,7 @@ function greaterThan<TAmount, TDinero extends BaseDinero<TAmount>>(
       return amount;
     });
 
-    return calculator.greaterThan(subjectAmount, comparatorAmount);
+    return gt(calculator)(subjectAmount, comparatorAmount);
   };
 }
 

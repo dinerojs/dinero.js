@@ -1,10 +1,5 @@
 import { toRoundedUnit } from '@dinero.js/core';
-import {
-  multiply,
-  divide,
-  power,
-  halfEven,
-} from '@dinero.js/core/calculator/number';
+import { multiply, divide, power, halfEven } from '@dinero.js/core/calculator';
 
 /**
  * Get the amount of a functional Dinero object in rounded units.

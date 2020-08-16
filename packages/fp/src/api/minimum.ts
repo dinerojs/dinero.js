@@ -1,5 +1,5 @@
 import { minimum } from '@dinero.js/core';
-import { minimum as minimumNumbers } from '@dinero.js/core/calculator/number';
+import { compare } from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 
 /**
@@ -9,6 +9,6 @@ import dinero from '../dinero';
  *
  * @returns A new functional Dinero object.
  */
-const functionalMinimum = minimum(dinero, { minimum: minimumNumbers });
+const functionalMinimum = minimum(dinero, { compare });
 
 export default functionalMinimum;

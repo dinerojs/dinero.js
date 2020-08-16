@@ -1,5 +1,5 @@
 import { convert } from '@dinero.js/core';
-import { multiply, halfEven } from '@dinero.js/core/calculator/number';
+import { multiply, halfEven } from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 
 /**

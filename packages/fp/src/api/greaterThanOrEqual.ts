@@ -1,14 +1,13 @@
 import { greaterThanOrEqual } from '@dinero.js/core';
 import {
-  greaterThanOrEqual as greaterThanOrEqualNumbers,
   add,
-  maximum,
+  compare,
   multiply,
   power,
   subtract,
   halfEven,
   zero,
-} from '@dinero.js/core/calculator/number';
+} from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 
 /**
@@ -20,9 +19,8 @@ import dinero from '../dinero';
  * @returns Whether the functional Dinero to compare is greater than or equal to the other.
  */
 const functionalGreaterThanOrEqual = greaterThanOrEqual(dinero, {
-  greaterThanOrEqual: greaterThanOrEqualNumbers,
   add,
-  maximum,
+  compare,
   multiply,
   power,
   subtract,

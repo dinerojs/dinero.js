@@ -1,5 +1,14 @@
-import { allocate } from '@dinero.js/core';
-import { distribute } from '@dinero.js/core/calculator/number';
+import { allocate, BaseDinero } from '@dinero.js/core';
+import {
+  add,
+  compare,
+  divide,
+  increment,
+  multiply,
+  subtract,
+  zero,
+  down,
+} from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 
 /**
@@ -10,6 +19,19 @@ import dinero from '../dinero';
  *
  * @returns A new functional Dinero object.
  */
-const functionalAllocate = allocate(dinero, { distribute });
+function functionalAllocate(
+  dineroObject: BaseDinero<number>,
+  ratios: readonly number[]
+) {
+  return allocate(dinero, {
+    add,
+    compare,
+    divide,
+    increment,
+    multiply,
+    subtract,
+    zero,
+  })(dineroObject, ratios, down);
+}
 
 export default functionalAllocate;

@@ -1,13 +1,14 @@
 import { Calculator } from '../calculator';
 import { BaseDinero } from '../types';
+import { equal } from '../helpers';
 
 function isZero<TAmount, TDinero extends BaseDinero<TAmount>>(
-  calculator: Pick<Calculator<TAmount>, 'zero' | 'equal'>
+  calculator: Pick<Calculator<TAmount>, 'compare' | 'zero'>
 ) {
   return (dineroObject: TDinero) => {
     const { amount } = dineroObject.toJSON();
 
-    return calculator.equal(amount, calculator.zero());
+    return equal(calculator)(amount, calculator.zero());
   };
 }
 

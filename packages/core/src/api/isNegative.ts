@@ -1,13 +1,14 @@
 import { Calculator } from '../calculator';
 import { BaseDinero } from '../types';
+import { lessThan } from '../helpers';
 
 function isNegative<TAmount, TDinero extends BaseDinero<TAmount>>(
-  calculator: Pick<Calculator<TAmount>, 'zero' | 'lessThan'>
+  calculator: Pick<Calculator<TAmount>, 'compare' | 'zero'>
 ) {
   return (dineroObject: TDinero) => {
     const { amount } = dineroObject.toJSON();
 
-    return calculator.lessThan(amount, calculator.zero());
+    return lessThan(calculator)(amount, calculator.zero());
   };
 }
 

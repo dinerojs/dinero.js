@@ -1,14 +1,13 @@
 import { haveSameAmount } from '@dinero.js/core';
 import {
   add,
-  maximum,
+  compare,
   multiply,
   power,
   subtract,
-  equal,
   halfEven,
   zero,
-} from '@dinero.js/core/calculator/number';
+} from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 
 /**
@@ -20,13 +19,12 @@ import dinero from '../dinero';
  */
 const functionalHaveSameAmount = haveSameAmount(dinero, {
   add,
-  maximum,
+  compare,
   multiply,
   power,
   subtract,
   round: halfEven,
   zero,
-  equal,
 });
 
 export default functionalHaveSameAmount;

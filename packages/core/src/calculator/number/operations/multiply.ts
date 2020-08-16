@@ -1,11 +1,15 @@
-import { divide, maximum, power, halfUp } from '../../number';
+import { divide, compare, power, halfUp } from '../../number';
 import { countFractionDigits, isFloat } from '../helpers';
 import { BinaryOperation } from '../../types';
+import { maximum } from '../../../helpers';
 
 const getFactor = (value: number) => power(10, countFractionDigits(value));
 
 const multiplyFloats: BinaryOperation<number> = (multiplier, multiplicand) => {
-  const factor = maximum([getFactor(multiplier), getFactor(multiplicand)]);
+  const factor = maximum({ compare })([
+    getFactor(multiplier),
+    getFactor(multiplicand),
+  ]);
 
   return divide(
     halfUp(multiplier * factor) * halfUp(multiplicand * factor),

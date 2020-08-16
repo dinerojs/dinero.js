@@ -1,5 +1,5 @@
 import { subtract } from '@dinero.js/core';
-import { subtract as subtractNumbers } from '@dinero.js/core/calculator/number';
+import { subtract as subtractNumbers } from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 
 /**

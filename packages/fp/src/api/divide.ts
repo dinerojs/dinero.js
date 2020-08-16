@@ -1,8 +1,5 @@
 import { divide } from '@dinero.js/core';
-import {
-  divide as divideNumbers,
-  halfEven,
-} from '@dinero.js/core/calculator/number';
+import { divide as divideNumbers, halfEven } from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 
 /**

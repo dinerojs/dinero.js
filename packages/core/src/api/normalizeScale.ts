@@ -1,19 +1,20 @@
 import { Calculator } from '../calculator';
 import { convertScale } from '.';
 import { BaseDinero, DineroFactory } from '../types';
+import { maximum } from '../helpers';
 
 function normalizeScale<TAmount, TDinero extends BaseDinero<TAmount>>(
   dineroFactory: DineroFactory<TAmount, TDinero>,
   calculator: Pick<
     Calculator<TAmount>,
-    'add' | 'maximum' | 'zero' | 'multiply' | 'power' | 'subtract' | 'round'
+    'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
   >
 ) {
   return (dineroObjects: readonly TDinero[]) => {
     const highestScale = dineroObjects.reduce((highest, current) => {
       const { scale } = current.toJSON();
 
-      return calculator.maximum([highest, scale]);
+      return maximum(calculator)([highest, scale]);
     }, calculator.zero());
 
     return dineroObjects.map((d) => {

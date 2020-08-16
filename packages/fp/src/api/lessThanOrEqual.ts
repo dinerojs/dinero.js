@@ -1,14 +1,13 @@
 import { lessThanOrEqual } from '@dinero.js/core';
 import {
-  lessThanOrEqual as lessThanOrEqualNumbers,
   add,
-  maximum,
+  compare,
   multiply,
   power,
   subtract,
   halfEven,
   zero,
-} from '@dinero.js/core/calculator/number';
+} from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 /**
  * Check whether the value of a functional Dinero object is lesser than or equal to another.
@@ -19,9 +18,8 @@ import dinero from '../dinero';
  * @returns Whether the functional Dinero to compare is lesser than or equal to the other.
  */
 const functionalLessThanOrEqual = lessThanOrEqual(dinero, {
-  lessThanOrEqual: lessThanOrEqualNumbers,
   add,
-  maximum,
+  compare,
   multiply,
   power,
   subtract,

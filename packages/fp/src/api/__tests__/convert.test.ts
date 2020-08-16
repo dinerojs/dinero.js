@@ -1,6 +1,6 @@
 import { USD, EUR, IQD } from '@dinero.js/currencies';
 import dinero, { toSnapshot, convert } from '../../..';
-import { halfEven as roundingMode } from '@dinero.js/core/calculator/number';
+import { halfEven as roundingMode } from '@dinero.js/core/calculator';
 
 describe('convert', () => {
   it('converts a functional Dinero object to another currency', async () => {

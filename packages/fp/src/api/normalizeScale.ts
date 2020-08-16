@@ -1,13 +1,13 @@
 import { normalizeScale } from '@dinero.js/core';
 import {
   add,
-  maximum,
+  compare,
   multiply,
   power,
   subtract,
   halfEven,
   zero,
-} from '@dinero.js/core/calculator/number';
+} from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 
 /**
@@ -19,7 +19,7 @@ import dinero from '../dinero';
  */
 const functionalNormalizeScale = normalizeScale(dinero, {
   add,
-  maximum,
+  compare,
   zero,
   multiply,
   power,

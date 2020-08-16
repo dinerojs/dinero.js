@@ -1,14 +1,13 @@
 import { lessThan } from '@dinero.js/core';
 import {
-  lessThan as lessThanNumbers,
   add,
-  maximum,
+  compare,
   multiply,
   power,
   subtract,
   halfEven,
   zero,
-} from '@dinero.js/core/calculator/number';
+} from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 
 /**
@@ -20,9 +19,8 @@ import dinero from '../dinero';
  * @returns Whether the functional Dinero to compare is lesser than the other.
  */
 const functionalLessThan = lessThan(dinero, {
-  lessThan: lessThanNumbers,
   add,
-  maximum,
+  compare,
   multiply,
   power,
   subtract,

@@ -1,14 +1,13 @@
 import { equal } from '@dinero.js/core';
 import {
   add,
-  equal as equalNumbers,
-  maximum,
+  compare,
   multiply,
   power,
   subtract,
   halfEven,
   zero,
-} from '@dinero.js/core/calculator/number';
+} from '@dinero.js/core/calculator';
 import dinero from '../dinero';
 
 /**
@@ -21,8 +20,7 @@ import dinero from '../dinero';
  */
 const functionalEqual = equal(dinero, {
   add,
-  equal: equalNumbers,
-  maximum,
+  compare,
   multiply,
   power,
   subtract,

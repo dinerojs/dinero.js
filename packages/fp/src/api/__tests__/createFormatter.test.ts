@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import { up } from '@dinero.js/core/calculator/number';
+import { up } from '@dinero.js/core/calculator';
 import dinero, { createFormatter } from '../../..';
 
 describe('createFormatter', () => {

@@ -1,5 +1,5 @@
 import { isZero } from '@dinero.js/core';
-import { equal, zero } from '@dinero.js/core/calculator/number';
+import { compare, zero } from '@dinero.js/core/calculator';
 
 /**
  * Check whether the value of a functional Dinero object is zero.
@@ -8,6 +8,6 @@ import { equal, zero } from '@dinero.js/core/calculator/number';
  *
  * @returns Whether the value of a functional Dinero object is zero.
  */
-const functionalIsZero = isZero({ zero, equal });
+const functionalIsZero = isZero({ zero, compare });
 
 export default functionalIsZero;

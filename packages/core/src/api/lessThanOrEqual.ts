@@ -1,19 +1,13 @@
 import { Calculator } from '../calculator';
 import { BaseDinero, DineroFactory } from '../types';
 import normalizeScale from './normalizeScale';
+import { lessThanOrEqual as lte } from '../helpers';
 
 function lessThanOrEqual<TAmount, TDinero extends BaseDinero<TAmount>>(
   dineroFactory: DineroFactory<TAmount, TDinero>,
   calculator: Pick<
     Calculator<TAmount>,
-    | 'lessThanOrEqual'
-    | 'add'
-    | 'maximum'
-    | 'multiply'
-    | 'power'
-    | 'subtract'
-    | 'round'
-    | 'zero'
+    'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
   >
 ) {
   return (dineroObject: TDinero, comparator: TDinero) => {
@@ -26,7 +20,7 @@ function lessThanOrEqual<TAmount, TDinero extends BaseDinero<TAmount>>(
       return amount;
     });
 
-    return calculator.lessThanOrEqual(subjectAmount, comparatorAmount);
+    return lte(calculator)(subjectAmount, comparatorAmount);
   };
 }
 

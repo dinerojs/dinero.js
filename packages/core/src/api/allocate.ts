@@ -1,13 +1,27 @@
 import { BaseDinero, DineroFactory } from '../types';
-import { Calculator } from '../calculator';
+import { Calculator, RoundingMode } from '../calculator';
+import { distribute } from '../helpers';
 
 function allocate<TAmount, TDinero extends BaseDinero<TAmount>>(
   dineroFactory: DineroFactory<TAmount, TDinero>,
-  calculator: Pick<Calculator<TAmount>, 'distribute'>
+  calculator: Pick<
+    Calculator<TAmount>,
+    | 'add'
+    | 'compare'
+    | 'divide'
+    | 'increment'
+    | 'multiply'
+    | 'subtract'
+    | 'zero'
+  >
 ) {
-  return (dineroObject: TDinero, ratios: readonly TAmount[]) => {
+  return (
+    dineroObject: TDinero,
+    ratios: readonly TAmount[],
+    down?: RoundingMode<TAmount>
+  ) => {
     const { amount, currency, scale } = dineroObject.toJSON();
-    const shares = calculator.distribute(amount, ratios);
+    const shares = distribute(calculator, down)(amount, ratios);
 
     return shares.map((share) =>
       dineroFactory({

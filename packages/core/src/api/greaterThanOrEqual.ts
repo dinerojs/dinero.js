@@ -1,19 +1,13 @@
 import { Calculator } from '../calculator';
 import { BaseDinero, DineroFactory } from '../types';
 import normalizeScale from './normalizeScale';
+import { greaterThanOrEqual as gte } from '../helpers';
 
 function greaterThanOrEqual<TAmount, TDinero extends BaseDinero<TAmount>>(
   dineroFactory: DineroFactory<TAmount, TDinero>,
   calculator: Pick<
     Calculator<TAmount>,
-    | 'greaterThanOrEqual'
-    | 'add'
-    | 'maximum'
-    | 'multiply'
-    | 'power'
-    | 'subtract'
-    | 'round'
-    | 'zero'
+    'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
   >
 ) {
   return (dineroObject: TDinero, comparator: TDinero) => {
@@ -26,7 +20,7 @@ function greaterThanOrEqual<TAmount, TDinero extends BaseDinero<TAmount>>(
       return amount;
     });
 
-    return calculator.greaterThanOrEqual(subjectAmount, comparatorAmount);
+    return gte(calculator)(subjectAmount, comparatorAmount);
   };
 }
 

@@ -1,10 +1,5 @@
 import { toFormat, Transformer, FormatOptions } from '@dinero.js/core';
-import {
-  multiply,
-  divide,
-  power,
-  halfEven,
-} from '@dinero.js/core/calculator/number';
+import { multiply, divide, power, halfEven } from '@dinero.js/core/calculator';
 import { FunctionalDinero } from '../types';
 
 /**

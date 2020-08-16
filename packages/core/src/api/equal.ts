@@ -6,14 +6,7 @@ function equal<TAmount, TDinero extends BaseDinero<TAmount>>(
   dineroFactory: DineroFactory<TAmount, TDinero>,
   calculator: Pick<
     Calculator<TAmount>,
-    | 'add'
-    | 'equal'
-    | 'maximum'
-    | 'multiply'
-    | 'power'
-    | 'subtract'
-    | 'round'
-    | 'zero'
+    'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
   >
 ) {
   return (dineroObject: TDinero, comparator: TDinero) => {

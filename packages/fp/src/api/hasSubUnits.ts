@@ -1,5 +1,5 @@
 import { hasSubUnits } from '@dinero.js/core';
-import { modulo, power, equal, zero } from '@dinero.js/core/calculator/number';
+import { compare, modulo, power, zero } from '@dinero.js/core/calculator';
 
 /**
  * Check whether a functional Dinero object has minor currency units.
@@ -9,9 +9,9 @@ import { modulo, power, equal, zero } from '@dinero.js/core/calculator/number';
  * @returns Whether the functional Dinero object has minor currency units.
  */
 const functionalHasSubUnits = hasSubUnits({
+  compare,
   modulo,
   power,
-  equal,
   zero,
 });
 
