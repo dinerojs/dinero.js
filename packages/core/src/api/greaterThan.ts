@@ -1,7 +1,7 @@
 import { Calculator } from '../calculator';
 import { BaseDinero, DineroFactory } from '../types';
 import normalizeScale from './normalizeScale';
-import { greaterThan as gt } from '../helpers';
+import { greaterThan as gt } from '../calculator/helpers';
 
 function greaterThan<TAmount, TDinero extends BaseDinero<TAmount>>(
   dineroFactory: DineroFactory<TAmount, TDinero>,

@@ -1,6 +1,6 @@
 import { Calculator } from '../calculator';
 import { BaseDinero, DineroFactory } from '../types';
-import { maximum as max } from '../helpers';
+import { maximum as max } from '../calculator/helpers';
 
 function maximum<TAmount, TDinero extends BaseDinero<TAmount>>(
   dineroFactory: DineroFactory<TAmount, TDinero>,

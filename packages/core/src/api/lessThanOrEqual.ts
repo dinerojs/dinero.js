@@ -1,7 +1,7 @@
 import { Calculator } from '../calculator';
 import { BaseDinero, DineroFactory } from '../types';
 import normalizeScale from './normalizeScale';
-import { lessThanOrEqual as lte } from '../helpers';
+import { lessThanOrEqual as lte } from '../calculator/helpers';
 
 function lessThanOrEqual<TAmount, TDinero extends BaseDinero<TAmount>>(
   dineroFactory: DineroFactory<TAmount, TDinero>,

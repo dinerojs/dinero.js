@@ -1,4 +1,4 @@
-import { compare } from '../../calculator/number';
+import { compare } from '../../number';
 import greaterThan from '../greaterThan';
 
 const greaterThanFn = greaterThan({ compare });

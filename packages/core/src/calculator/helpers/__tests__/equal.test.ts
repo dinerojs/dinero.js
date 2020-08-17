@@ -1,4 +1,4 @@
-import { compare } from '../../calculator/number';
+import { compare } from '../../number';
 import equal from '../equal';
 
 const equalFn = equal({ compare });

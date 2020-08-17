@@ -1,4 +1,4 @@
-import { compare } from '../../calculator/number';
+import { compare } from '../../number';
 import minimum from '../minimum';
 
 const minimumFn = minimum({ compare });

@@ -1,6 +1,6 @@
 import { Calculator } from '../calculator';
 import { BaseDinero } from '../types';
-import { greaterThanOrEqual } from '../helpers';
+import { greaterThanOrEqual } from '../calculator/helpers';
 
 function isPositive<TAmount, TDinero extends BaseDinero<TAmount>>(
   calculator: Pick<Calculator<TAmount>, 'compare' | 'zero'>

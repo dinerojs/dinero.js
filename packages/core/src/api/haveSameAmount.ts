@@ -1,7 +1,7 @@
 import { Calculator } from '../calculator';
 import { BaseDinero, DineroFactory } from '../types';
 import { normalizeScale } from '.';
-import { equal } from '../helpers';
+import { equal } from '../calculator/helpers';
 
 function haveSameCurrency<TAmount, TDinero extends BaseDinero<TAmount>>(
   dineroFactory: DineroFactory<TAmount, TDinero>,

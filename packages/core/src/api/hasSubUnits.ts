@@ -1,6 +1,6 @@
 import { Calculator } from '../calculator';
 import { BaseDinero } from '../types';
-import { equal } from '../helpers';
+import { equal } from '../calculator/helpers';
 
 function hasSubUnits<TAmount, TDinero extends BaseDinero<TAmount>>(
   calculator: Pick<Calculator<TAmount>, 'compare' | 'modulo' | 'power' | 'zero'>

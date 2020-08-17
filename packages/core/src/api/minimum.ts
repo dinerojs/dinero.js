@@ -1,6 +1,6 @@
 import { Calculator } from '../calculator';
 import { BaseDinero, DineroFactory } from '../types';
-import { minimum as min } from '../helpers';
+import { minimum as min } from '../calculator/helpers';
 
 function minimum<TAmount, TDinero extends BaseDinero<TAmount>>(
   dineroFactory: DineroFactory<TAmount, TDinero>,

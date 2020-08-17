@@ -1,7 +1,7 @@
 import { Calculator } from '../calculator';
 import { convertScale } from '.';
 import { BaseDinero, DineroFactory } from '../types';
-import { maximum } from '../helpers';
+import { maximum } from '../calculator/helpers';
 
 function normalizeScale<TAmount, TDinero extends BaseDinero<TAmount>>(
   dineroFactory: DineroFactory<TAmount, TDinero>,

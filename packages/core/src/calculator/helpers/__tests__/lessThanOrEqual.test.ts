@@ -1,4 +1,4 @@
-import { compare } from '../../calculator/number';
+import { compare } from '../../number';
 import lessThanOrEqual from '../lessThanOrEqual';
 
 const lessThanOrEqualFn = lessThanOrEqual({ compare });

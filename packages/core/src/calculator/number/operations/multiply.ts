@@ -1,7 +1,7 @@
 import { divide, compare, power, halfUp } from '../../number';
 import { countFractionDigits, isFloat } from '../helpers';
 import { BinaryOperation } from '../../types';
-import { maximum } from '../../../helpers';
+import { maximum } from '../../helpers';
 
 const getFactor = (value: number) => power(10, countFractionDigits(value));
 

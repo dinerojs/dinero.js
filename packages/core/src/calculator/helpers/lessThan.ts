@@ -1,4 +1,4 @@
-import { Calculator, ComparisonOperator } from '../calculator';
+import { Calculator, ComparisonOperator } from '..';
 
 /**
  * Returns a lessThan function.

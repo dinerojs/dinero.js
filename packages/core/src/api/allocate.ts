@@ -1,6 +1,6 @@
 import { BaseDinero, DineroFactory } from '../types';
 import { Calculator, RoundingMode } from '../calculator';
-import { distribute } from '../helpers';
+import { distribute } from '../calculator/helpers';
 
 function allocate<TAmount, TDinero extends BaseDinero<TAmount>>(
   dineroFactory: DineroFactory<TAmount, TDinero>,

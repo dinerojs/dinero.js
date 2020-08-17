@@ -7,7 +7,7 @@ import {
   subtract,
   zero,
   down,
-} from '../../calculator/number';
+} from '../../number';
 import distribute from '../distribute';
 
 const distributeFn = distribute(
