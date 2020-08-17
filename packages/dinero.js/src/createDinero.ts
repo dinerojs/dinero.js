@@ -123,7 +123,11 @@ const createDinero = <TAmount>({
         return toSnapshot(d);
       },
       toJSON() {
-        return toSnapshot(d);
+        return {
+          amount,
+          currency,
+          scale,
+        };
       },
     };
 
