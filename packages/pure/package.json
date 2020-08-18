@@ -1,0 +1,25 @@
+{
+  "name": "@dinero.js/pure",
+  "version": "2.0.0",
+  "description": "A side-effect free implementation of Dinero.js",
+  "keywords": [
+    "money",
+    "monetary",
+    "amount",
+    "immutable",
+    "pure",
+    "side-effect free"
+  ],
+  "homepage": "https://dinerojs.com/fp",
+  "bugs": "https://github.com/dinerojs/dinero.js/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dinerojs/dinero.js.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Sarah Dayan",
+    "url": "https://sarahdayan.dev"
+  },
+  "main": "index.js"
+}
