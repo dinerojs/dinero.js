@@ -1,4 +1,4 @@
-import { getJSON, flattenObject, isThenable } from './helpers'
+import { getJSON, flattenObject, isThenable, isFunction } from './helpers'
 
 export default function CurrencyConverter(options) {
   /* istanbul ignore next */
@@ -15,6 +15,10 @@ export default function CurrencyConverter(options) {
       headers: options.headers
     })
 
+  const getRatesFromFunction = (from, to) => {
+    return options.endpoint({ from, to })
+  }
+
   return {
     /**
      * Returns the exchange rate.
@@ -28,6 +32,8 @@ export default function CurrencyConverter(options) {
     getExchangeRate(from, to) {
       return (isThenable(options.endpoint)
         ? options.endpoint
+        : isFunction(options.endpoint)
+        ? getRatesFromFunction(from, to)
         : getRatesFromRestApi(from, to)
       ).then(
         data =>

@@ -45,6 +45,28 @@ describe('CurrencyConverter', () => {
         ).getExchangeRate('USD', 'EUR')
       ).resolves.toEqual(0.81162)
     })
+    test('should return a rate as a number when options.endpoint is defined with a custom function', async () => {
+      await expect(
+        CurrencyConverter(
+          Object.assign({}, options, {
+            endpoint: async ({ from: to }) => {
+              return Promise.resolve({ rates: { EUR: 0.81162 } })
+            }
+          })
+        ).getExchangeRate('USD', 'EUR')
+      ).resolves.toEqual(0.81162)
+    })
+    test('should throw when custon function rejects', async () => {
+      await expect(
+        CurrencyConverter(
+          Object.assign({}, options, {
+            endpoint: async ({ from: to }) => {
+              return Promise.reject(new Error())
+            }
+          })
+        ).getExchangeRate('USD', 'EUR')
+      ).rejects.toThrow()
+    })
     test('should throw when API returns an error', async () => {
       getJSON.mockRejectedValue(new Error())
       await expect(

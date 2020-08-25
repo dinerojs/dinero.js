@@ -191,3 +191,15 @@ export function isThenable(value) {
     typeof value.then === 'function'
   )
 }
+
+/**
+ * Returns whether a value is a function.
+ * @ignore
+ *
+ * @param {} value - The value to test.
+ *
+ * @return {Boolean}
+ */
+export function isFunction(value) {
+  return typeof value === 'function'
+}

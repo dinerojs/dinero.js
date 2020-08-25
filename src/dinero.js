@@ -451,7 +451,7 @@ const Dinero = options => {
      * ```
      *
      * @param  {String} currency - The destination currency, expressed as an {@link https://en.wikipedia.org/wiki/ISO_4217#Active_codes ISO 4217 currency code}.
-     * @param  {(String|Promise)} options.endpoint - The API endpoint to retrieve exchange rates. You can substitute this with a promise that resolves to the exchanges rates if you already have them.
+     * @param  {(String|Promise|Function)} options.endpoint - The API endpoint to retrieve exchange rates. You can substitute this with a promise or an async function that resolves to the exchanges rates if you already have them.
      * @param  {String} [options.propertyPath='rates.{{to}}'] - The property path to the rate.
      * @param  {Object} [options.headers] - The HTTP headers to provide, if needed.
      * @param  {String} [options.roundingMode='HALF_EVEN'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'`, `'HALF_AWAY_FROM_ZERO'` or `'DOWN'`.
@@ -488,6 +488,22 @@ const Dinero = options => {
      *   .convert('EUR', {
      *     endpoint: new Promise(resolve => resolve(rates))
      *   })
+     *
+     * @example
+     * // usage with exchange rates provided as a custom function
+     * // using the default `propertyPath` format (so it doesn't have to be specified)
+     * const getRates = async ({from, to}) {
+     *   return {
+     *      rates: {
+     *        EUR: 0.81162
+     *      }
+     *    }
+     * }
+     *
+     * Dinero({ amount: 500 })
+     *   .convert('EUR', {
+     *     endpoint: getRates
+     * })
      * @example
      * // usage with Promise.prototype.then and Promise.prototype.catch
      * Dinero({ amount: 500 })
