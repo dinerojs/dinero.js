@@ -168,6 +168,17 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "trickstival",
+      "name": "Patrick",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/25927835?v=4",
+      "profile": "https://github.com/trickstival",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ]
 }
