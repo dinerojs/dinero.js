@@ -1,19 +1,17 @@
-import { Calculator } from '../calculator';
-import { BaseDinero, DineroFactory } from '../types';
+import { BaseDinero } from '../types';
+import { Dependencies } from './types';
 
-function percentage<TAmount, TDinero extends BaseDinero<TAmount>>(
-  dineroFactory: DineroFactory<TAmount, TDinero>,
-  calculator: Pick<Calculator<TAmount>, 'percentage'>
-) {
-  return (dineroObject: TDinero, share: TAmount) => {
+export function percentage<TAmount, TDinero extends BaseDinero<TAmount>>({
+  factory,
+  calculator,
+}: Dependencies<TAmount, TDinero, 'percentage'>) {
+  return function _percentage(dineroObject: TDinero, share: TAmount) {
     const { amount, currency, scale } = dineroObject.toJSON();
 
-    return dineroFactory({
+    return factory({
       amount: calculator.percentage(amount, share),
       currency,
       scale,
     });
   };
 }
-
-export default percentage;

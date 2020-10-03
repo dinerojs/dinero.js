@@ -1,5 +1,6 @@
-import { isZero } from '@dinero.js/core';
+import { isZero as coreIsZero } from '@dinero.js/core';
 import { compare, zero } from '@dinero.js/core/calculator';
+import { buildMethod } from '../buildMethod';
 
 /**
  * Check whether the value of a pure Dinero object is zero.
@@ -8,6 +9,4 @@ import { compare, zero } from '@dinero.js/core/calculator';
  *
  * @returns Whether the value of a pure Dinero object is zero.
  */
-const pureIsZero = isZero({ zero, compare });
-
-export default pureIsZero;
+export const isZero = buildMethod(coreIsZero, { zero, compare });

@@ -1,16 +1,18 @@
-import { Calculator } from '../calculator';
-import { BaseDinero, DineroFactory } from '../types';
+import { BaseDinero } from '../types';
 import { maximum as max } from '../calculator/helpers';
+import { Dependencies } from './types';
 
-function maximum<TAmount, TDinero extends BaseDinero<TAmount>>(
-  dineroFactory: DineroFactory<TAmount, TDinero>,
-  calculator: Pick<Calculator<TAmount>, 'compare'>
-) {
-  return (dineroObjects: readonly TDinero[]) => {
+export function maximum<TAmount, TDinero extends BaseDinero<TAmount>>({
+  factory,
+  calculator,
+}: Dependencies<TAmount, TDinero, 'compare'>) {
+  const maxFn = max(calculator);
+
+  return function _maximum(dineroObjects: readonly TDinero[]) {
     const [firstDinero] = dineroObjects;
     const { currency, scale } = firstDinero.toJSON();
 
-    const amount = max(calculator)(
+    const amount = maxFn(
       dineroObjects.map((subject) => {
         const { amount: subjectAmount } = subject.toJSON();
 
@@ -18,12 +20,10 @@ function maximum<TAmount, TDinero extends BaseDinero<TAmount>>(
       })
     );
 
-    return dineroFactory({
+    return factory({
       amount,
       currency,
       scale,
     });
   };
 }
-
-export default maximum;

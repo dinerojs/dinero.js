@@ -1,6 +1,6 @@
-import { divide } from '@dinero.js/core';
+import { divide as coreDivide } from '@dinero.js/core';
 import { divide as divideNumbers, halfEven } from '@dinero.js/core/calculator';
-import dinero from '../dinero';
+import { buildMethod } from '../buildMethod';
 
 /**
  * Divide the passed pure Dinero object.
@@ -11,9 +11,7 @@ import dinero from '../dinero';
  *
  * @returns A new pure Dinero object.
  */
-const pureDivide = divide(dinero, {
+export const divide = buildMethod(coreDivide, {
   divide: divideNumbers,
   round: halfEven,
 });
-
-export default pureDivide;

@@ -1,6 +1,6 @@
-import { minimum } from '@dinero.js/core';
+import { minimum as coreMinimum } from '@dinero.js/core';
 import { compare } from '@dinero.js/core/calculator';
-import dinero from '../dinero';
+import { buildMethod } from '../buildMethod';
 
 /**
  * Get the lowest of the passed pure Dinero objects.
@@ -9,6 +9,4 @@ import dinero from '../dinero';
  *
  * @returns A new pure Dinero object.
  */
-const pureMinimum = minimum(dinero, { compare });
-
-export default pureMinimum;
+export const minimum = buildMethod(coreMinimum, { compare });

@@ -1,15 +1,15 @@
-import { Calculator } from '../calculator';
 import { BaseDinero } from '../types';
 import { lessThan } from '../calculator/helpers';
+import { Dependencies } from './types';
 
-function isNegative<TAmount, TDinero extends BaseDinero<TAmount>>(
-  calculator: Pick<Calculator<TAmount>, 'compare' | 'zero'>
-) {
-  return (dineroObject: TDinero) => {
+export function isNegative<TAmount, TDinero extends BaseDinero<TAmount>>({
+  calculator,
+}: Dependencies<TAmount, TDinero, 'compare' | 'zero'>) {
+  const lessThanFn = lessThan(calculator);
+
+  return function _isNegative(dineroObject: TDinero) {
     const { amount } = dineroObject.toJSON();
 
-    return lessThan(calculator)(amount, calculator.zero());
+    return lessThanFn(amount, calculator.zero());
   };
 }
-
-export default isNegative;

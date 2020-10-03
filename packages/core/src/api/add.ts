@@ -1,20 +1,43 @@
-import { BaseDinero, DineroFactory } from '../types';
-import { Calculator } from '../calculator';
+/* eslint-disable functional/no-expression-statement */
+import { BaseDinero } from '../types';
+import { haveSameCurrency, normalizeScale } from '.';
+import { assertSameCurrency } from '../guards';
+import { Dependencies } from './types';
 
-function add<TAmount, TDinero extends BaseDinero<TAmount>>(
-  dineroFactory: DineroFactory<TAmount, TDinero>,
-  calculator: Pick<Calculator<TAmount>, 'add'>
-) {
-  return (augend: TDinero, addend: TDinero) => {
+export function unsafeAdd<TAmount, TDinero extends BaseDinero<TAmount>>({
+  factory,
+  calculator,
+}: Dependencies<TAmount, TDinero, 'add'>) {
+  return function add(augend: TDinero, addend: TDinero) {
     const { amount: augendAmount, currency, scale } = augend.toJSON();
     const { amount: addendAmount } = addend.toJSON();
 
-    return dineroFactory({
-      amount: calculator.add(augendAmount, addendAmount),
+    const amount = calculator.add(augendAmount, addendAmount);
+
+    return factory({
+      amount,
       currency,
       scale,
     });
   };
 }
 
-export default add;
+export function safeAdd<TAmount, TDinero extends BaseDinero<TAmount>>({
+  factory,
+  calculator,
+}: Dependencies<
+  TAmount,
+  TDinero,
+  'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
+>) {
+  const normalizeFn = normalizeScale({ factory, calculator });
+  const addFn = unsafeAdd({ factory, calculator });
+
+  return function add(augend: TDinero, addend: TDinero) {
+    assertSameCurrency(haveSameCurrency([augend, addend]));
+
+    const [newAugend, newAddend] = normalizeFn([augend, addend]);
+
+    return addFn(newAugend, newAddend);
+  };
+}

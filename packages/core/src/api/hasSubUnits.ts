@@ -1,18 +1,18 @@
-import { Calculator } from '../calculator';
 import { BaseDinero } from '../types';
 import { equal } from '../calculator/helpers';
+import { Dependencies } from './types';
 
-function hasSubUnits<TAmount, TDinero extends BaseDinero<TAmount>>(
-  calculator: Pick<Calculator<TAmount>, 'compare' | 'modulo' | 'power' | 'zero'>
-) {
-  return (dineroObject: TDinero) => {
+export function hasSubUnits<TAmount, TDinero extends BaseDinero<TAmount>>({
+  calculator,
+}: Dependencies<TAmount, TDinero, 'compare' | 'modulo' | 'power' | 'zero'>) {
+  const equalFn = equal(calculator);
+
+  return function _hasSubUnits(dineroObject: TDinero) {
     const { amount, currency, scale } = dineroObject.toJSON();
 
-    return !equal(calculator)(
+    return !equalFn(
       calculator.modulo(amount, calculator.power(currency.base, scale)),
       calculator.zero()
     );
   };
 }
-
-export default hasSubUnits;

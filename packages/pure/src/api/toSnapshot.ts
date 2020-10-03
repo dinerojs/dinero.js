@@ -1,4 +1,4 @@
-import { toSnapshot } from '@dinero.js/core';
+import { toSnapshot as coreToSnapshot } from '@dinero.js/core';
 
 /**
  * Get a snapshot of a pure Dinero object.
@@ -7,6 +7,4 @@ import { toSnapshot } from '@dinero.js/core';
  *
  * @returns A snapshot of the object.
  */
-const pureToSnapshot = toSnapshot;
-
-export default pureToSnapshot;
+export const toSnapshot = coreToSnapshot;

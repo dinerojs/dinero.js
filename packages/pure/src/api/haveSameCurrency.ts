@@ -1,4 +1,4 @@
-import { haveSameCurrency } from '@dinero.js/core';
+import { haveSameCurrency as coreHaveSameCurrency } from '@dinero.js/core';
 
 /**
  * Check whether a set of pure Dinero objects have the same currency.
@@ -7,6 +7,4 @@ import { haveSameCurrency } from '@dinero.js/core';
  *
  * @returns Whether the pure Dinero objects have the same currency.
  */
-const pureHaveSameCurrency = haveSameCurrency;
-
-export default pureHaveSameCurrency;
+export const haveSameCurrency = coreHaveSameCurrency;

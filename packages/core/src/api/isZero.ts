@@ -1,15 +1,15 @@
-import { Calculator } from '../calculator';
 import { BaseDinero } from '../types';
 import { equal } from '../calculator/helpers';
+import { Dependencies } from './types';
 
-function isZero<TAmount, TDinero extends BaseDinero<TAmount>>(
-  calculator: Pick<Calculator<TAmount>, 'compare' | 'zero'>
-) {
-  return (dineroObject: TDinero) => {
+export function isZero<TAmount, TDinero extends BaseDinero<TAmount>>({
+  calculator,
+}: Dependencies<TAmount, TDinero, 'compare' | 'zero'>) {
+  const equalFn = equal(calculator);
+
+  return function _isZero(dineroObject: TDinero) {
     const { amount } = dineroObject.toJSON();
 
-    return equal(calculator)(amount, calculator.zero());
+    return equalFn(amount, calculator.zero());
   };
 }
-
-export default isZero;

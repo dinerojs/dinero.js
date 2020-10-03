@@ -1,28 +1,25 @@
-import { Calculator, RoundingMode } from '../calculator';
+import { RoundingMode } from '../calculator';
 import { BaseDinero } from '../types';
 import { toUnit } from '.';
+import { Dependencies } from './types';
 
-function toRoundedUnit<TAmount, TDinero extends BaseDinero<TAmount>>(
-  calculator: Pick<
-    Calculator<TAmount>,
-    'multiply' | 'divide' | 'power' | 'round'
-  >
-) {
-  return (
+export function toRoundedUnit<TAmount, TDinero extends BaseDinero<TAmount>>({
+  factory,
+  calculator,
+}: Dependencies<TAmount, TDinero, 'multiply' | 'divide' | 'power' | 'round'>) {
+  const toUnitFn = toUnit({ factory, calculator });
+
+  return function _toRoundedUnit(
     dineroObject: TDinero,
     digits: TAmount,
     roundingMode: RoundingMode<TAmount> = calculator.round
-  ) => {
+  ) {
     const { currency } = dineroObject.toJSON();
     const factor = calculator.power(currency.base, digits);
 
     return calculator.divide(
-      roundingMode(
-        calculator.multiply(toUnit(calculator)(dineroObject), factor)
-      ),
+      roundingMode(calculator.multiply(toUnitFn(dineroObject), factor)),
       factor
     );
   };
 }
-
-export default toRoundedUnit;

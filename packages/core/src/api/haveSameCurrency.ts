@@ -12,7 +12,7 @@ function currencyEqual<TAmount>(
   );
 }
 
-function haveSameCurrency<TAmount, TDinero extends BaseDinero<TAmount>>(
+export function haveSameCurrency<TAmount, TDinero extends BaseDinero<TAmount>>(
   dineroObjects: readonly TDinero[]
 ) {
   const [firstDinero, ...otherDineros] = dineroObjects;
@@ -20,8 +20,7 @@ function haveSameCurrency<TAmount, TDinero extends BaseDinero<TAmount>>(
 
   return otherDineros.every((d) => {
     const { currency: subjectCurrency } = d.toJSON();
+
     return currencyEqual(subjectCurrency, comparatorCurrency);
   });
 }
-
-export default haveSameCurrency;

@@ -1,6 +1,6 @@
-import { percentage } from '@dinero.js/core';
+import { percentage as corePercentage } from '@dinero.js/core';
 import { percentage as percentageNumbers } from '@dinero.js/core/calculator';
-import dinero from '../dinero';
+import { buildMethod } from '../buildMethod';
 
 /**
  * Extract a percentage of a pure Dinero object.
@@ -10,8 +10,6 @@ import dinero from '../dinero';
  *
  * @returns A new pure Dinero object.
  */
-const purePercentage = percentage(dinero, {
+export const percentage = buildMethod(corePercentage, {
   percentage: percentageNumbers,
 });
-
-export default purePercentage;

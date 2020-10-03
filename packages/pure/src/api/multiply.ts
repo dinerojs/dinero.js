@@ -1,9 +1,9 @@
-import { multiply } from '@dinero.js/core';
+import { multiply as coreMultiply } from '@dinero.js/core';
 import {
   multiply as multiplyNumbers,
   halfEven,
 } from '@dinero.js/core/calculator';
-import dinero from '../dinero';
+import { buildMethod } from '../buildMethod';
 
 /**
  * Multiply the passed pure Dinero object.
@@ -14,9 +14,7 @@ import dinero from '../dinero';
  *
  * @returns A new pure Dinero object.
  */
-const pureMultiply = multiply(dinero, {
+export const multiply = buildMethod(coreMultiply, {
   multiply: multiplyNumbers,
   round: halfEven,
 });
-
-export default pureMultiply;

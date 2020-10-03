@@ -1,5 +1,6 @@
-import { toRoundedUnit } from '@dinero.js/core';
+import { toRoundedUnit as coreToRoundedUnit } from '@dinero.js/core';
 import { multiply, divide, power, halfEven } from '@dinero.js/core/calculator';
+import { buildMethod } from '../buildMethod';
 
 /**
  * Get the amount of a pure Dinero object in rounded units.
@@ -10,11 +11,9 @@ import { multiply, divide, power, halfEven } from '@dinero.js/core/calculator';
  *
  * @returns The amount in rounded units.
  */
-const pureToRoundedUnit = toRoundedUnit({
+export const toRoundedUnit = buildMethod(coreToRoundedUnit, {
   multiply,
   divide,
   power,
   round: halfEven,
 });
-
-export default pureToRoundedUnit;

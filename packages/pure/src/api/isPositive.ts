@@ -1,5 +1,6 @@
-import { isPositive } from '@dinero.js/core';
+import { isPositive as coreIsPositive } from '@dinero.js/core';
 import { compare, zero } from '@dinero.js/core/calculator';
+import { buildMethod } from '../buildMethod';
 
 /**
  * Check whether a pure Dinero object is positive.
@@ -8,6 +9,4 @@ import { compare, zero } from '@dinero.js/core/calculator';
  *
  * @returns Whether the pure Dinero object is positive.
  */
-const pureIsPositive = isPositive({ zero, compare });
-
-export default pureIsPositive;
+export const isPositive = buildMethod(coreIsPositive, { zero, compare });

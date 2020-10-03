@@ -1,4 +1,7 @@
-import { lessThan } from '@dinero.js/core';
+import {
+  unsafeLessThan as coreUnsafeLessThan,
+  safeLessThan as coreSafeLessThan,
+} from '@dinero.js/core';
 import {
   add,
   compare,
@@ -8,7 +11,19 @@ import {
   halfEven,
   zero,
 } from '@dinero.js/core/calculator';
-import dinero from '../dinero';
+import { buildMethod } from '../buildMethod';
+
+/**
+ * Unsafely check whether the value of a pure Dinero object is lesser than another.
+ *
+ * @param dineroObject The pure Dinero object to compare.
+ * @param comparator The pure Dinero object to compare to.
+ *
+ * @returns Whether the pure Dinero to compare is lesser than the other.
+ */
+export const unsafeLessThan = buildMethod(coreUnsafeLessThan, {
+  compare,
+});
 
 /**
  * Check whether the value of a pure Dinero object is lesser than another.
@@ -18,7 +33,7 @@ import dinero from '../dinero';
  *
  * @returns Whether the pure Dinero to compare is lesser than the other.
  */
-const pureLessThan = lessThan(dinero, {
+export const safeLessThan = buildMethod(coreSafeLessThan, {
   add,
   compare,
   multiply,
@@ -27,5 +42,3 @@ const pureLessThan = lessThan(dinero, {
   round: halfEven,
   zero,
 });
-
-export default pureLessThan;

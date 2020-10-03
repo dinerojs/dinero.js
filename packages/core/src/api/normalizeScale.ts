@@ -1,34 +1,32 @@
-import { Calculator } from '../calculator';
 import { convertScale } from '.';
-import { BaseDinero, DineroFactory } from '../types';
+import { BaseDinero } from '../types';
 import { maximum } from '../calculator/helpers';
+import { Dependencies } from './types';
 
-function normalizeScale<TAmount, TDinero extends BaseDinero<TAmount>>(
-  dineroFactory: DineroFactory<TAmount, TDinero>,
-  calculator: Pick<
-    Calculator<TAmount>,
-    'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
-  >
-) {
-  return (dineroObjects: readonly TDinero[]) => {
+export function normalizeScale<TAmount, TDinero extends BaseDinero<TAmount>>({
+  factory,
+  calculator,
+}: Dependencies<
+  TAmount,
+  TDinero,
+  'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
+>) {
+  const maximumFn = maximum(calculator);
+  const convertScaleFn = convertScale({ factory, calculator });
+
+  return function _normalizeScale(dineroObjects: readonly TDinero[]) {
     const highestScale = dineroObjects.reduce((highest, current) => {
       const { scale } = current.toJSON();
 
-      return maximum(calculator)([highest, scale]);
+      return maximumFn([highest, scale]);
     }, calculator.zero());
 
     return dineroObjects.map((d) => {
       const { scale } = d.toJSON();
 
       return scale !== highestScale
-        ? convertScale(dineroFactory, calculator)(
-            d,
-            highestScale,
-            calculator.round
-          )
+        ? convertScaleFn(d, highestScale, calculator.round)
         : d;
     });
   };
 }
-
-export default normalizeScale;

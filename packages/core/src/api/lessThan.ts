@@ -1,27 +1,47 @@
-import { Calculator } from '../calculator';
-import { BaseDinero, DineroFactory } from '../types';
-import normalizeScale from './normalizeScale';
+/* eslint-disable functional/no-expression-statement */
+import { BaseDinero } from '../types';
 import { lessThan as lt } from '../calculator/helpers';
+import { haveSameCurrency, normalizeScale } from '.';
+import { Dependencies } from './types';
+import { assertSameCurrency } from '../guards';
 
-function lessThan<TAmount, TDinero extends BaseDinero<TAmount>>(
-  dineroFactory: DineroFactory<TAmount, TDinero>,
-  calculator: Pick<
-    Calculator<TAmount>,
-    'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
-  >
-) {
-  return (dineroObject: TDinero, comparator: TDinero) => {
-    const [subjectAmount, comparatorAmount] = normalizeScale(
-      dineroFactory,
-      calculator
-    )([dineroObject, comparator]).map((d) => {
+export function unsafeLessThan<TAmount, TDinero extends BaseDinero<TAmount>>({
+  calculator,
+}: Dependencies<TAmount, TDinero, 'compare'>) {
+  const lessThanFn = lt(calculator);
+
+  return function lessThan(dineroObject: TDinero, comparator: TDinero) {
+    const dineroObjects = [dineroObject, comparator];
+
+    const [subjectAmount, comparatorAmount] = dineroObjects.map((d) => {
       const { amount } = d.toJSON();
 
       return amount;
     });
 
-    return lt(calculator)(subjectAmount, comparatorAmount);
+    return lessThanFn(subjectAmount, comparatorAmount);
   };
 }
 
-export default lessThan;
+export function safeLessThan<TAmount, TDinero extends BaseDinero<TAmount>>({
+  factory,
+  calculator,
+}: Dependencies<
+  TAmount,
+  TDinero,
+  'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
+>) {
+  const normalizeFn = normalizeScale({ factory, calculator });
+  const lessThanFn = unsafeLessThan({ factory, calculator });
+
+  return function lessThan(dineroObject: TDinero, comparator: TDinero) {
+    assertSameCurrency(haveSameCurrency([dineroObject, comparator]));
+
+    const [subjectAmount, comparatorAmount] = normalizeFn([
+      dineroObject,
+      comparator,
+    ]);
+
+    return lessThanFn(subjectAmount, comparatorAmount);
+  };
+}

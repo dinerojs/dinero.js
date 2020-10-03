@@ -1,22 +1,22 @@
-import { Calculator } from '../calculator';
 import { BaseDinero } from '../types';
 import { Transformer, FormatOptions } from '../formatter';
-import toRoundedUnit from './toRoundedUnit';
+import { toRoundedUnit } from './toRoundedUnit';
+import { Dependencies } from './types';
 
-function toFormat<TAmount, TDinero extends BaseDinero<TAmount>>(
-  calculator: Pick<
-    Calculator<TAmount>,
-    'multiply' | 'divide' | 'power' | 'round'
-  >
-) {
-  return (
+export function toFormat<TAmount, TDinero extends BaseDinero<TAmount>>({
+  factory,
+  calculator,
+}: Dependencies<TAmount, TDinero, 'multiply' | 'divide' | 'power' | 'round'>) {
+  const toRoundedUnitFn = toRoundedUnit({ factory, calculator });
+
+  return function _toFormat(
     dineroObject: TDinero,
     transformer: Transformer<TAmount>,
     { digits, roundingMode }: FormatOptions<TAmount>
-  ) => {
+  ) {
     const { currency } = dineroObject.toJSON();
 
-    const amount = toRoundedUnit<TAmount, TDinero>(calculator)(
+    const amount = toRoundedUnitFn(
       dineroObject,
       digits || currency.exponent,
       roundingMode || calculator.round
@@ -25,5 +25,3 @@ function toFormat<TAmount, TDinero extends BaseDinero<TAmount>>(
     return transformer({ amount, currency });
   };
 }
-
-export default toFormat;

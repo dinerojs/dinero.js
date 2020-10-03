@@ -1,15 +1,15 @@
-import { Calculator } from '../calculator';
 import { BaseDinero } from '../types';
 import { greaterThanOrEqual } from '../calculator/helpers';
+import { Dependencies } from './types';
 
-function isPositive<TAmount, TDinero extends BaseDinero<TAmount>>(
-  calculator: Pick<Calculator<TAmount>, 'compare' | 'zero'>
-) {
-  return (dineroObject: TDinero) => {
+export function isPositive<TAmount, TDinero extends BaseDinero<TAmount>>({
+  calculator,
+}: Dependencies<TAmount, TDinero, 'compare' | 'zero'>) {
+  const greaterThanOrEqualFn = greaterThanOrEqual(calculator);
+
+  return function _isPositive(dineroObject: TDinero) {
     const { amount } = dineroObject.toJSON();
 
-    return greaterThanOrEqual(calculator)(amount, calculator.zero());
+    return greaterThanOrEqualFn(amount, calculator.zero());
   };
 }
-
-export default isPositive;

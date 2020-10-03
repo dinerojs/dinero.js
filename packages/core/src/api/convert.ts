@@ -1,6 +1,7 @@
 import { Currency } from '@dinero.js/currencies';
-import { Calculator, RoundingMode } from '../calculator';
-import { BaseDinero, Rates, DineroFactory } from '../types';
+import { RoundingMode } from '../calculator';
+import { BaseDinero, Rates } from '../types';
+import { Dependencies } from './types';
 
 type ConvertOptions<TAmount> = {
   readonly rates: Readonly<Promise<Rates<TAmount>>>;
@@ -8,11 +9,11 @@ type ConvertOptions<TAmount> = {
   readonly preserveScale?: boolean;
 };
 
-function convert<TAmount, TDinero extends BaseDinero<TAmount>>(
-  dineroFactory: DineroFactory<TAmount, TDinero>,
-  calculator: Pick<Calculator<TAmount>, 'multiply' | 'round'>
-) {
-  return async (
+export function convert<TAmount, TDinero extends BaseDinero<TAmount>>({
+  factory,
+  calculator,
+}: Dependencies<TAmount, TDinero, 'multiply' | 'round'>) {
+  return async function _convert(
     dineroObject: TDinero,
     newCurrency: Currency<TAmount>,
     {
@@ -20,18 +21,16 @@ function convert<TAmount, TDinero extends BaseDinero<TAmount>>(
       roundingMode = calculator.round,
       preserveScale = true,
     }: ConvertOptions<TAmount>
-  ) => {
+  ) {
     const r = await rates;
     const rate = r[newCurrency.code];
 
     const { amount, scale: sourceScale } = dineroObject.toJSON();
 
-    return dineroFactory({
+    return factory({
       amount: roundingMode(calculator.multiply(amount, rate)),
       currency: newCurrency,
       scale: preserveScale ? sourceScale : newCurrency.exponent,
     });
   };
 }
-
-export default convert;

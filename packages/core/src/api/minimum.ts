@@ -1,16 +1,18 @@
-import { Calculator } from '../calculator';
-import { BaseDinero, DineroFactory } from '../types';
+import { BaseDinero } from '../types';
 import { minimum as min } from '../calculator/helpers';
+import { Dependencies } from './types';
 
-function minimum<TAmount, TDinero extends BaseDinero<TAmount>>(
-  dineroFactory: DineroFactory<TAmount, TDinero>,
-  calculator: Pick<Calculator<TAmount>, 'compare'>
-) {
-  return (dineroObjects: readonly TDinero[]) => {
+export function minimum<TAmount, TDinero extends BaseDinero<TAmount>>({
+  factory,
+  calculator,
+}: Dependencies<TAmount, TDinero, 'compare'>) {
+  const minFn = min(calculator);
+
+  return function _minimum(dineroObjects: readonly TDinero[]) {
     const [firstDinero] = dineroObjects;
     const { currency, scale } = firstDinero.toJSON();
 
-    const amount = min(calculator)(
+    const amount = minFn(
       dineroObjects.map((subject) => {
         const { amount: subjectAmount } = subject.toJSON();
 
@@ -18,12 +20,10 @@ function minimum<TAmount, TDinero extends BaseDinero<TAmount>>(
       })
     );
 
-    return dineroFactory({
+    return factory({
       amount,
       currency,
       scale,
     });
   };
 }
-
-export default minimum;

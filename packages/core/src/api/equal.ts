@@ -1,20 +1,19 @@
-import { Calculator } from '../calculator';
-import { BaseDinero, DineroFactory } from '../types';
+import { BaseDinero } from '../types';
 import { haveSameAmount, haveSameCurrency } from '.';
+import { Dependencies } from './types';
 
-function equal<TAmount, TDinero extends BaseDinero<TAmount>>(
-  dineroFactory: DineroFactory<TAmount, TDinero>,
-  calculator: Pick<
-    Calculator<TAmount>,
-    'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
-  >
-) {
-  return (dineroObject: TDinero, comparator: TDinero) => {
+export function equal<TAmount, TDinero extends BaseDinero<TAmount>>({
+  factory,
+  calculator,
+}: Dependencies<
+  TAmount,
+  TDinero,
+  'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
+>) {
+  return function _equal(dineroObject: TDinero, comparator: TDinero) {
     return (
-      haveSameAmount(dineroFactory, calculator)([dineroObject, comparator]) &&
+      haveSameAmount({ factory, calculator })([dineroObject, comparator]) &&
       haveSameCurrency([dineroObject, comparator])
     );
   };
 }
-
-export default equal;

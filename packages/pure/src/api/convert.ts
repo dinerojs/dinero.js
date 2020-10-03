@@ -1,6 +1,6 @@
-import { convert } from '@dinero.js/core';
+import { convert as coreConvert } from '@dinero.js/core';
 import { multiply, halfEven } from '@dinero.js/core/calculator';
-import dinero from '../dinero';
+import { buildMethod } from '../buildMethod';
 
 /**
  * Convert a pure Dinero object to another currency.
@@ -13,6 +13,7 @@ import dinero from '../dinero';
  *
  * @returns A new pure Dinero object.
  */
-const pureConvert = convert(dinero, { multiply, round: halfEven });
-
-export default pureConvert;
+export const convert = buildMethod(coreConvert, {
+  multiply,
+  round: halfEven,
+});

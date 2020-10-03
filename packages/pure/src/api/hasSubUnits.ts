@@ -1,5 +1,6 @@
-import { hasSubUnits } from '@dinero.js/core';
+import { hasSubUnits as coreHasSubUnits } from '@dinero.js/core';
 import { compare, modulo, power, zero } from '@dinero.js/core/calculator';
+import { buildMethod } from '../buildMethod';
 
 /**
  * Check whether a pure Dinero object has minor currency units.
@@ -8,11 +9,9 @@ import { compare, modulo, power, zero } from '@dinero.js/core/calculator';
  *
  * @returns Whether the pure Dinero object has minor currency units.
  */
-const pureHasSubUnits = hasSubUnits({
+export const hasSubUnits = buildMethod(coreHasSubUnits, {
   compare,
   modulo,
   power,
   zero,
 });
-
-export default pureHasSubUnits;

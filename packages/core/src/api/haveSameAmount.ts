@@ -1,28 +1,27 @@
-import { Calculator } from '../calculator';
-import { BaseDinero, DineroFactory } from '../types';
+import { BaseDinero } from '../types';
 import { normalizeScale } from '.';
 import { equal } from '../calculator/helpers';
+import { Dependencies } from './types';
 
-function haveSameCurrency<TAmount, TDinero extends BaseDinero<TAmount>>(
-  dineroFactory: DineroFactory<TAmount, TDinero>,
-  calculator: Pick<
-    Calculator<TAmount>,
-    'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
-  >
-) {
-  return (dineroObjects: readonly TDinero[]) => {
-    const [firstDinero, ...otherDineros] = normalizeScale(
-      dineroFactory,
-      calculator
-    )(dineroObjects);
+export function haveSameAmount<TAmount, TDinero extends BaseDinero<TAmount>>({
+  factory,
+  calculator,
+}: Dependencies<
+  TAmount,
+  TDinero,
+  'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
+>) {
+  const normalizeFn = normalizeScale({ factory, calculator });
+  const equalFn = equal(calculator);
+
+  return function _haveSameAmount(dineroObjects: readonly TDinero[]) {
+    const [firstDinero, ...otherDineros] = normalizeFn(dineroObjects);
     const { amount: comparatorAmount } = firstDinero.toJSON();
 
     return otherDineros.every((d) => {
       const { amount: subjectAmount } = d.toJSON();
 
-      return equal(calculator)(subjectAmount, comparatorAmount);
+      return equalFn(subjectAmount, comparatorAmount);
     });
   };
 }
-
-export default haveSameCurrency;
