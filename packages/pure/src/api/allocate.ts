@@ -10,6 +10,7 @@ import {
   multiply,
   subtract,
   zero,
+  down,
 } from '@dinero.js/core/calculator';
 import { buildMethod } from '../buildMethod';
 
@@ -21,6 +22,7 @@ const calculator = {
   multiply,
   subtract,
   zero,
+  round: down,
 };
 
 /**

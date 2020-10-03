@@ -1,6 +1,5 @@
 /* eslint-disable functional/no-expression-statement */
 import { BaseDinero } from '../types';
-import { RoundingMode } from '../calculator';
 import {
   distribute,
   greaterThanOrEqual,
@@ -15,15 +14,18 @@ export function unsafeAllocate<TAmount, TDinero extends BaseDinero<TAmount>>({
 }: Dependencies<
   TAmount,
   TDinero,
-  'add' | 'compare' | 'divide' | 'increment' | 'multiply' | 'subtract' | 'zero'
+  | 'add'
+  | 'compare'
+  | 'divide'
+  | 'increment'
+  | 'multiply'
+  | 'round'
+  | 'subtract'
+  | 'zero'
 >) {
-  return function allocate(
-    dineroObject: TDinero,
-    ratios: readonly TAmount[],
-    down?: RoundingMode<TAmount>
-  ) {
+  return function allocate(dineroObject: TDinero, ratios: readonly TAmount[]) {
     const { amount, currency, scale } = dineroObject.toJSON();
-    const shares = distribute(calculator, down)(amount, ratios);
+    const shares = distribute(calculator, calculator.round)(amount, ratios);
 
     return shares.map((share) => {
       return factory({
@@ -41,17 +43,20 @@ export function safeAllocate<TAmount, TDinero extends BaseDinero<TAmount>>({
 }: Dependencies<
   TAmount,
   TDinero,
-  'add' | 'compare' | 'divide' | 'increment' | 'multiply' | 'subtract' | 'zero'
+  | 'add'
+  | 'compare'
+  | 'divide'
+  | 'increment'
+  | 'multiply'
+  | 'round'
+  | 'subtract'
+  | 'zero'
 >) {
   const allocateFn = unsafeAllocate({ factory, calculator });
   const greaterThanOrEqualFn = greaterThanOrEqual(calculator);
   const greaterThanFn = greaterThan(calculator);
 
-  return function allocate(
-    dineroObject: TDinero,
-    ratios: readonly TAmount[],
-    down?: RoundingMode<TAmount>
-  ) {
+  return function allocate(dineroObject: TDinero, ratios: readonly TAmount[]) {
     const condition =
       ratios.length > 0 &&
       ratios.every((ratio) => greaterThanOrEqualFn(ratio, calculator.zero())) &&
@@ -59,6 +64,6 @@ export function safeAllocate<TAmount, TDinero extends BaseDinero<TAmount>>({
 
     assertValidRatios(condition);
 
-    return allocateFn(dineroObject, ratios, down);
+    return allocateFn(dineroObject, ratios);
   };
 }
