@@ -171,5 +171,20 @@ describe('Calculator', () => {
         expect(calculator.round(-1.6, 'DOWN')).toBe(-2)
       })
     })
+    describe('CUSTOM', () => {
+      test('should apply custom function when rounding', () => {
+        expect(calculator.round(1, number => number * 10)).toBe(10)
+        expect(calculator.round(1, () => 5)).toBe(5)
+        expect(calculator.round(8.44, number => Math.ceil(number))).toBe(9)
+        const roundUpWhenGreaterThanZero = (number) => {
+          if (number < 1) {
+            return calculator.round(number, 'DOWN')
+          }
+          return calculator.round(number, 'HALF_UP')
+        }
+        expect(calculator.round(2.7, roundUpWhenGreaterThanZero)).toBe(3)
+        expect(calculator.round(0.7, roundUpWhenGreaterThanZero)).toBe(0)
+      })
+    })
   })
 })

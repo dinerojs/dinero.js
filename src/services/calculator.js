@@ -111,11 +111,14 @@ export default function Calculator() {
      * @ignore
      *
      * @param {Number} number - The number to round.
-     * @param {String} [roundingMode='HALF_EVEN'] - The rounding mode to use.
+     * @param {String|Function} [roundingMode='HALF_EVEN'] - The rounding mode to use.
      *
      * @returns {Number}
      */
     round(number, roundingMode = 'HALF_EVEN') {
+      if (typeof roundingMode === 'function') {
+        return roundingMode(number)
+      }
       return roundingModes[roundingMode](number)
     }
   }
