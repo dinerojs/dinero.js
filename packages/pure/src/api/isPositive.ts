@@ -1,6 +1,6 @@
 import { isPositive as coreIsPositive } from '@dinero.js/core';
 import { compare, zero } from '@dinero.js/core/calculator';
-import { buildMethod } from '../buildMethod';
+import { buildMethod } from '../helpers';
 
 /**
  * Check whether a pure Dinero object is positive.

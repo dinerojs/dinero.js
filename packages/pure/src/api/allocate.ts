@@ -12,7 +12,7 @@ import {
   zero,
   down,
 } from '@dinero.js/core/calculator';
-import { buildMethod } from '../buildMethod';
+import { buildMethod } from '../helpers';
 
 const calculator = {
   add,

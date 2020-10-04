@@ -11,7 +11,7 @@ import {
   halfEven,
   zero,
 } from '@dinero.js/core/calculator';
-import { buildMethod } from '../buildMethod';
+import { buildMethod } from '../helpers';
 
 /**
  * Unsafely check whether the value of a pure Dinero object is greater than or equal another.

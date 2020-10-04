@@ -3,7 +3,7 @@ import {
   Dependencies,
   CalculatorDependency,
 } from '@dinero.js/core/src/api/types';
-import dinero from './dinero';
+import dinero from '../dinero';
 
 /**
  * Build a pure Dinero method from a core function and a calculator.

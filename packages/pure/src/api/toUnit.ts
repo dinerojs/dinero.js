@@ -1,6 +1,6 @@
 import { toUnit as coreToUnit } from '@dinero.js/core';
 import { divide, power } from '@dinero.js/core/calculator';
-import { buildMethod } from '../buildMethod';
+import { buildMethod } from '../helpers';
 
 /**
  * Get the amount of a pure Dinero object in units.

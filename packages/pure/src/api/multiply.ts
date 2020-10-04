@@ -3,7 +3,7 @@ import {
   multiply as multiplyNumbers,
   halfEven,
 } from '@dinero.js/core/calculator';
-import { buildMethod } from '../buildMethod';
+import { buildMethod } from '../helpers';
 
 /**
  * Multiply the passed pure Dinero object.

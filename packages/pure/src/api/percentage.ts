@@ -1,6 +1,6 @@
 import { percentage as corePercentage } from '@dinero.js/core';
 import { percentage as percentageNumbers } from '@dinero.js/core/calculator';
-import { buildMethod } from '../buildMethod';
+import { buildMethod } from '../helpers';
 
 /**
  * Extract a percentage of a pure Dinero object.

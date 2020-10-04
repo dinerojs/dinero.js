@@ -11,7 +11,7 @@ import {
   subtract,
   zero,
 } from '@dinero.js/core/calculator';
-import { buildMethod } from '../buildMethod';
+import { buildMethod } from '../helpers';
 
 /**
  * Unsafely add up the passed pure Dinero objects.

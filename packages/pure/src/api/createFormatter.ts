@@ -4,7 +4,7 @@ import {
   FormatOptions,
 } from '@dinero.js/core';
 import { multiply, divide, power, halfEven } from '@dinero.js/core/calculator';
-import { buildMethod } from '../buildMethod';
+import { buildMethod } from '../helpers';
 import { PureDinero } from '../types';
 
 const formatter = buildMethod(coreToFormat, {
