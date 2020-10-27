@@ -41,6 +41,8 @@
     "@babel/preset-env": "7.9.6",
     "@rollup/plugin-commonjs": "11.1.0",
     "@rollup/plugin-node-resolve": "7.1.3",
+    "@stryker-mutator/core": "^4.0.0",
+    "@stryker-mutator/jest-runner": "^4.0.0",
     "all-contributors-cli": "6.14.2",
     "babel-jest": "25.5.1",
     "commitizen": "4.1.2",
