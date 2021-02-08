@@ -59,7 +59,7 @@
     "jsdoc": "3.6.4",
     "jsdoc-template": "sarahdayan/jsdoc-template",
     "jsverify": "0.8.4",
-    "lint-staged": "10.2.2",
+    "lint-staged": "10.5.4",
     "prettier": "1.19.1",
     "rollup": "2.9.0",
     "rollup-plugin-babel": "4.4.0",
