@@ -15,6 +15,9 @@ export default function CurrencyConverter(options) {
       headers: options.headers
     })
 
+  const getRateFromObject = (data, options, from, to) =>
+    flattenObject(data)[mergeTags(options.propertyPath, { from, to })]
+
   return {
     /**
      * Returns the exchange rate.
@@ -29,10 +32,18 @@ export default function CurrencyConverter(options) {
       return (isThenable(options.endpoint)
         ? options.endpoint
         : getRatesFromRestApi(from, to)
-      ).then(
-        data =>
-          flattenObject(data)[mergeTags(options.propertyPath, { from, to })]
-      )
-    }
+      ).then(data => getRateFromObject(data, options, from, to))
+    },
+    /**
+     * Returns the exchange rate when the exchange rates table can be provided
+     * immediately.
+     * @ignore
+     *
+     * @param {Object} data  - Exchange rate data.
+     * @param {String} from  - The base currency.
+     * @param {String} to    - The destination currency.
+     */
+    getExchangeRateSync: (data, from, to) =>
+      getRateFromObject(data, options, from, to),
   }
 }

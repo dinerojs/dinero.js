@@ -98,6 +98,20 @@ const Dinero = options => {
    * Uses ES5 function notation so `this` can be passed through call, apply and bind
    * @ignore
    */
+  const createConvert = function(options, createOptions) {
+    return create.call(this, {
+      amount: calculator.round(
+        calculator.multiply(this.getAmount(), parseFloat(options.rate)),
+        createOptions.roundingMode
+      ),
+      currency: options.currency
+    })
+  }
+
+  /**
+   * Uses ES5 function notation so `this` can be passed through call, apply and bind
+   * @ignore
+   */
   const assertSameCurrency = function(comparator) {
     assert(
       this.hasSameCurrency(comparator),
@@ -533,14 +547,62 @@ const Dinero = options => {
             `No rate was found for the destination currency "${currency}".`,
             TypeError
           )
-          return create.call(this, {
-            amount: calculator.round(
-              calculator.multiply(this.getAmount(), parseFloat(rate)),
-              options.roundingMode
-            ),
-            currency
-          })
+          return createConvert.call(this, { rate, currency }, options)
         })
+    },
+    /**
+     * Immediately returns a new Dinero object converted to another currency.
+     *
+     * This is a non-async version of convert, and is useful if you already have your own pre-loaded exchange rates from some source.
+     *
+     * @see {@link module:Dinero~convert convert} for the asynchronous version that can look up exchange rates.
+     *
+     * @param  {String} currency - The destination currency, expressed as an {@link https://en.wikipedia.org/wiki/ISO_4217#Active_codes ISO 4217 currency code}.
+     * @param  {Object} options.endpoint - The "endpoint" with exchange rates. Provide the exchanges rates as an object that would be received by the convert method.
+     * @param  {String} [options.propertyPath='rates.{{to}}'] - The property path to the rate.
+     * @param  {String} [options.roundingMode='HALF_EVEN'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'`, `'HALF_AWAY_FROM_ZERO'` or `'DOWN'`.
+     *
+     * @example
+     * // usage with exchange rates provided as a rates hash
+     * // using the default `propertyPath` format (so it doesn't have to be specified)
+     * const rates = {
+     *   rates: {
+     *     EUR: 0.81162
+     *   }
+     * }
+     *
+     * Dinero({ amount: 500 })
+     *   .convert('EUR', {
+     *     endpoint: rates
+     *   })
+     *
+     * @return {Object}
+     */
+    convertSync(
+      currency,
+      {
+        endpoint = globalExchangeRatesApi.endpoint,
+        propertyPath = globalExchangeRatesApi.propertyPath || 'rates.{{to}}',
+        roundingMode = globalRoundingMode
+      } = {}
+    ) {
+      assert(
+        typeof endpoint === 'object',
+        'Exchange rates endpoint should be an object with preloaded exchange rates',
+        TypeError
+      )
+      const options = Object.assign(
+        {},
+        {
+          endpoint,
+          propertyPath,
+          roundingMode
+        }
+      )
+      const rate = CurrencyConverter(options).getExchangeRateSync(
+        endpoint, this.getCurrency(), currency
+      )
+      return createConvert.call(this, { rate, currency }, options)
     },
     /**
      * Checks whether the value represented by this object equals to the other.

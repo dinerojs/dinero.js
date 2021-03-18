@@ -349,6 +349,35 @@ describe('Dinero', () => {
       await expect(Dinero({ amount: 500 }).convert('EURO')).rejects.toThrow()
     })
   })
+  describe('#convertSync', () => {
+    let exchangeRates;
+    beforeEach(() => {
+      exchangeRates = {
+        USD: {
+          data: {
+            rates: {
+              EUR: 0.8,
+              USD: 1
+            }
+          }
+        }
+      }
+    })
+    test('should return a new converted Dinero object when base and destination currencies are valid', () => {
+      const res = Dinero({ amount: 500, currency: 'USD' }).convertSync('EUR', {
+        endpoint: exchangeRates.USD
+      })
+      expect(res.toObject()).toMatchObject({
+        amount: 400,
+        currency: 'EUR'
+      })
+    })
+    test('should throw when destination currency is not valid', () => {
+      expect(() => Dinero({ amount: 500 }).convertSync('EURO', {
+        endpoint: exchangeRates.USD
+      })).toThrow()
+    })
+  })
   describe('#equalsTo()', () => {
     test('should return true when both amount and currencies are equal', () => {
       expect(

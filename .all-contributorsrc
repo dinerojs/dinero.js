@@ -168,6 +168,17 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "vipera",
+      "name": "Marin Rukavina",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1338281?v=4",
+      "profile": "http://shinyshell.net",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ]
 }
