@@ -1,5 +1,5 @@
 import { USD, EUR } from '@dinero.js/currencies';
-import dinero, { haveSameCurrency } from '../../..';
+import { dinero, haveSameCurrency } from '../../..';
 
 describe('haveSameCurrency', () => {
   it('returns true when currencies are equal', () => {

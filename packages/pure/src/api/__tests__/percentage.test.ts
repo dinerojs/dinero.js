@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import dinero, { toSnapshot, percentage } from '../../..';
+import { dinero, toSnapshot, percentage } from '../../..';
 
 describe('percentage', () => {
   it('returns a percentage of a pure Dinero object', () => {

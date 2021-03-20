@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import dinero, { toSnapshot, convertScale } from '../../..';
+import { dinero, toSnapshot, convertScale } from '../../..';
 
 describe('convertScale', () => {
   it('returns a new pure Dinero object with a new scale and a converted amount', () => {

@@ -1,6 +1,6 @@
 import { USD } from '@dinero.js/currencies';
 import { up } from '@dinero.js/core/calculator';
-import dinero, { createFormatter } from '../../..';
+import { dinero, createFormatter } from '../../..';
 
 describe('createFormatter', () => {
   it('formats the pure Dinero object with the passed transformer', () => {

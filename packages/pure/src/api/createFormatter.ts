@@ -22,7 +22,7 @@ const formatter = buildMethod(coreToFormat, {
  *
  * @returns A formatter function.
  */
-function createFormatter(
+export function createFormatter(
   transformer: Transformer<number>,
   { digits, roundingMode }: FormatOptions<number> = {}
 ) {
@@ -30,5 +30,3 @@ function createFormatter(
     return formatter(dineroObject, transformer, { digits, roundingMode });
   };
 }
-
-export default createFormatter;

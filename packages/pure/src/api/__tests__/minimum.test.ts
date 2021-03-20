@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import dinero, { toSnapshot, minimum } from '../../..';
+import { dinero, toSnapshot, minimum } from '../../..';
 
 describe('minimum', () => {
   it('returns the lower from a set of pure Dinero objects', () => {

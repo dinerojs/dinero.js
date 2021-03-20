@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import dinero, { lessThan } from '../../..';
+import { dinero, lessThan } from '../../..';
 
 describe('lessThan', () => {
   it('returns true when the first amount is less than the other', () => {

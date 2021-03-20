@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import dinero, { toRoundedUnit } from '../../..';
+import { dinero, toRoundedUnit } from '../../..';
 
 describe('toRoundedUnit', () => {
   it('returns the amount in currency unit, rounded to one fraction digit', () => {

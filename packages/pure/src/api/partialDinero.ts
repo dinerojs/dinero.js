@@ -1,6 +1,6 @@
 import { DineroOptions } from '@dinero.js/core';
 import { PartialPureDinero } from '../..';
-import dinero from '../dinero';
+import { dinero } from '../dinero';
 
 /**
  * Create a partially applied pure Dinero object.
@@ -10,7 +10,7 @@ import dinero from '../dinero';
  *
  * @returns The partially applied pure Dinero object.
  */
-function partialDinero<TAmount>({
+export function partialDinero<TAmount>({
   currency,
   scale,
 }: Omit<DineroOptions<TAmount>, 'amount'>): PartialPureDinero<TAmount> {
@@ -22,5 +22,3 @@ function partialDinero<TAmount>({
     });
   };
 }
-
-export default partialDinero;

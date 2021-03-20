@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import dinero, { toSnapshot } from '../../..';
+import { dinero, toSnapshot } from '../../..';
 
 describe('toSnapshot', () => {
   it('returns an object literal with the right data', () => {

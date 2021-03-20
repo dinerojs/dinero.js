@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import dinero, { toUnit } from '../../..';
+import { dinero, toUnit } from '../../..';
 
 describe('toUnit', () => {
   it('returns the amount in currency unit', () => {

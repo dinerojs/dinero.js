@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import dinero, { isZero } from '../../..';
+import { dinero, isZero } from '../../..';
 
 describe('isZero', () => {
   it('returns true when amount is equal to 0', () => {

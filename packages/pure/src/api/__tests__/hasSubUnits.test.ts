@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import dinero, { hasSubUnits } from '../../..';
+import { dinero, hasSubUnits } from '../../..';
 
 describe('hasSubUnits', () => {
   it('returns false when there are no sub-units', () => {

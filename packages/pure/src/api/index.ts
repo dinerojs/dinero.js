@@ -32,5 +32,5 @@ export * from './normalizeScale';
 export * from './toRoundedUnit';
 export * from './toUnit';
 export * from './toSnapshot';
-export { default as partialDinero } from './partialDinero';
-export { default as createFormatter } from './createFormatter';
+export { partialDinero } from './partialDinero';
+export { createFormatter } from './createFormatter';

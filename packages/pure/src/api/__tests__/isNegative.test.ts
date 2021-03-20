@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import dinero, { isNegative } from '../../..';
+import { dinero, isNegative } from '../../..';
 
 describe('isNegative', () => {
   it('returns true when amount is less than 0', () => {

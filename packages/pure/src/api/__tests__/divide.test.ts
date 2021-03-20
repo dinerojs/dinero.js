@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import dinero, { toSnapshot, divide } from '../../..';
+import { dinero, toSnapshot, divide } from '../../..';
 
 describe('divide', () => {
   it('divides positive pure Dinero objects', () => {

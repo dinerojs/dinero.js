@@ -1,6 +1,6 @@
 import { USD } from '@dinero.js/currencies';
 import { toSnapshot } from '../..';
-import partialDinero from '../partialDinero';
+import { partialDinero } from '../partialDinero';
 
 describe('partialDinero', () => {
   it('partially applies a pure Dinero object with a currency', () => {

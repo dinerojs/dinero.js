@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import dinero, { toSnapshot, normalizeScale } from '../../..';
+import { dinero, toSnapshot, normalizeScale } from '../../..';
 
 describe('normalizeScale', () => {
   it('returns an array of pure Dinero objects with normalized scale and converted amount', () => {

@@ -10,7 +10,7 @@ import { PureDinero } from '..';
  *
  * @returns The created pure Dinero object.
  */
-function dinero<TAmount>({
+export function dinero<TAmount>({
   amount,
   currency,
   scale = currency.exponent,
@@ -25,5 +25,3 @@ function dinero<TAmount>({
     },
   };
 }
-
-export default dinero;
