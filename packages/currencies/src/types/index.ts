@@ -1,1 +1,1 @@
-export { Currency } from './Currency';
+export * from './Currency';

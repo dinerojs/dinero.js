@@ -1,9 +1,9 @@
-export { DASH } from './dash';
-export { ETH } from './eth';
-export { VTC } from './vtc';
-export { XBC } from './xbc';
-export { XBT } from './xbt';
-export { XLM } from './xlm';
-export { XMR } from './xmr';
-export { XRP } from './xrp';
-export { ZEC } from './zec';
+export * from './dash';
+export * from './eth';
+export * from './vtc';
+export * from './xbc';
+export * from './xbt';
+export * from './xlm';
+export * from './xmr';
+export * from './xrp';
+export * from './zec';
