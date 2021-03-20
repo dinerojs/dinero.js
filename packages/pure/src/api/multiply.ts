@@ -3,7 +3,7 @@ import {
   multiply as multiplyNumbers,
   halfEven,
 } from '@dinero.js/core/calculator';
-import { buildMethod } from '../helpers';
+import { createFunction } from '../helpers';
 
 /**
  * Multiply the passed pure Dinero object.
@@ -14,7 +14,7 @@ import { buildMethod } from '../helpers';
  *
  * @returns A new pure Dinero object.
  */
-export const multiply = buildMethod(coreMultiply, {
+export const multiply = createFunction(coreMultiply, {
   multiply: multiplyNumbers,
   round: halfEven,
 });

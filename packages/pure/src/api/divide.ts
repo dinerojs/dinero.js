@@ -1,6 +1,6 @@
 import { divide as coreDivide } from '@dinero.js/core';
 import { divide as divideNumbers, halfEven } from '@dinero.js/core/calculator';
-import { buildMethod } from '../helpers';
+import { createFunction } from '../helpers';
 
 /**
  * Divide the passed pure Dinero object.
@@ -11,7 +11,7 @@ import { buildMethod } from '../helpers';
  *
  * @returns A new pure Dinero object.
  */
-export const divide = buildMethod(coreDivide, {
+export const divide = createFunction(coreDivide, {
   divide: divideNumbers,
   round: halfEven,
 });

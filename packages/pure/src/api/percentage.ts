@@ -1,6 +1,6 @@
 import { percentage as corePercentage } from '@dinero.js/core';
 import { percentage as percentageNumbers } from '@dinero.js/core/calculator';
-import { buildMethod } from '../helpers';
+import { createFunction } from '../helpers';
 
 /**
  * Extract a percentage of a pure Dinero object.
@@ -10,6 +10,6 @@ import { buildMethod } from '../helpers';
  *
  * @returns A new pure Dinero object.
  */
-export const percentage = buildMethod(corePercentage, {
+export const percentage = createFunction(corePercentage, {
   percentage: percentageNumbers,
 });

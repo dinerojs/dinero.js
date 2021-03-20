@@ -1,6 +1,6 @@
 import { convert as coreConvert } from '@dinero.js/core';
 import { multiply, halfEven } from '@dinero.js/core/calculator';
-import { buildMethod } from '../helpers';
+import { createFunction } from '../helpers';
 
 /**
  * Convert a pure Dinero object to another currency.
@@ -13,7 +13,7 @@ import { buildMethod } from '../helpers';
  *
  * @returns A new pure Dinero object.
  */
-export const convert = buildMethod(coreConvert, {
+export const convert = createFunction(coreConvert, {
   multiply,
   round: halfEven,
 });

@@ -5,7 +5,7 @@ import {
   subtract,
   halfEven,
 } from '@dinero.js/core/calculator';
-import { buildMethod } from '../helpers';
+import { createFunction } from '../helpers';
 
 /**
  * Convert a pure Dinero object to a new precision.
@@ -16,7 +16,7 @@ import { buildMethod } from '../helpers';
  *
  * @returns A new pure Dinero object.
  */
-export const convertScale = buildMethod(coreConvertScale, {
+export const convertScale = createFunction(coreConvertScale, {
   subtract,
   multiply,
   power,

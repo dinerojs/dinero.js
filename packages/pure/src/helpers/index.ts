@@ -1,1 +1,1 @@
-export * from './buildMethod';
+export * from './createFunction';

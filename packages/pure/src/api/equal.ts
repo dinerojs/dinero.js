@@ -8,7 +8,7 @@ import {
   halfEven,
   zero,
 } from '@dinero.js/core/calculator';
-import { buildMethod } from '../helpers';
+import { createFunction } from '../helpers';
 
 /**
  * Check whether the value of a pure Dinero object is equal to another.
@@ -18,7 +18,7 @@ import { buildMethod } from '../helpers';
  *
  * @returns Whether the pure Dinero objects are equal.
  */
-export const equal = buildMethod(coreEqual, {
+export const equal = createFunction(coreEqual, {
   add,
   compare,
   multiply,

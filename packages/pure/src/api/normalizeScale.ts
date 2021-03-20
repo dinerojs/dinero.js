@@ -8,7 +8,7 @@ import {
   halfEven,
   zero,
 } from '@dinero.js/core/calculator';
-import { buildMethod } from '../helpers';
+import { createFunction } from '../helpers';
 
 /**
  * Normalize a set of pure Dinero objects to the highest scale of the set.
@@ -17,7 +17,7 @@ import { buildMethod } from '../helpers';
  *
  * @returns A new set of pure Dinero objects.
  */
-export const normalizeScale = buildMethod(coreNormalizeScale, {
+export const normalizeScale = createFunction(coreNormalizeScale, {
   add,
   compare,
   zero,

@@ -1,6 +1,6 @@
 import { maximum as coreMaximum } from '@dinero.js/core';
 import { compare } from '@dinero.js/core/calculator';
-import { buildMethod } from '../helpers';
+import { createFunction } from '../helpers';
 
 /**
  * Get the greatest of the passed pure Dinero objects.
@@ -9,4 +9,4 @@ import { buildMethod } from '../helpers';
  *
  * @returns A new pure Dinero object.
  */
-export const maximum = buildMethod(coreMaximum, { compare });
+export const maximum = createFunction(coreMaximum, { compare });

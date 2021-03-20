@@ -11,7 +11,7 @@ import {
   subtract,
   zero,
 } from '@dinero.js/core/calculator';
-import { buildMethod } from '../helpers';
+import { createFunction } from '../helpers';
 
 /**
  * Unsafely add up the passed pure Dinero objects.
@@ -21,7 +21,7 @@ import { buildMethod } from '../helpers';
  *
  * @returns A new pure Dinero object.
  */
-export const unsafeAdd = buildMethod(coreUnsafeAdd, { add });
+export const unsafeAdd = createFunction(coreUnsafeAdd, { add });
 
 /**
  * Add up the passed pure Dinero objects.
@@ -31,7 +31,7 @@ export const unsafeAdd = buildMethod(coreUnsafeAdd, { add });
  *
  * @returns A new pure Dinero object.
  */
-export const safeAdd = buildMethod(coreSafeAdd, {
+export const safeAdd = createFunction(coreSafeAdd, {
   add,
   compare,
   multiply,

@@ -12,7 +12,7 @@ import {
   zero,
   down,
 } from '@dinero.js/core/calculator';
-import { buildMethod } from '../helpers';
+import { createFunction } from '../helpers';
 
 const calculator = {
   add,
@@ -33,7 +33,7 @@ const calculator = {
  *
  * @returns A new pure Dinero object.
  */
-export const unsafeAllocate = buildMethod(coreUnsafeAllocate, calculator);
+export const unsafeAllocate = createFunction(coreUnsafeAllocate, calculator);
 
 /**
  * Distribute the amount of a pure Dinero object across a list of ratios.
@@ -43,4 +43,4 @@ export const unsafeAllocate = buildMethod(coreUnsafeAllocate, calculator);
  *
  * @returns A new pure Dinero object.
  */
-export const safeAllocate = buildMethod(coreSafeAllocate, calculator);
+export const safeAllocate = createFunction(coreSafeAllocate, calculator);
