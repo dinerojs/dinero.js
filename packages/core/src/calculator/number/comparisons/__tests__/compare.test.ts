@@ -1,5 +1,5 @@
 import { ComparisonOperator } from '../../../types';
-import compare from '../compare';
+import { compare } from '../compare';
 
 describe('compare', () => {
   describe('ComparisonOperator.LT', () => {

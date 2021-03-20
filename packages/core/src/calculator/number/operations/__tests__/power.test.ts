@@ -1,4 +1,4 @@
-import power from '../power';
+import { power } from '../power';
 
 describe('power', () => {
   it('raises a positive number to the power of an exponent', () => {

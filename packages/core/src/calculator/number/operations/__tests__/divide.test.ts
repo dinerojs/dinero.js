@@ -1,4 +1,4 @@
-import divide from '../divide';
+import { divide } from '../divide';
 
 describe('divide', () => {
   it('divides positive numbers', () => {

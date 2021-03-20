@@ -1,4 +1,4 @@
-import DineroOptions from './DineroOptions';
+import { DineroOptions } from '.';
 
 export type DineroFactory<TAmount, TDinero> = ({
   amount,

@@ -1,4 +1,4 @@
-export { isEven } from './isEven';
-export { isHalf } from './isHalf';
-export { isFloat } from './isFloat';
-export { countFractionDigits } from './countFractionDigits';
+export * from './countFractionDigits';
+export * from './isEven';
+export * from './isFloat';
+export * from './isHalf';

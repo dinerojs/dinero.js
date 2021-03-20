@@ -1,1 +1,1 @@
-export { zero } from './zero';
+export * from './zero';

@@ -1,2 +1,2 @@
-export { compare } from './compare';
-export { isOfType } from './isOfType';
+export * from './compare';
+export * from './isOfType';

@@ -1,4 +1,4 @@
-import isOfType from '../isOfType';
+import { isOfType } from '../isOfType';
 
 describe('isOfType', () => {
   it('returns true with positive integers', () => {

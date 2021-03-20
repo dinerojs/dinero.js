@@ -1,4 +1,4 @@
-import isHalf from '../isHalf';
+import { isHalf } from '../isHalf';
 
 describe('#isHalf', () => {
   it('returns true with a half number', () => {

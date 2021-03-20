@@ -1,4 +1,4 @@
-import countFractionDigits from '../countFractionDigits';
+import { countFractionDigits } from '../countFractionDigits';
 
 describe('countFractionDigits', () => {
   it('returns the right amount with floats', () => {

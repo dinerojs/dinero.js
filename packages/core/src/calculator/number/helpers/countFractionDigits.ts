@@ -6,14 +6,17 @@
  * @returns How many fraction digits the number has.
  */
 export function countFractionDigits(value: number) {
-  const stringRepresentation = value.toString();
+  const asString = value.toString();
 
-  if (stringRepresentation.indexOf('e-') > 0) {
-    // It's too small for a normal string representation, e.g., 1e-7 instead of 0.00000001
-    return Number.parseInt(stringRepresentation.split('e-')[1], 10);
-  } else {
-    const fractionDigits = stringRepresentation.split('.')[1];
+  if (asString.indexOf('e-') > 0) {
+    // It's too small for a normal string representation
+    // e.g., 1e-7 instead of 0.00000001
+    const [, exponent] = asString.split('e-');
 
-    return fractionDigits ? fractionDigits.length : 0;
+    return Number.parseInt(exponent, 10);
   }
+
+  const [, fractionDigits] = asString.split('.');
+
+  return fractionDigits?.length || 0;
 }

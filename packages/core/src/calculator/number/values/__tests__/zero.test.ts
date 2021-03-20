@@ -1,4 +1,4 @@
-import zero from '../zero';
+import { zero } from '../zero';
 
 describe('zero', () => {
   it('returns zero', () => {

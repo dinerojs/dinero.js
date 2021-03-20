@@ -1,4 +1,4 @@
-import halfDown from '../halfDown';
+import { halfDown } from '../halfDown';
 
 describe('halfDown', () => {
   it('rounds down with a positive float below half', () => {

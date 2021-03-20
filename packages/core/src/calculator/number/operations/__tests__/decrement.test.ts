@@ -1,4 +1,4 @@
-import decrement from '../decrement';
+import { decrement } from '../decrement';
 
 describe('decrement', () => {
   it('decrements positive numbers', () => {

@@ -1,4 +1,4 @@
-import isFloat from '../isFloat';
+import { isFloat } from '../isFloat';
 
 describe('isFloat', () => {
   it('returns false with an integer', () => {

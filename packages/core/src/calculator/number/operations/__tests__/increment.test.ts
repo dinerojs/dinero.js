@@ -1,4 +1,4 @@
-import increment from '../increment';
+import { increment } from '../increment';
 
 describe('increment', () => {
   it('increments positive numbers', () => {

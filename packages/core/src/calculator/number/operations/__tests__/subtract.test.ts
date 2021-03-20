@@ -1,4 +1,4 @@
-import subtract from '../subtract';
+import { subtract } from '../subtract';
 
 describe('subtract', () => {
   it('subtracts positive numbers', () => {

@@ -1,4 +1,4 @@
-import modulo from '../modulo';
+import { modulo } from '../modulo';
 
 describe('modulo', () => {
   it('performs a modulo with positive numbers', () => {

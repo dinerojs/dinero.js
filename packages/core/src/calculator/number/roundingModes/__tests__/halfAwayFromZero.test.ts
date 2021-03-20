@@ -1,4 +1,4 @@
-import halfAwayFromZero from '../halfAwayFromZero';
+import { halfAwayFromZero } from '../halfAwayFromZero';
 
 describe('halfAwayFromZero', () => {
   it('rounds down with a positive float below half', () => {
