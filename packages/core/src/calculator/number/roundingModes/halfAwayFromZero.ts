@@ -9,10 +9,8 @@ import { isHalf } from '../helpers';
  *
  * @returns The rounded number.
  */
-const halfAwayFromZero: RoundingMode<number> = (value) => {
+export const halfAwayFromZero: RoundingMode<number> = (value) => {
   return isHalf(value)
     ? multiply(Math.sign(value), Math.ceil(Math.abs(value)))
     : Math.round(value);
 };
-
-export default halfAwayFromZero;

@@ -1,1 +1,1 @@
-export { default as zero } from './zero';
+export { zero } from './zero';

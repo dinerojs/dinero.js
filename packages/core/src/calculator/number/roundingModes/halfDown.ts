@@ -8,8 +8,6 @@ import { isHalf } from '../helpers';
  *
  * @returns The rounded number.
  */
-const halfDown: RoundingMode<number> = (value) => {
+export const halfDown: RoundingMode<number> = (value) => {
   return isHalf(value) ? Math.floor(value) : Math.round(value);
 };
-
-export default halfDown;

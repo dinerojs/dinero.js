@@ -5,7 +5,7 @@
  *
  * @returns How many fraction digits the number has.
  */
-function countFractionDigits(value: number) {
+export function countFractionDigits(value: number) {
   const stringRepresentation = value.toString();
 
   if (stringRepresentation.indexOf('e-') > 0) {
@@ -17,5 +17,3 @@ function countFractionDigits(value: number) {
     return fractionDigits ? fractionDigits.length : 0;
   }
 }
-
-export default countFractionDigits;

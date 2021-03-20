@@ -1,8 +1,8 @@
-export { default as down } from './down';
-export { default as halfAwayFromZero } from './halfAwayFromZero';
-export { default as halfDown } from './halfDown';
-export { default as halfEven } from './halfEven';
-export { default as halfOdd } from './halfOdd';
-export { default as halfTowardsZero } from './halfTowardsZero';
-export { default as halfUp } from './halfUp';
-export { default as up } from './up';
+export { down } from './down';
+export { halfAwayFromZero } from './halfAwayFromZero';
+export { halfDown } from './halfDown';
+export { halfEven } from './halfEven';
+export { halfOdd } from './halfOdd';
+export { halfTowardsZero } from './halfTowardsZero';
+export { halfUp } from './halfUp';
+export { up } from './up';

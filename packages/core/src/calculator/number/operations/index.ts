@@ -1,9 +1,9 @@
-export { default as add } from './add';
-export { default as decrement } from './decrement';
-export { default as divide } from './divide';
-export { default as increment } from './increment';
-export { default as modulo } from './modulo';
-export { default as multiply } from './multiply';
-export { default as percentage } from './percentage';
-export { default as power } from './power';
-export { default as subtract } from './subtract';
+export { add } from './add';
+export { decrement } from './decrement';
+export { divide } from './divide';
+export { increment } from './increment';
+export { modulo } from './modulo';
+export { multiply } from './multiply';
+export { percentage } from './percentage';
+export { power } from './power';
+export { subtract } from './subtract';

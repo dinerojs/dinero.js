@@ -5,8 +5,6 @@
  *
  * @returns Whether the number is half.
  */
-function isHalf(value: number) {
+export function isHalf(value: number) {
   return Math.abs(value) % 1 === 0.5;
 }
-
-export default isHalf;

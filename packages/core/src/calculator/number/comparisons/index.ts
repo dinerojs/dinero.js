@@ -1,2 +1,2 @@
-export { default as compare } from './compare';
-export { default as isOfType } from './isOfType';
+export { compare } from './compare';
+export { isOfType } from './isOfType';

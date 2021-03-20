@@ -5,8 +5,6 @@
  *
  * @returns Whether the value is a number and integer.
  */
-function isOfType(value: number) {
+export function isOfType(value: number) {
   return Number.isInteger(value);
 }
-
-export default isOfType;

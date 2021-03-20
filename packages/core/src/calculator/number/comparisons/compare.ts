@@ -8,7 +8,7 @@ import { ComparisonOperator, BinaryOperation } from '../../types';
  *
  * @returns Whether the two numbers are equal, or whether the first one is greater or less than the other.
  */
-const compare: BinaryOperation<number, ComparisonOperator> = (a, b) => {
+export const compare: BinaryOperation<number, ComparisonOperator> = (a, b) => {
   if (a < b) {
     return ComparisonOperator.LT;
   }
@@ -17,5 +17,3 @@ const compare: BinaryOperation<number, ComparisonOperator> = (a, b) => {
   }
   return ComparisonOperator.EQ;
 };
-
-export default compare;

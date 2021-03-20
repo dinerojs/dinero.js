@@ -7,8 +7,6 @@ import { UnaryOperation } from '../../types';
  *
  * @returns The decremented number.
  */
-const decrement: UnaryOperation<number> = (value) => {
+export const decrement: UnaryOperation<number> = (value) => {
   return value - 1;
 };
-
-export default decrement;

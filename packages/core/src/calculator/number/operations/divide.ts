@@ -8,8 +8,6 @@ import { BinaryOperation } from '../../types';
  *
  * @returns The quotient of the two numbers.
  */
-const divide: BinaryOperation<number> = (dividend, divisor) => {
+export const divide: BinaryOperation<number> = (dividend, divisor) => {
   return dividend / divisor;
 };
-
-export default divide;

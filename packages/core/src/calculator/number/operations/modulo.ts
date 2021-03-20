@@ -8,8 +8,6 @@ import { BinaryOperation } from '../../types';
  *
  * @returns The remainder of the two numbers.
  */
-const modulo: BinaryOperation<number> = (dividend, divisor) => {
+export const modulo: BinaryOperation<number> = (dividend, divisor) => {
   return dividend % divisor;
 };
-
-export default modulo;

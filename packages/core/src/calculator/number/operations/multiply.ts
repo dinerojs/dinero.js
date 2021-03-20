@@ -25,10 +25,8 @@ const multiplyFloats: BinaryOperation<number> = (multiplier, multiplicand) => {
  *
  * @returns The product of the two numbers.
  */
-const multiply: BinaryOperation<number> = (multiplier, multiplicand) => {
+export const multiply: BinaryOperation<number> = (multiplier, multiplicand) => {
   return isFloat(multiplier) || isFloat(multiplicand)
     ? multiplyFloats(multiplier, multiplicand)
     : multiplier * multiplicand;
 };
-
-export default multiply;

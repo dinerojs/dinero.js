@@ -8,8 +8,6 @@ import { BinaryOperation } from '../../types';
  *
  * @returns The sum of the two numbers.
  */
-const add: BinaryOperation<number> = (augend, addend) => {
+export const add: BinaryOperation<number> = (augend, addend) => {
   return augend + addend;
 };
-
-export default add;

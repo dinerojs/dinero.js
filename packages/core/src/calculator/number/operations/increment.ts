@@ -7,8 +7,6 @@ import { UnaryOperation } from '../../types';
  *
  * @returns The incremented number.
  */
-const increment: UnaryOperation<number> = (value) => {
+export const increment: UnaryOperation<number> = (value) => {
   return value + 1;
 };
-
-export default increment;

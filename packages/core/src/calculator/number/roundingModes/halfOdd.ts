@@ -8,7 +8,7 @@ import { isEven, isHalf } from '../helpers';
  *
  * @returns The rounded number.
  */
-const halfOdd: RoundingMode<number> = (value) => {
+export const halfOdd: RoundingMode<number> = (value) => {
   const rounded = Math.round(value);
 
   if (!isHalf(value)) {
@@ -17,5 +17,3 @@ const halfOdd: RoundingMode<number> = (value) => {
 
   return isEven(rounded) ? rounded - 1 : rounded;
 };
-
-export default halfOdd;

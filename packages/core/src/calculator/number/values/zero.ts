@@ -3,8 +3,6 @@
  *
  * @returns Zero as a number.
  */
-function zero() {
+export function zero() {
   return 0;
 }
-
-export default zero;

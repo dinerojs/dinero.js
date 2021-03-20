@@ -9,8 +9,6 @@ import { BinaryOperation } from '../../types';
  *
  * @returns The percentage of the number.
  */
-const percentage: BinaryOperation<number> = (value, share) => {
+export const percentage: BinaryOperation<number> = (value, share) => {
   return divide(multiply(value, share), 100);
 };
-
-export default percentage;

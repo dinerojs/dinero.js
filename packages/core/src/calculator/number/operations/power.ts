@@ -8,8 +8,6 @@ import { BinaryOperation } from '../../types';
  *
  * @returns The base to the power of the exponent.
  */
-const power: BinaryOperation<number> = (base, exponent) => {
+export const power: BinaryOperation<number> = (base, exponent) => {
   return base ** exponent;
 };
-
-export default power;

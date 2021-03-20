@@ -5,10 +5,8 @@
  *
  * @returns Whether the number is a float.
  */
-function isFloat(value: number) {
+export function isFloat(value: number) {
   return (
     !Number.isInteger(value) && !Number.isNaN(value) && Number.isFinite(value)
   );
 }
-
-export default isFloat;
