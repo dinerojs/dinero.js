@@ -1,4 +1,4 @@
-type Currency<TAmount> = {
+export type Currency<TAmount> = {
   /**
    * The unique code of the currency.
    */
@@ -12,5 +12,3 @@ type Currency<TAmount> = {
    */
   readonly exponent: TAmount;
 };
-
-export default Currency;
