@@ -1,1 +1,2 @@
-export { default as ChainableDinero } from './ChainableDinero';
+export { PureDinero } from './PureDinero';
+export { PartialPureDinero } from './PartialPureDinero';

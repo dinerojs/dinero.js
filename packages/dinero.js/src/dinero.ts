@@ -1,6 +1,27 @@
-import calculator from './calculator';
-import createDinero from './createDinero';
+import { DineroOptions } from '@dinero.js/core';
+import { PureDinero } from '..';
 
-const dinero = createDinero({ calculator });
-
-export default dinero;
+/**
+ * Create a pure Dinero object.
+ *
+ * @param options.amount The amount in minor currency units.
+ * @param options.currency The currency.
+ * @param options.scale The number of decimal places to represent.
+ *
+ * @returns The created pure Dinero object.
+ */
+export function dinero<TAmount>({
+  amount,
+  currency,
+  scale = currency.exponent,
+}: DineroOptions<TAmount>): PureDinero<TAmount> {
+  return {
+    toJSON() {
+      return {
+        amount,
+        currency,
+        scale,
+      };
+    },
+  };
+}

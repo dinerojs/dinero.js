@@ -1,3 +1,3 @@
-import { PureDinero } from '@dinero.js/pure';
+import { BaseDinero } from '../../types';
 
-export type Formatter<TAmount> = (pureDinero: PureDinero<TAmount>) => string;
+export type Formatter<TAmount> = (dineroObject: BaseDinero<TAmount>) => string;
