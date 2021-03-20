@@ -1,7 +1,5 @@
-import assert from '../helpers/assert';
+import { assert } from '../helpers';
 
-function assertValidAmount(condition: boolean) {
+export function assertValidAmount(condition: boolean) {
   return assert(condition, RangeError, 'Amount is invalid.');
 }
-
-export default assertValidAmount;

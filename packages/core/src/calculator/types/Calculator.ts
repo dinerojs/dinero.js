@@ -8,7 +8,7 @@ export enum ComparisonOperator {
   GT,
 }
 
-type Calculator<TAmount> = {
+export type Calculator<TAmount> = {
   readonly add: BinaryOperation<TAmount>;
   readonly compare: BinaryOperation<TAmount, ComparisonOperator>;
   readonly decrement: UnaryOperation<TAmount>;
@@ -23,5 +23,3 @@ type Calculator<TAmount> = {
   readonly subtract: BinaryOperation<TAmount>;
   readonly zero: () => TAmount;
 };
-
-export default Calculator;

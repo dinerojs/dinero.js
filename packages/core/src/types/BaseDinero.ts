@@ -1,7 +1,5 @@
 import { DineroSnapshot } from '.';
 
-type BaseDinero<TAmount> = {
+export type BaseDinero<TAmount> = {
   readonly toJSON: () => DineroSnapshot<TAmount>;
 };
-
-export default BaseDinero;

@@ -1,4 +1,4 @@
-import createAssert from '../createAssert';
+import { createAssert } from '../createAssert';
 
 const errorMessage = 'Some error message.';
 

@@ -1,8 +1,8 @@
 /* eslint-disable functional/no-expression-statement, functional/immutable-data */
-function createAssert(isProduction: boolean) {
+export function createAssert(isProduction: boolean) {
   const prefix = 'Assertion failed';
 
-  function assert(condition: boolean, ErrorType = Error, message = '') {
+  return function assert(condition: boolean, ErrorType = Error, message = '') {
     if (condition) {
       return undefined;
     }
@@ -16,8 +16,4 @@ function createAssert(isProduction: boolean) {
 
     return err;
   }
-
-  return assert;
 }
-
-export default createAssert;

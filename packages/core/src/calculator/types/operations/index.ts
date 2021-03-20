@@ -1,2 +1,2 @@
-export { default as BinaryOperation } from './BinaryOperation';
-export { default as UnaryOperation } from './UnaryOperation';
+export { BinaryOperation } from './BinaryOperation';
+export { UnaryOperation } from './UnaryOperation';

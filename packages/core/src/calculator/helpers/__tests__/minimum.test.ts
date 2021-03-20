@@ -1,5 +1,5 @@
 import { compare } from '../../number';
-import minimum from '../minimum';
+import { minimum } from '../minimum';
 
 const minimumFn = minimum({ compare });
 

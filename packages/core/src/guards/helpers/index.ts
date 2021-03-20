@@ -1,1 +1,1 @@
-export { default as createAssert } from './createAssert';
+export { assert } from './assert';

@@ -1,7 +1,5 @@
-import assert from '../helpers/assert';
+import { assert } from '../helpers';
 
-function assertValidScale(condition: boolean) {
+export function assertValidScale(condition: boolean) {
   return assert(condition, RangeError, 'Scale is invalid.');
 }
-
-export default assertValidScale;

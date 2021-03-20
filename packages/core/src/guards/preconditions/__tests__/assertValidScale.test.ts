@@ -1,4 +1,4 @@
-import assertValidScale from '../assertValidScale';
+import { assertValidScale } from '../assertValidScale';
 
 describe('assertValidScale', () => {
   it("doesn't throw when the condition is met", () => {

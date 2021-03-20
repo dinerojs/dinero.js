@@ -8,7 +8,7 @@ import { equal, lessThan } from '.';
  *
  * @returns The lessThanOrEqual function.
  */
-function lessThanOrEqual<TAmount>(
+export function lessThanOrEqual<TAmount>(
   calculator: Pick<Calculator<TAmount>, 'compare'>
 ) {
   return (subject: TAmount, comparator: TAmount) => {
@@ -18,5 +18,3 @@ function lessThanOrEqual<TAmount>(
     );
   };
 }
-
-export default lessThanOrEqual;

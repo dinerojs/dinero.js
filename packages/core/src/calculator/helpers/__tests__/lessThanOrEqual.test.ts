@@ -1,5 +1,5 @@
 import { compare } from '../../number';
-import lessThanOrEqual from '../lessThanOrEqual';
+import { lessThanOrEqual } from '../lessThanOrEqual';
 
 const lessThanOrEqualFn = lessThanOrEqual({ compare });
 

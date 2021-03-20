@@ -1,5 +1,5 @@
 import { compare } from '../../number';
-import maximum from '../maximum';
+import { maximum } from '../maximum';
 
 const maximumFn = maximum({ compare });
 

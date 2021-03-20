@@ -1,3 +1,1 @@
-type RoundingMode<TAmount> = (n: TAmount) => TAmount;
-
-export default RoundingMode;
+export type RoundingMode<TAmount> = (n: TAmount) => TAmount;

@@ -1,4 +1,4 @@
-import assertSameCurrency from '../assertSameCurrency';
+import { assertSameCurrency } from '../assertSameCurrency';
 
 describe('assertSameCurrency', () => {
   it("doesn't throw when the condition is met", () => {

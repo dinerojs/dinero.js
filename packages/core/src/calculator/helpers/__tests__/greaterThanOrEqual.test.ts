@@ -1,5 +1,5 @@
 import { compare } from '../../number';
-import greaterThanOrEqual from '../greaterThanOrEqual';
+import { greaterThanOrEqual } from '../greaterThanOrEqual';
 
 const greaterThanOrEqualFn = greaterThanOrEqual({ compare });
 

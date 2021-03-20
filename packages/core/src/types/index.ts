@@ -1,5 +1,5 @@
-export { default as BaseDinero } from './BaseDinero';
-export { default as DineroFactory } from './DineroFactory';
-export { default as DineroOptions } from './DineroOptions';
-export { default as DineroSnapshot } from './DineroSnapshot';
-export { default as Rates } from './Rates';
+export { BaseDinero } from './BaseDinero';
+export { DineroFactory } from './DineroFactory';
+export { DineroOptions } from './DineroOptions';
+export { DineroSnapshot } from './DineroSnapshot';
+export { Rates } from './Rates';

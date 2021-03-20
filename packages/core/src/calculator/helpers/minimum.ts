@@ -8,7 +8,7 @@ import { greaterThan } from '.';
  *
  * @returns The minimum function.
  */
-function maximum<TAmount>(calculator: Pick<Calculator<TAmount>, 'compare'>) {
+export function minimum<TAmount>(calculator: Pick<Calculator<TAmount>, 'compare'>) {
   const greaterThanFn = greaterThan(calculator);
 
   return (values: readonly TAmount[]) => {
@@ -17,5 +17,3 @@ function maximum<TAmount>(calculator: Pick<Calculator<TAmount>, 'compare'>) {
     );
   };
 }
-
-export default maximum;

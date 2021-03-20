@@ -7,12 +7,10 @@ import { Calculator, ComparisonOperator } from '..';
  *
  * @returns The greaterThan function.
  */
-function greaterThan<TAmount>(
+export function greaterThan<TAmount>(
   calculator: Pick<Calculator<TAmount>, 'compare'>
 ) {
   return (subject: TAmount, comparator: TAmount) => {
     return calculator.compare(subject, comparator) === ComparisonOperator.GT;
   };
 }
-
-export default greaterThan;

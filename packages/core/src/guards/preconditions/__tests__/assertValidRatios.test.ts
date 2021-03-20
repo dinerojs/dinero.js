@@ -1,4 +1,4 @@
-import assertValidRatios from '../assertValidRatios';
+import { assertValidRatios } from '../assertValidRatios';
 
 describe('assertValidRatios', () => {
   it("doesn't throw when the condition is met", () => {

@@ -1,5 +1,5 @@
 import { compare } from '../../number';
-import equal from '../equal';
+import { equal } from '../equal';
 
 const equalFn = equal({ compare });
 

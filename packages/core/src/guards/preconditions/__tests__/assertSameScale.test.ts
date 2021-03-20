@@ -1,4 +1,4 @@
-import assertSameScale from '../assertSameScale';
+import { assertSameScale } from '../assertSameScale';
 
 describe('assertSameScale', () => {
   it("doesn't throw when the condition is met", () => {

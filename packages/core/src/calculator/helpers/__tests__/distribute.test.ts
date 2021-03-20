@@ -8,7 +8,7 @@ import {
   zero,
   down,
 } from '../../number';
-import distribute from '../distribute';
+import { distribute } from '../distribute';
 
 const distributeFn = distribute(
   { add, compare, divide, increment, multiply, subtract, zero },

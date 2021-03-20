@@ -1,7 +1,5 @@
-import assert from '../helpers/assert';
+import { assert } from '../helpers';
 
-function assertValidRatios(condition: boolean) {
+export function assertValidRatios(condition: boolean) {
   return assert(condition, RangeError, 'Ratios are invalid.');
 }
-
-export default assertValidRatios;

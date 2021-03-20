@@ -10,7 +10,7 @@ import { equal } from '.';
  *
  * @returns The distribute function.
  */
-function distribute<TAmount>(
+export function distribute<TAmount>(
   calculator: Pick<
     Calculator<TAmount>,
     | 'add'
@@ -59,5 +59,3 @@ function distribute<TAmount>(
     return shares;
   };
 }
-
-export default distribute;

@@ -1,8 +1,8 @@
 /* eslint-disable functional/no-throw-statement, valid-jsdoc */
-import { createAssert } from '.';
+import { createAssert } from './createAssert';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const assertUtility = createAssert(isProduction);
+const _assert = createAssert(isProduction);
 
 /**
  * Assert a condition.
@@ -12,16 +12,14 @@ const assertUtility = createAssert(isProduction);
  *
  * @throws If the condition isn't met.
  */
-function assert<TError extends ErrorConstructor>(
+export function assert<TError extends ErrorConstructor>(
   condition: boolean,
   ErrorType?: TError,
   message?: string
 ) {
-  const err = assertUtility(condition, ErrorType, message);
+  const err = _assert(condition, ErrorType, message);
 
   if (err) {
     throw err;
   }
 }
-
-export default assert;
