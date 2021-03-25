@@ -1,9 +1,9 @@
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { normalizeScale } from '.';
 import { equal } from '../calculator/helpers';
 import { Dependencies } from './types';
 
-export function haveSameAmount<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function haveSameAmount<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<

@@ -1,11 +1,11 @@
 /* eslint-disable functional/no-expression-statement */
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { lessThan as lt } from '../calculator/helpers';
 import { haveSameCurrency, normalizeScale } from '.';
 import { Dependencies } from './types';
 import { assertSameCurrency } from '../guards';
 
-export function unsafeLessThan<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function unsafeLessThan<TAmount, TDinero extends Dinero<TAmount>>({
   calculator,
 }: Dependencies<TAmount, TDinero, 'compare'>) {
   const lessThanFn = lt(calculator);
@@ -23,7 +23,7 @@ export function unsafeLessThan<TAmount, TDinero extends BaseDinero<TAmount>>({
   };
 }
 
-export function safeLessThan<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function safeLessThan<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<

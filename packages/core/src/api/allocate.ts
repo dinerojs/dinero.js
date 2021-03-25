@@ -1,5 +1,5 @@
 /* eslint-disable functional/no-expression-statement */
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import {
   distribute,
   greaterThanOrEqual,
@@ -8,7 +8,7 @@ import {
 import { Dependencies } from './types';
 import { assertValidRatios } from '../guards';
 
-export function unsafeAllocate<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function unsafeAllocate<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<
@@ -37,7 +37,7 @@ export function unsafeAllocate<TAmount, TDinero extends BaseDinero<TAmount>>({
   };
 }
 
-export function safeAllocate<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function safeAllocate<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<

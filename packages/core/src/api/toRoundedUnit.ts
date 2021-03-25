@@ -1,9 +1,9 @@
 import { RoundingMode } from '../calculator';
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { toUnit } from '.';
 import { Dependencies } from './types';
 
-export function toRoundedUnit<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function toRoundedUnit<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<TAmount, TDinero, 'multiply' | 'divide' | 'power' | 'round'>) {

@@ -1,7 +1,7 @@
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { Dependencies } from './types';
 
-export function percentage<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function percentage<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<TAmount, TDinero, 'percentage'>) {

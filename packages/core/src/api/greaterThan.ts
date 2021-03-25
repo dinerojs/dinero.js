@@ -1,5 +1,5 @@
 /* eslint-disable functional/no-expression-statement */
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { greaterThan as gt } from '../calculator/helpers';
 import { haveSameCurrency, normalizeScale } from '.';
 import { assertSameCurrency } from '../guards';
@@ -7,7 +7,7 @@ import { Dependencies } from './types';
 
 export function unsafeGreaterThan<
   TAmount,
-  TDinero extends BaseDinero<TAmount>
+  TDinero extends Dinero<TAmount>
 >({ calculator }: Dependencies<TAmount, TDinero, 'compare'>) {
   const greaterThanFn = gt(calculator);
 
@@ -24,7 +24,7 @@ export function unsafeGreaterThan<
   };
 }
 
-export function safeGreaterThan<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function safeGreaterThan<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<

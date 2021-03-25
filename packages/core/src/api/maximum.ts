@@ -1,8 +1,8 @@
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { maximum as max } from '../calculator/helpers';
 import { Dependencies } from './types';
 
-export function maximum<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function maximum<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<TAmount, TDinero, 'compare'>) {

@@ -1,6 +1,6 @@
 import { Currency } from '@dinero.js/currencies';
 import { RoundingMode } from '../calculator';
-import { BaseDinero, Rates } from '../types';
+import { Dinero, Rates } from '../types';
 import { Dependencies } from './types';
 
 type ConvertOptions<TAmount> = {
@@ -9,7 +9,7 @@ type ConvertOptions<TAmount> = {
   readonly preserveScale?: boolean;
 };
 
-export function convert<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function convert<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<TAmount, TDinero, 'multiply' | 'round'>) {

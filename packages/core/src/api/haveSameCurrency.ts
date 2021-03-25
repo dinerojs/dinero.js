@@ -1,5 +1,5 @@
 import { Currency } from '@dinero.js/currencies';
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 
 function currencyEqual<TAmount>(
   subjectCurrency: Currency<TAmount>,
@@ -12,7 +12,7 @@ function currencyEqual<TAmount>(
   );
 }
 
-export function haveSameCurrency<TAmount, TDinero extends BaseDinero<TAmount>>(
+export function haveSameCurrency<TAmount, TDinero extends Dinero<TAmount>>(
   dineroObjects: readonly TDinero[]
 ) {
   const [firstDinero, ...otherDineros] = dineroObjects;

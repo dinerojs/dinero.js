@@ -1,9 +1,9 @@
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { Transformer, FormatOptions } from '../formatter';
 import { toRoundedUnit } from './toRoundedUnit';
 import { Dependencies } from './types';
 
-export function toFormat<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function toFormat<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<TAmount, TDinero, 'multiply' | 'divide' | 'power' | 'round'>) {

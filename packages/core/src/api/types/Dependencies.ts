@@ -1,5 +1,5 @@
 import { Calculator } from '../../calculator';
-import { BaseDinero, DineroFactory } from '../../types';
+import { Dinero, DineroFactory } from '../../types';
 
 export type CalculatorDependency<
   TAmount,
@@ -8,7 +8,7 @@ export type CalculatorDependency<
 
 export type Dependencies<
   TAmount,
-  TDinero extends BaseDinero<TAmount>,
+  TDinero extends Dinero<TAmount>,
   TCalculatorMethods extends keyof Calculator<TAmount>
 > = {
   readonly factory: DineroFactory<TAmount, TDinero>;

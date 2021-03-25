@@ -1,8 +1,8 @@
 import { RoundingMode } from '../calculator';
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { Dependencies } from './types';
 
-export function multiply<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function multiply<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<TAmount, TDinero, 'multiply' | 'round'>) {

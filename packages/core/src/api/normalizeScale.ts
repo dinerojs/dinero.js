@@ -1,9 +1,9 @@
 import { convertScale } from '.';
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { maximum } from '../calculator/helpers';
 import { Dependencies } from './types';
 
-export function normalizeScale<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function normalizeScale<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<

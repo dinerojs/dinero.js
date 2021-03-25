@@ -1,4 +1,4 @@
-export * from './BaseDinero';
+export * from './Dinero';
 export * from './DineroFactory';
 export * from './DineroOptions';
 export * from './DineroSnapshot';

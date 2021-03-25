@@ -1,4 +1,4 @@
-import { BaseDinero, Calculator } from '@dinero.js/core';
+import { Dinero, Calculator } from '@dinero.js/core';
 import {
   Dependencies,
   CalculatorDependency,
@@ -15,7 +15,7 @@ import { dinero } from '../dinero';
  */
 export function createFunction<
   TAmount,
-  TDinero extends BaseDinero<TAmount>,
+  TDinero extends Dinero<TAmount>,
   TCalculatorMethods extends keyof Calculator<TAmount>,
   TReturnType
 >(

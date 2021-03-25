@@ -1,3 +1,3 @@
-import { BaseDinero } from '../../types';
+import { Dinero } from '../../types';
 
-export type Formatter<TAmount> = (dineroObject: BaseDinero<TAmount>) => string;
+export type Formatter<TAmount> = (dineroObject: Dinero<TAmount>) => string;

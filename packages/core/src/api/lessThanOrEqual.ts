@@ -1,5 +1,5 @@
 /* eslint-disable functional/no-expression-statement */
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { lessThanOrEqual as lte } from '../calculator/helpers';
 import { haveSameCurrency, normalizeScale } from '.';
 import { assertSameCurrency } from '../guards';
@@ -7,7 +7,7 @@ import { Dependencies } from './types';
 
 export function unsafeLessThanOrEqual<
   TAmount,
-  TDinero extends BaseDinero<TAmount>
+  TDinero extends Dinero<TAmount>
 >({ calculator }: Dependencies<TAmount, TDinero, 'compare'>) {
   const lessThanOrEqualFn = lte(calculator);
 
@@ -26,7 +26,7 @@ export function unsafeLessThanOrEqual<
 
 export function safeLessThanOrEqual<
   TAmount,
-  TDinero extends BaseDinero<TAmount>
+  TDinero extends Dinero<TAmount>
 >({
   factory,
   calculator,

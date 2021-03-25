@@ -1,10 +1,10 @@
 /* eslint-disable functional/no-expression-statement */
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { haveSameCurrency, normalizeScale } from '.';
 import { assertSameCurrency } from '../guards';
 import { Dependencies } from './types';
 
-export function unsafeSubtract<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function unsafeSubtract<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<TAmount, TDinero, 'subtract'>) {
@@ -22,7 +22,7 @@ export function unsafeSubtract<TAmount, TDinero extends BaseDinero<TAmount>>({
   };
 }
 
-export function safeSubtract<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function safeSubtract<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<

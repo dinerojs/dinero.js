@@ -1,7 +1,7 @@
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { Dependencies } from './types';
 
-export function toUnit<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function toUnit<TAmount, TDinero extends Dinero<TAmount>>({
   calculator,
 }: Dependencies<TAmount, TDinero, 'divide' | 'power'>) {
   return (dineroObject: TDinero) => {

@@ -1,8 +1,8 @@
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { minimum as min } from '../calculator/helpers';
 import { Dependencies } from './types';
 
-export function minimum<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function minimum<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<TAmount, TDinero, 'compare'>) {

@@ -1,8 +1,8 @@
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { equal } from '../calculator/helpers';
 import { Dependencies } from './types';
 
-export function hasSubUnits<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function hasSubUnits<TAmount, TDinero extends Dinero<TAmount>>({
   calculator,
 }: Dependencies<TAmount, TDinero, 'compare' | 'modulo' | 'power' | 'zero'>) {
   const equalFn = equal(calculator);

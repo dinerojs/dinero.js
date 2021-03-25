@@ -1,3 +1,3 @@
-import { BaseDinero } from '@dinero.js/core';
+import { Dinero } from '@dinero.js/core';
 
-export type PureDinero<TAmount> = BaseDinero<TAmount>;
+export type PureDinero<TAmount> = Dinero<TAmount>;

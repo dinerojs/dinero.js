@@ -1,8 +1,8 @@
-import { BaseDinero } from '../types';
+import { Dinero } from '../types';
 import { haveSameAmount, haveSameCurrency } from '.';
 import { Dependencies } from './types';
 
-export function equal<TAmount, TDinero extends BaseDinero<TAmount>>({
+export function equal<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<
