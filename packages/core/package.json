@@ -19,5 +19,5 @@
     "name": "Sarah Dayan",
     "url": "https://sarahdayan.dev"
   },
-  "main": "index.js"
+  "main": "index.ts"
 }

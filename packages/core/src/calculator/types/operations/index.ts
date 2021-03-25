@@ -1,2 +1,2 @@
-export { BinaryOperation } from './BinaryOperation';
-export { UnaryOperation } from './UnaryOperation';
+export * from './BinaryOperation';
+export * from './UnaryOperation';

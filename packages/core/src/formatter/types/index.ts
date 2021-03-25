@@ -1,3 +1,3 @@
-export { FormatOptions } from './FormatOptions';
-export { Formatter } from './Formatter';
-export { Transformer, TransformerOptions } from './Transformer';
+export * from './FormatOptions';
+export * from './Formatter';
+export * from './Transformer';

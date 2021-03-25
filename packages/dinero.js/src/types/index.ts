@@ -1,2 +1,2 @@
-export { PureDinero } from './PureDinero';
-export { PartialPureDinero } from './PartialPureDinero';
+export * from './PureDinero';
+export * from './PartialPureDinero';
