@@ -4,6 +4,8 @@ import { add, multiply } from 'dinero.js';
 
 import { dineroUSD, format } from './utils';
 
+const zeroDollars = dineroUSD(0);
+
 const shippingOptions = {
   standard: {
     label: 'Standard',
@@ -19,24 +21,19 @@ const shippingOptions = {
   },
 };
 
-const freeShippingMonthlyPrice = dineroUSD(999);
-const freeShippingAnnualPrice = multiply(freeShippingMonthlyPrice, 12);
-
 function App({ initialItems }) {
   const [items, setItems] = useState(initialItems);
   const [shipping, setShipping] = useState('standard');
-  const [freeShipping, setFreeShipping] = useState(false);
 
   const { count, subtotal } = items.reduce(
     ({ count, subtotal }, { amount, price }) => ({
       count: count + amount,
       subtotal: add(subtotal, multiply(price, amount)),
     }),
-    { count: 0, subtotal: dineroUSD(0) }
+    { count: 0, subtotal: zeroDollars }
   );
-  const shippingAmount = freeShipping
-    ? freeShippingAnnualPrice
-    : shippingOptions[shipping].price;
+  const hasItems = items.length !== 0;
+  const shippingAmount = hasItems ? shippingOptions[shipping].price : zeroDollars;
   const total = add(subtotal, shippingAmount);
 
   function setItemByName(name, newValue) {
@@ -130,13 +127,13 @@ function App({ initialItems }) {
               <label className="inline-block mb-3 text-sm font-medium uppercase">
                 Shipping
               </label>
-              <div className={cx({ 'cursor-not-allowed': freeShipping || items.length === 0 })}>
+              <div className={cx({ 'cursor-not-allowed': !hasItems })}>
                 <select
                   value={shipping}
                   onChange={(event) => setShipping(event.target.value)}
                   className={cx(
                     'block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50',
-                    { 'opacity-30 pointer-events-none': freeShipping || items.length === 0 }
+                    { 'opacity-30 pointer-events-none': !hasItems }
                   )}
                 >
                   {Object.keys(shippingOptions).map((key) => {
@@ -150,19 +147,6 @@ function App({ initialItems }) {
                   })}
                 </select>
               </div>
-            </div>
-            <div>
-              <label className="inline-flex items-center text-sm cursor-pointer">
-                <input
-                  type="checkbox"
-                  className="text-blue-600 border-gray-300 rounded shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                  checked={freeShipping}
-                  onChange={() => setFreeShipping((isChecked) => !isChecked)}
-                />
-                <span className="ml-2">
-                  Free shipping — {format(freeShippingMonthlyPrice)}/month (billed annually)
-                </span>
-              </label>
             </div>
           </div>
           <div className="mt-8 border-t">
