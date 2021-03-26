@@ -243,6 +243,13 @@ describe('Dinero', () => {
           .toObject()
       ).toMatchObject({ amount: 5000 })
     })
+    test('should respect roundingMode', () => {
+      expect(
+        Dinero({ amount: 57 })
+          .percentage(50, "HALF_ODD")
+          .toObject()
+      ).toMatchObject({ amount: 29 })
+    })
     test('should throw when percentage is negative', () => {
       expect(() => Dinero({ amount: 500 }).percentage(-1)).toThrow()
     })
