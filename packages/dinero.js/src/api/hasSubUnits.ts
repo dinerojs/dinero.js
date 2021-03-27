@@ -1,5 +1,5 @@
 import { hasSubUnits as coreHasSubUnits } from '@dinero.js/core';
-import { compare, modulo, power, zero } from '@dinero.js/core/calculator';
+import { compare, modulo, power, zero } from '@dinero.js/calculator/number';
 import { createFunction } from '../helpers';
 
 /**

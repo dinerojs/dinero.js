@@ -1,4 +1,4 @@
-import { RoundingMode } from '../calculator';
+import { RoundingMode } from '@dinero.js/calculator';
 import { Dinero } from '../types';
 import { toUnit } from '.';
 import { Dependencies } from './types';

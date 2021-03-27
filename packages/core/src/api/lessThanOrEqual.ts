@@ -1,6 +1,6 @@
 /* eslint-disable functional/no-expression-statement */
 import { Dinero } from '../types';
-import { lessThanOrEqual as lte } from '../calculator/helpers';
+import { lessThanOrEqual as lte } from '../utils';
 import { haveSameCurrency, normalizeScale } from '.';
 import { assertSameCurrency } from '../guards';
 import { Dependencies } from './types';

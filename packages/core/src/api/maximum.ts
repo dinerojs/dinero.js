@@ -1,5 +1,5 @@
 import { Dinero } from '../types';
-import { maximum as max } from '../calculator/helpers';
+import { maximum as max } from '../utils';
 import { Dependencies } from './types';
 
 export function maximum<TAmount, TDinero extends Dinero<TAmount>>({

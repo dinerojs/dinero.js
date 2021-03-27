@@ -9,18 +9,17 @@ describe('multiply', () => {
 
     expect(amount).toBe(1600);
   });
-  it('rounds down the multiplied amount', () => {
+  it('converts the multiplied amount to the highest scale', () => {
     const d = dinero({ amount: 400, currency: USD });
 
-    const { amount } = toSnapshot(multiply(d, 2.001));
+    const multiplied = multiply(d, 2001, {
+      scale: 3,
+    });
 
-    expect(amount).toBe(800);
-  });
-  it('rounds up the multiplied amount', () => {
-    const d = dinero({ amount: 400, currency: USD });
-
-    const { amount } = toSnapshot(multiply(d, 2.002));
-
-    expect(amount).toBe(801);
+    expect(toSnapshot(multiplied)).toEqual({
+      amount: 8004,
+      scale: 3,
+      currency: USD,
+    });
   });
 });

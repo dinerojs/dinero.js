@@ -10,7 +10,7 @@ import {
   halfEven,
   subtract,
   zero,
-} from '@dinero.js/core/calculator';
+} from '@dinero.js/calculator/number';
 import { createFunction } from '../helpers';
 
 /**

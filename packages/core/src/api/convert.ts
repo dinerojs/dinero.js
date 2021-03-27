@@ -1,5 +1,5 @@
 import { Currency } from '@dinero.js/currencies';
-import { RoundingMode } from '../calculator';
+import { RoundingMode } from '@dinero.js/calculator';
 import { Dinero, Rates } from '../types';
 import { Dependencies } from './types';
 

@@ -1,10 +1,6 @@
 /* eslint-disable functional/no-expression-statement */
 import { Dinero } from '../types';
-import {
-  distribute,
-  greaterThanOrEqual,
-  greaterThan,
-} from '../calculator/helpers';
+import { distribute, greaterThanOrEqual, greaterThan } from '../utils';
 import { Dependencies } from './types';
 import { assertValidRatios } from '../guards';
 

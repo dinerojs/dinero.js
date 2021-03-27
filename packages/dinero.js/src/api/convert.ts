@@ -1,5 +1,5 @@
 import { convert as coreConvert } from '@dinero.js/core';
-import { multiply, halfEven } from '@dinero.js/core/calculator';
+import { multiply, halfEven } from '@dinero.js/calculator/number';
 import { createFunction } from '../helpers';
 
 /**

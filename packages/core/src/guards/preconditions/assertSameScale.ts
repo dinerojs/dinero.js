@@ -1,4 +1,4 @@
-import { assert } from '../helpers/assert';
+import { assert } from '../utils/assert';
 
 export function assertSameScale(condition: boolean) {
   return assert(

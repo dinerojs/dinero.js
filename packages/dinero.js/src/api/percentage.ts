@@ -1,5 +1,5 @@
 import { percentage as corePercentage } from '@dinero.js/core';
-import { percentage as percentageNumbers } from '@dinero.js/core/calculator';
+import { percentage as percentageNumbers } from '@dinero.js/calculator/number';
 import { createFunction } from '../helpers';
 
 /**

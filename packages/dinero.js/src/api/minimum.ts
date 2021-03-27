@@ -1,5 +1,5 @@
 import { minimum as coreMinimum } from '@dinero.js/core';
-import { compare } from '@dinero.js/core/calculator';
+import { compare } from '@dinero.js/calculator/number';
 import { createFunction } from '../helpers';
 
 /**

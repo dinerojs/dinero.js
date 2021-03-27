@@ -1,6 +1,6 @@
 import { Dinero } from '../types';
 import { normalizeScale } from '.';
-import { equal } from '../calculator/helpers';
+import { equal } from '../utils';
 import { Dependencies } from './types';
 
 export function haveSameAmount<TAmount, TDinero extends Dinero<TAmount>>({

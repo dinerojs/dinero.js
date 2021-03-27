@@ -1,4 +1,4 @@
-import { assert } from '../helpers/assert';
+import { assert } from '../utils/assert';
 
 export function assertSameCurrency(condition: boolean) {
   return assert(

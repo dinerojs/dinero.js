@@ -1,4 +1,4 @@
-import { Calculator } from '../../calculator';
+import { Calculator } from '@dinero.js/calculator';
 import { Dinero, DineroFactory } from '../../types';
 
 export type CalculatorDependency<

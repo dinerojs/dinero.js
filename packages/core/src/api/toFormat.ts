@@ -1,5 +1,4 @@
-import { Dinero } from '../types';
-import { Transformer, FormatOptions } from '../formatter';
+import { Dinero, Transformer, FormatOptions } from '../types';
 import { toRoundedUnit } from './toRoundedUnit';
 import { Dependencies } from './types';
 

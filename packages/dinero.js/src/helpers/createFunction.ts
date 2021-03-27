@@ -1,4 +1,5 @@
-import { Dinero, Calculator } from '@dinero.js/core';
+import { Calculator } from '@dinero.js/calculator';
+import { Dinero } from '@dinero.js/core';
 import {
   Dependencies,
   CalculatorDependency,

@@ -1,5 +1,5 @@
 import { Dinero } from '../types';
-import { greaterThanOrEqual } from '../calculator/helpers';
+import { greaterThanOrEqual } from '../utils';
 import { Dependencies } from './types';
 
 export function isPositive<TAmount, TDinero extends Dinero<TAmount>>({

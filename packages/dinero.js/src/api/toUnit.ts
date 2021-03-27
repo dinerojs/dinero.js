@@ -1,5 +1,5 @@
 import { toUnit as coreToUnit } from '@dinero.js/core';
-import { divide, power } from '@dinero.js/core/calculator';
+import { divide, power } from '@dinero.js/calculator/number';
 import { createFunction } from '../helpers';
 
 /**

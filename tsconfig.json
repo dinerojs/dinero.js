@@ -24,9 +24,6 @@
     ],
     "rootDir": ".",
     "paths": {
-      "@dinero.js/core/calculator": [
-        "packages/core/src/calculator/number"
-      ],
       "@dinero.js/*": [
         "packages/*"
       ]

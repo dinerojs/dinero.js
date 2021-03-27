@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "lint": "eslint . --ext .js,.ts --fix"
+    "lint": "eslint . --ext .js,.ts --fix",
+    "type-check": "tsc --project tsconfig.json --pretty --noEmit"
   },
   "devDependencies": {
     "@babel/core": "7.7.5",

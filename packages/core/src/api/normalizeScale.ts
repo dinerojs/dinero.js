@@ -1,6 +1,6 @@
 import { convertScale } from '.';
 import { Dinero } from '../types';
-import { maximum } from '../calculator/helpers';
+import { maximum } from '../utils';
 import { Dependencies } from './types';
 
 export function normalizeScale<TAmount, TDinero extends Dinero<TAmount>>({

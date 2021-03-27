@@ -1,5 +1,5 @@
 import { Dinero } from '../types';
-import { equal } from '../calculator/helpers';
+import { equal } from '../utils';
 import { Dependencies } from './types';
 
 export function hasSubUnits<TAmount, TDinero extends Dinero<TAmount>>({

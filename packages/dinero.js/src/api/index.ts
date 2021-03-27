@@ -1,7 +1,6 @@
 export { unsafeAdd, safeAdd as add } from './add';
 export { unsafeAllocate, safeAllocate as allocate } from './allocate';
 export * from './convert';
-export * from './divide';
 export * from './maximum';
 export * from './minimum';
 export * from './multiply';

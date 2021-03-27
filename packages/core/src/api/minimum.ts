@@ -1,5 +1,5 @@
 import { Dinero } from '../types';
-import { minimum as min } from '../calculator/helpers';
+import { minimum as min } from '../utils';
 import { Dependencies } from './types';
 
 export function minimum<TAmount, TDinero extends Dinero<TAmount>>({

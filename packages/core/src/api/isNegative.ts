@@ -1,5 +1,5 @@
 import { Dinero } from '../types';
-import { lessThan } from '../calculator/helpers';
+import { lessThan } from '../utils';
 import { Dependencies } from './types';
 
 export function isNegative<TAmount, TDinero extends Dinero<TAmount>>({

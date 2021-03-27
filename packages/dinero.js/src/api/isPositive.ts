@@ -1,5 +1,5 @@
 import { isPositive as coreIsPositive } from '@dinero.js/core';
-import { compare, zero } from '@dinero.js/core/calculator';
+import { compare, zero } from '@dinero.js/calculator/number';
 import { createFunction } from '../helpers';
 
 /**

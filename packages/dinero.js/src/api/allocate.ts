@@ -11,7 +11,7 @@ import {
   subtract,
   zero,
   down,
-} from '@dinero.js/core/calculator';
+} from '@dinero.js/calculator/number';
 import { createFunction } from '../helpers';
 
 const calculator = {

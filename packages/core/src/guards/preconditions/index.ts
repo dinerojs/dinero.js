@@ -1,5 +1,5 @@
-export { assertSameCurrency } from './assertSameCurrency';
-export { assertSameScale } from './assertSameScale';
-export { assertValidAmount } from './assertValidAmount';
-export { assertValidRatios } from './assertValidRatios';
-export { assertValidScale } from './assertValidScale';
+export * from './assertSameCurrency';
+export * from './assertSameScale';
+export * from './assertValidAmount';
+export * from './assertValidRatios';
+export * from './assertValidScale';

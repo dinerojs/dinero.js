@@ -3,7 +3,12 @@ import {
   Transformer,
   FormatOptions,
 } from '@dinero.js/core';
-import { multiply, divide, power, halfEven } from '@dinero.js/core/calculator';
+import {
+  multiply,
+  divide,
+  power,
+  halfEven,
+} from '@dinero.js/calculator/number';
 import { createFunction } from '../helpers';
 import { PureDinero } from '../types';
 
