@@ -36,12 +36,15 @@ export const unsafeGreaterThanOrEqual = createFunction(
  *
  * @returns Whether the pure Dinero to compare is greater than or equal the other.
  */
-export const safeGreaterThanOrEqual = createFunction(coreSafeGreaterThanOrEqual, {
-  add,
-  compare,
-  multiply,
-  power,
-  subtract,
-  round: halfEven,
-  zero,
-});
+export const safeGreaterThanOrEqual = createFunction(
+  coreSafeGreaterThanOrEqual,
+  {
+    add,
+    compare,
+    multiply,
+    power,
+    subtract,
+    round: halfEven,
+    zero,
+  }
+);

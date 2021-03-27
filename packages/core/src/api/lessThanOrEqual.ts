@@ -24,10 +24,7 @@ export function unsafeLessThanOrEqual<
   };
 }
 
-export function safeLessThanOrEqual<
-  TAmount,
-  TDinero extends Dinero<TAmount>
->({
+export function safeLessThanOrEqual<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
 }: Dependencies<

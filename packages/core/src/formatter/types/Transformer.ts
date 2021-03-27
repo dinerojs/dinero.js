@@ -5,4 +5,6 @@ export type TransformerOptions<TAmount> = {
   readonly currency: Currency<TAmount>;
 };
 
-export type Transformer<TAmount> = (options: TransformerOptions<TAmount>) => string;
+export type Transformer<TAmount> = (
+  options: TransformerOptions<TAmount>
+) => string;

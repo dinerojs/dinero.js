@@ -8,7 +8,9 @@ import { lessThan } from '.';
  *
  * @returns The maximum function.
  */
-export function maximum<TAmount>(calculator: Pick<Calculator<TAmount>, 'compare'>) {
+export function maximum<TAmount>(
+  calculator: Pick<Calculator<TAmount>, 'compare'>
+) {
   const lessThanFn = lessThan(calculator);
 
   return (values: readonly TAmount[]) => {

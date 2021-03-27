@@ -8,7 +8,9 @@ import { greaterThan } from '.';
  *
  * @returns The minimum function.
  */
-export function minimum<TAmount>(calculator: Pick<Calculator<TAmount>, 'compare'>) {
+export function minimum<TAmount>(
+  calculator: Pick<Calculator<TAmount>, 'compare'>
+) {
   const greaterThanFn = greaterThan(calculator);
 
   return (values: readonly TAmount[]) => {

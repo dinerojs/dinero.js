@@ -5,10 +5,9 @@ import { haveSameCurrency, normalizeScale } from '.';
 import { assertSameCurrency } from '../guards';
 import { Dependencies } from './types';
 
-export function unsafeGreaterThan<
-  TAmount,
-  TDinero extends Dinero<TAmount>
->({ calculator }: Dependencies<TAmount, TDinero, 'compare'>) {
+export function unsafeGreaterThan<TAmount, TDinero extends Dinero<TAmount>>({
+  calculator,
+}: Dependencies<TAmount, TDinero, 'compare'>) {
   const greaterThanFn = gt(calculator);
 
   return function greaterThan(dineroObject: TDinero, comparator: TDinero) {

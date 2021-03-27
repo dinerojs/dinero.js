@@ -15,5 +15,5 @@ export function createAssert(isProduction: boolean) {
     }
 
     return err;
-  }
+  };
 }
