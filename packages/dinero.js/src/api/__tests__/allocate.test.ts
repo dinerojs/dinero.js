@@ -1,5 +1,6 @@
+import { Dinero } from '@dinero.js/core';
 import { USD } from '@dinero.js/currencies';
-import { dinero, toSnapshot, allocate, PureDinero } from '../../..';
+import { dinero, toSnapshot, allocate } from '../../..';
 
 describe('allocate', () => {
   it('allocates to percentages', () => {
@@ -25,7 +26,7 @@ describe('allocate', () => {
   });
 });
 
-function getAmounts(shares: ReadonlyArray<PureDinero<number>>) {
+function getAmounts(shares: ReadonlyArray<Dinero<number>>) {
   return shares.map((share) => {
     const { amount } = toSnapshot(share);
 

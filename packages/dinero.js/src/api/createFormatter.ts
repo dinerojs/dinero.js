@@ -2,6 +2,7 @@ import {
   toFormat as coreToFormat,
   Transformer,
   FormatOptions,
+  Dinero,
 } from '@dinero.js/core';
 import {
   multiply,
@@ -10,7 +11,6 @@ import {
   halfEven,
 } from '@dinero.js/calculator/number';
 import { createFunction } from '../helpers';
-import { PureDinero } from '../types';
 
 const formatter = createFunction(coreToFormat, {
   multiply,
@@ -31,7 +31,7 @@ export function createFormatter(
   transformer: Transformer<number>,
   { digits, roundingMode }: FormatOptions<number> = {}
 ) {
-  return function toFormat(dineroObject: PureDinero<number>) {
+  return function toFormat(dineroObject: Dinero<number>) {
     return formatter(dineroObject, transformer, { digits, roundingMode });
   };
 }
