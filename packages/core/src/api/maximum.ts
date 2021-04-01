@@ -2,10 +2,15 @@ import { Dinero } from '../types';
 import { maximum as max } from '../utils';
 import { Dependencies } from './types';
 
+export type MaximumDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<TAmount, TDinero, 'compare'>;
+
 export function maximum<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
-}: Dependencies<TAmount, TDinero, 'compare'>) {
+}: MaximumDependencies<TAmount, TDinero>) {
   const maxFn = max(calculator);
 
   return function _maximum(dineroObjects: readonly TDinero[]) {

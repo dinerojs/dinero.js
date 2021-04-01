@@ -1,18 +1,18 @@
 import { Calculator } from '@dinero.js/calculator';
-import { Dinero } from '@dinero.js/core';
 import {
   Dependencies,
   CalculatorDependency,
 } from '@dinero.js/core/src/api/types';
+import { Dinero } from '../types';
 import { dinero } from '../dinero';
 
 /**
- * Create a pure Dinero function from a core function and a calculator.
+ * Create a Dinero function from a core function and a calculator.
  *
  * @param fn The core function.
  * @param calculator The calculator.
  *
- * @returns A pure Dinero method.
+ * @returns A Dinero function.
  */
 export function createFunction<
   TAmount,

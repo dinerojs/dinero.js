@@ -3,10 +3,15 @@ import { Dinero } from '../types';
 import { toUnit } from '.';
 import { Dependencies } from './types';
 
+export type ToRoundedUnitDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<TAmount, TDinero, 'multiply' | 'divide' | 'power' | 'round'>;
+
 export function toRoundedUnit<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
-}: Dependencies<TAmount, TDinero, 'multiply' | 'divide' | 'power' | 'round'>) {
+}: ToRoundedUnitDependencies<TAmount, TDinero>) {
   const toUnitFn = toUnit({ factory, calculator });
 
   return function _toRoundedUnit(

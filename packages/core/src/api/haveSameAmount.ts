@@ -3,14 +3,19 @@ import { normalizeScale } from '.';
 import { equal } from '../utils';
 import { Dependencies } from './types';
 
-export function haveSameAmount<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
-  calculator,
-}: Dependencies<
+export type HaveSameAmountDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<
   TAmount,
   TDinero,
   'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
->) {
+>;
+
+export function haveSameAmount<TAmount, TDinero extends Dinero<TAmount>>({
+  factory,
+  calculator,
+}: HaveSameAmountDependencies<TAmount, TDinero>) {
   const normalizeFn = normalizeScale({ factory, calculator });
   const equalFn = equal(calculator);
 

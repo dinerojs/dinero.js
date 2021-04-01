@@ -9,10 +9,15 @@ type ConvertOptions<TAmount> = {
   readonly preserveScale?: boolean;
 };
 
+export type ConvertDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<TAmount, TDinero, 'multiply' | 'round'>;
+
 export function convert<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
-}: Dependencies<TAmount, TDinero, 'multiply' | 'round'>) {
+}: ConvertDependencies<TAmount, TDinero>) {
   return async function _convert(
     dineroObject: TDinero,
     newCurrency: Currency<TAmount>,

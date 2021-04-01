@@ -1,4 +1,4 @@
-import { multiply as coreMultiply } from '@dinero.js/core';
+import { createMultiply } from '@dinero.js/core';
 import {
   multiply as multiplyNumbers,
   halfEven,
@@ -8,18 +8,17 @@ import {
   compare,
   add,
 } from '@dinero.js/calculator/number';
-import { createFunction } from '../helpers';
 
 /**
- * Multiply the passed pure Dinero object.
+ * Multiply the passed Dinero object.
  *
- * @param multiplier The pure Dinero object to multiply.
+ * @param multiplier The Dinero object to multiply.
  * @param multiplicand The number to multiply with.
  * @param options.scale The number of decimal places to represent.
  *
- * @returns A new pure Dinero object.
+ * @returns A new Dinero object.
  */
-export const multiply = createFunction(coreMultiply, {
+export const multiply = createMultiply({
   multiply: multiplyNumbers,
   zero,
   power,

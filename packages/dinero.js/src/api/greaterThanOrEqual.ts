@@ -1,6 +1,6 @@
 import {
-  safeGreaterThanOrEqual as coreSafeGreaterThanOrEqual,
-  unsafeGreaterThanOrEqual as coreUnsafeGreaterThanOrEqual,
+  createSafeGreaterThanOrEqual,
+  createUnsafeGreaterThanOrEqual,
 } from '@dinero.js/core';
 import {
   add,
@@ -11,40 +11,33 @@ import {
   halfEven,
   zero,
 } from '@dinero.js/calculator/number';
-import { createFunction } from '../helpers';
 
 /**
- * Unsafely check whether the value of a pure Dinero object is greater than or equal another.
+ * Unsafely check whether the value of a Dinero object is greater than or equal another.
  *
- * @param dineroObject The pure Dinero object to compare.
- * @param comparator The pure Dinero object to compare to.
+ * @param dineroObject The Dinero object to compare.
+ * @param comparator The Dinero object to compare to.
  *
- * @returns Whether the pure Dinero to compare is greater than or equal the other.
+ * @returns Whether the Dinero to compare is greater than or equal the other.
  */
-export const unsafeGreaterThanOrEqual = createFunction(
-  coreUnsafeGreaterThanOrEqual,
-  {
-    compare,
-  }
-);
+export const unsafeGreaterThanOrEqual = createUnsafeGreaterThanOrEqual({
+  compare,
+});
 
 /**
- * Check whether the value of a pure Dinero object is greater than or equal another.
+ * Check whether the value of a Dinero object is greater than or equal another.
  *
- * @param dineroObject The pure Dinero object to compare.
- * @param comparator The pure Dinero object to compare to.
+ * @param dineroObject The Dinero object to compare.
+ * @param comparator The Dinero object to compare to.
  *
- * @returns Whether the pure Dinero to compare is greater than or equal the other.
+ * @returns Whether the Dinero to compare is greater than or equal the other.
  */
-export const safeGreaterThanOrEqual = createFunction(
-  coreSafeGreaterThanOrEqual,
-  {
-    add,
-    compare,
-    multiply,
-    power,
-    subtract,
-    round: halfEven,
-    zero,
-  }
-);
+export const safeGreaterThanOrEqual = createSafeGreaterThanOrEqual({
+  add,
+  compare,
+  multiply,
+  power,
+  subtract,
+  round: halfEven,
+  zero,
+});

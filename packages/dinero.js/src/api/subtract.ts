@@ -1,7 +1,4 @@
-import {
-  unsafeSubtract as coreUnsafeSubtract,
-  safeSubtract as coreSafeSubtract,
-} from '@dinero.js/core';
+import { createUnsafeSubtract, createSafeSubtract } from '@dinero.js/core';
 import {
   subtract,
   add,
@@ -11,27 +8,26 @@ import {
   halfEven,
   zero,
 } from '@dinero.js/calculator/number';
-import { createFunction } from '../helpers';
 
 /**
- * Unsafely subtract the passed pure Dinero objects.
+ * Unsafely subtract the passed Dinero objects.
  *
- * @param minuend The pure Dinero object to subtract from.
- * @param subtrahend The pure Dinero object to subtract.
+ * @param minuend The Dinero object to subtract from.
+ * @param subtrahend The Dinero object to subtract.
  *
- * @returns A new pure Dinero object.
+ * @returns A new Dinero object.
  */
-export const unsafeSubtract = createFunction(coreUnsafeSubtract, { subtract });
+export const unsafeSubtract = createUnsafeSubtract({ subtract });
 
 /**
- * Subtract the passed pure Dinero objects.
+ * Subtract the passed Dinero objects.
  *
- * @param minuend The pure Dinero object to subtract from.
- * @param subtrahend The pure Dinero object to subtract.
+ * @param minuend The Dinero object to subtract from.
+ * @param subtrahend The Dinero object to subtract.
  *
- * @returns A new pure Dinero object.
+ * @returns A new Dinero object.
  */
-export const safeSubtract = createFunction(coreSafeSubtract, {
+export const safeSubtract = createSafeSubtract({
   subtract,
   add,
   compare,

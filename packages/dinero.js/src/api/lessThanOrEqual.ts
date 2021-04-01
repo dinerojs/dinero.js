@@ -1,6 +1,6 @@
 import {
-  safeLessThanOrEqual as coreSafeLessThanOrEqual,
-  unsafeLessThanOrEqual as coreUnsafeLessThanOrEqual,
+  createSafeLessThanOrEqual,
+  createUnsafeLessThanOrEqual,
 } from '@dinero.js/core';
 import {
   add,
@@ -11,29 +11,28 @@ import {
   halfEven,
   zero,
 } from '@dinero.js/calculator/number';
-import { createFunction } from '../helpers';
 
 /**
- * Unsafely check whether the value of a pure Dinero object is lesser than or equal to another.
+ * Unsafely check whether the value of a Dinero object is lesser than or equal to another.
  *
- * @param dineroObject The pure Dinero object to compare.
- * @param comparator The pure Dinero object to compare to.
+ * @param dineroObject The Dinero object to compare.
+ * @param comparator The Dinero object to compare to.
  *
- * @returns Whether the pure Dinero to compare is lesser than or equal to the other.
+ * @returns Whether the Dinero to compare is lesser than or equal to the other.
  */
-export const unsafeLessThanOrEqual = createFunction(coreUnsafeLessThanOrEqual, {
+export const unsafeLessThanOrEqual = createUnsafeLessThanOrEqual({
   compare,
 });
 
 /**
- * Check whether the value of a pure Dinero object is lesser than or equal to another.
+ * Check whether the value of a Dinero object is lesser than or equal to another.
  *
- * @param dineroObject The pure Dinero object to compare.
- * @param comparator The pure Dinero object to compare to.
+ * @param dineroObject The Dinero object to compare.
+ * @param comparator The Dinero object to compare to.
  *
- * @returns Whether the pure Dinero to compare is lesser than or equal to the other.
+ * @returns Whether the Dinero to compare is lesser than or equal to the other.
  */
-export const safeLessThanOrEqual = createFunction(coreSafeLessThanOrEqual, {
+export const safeLessThanOrEqual = createSafeLessThanOrEqual({
   add,
   compare,
   multiply,

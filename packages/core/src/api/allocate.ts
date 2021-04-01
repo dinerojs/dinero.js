@@ -4,10 +4,10 @@ import { distribute, greaterThanOrEqual, greaterThan } from '../utils';
 import { Dependencies } from './types';
 import { assertValidRatios } from '../guards';
 
-export function unsafeAllocate<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
-  calculator,
-}: Dependencies<
+export type UnsafeAllocateDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<
   TAmount,
   TDinero,
   | 'add'
@@ -18,7 +18,12 @@ export function unsafeAllocate<TAmount, TDinero extends Dinero<TAmount>>({
   | 'round'
   | 'subtract'
   | 'zero'
->) {
+>;
+
+export function unsafeAllocate<TAmount, TDinero extends Dinero<TAmount>>({
+  factory,
+  calculator,
+}: UnsafeAllocateDependencies<TAmount, TDinero>) {
   return function allocate(dineroObject: TDinero, ratios: readonly TAmount[]) {
     const { amount, currency, scale } = dineroObject.toJSON();
     const shares = distribute(calculator, calculator.round)(amount, ratios);
@@ -33,10 +38,10 @@ export function unsafeAllocate<TAmount, TDinero extends Dinero<TAmount>>({
   };
 }
 
-export function safeAllocate<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
-  calculator,
-}: Dependencies<
+export type SafeAllocateDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<
   TAmount,
   TDinero,
   | 'add'
@@ -47,7 +52,12 @@ export function safeAllocate<TAmount, TDinero extends Dinero<TAmount>>({
   | 'round'
   | 'subtract'
   | 'zero'
->) {
+>;
+
+export function safeAllocate<TAmount, TDinero extends Dinero<TAmount>>({
+  factory,
+  calculator,
+}: SafeAllocateDependencies<TAmount, TDinero>) {
   const allocateFn = unsafeAllocate({ factory, calculator });
   const greaterThanOrEqualFn = greaterThanOrEqual(calculator);
   const greaterThanFn = greaterThan(calculator);

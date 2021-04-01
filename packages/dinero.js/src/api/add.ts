@@ -1,7 +1,4 @@
-import {
-  unsafeAdd as coreUnsafeAdd,
-  safeAdd as coreSafeAdd,
-} from '@dinero.js/core';
+import { createUnsafeAdd, createSafeAdd } from '@dinero.js/core';
 import {
   add,
   compare,
@@ -11,27 +8,26 @@ import {
   subtract,
   zero,
 } from '@dinero.js/calculator/number';
-import { createFunction } from '../helpers';
 
 /**
- * Unsafely add up the passed pure Dinero objects.
+ * Unsafely add up the passed Dinero objects.
  *
- * @param augend The pure Dinero object to add to.
- * @param addend The pure Dinero object to add.
+ * @param augend The Dinero object to add to.
+ * @param addend The Dinero object to add.
  *
- * @returns A new pure Dinero object.
+ * @returns A new Dinero object.
  */
-export const unsafeAdd = createFunction(coreUnsafeAdd, { add });
+export const unsafeAdd = createUnsafeAdd({ add });
 
 /**
- * Add up the passed pure Dinero objects.
+ * Add up the passed Dinero objects.
  *
- * @param augend The pure Dinero object to add to.
- * @param addend The pure Dinero object to add.
+ * @param augend The Dinero object to add to.
+ * @param addend The Dinero object to add.
  *
- * @returns A new pure Dinero object.
+ * @returns A new Dinero object.
  */
-export const safeAdd = createFunction(coreSafeAdd, {
+export const safeAdd = createSafeAdd({
   add,
   compare,
   multiply,

@@ -1,6 +1,6 @@
 import {
-  unsafeGreaterThan as coreUnsafeGreaterThan,
-  safeGreaterThan as coreSafeGreaterThan,
+  createUnsafeGreaterThan,
+  createSafeGreaterThan,
 } from '@dinero.js/core';
 import {
   add,
@@ -11,29 +11,28 @@ import {
   halfEven,
   zero,
 } from '@dinero.js/calculator/number';
-import { createFunction } from '../helpers';
 
 /**
- * Unsafely check whether the value of a pure Dinero object is greater than another.
+ * Unsafely check whether the value of a Dinero object is greater than another.
  *
- * @param dineroObject The pure Dinero object to compare.
- * @param comparator The pure Dinero object to compare to.
+ * @param dineroObject The Dinero object to compare.
+ * @param comparator The Dinero object to compare to.
  *
- * @returns Whether the pure Dinero to compare is greater than the other.
+ * @returns Whether the Dinero to compare is greater than the other.
  */
-export const unsafeGreaterThan = createFunction(coreUnsafeGreaterThan, {
+export const unsafeGreaterThan = createUnsafeGreaterThan({
   compare,
 });
 
 /**
- * Check whether the value of a pure Dinero object is greater than another.
+ * Check whether the value of a Dinero object is greater than another.
  *
- * @param dineroObject The pure Dinero object to compare.
- * @param comparator The pure Dinero object to compare to.
+ * @param dineroObject The Dinero object to compare.
+ * @param comparator The Dinero object to compare to.
  *
- * @returns Whether the pure Dinero to compare is greater than the other.
+ * @returns Whether the Dinero to compare is greater than the other.
  */
-export const safeGreaterThan = createFunction(coreSafeGreaterThan, {
+export const safeGreaterThan = createSafeGreaterThan({
   add,
   compare,
   multiply,

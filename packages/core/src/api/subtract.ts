@@ -4,10 +4,15 @@ import { haveSameCurrency, normalizeScale } from '.';
 import { assertSameCurrency } from '../guards';
 import { Dependencies } from './types';
 
+export type UnsafeSubtractDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<TAmount, TDinero, 'subtract'>;
+
 export function unsafeSubtract<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
-}: Dependencies<TAmount, TDinero, 'subtract'>) {
+}: UnsafeSubtractDependencies<TAmount, TDinero>) {
   return function subtract(minuend: TDinero, subtrahend: TDinero) {
     const { amount: minuendAmount, currency, scale } = minuend.toJSON();
     const { amount: subtrahendAmount } = subtrahend.toJSON();
@@ -22,10 +27,10 @@ export function unsafeSubtract<TAmount, TDinero extends Dinero<TAmount>>({
   };
 }
 
-export function safeSubtract<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
-  calculator,
-}: Dependencies<
+export type SafeSubtractDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<
   TAmount,
   TDinero,
   | 'subtract'
@@ -36,7 +41,12 @@ export function safeSubtract<TAmount, TDinero extends Dinero<TAmount>>({
   | 'round'
   | 'subtract'
   | 'zero'
->) {
+>;
+
+export function safeSubtract<TAmount, TDinero extends Dinero<TAmount>>({
+  factory,
+  calculator,
+}: SafeSubtractDependencies<TAmount, TDinero>) {
   const normalizeFn = normalizeScale({ factory, calculator });
   const subtractFn = unsafeSubtract({ factory, calculator });
 

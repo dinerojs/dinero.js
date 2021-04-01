@@ -2,10 +2,15 @@ import { Dinero } from '../types';
 import { minimum as min } from '../utils';
 import { Dependencies } from './types';
 
+export type MinimumDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<TAmount, TDinero, 'compare'>;
+
 export function minimum<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
-}: Dependencies<TAmount, TDinero, 'compare'>) {
+}: MinimumDependencies<TAmount, TDinero>) {
   const minFn = min(calculator);
 
   return function _minimum(dineroObjects: readonly TDinero[]) {

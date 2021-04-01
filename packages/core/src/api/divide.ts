@@ -2,10 +2,15 @@ import { RoundingMode } from '@dinero.js/calculator';
 import { Dinero } from '../types';
 import { Dependencies } from './types';
 
+type DivideDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<TAmount, TDinero, 'divide' | 'round'>;
+
 export function divide<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
-}: Dependencies<TAmount, TDinero, 'divide' | 'round'>) {
+}: DivideDependencies<TAmount, TDinero>) {
   return function _divide(
     dividend: TDinero,
     divisor: TAmount,

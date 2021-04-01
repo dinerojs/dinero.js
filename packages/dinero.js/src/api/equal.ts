@@ -1,4 +1,4 @@
-import { equal as coreEqual } from '@dinero.js/core';
+import { createEqual } from '@dinero.js/core';
 import {
   add,
   compare,
@@ -8,17 +8,16 @@ import {
   halfEven,
   zero,
 } from '@dinero.js/calculator/number';
-import { createFunction } from '../helpers';
 
 /**
- * Check whether the value of a pure Dinero object is equal to another.
+ * Check whether the value of a Dinero object is equal to another.
  *
- * @param dineroObject The first pure Dinero object to compare.
- * @param comparator The second pure Dinero object to compare.
+ * @param dineroObject The first Dinero object to compare.
+ * @param comparator The second Dinero object to compare.
  *
- * @returns Whether the pure Dinero objects are equal.
+ * @returns Whether the Dinero objects are equal.
  */
-export const equal = createFunction(coreEqual, {
+export const equal = createEqual({
   add,
   compare,
   multiply,

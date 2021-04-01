@@ -1,12 +1,11 @@
-import { minimum as coreMinimum } from '@dinero.js/core';
+import { createMinimum } from '@dinero.js/core';
 import { compare } from '@dinero.js/calculator/number';
-import { createFunction } from '../helpers';
 
 /**
- * Get the lowest of the passed pure Dinero objects.
+ * Get the lowest of the passed Dinero objects.
  *
- * @param dineroObjects The pure Dinero objects to minimum.
+ * @param dineroObjects The Dinero objects to minimum.
  *
- * @returns A new pure Dinero object.
+ * @returns A new Dinero object.
  */
-export const minimum = createFunction(coreMinimum, { compare });
+export const minimum = createMinimum({ compare });

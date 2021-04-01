@@ -1,8 +1,8 @@
 import {
-  toFormat as coreToFormat,
   Transformer,
   FormatOptions,
   Dinero,
+  createToFormat,
 } from '@dinero.js/core';
 import {
   multiply,
@@ -10,9 +10,8 @@ import {
   power,
   halfEven,
 } from '@dinero.js/calculator/number';
-import { createFunction } from '../helpers';
 
-const formatter = createFunction(coreToFormat, {
+const formatter = createToFormat({
   multiply,
   divide,
   power,

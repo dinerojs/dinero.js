@@ -1,7 +1,4 @@
-import {
-  unsafeAllocate as coreUnsafeAllocate,
-  safeAllocate as coreSafeAllocate,
-} from '@dinero.js/core';
+import { createUnsafeAllocate, createSafeAllocate } from '@dinero.js/core';
 import {
   add,
   compare,
@@ -12,7 +9,6 @@ import {
   zero,
   down,
 } from '@dinero.js/calculator/number';
-import { createFunction } from '../helpers';
 
 const calculator = {
   add,
@@ -26,21 +22,21 @@ const calculator = {
 };
 
 /**
- * Unsafely distribute the amount of a pure Dinero object across a list of ratios.
+ * Unsafely distribute the amount of a Dinero object across a list of ratios.
  *
- * @param dineroObject The pure Dinero object to allocate from.
+ * @param dineroObject The Dinero object to allocate from.
  * @param ratios The ratios to allocate the amount to.
  *
- * @returns A new pure Dinero object.
+ * @returns A new Dinero object.
  */
-export const unsafeAllocate = createFunction(coreUnsafeAllocate, calculator);
+export const unsafeAllocate = createUnsafeAllocate(calculator);
 
 /**
- * Distribute the amount of a pure Dinero object across a list of ratios.
+ * Distribute the amount of a Dinero object across a list of ratios.
  *
- * @param dineroObject The pure Dinero object to allocate from.
+ * @param dineroObject The Dinero object to allocate from.
  * @param ratios The ratios to allocate the amount to.
  *
- * @returns A new pure Dinero object.
+ * @returns A new Dinero object.
  */
-export const safeAllocate = createFunction(coreSafeAllocate, calculator);
+export const safeAllocate = createSafeAllocate(calculator);

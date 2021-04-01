@@ -1,22 +1,21 @@
-import { toRoundedUnit as coreToRoundedUnit } from '@dinero.js/core';
+import { createToRoundedUnit } from '@dinero.js/core';
 import {
   multiply,
   divide,
   power,
   halfEven,
 } from '@dinero.js/calculator/number';
-import { createFunction } from '../helpers';
 
 /**
- * Get the amount of a pure Dinero object in rounded units.
+ * Get the amount of a Dinero object in rounded units.
  *
- * @param dineroObject The pure Dinero object to transform.
+ * @param dineroObject The Dinero object to transform.
  * @param digits The number of fraction digits to round to.
  * @param roundingMode The rounding mode to use.
  *
  * @returns The amount in rounded units.
  */
-export const toRoundedUnit = createFunction(coreToRoundedUnit, {
+export const toRoundedUnit = createToRoundedUnit({
   multiply,
   divide,
   power,

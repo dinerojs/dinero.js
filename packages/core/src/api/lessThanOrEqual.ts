@@ -5,10 +5,15 @@ import { haveSameCurrency, normalizeScale } from '.';
 import { assertSameCurrency } from '../guards';
 import { Dependencies } from './types';
 
+export type UnsafeLessThanOrEqualDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<TAmount, TDinero, 'compare'>;
+
 export function unsafeLessThanOrEqual<
   TAmount,
   TDinero extends Dinero<TAmount>
->({ calculator }: Dependencies<TAmount, TDinero, 'compare'>) {
+>({ calculator }: UnsafeLessThanOrEqualDependencies<TAmount, TDinero>) {
   const lessThanOrEqualFn = lte(calculator);
 
   return function lessThanOrEqual(dineroObject: TDinero, comparator: TDinero) {
@@ -24,14 +29,19 @@ export function unsafeLessThanOrEqual<
   };
 }
 
-export function safeLessThanOrEqual<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
-  calculator,
-}: Dependencies<
+export type SafeLessThanOrEqualDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<
   TAmount,
   TDinero,
   'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
->) {
+>;
+
+export function safeLessThanOrEqual<TAmount, TDinero extends Dinero<TAmount>>({
+  factory,
+  calculator,
+}: SafeLessThanOrEqualDependencies<TAmount, TDinero>) {
   const normalizeFn = normalizeScale({ factory, calculator });
   const lessThanOrEqualFn = unsafeLessThanOrEqual({
     factory,

@@ -4,10 +4,15 @@ import { haveSameCurrency, normalizeScale } from '.';
 import { assertSameCurrency } from '../guards';
 import { Dependencies } from './types';
 
+export type UnsafeAddDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<TAmount, TDinero, 'add'>;
+
 export function unsafeAdd<TAmount, TDinero extends Dinero<TAmount>>({
   factory,
   calculator,
-}: Dependencies<TAmount, TDinero, 'add'>) {
+}: UnsafeAddDependencies<TAmount, TDinero>) {
   return function add(augend: TDinero, addend: TDinero) {
     const { amount: augendAmount, currency, scale } = augend.toJSON();
     const { amount: addendAmount } = addend.toJSON();
@@ -22,14 +27,19 @@ export function unsafeAdd<TAmount, TDinero extends Dinero<TAmount>>({
   };
 }
 
-export function safeAdd<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
-  calculator,
-}: Dependencies<
+export type SafeAddDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<
   TAmount,
   TDinero,
   'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
->) {
+>;
+
+export function safeAdd<TAmount, TDinero extends Dinero<TAmount>>({
+  factory,
+  calculator,
+}: SafeAddDependencies<TAmount, TDinero>) {
   const normalizeFn = normalizeScale({ factory, calculator });
   const addFn = unsafeAdd({ factory, calculator });
 

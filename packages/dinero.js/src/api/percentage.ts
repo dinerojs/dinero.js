@@ -1,15 +1,14 @@
-import { percentage as corePercentage } from '@dinero.js/core';
+import { createPercentage } from '@dinero.js/core';
 import { percentage as percentageNumbers } from '@dinero.js/calculator/number';
-import { createFunction } from '../helpers';
 
 /**
- * Extract a percentage of a pure Dinero object.
+ * Extract a percentage of a Dinero object.
  *
- * @param dineroObject The pure Dinero object to get a percentage from.
+ * @param dineroObject The Dinero object to get a percentage from.
  * @param share The share to extract.
  *
- * @returns A new pure Dinero object.
+ * @returns A new Dinero object.
  */
-export const percentage = createFunction(corePercentage, {
+export const percentage = createPercentage({
   percentage: percentageNumbers,
 });

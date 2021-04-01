@@ -3,14 +3,19 @@ import { Dinero } from '../types';
 import { maximum } from '../utils';
 import { Dependencies } from './types';
 
-export function normalizeScale<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
-  calculator,
-}: Dependencies<
+export type NormalizeScaleDependencies<
+  TAmount,
+  TDinero extends Dinero<TAmount>
+> = Dependencies<
   TAmount,
   TDinero,
   'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
->) {
+>;
+
+export function normalizeScale<TAmount, TDinero extends Dinero<TAmount>>({
+  factory,
+  calculator,
+}: NormalizeScaleDependencies<TAmount, TDinero>) {
   const maximumFn = maximum(calculator);
   const convertScaleFn = convertScale({ factory, calculator });
 

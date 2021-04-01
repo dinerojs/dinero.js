@@ -1,22 +1,21 @@
-import { convertScale as coreConvertScale } from '@dinero.js/core';
+import { createConvertScale } from '@dinero.js/core';
 import {
   multiply,
   power,
   subtract,
   halfEven,
 } from '@dinero.js/calculator/number';
-import { createFunction } from '../helpers';
 
 /**
- * Convert a pure Dinero object to a new precision.
+ * Convert a Dinero object to a new precision.
  *
- * @param dineroObject The pure Dinero object to convert.
+ * @param dineroObject The Dinero object to convert.
  * @param newScale The new precision.
  * @param roundingMode The rounding mode to use.
  *
- * @returns A new pure Dinero object.
+ * @returns A new Dinero object.
  */
-export const convertScale = createFunction(coreConvertScale, {
+export const convertScale = createConvertScale({
   subtract,
   multiply,
   power,

@@ -1,12 +1,11 @@
-import { isNegative as coreIsNegative } from '@dinero.js/core';
+import { createIsNegative } from '@dinero.js/core';
 import { compare, zero } from '@dinero.js/calculator/number';
-import { createFunction } from '../helpers';
 
 /**
- * Check whether a pure Dinero object is negative.
+ * Check whether a Dinero object is negative.
  *
- * @param dineroObject The pure Dinero objects to check.
+ * @param dineroObject The Dinero objects to check.
  *
- * @returns Whether the pure Dinero object is negative.
+ * @returns Whether the Dinero object is negative.
  */
-export const isNegative = createFunction(coreIsNegative, { zero, compare });
+export const isNegative = createIsNegative({ zero, compare });
