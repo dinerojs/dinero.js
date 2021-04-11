@@ -1,6 +1,6 @@
-import { RoundingMode } from '@dinero.js/calculator';
-import { Dinero } from '../types';
-import { Dependencies } from './types';
+import type { RoundingMode } from '@dinero.js/calculator';
+import type { Dinero } from '../types';
+import type { Dependencies } from './types';
 
 type DivideDependencies<TAmount> = Dependencies<TAmount, 'divide' | 'round'>;
 

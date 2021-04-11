@@ -1,4 +1,4 @@
-import { UnaryOperation } from '../../types';
+import type { UnaryOperation } from '../../types';
 
 /**
  * Returns an decremented number.

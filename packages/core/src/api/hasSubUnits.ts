@@ -1,6 +1,10 @@
-import { Dinero } from '../types';
+import type { Dinero } from '../types';
 import { equal } from '../utils';
-import { Dependencies } from './types';
+import type { Dependencies } from './types';
+
+export type HasSubUnitsParams<TAmount> = readonly [
+  dineroObject: Dinero<TAmount>
+];
 
 export type HasSubUnitsDependencies<TAmount> = Dependencies<
   TAmount,
@@ -12,7 +16,7 @@ export function hasSubUnits<TAmount>({
 }: HasSubUnitsDependencies<TAmount>) {
   const equalFn = equal(calculator);
 
-  return function _hasSubUnits(dineroObject: Dinero<TAmount>) {
+  return function _hasSubUnits(...[dineroObject]: HasSubUnitsParams<TAmount>) {
     const { amount, currency, scale } = dineroObject.toJSON();
 
     return !equalFn(

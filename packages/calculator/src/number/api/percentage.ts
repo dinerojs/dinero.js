@@ -1,5 +1,5 @@
 import { multiply, divide } from '../../number';
-import { BinaryOperation } from '../../types';
+import type { BinaryOperation } from '../../types';
 
 /**
  * Returns the percentage of a number.

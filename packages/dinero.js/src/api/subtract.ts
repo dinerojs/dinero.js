@@ -1,7 +1,8 @@
+import type {
+  SubtractParams} from '@dinero.js/core';
 import {
-  createUnsafeSubtract,
-  createSafeSubtract,
-  Dinero,
+  unsafeSubtract as coreUnsafeSubtract,
+  safeSubtract as coreSafeSubtract
 } from '@dinero.js/core';
 
 /**
@@ -13,10 +14,9 @@ import {
  * @returns A new Dinero object.
  */
 export function unsafeSubtract<TAmount>(
-  minuend: Dinero<TAmount>,
-  subtrahend: Dinero<TAmount>
+  ...[minuend, subtrahend]: SubtractParams<TAmount>
 ) {
-  const subtract = createUnsafeSubtract(minuend.calculator);
+  const subtract = coreUnsafeSubtract({ calculator: minuend.calculator });
 
   return subtract(minuend, subtrahend);
 }
@@ -30,10 +30,9 @@ export function unsafeSubtract<TAmount>(
  * @returns A new Dinero object.
  */
 export function safeSubtract<TAmount>(
-  minuend: Dinero<TAmount>,
-  subtrahend: Dinero<TAmount>
+  ...[minuend, subtrahend]: SubtractParams<TAmount>
 ) {
-  const subtract = createSafeSubtract(minuend.calculator);
+  const subtract = coreSafeSubtract({ calculator: minuend.calculator });
 
   return subtract(minuend, subtrahend);
 }

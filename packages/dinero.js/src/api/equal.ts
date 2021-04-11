@@ -1,4 +1,5 @@
-import { createEqual, Dinero } from '@dinero.js/core';
+import type { EqualParams } from '@dinero.js/core';
+import { equal as coreEqual } from '@dinero.js/core';
 
 /**
  * Check whether the value of a Dinero object is equal to another.
@@ -9,10 +10,9 @@ import { createEqual, Dinero } from '@dinero.js/core';
  * @returns Whether the Dinero objects are equal.
  */
 export function equal<TAmount>(
-  dineroObject: Dinero<TAmount>,
-  comparator: Dinero<TAmount>
+  ...[dineroObject, comparator]: EqualParams<TAmount>
 ) {
-  const _equal = createEqual(dineroObject.calculator);
+  const _equal = coreEqual({ calculator: dineroObject.calculator });
 
   return _equal(dineroObject, comparator);
 }

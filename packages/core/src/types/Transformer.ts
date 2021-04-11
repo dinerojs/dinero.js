@@ -1,4 +1,4 @@
-import { Currency } from '@dinero.js/currencies';
+import type { Currency } from '@dinero.js/currencies';
 
 export type TransformerOptions<TAmount> = {
   readonly amount: TAmount;

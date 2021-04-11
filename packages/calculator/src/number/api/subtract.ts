@@ -1,4 +1,4 @@
-import { BinaryOperation } from '../../types';
+import type { BinaryOperation } from '../../types';
 
 /**
  * Returns the difference between two numbers.

@@ -1,7 +1,8 @@
+import type {
+  AllocateParams} from '@dinero.js/core';
 import {
-  createUnsafeAllocate,
-  createSafeAllocate,
-  Dinero,
+  unsafeAllocate as coreUnsafeAllocate,
+  safeAllocate as coreSafeAllocate
 } from '@dinero.js/core';
 
 /**
@@ -13,10 +14,9 @@ import {
  * @returns A new Dinero object.
  */
 export function unsafeAllocate<TAmount>(
-  dineroObject: Dinero<TAmount>,
-  ratios: readonly TAmount[]
+  ...[dineroObject, ratios]: AllocateParams<TAmount>
 ) {
-  const allocate = createUnsafeAllocate(dineroObject.calculator);
+  const allocate = coreUnsafeAllocate({ calculator: dineroObject.calculator });
 
   return allocate(dineroObject, ratios);
 }
@@ -30,10 +30,9 @@ export function unsafeAllocate<TAmount>(
  * @returns A new Dinero object.
  */
 export function safeAllocate<TAmount>(
-  dineroObject: Dinero<TAmount>,
-  ratios: readonly TAmount[]
+  ...[dineroObject, ratios]: AllocateParams<TAmount>
 ) {
-  const allocate = createSafeAllocate(dineroObject.calculator);
+  const allocate = coreSafeAllocate({ calculator: dineroObject.calculator });
 
   return allocate(dineroObject, ratios);
 }

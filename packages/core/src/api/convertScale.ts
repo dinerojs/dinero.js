@@ -1,6 +1,12 @@
-import { RoundingMode } from '@dinero.js/calculator';
-import { Dinero } from '../types';
-import { Dependencies } from './types';
+import type { RoundingMode } from '@dinero.js/calculator';
+import type { Dinero } from '../types';
+import type { Dependencies } from './types';
+
+export type ConvertScaleParams<TAmount> = readonly [
+  dineroObject: Dinero<TAmount>,
+  newScale: TAmount,
+  roundingMode?: RoundingMode<TAmount>
+];
 
 export type ConvertScaleDependencies<TAmount> = Dependencies<
   TAmount,
@@ -11,9 +17,11 @@ export function convertScale<TAmount>({
   calculator,
 }: ConvertScaleDependencies<TAmount>) {
   return function _convertScale(
-    dineroObject: Dinero<TAmount>,
-    newScale: TAmount,
-    roundingMode: RoundingMode<TAmount> = calculator.round
+    ...[
+      dineroObject,
+      newScale,
+      roundingMode = calculator.round,
+    ]: ConvertScaleParams<TAmount>
   ) {
     const { amount, currency, scale } = dineroObject.toJSON();
     const factor = calculator.power(

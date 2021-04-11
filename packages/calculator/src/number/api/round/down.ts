@@ -1,4 +1,4 @@
-import { RoundingMode } from '../../../types';
+import type { RoundingMode } from '../../../types';
 
 /**
  * Round a number down.

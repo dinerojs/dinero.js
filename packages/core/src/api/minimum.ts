@@ -1,13 +1,17 @@
-import { Dinero } from '../types';
+import type { Dinero } from '../types';
 import { minimum as min } from '../utils';
-import { Dependencies } from './types';
+import type { Dependencies } from './types';
+
+export type MinimumParams<TAmount> = readonly [
+  dineroObjects: ReadonlyArray<Dinero<TAmount>>
+];
 
 export type MinimumDependencies<TAmount> = Dependencies<TAmount, 'compare'>;
 
 export function minimum<TAmount>({ calculator }: MinimumDependencies<TAmount>) {
   const minFn = min(calculator);
 
-  return function _minimum(dineroObjects: ReadonlyArray<Dinero<TAmount>>) {
+  return function _minimum(...[dineroObjects]: MinimumParams<TAmount>) {
     const [firstDinero] = dineroObjects;
     const { currency, scale } = firstDinero.toJSON();
 

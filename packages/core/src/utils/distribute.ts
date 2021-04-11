@@ -1,5 +1,5 @@
 /* eslint-disable functional/no-let, functional/no-loop-statement, functional/immutable-data, functional/no-expression-statement */
-import { Calculator, RoundingMode } from '@dinero.js/calculator';
+import type { Calculator, RoundingMode } from '@dinero.js/calculator';
 import { equal } from '.';
 
 type DistributeCalculator<TAmount> = Pick<

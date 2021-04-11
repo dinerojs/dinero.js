@@ -1,6 +1,6 @@
-import { Calculator } from '@dinero.js/calculator';
+import type { Calculator } from '@dinero.js/calculator';
 
-import { Dinero, DineroOptions } from '../types';
+import type { Dinero, DineroOptions } from '../types';
 
 export type CreateDineroOptions<TAmount> = {
   readonly calculator: Calculator<TAmount>;

@@ -1,5 +1,5 @@
 import { createDinero } from '@dinero.js/core';
-import { Calculator } from '@dinero.js/calculator';
+import type { Calculator } from '@dinero.js/calculator';
 import {
   down,
   add,

@@ -1,4 +1,8 @@
-import { createPercentage, Dinero } from '@dinero.js/core';
+import type {
+  PercentageParams} from '@dinero.js/core';
+import {
+  percentage as corePercentage
+} from '@dinero.js/core';
 
 /**
  * Extract a percentage of a Dinero object.
@@ -9,10 +13,9 @@ import { createPercentage, Dinero } from '@dinero.js/core';
  * @returns A new Dinero object.
  */
 export function percentage<TAmount>(
-  dineroObject: Dinero<TAmount>,
-  share: TAmount
+  ...[dineroObject, share]: PercentageParams<TAmount>
 ) {
-  const _percentage = createPercentage(dineroObject.calculator);
+  const _percentage = corePercentage({ calculator: dineroObject.calculator });
 
   return _percentage(dineroObject, share);
 }

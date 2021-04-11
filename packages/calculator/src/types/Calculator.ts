@@ -1,10 +1,10 @@
 /* eslint-disable functional/no-mixed-type */
-import { BinaryOperation, UnaryOperation, RoundingMode } from '.';
+import type { BinaryOperation, UnaryOperation, RoundingMode } from '.';
 
 export enum ComparisonOperator {
-  LT,
-  EQ,
-  GT,
+  LT = -1,
+  EQ = 0,
+  GT = 1,
 }
 
 export type Calculator<TInput> = {

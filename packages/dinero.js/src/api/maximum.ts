@@ -1,4 +1,5 @@
-import { createMaximum, Dinero } from '@dinero.js/core';
+import type { MaximumParams } from '@dinero.js/core';
+import { maximum as coreMaximum } from '@dinero.js/core';
 
 /**
  * Get the greatest of the passed Dinero objects.
@@ -7,10 +8,8 @@ import { createMaximum, Dinero } from '@dinero.js/core';
  *
  * @returns A new Dinero object.
  */
-export function maximum<TAmount>(
-  dineroObjects: ReadonlyArray<Dinero<TAmount>>
-) {
-  const _maximum = createMaximum(dineroObjects[0].calculator);
+export function maximum<TAmount>(...[dineroObjects]: MaximumParams<TAmount>) {
+  const _maximum = coreMaximum({ calculator: dineroObjects[0].calculator });
 
   return _maximum(dineroObjects);
 }

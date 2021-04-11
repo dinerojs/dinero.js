@@ -1,5 +1,10 @@
-import { Dinero } from '../types';
-import { Dependencies } from './types';
+import type { Dinero } from '../types';
+import type { Dependencies } from './types';
+
+export type PercentageParams<TAmount> = readonly [
+  dineroObject: Dinero<TAmount>,
+  share: TAmount
+];
 
 export type PercentageDependencies<TAmount> = Dependencies<
   TAmount,
@@ -9,7 +14,9 @@ export type PercentageDependencies<TAmount> = Dependencies<
 export function percentage<TAmount>({
   calculator,
 }: PercentageDependencies<TAmount>) {
-  return function _percentage(dineroObject: Dinero<TAmount>, share: TAmount) {
+  return function _percentage(
+    ...[dineroObject, share]: PercentageParams<TAmount>
+  ) {
     const { amount, currency, scale } = dineroObject.toJSON();
 
     return dineroObject.create({

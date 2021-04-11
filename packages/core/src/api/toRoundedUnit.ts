@@ -1,7 +1,13 @@
-import { RoundingMode } from '@dinero.js/calculator';
-import { Dinero } from '../types';
+import type { RoundingMode } from '@dinero.js/calculator';
+import type { Dinero } from '../types';
 import { toUnit } from '.';
-import { Dependencies } from './types';
+import type { Dependencies } from './types';
+
+export type ToRoundedUnitParams<TAmount> = readonly [
+  dineroObject: Dinero<TAmount>,
+  digits: TAmount,
+  roundingMode?: RoundingMode<TAmount>
+];
 
 export type ToRoundedUnitDependencies<TAmount> = Dependencies<
   TAmount,
@@ -14,9 +20,11 @@ export function toRoundedUnit<TAmount>({
   const toUnitFn = toUnit({ calculator });
 
   return function _toRoundedUnit(
-    dineroObject: Dinero<TAmount>,
-    digits: TAmount,
-    roundingMode: RoundingMode<TAmount> = calculator.round
+    ...[
+      dineroObject,
+      digits,
+      roundingMode = calculator.round,
+    ]: ToRoundedUnitParams<TAmount>
   ) {
     const { currency } = dineroObject.toJSON();
     const factor = calculator.power(currency.base, digits);

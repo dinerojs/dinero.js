@@ -1,4 +1,5 @@
-import { createToUnit, Dinero } from '@dinero.js/core';
+import type { ToUnitParams } from '@dinero.js/core';
+import { toUnit as coreToUnit } from '@dinero.js/core';
 
 /**
  * Get the amount of a Dinero object in units.
@@ -7,8 +8,8 @@ import { createToUnit, Dinero } from '@dinero.js/core';
  *
  * @returns The amount in units.
  */
-export function toUnit<TAmount>(dineroObject: Dinero<TAmount>) {
-  const _toUnit = createToUnit(dineroObject.calculator);
+export function toUnit<TAmount>(...[dineroObject]: ToUnitParams<TAmount>) {
+  const _toUnit = coreToUnit({ calculator: dineroObject.calculator });
 
   return _toUnit(dineroObject);
 }

@@ -1,5 +1,5 @@
-import { createConvert, Dinero, ConvertOptions } from '@dinero.js/core';
-import { Currency } from '@dinero.js/currencies';
+import type { ConvertParams } from '@dinero.js/core';
+import { convert as coreConvert } from '@dinero.js/core';
 
 /**
  * Convert a Dinero object to another currency.
@@ -13,11 +13,9 @@ import { Currency } from '@dinero.js/currencies';
  * @returns A new Dinero object.
  */
 export function convert<TAmount>(
-  dineroObject: Dinero<TAmount>,
-  newCurrency: Currency<TAmount>,
-  options: ConvertOptions<TAmount>
+  ...[dineroObject, newCurrency, options]: ConvertParams<TAmount>
 ) {
-  const _convert = createConvert(dineroObject.calculator);
+  const _convert = coreConvert({ calculator: dineroObject.calculator });
 
   return _convert(dineroObject, newCurrency, options);
 }

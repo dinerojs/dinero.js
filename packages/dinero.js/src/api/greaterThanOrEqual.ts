@@ -1,7 +1,8 @@
+import type {
+  GreaterThanOrEqualParams} from '@dinero.js/core';
 import {
-  createSafeGreaterThanOrEqual,
-  createUnsafeGreaterThanOrEqual,
-  Dinero,
+  safeGreaterThanOrEqual as coreSafeGreaterThanOrEqual,
+  unsafeGreaterThanOrEqual as coreUnsafeGreaterThanOrEqual
 } from '@dinero.js/core';
 
 /**
@@ -13,12 +14,11 @@ import {
  * @returns Whether the Dinero to compare is greater than or equal the other.
  */
 export function unsafeGreaterThanOrEqual<TAmount>(
-  dineroObject: Dinero<TAmount>,
-  comparator: Dinero<TAmount>
+  ...[dineroObject, comparator]: GreaterThanOrEqualParams<TAmount>
 ) {
-  const greaterThanOrEqual = createUnsafeGreaterThanOrEqual(
-    dineroObject.calculator
-  );
+  const greaterThanOrEqual = coreUnsafeGreaterThanOrEqual({
+    calculator: dineroObject.calculator,
+  });
 
   return greaterThanOrEqual(dineroObject, comparator);
 }
@@ -32,12 +32,11 @@ export function unsafeGreaterThanOrEqual<TAmount>(
  * @returns Whether the Dinero to compare is greater than or equal the other.
  */
 export function safeGreaterThanOrEqual<TAmount>(
-  dineroObject: Dinero<TAmount>,
-  comparator: Dinero<TAmount>
+  ...[dineroObject, comparator]: GreaterThanOrEqualParams<TAmount>
 ) {
-  const greaterThanOrEqual = createSafeGreaterThanOrEqual(
-    dineroObject.calculator
-  );
+  const greaterThanOrEqual = coreSafeGreaterThanOrEqual({
+    calculator: dineroObject.calculator,
+  });
 
   return greaterThanOrEqual(dineroObject, comparator);
 }

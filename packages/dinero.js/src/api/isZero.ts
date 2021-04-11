@@ -1,4 +1,5 @@
-import { createIsZero, Dinero } from '@dinero.js/core';
+import type { IsZeroParams } from '@dinero.js/core';
+import { isZero as coreIsZero } from '@dinero.js/core';
 
 /**
  * Check whether the value of a Dinero object is zero.
@@ -7,8 +8,8 @@ import { createIsZero, Dinero } from '@dinero.js/core';
  *
  * @returns Whether the value of a Dinero object is zero.
  */
-export function isZero<TAmount>(dineroObject: Dinero<TAmount>) {
-  const _isZero = createIsZero(dineroObject.calculator);
+export function isZero<TAmount>(...[dineroObject]: IsZeroParams<TAmount>) {
+  const _isZero = coreIsZero({ calculator: dineroObject.calculator });
 
   return _isZero(dineroObject);
 }

@@ -1,4 +1,5 @@
-import { ComparisonOperator, BinaryOperation } from '../../types';
+import type { BinaryOperation } from '../../types';
+import { ComparisonOperator } from '../../types';
 
 /**
  * Compare two numbers.

@@ -1,7 +1,13 @@
 import { convertScale } from '.';
 import { maximum } from '../utils';
-import { Dinero } from '../types';
-import { Dependencies } from './types';
+import type { Dinero } from '../types';
+import type { Dependencies } from './types';
+
+export type MultiplyParams<TAmount> = readonly [
+  multiplier: Dinero<TAmount>,
+  multiplicand: TAmount,
+  options?: MultiplyOptions<TAmount>
+];
 
 export type MultiplyDependencies<TAmount> = Dependencies<
   TAmount,
@@ -19,9 +25,11 @@ export function multiply<TAmount>({
   const maxFn = maximum(calculator);
 
   return function _multiply(
-    multiplier: Dinero<TAmount>,
-    multiplicand: TAmount,
-    options: MultiplyOptions<TAmount> = { scale: calculator.zero() }
+    ...[
+      multiplier,
+      multiplicand,
+      options = { scale: calculator.zero() },
+    ]: MultiplyParams<TAmount>
   ) {
     const { amount, currency, scale } = multiplier.toJSON();
     const highestScale = maxFn([scale, options.scale]);

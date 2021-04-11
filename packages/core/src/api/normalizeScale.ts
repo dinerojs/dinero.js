@@ -1,7 +1,11 @@
 import { convertScale } from '.';
-import { Dinero } from '../types';
+import type { Dinero } from '../types';
 import { maximum } from '../utils';
-import { Dependencies } from './types';
+import type { Dependencies } from './types';
+
+export type NormalizeScaleParams<TAmount> = readonly [
+  dineroObjects: ReadonlyArray<Dinero<TAmount>>
+];
 
 export type NormalizeScaleDependencies<TAmount> = Dependencies<
   TAmount,
@@ -15,7 +19,7 @@ export function normalizeScale<TAmount>({
   const convertScaleFn = convertScale({ calculator });
 
   return function _normalizeScale(
-    dineroObjects: ReadonlyArray<Dinero<TAmount>>
+    ...[dineroObjects]: NormalizeScaleParams<TAmount>
   ) {
     const highestScale = dineroObjects.reduce((highest, current) => {
       const { scale } = current.toJSON();

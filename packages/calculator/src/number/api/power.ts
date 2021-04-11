@@ -1,4 +1,4 @@
-import { BinaryOperation } from '../../types';
+import type { BinaryOperation } from '../../types';
 
 /**
  * Returns an number to the power of an exponent.

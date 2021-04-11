@@ -1,9 +1,14 @@
 /* eslint-disable functional/no-expression-statement */
-import { Dinero } from '../types';
+import type { Dinero } from '../types';
 import { lessThan as lt } from '../utils';
 import { haveSameCurrency, normalizeScale } from '.';
-import { Dependencies } from './types';
+import type { Dependencies } from './types';
 import { assertSameCurrency } from '../guards';
+
+export type LessThanParams<TAmount> = readonly [
+  dineroObject: Dinero<TAmount>,
+  comparator: Dinero<TAmount>
+];
 
 export type UnsafeLessThanDependencies<TAmount> = Dependencies<
   TAmount,
@@ -16,8 +21,7 @@ export function unsafeLessThan<TAmount>({
   const lessThanFn = lt(calculator);
 
   return function lessThan(
-    dineroObject: Dinero<TAmount>,
-    comparator: Dinero<TAmount>
+    ...[dineroObject, comparator]: LessThanParams<TAmount>
   ) {
     const dineroObjects = [dineroObject, comparator];
 
@@ -43,8 +47,7 @@ export function safeLessThan<TAmount>({
   const lessThanFn = unsafeLessThan({ calculator });
 
   return function lessThan(
-    dineroObject: Dinero<TAmount>,
-    comparator: Dinero<TAmount>
+    ...[dineroObject, comparator]: LessThanParams<TAmount>
   ) {
     assertSameCurrency(haveSameCurrency([dineroObject, comparator]));
 

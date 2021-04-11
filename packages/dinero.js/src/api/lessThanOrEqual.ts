@@ -1,7 +1,8 @@
+import type {
+  LessThanOrEqualParams} from '@dinero.js/core';
 import {
-  createSafeLessThanOrEqual,
-  createUnsafeLessThanOrEqual,
-  Dinero,
+  safeLessThanOrEqual as coreSafeLessThanOrEqual,
+  unsafeLessThanOrEqual as coreUnsafeLessThanOrEqual
 } from '@dinero.js/core';
 
 /**
@@ -13,10 +14,11 @@ import {
  * @returns Whether the Dinero to compare is lesser than or equal to the other.
  */
 export function unsafeLessThanOrEqual<TAmount>(
-  dineroObject: Dinero<TAmount>,
-  comparator: Dinero<TAmount>
+  ...[dineroObject, comparator]: LessThanOrEqualParams<TAmount>
 ) {
-  const lessThanOrEqual = createUnsafeLessThanOrEqual(dineroObject.calculator);
+  const lessThanOrEqual = coreUnsafeLessThanOrEqual({
+    calculator: dineroObject.calculator,
+  });
 
   return lessThanOrEqual(dineroObject, comparator);
 }
@@ -30,10 +32,11 @@ export function unsafeLessThanOrEqual<TAmount>(
  * @returns Whether the Dinero to compare is lesser than or equal to the other.
  */
 export function safeLessThanOrEqual<TAmount>(
-  dineroObject: Dinero<TAmount>,
-  comparator: Dinero<TAmount>
+  ...[dineroObject, comparator]: LessThanOrEqualParams<TAmount>
 ) {
-  const lessThanOrEqual = createSafeLessThanOrEqual(dineroObject.calculator);
+  const lessThanOrEqual = coreSafeLessThanOrEqual({
+    calculator: dineroObject.calculator,
+  });
 
   return lessThanOrEqual(dineroObject, comparator);
 }

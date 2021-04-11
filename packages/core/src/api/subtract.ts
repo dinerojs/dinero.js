@@ -1,8 +1,13 @@
 /* eslint-disable functional/no-expression-statement */
-import { Dinero } from '../types';
+import type { Dinero } from '../types';
 import { haveSameCurrency, normalizeScale } from '.';
 import { assertSameCurrency } from '../guards';
-import { Dependencies } from './types';
+import type { Dependencies } from './types';
+
+export type SubtractParams<TAmount> = readonly [
+  minuend: Dinero<TAmount>,
+  subtrahend: Dinero<TAmount>
+];
 
 export type UnsafeSubtractDependencies<TAmount> = Dependencies<
   TAmount,
@@ -12,10 +17,7 @@ export type UnsafeSubtractDependencies<TAmount> = Dependencies<
 export function unsafeSubtract<TAmount>({
   calculator,
 }: UnsafeSubtractDependencies<TAmount>) {
-  return function subtract(
-    minuend: Dinero<TAmount>,
-    subtrahend: Dinero<TAmount>
-  ) {
+  return function subtract(...[minuend, subtrahend]: SubtractParams<TAmount>) {
     const { amount: minuendAmount, currency, scale } = minuend.toJSON();
     const { amount: subtrahendAmount } = subtrahend.toJSON();
 
@@ -47,10 +49,7 @@ export function safeSubtract<TAmount>({
   const normalizeFn = normalizeScale({ calculator });
   const subtractFn = unsafeSubtract({ calculator });
 
-  return function subtract(
-    minuend: Dinero<TAmount>,
-    subtrahend: Dinero<TAmount>
-  ) {
+  return function subtract(...[minuend, subtrahend]: SubtractParams<TAmount>) {
     assertSameCurrency(haveSameCurrency([minuend, subtrahend]));
 
     const [newMinuend, newSubtrahend] = normalizeFn([minuend, subtrahend]);

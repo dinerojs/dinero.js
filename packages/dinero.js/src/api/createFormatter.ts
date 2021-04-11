@@ -1,22 +1,10 @@
-import {
-  Transformer,
-  FormatOptions,
-  Dinero,
-  createToFormat,
-} from '@dinero.js/core';
-import {
-  multiply,
-  divide,
-  power,
-  halfEven,
-} from '@dinero.js/calculator/number';
+import type { ToFormatParams } from '@dinero.js/core';
+import { toFormat as coreToFormat } from '@dinero.js/core';
 
-const formatter = createToFormat({
-  multiply,
-  divide,
-  power,
-  round: halfEven,
-});
+type CreateFormatterParams<TAmount> = readonly [
+  transformer: ToFormatParams<TAmount>[1],
+  options?: ToFormatParams<TAmount>[2]
+];
 
 /**
  * Create a pure Dinero object formatter.
@@ -26,11 +14,12 @@ const formatter = createToFormat({
  *
  * @returns A formatter function.
  */
-export function createFormatter(
-  transformer: Transformer<number>,
-  { digits, roundingMode }: FormatOptions<number> = {}
+export function createFormatter<TAmount>(
+  ...[transformer, { digits, roundingMode } = {} as ToFormatParams<TAmount>[2]]: CreateFormatterParams<TAmount>
 ) {
-  return function toFormat(dineroObject: Dinero<number>) {
+  return function toFormat(dineroObject: ToFormatParams<TAmount>[0]) {
+    const formatter = coreToFormat({ calculator: dineroObject.calculator });
+
     return formatter(dineroObject, transformer, { digits, roundingMode });
   };
 }

@@ -1,13 +1,17 @@
-import { Dinero } from '../types';
+import type { Dinero } from '../types';
 import { maximum as max } from '../utils';
-import { Dependencies } from './types';
+import type { Dependencies } from './types';
+
+export type MaximumParams<TAmount> = readonly [
+  dineroObjects: ReadonlyArray<Dinero<TAmount>>
+];
 
 export type MaximumDependencies<TAmount> = Dependencies<TAmount, 'compare'>;
 
 export function maximum<TAmount>({ calculator }: MaximumDependencies<TAmount>) {
   const maxFn = max(calculator);
 
-  return function _maximum(dineroObjects: ReadonlyArray<Dinero<TAmount>>) {
+  return function _maximum(...[dineroObjects]: MaximumParams<TAmount>) {
     const [firstDinero] = dineroObjects;
     const { currency, scale } = firstDinero.toJSON();
 

@@ -1,6 +1,10 @@
-import { Dinero } from '../types';
+import type { Dinero } from '../types';
 import { lessThan } from '../utils';
-import { Dependencies } from './types';
+import type { Dependencies } from './types';
+
+export type IsNegativeParams<TAmount> = readonly [
+  dineroObject: Dinero<TAmount>
+];
 
 export type IsNegativeDependencies<TAmount> = Dependencies<
   TAmount,
@@ -12,7 +16,7 @@ export function isNegative<TAmount>({
 }: IsNegativeDependencies<TAmount>) {
   const lessThanFn = lessThan(calculator);
 
-  return function _isNegative(dineroObject: Dinero<TAmount>) {
+  return function _isNegative(...[dineroObject]: IsNegativeParams<TAmount>) {
     const { amount } = dineroObject.toJSON();
 
     return lessThanFn(amount, calculator.zero());

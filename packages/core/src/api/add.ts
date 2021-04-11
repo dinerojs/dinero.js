@@ -1,15 +1,20 @@
 /* eslint-disable functional/no-expression-statement */
-import { Dinero } from '../types';
+import type { Dinero } from '../types';
 import { haveSameCurrency, normalizeScale } from '.';
 import { assertSameCurrency } from '../guards';
-import { Dependencies } from './types';
+import type { Dependencies } from './types';
+
+export type AddParams<TAmount> = readonly [
+  augend: Dinero<TAmount>,
+  addend: Dinero<TAmount>
+];
 
 export type UnsafeAddDependencies<TAmount> = Dependencies<TAmount, 'add'>;
 
 export function unsafeAdd<TAmount>({
   calculator,
 }: UnsafeAddDependencies<TAmount>) {
-  return function add(augend: Dinero<TAmount>, addend: Dinero<TAmount>) {
+  return function add(...[augend, addend]: AddParams<TAmount>) {
     const { amount: augendAmount, currency, scale } = augend.toJSON();
     const { amount: addendAmount } = addend.toJSON();
 
@@ -32,7 +37,7 @@ export function safeAdd<TAmount>({ calculator }: SafeAddDependencies<TAmount>) {
   const normalizeFn = normalizeScale({ calculator });
   const addFn = unsafeAdd({ calculator });
 
-  return function add(augend: Dinero<TAmount>, addend: Dinero<TAmount>) {
+  return function add(...[augend, addend]: AddParams<TAmount>) {
     assertSameCurrency(haveSameCurrency([augend, addend]));
 
     const [newAugend, newAddend] = normalizeFn([augend, addend]);

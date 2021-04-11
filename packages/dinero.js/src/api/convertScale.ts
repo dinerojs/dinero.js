@@ -1,5 +1,8 @@
-import { createConvertScale, Dinero } from '@dinero.js/core';
-import { RoundingMode } from '@dinero.js/calculator';
+import type {
+  ConvertScaleParams} from '@dinero.js/core';
+import {
+  convertScale as coreConvertScale
+} from '@dinero.js/core';
 
 /**
  * Convert a Dinero object to a new precision.
@@ -11,11 +14,11 @@ import { RoundingMode } from '@dinero.js/calculator';
  * @returns A new Dinero object.
  */
 export function convertScale<TAmount>(
-  dineroObject: Dinero<TAmount>,
-  newScale: TAmount,
-  roundingMode?: RoundingMode<TAmount>
+  ...[dineroObject, newScale, roundingMode]: ConvertScaleParams<TAmount>
 ) {
-  const _convertScale = createConvertScale(dineroObject.calculator);
+  const _convertScale = coreConvertScale({
+    calculator: dineroObject.calculator,
+  });
 
   return _convertScale(dineroObject, newScale, roundingMode);
 }

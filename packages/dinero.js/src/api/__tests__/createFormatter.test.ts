@@ -4,7 +4,7 @@ import { dinero, createFormatter } from '../../..';
 
 describe('createFormatter', () => {
   it('formats the pure Dinero object with the passed transformer', () => {
-    const format = createFormatter(
+    const format = createFormatter<number>(
       ({ amount, currency }) => `${currency.code} ${amount}`
     );
 

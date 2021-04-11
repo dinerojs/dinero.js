@@ -1,7 +1,11 @@
-import { Dinero } from '../types';
+import type { Dinero } from '../types';
 import { normalizeScale } from '.';
 import { equal } from '../utils';
-import { Dependencies } from './types';
+import type { Dependencies } from './types';
+
+export type HaveSameAmountParams<TAmount> = readonly [
+  dineroObjects: ReadonlyArray<Dinero<TAmount>>
+];
 
 export type HaveSameAmountDependencies<TAmount> = Dependencies<
   TAmount,
@@ -15,7 +19,7 @@ export function haveSameAmount<TAmount>({
   const equalFn = equal(calculator);
 
   return function _haveSameAmount(
-    dineroObjects: ReadonlyArray<Dinero<TAmount>>
+    ...[dineroObjects]: HaveSameAmountParams<TAmount>
   ) {
     const [firstDinero, ...otherDineros] = normalizeFn(dineroObjects);
     const { amount: comparatorAmount } = firstDinero.toJSON();

@@ -1,7 +1,13 @@
-import { Currency } from '@dinero.js/currencies';
-import { RoundingMode } from '@dinero.js/calculator';
-import { Dinero, Rates } from '../types';
-import { Dependencies } from './types';
+import type { Currency } from '@dinero.js/currencies';
+import type { RoundingMode } from '@dinero.js/calculator';
+import type { Dinero, Rates } from '../types';
+import type { Dependencies } from './types';
+
+export type ConvertParams<TAmount> = readonly [
+  dineroObject: Dinero<TAmount>,
+  newCurrency: Currency<TAmount>,
+  options: ConvertOptions<TAmount>
+];
 
 export type ConvertOptions<TAmount> = {
   readonly rates: Readonly<Promise<Rates<TAmount>>>;
@@ -16,13 +22,11 @@ export type ConvertDependencies<TAmount> = Dependencies<
 
 export function convert<TAmount>({ calculator }: ConvertDependencies<TAmount>) {
   return async function _convert(
-    dineroObject: Dinero<TAmount>,
-    newCurrency: Currency<TAmount>,
-    {
-      rates,
-      roundingMode = calculator.round,
-      preserveScale = true,
-    }: ConvertOptions<TAmount>
+    ...[
+      dineroObject,
+      newCurrency,
+      { rates, roundingMode = calculator.round, preserveScale = true },
+    ]: ConvertParams<TAmount>
   ) {
     const r = await rates;
     const rate = r[newCurrency.code];
