@@ -2,17 +2,17 @@ import { Dinero } from '../types';
 import { greaterThanOrEqual } from '../utils';
 import { Dependencies } from './types';
 
-export type IsPositiveDependencies<
+export type IsPositiveDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'compare' | 'zero'>;
+  'compare' | 'zero'
+>;
 
-export function isPositive<TAmount, TDinero extends Dinero<TAmount>>({
+export function isPositive<TAmount>({
   calculator,
-}: IsPositiveDependencies<TAmount, TDinero>) {
+}: IsPositiveDependencies<TAmount>) {
   const greaterThanOrEqualFn = greaterThanOrEqual(calculator);
 
-  return function _isPositive(dineroObject: TDinero) {
+  return function _isPositive(dineroObject: Dinero<TAmount>) {
     const { amount } = dineroObject.toJSON();
 
     return greaterThanOrEqualFn(amount, calculator.zero());

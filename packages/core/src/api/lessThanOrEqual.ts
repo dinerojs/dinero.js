@@ -5,18 +5,20 @@ import { haveSameCurrency, normalizeScale } from '.';
 import { assertSameCurrency } from '../guards';
 import { Dependencies } from './types';
 
-export type UnsafeLessThanOrEqualDependencies<
+export type UnsafeLessThanOrEqualDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'compare'>;
+  'compare'
+>;
 
-export function unsafeLessThanOrEqual<
-  TAmount,
-  TDinero extends Dinero<TAmount>
->({ calculator }: UnsafeLessThanOrEqualDependencies<TAmount, TDinero>) {
+export function unsafeLessThanOrEqual<TAmount>({
+  calculator,
+}: UnsafeLessThanOrEqualDependencies<TAmount>) {
   const lessThanOrEqualFn = lte(calculator);
 
-  return function lessThanOrEqual(dineroObject: TDinero, comparator: TDinero) {
+  return function lessThanOrEqual(
+    dineroObject: Dinero<TAmount>,
+    comparator: Dinero<TAmount>
+  ) {
     const dineroObjects = [dineroObject, comparator];
 
     const [subjectAmount, comparatorAmount] = dineroObjects.map((d) => {
@@ -29,26 +31,23 @@ export function unsafeLessThanOrEqual<
   };
 }
 
-export type SafeLessThanOrEqualDependencies<
+export type SafeLessThanOrEqualDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<
-  TAmount,
-  TDinero,
   'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
 >;
 
-export function safeLessThanOrEqual<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
+export function safeLessThanOrEqual<TAmount>({
   calculator,
-}: SafeLessThanOrEqualDependencies<TAmount, TDinero>) {
-  const normalizeFn = normalizeScale({ factory, calculator });
+}: SafeLessThanOrEqualDependencies<TAmount>) {
+  const normalizeFn = normalizeScale({ calculator });
   const lessThanOrEqualFn = unsafeLessThanOrEqual({
-    factory,
     calculator,
   });
 
-  return function lessThanOrEqual(dineroObject: TDinero, comparator: TDinero) {
+  return function lessThanOrEqual(
+    dineroObject: Dinero<TAmount>,
+    comparator: Dinero<TAmount>
+  ) {
     assertSameCurrency(haveSameCurrency([dineroObject, comparator]));
 
     const [subjectAmount, comparatorAmount] = normalizeFn([

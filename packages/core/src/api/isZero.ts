@@ -2,17 +2,15 @@ import { Dinero } from '../types';
 import { equal } from '../utils';
 import { Dependencies } from './types';
 
-export type IsZeroDependencies<
+export type IsZeroDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'compare' | 'zero'>;
+  'compare' | 'zero'
+>;
 
-export function isZero<TAmount, TDinero extends Dinero<TAmount>>({
-  calculator,
-}: IsZeroDependencies<TAmount, TDinero>) {
+export function isZero<TAmount>({ calculator }: IsZeroDependencies<TAmount>) {
   const equalFn = equal(calculator);
 
-  return function _isZero(dineroObject: TDinero) {
+  return function _isZero(dineroObject: Dinero<TAmount>) {
     const { amount } = dineroObject.toJSON();
 
     return equalFn(amount, calculator.zero());

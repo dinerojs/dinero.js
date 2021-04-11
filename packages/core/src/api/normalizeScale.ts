@@ -3,23 +3,20 @@ import { Dinero } from '../types';
 import { maximum } from '../utils';
 import { Dependencies } from './types';
 
-export type NormalizeScaleDependencies<
+export type NormalizeScaleDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<
-  TAmount,
-  TDinero,
   'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
 >;
 
-export function normalizeScale<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
+export function normalizeScale<TAmount>({
   calculator,
-}: NormalizeScaleDependencies<TAmount, TDinero>) {
+}: NormalizeScaleDependencies<TAmount>) {
   const maximumFn = maximum(calculator);
-  const convertScaleFn = convertScale({ factory, calculator });
+  const convertScaleFn = convertScale({ calculator });
 
-  return function _normalizeScale(dineroObjects: readonly TDinero[]) {
+  return function _normalizeScale(
+    dineroObjects: ReadonlyArray<Dinero<TAmount>>
+  ) {
     const highestScale = dineroObjects.reduce((highest, current) => {
       const { scale } = current.toJSON();
 

@@ -5,20 +5,19 @@ import { haveSameCurrency, normalizeScale } from '.';
 import { assertSameCurrency } from '../guards';
 import { Dependencies } from './types';
 
-export type UnsafeGreaterThanOrEqualDependencies<
+export type UnsafeGreaterThanOrEqualDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'compare'>;
+  'compare'
+>;
 
-export function unsafeGreaterThanOrEqual<
-  TAmount,
-  TDinero extends Dinero<TAmount>
->({ calculator }: UnsafeGreaterThanOrEqualDependencies<TAmount, TDinero>) {
+export function unsafeGreaterThanOrEqual<TAmount>({
+  calculator,
+}: UnsafeGreaterThanOrEqualDependencies<TAmount>) {
   const greaterThanOrEqualFn = gte(calculator);
 
   return function greaterThanOrEqual(
-    dineroObject: TDinero,
-    comparator: TDinero
+    dineroObject: Dinero<TAmount>,
+    comparator: Dinero<TAmount>
   ) {
     const dineroObjects = [dineroObject, comparator];
 
@@ -32,31 +31,22 @@ export function unsafeGreaterThanOrEqual<
   };
 }
 
-export type SafeGreaterThanOrEqualDependencies<
+export type SafeGreaterThanOrEqualDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<
-  TAmount,
-  TDinero,
   'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
 >;
 
-export function safeGreaterThanOrEqual<
-  TAmount,
-  TDinero extends Dinero<TAmount>
->({
-  factory,
+export function safeGreaterThanOrEqual<TAmount>({
   calculator,
-}: SafeGreaterThanOrEqualDependencies<TAmount, TDinero>) {
-  const normalizeFn = normalizeScale({ factory, calculator });
+}: SafeGreaterThanOrEqualDependencies<TAmount>) {
+  const normalizeFn = normalizeScale({ calculator });
   const greaterThanOrEqualFn = unsafeGreaterThanOrEqual({
-    factory,
     calculator,
   });
 
   return function greaterThanOrEqual(
-    dineroObject: TDinero,
-    comparator: TDinero
+    dineroObject: Dinero<TAmount>,
+    comparator: Dinero<TAmount>
   ) {
     assertSameCurrency(haveSameCurrency([dineroObject, comparator]));
 

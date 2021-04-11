@@ -1,19 +1,18 @@
 import { Dinero } from '../types';
 import { Dependencies } from './types';
 
-export type PercentageDependencies<
+export type PercentageDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'percentage'>;
+  'percentage'
+>;
 
-export function percentage<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
+export function percentage<TAmount>({
   calculator,
-}: PercentageDependencies<TAmount, TDinero>) {
-  return function _percentage(dineroObject: TDinero, share: TAmount) {
+}: PercentageDependencies<TAmount>) {
+  return function _percentage(dineroObject: Dinero<TAmount>, share: TAmount) {
     const { amount, currency, scale } = dineroObject.toJSON();
 
-    return factory({
+    return dineroObject.create({
       amount: calculator.percentage(amount, share),
       currency,
       scale,

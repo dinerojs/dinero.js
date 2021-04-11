@@ -1,11 +1,9 @@
 import { createFunction } from '../utils';
 
 import { haveSameAmount, HaveSameAmountDependencies } from '../api';
-import { Dinero } from '../types';
 
 type HaveSameAmountCalculator<TAmount> = HaveSameAmountDependencies<
-  TAmount,
-  Dinero<TAmount>
+  TAmount
 >['calculator'];
 
 export function createHaveSameAmount<TAmount>(

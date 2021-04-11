@@ -1,16 +1,8 @@
 import {
   createSafeGreaterThanOrEqual,
   createUnsafeGreaterThanOrEqual,
+  Dinero,
 } from '@dinero.js/core';
-import {
-  add,
-  compare,
-  multiply,
-  power,
-  subtract,
-  halfEven,
-  zero,
-} from '@dinero.js/calculator/number';
 
 /**
  * Unsafely check whether the value of a Dinero object is greater than or equal another.
@@ -20,9 +12,16 @@ import {
  *
  * @returns Whether the Dinero to compare is greater than or equal the other.
  */
-export const unsafeGreaterThanOrEqual = createUnsafeGreaterThanOrEqual({
-  compare,
-});
+export function unsafeGreaterThanOrEqual<TAmount>(
+  dineroObject: Dinero<TAmount>,
+  comparator: Dinero<TAmount>
+) {
+  const greaterThanOrEqual = createUnsafeGreaterThanOrEqual(
+    dineroObject.calculator
+  );
+
+  return greaterThanOrEqual(dineroObject, comparator);
+}
 
 /**
  * Check whether the value of a Dinero object is greater than or equal another.
@@ -32,12 +31,13 @@ export const unsafeGreaterThanOrEqual = createUnsafeGreaterThanOrEqual({
  *
  * @returns Whether the Dinero to compare is greater than or equal the other.
  */
-export const safeGreaterThanOrEqual = createSafeGreaterThanOrEqual({
-  add,
-  compare,
-  multiply,
-  power,
-  subtract,
-  round: halfEven,
-  zero,
-});
+export function safeGreaterThanOrEqual<TAmount>(
+  dineroObject: Dinero<TAmount>,
+  comparator: Dinero<TAmount>
+) {
+  const greaterThanOrEqual = createSafeGreaterThanOrEqual(
+    dineroObject.calculator
+  );
+
+  return greaterThanOrEqual(dineroObject, comparator);
+}

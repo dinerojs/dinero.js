@@ -1,5 +1,4 @@
-import { createMinimum } from '@dinero.js/core';
-import { compare } from '@dinero.js/calculator/number';
+import { createMinimum, Dinero } from '@dinero.js/core';
 
 /**
  * Get the lowest of the passed Dinero objects.
@@ -8,4 +7,10 @@ import { compare } from '@dinero.js/calculator/number';
  *
  * @returns A new Dinero object.
  */
-export const minimum = createMinimum({ compare });
+export function minimum<TAmount>(
+  dineroObjects: ReadonlyArray<Dinero<TAmount>>
+) {
+  const _minimum = createMinimum(dineroObjects[0].calculator);
+
+  return _minimum(dineroObjects);
+}

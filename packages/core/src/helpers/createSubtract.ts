@@ -6,11 +6,9 @@ import {
   UnsafeSubtractDependencies,
   SafeSubtractDependencies,
 } from '../api';
-import { Dinero } from '../types';
 
 type UnsafeSubtractCalculator<TAmount> = UnsafeSubtractDependencies<
-  TAmount,
-  Dinero<TAmount>
+  TAmount
 >['calculator'];
 
 export function createUnsafeSubtract<TAmount>(
@@ -20,8 +18,7 @@ export function createUnsafeSubtract<TAmount>(
 }
 
 type SafeSubtractCalculator<TAmount> = SafeSubtractDependencies<
-  TAmount,
-  Dinero<TAmount>
+  TAmount
 >['calculator'];
 
 export function createSafeSubtract<TAmount>(

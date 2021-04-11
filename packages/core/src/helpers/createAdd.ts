@@ -6,11 +6,9 @@ import {
   UnsafeAddDependencies,
   SafeAddDependencies,
 } from '../api';
-import { Dinero } from '../types';
 
 type UnsafeAddCalculator<TAmount> = UnsafeAddDependencies<
-  TAmount,
-  Dinero<TAmount>
+  TAmount
 >['calculator'];
 
 export function createUnsafeAdd<TAmount>(
@@ -19,10 +17,7 @@ export function createUnsafeAdd<TAmount>(
   return createFunction(unsafeAdd, calculator);
 }
 
-type SafeAddCalculator<TAmount> = SafeAddDependencies<
-  TAmount,
-  Dinero<TAmount>
->['calculator'];
+type SafeAddCalculator<TAmount> = SafeAddDependencies<TAmount>['calculator'];
 
 export function createSafeAdd<TAmount>(calculator: SafeAddCalculator<TAmount>) {
   return createFunction(safeAdd, calculator);

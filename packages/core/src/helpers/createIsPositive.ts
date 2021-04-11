@@ -1,10 +1,8 @@
 import { createFunction } from '../utils';
 import { isPositive, IsPositiveDependencies } from '../api';
-import { Dinero } from '../types';
 
 type IsPositiveCalculator<TAmount> = IsPositiveDependencies<
-  TAmount,
-  Dinero<TAmount>
+  TAmount
 >['calculator'];
 
 export function createIsPositive<TAmount>(

@@ -3,8 +3,6 @@ import {
   Dependencies,
   CalculatorDependency,
 } from '@dinero.js/core/src/api/types';
-import { Dinero } from '../types';
-import { dinero } from '../dinero';
 
 /**
  * Create a Dinero function from a core function and a calculator.
@@ -16,19 +14,13 @@ import { dinero } from '../dinero';
  */
 export function createFunction<
   TAmount,
-  TDinero extends Dinero<TAmount>,
   TCalculatorMethods extends keyof Calculator<TAmount>,
   TReturnType
 >(
-  fn: (
-    dependencies: Dependencies<TAmount, TDinero, TCalculatorMethods>
-  ) => TReturnType,
+  fn: (dependencies: Dependencies<TAmount, TCalculatorMethods>) => TReturnType,
   calculator: CalculatorDependency<TAmount, TCalculatorMethods>
 ) {
-  const dependencies = {
-    factory: dinero,
+  return fn({
     calculator,
-  };
-
-  return fn(dependencies as Dependencies<TAmount, TDinero, TCalculatorMethods>);
+  } as Dependencies<TAmount, TCalculatorMethods>);
 }

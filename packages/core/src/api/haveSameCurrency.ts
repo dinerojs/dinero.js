@@ -12,8 +12,8 @@ function currencyEqual<TAmount>(
   );
 }
 
-export function haveSameCurrency<TAmount, TDinero extends Dinero<TAmount>>(
-  dineroObjects: readonly TDinero[]
+export function haveSameCurrency<TAmount>(
+  dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ) {
   const [firstDinero, ...otherDineros] = dineroObjects;
   const { currency: comparatorCurrency } = firstDinero.toJSON();

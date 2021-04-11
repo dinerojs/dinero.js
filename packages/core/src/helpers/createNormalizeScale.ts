@@ -1,11 +1,9 @@
 import { createFunction } from '../utils';
 
 import { normalizeScale, NormalizeScaleDependencies } from '../api';
-import { Dinero } from '../types';
 
 type NormalizeScaleCalculator<TAmount> = NormalizeScaleDependencies<
-  TAmount,
-  Dinero<TAmount>
+  TAmount
 >['calculator'];
 
 export function createNormalizeScale<TAmount>(

@@ -3,19 +3,18 @@ import { Dinero } from '../types';
 import { toUnit } from '.';
 import { Dependencies } from './types';
 
-export type ToRoundedUnitDependencies<
+export type ToRoundedUnitDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'multiply' | 'divide' | 'power' | 'round'>;
+  'multiply' | 'divide' | 'power' | 'round'
+>;
 
-export function toRoundedUnit<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
+export function toRoundedUnit<TAmount>({
   calculator,
-}: ToRoundedUnitDependencies<TAmount, TDinero>) {
-  const toUnitFn = toUnit({ factory, calculator });
+}: ToRoundedUnitDependencies<TAmount>) {
+  const toUnitFn = toUnit({ calculator });
 
   return function _toRoundedUnit(
-    dineroObject: TDinero,
+    dineroObject: Dinero<TAmount>,
     digits: TAmount,
     roundingMode: RoundingMode<TAmount> = calculator.round
   ) {

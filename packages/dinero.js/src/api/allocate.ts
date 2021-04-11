@@ -1,25 +1,8 @@
-import { createUnsafeAllocate, createSafeAllocate } from '@dinero.js/core';
 import {
-  add,
-  compare,
-  divide,
-  increment,
-  multiply,
-  subtract,
-  zero,
-  down,
-} from '@dinero.js/calculator/number';
-
-const calculator = {
-  add,
-  compare,
-  divide,
-  increment,
-  multiply,
-  subtract,
-  zero,
-  round: down,
-};
+  createUnsafeAllocate,
+  createSafeAllocate,
+  Dinero,
+} from '@dinero.js/core';
 
 /**
  * Unsafely distribute the amount of a Dinero object across a list of ratios.
@@ -29,7 +12,14 @@ const calculator = {
  *
  * @returns A new Dinero object.
  */
-export const unsafeAllocate = createUnsafeAllocate(calculator);
+export function unsafeAllocate<TAmount>(
+  dineroObject: Dinero<TAmount>,
+  ratios: readonly TAmount[]
+) {
+  const allocate = createUnsafeAllocate(dineroObject.calculator);
+
+  return allocate(dineroObject, ratios);
+}
 
 /**
  * Distribute the amount of a Dinero object across a list of ratios.
@@ -39,4 +29,11 @@ export const unsafeAllocate = createUnsafeAllocate(calculator);
  *
  * @returns A new Dinero object.
  */
-export const safeAllocate = createSafeAllocate(calculator);
+export function safeAllocate<TAmount>(
+  dineroObject: Dinero<TAmount>,
+  ratios: readonly TAmount[]
+) {
+  const allocate = createSafeAllocate(dineroObject.calculator);
+
+  return allocate(dineroObject, ratios);
+}

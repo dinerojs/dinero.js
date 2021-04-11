@@ -3,23 +3,20 @@ import { RoundingMode } from '@dinero.js/calculator';
 import { Dinero, Rates } from '../types';
 import { Dependencies } from './types';
 
-type ConvertOptions<TAmount> = {
+export type ConvertOptions<TAmount> = {
   readonly rates: Readonly<Promise<Rates<TAmount>>>;
   readonly roundingMode: RoundingMode<TAmount>;
   readonly preserveScale?: boolean;
 };
 
-export type ConvertDependencies<
+export type ConvertDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'multiply' | 'round'>;
+  'multiply' | 'round'
+>;
 
-export function convert<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
-  calculator,
-}: ConvertDependencies<TAmount, TDinero>) {
+export function convert<TAmount>({ calculator }: ConvertDependencies<TAmount>) {
   return async function _convert(
-    dineroObject: TDinero,
+    dineroObject: Dinero<TAmount>,
     newCurrency: Currency<TAmount>,
     {
       rates,
@@ -32,7 +29,7 @@ export function convert<TAmount, TDinero extends Dinero<TAmount>>({
 
     const { amount, scale: sourceScale } = dineroObject.toJSON();
 
-    return factory({
+    return dineroObject.create({
       amount: roundingMode(calculator.multiply(amount, rate)),
       currency: newCurrency,
       scale: preserveScale ? sourceScale : newCurrency.exponent,

@@ -4,6 +4,5 @@ export * from './DineroOptions';
 export * from './DineroSnapshot';
 export * from './FormatOptions';
 export * from './Formatter';
-export * from './PartialDinero';
 export * from './Rates';
 export * from './Transformer';

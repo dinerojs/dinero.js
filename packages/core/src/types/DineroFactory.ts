@@ -1,7 +1,7 @@
-import { DineroOptions } from '.';
+import { Dinero, DineroOptions } from '.';
 
-export type DineroFactory<TAmount, TDinero> = ({
+export type DineroFactory<TAmount> = ({
   amount,
   currency,
   scale,
-}: DineroOptions<TAmount>) => TDinero;
+}: DineroOptions<TAmount>) => Dinero<TAmount>;

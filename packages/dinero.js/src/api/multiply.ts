@@ -1,13 +1,4 @@
-import { createMultiply } from '@dinero.js/core';
-import {
-  multiply as multiplyNumbers,
-  halfEven,
-  zero,
-  power,
-  subtract,
-  compare,
-  add,
-} from '@dinero.js/calculator/number';
+import { createMultiply, Dinero, MultiplyOptions } from '@dinero.js/core';
 
 /**
  * Multiply the passed Dinero object.
@@ -18,12 +9,12 @@ import {
  *
  * @returns A new Dinero object.
  */
-export const multiply = createMultiply({
-  multiply: multiplyNumbers,
-  zero,
-  power,
-  subtract,
-  compare,
-  add,
-  round: halfEven,
-});
+export function multiply<TAmount>(
+  multiplier: Dinero<TAmount>,
+  multiplicand: TAmount,
+  options?: MultiplyOptions<TAmount>
+) {
+  const _multiply = createMultiply(multiplier.calculator);
+
+  return _multiply(multiplier, multiplicand, options);
+}

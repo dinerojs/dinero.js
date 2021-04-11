@@ -31,5 +31,4 @@ export * from './normalizeScale';
 export * from './toRoundedUnit';
 export * from './toUnit';
 export * from './toSnapshot';
-export { partialDinero } from './partialDinero';
 export { createFormatter } from './createFormatter';

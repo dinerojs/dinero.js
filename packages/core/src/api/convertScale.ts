@@ -2,17 +2,16 @@ import { RoundingMode } from '@dinero.js/calculator';
 import { Dinero } from '../types';
 import { Dependencies } from './types';
 
-export type ConvertScaleDependencies<
+export type ConvertScaleDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'subtract' | 'multiply' | 'power' | 'round'>;
+  'subtract' | 'multiply' | 'power' | 'round'
+>;
 
-export function convertScale<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
+export function convertScale<TAmount>({
   calculator,
-}: ConvertScaleDependencies<TAmount, TDinero>) {
+}: ConvertScaleDependencies<TAmount>) {
   return function _convertScale(
-    dineroObject: TDinero,
+    dineroObject: Dinero<TAmount>,
     newScale: TAmount,
     roundingMode: RoundingMode<TAmount> = calculator.round
   ) {
@@ -22,7 +21,7 @@ export function convertScale<TAmount, TDinero extends Dinero<TAmount>>({
       calculator.subtract(newScale, scale)
     );
 
-    return factory({
+    return dineroObject.create({
       amount: roundingMode(calculator.multiply(amount, factor)),
       currency,
       scale: newScale,

@@ -1,11 +1,9 @@
 import { createFunction } from '../utils';
 
 import { convertScale, ConvertScaleDependencies } from '../api';
-import { Dinero } from '../types';
 
 type ConvertScaleCalculator<TAmount> = ConvertScaleDependencies<
-  TAmount,
-  Dinero<TAmount>
+  TAmount
 >['calculator'];
 
 export function createConvertScale<TAmount>(

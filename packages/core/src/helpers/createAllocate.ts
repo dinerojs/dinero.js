@@ -6,11 +6,9 @@ import {
   UnsafeAllocateDependencies,
   SafeAllocateDependencies,
 } from '../api';
-import { Dinero } from '../types';
 
 type UnsafeAllocateCalculator<TAmount> = UnsafeAllocateDependencies<
-  TAmount,
-  Dinero<TAmount>
+  TAmount
 >['calculator'];
 
 export function createUnsafeAllocate<TAmount>(
@@ -20,8 +18,7 @@ export function createUnsafeAllocate<TAmount>(
 }
 
 type SafeAllocateCalculator<TAmount> = SafeAllocateDependencies<
-  TAmount,
-  Dinero<TAmount>
+  TAmount
 >['calculator'];
 
 export function createSafeAllocate<TAmount>(

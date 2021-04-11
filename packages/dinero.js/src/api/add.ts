@@ -1,13 +1,4 @@
-import { createUnsafeAdd, createSafeAdd } from '@dinero.js/core';
-import {
-  add,
-  compare,
-  multiply,
-  power,
-  halfEven,
-  subtract,
-  zero,
-} from '@dinero.js/calculator/number';
+import { createUnsafeAdd, createSafeAdd, Dinero } from '@dinero.js/core';
 
 /**
  * Unsafely add up the passed Dinero objects.
@@ -17,7 +8,14 @@ import {
  *
  * @returns A new Dinero object.
  */
-export const unsafeAdd = createUnsafeAdd({ add });
+export function unsafeAdd<TAmount>(
+  augend: Dinero<TAmount>,
+  addend: Dinero<TAmount>
+) {
+  const add = createUnsafeAdd(augend.calculator);
+
+  return add(augend, addend);
+}
 
 /**
  * Add up the passed Dinero objects.
@@ -27,12 +25,11 @@ export const unsafeAdd = createUnsafeAdd({ add });
  *
  * @returns A new Dinero object.
  */
-export const safeAdd = createSafeAdd({
-  add,
-  compare,
-  multiply,
-  power,
-  round: halfEven,
-  subtract,
-  zero,
-});
+export function safeAdd<TAmount>(
+  augend: Dinero<TAmount>,
+  addend: Dinero<TAmount>
+) {
+  const add = createSafeAdd(augend.calculator);
+
+  return add(augend, addend);
+}

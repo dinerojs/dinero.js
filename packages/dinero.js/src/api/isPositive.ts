@@ -1,5 +1,4 @@
-import { createIsPositive } from '@dinero.js/core';
-import { compare, zero } from '@dinero.js/calculator/number';
+import { createIsPositive, Dinero } from '@dinero.js/core';
 
 /**
  * Check whether a Dinero object is positive.
@@ -8,4 +7,8 @@ import { compare, zero } from '@dinero.js/calculator/number';
  *
  * @returns Whether the Dinero object is positive.
  */
-export const isPositive = createIsPositive({ zero, compare });
+export function isPositive<TAmount>(dineroObject: Dinero<TAmount>) {
+  const _isPositive = createIsPositive(dineroObject.calculator);
+
+  return _isPositive(dineroObject);
+}

@@ -3,28 +3,23 @@ import { maximum } from '../utils';
 import { Dinero } from '../types';
 import { Dependencies } from './types';
 
-export type MultiplyDependencies<
+export type MultiplyDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<
-  TAmount,
-  TDinero,
   'add' | 'multiply' | 'zero' | 'power' | 'round' | 'subtract' | 'compare'
 >;
 
-type MultiplyOptions<TAmount> = {
+export type MultiplyOptions<TAmount> = {
   readonly scale: TAmount;
 };
 
-export function multiply<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
+export function multiply<TAmount>({
   calculator,
-}: MultiplyDependencies<TAmount, TDinero>) {
-  const convertScaleFn = convertScale({ factory, calculator });
+}: MultiplyDependencies<TAmount>) {
+  const convertScaleFn = convertScale({ calculator });
   const maxFn = maximum(calculator);
 
   return function _multiply(
-    multiplier: TDinero,
+    multiplier: Dinero<TAmount>,
     multiplicand: TAmount,
     options: MultiplyOptions<TAmount> = { scale: calculator.zero() }
   ) {
@@ -32,7 +27,7 @@ export function multiply<TAmount, TDinero extends Dinero<TAmount>>({
     const highestScale = maxFn([scale, options.scale]);
 
     return convertScaleFn(
-      factory({
+      multiplier.create({
         amount: calculator.multiply(amount, multiplicand),
         currency,
         scale: calculator.add(scale, options.scale),

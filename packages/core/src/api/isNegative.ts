@@ -2,17 +2,17 @@ import { Dinero } from '../types';
 import { lessThan } from '../utils';
 import { Dependencies } from './types';
 
-export type IsNegativeDependencies<
+export type IsNegativeDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'compare' | 'zero'>;
+  'compare' | 'zero'
+>;
 
-export function isNegative<TAmount, TDinero extends Dinero<TAmount>>({
+export function isNegative<TAmount>({
   calculator,
-}: IsNegativeDependencies<TAmount, TDinero>) {
+}: IsNegativeDependencies<TAmount>) {
   const lessThanFn = lessThan(calculator);
 
-  return function _isNegative(dineroObject: TDinero) {
+  return function _isNegative(dineroObject: Dinero<TAmount>) {
     const { amount } = dineroObject.toJSON();
 
     return lessThanFn(amount, calculator.zero());

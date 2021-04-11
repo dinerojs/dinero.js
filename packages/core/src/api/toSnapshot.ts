@@ -1,7 +1,5 @@
 import { Dinero } from '../types';
 
-export function toSnapshot<TAmount, TDinero extends Dinero<TAmount>>(
-  dineroObject: TDinero
-) {
+export function toSnapshot<TAmount>(dineroObject: Dinero<TAmount>) {
   return dineroObject.toJSON();
 }

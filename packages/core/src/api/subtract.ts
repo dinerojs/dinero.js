@@ -4,22 +4,24 @@ import { haveSameCurrency, normalizeScale } from '.';
 import { assertSameCurrency } from '../guards';
 import { Dependencies } from './types';
 
-export type UnsafeSubtractDependencies<
+export type UnsafeSubtractDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'subtract'>;
+  'subtract'
+>;
 
-export function unsafeSubtract<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
+export function unsafeSubtract<TAmount>({
   calculator,
-}: UnsafeSubtractDependencies<TAmount, TDinero>) {
-  return function subtract(minuend: TDinero, subtrahend: TDinero) {
+}: UnsafeSubtractDependencies<TAmount>) {
+  return function subtract(
+    minuend: Dinero<TAmount>,
+    subtrahend: Dinero<TAmount>
+  ) {
     const { amount: minuendAmount, currency, scale } = minuend.toJSON();
     const { amount: subtrahendAmount } = subtrahend.toJSON();
 
     const amount = calculator.subtract(minuendAmount, subtrahendAmount);
 
-    return factory({
+    return minuend.create({
       amount,
       currency,
       scale,
@@ -27,12 +29,8 @@ export function unsafeSubtract<TAmount, TDinero extends Dinero<TAmount>>({
   };
 }
 
-export type SafeSubtractDependencies<
+export type SafeSubtractDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<
-  TAmount,
-  TDinero,
   | 'subtract'
   | 'add'
   | 'compare'
@@ -43,14 +41,16 @@ export type SafeSubtractDependencies<
   | 'zero'
 >;
 
-export function safeSubtract<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
+export function safeSubtract<TAmount>({
   calculator,
-}: SafeSubtractDependencies<TAmount, TDinero>) {
-  const normalizeFn = normalizeScale({ factory, calculator });
-  const subtractFn = unsafeSubtract({ factory, calculator });
+}: SafeSubtractDependencies<TAmount>) {
+  const normalizeFn = normalizeScale({ calculator });
+  const subtractFn = unsafeSubtract({ calculator });
 
-  return function subtract(minuend: TDinero, subtrahend: TDinero) {
+  return function subtract(
+    minuend: Dinero<TAmount>,
+    subtrahend: Dinero<TAmount>
+  ) {
     assertSameCurrency(haveSameCurrency([minuend, subtrahend]));
 
     const [newMinuend, newSubtrahend] = normalizeFn([minuend, subtrahend]);

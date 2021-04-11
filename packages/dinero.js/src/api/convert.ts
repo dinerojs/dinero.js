@@ -1,5 +1,5 @@
-import { createConvert } from '@dinero.js/core';
-import { multiply, halfEven } from '@dinero.js/calculator/number';
+import { createConvert, Dinero, ConvertOptions } from '@dinero.js/core';
+import { Currency } from '@dinero.js/currencies';
 
 /**
  * Convert a Dinero object to another currency.
@@ -12,7 +12,12 @@ import { multiply, halfEven } from '@dinero.js/calculator/number';
  *
  * @returns A new Dinero object.
  */
-export const convert = createConvert({
-  multiply,
-  round: halfEven,
-});
+export function convert<TAmount>(
+  dineroObject: Dinero<TAmount>,
+  newCurrency: Currency<TAmount>,
+  options: ConvertOptions<TAmount>
+) {
+  const _convert = createConvert(dineroObject.calculator);
+
+  return _convert(dineroObject, newCurrency, options);
+}

@@ -1,13 +1,4 @@
-import { createHaveSameAmount } from '@dinero.js/core';
-import {
-  add,
-  compare,
-  multiply,
-  power,
-  subtract,
-  halfEven,
-  zero,
-} from '@dinero.js/calculator/number';
+import { createHaveSameAmount, Dinero } from '@dinero.js/core';
 
 /**
  * Check whether a set of Dinero objects have the same amount.
@@ -16,12 +7,10 @@ import {
  *
  * @returns Whether the Dinero objects have the same amount.
  */
-export const haveSameAmount = createHaveSameAmount({
-  add,
-  compare,
-  multiply,
-  power,
-  subtract,
-  round: halfEven,
-  zero,
-});
+export function haveSameAmount<TAmount>(
+  dineroObjects: ReadonlyArray<Dinero<TAmount>>
+) {
+  const _haveSameAmount = createHaveSameAmount(dineroObjects[0].calculator);
+
+  return _haveSameAmount(dineroObjects);
+}

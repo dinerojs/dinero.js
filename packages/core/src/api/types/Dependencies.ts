@@ -1,5 +1,4 @@
 import { Calculator } from '@dinero.js/calculator';
-import { Dinero, DineroFactory } from '../../types';
 
 export type CalculatorDependency<
   TAmount,
@@ -8,9 +7,7 @@ export type CalculatorDependency<
 
 export type Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>,
   TCalculatorMethods extends keyof Calculator<TAmount>
 > = {
-  readonly factory: DineroFactory<TAmount, TDinero>;
   readonly calculator: CalculatorDependency<TAmount, TCalculatorMethods>;
 };

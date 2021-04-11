@@ -1,13 +1,4 @@
-import { createNormalizeScale } from '@dinero.js/core';
-import {
-  add,
-  compare,
-  multiply,
-  power,
-  subtract,
-  halfEven,
-  zero,
-} from '@dinero.js/calculator/number';
+import { createNormalizeScale, Dinero } from '@dinero.js/core';
 
 /**
  * Normalize a set of Dinero objects to the highest scale of the set.
@@ -16,12 +7,10 @@ import {
  *
  * @returns A new set of Dinero objects.
  */
-export const normalizeScale = createNormalizeScale({
-  add,
-  compare,
-  zero,
-  multiply,
-  power,
-  subtract,
-  round: halfEven,
-});
+export function normalizeScale<TAmount>(
+  dineroObjects: ReadonlyArray<Dinero<TAmount>>
+) {
+  const _normalizeScale = createNormalizeScale(dineroObjects[0].calculator);
+
+  return _normalizeScale(dineroObjects);
+}

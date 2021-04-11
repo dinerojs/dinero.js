@@ -6,11 +6,9 @@ import {
   unsafeGreaterThan,
   safeGreaterThan,
 } from '../api';
-import { Dinero } from '../types';
 
 type UnsafeGreaterThanCalculator<TAmount> = UnsafeGreaterThanDependencies<
-  TAmount,
-  Dinero<TAmount>
+  TAmount
 >['calculator'];
 
 export function createUnsafeGreaterThan<TAmount>(
@@ -20,8 +18,7 @@ export function createUnsafeGreaterThan<TAmount>(
 }
 
 type SafeGreaterThanCalculator<TAmount> = SafeGreaterThanDependencies<
-  TAmount,
-  Dinero<TAmount>
+  TAmount
 >['calculator'];
 
 export function createSafeGreaterThan<TAmount>(

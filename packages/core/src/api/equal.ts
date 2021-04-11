@@ -2,22 +2,18 @@ import { Dinero } from '../types';
 import { haveSameAmount, haveSameCurrency } from '.';
 import { Dependencies } from './types';
 
-export type EqualDependencies<
+export type EqualDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<
-  TAmount,
-  TDinero,
   'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
 >;
 
-export function equal<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
-  calculator,
-}: EqualDependencies<TAmount, TDinero>) {
-  return function _equal(dineroObject: TDinero, comparator: TDinero) {
+export function equal<TAmount>({ calculator }: EqualDependencies<TAmount>) {
+  return function _equal(
+    dineroObject: Dinero<TAmount>,
+    comparator: Dinero<TAmount>
+  ) {
     return (
-      haveSameAmount({ factory, calculator })([dineroObject, comparator]) &&
+      haveSameAmount({ calculator })([dineroObject, comparator]) &&
       haveSameCurrency([dineroObject, comparator])
     );
   };

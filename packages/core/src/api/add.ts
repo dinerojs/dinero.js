@@ -4,22 +4,18 @@ import { haveSameCurrency, normalizeScale } from '.';
 import { assertSameCurrency } from '../guards';
 import { Dependencies } from './types';
 
-export type UnsafeAddDependencies<
-  TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'add'>;
+export type UnsafeAddDependencies<TAmount> = Dependencies<TAmount, 'add'>;
 
-export function unsafeAdd<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
+export function unsafeAdd<TAmount>({
   calculator,
-}: UnsafeAddDependencies<TAmount, TDinero>) {
-  return function add(augend: TDinero, addend: TDinero) {
+}: UnsafeAddDependencies<TAmount>) {
+  return function add(augend: Dinero<TAmount>, addend: Dinero<TAmount>) {
     const { amount: augendAmount, currency, scale } = augend.toJSON();
     const { amount: addendAmount } = addend.toJSON();
 
     const amount = calculator.add(augendAmount, addendAmount);
 
-    return factory({
+    return augend.create({
       amount,
       currency,
       scale,
@@ -27,23 +23,16 @@ export function unsafeAdd<TAmount, TDinero extends Dinero<TAmount>>({
   };
 }
 
-export type SafeAddDependencies<
+export type SafeAddDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<
-  TAmount,
-  TDinero,
   'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
 >;
 
-export function safeAdd<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
-  calculator,
-}: SafeAddDependencies<TAmount, TDinero>) {
-  const normalizeFn = normalizeScale({ factory, calculator });
-  const addFn = unsafeAdd({ factory, calculator });
+export function safeAdd<TAmount>({ calculator }: SafeAddDependencies<TAmount>) {
+  const normalizeFn = normalizeScale({ calculator });
+  const addFn = unsafeAdd({ calculator });
 
-  return function add(augend: TDinero, addend: TDinero) {
+  return function add(augend: Dinero<TAmount>, addend: Dinero<TAmount>) {
     assertSameCurrency(haveSameCurrency([augend, addend]));
 
     const [newAugend, newAddend] = normalizeFn([augend, addend]);

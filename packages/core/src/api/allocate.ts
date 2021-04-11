@@ -4,12 +4,8 @@ import { distribute, greaterThanOrEqual, greaterThan } from '../utils';
 import { Dependencies } from './types';
 import { assertValidRatios } from '../guards';
 
-export type UnsafeAllocateDependencies<
+export type UnsafeAllocateDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<
-  TAmount,
-  TDinero,
   | 'add'
   | 'compare'
   | 'divide'
@@ -20,16 +16,18 @@ export type UnsafeAllocateDependencies<
   | 'zero'
 >;
 
-export function unsafeAllocate<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
+export function unsafeAllocate<TAmount>({
   calculator,
-}: UnsafeAllocateDependencies<TAmount, TDinero>) {
-  return function allocate(dineroObject: TDinero, ratios: readonly TAmount[]) {
+}: UnsafeAllocateDependencies<TAmount>) {
+  return function allocate(
+    dineroObject: Dinero<TAmount>,
+    ratios: readonly TAmount[]
+  ) {
     const { amount, currency, scale } = dineroObject.toJSON();
     const shares = distribute(calculator, calculator.round)(amount, ratios);
 
     return shares.map((share) => {
-      return factory({
+      return dineroObject.create({
         amount: share,
         currency,
         scale,
@@ -38,12 +36,8 @@ export function unsafeAllocate<TAmount, TDinero extends Dinero<TAmount>>({
   };
 }
 
-export type SafeAllocateDependencies<
+export type SafeAllocateDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<
-  TAmount,
-  TDinero,
   | 'add'
   | 'compare'
   | 'divide'
@@ -54,15 +48,17 @@ export type SafeAllocateDependencies<
   | 'zero'
 >;
 
-export function safeAllocate<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
+export function safeAllocate<TAmount>({
   calculator,
-}: SafeAllocateDependencies<TAmount, TDinero>) {
-  const allocateFn = unsafeAllocate({ factory, calculator });
+}: SafeAllocateDependencies<TAmount>) {
+  const allocateFn = unsafeAllocate({ calculator });
   const greaterThanOrEqualFn = greaterThanOrEqual(calculator);
   const greaterThanFn = greaterThan(calculator);
 
-  return function allocate(dineroObject: TDinero, ratios: readonly TAmount[]) {
+  return function allocate(
+    dineroObject: Dinero<TAmount>,
+    ratios: readonly TAmount[]
+  ) {
     const condition =
       ratios.length > 0 &&
       ratios.every((ratio) => greaterThanOrEqualFn(ratio, calculator.zero())) &&

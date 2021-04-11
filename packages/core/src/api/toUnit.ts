@@ -1,15 +1,13 @@
 import { Dinero } from '../types';
 import { Dependencies } from './types';
 
-export type ToUnitDependencies<
+export type ToUnitDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'divide' | 'power'>;
+  'divide' | 'power'
+>;
 
-export function toUnit<TAmount, TDinero extends Dinero<TAmount>>({
-  calculator,
-}: ToUnitDependencies<TAmount, TDinero>) {
-  return (dineroObject: TDinero) => {
+export function toUnit<TAmount>({ calculator }: ToUnitDependencies<TAmount>) {
+  return (dineroObject: Dinero<TAmount>) => {
     const { amount, currency, scale } = dineroObject.toJSON();
     const factor = calculator.power(currency.base, scale);
 

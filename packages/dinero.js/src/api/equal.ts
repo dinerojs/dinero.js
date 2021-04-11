@@ -1,13 +1,4 @@
-import { createEqual } from '@dinero.js/core';
-import {
-  add,
-  compare,
-  multiply,
-  power,
-  subtract,
-  halfEven,
-  zero,
-} from '@dinero.js/calculator/number';
+import { createEqual, Dinero } from '@dinero.js/core';
 
 /**
  * Check whether the value of a Dinero object is equal to another.
@@ -17,12 +8,11 @@ import {
  *
  * @returns Whether the Dinero objects are equal.
  */
-export const equal = createEqual({
-  add,
-  compare,
-  multiply,
-  power,
-  subtract,
-  round: halfEven,
-  zero,
-});
+export function equal<TAmount>(
+  dineroObject: Dinero<TAmount>,
+  comparator: Dinero<TAmount>
+) {
+  const _equal = createEqual(dineroObject.calculator);
+
+  return _equal(dineroObject, comparator);
+}

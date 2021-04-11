@@ -2,6 +2,7 @@ export * from './createAdd';
 export * from './createAllocate';
 export * from './createConvert';
 export * from './createConvertScale';
+export * from './createDinero';
 export * from './createEqual';
 export * from './createGreaterThan';
 export * from './createGreaterThanOrEqual';

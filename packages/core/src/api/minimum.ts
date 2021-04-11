@@ -2,18 +2,12 @@ import { Dinero } from '../types';
 import { minimum as min } from '../utils';
 import { Dependencies } from './types';
 
-export type MinimumDependencies<
-  TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'compare'>;
+export type MinimumDependencies<TAmount> = Dependencies<TAmount, 'compare'>;
 
-export function minimum<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
-  calculator,
-}: MinimumDependencies<TAmount, TDinero>) {
+export function minimum<TAmount>({ calculator }: MinimumDependencies<TAmount>) {
   const minFn = min(calculator);
 
-  return function _minimum(dineroObjects: readonly TDinero[]) {
+  return function _minimum(dineroObjects: ReadonlyArray<Dinero<TAmount>>) {
     const [firstDinero] = dineroObjects;
     const { currency, scale } = firstDinero.toJSON();
 
@@ -25,7 +19,7 @@ export function minimum<TAmount, TDinero extends Dinero<TAmount>>({
       })
     );
 
-    return factory({
+    return firstDinero.create({
       amount,
       currency,
       scale,

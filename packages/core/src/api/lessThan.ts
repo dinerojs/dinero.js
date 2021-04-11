@@ -5,17 +5,20 @@ import { haveSameCurrency, normalizeScale } from '.';
 import { Dependencies } from './types';
 import { assertSameCurrency } from '../guards';
 
-export type UnsafeLessThanDependencies<
+export type UnsafeLessThanDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'compare'>;
+  'compare'
+>;
 
-export function unsafeLessThan<TAmount, TDinero extends Dinero<TAmount>>({
+export function unsafeLessThan<TAmount>({
   calculator,
-}: UnsafeLessThanDependencies<TAmount, TDinero>) {
+}: UnsafeLessThanDependencies<TAmount>) {
   const lessThanFn = lt(calculator);
 
-  return function lessThan(dineroObject: TDinero, comparator: TDinero) {
+  return function lessThan(
+    dineroObject: Dinero<TAmount>,
+    comparator: Dinero<TAmount>
+  ) {
     const dineroObjects = [dineroObject, comparator];
 
     const [subjectAmount, comparatorAmount] = dineroObjects.map((d) => {
@@ -28,23 +31,21 @@ export function unsafeLessThan<TAmount, TDinero extends Dinero<TAmount>>({
   };
 }
 
-export type SafeLessThanDependencies<
+export type SafeLessThanDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<
-  TAmount,
-  TDinero,
   'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
 >;
 
-export function safeLessThan<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
+export function safeLessThan<TAmount>({
   calculator,
-}: SafeLessThanDependencies<TAmount, TDinero>) {
-  const normalizeFn = normalizeScale({ factory, calculator });
-  const lessThanFn = unsafeLessThan({ factory, calculator });
+}: SafeLessThanDependencies<TAmount>) {
+  const normalizeFn = normalizeScale({ calculator });
+  const lessThanFn = unsafeLessThan({ calculator });
 
-  return function lessThan(dineroObject: TDinero, comparator: TDinero) {
+  return function lessThan(
+    dineroObject: Dinero<TAmount>,
+    comparator: Dinero<TAmount>
+  ) {
     assertSameCurrency(haveSameCurrency([dineroObject, comparator]));
 
     const [subjectAmount, comparatorAmount] = normalizeFn([

@@ -6,14 +6,10 @@ import {
   unsafeGreaterThanOrEqual,
   safeGreaterThanOrEqual,
 } from '../api';
-import { Dinero } from '../types';
 
 type UnsafeGreaterThanCalculator<
   TAmount
-> = UnsafeGreaterThanOrEqualDependencies<
-  TAmount,
-  Dinero<TAmount>
->['calculator'];
+> = UnsafeGreaterThanOrEqualDependencies<TAmount>['calculator'];
 
 export function createUnsafeGreaterThanOrEqual<TAmount>(
   calculator: UnsafeGreaterThanCalculator<TAmount>
@@ -22,8 +18,7 @@ export function createUnsafeGreaterThanOrEqual<TAmount>(
 }
 
 type SafeGreaterThanCalculator<TAmount> = SafeGreaterThanOrEqualDependencies<
-  TAmount,
-  Dinero<TAmount>
+  TAmount
 >['calculator'];
 
 export function createSafeGreaterThanOrEqual<TAmount>(

@@ -2,19 +2,18 @@ import { Dinero, Transformer, FormatOptions } from '../types';
 import { toRoundedUnit } from './toRoundedUnit';
 import { Dependencies } from './types';
 
-export type ToFormatDependencies<
+export type ToFormatDependencies<TAmount> = Dependencies<
   TAmount,
-  TDinero extends Dinero<TAmount>
-> = Dependencies<TAmount, TDinero, 'multiply' | 'divide' | 'power' | 'round'>;
+  'multiply' | 'divide' | 'power' | 'round'
+>;
 
-export function toFormat<TAmount, TDinero extends Dinero<TAmount>>({
-  factory,
+export function toFormat<TAmount>({
   calculator,
-}: ToFormatDependencies<TAmount, TDinero>) {
-  const toRoundedUnitFn = toRoundedUnit({ factory, calculator });
+}: ToFormatDependencies<TAmount>) {
+  const toRoundedUnitFn = toRoundedUnit({ calculator });
 
   return function _toFormat(
-    dineroObject: TDinero,
+    dineroObject: Dinero<TAmount>,
     transformer: Transformer<TAmount>,
     { digits, roundingMode }: FormatOptions<TAmount>
   ) {

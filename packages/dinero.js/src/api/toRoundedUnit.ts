@@ -1,10 +1,5 @@
-import { createToRoundedUnit } from '@dinero.js/core';
-import {
-  multiply,
-  divide,
-  power,
-  halfEven,
-} from '@dinero.js/calculator/number';
+import { RoundingMode } from '@dinero.js/calculator';
+import { createToRoundedUnit, Dinero } from '@dinero.js/core';
 
 /**
  * Get the amount of a Dinero object in rounded units.
@@ -15,9 +10,12 @@ import {
  *
  * @returns The amount in rounded units.
  */
-export const toRoundedUnit = createToRoundedUnit({
-  multiply,
-  divide,
-  power,
-  round: halfEven,
-});
+export function toRoundedUnit<TAmount>(
+  dineroObject: Dinero<TAmount>,
+  digits: TAmount,
+  roundingMode?: RoundingMode<TAmount>
+) {
+  const _toRoundedUnit = createToRoundedUnit(dineroObject.calculator);
+
+  return _toRoundedUnit(dineroObject, digits, roundingMode);
+}

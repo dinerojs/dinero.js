@@ -1,11 +1,7 @@
 import { createFunction } from '../utils';
 import { toFormat, ToFormatDependencies } from '../api';
-import { Dinero } from '../types';
 
-type ToFormatCalculator<TAmount> = ToFormatDependencies<
-  TAmount,
-  Dinero<TAmount>
->['calculator'];
+type ToFormatCalculator<TAmount> = ToFormatDependencies<TAmount>['calculator'];
 
 export function createToFormat<TAmount>(
   calculator: ToFormatCalculator<TAmount>
