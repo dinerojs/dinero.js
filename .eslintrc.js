@@ -9,9 +9,9 @@ module.exports = {
     'plugin:promise/recommended',
   ],
   rules: {
-    'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
     'functional/no-conditional-statement': ['off'],
     'functional/functional-parameters': ['off'],
+    '@typescript-eslint/explicit-function-return-type': ['off'],
     'valid-jsdoc': [
       'error',
       {

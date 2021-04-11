@@ -1,4 +1,4 @@
-/* eslint-disable import/no-commonjs, functional/immutable-data, functional/no-expression-statement */
+/* eslint-disable import/no-commonjs, functional/immutable-data, functional/no-expression-statement, @typescript-eslint/no-var-requires */
 const { pathsToModuleNameMapper } = require('ts-jest/utils');
 const { compilerOptions } = require('./tsconfig');
 
