@@ -1,23 +1,21 @@
 /* eslint-disable functional/no-let, functional/no-loop-statement, functional/immutable-data, functional/no-expression-statement */
-import type { Calculator, RoundingMode } from '@dinero.js/calculator';
+import type { Calculator } from '@dinero.js/calculator';
 import { equal } from '.';
 
 type DistributeCalculator<TAmount> = Pick<
   Calculator<TAmount>,
-  'add' | 'compare' | 'divide' | 'increment' | 'multiply' | 'subtract' | 'zero'
+  'add' | 'compare' | 'divide' | 'increment' | 'multiply' | 'subtract' | 'zero' | 'modulo'
 >;
 
 /**
  * Returns a distribute function.
  *
  * @param calculator The calculator to use.
- * @param down A floor function.
  *
  * @returns The distribute function.
  */
 export function distribute<TAmount>(
   calculator: DistributeCalculator<TAmount>,
-  down: RoundingMode<TAmount> = (value) => value
 ) {
   return (value: TAmount, ratios: readonly TAmount[]) => {
     const equalFn = equal(calculator);
@@ -33,9 +31,8 @@ export function distribute<TAmount>(
     let remainder = value;
 
     const shares = ratios.map((ratio) => {
-      const share =
-        down(calculator.divide(calculator.multiply(value, ratio), total)) ||
-        zero;
+      const rawQuotient = calculator.divide(calculator.multiply(value, ratio), total);
+      const share = calculator.subtract(rawQuotient, calculator.modulo(rawQuotient, one)) || zero;
 
       remainder = calculator.subtract(remainder, share);
 

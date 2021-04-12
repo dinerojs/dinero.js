@@ -6,13 +6,12 @@ import {
   multiply,
   subtract,
   zero,
-  down,
+  modulo,
 } from '@dinero.js/calculator/number';
 import { distribute } from '../distribute';
 
 const distributeFn = distribute(
-  { add, compare, divide, increment, multiply, subtract, zero },
-  down
+  { add, compare, divide, increment, multiply, subtract, zero, modulo }
 );
 
 describe('distribute', () => {
