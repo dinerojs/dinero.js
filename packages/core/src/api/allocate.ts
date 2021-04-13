@@ -49,6 +49,7 @@ export type SafeAllocateDependencies<TAmount> = Dependencies<
   | 'round'
   | 'subtract'
   | 'zero'
+  | 'modulo'
 >;
 
 export function safeAllocate<TAmount>({
