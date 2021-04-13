@@ -31,8 +31,8 @@ export function distribute<TAmount>(
     let remainder = value;
 
     const shares = ratios.map((ratio) => {
-      const rawQuotient = calculator.divide(calculator.multiply(value, ratio), total);
-      const share = calculator.subtract(rawQuotient, calculator.modulo(rawQuotient, one)) || zero;
+      const quotient = calculator.divide(calculator.multiply(value, ratio), total);
+      const share = calculator.subtract(quotient, calculator.modulo(quotient, one)) || zero;
 
       remainder = calculator.subtract(remainder, share);
 
