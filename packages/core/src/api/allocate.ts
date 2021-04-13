@@ -19,6 +19,7 @@ export type UnsafeAllocateDependencies<TAmount> = Dependencies<
   | 'round'
   | 'subtract'
   | 'zero'
+  | 'modulo'
 >;
 
 export function unsafeAllocate<TAmount>({
@@ -26,7 +27,7 @@ export function unsafeAllocate<TAmount>({
 }: UnsafeAllocateDependencies<TAmount>) {
   return function allocate(...[dineroObject, ratios]: AllocateParams<TAmount>) {
     const { amount, currency, scale } = dineroObject.toJSON();
-    const shares = distribute(calculator, calculator.round)(amount, ratios);
+    const shares = distribute(calculator)(amount, ratios);
 
     return shares.map((share) => {
       return dineroObject.create({
