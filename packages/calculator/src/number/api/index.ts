@@ -3,7 +3,6 @@ export * from './compare';
 export * from './decrement';
 export * from './divide';
 export * from './increment';
-export * from './isOfType';
 export * from './modulo';
 export * from './multiply';
 export * from './percentage';

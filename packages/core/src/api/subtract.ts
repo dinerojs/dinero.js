@@ -38,9 +38,10 @@ export type SafeSubtractDependencies<TAmount> = Dependencies<
   | 'compare'
   | 'multiply'
   | 'power'
-  | 'round'
   | 'subtract'
   | 'zero'
+  | 'modulo'
+  | 'increment'
 >;
 
 export function safeSubtract<TAmount>({

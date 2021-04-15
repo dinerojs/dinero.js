@@ -13,7 +13,6 @@ export type Calculator<TInput> = {
   readonly decrement: UnaryOperation<TInput>;
   readonly divide: BinaryOperation<TInput>;
   readonly increment: UnaryOperation<TInput>;
-  readonly isOfType: UnaryOperation<TInput, boolean>;
   readonly modulo: BinaryOperation<TInput>;
   readonly multiply: BinaryOperation<TInput>;
   readonly percentage: BinaryOperation<TInput>;

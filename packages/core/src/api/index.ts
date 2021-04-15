@@ -2,7 +2,6 @@ export * from './add';
 export * from './allocate';
 export * from './convert';
 export * from './convertScale';
-export * from './divide';
 export * from './equal';
 export * from './greaterThan';
 export * from './greaterThanOrEqual';

@@ -8,11 +8,11 @@ describe('convertScale', () => {
 
     expect(snapshot).toMatchObject({ amount: 50000, scale: 4 });
   });
-  it('returns a new pure Dinero object with a new scale and a converted rounded amount', () => {
+  it('returns a new pure Dinero object with a new scale and a converted, rounded down amount', () => {
     const d = dinero({ amount: 14270, currency: USD, scale: 2 });
     const snapshot = toSnapshot(convertScale(d, 0));
 
-    expect(snapshot).toMatchObject({ amount: 143, scale: 0 });
+    expect(snapshot).toMatchObject({ amount: 142, scale: 0 });
   });
   it('converts between scales correctly', () => {
     const d = dinero({ amount: 333336, currency: USD, scale: 5 });

@@ -37,7 +37,7 @@ export function unsafeLessThan<TAmount>({
 
 export type SafeLessThanDependencies<TAmount> = Dependencies<
   TAmount,
-  'add' | 'compare' | 'multiply' | 'power' | 'round' | 'subtract' | 'zero'
+  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'increment' | 'modulo'
 >;
 
 export function safeLessThan<TAmount>({

@@ -1,10 +1,10 @@
 /* eslint-disable functional/no-let, functional/no-loop-statement, functional/immutable-data, functional/no-expression-statement */
 import type { Calculator } from '@dinero.js/calculator';
-import { equal } from '.';
+import { equal, greaterThan, lessThan, greaterThanOrEqual } from '.';
 
 type DistributeCalculator<TAmount> = Pick<
   Calculator<TAmount>,
-  'add' | 'compare' | 'divide' | 'increment' | 'multiply' | 'subtract' | 'zero' | 'modulo'
+  'add' | 'compare' | 'divide' | 'increment' | 'decrement' | 'multiply' | 'subtract' | 'zero' | 'modulo'
 >;
 
 /**
@@ -19,6 +19,10 @@ export function distribute<TAmount>(
 ) {
   return (value: TAmount, ratios: readonly TAmount[]) => {
     const equalFn = equal(calculator);
+    const greaterThanFn = greaterThan(calculator);
+    const lessThanFn = lessThan(calculator);
+    const greaterThanOrEqualFn = greaterThanOrEqual(calculator);
+
     const zero = calculator.zero();
     const one = calculator.increment(zero);
 
@@ -31,20 +35,24 @@ export function distribute<TAmount>(
     let remainder = value;
 
     const shares = ratios.map((ratio) => {
-      const quotient = calculator.divide(calculator.multiply(value, ratio), total);
-      const share = calculator.subtract(quotient, calculator.modulo(quotient, one)) || zero;
+      const rawQuotient = calculator.divide(calculator.multiply(value, ratio), total);
+      const share = calculator.subtract(rawQuotient, calculator.modulo(rawQuotient, one)) || zero;
 
       remainder = calculator.subtract(remainder, share);
 
       return share;
     });
 
+    const isPositive = greaterThanOrEqualFn(value, zero);
+    const compare = isPositive ? greaterThanFn : lessThanFn;
+    const amount = isPositive ? one : calculator.decrement(zero);
+
     let i = 0;
 
-    while (remainder > zero) {
-      if (ratios[i] !== zero) {
-        shares[i] = calculator.add(shares[i], one);
-        remainder = calculator.subtract(remainder, one);
+    while (compare(remainder, zero)) {
+      if (!equalFn(ratios[i], zero)) {
+        shares[i] = calculator.add(shares[i], amount);
+        remainder = calculator.subtract(remainder, amount);
       }
 
       i++;
