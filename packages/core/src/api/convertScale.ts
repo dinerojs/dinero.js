@@ -8,7 +8,7 @@ export type ConvertScaleParams<TAmount> = readonly [
 
 export type ConvertScaleDependencies<TAmount> = Dependencies<
   TAmount,
-  'subtract' | 'multiply' | 'power' | 'modulo' | 'zero' | 'increment'
+  'subtract' | 'integerDivide' | 'power'
 >;
 
 export function convertScale<TAmount>({
@@ -22,17 +22,13 @@ export function convertScale<TAmount>({
   ) {
     const { amount, currency, scale } = dineroObject.toJSON();
 
-    const zero = calculator.zero();
-    const one = calculator.increment(zero);
     const factor = calculator.power(
       currency.base,
-      calculator.subtract(newScale, scale)
+      calculator.subtract(scale, newScale)
     );
-    const rawQuotient = calculator.multiply(amount, factor);
-    const quotient = calculator.subtract(rawQuotient, calculator.modulo(rawQuotient, one));
 
     return dineroObject.create({
-      amount: quotient,
+      amount: calculator.integerDivide(amount, factor),
       currency,
       scale: newScale,
     });

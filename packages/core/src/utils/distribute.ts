@@ -4,7 +4,7 @@ import { equal, greaterThan, lessThan, greaterThanOrEqual } from '.';
 
 type DistributeCalculator<TAmount> = Pick<
   Calculator<TAmount>,
-  'add' | 'compare' | 'divide' | 'increment' | 'decrement' | 'multiply' | 'subtract' | 'zero' | 'modulo'
+  'add' | 'compare' | 'integerDivide' | 'increment' | 'decrement' | 'multiply' | 'subtract' | 'zero' | 'modulo'
 >;
 
 /**
@@ -35,8 +35,7 @@ export function distribute<TAmount>(
     let remainder = value;
 
     const shares = ratios.map((ratio) => {
-      const rawQuotient = calculator.divide(calculator.multiply(value, ratio), total);
-      const share = calculator.subtract(rawQuotient, calculator.modulo(rawQuotient, one)) || zero;
+      const share = calculator.integerDivide(calculator.multiply(value, ratio), total) || zero;
 
       remainder = calculator.subtract(remainder, share);
 

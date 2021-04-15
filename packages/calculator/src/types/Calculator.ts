@@ -12,6 +12,7 @@ export type Calculator<TInput> = {
   readonly compare: BinaryOperation<TInput, ComparisonOperator>;
   readonly decrement: UnaryOperation<TInput>;
   readonly divide: BinaryOperation<TInput>;
+  readonly integerDivide: BinaryOperation<TInput>;
   readonly increment: UnaryOperation<TInput>;
   readonly modulo: BinaryOperation<TInput>;
   readonly multiply: BinaryOperation<TInput>;

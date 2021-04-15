@@ -9,7 +9,7 @@ export type EqualParams<TAmount> = readonly [
 
 export type EqualDependencies<TAmount> = Dependencies<
   TAmount,
-  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'increment' | 'modulo'
+  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'integerDivide'
 >;
 
 export function equal<TAmount>({ calculator }: EqualDependencies<TAmount>) {

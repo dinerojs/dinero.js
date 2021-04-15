@@ -9,7 +9,7 @@ export type HaveSameAmountParams<TAmount> = readonly [
 
 export type HaveSameAmountDependencies<TAmount> = Dependencies<
   TAmount,
-  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'increment' | 'modulo'
+  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'integerDivide'
 >;
 
 export function haveSameAmount<TAmount>({

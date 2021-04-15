@@ -30,7 +30,7 @@ export function unsafeAdd<TAmount>({
 
 export type SafeAddDependencies<TAmount> = Dependencies<
   TAmount,
-  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'increment' | 'modulo'
+  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'integerDivide'
 >;
 
 export function safeAdd<TAmount>({ calculator }: SafeAddDependencies<TAmount>) {

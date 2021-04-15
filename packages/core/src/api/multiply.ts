@@ -11,7 +11,7 @@ export type MultiplyParams<TAmount> = readonly [
 
 export type MultiplyDependencies<TAmount> = Dependencies<
   TAmount,
-  'add' | 'multiply' | 'zero' | 'power' | 'subtract' | 'compare' | 'zero' | 'increment' | 'modulo'
+  'add' | 'multiply' | 'zero' | 'power' | 'subtract' | 'compare' | 'integerDivide'
 >;
 
 export type MultiplyOptions<TAmount> = {

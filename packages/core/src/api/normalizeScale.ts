@@ -9,7 +9,7 @@ export type NormalizeScaleParams<TAmount> = readonly [
 
 export type NormalizeScaleDependencies<TAmount> = Dependencies<
   TAmount,
-  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'increment' | 'modulo'
+  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'integerDivide'
 >;
 
 export function normalizeScale<TAmount>({

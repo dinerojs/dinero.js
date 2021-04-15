@@ -13,7 +13,7 @@ export type UnsafeAllocateDependencies<TAmount> = Dependencies<
   TAmount,
   | 'add'
   | 'compare'
-  | 'divide'
+  | 'integerDivide'
   | 'increment'
   | 'decrement'
   | 'multiply'
@@ -43,8 +43,9 @@ export type SafeAllocateDependencies<TAmount> = Dependencies<
   TAmount,
   | 'add'
   | 'compare'
-  | 'divide'
+  | 'integerDivide'
   | 'increment'
+  | 'decrement'
   | 'multiply'
   | 'subtract'
   | 'zero'

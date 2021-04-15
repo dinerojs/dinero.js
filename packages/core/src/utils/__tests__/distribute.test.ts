@@ -1,7 +1,7 @@
 import {
   add,
   compare,
-  divide,
+  integerDivide,
   increment,
   decrement,
   multiply,
@@ -12,7 +12,7 @@ import {
 import { distribute } from '../distribute';
 
 const distributeFn = distribute(
-  { add, compare, divide, increment, decrement, multiply, subtract, zero, modulo }
+  { add, compare, integerDivide, increment, decrement, multiply, subtract, zero, modulo }
 );
 
 describe('distribute', () => {
