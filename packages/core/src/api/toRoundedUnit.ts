@@ -6,12 +6,12 @@ import type { Dependencies } from './types';
 export type ToRoundedUnitParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   digits: TAmount,
-  roundingMode?: RoundingMode<TAmount>
+  roundingMode: RoundingMode<TAmount>
 ];
 
 export type ToRoundedUnitDependencies<TAmount> = Dependencies<
   TAmount,
-  'multiply' | 'divide' | 'power' | 'round'
+  'multiply' | 'divide' | 'power'
 >;
 
 export function toRoundedUnit<TAmount>({
@@ -23,7 +23,7 @@ export function toRoundedUnit<TAmount>({
     ...[
       dineroObject,
       digits,
-      roundingMode = calculator.round,
+      roundingMode,
     ]: ToRoundedUnitParams<TAmount>
   ) {
     const { currency } = dineroObject.toJSON();
