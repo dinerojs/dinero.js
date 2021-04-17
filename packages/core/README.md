@@ -1,10 +1,8 @@
 # @dinero.js/core
 
-> Common code between Dinero.js packages.
+> Shared code between Dinero.js packages.
 
-**This package contains all common types and internal functions.** It can be helpful if you need to implement Dinero.js features such as a custom calculator, rounding modes, a formatter, etc.
-
-You don't need this package if you want to use Dinero.js as is.
+**This package contains all common types and internal functions.** Everything you need to use Dinero.js is re-exported in the `dinero.js` package, you don't need to ever install `@dinero.js/core` or care about what's inside. It's only helpful if you're willing to contribute to Dinero.js, or if you're building a different Dinero.js implementation than the one in `dinero.js`.
 
 ## 📦 Install
 

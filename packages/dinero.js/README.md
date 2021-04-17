@@ -18,7 +18,7 @@ yarn add dinero.js
 
 ## ⚡️ Quick start
 
-Pure `Dinero` objects are minimal and only contain a single method. Every function in `dinero.js` is side-effect free, allowing you only to bundle exactly what you use.
+Pure `Dinero` objects are minimal. Every function in `dinero.js` is side-effect free, allowing you only to bundle exactly what you use.
 
 ```js
 import { USD } from "@dinero.js/currencies";
