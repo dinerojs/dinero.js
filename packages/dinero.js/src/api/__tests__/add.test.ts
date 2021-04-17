@@ -1,21 +1,102 @@
-import { USD } from '@dinero.js/currencies';
-import { dinero, toSnapshot, add } from '../../..';
+import { USD, EUR } from "@dinero.js/currencies";
+import { dinero, toSnapshot, add, unsafeAdd } from "../../..";
 
-describe('add', () => {
-  it('adds up positive pure Dinero objects', () => {
-    const d1 = dinero({ amount: 500, currency: USD });
-    const d2 = dinero({ amount: 100, currency: USD });
+describe("add", () => {
+  describe("safe", () => {
+    it("adds up positive Dinero objects", () => {
+      const d1 = dinero({ amount: 500, currency: USD });
+      const d2 = dinero({ amount: 100, currency: USD });
 
-    const { amount } = toSnapshot(add(d1, d2));
+      const snapshot = toSnapshot(add(d1, d2));
 
-    expect(amount).toBe(600);
-  });
-  it('adds up negative pure Dinero objects', () => {
-    const d1 = dinero({ amount: -500, currency: USD });
-    const d2 = dinero({ amount: -100, currency: USD });
+      expect(snapshot).toEqual({
+        amount: 600,
+        currency: USD,
+        scale: 2,
+      });
+    });
+    it("adds up negative Dinero objects", () => {
+      const d1 = dinero({ amount: -500, currency: USD });
+      const d2 = dinero({ amount: -100, currency: USD });
 
-    const { amount } = toSnapshot(add(d1, d2));
+      const snapshot = toSnapshot(add(d1, d2));
 
-    expect(amount).toBe(-600);
+      expect(snapshot).toEqual({
+        amount: -600,
+        currency: USD,
+        scale: 2,
+      });
+    });
+    it('normalizes the result to the highest scale', () => {
+      const d1 = dinero({ amount: 500, currency: USD });
+      const d2 = dinero({ amount: 1000, currency: USD, scale: 3 });
+
+      const snapshot = toSnapshot(add(d1, d2));
+
+      expect(snapshot).toEqual({
+        amount: 6000,
+        currency: USD,
+        scale: 3,
+      });
+    });
+    it("throws when using different currencies", () => {
+      const d1 = dinero({ amount: 500, currency: USD });
+      const d2 = dinero({ amount: 100, currency: EUR });
+
+      expect(() => {
+        add(d1, d2);
+      }).toThrowErrorMatchingInlineSnapshot(
+        `"Dinero objects don't have the same currency."`
+      );
+    });
+  })
+  describe("unsafe", () => {
+    it("adds up positive Dinero objects", () => {
+      const d1 = dinero({ amount: 500, currency: USD });
+      const d2 = dinero({ amount: 100, currency: USD });
+
+      const snapshot = toSnapshot(unsafeAdd(d1, d2));
+
+      expect(snapshot).toEqual({
+        amount: 600,
+        currency: USD,
+        scale: 2,
+      });
+    });
+    it("adds up negative Dinero objects", () => {
+      const d1 = dinero({ amount: -500, currency: USD });
+      const d2 = dinero({ amount: -100, currency: USD });
+
+      const snapshot = toSnapshot(unsafeAdd(d1, d2));
+
+      expect(snapshot).toEqual({
+        amount: -600,
+        currency: USD,
+        scale: 2,
+      });
+    });
+    it("doesn't normalize the scale, resulting in an incorrect operation", () => {
+      const d1 = dinero({ amount: 500, currency: USD });
+      const d2 = dinero({ amount: 1000, currency: USD, scale: 3 });
+
+      const snapshot = toSnapshot(unsafeAdd(d1, d2));
+
+      expect(snapshot).toEqual({
+        amount: 1500,
+        currency: USD,
+        scale: 2,
+      });
+    });
+    it("doesn't throw when using different currencies, resulting in an incorrect operation", () => {
+      const d1 = dinero({ amount: 500, currency: USD });
+      const d2 = dinero({ amount: 100, currency: EUR });
+
+      expect(() => unsafeAdd(d1, d2)).not.toThrow();
+      expect(toSnapshot(unsafeAdd(d1, d2))).toEqual({
+        amount: 600,
+        currency: USD,
+        scale: 2,
+      });
+    });
   });
 });
