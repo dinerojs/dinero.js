@@ -14,11 +14,11 @@ import {
  * @returns The amount in rounded units.
  */
 export function toRoundedUnit<TAmount>(
-  ...[dineroObject, digits, roundingMode]: ToRoundedUnitParams<TAmount>
+  ...[dineroObject, { digits, roundingMode = (value: TAmount) => value }]: ToRoundedUnitParams<TAmount>
 ) {
   const _toRoundedUnit = coreToRoundedUnit({
     calculator: dineroObject.calculator,
   });
 
-  return _toRoundedUnit(dineroObject, digits, roundingMode);
+  return _toRoundedUnit(dineroObject, { digits, roundingMode });
 }
