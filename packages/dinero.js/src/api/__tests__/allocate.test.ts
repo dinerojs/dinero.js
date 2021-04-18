@@ -1,6 +1,5 @@
-import type { Dinero } from '@dinero.js/core';
 import { USD } from '@dinero.js/currencies';
-import { dinero, toSnapshot, allocate } from '../../..';
+import { dinero, toSnapshot, allocate, Dinero } from '../../..';
 
 describe('allocate', () => {
   it('allocates to percentages', () => {
