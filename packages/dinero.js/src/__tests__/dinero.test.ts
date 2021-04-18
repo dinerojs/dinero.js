@@ -3,7 +3,7 @@ import { toSnapshot } from '..';
 import { dinero } from '../dinero';
 
 describe('dinero', () => {
-  it('creates a pure Dinero object', () => {
+  it('creates a Dinero object', () => {
     const d = dinero({ amount: 50000, currency: USD, scale: 4 });
 
     const snapshot = toSnapshot(d);
