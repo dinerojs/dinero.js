@@ -1,8 +1,5 @@
-import type {
-  ConvertScaleParams} from '@dinero.js/core';
-import {
-  convertScale as coreConvertScale
-} from '@dinero.js/core';
+import type { ConvertScaleParams } from '@dinero.js/core';
+import { convertScale as coreConvertScale } from '@dinero.js/core';
 
 /**
  * Convert a Dinero object to a new precision.
@@ -15,9 +12,8 @@ import {
 export function convertScale<TAmount>(
   ...[dineroObject, newScale]: ConvertScaleParams<TAmount>
 ) {
-  const _convertScale = coreConvertScale({
-    calculator: dineroObject.calculator,
-  });
+  const { calculator } = dineroObject;
+  const convertScaleFn = coreConvertScale({ calculator });
 
-  return _convertScale(dineroObject, newScale);
+  return convertScaleFn(dineroObject, newScale);
 }

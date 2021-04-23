@@ -13,7 +13,8 @@ import { multiply as coreMultiply } from '@dinero.js/core';
 export function multiply<TAmount>(
   ...[multiplier, multiplicand, options]: MultiplyParams<TAmount>
 ) {
-  const _multiply = coreMultiply({ calculator: multiplier.calculator });
+  const { calculator } = multiplier;
+  const multiplyFn = coreMultiply({ calculator });
 
-  return _multiply(multiplier, multiplicand, options);
+  return multiplyFn(multiplier, multiplicand, options);
 }

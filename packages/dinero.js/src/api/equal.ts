@@ -12,7 +12,8 @@ import { equal as coreEqual } from '@dinero.js/core';
 export function equal<TAmount>(
   ...[dineroObject, comparator]: EqualParams<TAmount>
 ) {
-  const _equal = coreEqual({ calculator: dineroObject.calculator });
+  const { calculator } = dineroObject;
+  const equalFn = coreEqual({ calculator });
 
-  return _equal(dineroObject, comparator);
+  return equalFn(dineroObject, comparator);
 }

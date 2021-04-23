@@ -9,7 +9,8 @@ import { isZero as coreIsZero } from '@dinero.js/core';
  * @returns Whether the value of a Dinero object is zero.
  */
 export function isZero<TAmount>(...[dineroObject]: IsZeroParams<TAmount>) {
-  const _isZero = coreIsZero({ calculator: dineroObject.calculator });
+  const { calculator } = dineroObject;
+  const isZeroFn = coreIsZero({ calculator });
 
-  return _isZero(dineroObject);
+  return isZeroFn(dineroObject);
 }

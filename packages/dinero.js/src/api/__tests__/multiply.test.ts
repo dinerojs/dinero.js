@@ -5,20 +5,24 @@ describe('multiply', () => {
   it('multiplies positive pure Dinero objects', () => {
     const d = dinero({ amount: 400, currency: USD });
 
-    const { amount } = toSnapshot(multiply(d, 4));
+    const snapshot = toSnapshot(multiply(d, 4));
 
-    expect(amount).toBe(1600);
-  });
-  it('converts the multiplied amount to the highest scale', () => {
-    const d = dinero({ amount: 400, currency: USD });
-
-    const multiplied = multiply(d, 2001, {
-      scale: 3,
+    expect(snapshot).toEqual({
+      amount: 1600,
+      scale: 2,
+      currency: USD,
     });
+  });
+  it('converts the multiplied amount to the safest scale', () => {
+    const d = dinero({ amount: 401, currency: USD });
 
-    expect(toSnapshot(multiplied)).toEqual({
-      amount: 8004,
+    const snapshot = toSnapshot(multiply(d, 2001, {
       scale: 3,
+    }));
+
+    expect(snapshot).toEqual({
+      amount: 802401,
+      scale: 5,
       currency: USD,
     });
   });

@@ -17,7 +17,6 @@ export * from './maximum';
 export * from './minimum';
 export * from './multiply';
 export * from './normalizeScale';
-export * from './percentage';
 export * from './subtract';
 export * from './toFormat';
 export * from './toUnit';

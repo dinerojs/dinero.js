@@ -3,11 +3,17 @@ import type { Dinero } from '../types';
 import { distribute, greaterThanOrEqual, greaterThan } from '../utils';
 import type { Dependencies } from './types';
 import { assertValidRatios } from '../guards';
+import { convertScale } from './convertScale';
 
 export type AllocateParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
-  ratios: readonly TAmount[]
+  ratios: readonly TAmount[],
+  options?: AllocateOptions<TAmount>,
 ];
+
+export type AllocateOptions<TAmount> = {
+  readonly scale: TAmount;
+};
 
 export type UnsafeAllocateDependencies<TAmount> = Dependencies<
   TAmount,
@@ -50,6 +56,7 @@ export type SafeAllocateDependencies<TAmount> = Dependencies<
   | 'subtract'
   | 'zero'
   | 'modulo'
+  | 'power'
 >;
 
 export function safeAllocate<TAmount>({
@@ -58,15 +65,20 @@ export function safeAllocate<TAmount>({
   const allocateFn = unsafeAllocate({ calculator });
   const greaterThanOrEqualFn = greaterThanOrEqual(calculator);
   const greaterThanFn = greaterThan(calculator);
+  const convertScaleFn = convertScale({ calculator });
 
-  return function allocate(...[dineroObject, ratios]: AllocateParams<TAmount>) {
-    const condition =
-      ratios.length > 0 &&
-      ratios.every((ratio) => greaterThanOrEqualFn(ratio, calculator.zero())) &&
-      ratios.some((ratio) => greaterThanFn(ratio, calculator.zero()));
+  return function allocate(...[dineroObject, ratios, options = { scale: calculator.zero() }]: AllocateParams<TAmount>) {
+    const zero = calculator.zero();
 
-    assertValidRatios(condition);
+    const hasRatios = ratios.length > 0;
+    const hasOnlyPositiveRatios = ratios.every((ratio) => greaterThanOrEqualFn(ratio, zero));
+    const hasOneNonZeroRatio = ratios.some((ratio) => greaterThanFn(ratio, zero));
 
-    return allocateFn(dineroObject, ratios);
+    assertValidRatios(hasRatios && hasOnlyPositiveRatios && hasOneNonZeroRatio);
+
+    const { scale } = dineroObject.toJSON();
+    const newScale = calculator.add(scale, options.scale);
+
+    return allocateFn(convertScaleFn(dineroObject, newScale), ratios);
   };
 }

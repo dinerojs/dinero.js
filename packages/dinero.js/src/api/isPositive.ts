@@ -1,8 +1,5 @@
-import type {
-  IsPositiveParams} from '@dinero.js/core';
-import {
-  isPositive as coreIsPositive
-} from '@dinero.js/core';
+import type { IsPositiveParams } from '@dinero.js/core';
+import { isPositive as coreIsPositive } from '@dinero.js/core';
 
 /**
  * Check whether a Dinero object is positive.
@@ -14,7 +11,8 @@ import {
 export function isPositive<TAmount>(
   ...[dineroObject]: IsPositiveParams<TAmount>
 ) {
-  const _isPositive = coreIsPositive({ calculator: dineroObject.calculator });
+  const { calculator } = dineroObject;
+  const isPositiveFn = coreIsPositive({ calculator });
 
-  return _isPositive(dineroObject);
+  return isPositiveFn(dineroObject);
 }

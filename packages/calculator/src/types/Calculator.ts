@@ -16,7 +16,6 @@ export type Calculator<TInput> = {
   readonly increment: UnaryOperation<TInput>;
   readonly modulo: BinaryOperation<TInput>;
   readonly multiply: BinaryOperation<TInput>;
-  readonly percentage: BinaryOperation<TInput>;
   readonly power: BinaryOperation<TInput>;
   readonly round: RoundingMode<TInput>;
   readonly subtract: BinaryOperation<TInput>;

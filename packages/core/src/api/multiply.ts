@@ -1,5 +1,4 @@
 import { convertScale } from '.';
-import { maximum } from '../utils';
 import type { Dinero } from '../types';
 import type { Dependencies } from './types';
 
@@ -11,7 +10,7 @@ export type MultiplyParams<TAmount> = readonly [
 
 export type MultiplyDependencies<TAmount> = Dependencies<
   TAmount,
-  'add' | 'multiply' | 'zero' | 'power' | 'subtract' | 'compare' | 'integerDivide'
+  'add' | 'multiply' | 'zero' | 'power' | 'subtract' | 'integerDivide'
 >;
 
 export type MultiplyOptions<TAmount> = {
@@ -22,9 +21,8 @@ export function multiply<TAmount>({
   calculator,
 }: MultiplyDependencies<TAmount>) {
   const convertScaleFn = convertScale({ calculator });
-  const maxFn = maximum(calculator);
 
-  return function _multiply(
+  return function multiplyFn(
     ...[
       multiplier,
       multiplicand,
@@ -32,15 +30,15 @@ export function multiply<TAmount>({
     ]: MultiplyParams<TAmount>
   ) {
     const { amount, currency, scale } = multiplier.toJSON();
-    const highestScale = maxFn([scale, options.scale]);
+    const newScale = calculator.add(scale, options.scale);
 
     return convertScaleFn(
       multiplier.create({
         amount: calculator.multiply(amount, multiplicand),
         currency,
-        scale: calculator.add(scale, options.scale),
+        scale: newScale,
       }),
-      highestScale
+      newScale
     );
   };
 }

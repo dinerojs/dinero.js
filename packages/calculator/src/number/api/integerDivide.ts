@@ -1,4 +1,5 @@
 import type { BinaryOperation } from '../../types';
+import { divide } from './divide';
 
 /**
  * Returns the quotient of two numbers with no fractional part.
@@ -9,5 +10,5 @@ import type { BinaryOperation } from '../../types';
  * @returns The quotient of the two numbers.
  */
 export const integerDivide: BinaryOperation<number> = (dividend, divisor) => {
-  return ~~(dividend / divisor);
+  return ~~divide(dividend, divisor);
 };

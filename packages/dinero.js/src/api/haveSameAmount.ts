@@ -1,8 +1,5 @@
-import type {
-  HaveSameAmountParams} from '@dinero.js/core';
-import {
-  haveSameAmount as coreHaveSameAmount
-} from '@dinero.js/core';
+import type { HaveSameAmountParams } from '@dinero.js/core';
+import { haveSameAmount as coreHaveSameAmount } from '@dinero.js/core';
 
 /**
  * Check whether a set of Dinero objects have the same amount.
@@ -14,9 +11,8 @@ import {
 export function haveSameAmount<TAmount>(
   ...[dineroObjects]: HaveSameAmountParams<TAmount>
 ) {
-  const _haveSameAmount = coreHaveSameAmount({
-    calculator: dineroObjects[0].calculator,
-  });
+  const { calculator } = dineroObjects[0];
+  const haveSameAmountFn = coreHaveSameAmount({ calculator });
 
-  return _haveSameAmount(dineroObjects);
+  return haveSameAmountFn(dineroObjects);
 }

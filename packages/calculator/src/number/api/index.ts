@@ -6,7 +6,6 @@ export * from './increment';
 export * from './integerDivide';
 export * from './modulo';
 export * from './multiply';
-export * from './percentage';
 export * from './power';
 export * from './round';
 export * from './subtract';
