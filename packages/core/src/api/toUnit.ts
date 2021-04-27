@@ -5,14 +5,14 @@ export type ToUnitParams<TAmount> = readonly [dineroObject: Dinero<TAmount>];
 
 export type ToUnitDependencies<TAmount> = Dependencies<
   TAmount,
-  'divide' | 'power'
+  'power' | 'toNumber'
 >;
 
 export function toUnit<TAmount>({ calculator }: ToUnitDependencies<TAmount>) {
-  return function _toUnit(...[dineroObject]: ToUnitParams<TAmount>) {
+  return function toUnitFn(...[dineroObject]: ToUnitParams<TAmount>) {
     const { amount, currency, scale } = dineroObject.toJSON();
     const factor = calculator.power(currency.base, scale);
 
-    return calculator.divide(amount, factor);
+    return calculator.toNumber(amount) / calculator.toNumber(factor);
   };
 }

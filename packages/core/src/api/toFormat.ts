@@ -10,7 +10,7 @@ export type ToFormatParams<TAmount> = readonly [
 
 export type ToFormatDependencies<TAmount> = Dependencies<
   TAmount,
-  'multiply' | 'divide' | 'power'
+  'multiply' | 'divide' | 'power' | 'toNumber'
 >;
 
 export function toFormat<TAmount>({
@@ -18,18 +18,18 @@ export function toFormat<TAmount>({
 }: ToFormatDependencies<TAmount>) {
   const toRoundedUnitFn = toRoundedUnit({ calculator });
 
-  return function _toFormat(
+  return function toFormatFn(
     ...[
       dineroObject,
       transformer,
-      { digits, roundingMode } = {} as RoundingOptions<TAmount>,
+      { digits, round } = {} as RoundingOptions<TAmount>,
     ]: ToFormatParams<TAmount>
   ) {
     const { currency } = dineroObject.toJSON();
 
     const amount = toRoundedUnitFn(
       dineroObject,
-      { digits, roundingMode },
+      { digits, round },
     );
 
     return transformer({ amount, currency });

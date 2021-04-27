@@ -1,16 +1,16 @@
 import { USD, EUR, IQD } from '@dinero.js/currencies';
 import { dinero, toSnapshot, convert } from '../../..';
-import { halfEven as roundingMode } from '@dinero.js/calculator/number';
+import { halfEven as round } from '@dinero.js/calculator/number';
 
 describe('convert', () => {
-  it('converts a pure Dinero object to another currency', async () => {
+  it('converts a Dinero object to another currency', async () => {
     const d = dinero({ amount: 500, currency: USD });
 
     const converted = await convert(d, EUR, {
       rates: Promise.resolve({
         EUR: 0.89,
       }),
-      roundingMode,
+      round,
     });
 
     expect(toSnapshot(converted)).toEqual({
@@ -26,7 +26,7 @@ describe('convert', () => {
       rates: Promise.resolve({
         IQD: 1199.08,
       }),
-      roundingMode,
+      round,
     });
 
     expect(toSnapshot(converted)).toEqual({
@@ -42,7 +42,7 @@ describe('convert', () => {
       rates: Promise.resolve({
         IQD: 11990.8,
       }),
-      roundingMode,
+      round,
       preserveScale: false,
     });
 

@@ -1,6 +1,5 @@
 import { createDinero } from '@dinero.js/core';
 import {
-  down,
   add,
   compare,
   decrement,
@@ -11,6 +10,7 @@ import {
   multiply,
   power,
   subtract,
+  toNumber,
   zero,
 } from '@dinero.js/calculator/number';
 
@@ -25,7 +25,6 @@ import {
  */
 export const dinero = createDinero({
   calculator: {
-    round: down,
     add,
     compare,
     decrement,
@@ -36,6 +35,7 @@ export const dinero = createDinero({
     multiply,
     power,
     subtract,
+    toNumber,
     zero,
-  }
+  },
 });

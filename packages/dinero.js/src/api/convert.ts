@@ -7,7 +7,7 @@ import { convert as coreConvert } from '@dinero.js/core';
  * @param dineroObject The Dinero object to convert.
  * @param newCurrency The currency to convert to.
  * @param options.rates The rates to convert with.
- * @param options.roundingMode The rounding mode to use.
+ * @param options.round The rounding function to use.
  * @param options.preserveScale Whether to preserve the source scale or not.
  *
  * @returns A new Dinero object.

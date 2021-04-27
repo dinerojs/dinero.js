@@ -1,4 +1,4 @@
 export * from './BinaryOperation';
 export * from './Calculator';
-export * from './RoundingMode';
+export * from './TransformOperation';
 export * from './UnaryOperation';

@@ -1,5 +1,6 @@
 /* eslint-disable functional/no-mixed-type */
-import type { BinaryOperation, UnaryOperation, RoundingMode } from '.';
+import type { BinaryOperation, UnaryOperation } from '.';
+import { TransformOperation } from './TransformOperation';
 
 export enum ComparisonOperator {
   LT = -1,
@@ -17,7 +18,7 @@ export type Calculator<TInput> = {
   readonly modulo: BinaryOperation<TInput>;
   readonly multiply: BinaryOperation<TInput>;
   readonly power: BinaryOperation<TInput>;
-  readonly round: RoundingMode<TInput>;
   readonly subtract: BinaryOperation<TInput>;
+  readonly toNumber: TransformOperation<TInput, number>;
   readonly zero: () => TInput;
 };

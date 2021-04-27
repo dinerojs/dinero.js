@@ -1,4 +1,4 @@
-import type { RoundingMode } from '../../../types';
+import type { RoundingMode } from '../types';
 
 /**
  * Round a number down.
@@ -7,6 +7,6 @@ import type { RoundingMode } from '../../../types';
  *
  * @returns The rounded number.
  */
-export const down: RoundingMode<number> = (value) => {
+export const down: RoundingMode = (value) => {
   return Math.floor(value);
 };

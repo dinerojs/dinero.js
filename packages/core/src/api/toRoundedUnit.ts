@@ -1,5 +1,4 @@
 import type { Dinero, RoundingOptions } from '../types';
-import { toUnit } from '.';
 import type { Dependencies } from './types';
 
 export type ToRoundedUnitParams<TAmount> = readonly [
@@ -9,26 +8,24 @@ export type ToRoundedUnitParams<TAmount> = readonly [
 
 export type ToRoundedUnitDependencies<TAmount> = Dependencies<
   TAmount,
-  'multiply' | 'divide' | 'power'
+  'multiply' | 'power' | 'toNumber'
 >;
 
 export function toRoundedUnit<TAmount>({
   calculator,
 }: ToRoundedUnitDependencies<TAmount>) {
-  const toUnitFn = toUnit({ calculator });
-
-  return function _toRoundedUnit(
+  return function toRoundedUnitFn(
     ...[
       dineroObject,
-      { digits, roundingMode = (value: TAmount) => value }
+      { digits, round = (value: number) => value },
     ]: ToRoundedUnitParams<TAmount>
   ) {
-    const { currency } = dineroObject.toJSON();
-    const factor = calculator.power(currency.base, digits ?? currency.exponent);
+    const { amount, currency, scale } = dineroObject.toJSON();
+    const { power, toNumber } = calculator;
 
-    return calculator.divide(
-      roundingMode(calculator.multiply(toUnitFn(dineroObject), factor)),
-      factor
-    );
+    const toUnitFactor = toNumber(power(currency.base, scale));
+    const factor = toNumber(power(currency.base, digits ?? currency.exponent));
+
+    return round((toNumber(amount) / toUnitFactor) * factor) / factor;
   };
 }

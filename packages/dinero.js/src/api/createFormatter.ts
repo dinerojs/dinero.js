@@ -7,7 +7,7 @@ type CreateFormatterParams<TAmount> = readonly [
 ];
 
 /**
- * Create a pure Dinero object formatter.
+ * Create a Dinero object formatter.
  *
  * @param transformer A transformer function.
  * @param formatOptions Formatting options for the amount transformer.
@@ -15,11 +15,11 @@ type CreateFormatterParams<TAmount> = readonly [
  * @returns A formatter function.
  */
 export function createFormatter<TAmount>(
-  ...[transformer, { digits, roundingMode } = {} as ToFormatParams<TAmount>[2]]: CreateFormatterParams<TAmount>
+  ...[transformer, { digits, round } = {} as ToFormatParams<TAmount>[2]]: CreateFormatterParams<TAmount>
 ) {
   return function toFormat(dineroObject: ToFormatParams<TAmount>[0]) {
     const formatter = coreToFormat({ calculator: dineroObject.calculator });
 
-    return formatter(dineroObject, transformer, { digits, roundingMode });
+    return formatter(dineroObject, transformer, { digits, round });
   };
 }

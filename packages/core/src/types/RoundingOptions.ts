@@ -1,6 +1,6 @@
-import type { RoundingMode } from '@dinero.js/calculator';
+import { RoundingMode } from './RoundingMode';
 
 export type RoundingOptions<TAmount> = {
   readonly digits?: TAmount;
-  readonly roundingMode?: RoundingMode<TAmount>;
+  readonly round?: RoundingMode;
 };

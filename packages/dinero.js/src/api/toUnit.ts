@@ -9,7 +9,8 @@ import { toUnit as coreToUnit } from '@dinero.js/core';
  * @returns The amount in units.
  */
 export function toUnit<TAmount>(...[dineroObject]: ToUnitParams<TAmount>) {
-  const _toUnit = coreToUnit({ calculator: dineroObject.calculator });
+  const { calculator } = dineroObject;
+  const toUnitFn = coreToUnit({ calculator });
 
-  return _toUnit(dineroObject);
+  return toUnitFn(dineroObject);
 }

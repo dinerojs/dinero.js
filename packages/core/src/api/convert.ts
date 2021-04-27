@@ -11,7 +11,7 @@ export type ConvertParams<TAmount> = readonly [
 
 export type ConvertOptions<TAmount> = {
   readonly rates: Readonly<Promise<Rates<TAmount>>>;
-  readonly roundingMode: RoundingMode<TAmount>;
+  readonly round: RoundingMode;
   readonly preserveScale?: boolean;
 };
 
@@ -21,11 +21,11 @@ export type ConvertDependencies<TAmount> = Dependencies<
 >;
 
 export function convert<TAmount>({ calculator }: ConvertDependencies<TAmount>) {
-  return async function _convert(
+  return async function convertFn(
     ...[
       dineroObject,
       newCurrency,
-      { rates, roundingMode = calculator.round, preserveScale = true },
+      { rates, round = calculator.round, preserveScale = true },
     ]: ConvertParams<TAmount>
   ) {
     const r = await rates;
@@ -34,7 +34,7 @@ export function convert<TAmount>({ calculator }: ConvertDependencies<TAmount>) {
     const { amount, scale: sourceScale } = dineroObject.toJSON();
 
     return dineroObject.create({
-      amount: roundingMode(calculator.multiply(amount, rate)),
+      amount: round(calculator.multiply(amount, rate)),
       currency: newCurrency,
       scale: preserveScale ? sourceScale : newCurrency.exponent,
     });

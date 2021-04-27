@@ -1,9 +1,9 @@
 import { USD } from '@dinero.js/currencies';
-import { up } from '@dinero.js/calculator/number';
+import { up } from '@dinero.js/core';
 import { dinero, createFormatter } from '../../..';
 
 describe('createFormatter', () => {
-  it('formats the pure Dinero object with the passed transformer', () => {
+  it('formats the Dinero object with the passed transformer', () => {
     const format = createFormatter<number>(
       ({ amount, currency }) => `${currency.code} ${amount}`
     );
@@ -12,10 +12,10 @@ describe('createFormatter', () => {
 
     expect(format(d)).toBe('USD 5');
   });
-  it('formats the pure Dinero object with the passed transformer and options', () => {
+  it('formats the Dinero object with the passed transformer and options', () => {
     const formatOptions = {
       digits: 1,
-      roundingMode: up,
+      round: up,
     };
     const format = createFormatter(
       ({ amount, currency }) => `${currency.code} ${amount}`,

@@ -2,7 +2,7 @@ import { USD } from '@dinero.js/currencies';
 import { dinero, toSnapshot, multiply } from '../../..';
 
 describe('multiply', () => {
-  it('multiplies positive pure Dinero objects', () => {
+  it('multiplies positive Dinero objects', () => {
     const d = dinero({ amount: 400, currency: USD });
 
     const snapshot = toSnapshot(multiply(d, 4));

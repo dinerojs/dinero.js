@@ -1,7 +1,7 @@
 import type { Currency } from '@dinero.js/currencies';
 
 export type TransformerOptions<TAmount> = {
-  readonly amount: TAmount;
+  readonly amount: number;
   readonly currency: Currency<TAmount>;
 };
 

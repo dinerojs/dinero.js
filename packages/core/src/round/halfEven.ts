@@ -1,5 +1,5 @@
-import type { RoundingMode } from '../../../types';
-import { isEven, isHalf } from '../../utils';
+import type { RoundingMode } from '../types';
+import { isEven, isHalf } from '../utils';
 
 /**
  * Round a number with half values to nearest even integer.
@@ -8,7 +8,7 @@ import { isEven, isHalf } from '../../utils';
  *
  * @returns The rounded number.
  */
-export const halfEven: RoundingMode<number> = (value) => {
+export const halfEven: RoundingMode = (value) => {
   const rounded = Math.round(value);
 
   if (!isHalf(value)) {
