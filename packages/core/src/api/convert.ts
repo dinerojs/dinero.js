@@ -1,7 +1,8 @@
 import type { Currency } from '@dinero.js/currencies';
-import type { RoundingMode } from '@dinero.js/calculator';
 import type { Dinero, Rates } from '../types';
 import type { Dependencies } from './types';
+import { maximum } from '../utils';
+import { convertScale } from '.';
 
 export type ConvertParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
@@ -10,33 +11,41 @@ export type ConvertParams<TAmount> = readonly [
 ];
 
 export type ConvertOptions<TAmount> = {
-  readonly rates: Readonly<Promise<Rates<TAmount>>>;
-  readonly round: RoundingMode;
-  readonly preserveScale?: boolean;
+  readonly rates: Rates<TAmount>;
 };
 
 export type ConvertDependencies<TAmount> = Dependencies<
   TAmount,
-  'multiply' | 'round'
+  | 'add'
+  | 'multiply'
+  | 'zero'
+  | 'power'
+  | 'subtract'
+  | 'integerDivide'
+  | 'compare'
 >;
 
 export function convert<TAmount>({ calculator }: ConvertDependencies<TAmount>) {
-  return async function convertFn(
-    ...[
-      dineroObject,
-      newCurrency,
-      { rates, round = calculator.round, preserveScale = true },
-    ]: ConvertParams<TAmount>
+  const convertScaleFn = convertScale({ calculator });
+  const maximumFn = maximum(calculator);
+
+  return function convertFn(
+    ...[dineroObject, newCurrency, { rates }]: ConvertParams<TAmount>
   ) {
-    const r = await rates;
-    const rate = r[newCurrency.code];
-
+    const { rate, scale: rateScale } = rates[newCurrency.code];
     const { amount, scale: sourceScale } = dineroObject.toJSON();
+    const newScale = calculator.add(
+      sourceScale,
+      rateScale ?? calculator.zero()
+    );
 
-    return dineroObject.create({
-      amount: round(calculator.multiply(amount, rate)),
-      currency: newCurrency,
-      scale: preserveScale ? sourceScale : newCurrency.exponent,
-    });
+    return convertScaleFn(
+      dineroObject.create({
+        amount: calculator.multiply(amount, rate),
+        currency: newCurrency,
+        scale: newScale,
+      }),
+      maximumFn([newScale, newCurrency.exponent])
+    );
   };
 }
