@@ -1,4 +1,4 @@
-import { convertScale } from '.';
+import { transformScale } from '.';
 import type { Dinero } from '../types';
 import { maximum } from '../utils';
 import type { Dependencies } from './types';
@@ -16,7 +16,7 @@ export function normalizeScale<TAmount>({
   calculator,
 }: NormalizeScaleDependencies<TAmount>) {
   const maximumFn = maximum(calculator);
-  const convertScaleFn = convertScale({ calculator });
+  const convertScaleFn = transformScale({ calculator });
 
   return function _normalizeScale(
     ...[dineroObjects]: NormalizeScaleParams<TAmount>

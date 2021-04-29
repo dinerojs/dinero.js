@@ -1,4 +1,4 @@
-import { convertScale } from '.';
+import { transformScale } from '.';
 import type { Dinero } from '../types';
 import type { Dependencies } from './types';
 
@@ -20,7 +20,7 @@ export type MultiplyOptions<TAmount> = {
 export function multiply<TAmount>({
   calculator,
 }: MultiplyDependencies<TAmount>) {
-  const convertScaleFn = convertScale({ calculator });
+  const convertScaleFn = transformScale({ calculator });
 
   return function multiplyFn(
     ...[

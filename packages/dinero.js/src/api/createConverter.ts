@@ -1,7 +1,8 @@
-import {
-  convert as coreConvert,
+import type {
   ConvertOptions,
-  ConvertParams,
+  ConvertParams} from '@dinero.js/core';
+import {
+  convert as coreConvert
 } from '@dinero.js/core';
 
 type CreateConverterParams<TAmount> = readonly [

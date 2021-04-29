@@ -1,6 +1,6 @@
 type Rate<TAmount> = {
-  rate: TAmount,
-  scale?: TAmount,
+  readonly rate: TAmount,
+  readonly scale?: TAmount,
 }
 
 export type Rates<TAmount> = Record<string, Rate<TAmount>>;

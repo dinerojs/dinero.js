@@ -1,6 +1,6 @@
 /* eslint-disable functional/no-mixed-type */
 import type { BinaryOperation, UnaryOperation } from '.';
-import { TransformOperation } from './TransformOperation';
+import type { TransformOperation } from './TransformOperation';
 
 export enum ComparisonOperator {
   LT = -1,

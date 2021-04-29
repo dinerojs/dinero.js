@@ -1,6 +1,5 @@
 export * from './add';
 export * from './allocate';
-export * from './convertScale';
 export * from './createFormatter';
 export * from './createConverter';
 export * from './maximum';
@@ -22,3 +21,4 @@ export * from './normalizeScale';
 export * from './toRoundedUnit';
 export * from './toUnit';
 export * from './toSnapshot';
+export * from './transformScale';

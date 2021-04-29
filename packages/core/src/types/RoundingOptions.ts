@@ -1,4 +1,4 @@
-import { RoundingMode } from './RoundingMode';
+import type { RoundingMode } from './RoundingMode';
 
 export type RoundingOptions<TAmount> = {
   readonly digits?: TAmount;

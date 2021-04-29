@@ -3,7 +3,7 @@ import type { Dinero } from '../types';
 import { distribute, greaterThanOrEqual, greaterThan } from '../utils';
 import type { Dependencies } from './types';
 import { assertValidRatios } from '../guards';
-import { convertScale } from './convertScale';
+import { transformScale } from './transformScale';
 
 export type AllocateParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
@@ -65,7 +65,7 @@ export function safeAllocate<TAmount>({
   const allocateFn = unsafeAllocate({ calculator });
   const greaterThanOrEqualFn = greaterThanOrEqual(calculator);
   const greaterThanFn = greaterThan(calculator);
-  const convertScaleFn = convertScale({ calculator });
+  const convertScaleFn = transformScale({ calculator });
 
   return function allocate(...[dineroObject, ratios, options = { scale: calculator.zero() }]: AllocateParams<TAmount>) {
     const zero = calculator.zero();

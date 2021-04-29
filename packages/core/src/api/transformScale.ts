@@ -1,24 +1,24 @@
 import type { Dinero } from '../types';
 import type { Dependencies } from './types';
 
-export type ConvertScaleParams<TAmount> = readonly [
+export type TransformScaleParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   newScale: TAmount,
 ];
 
-export type ConvertScaleDependencies<TAmount> = Dependencies<
+export type TransformScaleDependencies<TAmount> = Dependencies<
   TAmount,
   'subtract' | 'integerDivide' | 'power'
 >;
 
-export function convertScale<TAmount>({
+export function transformScale<TAmount>({
   calculator,
-}: ConvertScaleDependencies<TAmount>) {
-  return function _convertScale(
+}: TransformScaleDependencies<TAmount>) {
+  return function transformScaleFn(
     ...[
       dineroObject,
       newScale,
-    ]: ConvertScaleParams<TAmount>
+    ]: TransformScaleParams<TAmount>
   ) {
     const { amount, currency, scale } = dineroObject.toJSON();
 

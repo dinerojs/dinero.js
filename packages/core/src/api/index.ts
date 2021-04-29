@@ -1,7 +1,6 @@
 export * from './add';
 export * from './allocate';
 export * from './convert';
-export * from './convertScale';
 export * from './equal';
 export * from './greaterThan';
 export * from './greaterThanOrEqual';
@@ -22,3 +21,4 @@ export * from './toFormat';
 export * from './toUnit';
 export * from './toRoundedUnit';
 export * from './toSnapshot';
+export * from './transformScale';
