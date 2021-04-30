@@ -1,5 +1,6 @@
-import { USD, EUR, IQD } from '@dinero.js/currencies';
-import { dinero, toSnapshot, createConverter } from '../../..';
+import { EUR, IQD, USD } from '@dinero.js/currencies';
+
+import { createConverter, dinero, toSnapshot } from '../../..';
 
 describe('createConverter', () => {
   it('converts a Dinero object to another currency', () => {

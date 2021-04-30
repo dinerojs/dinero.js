@@ -1,4 +1,5 @@
 import { compare } from '@dinero.js/calculator/number';
+
 import { lessThan } from '../lessThan';
 
 const lessThanFn = lessThan({ compare });

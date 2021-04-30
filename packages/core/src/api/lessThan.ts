@@ -1,9 +1,9 @@
 /* eslint-disable functional/no-expression-statement */
+import { assertSameCurrency } from '../guards';
 import type { Dinero } from '../types';
 import { lessThan as lt } from '../utils';
 import { haveSameCurrency, normalizeScale } from '.';
 import type { Dependencies } from './types';
-import { assertSameCurrency } from '../guards';
 
 export type LessThanParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,

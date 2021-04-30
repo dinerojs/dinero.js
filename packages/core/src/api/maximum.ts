@@ -1,8 +1,8 @@
 /* eslint-disable functional/no-expression-statement */
-import type { Dinero } from '../types';
-import { normalizeScale, haveSameCurrency } from '.';
-import { maximum as max } from '../utils';
 import { assertSameCurrency } from '../guards';
+import type { Dinero } from '../types';
+import { maximum as max } from '../utils';
+import { haveSameCurrency, normalizeScale } from '.';
 import type { Dependencies } from './types';
 
 export type MaximumParams<TAmount> = readonly [

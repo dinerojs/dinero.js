@@ -1,6 +1,6 @@
-import { transformScale } from '.';
 import type { Dinero } from '../types';
 import { maximum } from '../utils';
+import { transformScale } from '.';
 import type { Dependencies } from './types';
 
 export type NormalizeScaleParams<TAmount> = readonly [

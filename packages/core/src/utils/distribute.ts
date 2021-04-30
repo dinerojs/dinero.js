@@ -1,6 +1,7 @@
 /* eslint-disable functional/no-let, functional/no-loop-statement, functional/immutable-data, functional/no-expression-statement */
 import type { Calculator } from '@dinero.js/calculator';
-import { equal, greaterThan, lessThan, greaterThanOrEqual } from '.';
+
+import { equal, greaterThan, greaterThanOrEqual, lessThan } from '.';
 
 type DistributeCalculator<TAmount> = Pick<
   Calculator<TAmount>,

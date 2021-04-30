@@ -1,5 +1,6 @@
-import { USD, EUR } from '@dinero.js/currencies';
-import { dinero, toSnapshot, subtract } from '../../..';
+import { EUR, USD } from '@dinero.js/currencies';
+
+import { dinero, subtract, toSnapshot } from '../../..';
 
 describe('subtract', () => {
   it('subtracts positive Dinero objects', () => {

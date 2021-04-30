@@ -1,4 +1,5 @@
 import type { Currency } from '@dinero.js/currencies';
+
 import type { Dinero } from '../types';
 
 function currencyEqual<TAmount>(

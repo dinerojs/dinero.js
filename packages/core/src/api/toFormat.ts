@@ -1,4 +1,4 @@
-import type { Dinero, Transformer, RoundingOptions } from '../types';
+import type { Dinero, RoundingOptions, Transformer } from '../types';
 import { toRoundedUnit } from './toRoundedUnit';
 import type { Dependencies } from './types';
 

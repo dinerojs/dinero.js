@@ -1,4 +1,5 @@
 import { USD } from '@dinero.js/currencies';
+
 import { dinero, isZero } from '../../..';
 
 describe('isZero', () => {

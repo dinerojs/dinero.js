@@ -1,4 +1,5 @@
 import type { Calculator } from '@dinero.js/calculator';
+
 import { equal, lessThan } from '.';
 
 type LessThanOrEqualCalculator<TAmount> = Pick<Calculator<TAmount>, 'compare'>;

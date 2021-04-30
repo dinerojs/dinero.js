@@ -1,4 +1,3 @@
-import { createDinero } from '@dinero.js/core';
 import {
   add,
   compare,
@@ -13,6 +12,7 @@ import {
   toNumber,
   zero,
 } from '@dinero.js/calculator/number';
+import { createDinero } from '@dinero.js/core';
 
 /**
  * Create a Dinero object.

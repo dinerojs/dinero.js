@@ -1,4 +1,5 @@
 import { compare } from '@dinero.js/calculator/number';
+
 import { maximum } from '../maximum';
 
 const maximumFn = maximum({ compare });

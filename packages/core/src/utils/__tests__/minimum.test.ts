@@ -1,4 +1,5 @@
 import { compare } from '@dinero.js/calculator/number';
+
 import { minimum } from '../minimum';
 
 const minimumFn = minimum({ compare });

@@ -1,7 +1,7 @@
 /* eslint-disable functional/no-expression-statement */
+import { assertSameCurrency } from '../guards';
 import type { Dinero } from '../types';
 import { haveSameCurrency, normalizeScale } from '.';
-import { assertSameCurrency } from '../guards';
 import type { Dependencies } from './types';
 
 export type AddParams<TAmount> = readonly [

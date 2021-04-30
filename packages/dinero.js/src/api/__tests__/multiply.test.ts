@@ -1,5 +1,6 @@
 import { USD } from '@dinero.js/currencies';
-import { dinero, toSnapshot, multiply } from '../../..';
+
+import { dinero, multiply, toSnapshot } from '../../..';
 
 describe('multiply', () => {
   it('multiplies positive Dinero objects', () => {

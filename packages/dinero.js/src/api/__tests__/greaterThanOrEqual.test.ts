@@ -1,4 +1,5 @@
-import { USD, EUR } from '@dinero.js/currencies';
+import { EUR, USD } from '@dinero.js/currencies';
+
 import { dinero, greaterThanOrEqual } from '../../..';
 
 describe('greaterThanOrEqual', () => {

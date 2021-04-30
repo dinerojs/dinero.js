@@ -1,5 +1,6 @@
-import { USD, EUR } from '@dinero.js/currencies';
-import { dinero, toSnapshot, maximum } from '../../..';
+import { EUR, USD } from '@dinero.js/currencies';
+
+import { dinero, maximum, toSnapshot } from '../../..';
 
 describe('maximum', () => {
   it('returns the greatest from a set of Dinero objects', () => {

@@ -1,14 +1,15 @@
 import {
   add,
   compare,
-  integerDivide,
-  increment,
   decrement,
+  increment,
+  integerDivide,
+  modulo,
   multiply,
   subtract,
   zero,
-  modulo,
 } from '@dinero.js/calculator/number';
+
 import { distribute } from '../distribute';
 
 const distributeFn = distribute(

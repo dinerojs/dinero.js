@@ -1,4 +1,5 @@
 import { compare } from '@dinero.js/calculator/number';
+
 import { greaterThanOrEqual } from '../greaterThanOrEqual';
 
 const greaterThanOrEqualFn = greaterThanOrEqual({ compare });
