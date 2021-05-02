@@ -1,0 +1,24 @@
+{
+  "shoppingCartTitle": "Panier",
+  "languageSelectLabel": "Choisir la langue",
+  "productColumnTitle": "Produit",
+  "quantityColumnTitle": "Quantité",
+  "priceColumnTitle": "Prix",
+  "totalColumnTitle": "Total",
+  "removeLabel": "Supprimer",
+  "checkoutTitle": "Récapitulatif",
+  "subtotalLabel": "Sous-total",
+  "vatLabel": "TVA",
+  "shippingLabel": "Expédition",
+  "totalLabel": "Total",
+  "checkoutButtonLabel": "Commander",
+  "shipping": {
+    "standard": "Standard",
+    "tracked": "Suivi",
+    "expedite": "Coursier"
+  },
+  "languages": {
+    "fr_FR": "Français",
+    "en_US": "Anglais américain"
+  }
+}

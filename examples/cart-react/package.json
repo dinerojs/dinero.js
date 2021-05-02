@@ -9,7 +9,8 @@
   "dependencies": {
     "classnames": "2.2.6",
     "react": "17.0.0",
-    "react-dom": "17.0.0"
+    "react-dom": "17.0.0",
+    "rosetta": "1.1.0"
   },
   "devDependencies": {
     "@tailwindcss/forms": "0.2.1",

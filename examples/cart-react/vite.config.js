@@ -10,10 +10,11 @@ export default defineConfig({
   resolve: {
     alias: {
       'dinero.js': path.join(root, 'packages/dinero.js'),
+      '@dinero.js/core': path.join(root, 'packages/core'),
       '@dinero.js/currencies': path.join(root, 'packages/currencies'),
-      '@dinero.js/core/calculator': path.join(
+      '@dinero.js/calculator/number': path.join(
         root,
-        'packages/core/src/calculator/number'
+        'packages/calculator/src/number'
       ),
     },
   },

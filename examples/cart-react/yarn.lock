@@ -1002,6 +1002,14 @@ rollup@^2.38.5:
   optionalDependencies:
     fsevents "~2.3.1"
 
+rosetta@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rosetta/-/rosetta-1.1.0.tgz#41ecc0f3cb38ce34b981b0dcfca2f4c94721738c"
+  integrity sha512-3jQaCo2ySoDqLIPjy7+AvN3rluLfkG8A27hg0virL0gRAB5BJ3V35IBdkL/t6k1dGK0TVTyUEwXVUJsygyx4pA==
+  dependencies:
+    dlv "^1.1.3"
+    templite "^1.1.0"
+
 run-parallel@^1.1.9:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/run-parallel/-/run-parallel-1.2.0.tgz#66d1368da7bdf921eb9d95bd1a9229e7f21a43ee"
@@ -1083,6 +1091,11 @@ tailwindcss@2.0.4:
     pretty-hrtime "^1.0.3"
     reduce-css-calc "^2.1.8"
     resolve "^1.20.0"
+
+templite@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/templite/-/templite-1.1.0.tgz#4f2eab732234fdac996628427d72817b3a47ce06"
+  integrity sha512-DtXicIurbnJS5/eu3nMLLspt4bZ8F/811IpcI7DgSE63UhES6ld3CxoTcLXBuGhliYx2wMVmyNzHf3c7mqwIIA==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
