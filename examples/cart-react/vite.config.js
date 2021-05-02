@@ -14,7 +14,7 @@ export default defineConfig({
       '@dinero.js/currencies': path.join(root, 'packages/currencies'),
       '@dinero.js/calculator/number': path.join(
         root,
-        'packages/calculator/src/number'
+        'packages/calculator/number'
       ),
     },
   },

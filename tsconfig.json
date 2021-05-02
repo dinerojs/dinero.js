@@ -15,6 +15,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "removeComments": false,
+    "isolatedModules": true,
     "lib": [
       "esnext"
     ],
