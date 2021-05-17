@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Honduran lempira
+ * Honduran lempira.
  */
 export const HNL: Currency<number> = {
   code: 'HNL',

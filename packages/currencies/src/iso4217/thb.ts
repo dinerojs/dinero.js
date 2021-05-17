@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Thai baht
+ * Thai baht.
  */
 export const THB: Currency<number> = {
   code: 'THB',

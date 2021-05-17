@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Albanian lek
+ * Albanian lek.
  */
 export const ALL: Currency<number> = {
   code: 'ALL',

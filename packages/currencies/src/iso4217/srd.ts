@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Surinamese dollar
+ * Surinamese dollar.
  */
 export const SRD: Currency<number> = {
   code: 'SRD',

@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Paraguayan guaraní
+ * Paraguayan guaraní.
  */
 export const PYG: Currency<number> = {
   code: 'PYG',

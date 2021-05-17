@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Kazakhstani tenge
+ * Kazakhstani tenge.
  */
 export const KZT: Currency<number> = {
   code: 'KZT',

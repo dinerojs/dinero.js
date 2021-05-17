@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * South Korean won
+ * South Korean won.
  */
 export const KRW: Currency<number> = {
   code: 'KRW',

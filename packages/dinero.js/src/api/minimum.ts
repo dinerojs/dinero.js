@@ -4,7 +4,7 @@ import { safeMinimum } from '@dinero.js/core';
 /**
  * Get the lowest of the passed Dinero objects.
  *
- * @param dineroObjects The Dinero objects to minimum.
+ * @param dineroObjects - The Dinero objects to minimum.
  *
  * @returns A new Dinero object.
  */

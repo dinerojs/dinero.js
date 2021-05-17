@@ -2,16 +2,23 @@
 import { assertSameCurrency } from '../guards';
 import type { Dinero } from '../types';
 import { maximum as max } from '../utils';
-import { haveSameCurrency, normalizeScale } from '.';
+
+import { haveSameCurrency } from './haveSameCurrency';
+import { normalizeScale } from './normalizeScale';
 import type { Dependencies } from './types';
 
 export type MaximumParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ];
 
-export type UnsafeMaximumDependencies<TAmount> = Dependencies<TAmount, 'compare'>;
+export type UnsafeMaximumDependencies<TAmount> = Dependencies<
+  TAmount,
+  'compare'
+>;
 
-export function unsafeMaximum<TAmount>({ calculator }: UnsafeMaximumDependencies<TAmount>) {
+export function unsafeMaximum<TAmount>({
+  calculator,
+}: UnsafeMaximumDependencies<TAmount>) {
   const maxFn = max(calculator);
 
   return function maximum(...[dineroObjects]: MaximumParams<TAmount>) {
@@ -36,10 +43,18 @@ export function unsafeMaximum<TAmount>({ calculator }: UnsafeMaximumDependencies
 
 export type SafeMaximumDependencies<TAmount> = Dependencies<
   TAmount,
-  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'integerDivide'
+  | 'add'
+  | 'compare'
+  | 'multiply'
+  | 'power'
+  | 'subtract'
+  | 'zero'
+  | 'integerDivide'
 >;
 
-export function safeMaximum<TAmount>({ calculator }: SafeMaximumDependencies<TAmount>) {
+export function safeMaximum<TAmount>({
+  calculator,
+}: SafeMaximumDependencies<TAmount>) {
   const normalizeFn = normalizeScale({ calculator });
   const maxFn = unsafeMaximum({ calculator });
 

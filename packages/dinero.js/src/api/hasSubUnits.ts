@@ -4,7 +4,7 @@ import { hasSubUnits as coreHasSubUnits } from '@dinero.js/core';
 /**
  * Check whether a Dinero object has minor currency units.
  *
- * @param dineroObject The Dinero objects to check.
+ * @param dineroObject - The Dinero objects to check.
  *
  * @returns Whether the Dinero object has minor currency units.
  */

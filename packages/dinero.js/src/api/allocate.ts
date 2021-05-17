@@ -4,9 +4,9 @@ import { safeAllocate } from '@dinero.js/core';
 /**
  * Distribute the amount of a Dinero object across a list of ratios.
  *
- * @param dineroObject The Dinero object to allocate from.
- * @param ratios The ratios to allocate the amount to.
- * @param options.scale The number of decimal places to represent.
+ * @param dineroObject - The Dinero object to allocate from.
+ * @param ratios - The ratios to allocate the amount to.
+ * @param options.scale - The number of decimal places to represent.
  *
  * @returns A new Dinero object.
  */

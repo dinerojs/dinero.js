@@ -1,5 +1,7 @@
 import type { Dinero } from '../types';
-import { haveSameAmount, haveSameCurrency } from '.';
+
+import { haveSameAmount } from './haveSameAmount';
+import { haveSameCurrency } from './haveSameCurrency';
 import type { Dependencies } from './types';
 
 export type EqualParams<TAmount> = readonly [
@@ -9,7 +11,13 @@ export type EqualParams<TAmount> = readonly [
 
 export type EqualDependencies<TAmount> = Dependencies<
   TAmount,
-  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'integerDivide'
+  | 'add'
+  | 'compare'
+  | 'multiply'
+  | 'power'
+  | 'subtract'
+  | 'zero'
+  | 'integerDivide'
 >;
 
 export function equal<TAmount>({ calculator }: EqualDependencies<TAmount>) {

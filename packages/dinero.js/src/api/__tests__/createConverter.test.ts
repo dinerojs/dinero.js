@@ -10,7 +10,7 @@ describe('createConverter', () => {
           rate: 89,
           scale: 2,
         },
-      }
+      },
     });
 
     const d = dinero({ amount: 500, currency: USD });
@@ -28,8 +28,8 @@ describe('createConverter', () => {
       rates: {
         IQD: {
           rate: 1199,
-        }
-      }
+        },
+      },
     });
 
     const d = dinero({ amount: 500, currency: USD });

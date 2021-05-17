@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Hungarian forint
+ * Hungarian forint.
  */
 export const HUF: Currency<number> = {
   code: 'HUF',

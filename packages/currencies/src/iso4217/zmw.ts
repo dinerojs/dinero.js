@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Zambian kwacha
+ * Zambian kwacha.
  */
 export const ZMW: Currency<number> = {
   code: 'ZMW',

@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Bulgarian lev
+ * Bulgarian lev.
  */
 export const BGN: Currency<number> = {
   code: 'BGN',

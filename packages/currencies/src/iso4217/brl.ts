@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Brazilian real
+ * Brazilian real.
  */
 export const BRL: Currency<number> = {
   code: 'BRL',

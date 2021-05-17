@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Ukrainian hryvnia
+ * Ukrainian hryvnia.
  */
 export const UAH: Currency<number> = {
   code: 'UAH',

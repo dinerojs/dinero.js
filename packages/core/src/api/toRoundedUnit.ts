@@ -1,4 +1,5 @@
 import type { Dinero, RoundingOptions } from '../types';
+
 import type { Dependencies } from './types';
 
 export type ToRoundedUnitParams<TAmount> = readonly [

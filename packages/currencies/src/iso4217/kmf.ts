@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Comoro franc
+ * Comoro franc.
  */
 export const KMF: Currency<number> = {
   code: 'KMF',

@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Falkland Islands pound
+ * Falkland Islands pound.
  */
 export const FKP: Currency<number> = {
   code: 'FKP',

@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Netherlands Antillean guilder
+ * Netherlands Antillean guilder.
  */
 export const ANG: Currency<number> = {
   code: 'ANG',

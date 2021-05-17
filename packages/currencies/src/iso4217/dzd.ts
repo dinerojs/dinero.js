@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Algerian dinar
+ * Algerian dinar.
  */
 export const DZD: Currency<number> = {
   code: 'DZD',

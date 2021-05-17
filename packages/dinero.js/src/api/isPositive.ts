@@ -4,7 +4,7 @@ import { isPositive as coreIsPositive } from '@dinero.js/core';
 /**
  * Check whether a Dinero object is positive.
  *
- * @param dineroObject The Dinero objects to check.
+ * @param dineroObject - The Dinero objects to check.
  *
  * @returns Whether the Dinero object is positive.
  */

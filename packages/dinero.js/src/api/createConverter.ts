@@ -1,9 +1,5 @@
-import type {
-  ConvertOptions,
-  ConvertParams} from '@dinero.js/core';
-import {
-  convert as coreConvert
-} from '@dinero.js/core';
+import type { ConvertOptions, ConvertParams } from '@dinero.js/core';
+import { convert as coreConvert } from '@dinero.js/core';
 
 type CreateConverterParams<TAmount> = readonly [
   options: ConvertOptions<TAmount>
@@ -12,7 +8,7 @@ type CreateConverterParams<TAmount> = readonly [
 /**
  * Create a Dinero object converter.
  *
- * @param options.rates The rates to convert with.
+ * @param options.rates - The rates to convert with.
  *
  * @returns A converter function.
  */

@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Jamaican dollar
+ * Jamaican dollar.
  */
 export const JMD: Currency<number> = {
   code: 'JMD',

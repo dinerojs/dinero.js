@@ -21,5 +21,30 @@
     "name": "Sarah Dayan",
     "url": "https://sarahdayan.dev"
   },
-  "main": "index.ts"
+  "sideEffects": false,
+  "main": "dist/umd/index.production.js",
+  "umd:main": "dist/umd/index.production.js",
+  "jsdelivr": "dist/umd/index.production.js",
+  "unpkg": "dist/umd/index.production.js",
+  "module": "dist/esm/index.js",
+  "source": "src/index.ts",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build:clean": "rm -rf ./dist",
+    "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
+    "build:types": "tsc -p ./tsconfig.declaration.json --outDir ./dist/esm",
+    "build:umd": "rollup --config",
+    "build": "yarn build:clean && yarn build:umd && yarn build:esm && yarn build:types",
+    "on:change": "concurrently \"yarn build:esm\" \"yarn build:types\"",
+    "prepare": "yarn build:esm && yarn build:types",
+    "watch": "watch \"yarn on:change\" --ignoreDirectoryPattern \"/dist/\""
+  },
+  "dependencies": {
+    "@dinero.js/calculator-number": "2.0.0",
+    "@dinero.js/core": "2.0.0",
+    "@dinero.js/currencies": "2.0.0"
+  }
 }

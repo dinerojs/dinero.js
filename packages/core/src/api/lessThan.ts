@@ -2,7 +2,9 @@
 import { assertSameCurrency } from '../guards';
 import type { Dinero } from '../types';
 import { lessThan as lt } from '../utils';
-import { haveSameCurrency, normalizeScale } from '.';
+
+import { haveSameCurrency } from './haveSameCurrency';
+import { normalizeScale } from './normalizeScale';
 import type { Dependencies } from './types';
 
 export type LessThanParams<TAmount> = readonly [
@@ -37,7 +39,13 @@ export function unsafeLessThan<TAmount>({
 
 export type SafeLessThanDependencies<TAmount> = Dependencies<
   TAmount,
-  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'integerDivide'
+  | 'add'
+  | 'compare'
+  | 'multiply'
+  | 'power'
+  | 'subtract'
+  | 'zero'
+  | 'integerDivide'
 >;
 
 export function safeLessThan<TAmount>({

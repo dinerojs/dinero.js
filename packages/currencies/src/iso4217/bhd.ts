@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Bahraini dinar
+ * Bahraini dinar.
  */
 export const BHD: Currency<number> = {
   code: 'BHD',

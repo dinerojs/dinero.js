@@ -1,4 +1,5 @@
 import type { Dinero } from '../types';
+
 import type { Dependencies } from './types';
 
 export type ToUnitParams<TAmount> = readonly [dineroObject: Dinero<TAmount>];

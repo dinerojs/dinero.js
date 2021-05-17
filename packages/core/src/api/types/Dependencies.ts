@@ -1,4 +1,4 @@
-import type { Calculator } from '@dinero.js/calculator';
+import type { Calculator } from '../../types';
 
 export type CalculatorDependency<
   TAmount,

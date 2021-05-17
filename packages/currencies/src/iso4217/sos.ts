@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Somali shilling
+ * Somali shilling.
  */
 export const SOS: Currency<number> = {
   code: 'SOS',

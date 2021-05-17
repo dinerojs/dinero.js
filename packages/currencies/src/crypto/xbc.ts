@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Bitcoin cash
+ * Bitcoin cash.
  */
 export const XBC: Currency<number> = {
   code: 'XBC',

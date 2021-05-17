@@ -1,0 +1,48 @@
+{
+  "name": "@dinero.js/calculator-number",
+  "version": "2.0.0",
+  "description": "Number calculator implementation for Dinero.js",
+  "keywords": [
+    "money",
+    "monetary",
+    "amount",
+    "immutable",
+    "calculator",
+    "number"
+  ],
+  "homepage": "https://dinerojs.com/calculator-number",
+  "bugs": "https://github.com/dinerojs/dinero.js/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dinerojs/dinero.js.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Sarah Dayan",
+    "url": "https://sarahdayan.dev"
+  },
+  "sideEffects": false,
+  "main": "dist/umd/index.production.js",
+  "umd:main": "dist/umd/index.production.js",
+  "jsdelivr": "dist/umd/index.production.js",
+  "unpkg": "dist/umd/index.production.js",
+  "module": "dist/esm/index.js",
+  "source": "src/index.ts",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build:clean": "rm -rf ./dist",
+    "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
+    "build:types": "tsc -p ./tsconfig.declaration.json --outDir ./dist/esm",
+    "build:umd": "rollup --config",
+    "build": "yarn build:clean && yarn build:umd && yarn build:esm && yarn build:types",
+    "on:change": "concurrently \"yarn build:esm\" \"yarn build:types\"",
+    "prepare": "yarn build:esm && yarn build:types",
+    "watch": "watch \"yarn on:change\" --ignoreDirectoryPattern \"/dist/\""
+  },
+  "dependencies": {
+    "@dinero.js/core": "2.0.0"
+  }
+}

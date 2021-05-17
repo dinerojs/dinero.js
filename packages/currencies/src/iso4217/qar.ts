@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Qatari riyal
+ * Qatari riyal.
  */
 export const QAR: Currency<number> = {
   code: 'QAR',

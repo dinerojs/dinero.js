@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Unidad de Valor Real
+ * Unidad de Valor Real.
  */
 export const COU: Currency<number> = {
   code: 'COU',

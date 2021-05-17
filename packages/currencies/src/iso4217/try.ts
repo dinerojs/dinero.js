@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Turkish lira
+ * Turkish lira.
  */
 export const TRY: Currency<number> = {
   code: 'TRY',

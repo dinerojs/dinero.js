@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Gambian dalasi
+ * Gambian dalasi.
  */
 export const GMD: Currency<number> = {
   code: 'GMD',

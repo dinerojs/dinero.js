@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Icelandic króna
+ * Icelandic króna.
  */
 export const ISK: Currency<number> = {
   code: 'ISK',

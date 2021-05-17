@@ -1,4 +1,4 @@
-import { compare } from '@dinero.js/calculator/number';
+import { compare } from '@dinero.js/calculator-number';
 
 import { equal } from '../equal';
 

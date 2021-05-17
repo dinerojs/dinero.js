@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Colombian peso
+ * Colombian peso.
  */
 export const COP: Currency<number> = {
   code: 'COP',

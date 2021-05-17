@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Romanian leu
+ * Romanian leu.
  */
 export const RON: Currency<number> = {
   code: 'RON',

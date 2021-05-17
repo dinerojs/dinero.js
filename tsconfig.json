@@ -1,36 +1,29 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "dist",
-    "strict": true,
-    "sourceMap": false,
-    "target": "esnext",
-    "module": "esnext",
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "module": "es2015",
     "moduleResolution": "node",
-    "allowJs": false,
-    "noUnusedLocals": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "removeComments": false,
-    "isolatedModules": true,
-    "lib": [
-      "esnext"
-    ],
-    "types": [
-      "jest",
-      "node"
-    ],
-    "rootDir": ".",
-    "paths": {
-      "@dinero.js/*": [
-        "packages/*"
-      ]
-    }
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNEXT"
   },
   "exclude": [
-    "node_modules"
+    ".storybook",
+    "**/__fixtures__/**/*",
+    "**/__mocks__/**/*",
+    "**/__tests__/**/*",
+    "**/dist",
+    "**/node_modules",
+    "stories",
+    "examples",
+    "cypress"
   ]
 }

@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Moldovan leu
+ * Moldovan leu.
  */
 export const MDL: Currency<number> = {
   code: 'MDL',

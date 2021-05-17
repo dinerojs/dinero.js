@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Venezuelan bolívar
+ * Venezuelan bolívar.
  */
 export const VES: Currency<number> = {
   code: 'VES',

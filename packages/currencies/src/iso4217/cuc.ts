@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Cuban convertible peso
+ * Cuban convertible peso.
  */
 export const CUC: Currency<number> = {
   code: 'CUC',

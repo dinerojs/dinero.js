@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Nicaraguan córdoba
+ * Nicaraguan córdoba.
  */
 export const NIO: Currency<number> = {
   code: 'NIO',

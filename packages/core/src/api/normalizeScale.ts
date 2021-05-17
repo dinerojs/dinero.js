@@ -1,6 +1,7 @@
 import type { Dinero } from '../types';
 import { maximum } from '../utils';
-import { transformScale } from '.';
+
+import { transformScale } from './transformScale';
 import type { Dependencies } from './types';
 
 export type NormalizeScaleParams<TAmount> = readonly [
@@ -9,7 +10,13 @@ export type NormalizeScaleParams<TAmount> = readonly [
 
 export type NormalizeScaleDependencies<TAmount> = Dependencies<
   TAmount,
-  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'integerDivide'
+  | 'add'
+  | 'compare'
+  | 'multiply'
+  | 'power'
+  | 'subtract'
+  | 'zero'
+  | 'integerDivide'
 >;
 
 export function normalizeScale<TAmount>({
@@ -30,9 +37,7 @@ export function normalizeScale<TAmount>({
     return dineroObjects.map((d) => {
       const { scale } = d.toJSON();
 
-      return scale !== highestScale
-        ? convertScaleFn(d, highestScale)
-        : d;
+      return scale !== highestScale ? convertScaleFn(d, highestScale) : d;
     });
   };
 }

@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Costa Rican colón
+ * Costa Rican colón.
  */
 export const CRC: Currency<number> = {
   code: 'CRC',

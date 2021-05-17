@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Bosnia and Herzegovina convertible mark
+ * Bosnia and Herzegovina convertible mark.
  */
 export const BAM: Currency<number> = {
   code: 'BAM',

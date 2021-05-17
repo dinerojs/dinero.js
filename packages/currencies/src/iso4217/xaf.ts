@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Central African CFA franc
+ * Central African CFA franc.
  */
 export const XAF: Currency<number> = {
   code: 'XAF',

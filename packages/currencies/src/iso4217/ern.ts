@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Eritrean nakfa
+ * Eritrean nakfa.
  */
 export const ERN: Currency<number> = {
   code: 'ERN',

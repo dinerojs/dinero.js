@@ -1,3 +1,5 @@
+export * from './BinaryOperation';
+export * from './Calculator';
 export * from './Dinero';
 export * from './DineroFactory';
 export * from './DineroOptions';
@@ -7,3 +9,5 @@ export * from './Rates';
 export * from './RoundingMode';
 export * from './RoundingOptions';
 export * from './Transformer';
+export * from './TransformOperation';
+export * from './UnaryOperation';

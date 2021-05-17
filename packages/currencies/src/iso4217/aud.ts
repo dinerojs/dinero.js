@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Australian dollar
+ * Australian dollar.
  */
 export const AUD: Currency<number> = {
   code: 'AUD',

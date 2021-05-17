@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Solomon Islands dollar
+ * Solomon Islands dollar.
  */
 export const SBD: Currency<number> = {
   code: 'SBD',

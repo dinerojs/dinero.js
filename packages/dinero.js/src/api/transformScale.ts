@@ -4,8 +4,8 @@ import { transformScale as coreTransformScale } from '@dinero.js/core';
 /**
  * Transform a Dinero object to a new precision.
  *
- * @param dineroObject The Dinero object to transform.
- * @param newScale The new precision.
+ * @param dineroObject - The Dinero object to transform.
+ * @param newScale - The new precision.
  *
  * @returns A new Dinero object.
  */

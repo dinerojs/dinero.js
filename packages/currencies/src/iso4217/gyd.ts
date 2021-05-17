@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Guyanese dollar
+ * Guyanese dollar.
  */
 export const GYD: Currency<number> = {
   code: 'GYD',

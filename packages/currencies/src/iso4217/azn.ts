@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Azerbaijani manat
+ * Azerbaijani manat.
  */
 export const AZN: Currency<number> = {
   code: 'AZN',

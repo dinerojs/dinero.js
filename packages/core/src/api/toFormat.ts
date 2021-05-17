@@ -1,4 +1,5 @@
 import type { Dinero, RoundingOptions, Transformer } from '../types';
+
 import { toRoundedUnit } from './toRoundedUnit';
 import type { Dependencies } from './types';
 
@@ -27,10 +28,7 @@ export function toFormat<TAmount>({
   ) {
     const { currency } = dineroObject.toJSON();
 
-    const amount = toRoundedUnitFn(
-      dineroObject,
-      { digits, round },
-    );
+    const amount = toRoundedUnitFn(dineroObject, { digits, round });
 
     return transformer({ amount, currency });
   };

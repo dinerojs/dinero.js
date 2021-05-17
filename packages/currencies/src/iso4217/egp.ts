@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Egyptian pound
+ * Egyptian pound.
  */
 export const EGP: Currency<number> = {
   code: 'EGP',

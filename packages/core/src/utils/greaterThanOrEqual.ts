@@ -1,6 +1,7 @@
-import type { Calculator } from '@dinero.js/calculator';
+import type { Calculator } from '../types';
 
-import { equal, greaterThan } from '.';
+import { equal } from './equal';
+import { greaterThan } from './greaterThan';
 
 type GreaterThanOrEqualCalculator<TAmount> = Pick<
   Calculator<TAmount>,
@@ -10,7 +11,7 @@ type GreaterThanOrEqualCalculator<TAmount> = Pick<
 /**
  * Returns a greaterThanOrEqual function.
  *
- * @param calculator The calculator to use.
+ * @param calculator - The calculator to use.
  *
  * @returns The greaterThanOrEqual function.
  */

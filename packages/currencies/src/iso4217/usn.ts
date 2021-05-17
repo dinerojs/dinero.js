@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * United States dollar (next day)
+ * United States dollar (next day).
  */
 export const USN: Currency<number> = {
   code: 'USN',

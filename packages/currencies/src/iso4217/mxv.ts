@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Mexican Unidad de Inversion
+ * Mexican Unidad de Inversion.
  */
 export const MXV: Currency<number> = {
   code: 'MXV',

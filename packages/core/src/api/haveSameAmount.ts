@@ -1,6 +1,7 @@
 import type { Dinero } from '../types';
 import { equal } from '../utils';
-import { normalizeScale } from '.';
+
+import { normalizeScale } from './normalizeScale';
 import type { Dependencies } from './types';
 
 export type HaveSameAmountParams<TAmount> = readonly [
@@ -9,7 +10,13 @@ export type HaveSameAmountParams<TAmount> = readonly [
 
 export type HaveSameAmountDependencies<TAmount> = Dependencies<
   TAmount,
-  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'integerDivide'
+  | 'add'
+  | 'compare'
+  | 'multiply'
+  | 'power'
+  | 'subtract'
+  | 'zero'
+  | 'integerDivide'
 >;
 
 export function haveSameAmount<TAmount>({

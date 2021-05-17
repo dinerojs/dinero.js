@@ -1,13 +1,13 @@
-import type { Calculator } from '@dinero.js/calculator';
+import type { Calculator } from '../types';
 
-import { greaterThan } from '.';
+import { greaterThan } from './greaterThan';
 
 type MinimumCalculator<TAmount> = Pick<Calculator<TAmount>, 'compare'>;
 
 /**
  * Returns a minimum function.
  *
- * @param calculator The calculator to use.
+ * @param calculator - The calculator to use.
  *
  * @returns The minimum function.
  */

@@ -17,9 +17,11 @@ describe('multiply', () => {
   it('converts the multiplied amount to the safest scale', () => {
     const d = dinero({ amount: 401, currency: USD });
 
-    const snapshot = toSnapshot(multiply(d, 2001, {
-      scale: 3,
-    }));
+    const snapshot = toSnapshot(
+      multiply(d, 2001, {
+        scale: 3,
+      })
+    );
 
     expect(snapshot).toEqual({
       amount: 802401,

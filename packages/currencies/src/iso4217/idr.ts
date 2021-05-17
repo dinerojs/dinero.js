@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Indonesian rupiah
+ * Indonesian rupiah.
  */
 export const IDR: Currency<number> = {
   code: 'IDR',

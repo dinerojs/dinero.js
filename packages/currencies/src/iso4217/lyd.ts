@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Libyan dinar
+ * Libyan dinar.
  */
 export const LYD: Currency<number> = {
   code: 'LYD',

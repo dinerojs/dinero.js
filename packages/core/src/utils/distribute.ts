@@ -1,23 +1,32 @@
 /* eslint-disable functional/no-let, functional/no-loop-statement, functional/immutable-data, functional/no-expression-statement */
-import type { Calculator } from '@dinero.js/calculator';
+import type { Calculator } from '../types';
 
-import { equal, greaterThan, greaterThanOrEqual, lessThan } from '.';
+import { equal } from './equal';
+import { greaterThan } from './greaterThan';
+import { greaterThanOrEqual } from './greaterThanOrEqual';
+import { lessThan } from './lessThan';
 
 type DistributeCalculator<TAmount> = Pick<
   Calculator<TAmount>,
-  'add' | 'compare' | 'integerDivide' | 'increment' | 'decrement' | 'multiply' | 'subtract' | 'zero' | 'modulo'
+  | 'add'
+  | 'compare'
+  | 'integerDivide'
+  | 'increment'
+  | 'decrement'
+  | 'multiply'
+  | 'subtract'
+  | 'zero'
+  | 'modulo'
 >;
 
 /**
  * Returns a distribute function.
  *
- * @param calculator The calculator to use.
+ * @param calculator - The calculator to use.
  *
  * @returns The distribute function.
  */
-export function distribute<TAmount>(
-  calculator: DistributeCalculator<TAmount>,
-) {
+export function distribute<TAmount>(calculator: DistributeCalculator<TAmount>) {
   return (value: TAmount, ratios: readonly TAmount[]) => {
     const equalFn = equal(calculator);
     const greaterThanFn = greaterThan(calculator);
@@ -36,7 +45,9 @@ export function distribute<TAmount>(
     let remainder = value;
 
     const shares = ratios.map((ratio) => {
-      const share = calculator.integerDivide(calculator.multiply(value, ratio), total) || zero;
+      const share =
+        calculator.integerDivide(calculator.multiply(value, ratio), total) ||
+        zero;
 
       remainder = calculator.subtract(remainder, share);
 

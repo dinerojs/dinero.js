@@ -4,9 +4,9 @@ import { toRoundedUnit as coreToRoundedUnit } from '@dinero.js/core';
 /**
  * Get the amount of a Dinero object in rounded units.
  *
- * @param dineroObject The Dinero object to transform.
- * @param options.digits The number of fraction digits to round to.
- * @param options.round The rounding function to use.
+ * @param dineroObject - The Dinero object to transform.
+ * @param options.digits - The number of fraction digits to round to.
+ * @param options.round - The rounding function to use.
  *
  * @returns The amount in rounded units.
  */

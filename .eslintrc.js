@@ -1,7 +1,8 @@
 /* eslint-disable import/no-commonjs, functional/immutable-data, functional/no-expression-statement */
 module.exports = {
-  plugins: ['functional', 'sonarjs', 'simple-import-sort', 'promise', 'import'],
+  plugins: ['functional', 'sonarjs', 'promise', 'import'],
   extends: [
+    'algolia',
     'algolia/jest',
     'algolia/typescript',
     'plugin:functional/recommended',
@@ -19,14 +20,15 @@ module.exports = {
         requireParamType: false,
       },
     ],
-    'simple-import-sort/imports': 'error',
-    'simple-import-sort/exports': 'error',
+    'jsdoc/check-param-names': ['off'],
+    'import/extensions': ['off'],
   },
   overrides: [
     {
       files: ['**/__tests__/**'],
       rules: {
         'functional/no-expression-statement': ['off'],
+        'import/no-extraneous-dependencies': ['off'],
       },
     },
     {

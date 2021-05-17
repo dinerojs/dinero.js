@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Kenyan shilling
+ * Kenyan shilling.
  */
 export const KES: Currency<number> = {
   code: 'KES',

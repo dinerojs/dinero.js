@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Fiji dollar
+ * Fiji dollar.
  */
 export const FJD: Currency<number> = {
   code: 'FJD',

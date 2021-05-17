@@ -1,12 +1,12 @@
-import type { Calculator} from '@dinero.js/calculator';
-import { ComparisonOperator } from '@dinero.js/calculator';
+import type { Calculator } from '../types';
+import { ComparisonOperator } from '../types';
 
 type GreaterThanCalculator<TAmount> = Pick<Calculator<TAmount>, 'compare'>;
 
 /**
  * Returns a greaterThan function.
  *
- * @param calculator The calculator to use.
+ * @param calculator - The calculator to use.
  *
  * @returns The greaterThan function.
  */

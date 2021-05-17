@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Tongan paʻanga
+ * Tongan paʻanga.
  */
 export const TOP: Currency<number> = {
   code: 'TOP',

@@ -1,9 +1,9 @@
-import { USD } from "@dinero.js/currencies";
+import { USD } from '@dinero.js/currencies';
 
-import { allocate, dinero, toSnapshot } from "../../..";
+import { allocate, dinero, toSnapshot } from '../../..';
 
-describe("allocate", () => {
-  it("allocates to percentages", () => {
+describe('allocate', () => {
+  it('allocates to percentages', () => {
     const d = dinero({ amount: 1003, currency: USD });
     const shares = allocate(d, [50, 50]);
     const [firstAllocated, secondAllocated] = shares;
@@ -19,7 +19,7 @@ describe("allocate", () => {
       scale: 2,
     });
   });
-  it("allocates to ratios", () => {
+  it('allocates to ratios', () => {
     const d = dinero({ amount: 100, currency: USD });
     const shares = allocate(d, [1, 3]);
     const [firstAllocated, secondAllocated] = shares;
@@ -35,7 +35,7 @@ describe("allocate", () => {
       scale: 2,
     });
   });
-  it("ignores zero ratios", () => {
+  it('ignores zero ratios', () => {
     const d = dinero({ amount: 1003, currency: USD });
     const shares = allocate(d, [0, 50, 50]);
     const [firstAllocated, secondAllocated, thirdAllocated] = shares;
@@ -56,7 +56,7 @@ describe("allocate", () => {
       scale: 2,
     });
   });
-  it("converts the allocated amounts to the safest scale", () => {
+  it('converts the allocated amounts to the safest scale', () => {
     const d = dinero({ amount: 100, currency: USD });
     const shares = allocate(d, [505, 495], { scale: 1 });
     const [firstAllocated, secondAllocated] = shares;
@@ -72,25 +72,25 @@ describe("allocate", () => {
       scale: 3,
     });
   });
-  it("throws when using empty ratios", () => {
+  it('throws when using empty ratios', () => {
     const d = dinero({ amount: 100, currency: USD });
 
     expect(() => {
       allocate(d, []);
-    }).toThrowErrorMatchingInlineSnapshot(`"Ratios are invalid."`);
+    }).toThrowErrorMatchingInlineSnapshot(`"[Dinero.js] Ratios are invalid."`);
   });
-  it("throws when using negative ratios", () => {
+  it('throws when using negative ratios', () => {
     const d = dinero({ amount: 100, currency: USD });
 
     expect(() => {
       allocate(d, [-50, -50]);
-    }).toThrowErrorMatchingInlineSnapshot(`"Ratios are invalid."`);
+    }).toThrowErrorMatchingInlineSnapshot(`"[Dinero.js] Ratios are invalid."`);
   });
-  it("throws when using only zero ratios", () => {
+  it('throws when using only zero ratios', () => {
     const d = dinero({ amount: 100, currency: USD });
 
     expect(() => {
       allocate(d, [0, 0]);
-    }).toThrowErrorMatchingInlineSnapshot(`"Ratios are invalid."`);
+    }).toThrowErrorMatchingInlineSnapshot(`"[Dinero.js] Ratios are invalid."`);
   });
 });

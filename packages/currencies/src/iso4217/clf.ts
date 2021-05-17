@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Unidad de Fomento
+ * Unidad de Fomento.
  */
 export const CLF: Currency<number> = {
   code: 'CLF',

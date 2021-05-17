@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Trinidad and Tobago dollar
+ * Trinidad and Tobago dollar.
  */
 export const TTD: Currency<number> = {
   code: 'TTD',

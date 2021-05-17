@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Nigerian naira
+ * Nigerian naira.
  */
 export const NGN: Currency<number> = {
   code: 'NGN',

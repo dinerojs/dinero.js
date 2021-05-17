@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Swiss franc
+ * Swiss franc.
  */
 export const CHF: Currency<number> = {
   code: 'CHF',

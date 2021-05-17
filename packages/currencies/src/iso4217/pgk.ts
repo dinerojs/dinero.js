@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Papua New Guinean kina
+ * Papua New Guinean kina.
  */
 export const PGK: Currency<number> = {
   code: 'PGK',

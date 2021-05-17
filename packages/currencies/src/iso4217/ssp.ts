@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * South Sudanese pound
+ * South Sudanese pound.
  */
 export const SSP: Currency<number> = {
   code: 'SSP',

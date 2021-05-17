@@ -22,7 +22,7 @@ describe('haveSameCurrency', () => {
         code: 'USD',
         base: 10,
         exponent: 2,
-      }
+      },
     });
     const d2 = dinero({
       amount: 1000,
@@ -30,7 +30,7 @@ describe('haveSameCurrency', () => {
         code: 'USD',
         base: 10,
         exponent: 2,
-      }
+      },
     });
 
     expect(haveSameCurrency([d1, d2])).toBe(true);

@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Malagasy ariary
+ * Malagasy ariary.
  */
 export const MGA: Currency<number> = {
   code: 'MGA',

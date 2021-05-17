@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * East Caribbean dollar
+ * East Caribbean dollar.
  */
 export const XCD: Currency<number> = {
   code: 'XCD',

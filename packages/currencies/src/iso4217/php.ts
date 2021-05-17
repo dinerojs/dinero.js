@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Philippine peso
+ * Philippine peso.
  */
 export const PHP: Currency<number> = {
   code: 'PHP',

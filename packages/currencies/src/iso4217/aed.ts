@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * United Arab Emirates dirham
+ * United Arab Emirates dirham.
  */
 export const AED: Currency<number> = {
   code: 'AED',

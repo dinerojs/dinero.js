@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Bahamian dollar
+ * Bahamian dollar.
  */
 export const BSD: Currency<number> = {
   code: 'BSD',

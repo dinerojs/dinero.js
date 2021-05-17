@@ -2,16 +2,23 @@
 import { assertSameCurrency } from '../guards';
 import type { Dinero } from '../types';
 import { minimum as min } from '../utils';
-import { haveSameCurrency, normalizeScale } from '.';
+
+import { haveSameCurrency } from './haveSameCurrency';
+import { normalizeScale } from './normalizeScale';
 import type { Dependencies } from './types';
 
 export type MinimumParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ];
 
-export type UnsafeMinimumDependencies<TAmount> = Dependencies<TAmount, 'compare'>;
+export type UnsafeMinimumDependencies<TAmount> = Dependencies<
+  TAmount,
+  'compare'
+>;
 
-export function unsafeMinimum<TAmount>({ calculator }: UnsafeMinimumDependencies<TAmount>) {
+export function unsafeMinimum<TAmount>({
+  calculator,
+}: UnsafeMinimumDependencies<TAmount>) {
   const minFn = min(calculator);
 
   return function minimum(...[dineroObjects]: MinimumParams<TAmount>) {
@@ -36,10 +43,18 @@ export function unsafeMinimum<TAmount>({ calculator }: UnsafeMinimumDependencies
 
 export type SafeMinimumDependencies<TAmount> = Dependencies<
   TAmount,
-  'add' | 'compare' | 'multiply' | 'power' | 'subtract' | 'zero' | 'integerDivide'
+  | 'add'
+  | 'compare'
+  | 'multiply'
+  | 'power'
+  | 'subtract'
+  | 'zero'
+  | 'integerDivide'
 >;
 
-export function safeMinimum<TAmount>({ calculator }: SafeMinimumDependencies<TAmount>) {
+export function safeMinimum<TAmount>({
+  calculator,
+}: SafeMinimumDependencies<TAmount>) {
   const normalizeFn = normalizeScale({ calculator });
   const minFn = unsafeMinimum({ calculator });
 

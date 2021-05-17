@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Haitian gourde
+ * Haitian gourde.
  */
 export const HTG: Currency<number> = {
   code: 'HTG',

@@ -2,13 +2,14 @@
 import { assertValidRatios } from '../guards';
 import type { Dinero } from '../types';
 import { distribute, greaterThan, greaterThanOrEqual } from '../utils';
+
 import { transformScale } from './transformScale';
 import type { Dependencies } from './types';
 
 export type AllocateParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   ratios: readonly TAmount[],
-  options?: AllocateOptions<TAmount>,
+  options?: AllocateOptions<TAmount>
 ];
 
 export type AllocateOptions<TAmount> = {
@@ -67,12 +68,22 @@ export function safeAllocate<TAmount>({
   const greaterThanFn = greaterThan(calculator);
   const convertScaleFn = transformScale({ calculator });
 
-  return function allocate(...[dineroObject, ratios, options = { scale: calculator.zero() }]: AllocateParams<TAmount>) {
+  return function allocate(
+    ...[
+      dineroObject,
+      ratios,
+      options = { scale: calculator.zero() },
+    ]: AllocateParams<TAmount>
+  ) {
     const zero = calculator.zero();
 
     const hasRatios = ratios.length > 0;
-    const hasOnlyPositiveRatios = ratios.every((ratio) => greaterThanOrEqualFn(ratio, zero));
-    const hasOneNonZeroRatio = ratios.some((ratio) => greaterThanFn(ratio, zero));
+    const hasOnlyPositiveRatios = ratios.every((ratio) =>
+      greaterThanOrEqualFn(ratio, zero)
+    );
+    const hasOneNonZeroRatio = ratios.some((ratio) =>
+      greaterThanFn(ratio, zero)
+    );
 
     assertValidRatios(hasRatios && hasOnlyPositiveRatios && hasOneNonZeroRatio);
 

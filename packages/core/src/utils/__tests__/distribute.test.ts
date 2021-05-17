@@ -8,13 +8,21 @@ import {
   multiply,
   subtract,
   zero,
-} from '@dinero.js/calculator/number';
+} from '@dinero.js/calculator-number';
 
 import { distribute } from '../distribute';
 
-const distributeFn = distribute(
-  { add, compare, integerDivide, increment, decrement, multiply, subtract, zero, modulo }
-);
+const distributeFn = distribute({
+  add,
+  compare,
+  integerDivide,
+  increment,
+  decrement,
+  multiply,
+  subtract,
+  zero,
+  modulo,
+});
 
 describe('distribute', () => {
   it('distributes to percentages', () => {

@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Guatemalan quetzal
+ * Guatemalan quetzal.
  */
 export const GTQ: Currency<number> = {
   code: 'GTQ',

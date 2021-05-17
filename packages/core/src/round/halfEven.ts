@@ -4,7 +4,7 @@ import { isEven, isHalf } from '../utils';
 /**
  * Round a number with half values to nearest even integer.
  *
- * @param value The number to round.
+ * @param value - The number to round.
  *
  * @returns The rounded number.
  */

@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Cape Verdean escudo
+ * Cape Verdean escudo.
  */
 export const CVE: Currency<number> = {
   code: 'CVE',

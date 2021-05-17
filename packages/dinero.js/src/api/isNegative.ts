@@ -4,7 +4,7 @@ import { isNegative as coreIsNegative } from '@dinero.js/core';
 /**
  * Check whether a Dinero object is negative.
  *
- * @param dineroObject The Dinero objects to check.
+ * @param dineroObject - The Dinero objects to check.
  *
  * @returns Whether the Dinero object is negative.
  */

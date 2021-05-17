@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Hong Kong dollar
+ * Hong Kong dollar.
  */
 export const HKD: Currency<number> = {
   code: 'HKD',

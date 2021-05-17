@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Pakistani rupee
+ * Pakistani rupee.
  */
 export const PKR: Currency<number> = {
   code: 'PKR',

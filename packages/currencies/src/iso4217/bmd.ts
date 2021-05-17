@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Bermudian dollar
+ * Bermudian dollar.
  */
 export const BMD: Currency<number> = {
   code: 'BMD',

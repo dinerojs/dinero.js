@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Macanese pataca
+ * Macanese pataca.
  */
 export const MOP: Currency<number> = {
   code: 'MOP',

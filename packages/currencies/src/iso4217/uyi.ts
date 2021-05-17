@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Uruguay Peso en Unidades Indexadas
+ * Uruguay Peso en Unidades Indexadas.
  */
 export const UYI: Currency<number> = {
   code: 'UYI',

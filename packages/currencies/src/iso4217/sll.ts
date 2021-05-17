@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Sierra Leonean leone
+ * Sierra Leonean leone.
  */
 export const SLL: Currency<number> = {
   code: 'SLL',

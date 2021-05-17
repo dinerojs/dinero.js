@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Kyrgyzstani som
+ * Kyrgyzstani som.
  */
 export const KGS: Currency<number> = {
   code: 'KGS',

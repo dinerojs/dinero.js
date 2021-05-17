@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Burundian franc
+ * Burundian franc.
  */
 export const BIF: Currency<number> = {
   code: 'BIF',

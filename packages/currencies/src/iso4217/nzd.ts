@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * New Zealand dollar
+ * New Zealand dollar.
  */
 export const NZD: Currency<number> = {
   code: 'NZD',

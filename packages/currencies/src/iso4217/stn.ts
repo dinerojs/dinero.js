@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * São Tomé and Príncipe dobra
+ * São Tomé and Príncipe dobra.
  */
 export const STN: Currency<number> = {
   code: 'STN',

@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Panamanian balboa
+ * Panamanian balboa.
  */
 export const PAB: Currency<number> = {
   code: 'PAB',

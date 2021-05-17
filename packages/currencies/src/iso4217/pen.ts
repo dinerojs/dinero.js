@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Peruvian sol
+ * Peruvian sol.
  */
 export const PEN: Currency<number> = {
   code: 'PEN',

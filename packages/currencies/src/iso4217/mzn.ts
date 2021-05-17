@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Mozambican metical
+ * Mozambican metical.
  */
 export const MZN: Currency<number> = {
   code: 'MZN',

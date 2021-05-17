@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Cayman Islands dollar
+ * Cayman Islands dollar.
  */
 export const KYD: Currency<number> = {
   code: 'KYD',

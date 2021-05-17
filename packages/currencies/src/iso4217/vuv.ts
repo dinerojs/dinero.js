@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Vanuatu vatu
+ * Vanuatu vatu.
  */
 export const VUV: Currency<number> = {
   code: 'VUV',

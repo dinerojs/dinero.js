@@ -1,7 +1,7 @@
 /**
  * Return whether a number is half.
  *
- * @param value The number to test.
+ * @param value - The number to test.
  *
  * @returns Whether the number is half.
  */

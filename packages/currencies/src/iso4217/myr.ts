@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Malaysian ringgit
+ * Malaysian ringgit.
  */
 export const MYR: Currency<number> = {
   code: 'MYR',

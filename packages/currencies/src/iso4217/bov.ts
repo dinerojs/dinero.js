@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Bolivian Mvdol
+ * Bolivian Mvdol.
  */
 export const BOV: Currency<number> = {
   code: 'BOV',

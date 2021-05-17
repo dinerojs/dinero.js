@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Saint Helena pound
+ * Saint Helena pound.
  */
 export const SHP: Currency<number> = {
   code: 'SHP',

@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Ether
+ * Ether.
  */
 export const ETH: Currency<number> = {
   code: 'ETH',

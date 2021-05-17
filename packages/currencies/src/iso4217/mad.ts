@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Moroccan dirham
+ * Moroccan dirham.
  */
 export const MAD: Currency<number> = {
   code: 'MAD',

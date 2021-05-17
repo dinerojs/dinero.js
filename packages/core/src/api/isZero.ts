@@ -1,5 +1,6 @@
 import type { Dinero } from '../types';
 import { equal } from '../utils';
+
 import type { Dependencies } from './types';
 
 export type IsZeroParams<TAmount> = readonly [dineroObject: Dinero<TAmount>];

@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Armenian dram
+ * Armenian dram.
  */
 export const AMD: Currency<number> = {
   code: 'AMD',

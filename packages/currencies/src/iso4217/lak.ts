@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Lao kip
+ * Lao kip.
  */
 export const LAK: Currency<number> = {
   code: 'LAK',

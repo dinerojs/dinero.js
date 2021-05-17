@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * South African rand
+ * South African rand.
  */
 export const ZAR: Currency<number> = {
   code: 'ZAR',

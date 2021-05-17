@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Belarusian ruble
+ * Belarusian ruble.
  */
 export const BYN: Currency<number> = {
   code: 'BYN',

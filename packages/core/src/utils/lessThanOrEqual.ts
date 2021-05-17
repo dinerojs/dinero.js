@@ -1,13 +1,14 @@
-import type { Calculator } from '@dinero.js/calculator';
+import type { Calculator } from '../types';
 
-import { equal, lessThan } from '.';
+import { equal } from './equal';
+import { lessThan } from './lessThan';
 
 type LessThanOrEqualCalculator<TAmount> = Pick<Calculator<TAmount>, 'compare'>;
 
 /**
  * Returns a lessThanOrEqual function.
  *
- * @param calculator The calculator to use.
+ * @param calculator - The calculator to use.
  *
  * @returns The lessThanOrEqual function.
  */

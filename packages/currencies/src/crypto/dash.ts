@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Dash
+ * Dash.
  */
 export const DASH: Currency<number> = {
   code: 'DASH',

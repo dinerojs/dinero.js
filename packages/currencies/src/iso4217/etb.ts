@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Ethiopian birr
+ * Ethiopian birr.
  */
 export const ETB: Currency<number> = {
   code: 'ETB',

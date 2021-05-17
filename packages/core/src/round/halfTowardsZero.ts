@@ -4,7 +4,7 @@ import { isHalf } from '../utils';
 /**
  * Round a number with half values to nearest integer closest to zero.
  *
- * @param value The number to round.
+ * @param value - The number to round.
  *
  * @returns The rounded number.
  */

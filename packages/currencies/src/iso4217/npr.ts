@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Nepalese rupee
+ * Nepalese rupee.
  */
 export const NPR: Currency<number> = {
   code: 'NPR',

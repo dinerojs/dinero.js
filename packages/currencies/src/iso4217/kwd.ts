@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Kuwaiti dinar
+ * Kuwaiti dinar.
  */
 export const KWD: Currency<number> = {
   code: 'KWD',

@@ -1,7 +1,7 @@
-import type { Currency } from '@dinero.js/currencies';
+import type { Currency } from '../types';
 
 /**
- * Sri Lankan rupee
+ * Sri Lankan rupee.
  */
 export const LKR: Currency<number> = {
   code: 'LKR',
