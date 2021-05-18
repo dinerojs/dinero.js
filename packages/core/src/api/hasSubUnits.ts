@@ -1,6 +1,6 @@
-import type { Dinero } from '../types';
 import { equal } from '../utils';
 
+import type { Dinero } from '../types';
 import type { Dependencies } from './types';
 
 export type HasSubUnitsParams<TAmount> = readonly [

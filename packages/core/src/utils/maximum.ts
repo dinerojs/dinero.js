@@ -1,6 +1,6 @@
-import type { Calculator } from '../types';
-
 import { lessThan } from './lessThan';
+
+import type { Calculator } from '../types';
 
 type MaximumCalculator<TAmount> = Pick<Calculator<TAmount>, 'compare'>;
 

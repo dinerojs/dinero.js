@@ -1,5 +1,6 @@
-import type { ToRoundedUnitParams } from '@dinero.js/core';
 import { toRoundedUnit as coreToRoundedUnit } from '@dinero.js/core';
+
+import type { ToRoundedUnitParams } from '@dinero.js/core';
 
 /**
  * Get the amount of a Dinero object in rounded units.

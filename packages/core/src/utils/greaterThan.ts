@@ -1,5 +1,6 @@
-import type { Calculator } from '../types';
 import { ComparisonOperator } from '../types';
+
+import type { Calculator } from '../types';
 
 type GreaterThanCalculator<TAmount> = Pick<Calculator<TAmount>, 'compare'>;
 

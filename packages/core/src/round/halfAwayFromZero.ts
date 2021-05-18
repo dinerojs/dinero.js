@@ -1,5 +1,6 @@
-import type { RoundingMode } from '../types';
 import { isHalf } from '../utils';
+
+import type { RoundingMode } from '../types';
 
 /**
  * Round a number with half values to nearest integer farthest from zero.

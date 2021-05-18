@@ -1,10 +1,11 @@
 /* eslint-disable functional/no-expression-statement */
 import { assertSameCurrency } from '../guards';
-import type { Dinero } from '../types';
 import { minimum as min } from '../utils';
 
 import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
+
+import type { Dinero } from '../types';
 import type { Dependencies } from './types';
 
 export type MinimumParams<TAmount> = readonly [

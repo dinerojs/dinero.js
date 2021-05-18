@@ -1,6 +1,5 @@
-import type { Currency } from '@dinero.js/currencies';
-
 import type { Dinero } from '../types';
+import type { Currency } from '@dinero.js/currencies';
 
 function currencyEqual<TAmount>(
   subjectCurrency: Currency<TAmount>,

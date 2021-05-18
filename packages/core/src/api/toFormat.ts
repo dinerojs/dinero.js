@@ -1,6 +1,6 @@
-import type { Dinero, RoundingOptions, Transformer } from '../types';
-
 import { toRoundedUnit } from './toRoundedUnit';
+
+import type { Dinero, RoundingOptions, Transformer } from '../types';
 import type { Dependencies } from './types';
 
 export type ToFormatParams<TAmount> = readonly [

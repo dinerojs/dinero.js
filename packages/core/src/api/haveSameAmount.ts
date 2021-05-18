@@ -1,7 +1,8 @@
-import type { Dinero } from '../types';
 import { equal } from '../utils';
 
 import { normalizeScale } from './normalizeScale';
+
+import type { Dinero } from '../types';
 import type { Dependencies } from './types';
 
 export type HaveSameAmountParams<TAmount> = readonly [

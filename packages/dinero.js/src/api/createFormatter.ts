@@ -1,5 +1,6 @@
-import type { ToFormatParams } from '@dinero.js/core';
 import { toFormat as coreToFormat } from '@dinero.js/core';
+
+import type { ToFormatParams } from '@dinero.js/core';
 
 type CreateFormatterParams<TAmount> = readonly [
   transformer: ToFormatParams<TAmount>[1],

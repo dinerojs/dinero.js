@@ -1,5 +1,6 @@
-import type { HaveSameAmountParams } from '@dinero.js/core';
 import { haveSameAmount as coreHaveSameAmount } from '@dinero.js/core';
+
+import type { HaveSameAmountParams } from '@dinero.js/core';
 
 /**
  * Check whether a set of Dinero objects have the same amount.

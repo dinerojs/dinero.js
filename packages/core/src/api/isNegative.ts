@@ -1,6 +1,6 @@
-import type { Dinero } from '../types';
 import { lessThan } from '../utils';
 
+import type { Dinero } from '../types';
 import type { Dependencies } from './types';
 
 export type IsNegativeParams<TAmount> = readonly [

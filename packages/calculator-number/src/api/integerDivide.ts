@@ -1,7 +1,7 @@
 /* eslint-disable no-bitwise */
-import type { BinaryOperation } from '@dinero.js/core';
-
 import { divide } from './divide';
+
+import type { BinaryOperation } from '@dinero.js/core';
 
 /**
  * Returns the quotient of two numbers with no fractional part.

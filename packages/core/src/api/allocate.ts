@@ -1,9 +1,10 @@
 /* eslint-disable functional/no-expression-statement */
 import { assertValidRatios } from '../guards';
-import type { Dinero } from '../types';
 import { distribute, greaterThan, greaterThanOrEqual } from '../utils';
 
 import { transformScale } from './transformScale';
+
+import type { Dinero } from '../types';
 import type { Dependencies } from './types';
 
 export type AllocateParams<TAmount> = readonly [

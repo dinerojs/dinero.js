@@ -1,6 +1,6 @@
-import type { Dinero } from '../types';
-
 import { transformScale } from './transformScale';
+
+import type { Dinero } from '../types';
 import type { Dependencies } from './types';
 
 export type MultiplyParams<TAmount> = readonly [

@@ -1,5 +1,6 @@
-import type { RoundingMode } from '../types';
 import { isEven, isHalf } from '../utils';
+
+import type { RoundingMode } from '../types';
 
 /**
  * Round a number with half values to nearest even integer.

@@ -1,5 +1,4 @@
 import type { Dinero } from '../types';
-
 import type { Dependencies } from './types';
 
 export type TransformScaleParams<TAmount> = readonly [
