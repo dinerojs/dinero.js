@@ -1,0 +1,20 @@
+{
+  "files": [
+    {
+      "path": "packages/calculator-number/dist/umd/index.production.js",
+      "maxSize": "1.25 kB"
+    },
+    {
+      "path": "packages/core/dist/umd/index.production.js",
+      "maxSize": "3.25 kB"
+    },
+    {
+      "path": "packages/currencies/dist/umd/index.production.js",
+      "maxSize": "1.65 kB"
+    },
+    {
+      "path": "packages/dinero.js/dist/umd/index.production.js",
+      "maxSize": "3.50 kB"
+    }
+  ]
+}
