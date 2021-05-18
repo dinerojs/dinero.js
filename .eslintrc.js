@@ -22,6 +22,25 @@ module.exports = {
     ],
     'jsdoc/check-param-names': ['off'],
     'import/extensions': ['off'],
+    'import/order': [
+      'error',
+      {
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+        'newlines-between': 'always',
+        groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
+        pathGroups: [
+          {
+            pattern: '@/**/*',
+            group: 'parent',
+            position: 'before',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['builtin'],
+      },
+    ],
   },
   overrides: [
     {
