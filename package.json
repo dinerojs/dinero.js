@@ -1,7 +1,19 @@
 {
   "name": "@dinero.js/monorepo",
-  "license": "MIT",
   "private": true,
+  "license": "MIT",
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "examples/*"
+    ],
+    "nohoist": [
+      "**/cart-react",
+      "**/cart-react/**",
+      "**/cart-vue",
+      "**/cart-vue/**"
+    ]
+  },
   "scripts": {
     "build:clean": "lerna run build:clean --no-private",
     "build:esm": "lerna run build:esm --no-private",
@@ -64,9 +76,5 @@
     "shipjs": "0.23.2",
     "typescript": "4.2.4",
     "watch": "1.0.2"
-  },
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ]
+  }
 }
