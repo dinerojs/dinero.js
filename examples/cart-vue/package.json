@@ -7,11 +7,19 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.0.5"
+    "@dinero.js/currencies": "2.0.0",
+    "dinero.js": "2.0.0",
+    "rosetta": "1.1.0",
+    "vue": "3.0.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.2.2",
-    "@vue/compiler-sfc": "^3.0.5",
-    "vite": "^2.3.3"
+    "@tailwindcss/forms": "0.2.1",
+    "@tailwindcss/jit": "0.1.5",
+    "@vitejs/plugin-vue": "1.2.2",
+    "@vue/compiler-sfc": "3.0.5",
+    "autoprefixer": "10.2.5",
+    "postcss": "8.2.8",
+    "tailwindcss": "2.0.4",
+    "vite": "2.3.3"
   }
 }

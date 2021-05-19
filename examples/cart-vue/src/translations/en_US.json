@@ -1,0 +1,24 @@
+{
+  "shoppingCartTitle": "Shopping cart",
+  "languageSelectLabel": "Select a language",
+  "productColumnTitle": "Product",
+  "quantityColumnTitle": "Quantity",
+  "priceColumnTitle": "Price",
+  "totalColumnTitle": "Total",
+  "removeLabel": "Remove",
+  "checkoutTitle": "Order summary",
+  "subtotalLabel": "Subtotal",
+  "vatLabel": "VAT",
+  "shippingLabel": "Shipping",
+  "totalLabel": "Total",
+  "checkoutButtonLabel": "Checkout",
+  "shipping": {
+    "standard": "Standard",
+    "tracked": "Tracked",
+    "expedite": "Expedite"
+  },
+  "languages": {
+    "fr_FR": "French",
+    "en_US": "American English"
+  }
+}
