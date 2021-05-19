@@ -24,6 +24,7 @@
     "lint": "eslint --ext .js,.ts .",
     "prepare": "lerna run prepare --no-private",
     "start": "yarn run watch",
+    "test:size": "bundlesize",
     "test:types": "tsc --noEmit",
     "test": "jest",
     "watch": "lerna run watch --parallel --no-private"

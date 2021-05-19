@@ -2,19 +2,19 @@
   "files": [
     {
       "path": "packages/calculator-number/dist/umd/index.production.js",
-      "maxSize": "1.25 kB"
+      "maxSize": "590 B"
     },
     {
       "path": "packages/core/dist/umd/index.production.js",
-      "maxSize": "3.25 kB"
+      "maxSize": "3.25 KB"
     },
     {
       "path": "packages/currencies/dist/umd/index.production.js",
-      "maxSize": "1.65 kB"
+      "maxSize": "1.65 KB"
     },
     {
       "path": "packages/dinero.js/dist/umd/index.production.js",
-      "maxSize": "3.50 kB"
+      "maxSize": "3.50 KB"
     }
   ]
 }
