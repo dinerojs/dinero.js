@@ -7,6 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@dinero.js/currencies": "2.0.0",
     "classnames": "2.2.6",
     "dinero.js": "2.0.0",
     "react": "17.0.0",

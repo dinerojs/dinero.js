@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import cx from 'classnames';
 import rosetta from 'rosetta';
 import { EUR, USD } from '@dinero.js/currencies';
-import { dinero, add, allocate, multiply, toSnapshot } from 'dinero.js';
+import { dinero, add, allocate, multiply } from 'dinero.js';
 
 import { format, createConvert } from './utils';
 import * as translations from './translations';
