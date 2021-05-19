@@ -73,7 +73,7 @@
                 }
               }
             "
-            :on:remove="
+            :on-remove="
               (item) => {
                 setItemByName(item.name, null);
               }
@@ -220,7 +220,10 @@ export default {
       const index = this.items.findIndex((item) => item.name === name);
 
       if (index !== undefined) {
-        this.items.splice(index, 1, newValue);
+        const newItems = [...this.items];
+        newItems.splice(index, 1, newValue);
+
+        this.items = newItems.filter(Boolean);
       }
     },
   },
