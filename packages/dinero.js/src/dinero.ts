@@ -1,17 +1,4 @@
-import {
-  add,
-  compare,
-  decrement,
-  divide,
-  increment,
-  integerDivide,
-  modulo,
-  multiply,
-  power,
-  subtract,
-  toNumber,
-  zero,
-} from '@dinero.js/calculator-number';
+import { calculator } from '@dinero.js/calculator-number';
 import { createDinero } from '@dinero.js/core';
 
 /**
@@ -23,19 +10,4 @@ import { createDinero } from '@dinero.js/core';
  *
  * @returns The created Dinero object.
  */
-export const dinero = createDinero({
-  calculator: {
-    add,
-    compare,
-    decrement,
-    divide,
-    increment,
-    integerDivide,
-    modulo,
-    multiply,
-    power,
-    subtract,
-    toNumber,
-    zero,
-  },
-});
+export const dinero = createDinero({ calculator });
