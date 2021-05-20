@@ -11,7 +11,7 @@ export type ToFormatParams<TAmount> = readonly [
 
 export type ToFormatDependencies<TAmount> = Dependencies<
   TAmount,
-  'multiply' | 'divide' | 'power' | 'toNumber'
+  'multiply' | 'power' | 'toNumber'
 >;
 
 export function toFormat<TAmount>({
