@@ -2,7 +2,7 @@
   "files": [
     {
       "path": "packages/calculator-number/dist/umd/index.production.js",
-      "maxSize": "590 B"
+      "maxSize": "680 B"
     },
     {
       "path": "packages/core/dist/umd/index.production.js",
