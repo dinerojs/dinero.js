@@ -2,8 +2,6 @@ export * from './distribute';
 export * from './equal';
 export * from './greaterThan';
 export * from './greaterThanOrEqual';
-export * from './isEven';
-export * from './isHalf';
 export * from './lessThan';
 export * from './lessThanOrEqual';
 export * from './maximum';

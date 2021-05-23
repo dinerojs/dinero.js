@@ -1,6 +1,6 @@
 import { isHalf } from '../utils';
 
-import type { RoundingMode } from '../types';
+import type { RoundingMode } from '@dinero.js/core';
 
 /**
  * Round a number with half values to nearest integer closest to zero.
