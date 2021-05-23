@@ -1,4 +1,4 @@
-import { down } from '@dinero.js/calculator-number';
+import { down } from '@dinero.js/core';
 import { USD } from '@dinero.js/currencies';
 
 import { dinero, toRoundedUnit } from '../../..';
