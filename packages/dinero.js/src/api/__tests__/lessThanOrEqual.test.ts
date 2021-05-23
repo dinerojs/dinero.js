@@ -34,7 +34,7 @@ describe('lessThanOrEqual', () => {
     expect(() => {
       lessThanOrEqual(d1, d2);
     }).toThrowErrorMatchingInlineSnapshot(
-      `"[Dinero.js] Dinero objects don't have the same currency."`
+      `"[Dinero.js] Objects must have the same currency."`
     );
   });
 });
