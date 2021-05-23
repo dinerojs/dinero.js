@@ -1,4 +1,3 @@
-/* eslint-disable no-bitwise */
 import type { BinaryOperation } from '@dinero.js/core';
 
 /**
@@ -10,5 +9,5 @@ import type { BinaryOperation } from '@dinero.js/core';
  * @returns The quotient of the two numbers.
  */
 export const integerDivide: BinaryOperation<number> = (dividend, divisor) => {
-  return ~~(dividend / divisor);
+  return Math.trunc(dividend / divisor);
 };
