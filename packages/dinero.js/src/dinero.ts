@@ -1,5 +1,11 @@
+/* eslint-disable functional/no-expression-statement */
 import { calculator } from '@dinero.js/calculator-number';
-import { createDinero } from '@dinero.js/core';
+import {
+  createDinero,
+  assert,
+  INVALID_AMOUNT_MESSAGE,
+  INVALID_SCALE_MESSAGE,
+} from '@dinero.js/core';
 
 /**
  * Create a Dinero object.
@@ -10,4 +16,10 @@ import { createDinero } from '@dinero.js/core';
  *
  * @returns The created Dinero object.
  */
-export const dinero = createDinero({ calculator });
+export const dinero = createDinero({
+  calculator,
+  onCreate({ amount, scale }) {
+    assert(Number.isInteger(amount), INVALID_AMOUNT_MESSAGE);
+    assert(Number.isInteger(scale), INVALID_SCALE_MESSAGE);
+  },
+});
