@@ -2,7 +2,7 @@
 
 > Common currency implementations for Dinero.js.
 
-**This package contains currency implementations for [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) currencies, as well as a set of cryptocurrencies**, for convenience. It also exposes a `Currency` type to help you implement your own currencies.
+**This package contains currency implementations for [ISO 4217:2015](https://www.iso.org/iso-4217-currency-codes.html) currencies for convenience. It also exposes a `Currency` type to help you implement your own currencies.
 
 This package only contains `number` implementations. You can reuse existing implementations and adapt them in your code for usage with other types, such as `bigint` or third-parties.
 
