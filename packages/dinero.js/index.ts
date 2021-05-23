@@ -9,4 +9,14 @@ export type {
   RoundingOptions,
   Transformer,
 } from '@dinero.js/core';
+export {
+  down,
+  halfAwayFromZero,
+  halfDown,
+  halfEven,
+  halfOdd,
+  halfTowardsZero,
+  halfUp,
+  up,
+} from '@dinero.js/core';
 export type { Currency } from '@dinero.js/currencies';
