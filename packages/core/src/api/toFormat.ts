@@ -30,6 +30,6 @@ export function toFormat<TAmount>({
 
     const amount = toRoundedUnitFn(dineroObject, { digits, round });
 
-    return transformer({ amount, currency });
+    return transformer({ amount, currency, dineroObject });
   };
 }
