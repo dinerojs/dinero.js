@@ -1,5 +1,6 @@
 /* eslint-disable functional/no-expression-statement */
-import { assertValidRatios } from '../guards';
+import { INVALID_RATIOS_MESSAGE } from '../checks';
+import { assert } from '../helpers';
 import { distribute, greaterThan, greaterThanOrEqual } from '../utils';
 
 import { transformScale } from './transformScale';
@@ -86,7 +87,8 @@ export function safeAllocate<TAmount>({
       greaterThanFn(ratio, zero)
     );
 
-    assertValidRatios(hasRatios && hasOnlyPositiveRatios && hasOneNonZeroRatio);
+    const condition = hasRatios && hasOnlyPositiveRatios && hasOneNonZeroRatio;
+    assert(condition, INVALID_RATIOS_MESSAGE);
 
     const { scale } = dineroObject.toJSON();
     const newScale = calculator.add(scale, options.scale);

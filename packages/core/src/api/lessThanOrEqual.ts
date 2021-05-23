@@ -1,5 +1,6 @@
 /* eslint-disable functional/no-expression-statement */
-import { assertSameCurrency } from '../guards';
+import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
+import { assert } from '../helpers';
 import { lessThanOrEqual as lte } from '../utils';
 
 import { haveSameCurrency } from './haveSameCurrency';
@@ -60,7 +61,8 @@ export function safeLessThanOrEqual<TAmount>({
   return function lessThanOrEqual(
     ...[dineroObject, comparator]: LessThanOrEqualParams<TAmount>
   ) {
-    assertSameCurrency(haveSameCurrency([dineroObject, comparator]));
+    const condition = haveSameCurrency([dineroObject, comparator]);
+    assert(condition, UNEQUAL_CURRENCIES_MESSAGE);
 
     const [subjectAmount, comparatorAmount] = normalizeFn([
       dineroObject,

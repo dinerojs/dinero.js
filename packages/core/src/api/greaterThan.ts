@@ -1,5 +1,6 @@
 /* eslint-disable functional/no-expression-statement */
-import { assertSameCurrency } from '../guards';
+import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
+import { assert } from '../helpers';
 import { greaterThan as gt } from '../utils';
 
 import { haveSameCurrency } from './haveSameCurrency';
@@ -58,7 +59,8 @@ export function safeGreaterThan<TAmount>({
   return function greaterThan(
     ...[dineroObject, comparator]: GreaterThanParams<TAmount>
   ) {
-    assertSameCurrency(haveSameCurrency([dineroObject, comparator]));
+    const condition = haveSameCurrency([dineroObject, comparator]);
+    assert(condition, UNEQUAL_CURRENCIES_MESSAGE);
 
     const [subjectAmount, comparatorAmount] = normalizeFn([
       dineroObject,

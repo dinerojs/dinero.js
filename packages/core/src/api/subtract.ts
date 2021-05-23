@@ -1,5 +1,6 @@
 /* eslint-disable functional/no-expression-statement */
-import { assertSameCurrency } from '../guards';
+import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
+import { assert } from '../helpers';
 
 import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
@@ -53,7 +54,8 @@ export function safeSubtract<TAmount>({
   const subtractFn = unsafeSubtract({ calculator });
 
   return function subtract(...[minuend, subtrahend]: SubtractParams<TAmount>) {
-    assertSameCurrency(haveSameCurrency([minuend, subtrahend]));
+    const condition = haveSameCurrency([minuend, subtrahend]);
+    assert(condition, UNEQUAL_CURRENCIES_MESSAGE);
 
     const [newMinuend, newSubtrahend] = normalizeFn([minuend, subtrahend]);
 

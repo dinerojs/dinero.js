@@ -1,5 +1,6 @@
 /* eslint-disable functional/no-expression-statement */
-import { assertSameCurrency } from '../guards';
+import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
+import { assert } from '../helpers';
 import { minimum as min } from '../utils';
 
 import { haveSameCurrency } from './haveSameCurrency';
@@ -60,7 +61,8 @@ export function safeMinimum<TAmount>({
   const minFn = unsafeMinimum({ calculator });
 
   return function maximum(...[dineroObjects]: MinimumParams<TAmount>) {
-    assertSameCurrency(haveSameCurrency(dineroObjects));
+    const condition = haveSameCurrency(dineroObjects);
+    assert(condition, UNEQUAL_CURRENCIES_MESSAGE);
 
     const normalizedDineroObjects = normalizeFn(dineroObjects);
 
