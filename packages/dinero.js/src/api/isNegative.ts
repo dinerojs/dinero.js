@@ -5,7 +5,7 @@ import type { IsNegativeParams } from '@dinero.js/core';
 /**
  * Check whether a Dinero object is negative.
  *
- * @param dineroObject - The Dinero objects to check.
+ * @param dineroObject - The Dinero object to check.
  *
  * @returns Whether the Dinero object is negative.
  */
