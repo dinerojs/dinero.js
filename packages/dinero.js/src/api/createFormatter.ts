@@ -11,7 +11,7 @@ type CreateFormatterParams<TAmount> = readonly [
  * Create a Dinero object formatter.
  *
  * @param transformer - A transformer function.
- * @param formatOptions - Formatting options for the amount transformer.
+ * @param options - Formatting options for the amount transformer.
  *
  * @returns A formatter function.
  */
