@@ -1,6 +1,10 @@
 {
   "files": [
     {
+      "path": "packages/calculator-bigint/dist/umd/index.production.js",
+      "maxSize": "680 B"
+    },
+    {
       "path": "packages/calculator-number/dist/umd/index.production.js",
       "maxSize": "680 B"
     },
