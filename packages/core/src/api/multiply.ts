@@ -4,8 +4,8 @@ import type { Dinero } from '../types';
 import type { Dependencies } from './types';
 
 export type MultiplyParams<TAmount> = readonly [
-  multiplier: Dinero<TAmount>,
-  multiplicand: TAmount,
+  multiplicand: Dinero<TAmount>,
+  multiplier: TAmount,
   options?: MultiplyOptions<TAmount>
 ];
 
@@ -25,17 +25,17 @@ export function multiply<TAmount>({
 
   return function multiplyFn(
     ...[
-      multiplier,
       multiplicand,
+      multiplier,
       options = { scale: calculator.zero() },
     ]: MultiplyParams<TAmount>
   ) {
-    const { amount, currency, scale } = multiplier.toJSON();
+    const { amount, currency, scale } = multiplicand.toJSON();
     const newScale = calculator.add(scale, options.scale);
 
     return convertScaleFn(
-      multiplier.create({
-        amount: calculator.multiply(amount, multiplicand),
+      multiplicand.create({
+        amount: calculator.multiply(amount, multiplier),
         currency,
         scale: newScale,
       }),
