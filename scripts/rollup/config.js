@@ -25,7 +25,7 @@ function createRollupConfig({ mode, pkg, config }) {
       file: `dist/umd/index.${mode}.js`,
       format: 'umd',
       sourcemap: true,
-      name: pkg.name,
+      name: pkg.name === 'dinero.js' ? pkg.name : pkg.name.replace('.', ''),
       banner: getBundleBanner(pkg),
       ...config.output,
     },
@@ -33,6 +33,7 @@ function createRollupConfig({ mode, pkg, config }) {
       replace({
         preventAssignment: false,
         'process.env.NODE_ENV': JSON.stringify(mode),
+        'dinerojs': 'dinero.js',
       }),
       json(),
       resolve({
