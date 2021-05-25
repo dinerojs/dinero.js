@@ -44,7 +44,7 @@ axios.post('http://example.org/api/products', {
 });
 ```
 
-# Serializing an object
+## Serializing an object
 
 If you want to serialize a Dinero object into JSON, you can directly call [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) on it, without turning them into a snapshot first.
 
@@ -64,7 +64,7 @@ fetch('http://example.org/api/products', {
 });
 ```
 
-# Restoring an object
+## Restoring an object
 
 When retrieving a snapshot, you can restore it into an actual Dinero object for usage in your application. To do so, you can pass the snapshot to the `dinero` function.
 

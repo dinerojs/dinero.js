@@ -36,7 +36,7 @@ const price = dinero({ amount: 1000000000000000000, currency: ETH });
 
 In such cases, you need to rely on safer alternatives, such as the `[bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)` primitive or third-parties like [big.js](https://github.com/MikeMcl/big.js).
 
-# Using Dinero with `bigint`
+## Using Dinero with `bigint`
 
 Dinero provides a `bigint` calculator for you to use out of the box. You can create your own `dinero` function by passing the calculator to the `createDinero` factory.
 
@@ -64,13 +64,13 @@ const d2 = dineroBigint({ amount: 100n, currency: USD });
 add(d1, d2); // a Dinero object with amount `600n`
 ```
 
-# Using Dinero with a custom amount type
+## Using Dinero with a custom amount type
 
 Dinero delegates all calculations to a type-specific calculator object. **The calculator fully determines what amount type you can pass to Dinero objects.** Therefore, by changing the calculator with one of a different type, you can create Dinero objects of this type.
 
 You can implement your own if you want to use a third-party library.
 
-## Implementing a custom calculator
+### Implementing a custom calculator
 
 Dinero delegates all calculations to a type-specific calculator object. You can implement a custom calculator for a given type and pass it to Dinero to use the library with amounts of this type.
 
