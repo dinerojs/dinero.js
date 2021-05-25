@@ -320,31 +320,6 @@ const sidebar = {
       ],
     },
     {
-      label: 'Ecosystem',
-      children: [
-        {
-          label: 'dinero.js',
-          href: '/ecosystem/dinerojs',
-        },
-        {
-          label: '@dinerojs/currencies',
-          href: '/ecosystem/dinerojs-currencies',
-        },
-        {
-          label: '@dinerojs/core',
-          href: '/ecosystem/dinerojs-core',
-        },
-        {
-          label: '@dinero.js/calculator-number',
-          href: '/ecosystem/dinerojs-calculator-number',
-        },
-        {
-          label: '@dinero.js/calculator-bigint',
-          href: '/ecosystem/dinerojs-calculator-bigint',
-        },
-      ],
-    },
-    {
       label: 'FAQ',
       href: '/faq',
     },
