@@ -202,7 +202,7 @@ const sidebar = {
           children: [
             {
               label: 'Add',
-              href: '/methods/add',
+              href: '/api/mutations/add',
             },
             {
               label: 'Subtract',
@@ -213,33 +213,29 @@ const sidebar = {
               href: '/api/mutations/multiply',
             },
             {
-              label: 'Divide',
-              href: '/api/mutations/divide',
-            },
-            {
               label: 'Allocate',
               href: '/api/mutations/allocate',
-            },
-            {
-              label: 'Percentage',
-              href: '/api/mutations/percentage',
-            },
-            {
-              label: 'Convert',
-              href: '/api/mutations/convert',
             },
           ],
         },
         {
-          label: 'Formatting',
+          label: 'Conversions',
           children: [
             {
-              label: 'To format',
-              href: '/api/formatting/to-format',
+              label: 'Convert',
+              href: '/api/conversions/convert',
             },
             {
-              label: 'To snapshot',
-              href: '/api/formatting/to-snapshot',
+              label: 'Normalize scale',
+              href: '/api/conversions/normalize-scale',
+            },
+            {
+              label: 'Transform scale',
+              href: '/api/conversions/transform-scale',
+            },
+            {
+              label: 'Trim scale',
+              href: '/api/conversions/trim-scale',
             },
           ],
         },
@@ -267,6 +263,14 @@ const sidebar = {
               href: '/api/comparisons/less-than-or-equal',
             },
             {
+              label: 'Minimum',
+              href: '/api/comparisons/minimum',
+            },
+            {
+              label: 'Maximum',
+              href: '/api/comparisons/maximum',
+            },
+            {
               label: 'Is zero',
               href: '/api/comparisons/is-zero',
             },
@@ -279,12 +283,12 @@ const sidebar = {
               href: '/api/comparisons/is-negative',
             },
             {
-              label: 'Same amount',
-              href: '/api/comparisons/same-amount',
+              label: 'Have same amount',
+              href: '/api/comparisons/have-same-amount',
             },
             {
-              label: 'Same currency',
-              href: '/api/comparisons/same-currency',
+              label: 'Have same currency',
+              href: '/api/comparisons/have-same-currency',
             },
             {
               label: 'Has sub-units',
@@ -293,15 +297,23 @@ const sidebar = {
           ],
         },
         {
-          label: 'Conversions',
+          label: 'Formatting',
           children: [
             {
-              label: 'Convert scale',
-              href: '/api/conversions/convert-scale',
+              label: 'To format',
+              href: '/api/formatting/to-format',
             },
             {
-              label: 'Normalize scale',
-              href: '/api/conversions/normalize-scale',
+              label: 'To snapshot',
+              href: '/api/formatting/to-snapshot',
+            },
+            {
+              label: 'To unit',
+              href: '/api/formatting/to-unit',
+            },
+            {
+              label: 'To rounded unit',
+              href: '/api/formatting/to-rounded-unit',
             },
           ],
         },
