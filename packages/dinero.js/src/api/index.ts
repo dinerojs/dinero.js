@@ -22,3 +22,4 @@ export * from './toRoundedUnit';
 export * from './toSnapshot';
 export * from './toUnit';
 export * from './transformScale';
+export * from './trimScale';

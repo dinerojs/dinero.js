@@ -1,3 +1,4 @@
+export * from './countTrailingZeros';
 export * from './distribute';
 export * from './equal';
 export * from './greaterThan';
