@@ -16,7 +16,10 @@ export async function getFiles(type: string) {
 }
 
 export async function getFileBySlug(type: string, filePath: string[]) {
-  const source = fs.readFileSync(path.join(base, type, `${filePath.join('/')}.mdx`), 'utf8');
+  const source = fs.readFileSync(
+    path.join(base, type, `${filePath.join('/')}.mdx`),
+    'utf8'
+  );
 
   const { data, content } = matter(source);
   const mdxSource = await serialize(content, {
@@ -24,17 +27,17 @@ export async function getFileBySlug(type: string, filePath: string[]) {
       remarkPlugins: [
         require('remark-autolink-headings'),
         require('remark-slug'),
-        require('remark-code-titles')
+        require('remark-code-titles'),
       ],
-      rehypePlugins: [mdxPrism]
-    }
+      rehypePlugins: [mdxPrism],
+    },
   });
 
   return {
     mdxSource,
     frontMatter: {
       slug: filePath,
-      ...data
-    }
+      ...data,
+    },
   };
 }
