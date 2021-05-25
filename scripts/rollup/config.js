@@ -33,7 +33,7 @@ function createRollupConfig({ mode, pkg, config }) {
       replace({
         preventAssignment: false,
         'process.env.NODE_ENV': JSON.stringify(mode),
-        'dinerojs': 'dinero.js',
+        dinerojs: 'dinero.js',
       }),
       json(),
       resolve({
