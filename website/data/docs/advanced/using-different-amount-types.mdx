@@ -1,0 +1,108 @@
+---
+title: Using different amount types
+description: Using Dinero.js with any type of amount, such as JavaScript bigints or third-party arbitrary-precision libraries.
+---
+
+Dinero expects amounts as `number` by default. In most cases, this is more than enough, but there are times when you might hit the limitations of the [biggest](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) and [smallest](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MIN_SAFE_INTEGER) numbers you can safely represent.
+
+A typical use case is **when you need to represent colossal amounts of money.** Take the world debt, which reached $258 trillion in 2020. In JavaScript, the biggest number you can accurately represent is 9007199254740991 (9 quadrillions and some spare change). Still, since Dinero requires you to pass amounts in minor currency units, you actually "lose" two orders of magnitude, and can *only* represent around $90 trillion.
+
+```jsx
+import { dinero } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+// Don't do this!
+// 25800000000000000 is too big for accurate representation
+// in IEEE 754 numbers.
+const price = dinero({ amount: 25800000000000000, currency: USD });
+```
+
+Another example is when you need to represent cryptocurrencies, which typically have high exponents. In 2021, the Ether can be subdivided down to 18 fraction digits, meaning you can't even represent 1 ETH with the `number` type.
+
+```jsx
+import { dinero } from 'dinero.js';
+
+const ETH = {
+  code: 'ETH',
+  base: 10,
+  exponent: 18,
+};
+
+// Don't do this!
+// 1000000000000000000 is too big for accurate representation
+// in IEEE 754 numbers.
+const price = dinero({ amount: 1000000000000000000, currency: ETH });
+```
+
+In such cases, you need to rely on safer alternatives, such as the `[bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)` primitive or third-parties like [big.js](https://github.com/MikeMcl/big.js).
+
+# Using Dinero with `bigint`
+
+Dinero provides a `bigint` calculator for you to use out of the box. You can create your own `dinero` function by passing the calculator to the `createDinero` factory.
+
+```jsx
+import { calculator } from '@dinero.js/calculator-bigint';
+import { createDinero } from '@dinero.js/core';
+
+const dineroBigint = createDinero({ calculator });
+```
+
+You can then use this function to create Dinero objects and manipulate them with any Dinero function. Keep in mind that once you're in `bigint` land, every numeric value you pass needs to be a `bigint` as well.
+
+```jsx
+import { add } from 'dinero.js';
+
+const USD = {
+  code: 'USD',
+  base: 10n,
+  exponent: 2n,
+};
+
+const d1 = dineroBigint({ amount: 500n, currency: USD });
+const d2 = dineroBigint({ amount: 100n, currency: USD });
+
+add(d1, d2); // a Dinero object with amount `600n`
+```
+
+# Using Dinero with a custom amount type
+
+Dinero delegates all calculations to a type-specific calculator object. **The calculator fully determines what amount type you can pass to Dinero objects.** Therefore, by changing the calculator with one of a different type, you can create Dinero objects of this type.
+
+You can implement your own if you want to use a third-party library.
+
+## Implementing a custom calculator
+
+Dinero delegates all calculations to a type-specific calculator object. You can implement a custom calculator for a given type and pass it to Dinero to use the library with amounts of this type.
+
+A calculator implements the `Calculator` interface. For example, here's what it can look like with [big.js](https://github.com/MikeMcl/big.js).
+
+```tsx
+import Big from 'big.js';
+import { Calculator } from 'dinero.js';
+
+const calculator: Calculator<Big> = {
+  add: (a, b) => a.plus(b),
+  compare: (a, b) => a.cmp(b),
+  decrement: (v) => v.minus(Big(1)),
+  increment: (v) => v.plus(Big(1)),
+  integerDivide: (a, b) => a.div(b).round(0),
+  modulo: (a, b) => a.mod(b),
+  multiply: (a, b) => a.times(b),
+  power: (a, b) => a.pow(b),
+  subtract: (a, b) => a.minus(b),
+  toNumber: (v) => v.toNumber(),
+  zero: () => Big(0),
+};
+```
+
+Once you have your calculator, you can build a custom `dinero` function.
+
+```jsx
+import { createDinero } from '@dinero.js/core';
+
+// ...
+
+const dineroBigint = createDinero({ calculator });
+```
+
+You might notice that you're passing the full calculator, meaning you're shipping calculator methods you might not use. **This is unlikely to represent a bottleneck**, especially if you're using Dinero with a third-party library like [big.js](https://github.com/MikeMcl/big.js) because you're only referencing methods that already exist on every `Big` object you create.
