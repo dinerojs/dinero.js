@@ -24,7 +24,7 @@ export function toRoundedUnit<TAmount>({
     const { power, toNumber } = calculator;
 
     const toUnitFactor = toNumber(power(currency.base, scale));
-    const factor = toNumber(power(currency.base, digits ?? currency.exponent));
+    const factor = toNumber(power(currency.base, digits ?? scale));
 
     return round((toNumber(amount) / toUnitFactor) * factor) / factor;
   };
