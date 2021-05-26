@@ -1,11 +1,11 @@
 import type { AppProps } from 'next/app';
 import { MDXProvider } from '@mdx-js/react';
 
-import { Alert } from '../components';
+import { Alert, Parameters, Parameter, Signature } from '../components';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <MDXProvider components={{ Alert }}>
+    <MDXProvider components={{ Alert, Parameters, Parameter, Signature }}>
       <Component {...pageProps} />
     </MDXProvider>
   );
