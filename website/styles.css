@@ -1,0 +1,12 @@
+header {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20px;
+  justify-content: space-between;
+}
+
+main {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 320px auto;
+}

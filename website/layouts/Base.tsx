@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -27,7 +27,7 @@ function SidebarItem({ node, level, onClick, isNodeActive, buttonProps }: Sideba
   if (href) {
     return (
       <Link href={`/docs${href}`}>
-        <a style={{ color: isActive ? 'blue' : 'inherit' }}>{label}</a>
+        <a style={{ color: isActive ? 'green' : 'inherit' }}>{label}</a>
       </Link>
     );
   }
@@ -333,59 +333,49 @@ export function Base({ children }: BaseProps) {
   function isNodeActive({ href }: Node) {
     const [path] = asPath.split('#');
 
-    return href === path;
+    return path === `/docs${href}`;
   }
 
   return (
     <div>
       <header>
+        <Link href="/">Dinero.js</Link>
         <div>
-          <Link href="/">Dinero.js</Link>
-          <div>
-            <select>
-              <option value="v2">
-                v2.0.0
-              </option>
-              <option value="v1">
-                v1.8.1
-              </option>
-            </select>
-          </div>
+          <select>
+            <option value="v2">
+              v2.0.0
+            </option>
+            <option value="v1">
+              v1.8.1
+            </option>
+          </select>
+          <a
+            href="https://github.com/dinerojs/dinero.js"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <span>GitHub</span>
+          </a>
         </div>
       </header>
       <main>
-        <div>
-          <nav>
-            <div>
-              <div>
-                <SidebarNode node={sidebar} level={0} isNodeActive={isNodeActive} />
-              </div>
-            </div>
-            <div>
-              <a
-                href="https://github.com/dinerojs/dinero.js"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <span>GitHub</span>
-              </a>
-            </div>
-          </nav>
-          {/* The <div> element captures `click` and `keyup` events to simulate clicks outside the sidebar on small screens */}
-          {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-          <div
-            onClick={() => setIsSidebarOpen(false)}
-            onKeyUp={() => setIsSidebarOpen(false)}
-          >
-            {children}
-          </div>
+        <nav>
+          <SidebarNode node={sidebar} level={0} isNodeActive={isNodeActive} />
+        </nav>
+        {/* The <div> element captures `click` and `keyup` events to simulate clicks outside the sidebar on small screens */}
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+        <div
+          onClick={() => setIsSidebarOpen(false)}
+          onKeyUp={() => setIsSidebarOpen(false)}
+        >
+          {children}
         </div>
       </main>
-      <button
+      {/* <button
         onClick={() => setIsSidebarOpen((isOpen) => !isOpen)}
       >
         <span>Menu</span>
-      </button>
+      </button> */}
     </div>
   );
 }
