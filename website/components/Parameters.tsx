@@ -18,10 +18,10 @@ export function Parameters({ children }: ParametersProps) {
           {parameters.map(({ props }) => (
             <tr key={props.name}>
               <td>
-                <span id={`parameter-${props.name}`}>{props.name}</span>
+                <code id={`parameter-${props.name}`}>{props.name}</code>
               </td>
               <td>
-                <span>{props.type}</span>
+                <code>{props.type}</code>
                 {props.required && <span>Required</span>}
                 <div>{props.children}</div>
               </td>
