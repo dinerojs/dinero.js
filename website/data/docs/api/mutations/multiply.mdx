@@ -1,0 +1,76 @@
+---
+title: Multiply
+description: Multiply a Dinero object.
+---
+
+<Signature>
+
+```ts
+multiply<TAmount>(
+  multiplicand: Dinero<TAmount>
+  multiplier: TAmount
+  options?: MultiplyOptions<TAmount>
+): Dinero<TAmount>
+```
+
+</Signature>
+
+## About this function
+
+Multiply a Dinero object.
+
+If you need to multiply by a fractional multiplier, you shouldn't use floats, but scaled multipliers instead. For example, instead of passing 2.1, you should pass 21 and a scale of 1. When using scaled ratios, the function converts the returned objects to the safest scale.
+
+## Parameters
+
+<Parameters>
+
+<Parameter name="multiplicand" type="Dinero<TAmount>" required={true}>
+
+The Dinero object to multiply.
+
+</Parameter>
+
+<Parameter name="multiplier" type="TAmount" required={true}>
+
+The number to multiply with.
+
+</Parameter>
+
+<Parameter name="options" type="MultiplyOptions<TAmount>" required={false}>
+
+A mapping of options.
+
+</Parameter>
+
+<Parameter name="options.scale" type="TAmount" required={true}>
+
+The number of decimal places to represent.
+
+</Parameter>
+
+</Parameters>
+
+## Code examples
+
+### Multiply by an integer
+
+```js
+import { dinero, multiply } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 400, currency: USD });
+
+multiply(d, 4); // a Dinero object with amount 1600
+```
+
+### Multiply by a scaled multiplier
+
+```js
+import { dinero, multiply } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 401, currency: USD });
+
+multiply(d, 2001, { scale: 3 }); // a Dinero object with amount 802401 and scale 5
+```
