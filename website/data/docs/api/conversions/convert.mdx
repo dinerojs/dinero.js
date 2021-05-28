@@ -1,0 +1,109 @@
+---
+title: createConverter
+description: Create a Dinero object converter.
+---
+
+<Signature>
+
+```ts
+createConverter<TAmount>(
+  options: ConvertOptions<TAmount>
+): (
+  dineroObject: Dinero<TAmount>
+  newCurrency: Currency<TAmount>
+) => Dinero<TAmount>
+
+convert(
+  dineroObject: Dinero<TAmount>
+  newCurrency: Currency<TAmount>
+): Dinero<TAmount>
+```
+
+</Signature>
+
+## About this function
+
+Create a converter function to convert Dinero object from a currency to another.
+
+The `createConverter` factory lets you pass rates to convert with and returns a `convert` function you can use to convert Dinero objects to other currencies.
+
+If you need to use fractional rates, you shouldn't use floats, but scaled rates instead. For example, instead of passing `8.9`, you should pass `89` and a `scale` of `1`. When using scaled rates, the function converts the returned object to the safest scale.
+
+## Parameters
+
+### createConverter
+
+<Parameters>
+
+<Parameter name="options" type="ConvertOptions<TAmount>" required={true}>
+
+A mapping of options.
+
+</Parameter>
+
+<Parameter name="options.rates" type="Rates<TAmount>" required={true}>
+
+The rates to convert with.
+
+</Parameter>
+
+</Parameters>
+
+### convert
+
+<Parameters>
+
+<Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
+
+The Dinero object to convert.
+
+</Parameter>
+
+<Parameter name="newCurrency" type="Currency<TAmount>" required={true}>
+
+The currency to convert into.
+
+</Parameter>
+
+</Parameters>
+
+## Code examples
+
+### Convert to another currency
+
+```js
+import { dinero, createConverter } from 'dinero.js';
+import { USD, EUR } from '@dinero.js/currencies';
+
+const convert = createConverter({
+  rates: {
+    EUR: {
+      rate: 89,
+      scale: 2,
+    },
+  },
+});
+
+const d1 = dinero({ amount: 500, currency: USD });
+
+convert(d, EUR); // a Dinero object with amount 44500 and scale 4
+```
+
+### Convert to a currency with a different scale
+
+```js
+import { dinero, createConverter } from 'dinero.js';
+import { USD, IQD } from '@dinero.js/currencies';
+
+const convert = createConverter({
+  rates: {
+    EUR: {
+      rate: 1199,
+    },
+  },
+});
+
+const d1 = dinero({ amount: 500, currency: USD });
+
+convert(d, IQD); // a Dinero object with amount 5995000 and scale 3
+```

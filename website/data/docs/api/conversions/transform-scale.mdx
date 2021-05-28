@@ -1,0 +1,52 @@
+---
+title: transformScale
+description: Transform a Dinero object to a new scale.
+---
+
+<Signature>
+
+```ts
+transformScale<TAmount>(
+  dineroObject: Dinero<TAmount>
+  newScale: TAmount
+): Dinero<TAmount>
+```
+
+</Signature>
+
+## About this function
+
+Transform a Dinero object to a new scale.
+
+Normalizing to a higher scale means that the internal `amount` value increases by orders of magnitude. If you're using the default Dinero.js implementation (with the `number` calculator), be careful not to exceed the minimum and maximum safe integers.
+
+## Parameters
+
+<Parameters>
+
+<Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
+
+The Dinero object to transform.
+
+</Parameter>
+
+<Parameter name="newScale" type="TAmount" required={true}>
+
+The new scale.
+
+</Parameter>
+
+</Parameters>
+
+## Code examples
+
+### Normalize objects to the same scale
+
+```js
+import { dinero, normalizeScale } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 500, currency: USD, scale: 2 });
+
+transformScale(d, 4); // a Dinero object with amount 50000 and scale 4
+```
