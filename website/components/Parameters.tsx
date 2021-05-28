@@ -7,11 +7,12 @@ function isReactElement(element: React.ReactNode): element is React.ReactElement
 }
 
 export function Parameters({ children }: ParametersProps) {
-  if (Array.isArray(children)) {
-    const parameters = children.filter((child): child is React.ReactElement => {
-      return isReactElement(child) && child.props.mdxType === 'Parameter';
-    });
+  const items = Array.isArray(children) ? children : [children];
+  const parameters = items.filter((child: React.ReactNode): child is React.ReactElement => {
+    return isReactElement(child) && child.props.mdxType === 'Parameter';
+  });
 
+  if (parameters.length > 0) {
     return (
       <table>
         <tbody>
