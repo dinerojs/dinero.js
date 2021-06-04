@@ -7,7 +7,7 @@ If you want to send a Dinero object over the network or save it into some storag
 
 **Dinero lets you turn objects into snapshots.** Snapshots are plain JavaScript objects, suited for transport and storage. To create a snapshot, you can use the `toSnapshot` function.
 
-```jsx
+```js
 import { dinero, toSnapshot } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
@@ -30,7 +30,7 @@ const snapshot = toSnapshot(price);
 
 You can use snapshots with any API that accepts serializable data types.
 
-```jsx
+```js
 import { dinero, toSnapshot } from 'dinero.js';
 import { EUR } from '@dinero.js/currencies';
 import axios from 'axios';
@@ -48,7 +48,7 @@ axios.post('http://example.org/api/products', {
 
 If you want to serialize a Dinero object into JSON, you can directly call [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) on it, without turning them into a snapshot first.
 
-```jsx
+```js
 import { dinero, toSnapshot } from 'dinero.js';
 import { EUR } from '@dinero.js/currencies';
 
@@ -68,7 +68,7 @@ fetch('http://example.org/api/products', {
 
 When retrieving a snapshot, you can restore it into an actual Dinero object for usage in your application. To do so, you can pass the snapshot to the `dinero` function.
 
-```jsx
+```js
 import { dinero } from 'dinero.js';
 import axios from 'axios';
 

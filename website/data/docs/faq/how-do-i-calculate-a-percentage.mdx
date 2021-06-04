@@ -7,7 +7,7 @@ There are two ways to calculate a percentage with Dinero.js: using `allocate` or
 
 For example, if you need to calculate 15% of a Dinero object, you can split it with `allocate`.
 
-```jsx
+```js
 import { dinero, allocate } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
@@ -18,7 +18,7 @@ const [tax] = allocate(price, [15, 85]);
 
 You can do the same with `multiply`.
 
-```jsx
+```js
 import { dinero, multiply } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
@@ -29,7 +29,7 @@ const tax = multiply(price, 15, { scale: 2 });
 
 If you need this often, you can abstract it into your own `percentage` function.
 
-```jsx
+```js
 function percentage(dineroObject, share, scale = 0) {
   const power = scale + 1;
   const rest = 100 ** power - share;

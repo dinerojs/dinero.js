@@ -9,7 +9,7 @@ However, **you might also work with non-decimal currencies**. Typical use cases 
 
 Out of the box, you can format any Dinero object—decimal or not—into an accurate decimal representation. For example, there are 6 obols in a drachma, so 9 obols do represent one and a half drachmas.
 
-```jsx
+```js
 import { dinero, createFormatter } from 'dinero.js';
 
 // Ancient Greek drachma
@@ -34,7 +34,7 @@ This should cover your needs if you want accuracy and readability because people
 
 In addition to the formatted amount and the currency, the `createFormatter` function also exposes the original object. You can leverage it to build a more complex formatter.
 
-```jsx
+```js
 import { dinero, createFormatter, toSnapshot } from 'dinero.js';
 import pluralize from 'pluralize';
 
@@ -68,7 +68,7 @@ When working with such currencies, you can take how many of the smallest subdivi
 
 For example, let's say you're building a Candy Crush clone where users can buy bonuses with an in-game currency: donuts, cookies, and lollipops. In your game, a donut equals 30 cookies, and a cookie equals 16 lollipops, giving 480 lollipops to the donut. If a bonus costs 720 lollipops, you probably want to format it either into "720 lollipops" or "1 donut and 15 cookies" instead of "1.5 donuts". This way, users can understand what they can afford based on what they have.
 
-```jsx
+```js
 import { dinero, createFormatter } from 'dinero.js';
 
 const POP = {

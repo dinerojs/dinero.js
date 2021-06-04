@@ -7,7 +7,7 @@ Dinero expects amounts as `number` by default. In most cases, this is more than 
 
 A typical use case is **when you need to represent colossal amounts of money.** Take the world debt, which reached $258 trillion in 2020. In JavaScript, the biggest number you can accurately represent is 9007199254740991 (9 quadrillions and some spare change). Still, since Dinero requires you to pass amounts in minor currency units, you actually "lose" two orders of magnitude, and can *only* represent around $90 trillion.
 
-```jsx
+```js
 import { dinero } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
@@ -19,7 +19,7 @@ const price = dinero({ amount: 25800000000000000, currency: USD });
 
 Another example is when you need to represent cryptocurrencies, which typically have high exponents. In 2021, the Ether can be subdivided down to 18 fraction digits, meaning you can't even represent 1 ETH with the `number` type.
 
-```jsx
+```js
 import { dinero } from 'dinero.js';
 
 const ETH = {
@@ -40,7 +40,7 @@ In such cases, you need to rely on safer alternatives, such as the [`bigint`](ht
 
 Dinero provides a `bigint` calculator for you to use out of the box. You can create your own `dinero` function by passing the calculator to the `createDinero` factory.
 
-```jsx
+```js
 import { calculator } from '@dinero.js/calculator-bigint';
 import { createDinero } from '@dinero.js/core';
 
@@ -49,7 +49,7 @@ const dineroBigint = createDinero({ calculator });
 
 You can then use this function to create Dinero objects and manipulate them with any Dinero function. Keep in mind that once you're in `bigint` land, every numeric value you pass needs to be a `bigint` as well.
 
-```jsx
+```js
 import { add } from 'dinero.js';
 
 const USD = {
@@ -97,7 +97,7 @@ const calculator: Calculator<Big> = {
 
 Once you have your calculator, you can build a custom `dinero` function.
 
-```jsx
+```js
 import { createDinero } from '@dinero.js/core';
 
 // ...

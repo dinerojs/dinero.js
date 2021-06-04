@@ -15,7 +15,7 @@ npm install dinero.js
 
 Then import it in your project:
 
-```jsx
+```js
 // ES import
 import { dinero } from 'dinero.js';
 
@@ -44,7 +44,7 @@ npm install @dinero.js/currencies
 
 Then import it in your project:
 
-```jsx
+```js
 // ES import
 import { USD } from '@dinero.js/currencies';
 
@@ -81,13 +81,13 @@ To get started, you need to create a new Dinero object. Amounts are specified in
 
 This represents $50:
 
-```jsx
+```js
 const price = dinero({ amount: 5000, currency: USD });
 ```
 
 You can add or subtract any amount you want, by passing it another Dinero object:
 
-```jsx
+```js
 import { dinero, add, subtract } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
@@ -102,13 +102,13 @@ subtract(price, dinero({ amount: 1000, currency: USD }));
 
 Dinero objects are immutable, meaning you always get a new Dinero object when performing transformations. Your original objects remain untouched.
 
-```jsx
+```js
 price; // still returns a Dinero object with amount 5000
 ```
 
 You can ask all kinds of questions to your Dinero objects.
 
-```jsx
+```js
 import { dinero, equal, isZero, hasSubUnits } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
@@ -125,7 +125,7 @@ hasSubUnits(d4); // returns true
 
 You can display Dinero objects into any format, exactly the way you want. Dinero.js lets you build a formatter that exposes a pre-formatted amount, in major currency units.
 
-```jsx
+```js
 import { dinero, createFormatter } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
@@ -142,7 +142,7 @@ Dinero objects pick up their scale from their currency exponent. If you want to 
 
 This represents $5:
 
-```jsx
+```js
 const price = dinero({ amount: 5000, currency: USD, scale: 3 });
 ```
 
