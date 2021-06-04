@@ -11,8 +11,8 @@ type PageProps = {
     slug: string[];
     title: string;
     description: string;
-  }
-}
+  };
+};
 
 export default function Docs({ mdxSource, frontMatter }: PageProps) {
   return (
@@ -24,26 +24,34 @@ export default function Docs({ mdxSource, frontMatter }: PageProps) {
       </Head>
       <>
         <h1>{frontMatter.title}</h1>
-        <MDXRemote
-          {...mdxSource}
-        />
+        <MDXRemote {...mdxSource} />
       </>
     </Base>
   );
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const page = await getFileBySlug('docs', params.slug);
+  const slug = params?.slug || ['index'];
+  const page = await getFileBySlug('docs', [slug].flat());
 
   return { props: page };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const pages = await getFiles('docs');
-  const slugs = pages.map((page) => page.replace('.mdx', '').split('/').filter(Boolean));
+  const slugs = pages.map((page) =>
+    page.replace('.mdx', '').split('/').filter(Boolean)
+  );
+
+  console.log(slugs);
 
   return {
-    paths: slugs.map((slug) => ({ params: { slug } })),
-    fallback: false
+    paths: slugs
+      .map((slug) => {
+        const [root] = slug;
+
+        return { params: { slug: root === 'index' ? [] : slug } }
+      }),
+    fallback: true,
   };
 };
