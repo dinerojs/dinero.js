@@ -10,3 +10,15 @@ main {
   grid-gap: 20px;
   grid-template-columns: 320px auto;
 }
+
+table td {
+  vertical-align: top;
+}
+
+table tr td {
+  border-top: 1px solid silver;
+}
+
+table tr:first-child td {
+  border: none;
+}
