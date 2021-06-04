@@ -1,0 +1,62 @@
+---
+title: toRoundedUnit
+description: Get the amount of a Dinero object in rounded units.
+---
+
+<Signature>
+
+```ts
+toRoundedUnit<TAmount>(
+  dineroObject: Dinero<TAmount>
+  options: RoundingOptions<TAmount>
+): number
+```
+
+</Signature>
+
+## About this function
+
+Get the amount of a Dinero object in rounded units.
+
+## Parameters
+
+<Parameters>
+
+<Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
+
+The Dinero object to transform.
+
+</Parameter>
+
+<Parameter name="options" type="RoundingOptions<TAmount>" required={false}>
+
+A mapping of options.
+
+</Parameter>
+
+<Parameter name="options.digits" type="TAmount" required={false}>
+
+The number of fraction digits to round to.
+
+</Parameter>
+
+<Parameter name="options.round" type="RoundingMode" required={false}>
+
+The rounding function to use.
+
+</Parameter>
+
+</Parameters>
+
+## Code examples
+
+### Format an object rounded to one fraction digit
+
+```js
+import { dinero, toRoundedUnit, down } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 1055, currency: USD });
+
+toRoundedUnit(d, { digits: 1, round: down }); // 10.5
+```

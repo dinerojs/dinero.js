@@ -1,0 +1,53 @@
+---
+title: toSnapshot
+description: Get a snapshot of a Dinero object.
+---
+
+<Signature>
+
+```ts
+toSnapshot<TAmount>(
+  dineroObject: Dinero<TAmount>
+): DineroSnapshot<TAmount>
+```
+
+</Signature>
+
+## About this function
+
+Get a snapshot of a Dinero object.
+
+## Parameters
+
+<Parameters>
+
+<Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
+
+The Dinero object to transform.
+
+</Parameter>
+
+</Parameters>
+
+## Code examples
+
+### Get a snapshot of an object
+
+```js
+import { dinero, toSnapshot } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 500, currency: USD });
+
+toSnapshot(d);
+
+// {
+//   amount: 500,
+//   currency: {
+//     code: 'USD',
+//     base: 10,
+//     exponent: 2,
+//   },
+//   scale: 2,
+// }
+```

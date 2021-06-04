@@ -1,0 +1,54 @@
+---
+title: toUnit
+description: Get the amount of a Dinero object in units.
+---
+
+<Signature>
+
+```ts
+toUnit<TAmount>(
+  dineroObject: Dinero<TAmount>
+): number
+```
+
+</Signature>
+
+## About this function
+
+Get the amount of a Dinero object in units.
+
+## Parameters
+
+<Parameters>
+
+<Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
+
+The Dinero object to transform.
+
+</Parameter>
+
+</Parameters>
+
+## Code examples
+
+### Format an object in major currency unit
+
+```js
+import { dinero, toUnit } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 1050, currency: USD });
+
+toUnit(d); // 10.5
+```
+
+### Format an object with a custom scale
+
+```js
+import { dinero, toUnit } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 10545, currency: USD, scale: 3 });
+
+toUnit(d); // 10.545
+```
