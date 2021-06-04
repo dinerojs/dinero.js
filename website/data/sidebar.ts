@@ -4,10 +4,6 @@ export const sidebar = {
       label: 'Getting started',
       children: [
         {
-          label: 'What is Dinero.js?',
-          href: '/getting-started/what-is-dinero-js',
-        },
-        {
           label: 'Quick start',
           href: '/getting-started/quick-start',
         },
