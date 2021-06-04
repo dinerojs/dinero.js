@@ -1,0 +1,102 @@
+---
+title: Currency
+description:
+---
+
+The currency is one of the three pieces of domain data necessary to create a Dinero object.
+
+A Dinero currency is composed of:
+
+- A unique **code**.
+- A **base**, or radix.
+- An **exponent**.
+
+## Code
+
+The currency code is a **unique identifier for the currency.** By convention, they're usually a three-letter or number. For example, in the case of national [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currencies, the first two letters of the code are the two letters of the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code, and the third is usually the initial of the currency itself.
+
+```js
+// United States dollar
+const USD = {
+  code: 'USD',
+  // ...
+};
+```
+
+When they don't refer to a specific country (e.g., euro) or aren't a traditional currency (e.g., cryptocurrencies), the code can vary into a less standard but more mnemonic scheme. Ultimately, **the code is your choice and needs to make sense in your application.** The only requirement is for it to be unique.
+
+## Base
+
+The currency base (or radix) is the **number of unique digits used to represent a currency's minor unit.** Most currencies in circulation are decimal, meaning their base is 10.
+
+```js
+const USD = {
+  code: 'USD',
+  base: 10,
+  // ...
+};
+```
+
+There are still non-decimal currencies in circulation, such as the [Mauritanian ouguiya](https://en.wikipedia.org/wiki/Mauritanian_ouguiya) and the [Malagasy ariary](https://en.wikipedia.org/wiki/Malagasy_ariary).
+
+```js
+// Mauritanian ouguiya
+const MRU = {
+  code: 'MRU',
+  base: 5,
+  // ...
+};
+```
+
+Some currencies have multiple subdivisions. For example, before [decimalization](https://en.wikipedia.org/wiki/Decimalisation), the British pound sterling was divided into 20 shillings, and each shilling into 12 pence. You also have examples in fiction, like Harry Potter, where one Galleon is divided into 17 Sickles, and each Sickle into 29 Knuts.
+
+To represent these currencies, you can take how many of the smallest subdivision there are in the major one. There are 240 pence in a pound sterling, and in Harry Potter, 493 Knuts in a Galleon.
+
+```js
+// Pre-decimal Great Britain pound sterling
+const GBP = {
+  code: 'GBP',
+  base: 240,
+  // ...
+};
+
+// Great Britain wizarding currency (Harry Potter universe)
+const GBW = {
+  code: 'GBW',
+  base: 493,
+  // ...
+};
+```
+
+When working with such currencies, you should set the exponent to 1.
+
+## Exponent
+
+The currency exponent expresses the **decimal relationship between the currency and its minor unit.** For example, there are 100 cents in a US dollar, being 10 to the power of 2, so the exponent for the US dollar is 2.
+
+```js
+const USD = {
+  code: 'USD',
+  base: 10,
+  exponent: 2,
+};
+```
+
+An easier way to think about it is as the number of digits after the decimal separator.
+
+When a currency doesn't have minor currency units (e.g., the Japanese yen), the exponent should be 0. In this case, you can express the [amount](https://www.notion.so/Amount-b0e80b5e0d2e4ec696cd8a3e5040cec7) in major currency units.
+
+```js
+// Japanese yen
+const JPY = {
+  code: 'JPY',
+  base: 10,
+  exponent: 0,
+};
+```
+
+When you pass a [scale](https://www.notion.so/Scale-6f2036a6d4784ce0b81672509681be7e) to a Dinero object, it overrides the exponent. This has an impact on how you should specify the [amount](https://www.notion.so/Amount-b0e80b5e0d2e4ec696cd8a3e5040cec7).
+
+## Using built-in currencies
+
+## Creating custom currencies

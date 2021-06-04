@@ -1,0 +1,80 @@
+---
+title: Formatting
+description:
+---
+
+When working with money on the front end, comes a time when you need to display amounts on the user interface. The Dinero.js API provides functions to format objects.
+
+```js
+import { dinero, toRoundedUnit, down } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 1055, currency: USD });
+
+toRoundedUnit(d, { digits: 1, round: down }); // 10.5
+```
+
+## Displaying an object
+
+Dinero objects are ideal to safely manipulate money, but at some point, you need to display them. The `createFormatter` factory lets you write a formatting function to display objects the way you want. It exposes a pre-formatted amount for convenience.
+
+```js
+import { dinero, createFormatter } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 5000, currency: USD });
+
+const format = createFormatter(
+  ({ amount, currency }) => `${currency.code} ${amount}`
+);
+
+format(d); // "USD 50"
+```
+
+You can pass options to tell Dinero how to format and round the amount.
+
+```js
+import { dinero, createFormatter, up } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 4545, currency: USD });
+
+const format = createFormatter(
+  ({ amount, currency }) => `${currency.code} ${amount}`,
+  {
+    digits: 1,
+    round: up,
+  }
+);
+
+format(d); // "USD 45.5"
+```
+
+For a more complete overview, check the API reference for `[createFormatter](https://www.notion.so/createFormatter-f08201120f45404cb817b3caeb23b609)`.
+
+## Retrieving raw data
+
+One of the most convenient formatting functions in Dinero.js is `toSnapshot`. Its primary usage isn't the front end but to take snapshots of Dinero objects to inspect them.
+
+Whenever you need to access a Dinero object's raw data, `toSnapshot` is the go-to function.
+
+```js
+import { dinero, toSnapshot } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 5000, currency: USD });
+
+toSnapshot(d);
+
+// {
+//   amount: 5000,
+//   currency: {
+//     code: 'EUR',
+//     base: 10,
+//     exponent: 2,
+//   },
+//   scale: 2,
+// }
+```
+
+Another useful usage of `toSnapshot` is transport and storage. To do so, check the advanced guide on [transporting and restoring](https://www.notion.so/Transporting-and-restoring-7859a65186804ca08ff17b8aa9ea38b2).

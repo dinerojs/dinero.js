@@ -1,0 +1,65 @@
+---
+title: Amount
+description:
+---
+
+The amount is one of the three pieces of domain data necessary to create a Dinero object. It's expressed in the smallest subdivision of the currency, as an integer.
+
+For example, 50 US dollars equal to 5,000 cents.
+
+```js
+import { dinero } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 5000, currency: USD });
+```
+
+You should always pass integers. The library throws whenever you try to pass a float or any non-integer value.
+
+Dinero.js comes with a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) implementation, but the library is generic. This means you can use it with any data type you want: [`bigint`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), third-parties like [big.js](https://github.com/MikeMcl/big.js), etc. To do so, check the advanced guide on [using different amount types](https://www.notion.so/Using-different-amount-types-172523012d1647dfb2f2c70624536853).
+
+## No minor units
+
+When using a currency with no minor units, you should express the amount in major units.
+
+```js
+import { dinero } from 'dinero.js';
+import { JPY } from '@dinero.js/currencies';
+
+// This represents 5,000 Japanese yens
+const d = dinero({ amount: 5000, currency: JPY });
+```
+
+When working with such currencies, you need to set the [currency exponent](https://www.notion.so/Currency-f0c9b2bc2ddd45b7b960c11f609fa229) to 0.
+
+## Non-decimal currencies
+
+When using a non-decimal currency (with or without multiple subdivisions), you should express the amount in the smallest subdivision.
+
+```js
+import { dinero } from 'dinero.js';
+
+// Ancient Greek drachma
+const GRD = {
+  code: 'GRD',
+  base: 6,
+  exponent: 1,
+};
+
+// This represents 1 ancient Greek drachma
+// or 6 obols
+const d1 = dinero({ amount: 6, currency: GRD });
+
+// Pre-decimal Great Britain pound sterling
+const GBP = {
+  code: 'GBP',
+  base: 240,
+  exponent: 1,
+};
+
+// This represents 50 pre-decimal Great Britain pounds
+// or 1,000 shillings, or 12,000 pence
+const d2 = dinero({ amount: 12000, currency: GBP });
+```
+
+When working with such currencies, you need to set the [currency exponent](https://www.notion.so/Currency-f0c9b2bc2ddd45b7b960c11f609fa229) to 1. To format them, check the advanced guide on [formatting non-decimal currencies](https://www.notion.so/Formatting-non-decimal-currencies-a5e98ca20bac4573aaa02ec4e0eaee2c).
