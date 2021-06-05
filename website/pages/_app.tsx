@@ -3,11 +3,11 @@ import { MDXProvider } from '@mdx-js/react';
 
 import '../styles.css'
 
-import { Alert, Parameters, Panel, Parameter, Signature } from '../components';
+import { MDXComponents } from '../components';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <MDXProvider components={{ Alert, Panel, Parameters, Parameter, Signature }}>
+    <MDXProvider components={MDXComponents}>
       <Component {...pageProps} />
     </MDXProvider>
   );
