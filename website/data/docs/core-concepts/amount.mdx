@@ -1,6 +1,6 @@
 ---
 title: Amount
-description:
+description: Passing an amount to a new Dinero object.
 ---
 
 The amount is one of the three pieces of domain data necessary to create a Dinero object. It's expressed in the smallest subdivision of the currency, as an integer.
@@ -16,7 +16,7 @@ const d = dinero({ amount: 5000, currency: USD });
 
 You should always pass integers. The library throws whenever you try to pass a float or any non-integer value.
 
-Dinero.js comes with a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) implementation, but the library is generic. This means you can use it with any data type you want: [`bigint`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), third-parties like [big.js](https://github.com/MikeMcl/big.js), etc. To do so, check the advanced guide on [using different amount types](https://www.notion.so/Using-different-amount-types-172523012d1647dfb2f2c70624536853).
+Dinero.js comes with a [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) implementation, but the library is generic. This means you can use it with any data type you want: [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), third-parties like [big.js](https://github.com/MikeMcl/big.js), etc. To do so, check the advanced guide on [using different amount types](https://www.notion.so/Using-different-amount-types-172523012d1647dfb2f2c70624536853).
 
 ## No minor units
 

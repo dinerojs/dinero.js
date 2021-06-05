@@ -34,7 +34,7 @@ const ETH = {
 const price = dinero({ amount: 1000000000000000000, currency: ETH });
 ```
 
-In such cases, you need to rely on safer alternatives, such as the [`bigint`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) primitive or third-parties like [big.js](https://github.com/MikeMcl/big.js).
+In such cases, you need to rely on safer alternatives, such as the [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) primitive or third-parties like [big.js](https://github.com/MikeMcl/big.js).
 
 ## Using Dinero with `bigint`
 
@@ -76,7 +76,7 @@ Dinero delegates all calculations to a type-specific calculator object. You can 
 
 A calculator implements the `Calculator` interface. For example, here's what it can look like with [big.js](https://github.com/MikeMcl/big.js).
 
-```tsx
+```ts
 import Big from 'big.js';
 import { Calculator } from 'dinero.js';
 
