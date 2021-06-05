@@ -34,6 +34,7 @@ export async function getFileBySlug(type: string, filePath: string[]) {
   });
 
   return {
+    source,
     mdxSource,
     frontMatter: {
       slug: filePath,

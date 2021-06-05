@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import { sidebar } from '../data';
+import { Heading } from '../utils';
 
 type Node = {
   label?: string;
@@ -121,9 +122,10 @@ function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
 
 type BaseProps = {
   children: React.ReactNode;
+  headings: Heading[] | undefined;
 };
 
-export function Base({ children }: BaseProps) {
+export function Base({ children, headings }: BaseProps) {
   const { asPath } = useRouter();
   const [, setIsSidebarOpen] = useState(false);
 
@@ -167,6 +169,16 @@ export function Base({ children }: BaseProps) {
         >
           {children}
         </div>
+        {(headings?.length ?? 0) > 0 && <div>
+          <h5>On this page</h5>
+          <ul>
+            {headings?.map(({ text, slug }) => (
+              <li key={slug}>
+                <Link href={`#${slug}`}>{text}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>}
       </main>
       {/* <button
         onClick={() => setIsSidebarOpen((isOpen) => !isOpen)}

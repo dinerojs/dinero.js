@@ -4,8 +4,10 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 import { getFiles, getFileBySlug } from '../../utils/mdx';
 import { Base } from '../../layouts';
+import { getHeadings } from '../../utils';
 
 type PageProps = {
+  source: string;
   mdxSource: MDXRemoteSerializeResult;
   frontMatter: {
     slug: string[];
@@ -14,9 +16,11 @@ type PageProps = {
   };
 };
 
-export default function Docs({ mdxSource, frontMatter }: PageProps) {
+export default function Docs({ source, mdxSource, frontMatter }: PageProps) {
+  const headings = getHeadings(source);
+
   return (
-    <Base>
+    <Base headings={headings}>
       <Head>
         <title>{frontMatter.title} | Dinero.js</title>
         <meta name="description" content={frontMatter.description} />
