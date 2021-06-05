@@ -37,8 +37,14 @@ table tr:first-child td {
 }
 
 [role="alert"] {
+  align-items: center;
+  display: flex;
   background-color:lightblue;
   padding: 4px 14px;
+}
+
+[role="alert"]::before {
+  content: '💡';
 }
 
 code[class*="language-"],
