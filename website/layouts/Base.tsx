@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import { sidebar } from '../data';
 import { Heading } from '../utils';
+import { Logo } from '../components';
 
 type Node = {
   label?: string;
@@ -138,7 +139,12 @@ export function Base({ children, headings }: BaseProps) {
   return (
     <div>
       <header>
-        <Link href="/">Dinero.js</Link>
+        <Link href="/">
+          <div>
+            <Logo />
+            <span>Dinero.js</span>
+          </div>
+        </Link>
         <div>
           <select>
             <option value="v2">

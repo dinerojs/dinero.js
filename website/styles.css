@@ -9,6 +9,15 @@ header {
   justify-content: space-between;
 }
 
+header svg {
+  height: 30px;
+}
+
+header div:first-child {
+  display: flex;
+  align-items: center;
+}
+
 main {
   display: grid;
   grid-gap: 20px;
