@@ -43,8 +43,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     page.replace('.mdx', '').split('/').filter(Boolean)
   );
 
-  console.log(slugs);
-
   return {
     paths: slugs
       .map((slug) => {
