@@ -10,7 +10,7 @@ header {
 }
 
 header svg {
-  height: 30px;
+  height: 20px;
 }
 
 header div:first-child {
@@ -22,6 +22,21 @@ main {
   display: grid;
   grid-gap: 20px;
   grid-template-columns: 320px auto 250px;
+}
+
+main code {
+  color: #e3116c;
+}
+
+main code::before,
+main code::after {
+  content: '`';
+}
+
+main pre code::before,
+main pre code::after {
+  display: none;
+  content: '';
 }
 
 table td {
