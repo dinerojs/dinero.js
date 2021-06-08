@@ -124,7 +124,7 @@ import { USD } from '@dinero.js/currencies';
 
 const d = dinero({ amount: 100, currency: USD });
 
-const [d1, d2] = allocate(d1, [505, 495], { scale: 1 }); // translates to ratios 50.5 and 49.5
+const [d1, d2] = allocate(d, [505, 495], { scale: 1 }); // translates to ratios 50.5 and 49.5
 
 d1; // a Dinero object with amount 505 and scale 3
 d2; // a Dinero object with amount 495 and scale 3

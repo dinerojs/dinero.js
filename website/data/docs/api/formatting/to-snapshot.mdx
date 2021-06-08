@@ -17,13 +17,15 @@ toSnapshot<TAmount>(
 
 Get a snapshot of a Dinero object.
 
+Snapshots are plain JavaScript objects, suited for [transport and storage](/docs/advanced/transporting-and-restoring). They're also useful when you need to retrieve raw data from a Dinero object.
+
 ## Parameters
 
 <Parameters>
 
 <Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
 
-The Dinero object to transform.
+The Dinero object to snapshot.
 
 </Parameter>
 

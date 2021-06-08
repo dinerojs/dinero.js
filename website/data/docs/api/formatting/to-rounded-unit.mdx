@@ -16,7 +16,9 @@ toRoundedUnit<TAmount>(
 
 ## About this function
 
-Get the amount of a Dinero object in rounded units.
+Get the amount of a Dinero object in rounded major currency unit.
+
+You can specify how many fraction digits you want to represent and pass a rounding function. For convenience, Dinero.js provides the following rounding functions: `up`, `down`, `halfUp`, `halfDown`, `halfOdd`, `halfEven` ([bankers rounding](https://wiki.c2.com/?BankersRounding)), `halfTowardsZero`, and `halfAwayFromZero`.
 
 ## Parameters
 
@@ -24,7 +26,7 @@ Get the amount of a Dinero object in rounded units.
 
 <Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
 
-The Dinero object to transform.
+The Dinero object to format.
 
 </Parameter>
 

@@ -15,7 +15,9 @@ toUnit<TAmount>(
 
 ## About this function
 
-Get the amount of a Dinero object in units.
+Get the amount of a Dinero object in major currency unit.
+
+The number of represented fraction digits depends on the amount and scale of the Dinero object. If you want to round the value, you can use [toRoundedUnit](/docs/api/formatting/to-rounded-unit) instead.
 
 ## Parameters
 
@@ -23,7 +25,7 @@ Get the amount of a Dinero object in units.
 
 <Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
 
-The Dinero object to transform.
+The Dinero object to format.
 
 </Parameter>
 

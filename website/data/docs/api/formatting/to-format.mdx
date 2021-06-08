@@ -22,7 +22,13 @@ format<TAmount>(
 
 ## About this function
 
-Create a Dinero object formatter.
+Create a function to format Dinero objects.
+
+The `createFormatter` factory lets you pass a transformer function to return a formatted Dinero object. The `transformer` exposes the amount in rounded units, the currency, and the initial Dinero object. The latter can be useful when [formatting non-decimal currencies](/docs/advanced/formatting-non-decimal-currencies).
+
+You can also specify rounding `options` to determine how to round the amount.
+
+The returned `format` function takes a Dinero object and formats it into a human-readable string.
 
 ## Parameters
 
@@ -62,7 +68,7 @@ The rounding function to use.
 
 <Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
 
-The Dinero object to transform.
+The Dinero object to format.
 
 </Parameter>
 

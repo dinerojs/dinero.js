@@ -16,7 +16,7 @@ const d = dinero({ amount: 5000, currency: USD });
 
 You should always pass integers. The library throws whenever you try to pass a float or any non-integer value.
 
-Dinero.js comes with a [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) implementation, but the library is generic. This means you can use it with any data type you want: [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), third-parties like [big.js](https://github.com/MikeMcl/big.js), etc. To do so, check the advanced guide on [using different amount types](https://www.notion.so/Using-different-amount-types-172523012d1647dfb2f2c70624536853).
+Dinero.js comes with a [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) implementation, but the library is generic. This means you can use it with any data type you want: [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), third-parties like [big.js](https://github.com/MikeMcl/big.js), etc. To do so, check the advanced guide on [using different amount types](/docs/advanced/using-different-amount-types).
 
 ## No minor units
 
@@ -30,7 +30,7 @@ import { JPY } from '@dinero.js/currencies';
 const d = dinero({ amount: 5000, currency: JPY });
 ```
 
-When working with such currencies, you need to set the [currency exponent](https://www.notion.so/Currency-f0c9b2bc2ddd45b7b960c11f609fa229) to 0.
+When working with such currencies, you need to set the [currency exponent](/docs/core-concepts/currency#currency-exponent) to 0.
 
 ## Non-decimal currencies
 
@@ -62,4 +62,4 @@ const GBP = {
 const d2 = dinero({ amount: 12000, currency: GBP });
 ```
 
-When working with such currencies, you need to set the [currency exponent](https://www.notion.so/Currency-f0c9b2bc2ddd45b7b960c11f609fa229) to 1. To format them, check the advanced guide on [formatting non-decimal currencies](https://www.notion.so/Formatting-non-decimal-currencies-a5e98ca20bac4573aaa02ec4e0eaee2c).
+When working with such currencies, you need to set the [currency exponent](/docs/core-concepts/currency#currency-exponent) to 1. To format them, check the advanced guide on [formatting non-decimal currencies](/docs/advanced/formatting-non-decimal-currencies).

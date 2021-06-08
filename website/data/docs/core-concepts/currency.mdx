@@ -11,7 +11,7 @@ A Dinero currency is composed of:
 - A **base**, or radix.
 - An **exponent**.
 
-## Code
+## Currency code
 
 The currency code is a **unique identifier for the currency.** By convention, they're usually a three-letter or number. For example, in the case of national [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currencies, the first two letters of the code are the two letters of the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code, and the third is usually the initial of the currency itself.
 
@@ -25,7 +25,7 @@ const USD = {
 
 When they don't refer to a specific country (e.g., euro) or aren't a traditional currency (e.g., cryptocurrencies), the code can vary into a less standard but more mnemonic scheme. Ultimately, **the code is your choice and needs to make sense in your application.** The only requirement is for it to be unique.
 
-## Base
+## Currency base
 
 The currency base (or radix) is the **number of unique digits used to represent a currency's minor unit.** Most currencies in circulation are decimal, meaning their base is 10.
 
@@ -70,7 +70,7 @@ const GBW = {
 
 When working with such currencies, you should set the exponent to 1.
 
-## Exponent
+## Currency exponent
 
 The currency exponent expresses the **decimal relationship between the currency and its minor unit.** For example, there are 100 cents in a US dollar, being 10 to the power of 2, so the exponent for the US dollar is 2.
 
@@ -84,7 +84,7 @@ const USD = {
 
 An easier way to think about it is as the number of digits after the decimal separator.
 
-When a currency doesn't have minor currency units (e.g., the Japanese yen), the exponent should be 0. In this case, you can express the [amount](https://www.notion.so/Amount-b0e80b5e0d2e4ec696cd8a3e5040cec7) in major currency units.
+When a currency doesn't have minor currency units (e.g., the Japanese yen), the exponent should be 0. In this case, you can express the [amount](/docs/core-concepts/amount) in major currency units.
 
 ```js
 // Japanese yen
@@ -95,8 +95,69 @@ const JPY = {
 };
 ```
 
-When you pass a [scale](https://www.notion.so/Scale-6f2036a6d4784ce0b81672509681be7e) to a Dinero object, it overrides the exponent. This has an impact on how you should specify the [amount](https://www.notion.so/Amount-b0e80b5e0d2e4ec696cd8a3e5040cec7).
+When you pass a [scale](/docs/core-concepts/scale) to a Dinero object, it overrides the exponent. This has an impact on how you should specify the [amount](/docs/core-concepts/amount).
 
 ## Using built-in currencies
 
+Dinero.js provides ISO 4217 currency objects out of the box via the `@dinero.js/currencies` package.
+
+Once you've [installed Dinero.js currencies](/docs/getting-started/quick-start#install-currencies), you can use them in your project.
+
+```js
+import { USD, EUR } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 1000, currency: USD });
+const d2 = dinero({ amount: 1000, currency: EUR });
+```
+
+Currencies fluctuates, meaning their code and exponent can change, there can be new currencies, and existing currencies can disappear. ISO 4217 currencies account for these changes with amendments, maintained by the Secretariat of the Maintenance Agency.
+
+Dinero.js tracks those amendments and updates currencies accordingly. Such changes are, by definition, breaking. To preserve fixed versioning, the library's entry point doesn't export updated currencies. In other words, if you import currencies from the path `@dinero.js/currencies`, they won't change.
+
+To access always up to date currencies, you can import them from the `latest` submodule.
+
+```js
+// This imports the latest version of the currency, which might be different
+// from the last time you used it and break your application. Use with caution.
+import { USD } from '@dinero.js/currencies/latest';
+
+const d = dinero({ amount: 1000, currency: USD });
+```
+
+<Alert type="warning">
+
+**Importing the latest version of a currency can break your application, as the currency data might change.** Make sure to know what you're doing, pin your dependencies, and look out for breaking changes in your own application when you update.
+
+</Alert>
+
+To pin a currency to a specific amendment, you can import it from the `amendments` submodule. Amendments follow the [numbering system of the maintenance agency](https://www.six-group.com/en/products-services/financial-information/data-standards.html#scrollTo=amendments).
+
+```js
+import { USD } from '@dinero.js/currencies/amendments/168';
+
+const d = dinero({ amount: 1000, currency: USD });
+```
+
 ## Creating custom currencies
+
+You can build your own currency object if it isn't available in `@dinero.js/currencies`.
+
+```js
+const FRF = {
+  code: 'FRF',
+  base: 10,
+  exponent: 2,
+};
+```
+
+If you're a TypeScript user, you can implement the `Currency` type.
+
+```js
+import { Currency } from 'dinero.js';
+
+const FRF: Currency<number> = {
+  code: 'FRF',
+  base: 10,
+  exponent: 2,
+};
+```
