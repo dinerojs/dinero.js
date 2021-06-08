@@ -3,14 +3,30 @@ import { useState } from 'react';
 import reactToText from 'react-to-text';
 import { useCopyToClipboard } from 'react-use';
 
-import { CustomFigure, FullWidthImage, ExternalLink, InternalLink, Alert, Parameters, Panel, Parameter, Signature } from '.';
+import {
+  CustomFigure,
+  FullWidthImage,
+  ExternalLink,
+  InternalLink,
+  Alert,
+  Parameters,
+  Panel,
+  Parameter,
+  Signature,
+} from '.';
 
-type MDXComponentProps<TAttribute, TElement> = React.DetailedHTMLProps<TAttribute, TElement> & {
+type MDXComponentProps<TAttribute, TElement> = React.DetailedHTMLProps<
+  TAttribute,
+  TElement
+> & {
   children: React.ReactElement;
 };
 
 function CustomLink(
-  props: MDXComponentProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>
+  props: MDXComponentProps<
+    React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    HTMLAnchorElement
+  >
 ) {
   const { href, children } = props;
   const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
@@ -29,51 +45,49 @@ function CustomLink(
     );
   }
 
-  return (
-    <LinkComponent
-      {...props}
-    />
-  );
+  return <LinkComponent {...props} />;
 }
 
-function CustomEmphasis(props: MDXComponentProps<React.HTMLAttributes<HTMLElement>, HTMLElement>) {
+function CustomEmphasis(
+  props: MDXComponentProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
+) {
   return <em {...props} />;
 }
 
 function CustomHeading2(
-  props: MDXComponentProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
+  props: MDXComponentProps<
+    React.HTMLAttributes<HTMLHeadingElement>,
+    HTMLHeadingElement
+  >
 ) {
-  return (
-    <h2
-      {...props}
-    />
-  );
+  return <h2 {...props} />;
 }
 
 function CustomHeading3(
-  props: MDXComponentProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
+  props: MDXComponentProps<
+    React.HTMLAttributes<HTMLHeadingElement>,
+    HTMLHeadingElement
+  >
 ) {
-  return (
-    <h3
-      {...props}
-    />
-  );
+  return <h3 {...props} />;
 }
 
 function CustomHeading4(
-  props: MDXComponentProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
+  props: MDXComponentProps<
+    React.HTMLAttributes<HTMLHeadingElement>,
+    HTMLHeadingElement
+  >
 ) {
-  return (
-    <h4
-      {...props}
-    />
-  );
+  return <h4 {...props} />;
 }
 
 function CustomImage({
   src,
   alt,
-}: MDXComponentProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>) {
+}: MDXComponentProps<
+  React.ImgHTMLAttributes<HTMLImageElement>,
+  HTMLImageElement
+>) {
   return (
     <CustomFigure alt={alt}>
       <FullWidthImage alt={alt} src={src} />
@@ -84,19 +98,13 @@ function CustomImage({
 function CustomInlineCode(
   props: MDXComponentProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
 ) {
-  return (
-    <code {...props} />
-  );
+  return <code {...props} />;
 }
 
 function CustomKeyboardInput(
   props: MDXComponentProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
 ) {
-  return (
-    <kbd
-      {...props}
-    />
-  );
+  return <kbd {...props} />;
 }
 
 function CustomPreformattedText(
@@ -130,18 +138,26 @@ function CustomPreformattedText(
   );
 }
 
-function CustomStrong(props: MDXComponentProps<React.HTMLAttributes<HTMLElement>, HTMLElement>) {
+function CustomStrong(
+  props: MDXComponentProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
+) {
   return <strong {...props} />;
 }
 
 function CustomTable(
-  props: MDXComponentProps<React.TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>
+  props: MDXComponentProps<
+    React.TableHTMLAttributes<HTMLTableElement>,
+    HTMLTableElement
+  >
 ) {
   return <table {...props} />;
 }
 
 function CustomTableHeader(
-  props: MDXComponentProps<React.HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>
+  props: MDXComponentProps<
+    React.HTMLAttributes<HTMLTableSectionElement>,
+    HTMLTableSectionElement
+  >
 ) {
   return <thead {...props} />;
 }
@@ -165,19 +181,28 @@ function CustomTableDataCell(
 }
 
 function CustomTableRow(
-  props: MDXComponentProps<React.HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement>
+  props: MDXComponentProps<
+    React.HTMLAttributes<HTMLTableRowElement>,
+    HTMLTableRowElement
+  >
 ) {
   return <tr {...props} />;
 }
 
 function CustomParagraph(
-  props: MDXComponentProps<React.HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>
+  props: MDXComponentProps<
+    React.HTMLAttributes<HTMLParagraphElement>,
+    HTMLParagraphElement
+  >
 ) {
   return <p {...props} />;
 }
 
 function CustomUnorderedList(
-  props: MDXComponentProps<React.HTMLAttributes<HTMLUListElement>, HTMLUListElement>
+  props: MDXComponentProps<
+    React.HTMLAttributes<HTMLUListElement>,
+    HTMLUListElement
+  >
 ) {
   return <ul {...props} />;
 }
@@ -185,17 +210,21 @@ function CustomUnorderedList(
 function CustomUnorderedListItem(
   props: MDXComponentProps<React.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>
 ) {
-  return (
-    <li
-      {...props}
-    />
-  );
+  return <li {...props} />;
 }
 
 function CustomOrderedList(
-  props: MDXComponentProps<React.OlHTMLAttributes<HTMLOListElement>, HTMLOListElement>
+  props: MDXComponentProps<
+    React.OlHTMLAttributes<HTMLOListElement>,
+    HTMLOListElement
+  >
 ) {
-  return <ol className="mt-6 text-gray-300 text-opacity-80 list-counter-reset" {...props} />;
+  return (
+    <ol
+      className="mt-6 text-gray-300 text-opacity-80 list-counter-reset"
+      {...props}
+    />
+  );
 }
 
 function CustomOrderedListItem(
@@ -212,8 +241,8 @@ function CustomOrderedListItem(
 export const MDXComponents = {
   Alert,
   Image,
-  Parameters,
   Panel,
+  Parameters,
   Parameter,
   Signature,
   a: CustomLink,
