@@ -2,35 +2,39 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import { sidebar } from '../data';
+import { tree } from '../data';
 import { Heading } from '../utils';
 import { Logo } from '../components';
-
-type Node = {
-  label?: string;
-  href?: string;
-  children?: Node[];
-};
+import { Sitemap } from '../utils/sitemap';
 
 type SidebarItemProps = {
-  node: Node;
+  node: Sitemap;
   level: number;
   onClick: () => void;
-  isNodeActive: (node: Node) => boolean;
+  isNodeActive: (node: Sitemap) => boolean;
   buttonProps: Pick<
-    React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
+    React.DetailedHTMLProps<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    >,
     'aria-expanded' | 'aria-controls' | 'id'
   >;
 };
 
-function SidebarItem({ node, level, onClick, isNodeActive, buttonProps }: SidebarItemProps) {
-  const { href, label } = node;
+function SidebarItem({
+  node,
+  level,
+  onClick,
+  isNodeActive,
+  buttonProps,
+}: SidebarItemProps) {
+  const { path, label } = node.resource || {};
   const isActive = isNodeActive(node);
   const isRootLevel = level === 1;
 
-  if (href) {
+  if (path && node.children.length === 0) {
     return (
-      <Link href={`/docs${href}`}>
+      <Link href={`/docs${path}`}>
         <a style={{ color: isActive ? 'green' : 'inherit' }}>{label}</a>
       </Link>
     );
@@ -44,20 +48,16 @@ function SidebarItem({ node, level, onClick, isNodeActive, buttonProps }: Sideba
     );
   }
 
-  return (
-    <span>
-      {label}
-    </span>
-  );
+  return <span>{label}</span>;
 }
 
 type SidebarNodeWrapper = {
   children: React.ReactNode;
-  node: Node;
+  node: Sitemap;
 };
 
 function SidebarNodeWrapper({ children, node }: SidebarNodeWrapper) {
-  if (node.label) {
+  if (node.resource?.label) {
     return <li>{children}</li>;
   }
 
@@ -65,25 +65,27 @@ function SidebarNodeWrapper({ children, node }: SidebarNodeWrapper) {
 }
 
 type SidebarNodeProps = {
-  node: Node;
+  node: Sitemap;
   level: number;
-  isNodeActive: (node: Node) => boolean;
+  isNodeActive: (node: Sitemap) => boolean;
 };
 
 function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
   const isFirstLevel = level === 1;
   const [isOpen, setIsOpen] = useState(!isFirstLevel || hasActiveChild(node));
 
-  const id = node.label?.toLowerCase();
-  const parentId = node.label ? `heading-${id}` : undefined;
-  const childId = node.label ? `navigation-${id}` : undefined;
+  const id = node.resource?.label?.toLowerCase();
+  const parentId = node.resource?.label ? `heading-${id}` : undefined;
+  const childId = node.resource?.label ? `navigation-${id}` : undefined;
 
-  function hasActiveChild(node: Node) {
+  function hasActiveChild(node: Sitemap) {
     if (!node.children) {
       return false;
     }
 
-    const hasActiveChildRecursively = node.children.some((node) => isNodeActive(node) || hasActiveChild(node));
+    const hasActiveChildRecursively = node.children.some(
+      (node) => isNodeActive(node) || hasActiveChild(node)
+    );
 
     return hasActiveChildRecursively;
   }
@@ -91,7 +93,7 @@ function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
   return (
     <SidebarNodeWrapper node={node}>
       <>
-        {node.label && (
+        {node.resource?.label ? (
           <SidebarItem
             onClick={() => setIsOpen((currentIsOpen) => !currentIsOpen)}
             node={node}
@@ -103,19 +105,27 @@ function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
               'aria-expanded': isOpen,
             }}
           />
-        )}
-        {node.children?.length && (
+        ) : null}
+        {node.children?.length ? (
           <ul
             role="region"
             id={childId}
             aria-labelledby={parentId}
-            style={{ display: isOpen ? 'block' : 'none', marginLeft: isFirstLevel ? '10px': 0 }}
+            style={{
+              display: isOpen ? 'block' : 'none',
+              marginLeft: isFirstLevel ? '10px' : 0,
+            }}
           >
             {node.children.map((child, index) => (
-              <SidebarNode key={index} node={child} level={level + 1} isNodeActive={isNodeActive} />
+              <SidebarNode
+                key={index}
+                node={child}
+                level={level + 1}
+                isNodeActive={isNodeActive}
+              />
             ))}
           </ul>
-        )}
+        ) : null}
       </>
     </SidebarNodeWrapper>
   );
@@ -133,7 +143,7 @@ export function Base({ children, headings }: BaseProps) {
   function isNodeActive({ href }: Node) {
     const [path] = asPath.split('#');
 
-    return path === `/docs${href}`;
+    return path === `/docs${resource?.path}`;
   }
 
   return (
@@ -147,12 +157,8 @@ export function Base({ children, headings }: BaseProps) {
         </Link>
         <div>
           <select>
-            <option value="v2">
-              v2.0.0
-            </option>
-            <option value="v1">
-              v1.8.1
-            </option>
+            <option value="v2">v2.0.0</option>
+            <option value="v1">v1.8.1</option>
           </select>
           <a
             href="https://github.com/dinerojs/dinero.js"
@@ -165,7 +171,7 @@ export function Base({ children, headings }: BaseProps) {
       </header>
       <main>
         <nav>
-          <SidebarNode node={sidebar} level={0} isNodeActive={isNodeActive} />
+          <SidebarNode node={tree} level={0} isNodeActive={isNodeActive} />
         </nav>
         {/* The <div> element captures `click` and `keyup` events to simulate clicks outside the sidebar on small screens */}
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
@@ -175,16 +181,18 @@ export function Base({ children, headings }: BaseProps) {
         >
           {children}
         </div>
-        {(headings?.length ?? 0) > 0 && <div>
-          <h5>On this page</h5>
-          <ul>
-            {headings?.map(({ text, slug }) => (
-              <li key={slug}>
-                <Link href={`#${slug}`}>{text}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>}
+        {(headings?.length ?? 0) > 0 && (
+          <div>
+            <h5>On this page</h5>
+            <ul>
+              {headings?.map(({ text, slug }) => (
+                <li key={slug}>
+                  <Link href={`#${slug}`}>{text}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </main>
       {/* <button
         onClick={() => setIsSidebarOpen((isOpen) => !isOpen)}
