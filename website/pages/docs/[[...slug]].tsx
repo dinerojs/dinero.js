@@ -2,12 +2,11 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
-import { getFiles, getFileBySlug } from '../../utils/mdx';
 import { Base } from '../../layouts';
-import { getHeadings } from '../../utils';
+import { getHeadings, getFiles, getFileBySlug, Heading } from '../../utils';
 
 type PageProps = {
-  source: string;
+  headings: Heading[];
   mdxSource: MDXRemoteSerializeResult;
   frontMatter: {
     slug: string[];
@@ -16,9 +15,7 @@ type PageProps = {
   };
 };
 
-export default function Docs({ source, mdxSource, frontMatter }: PageProps) {
-  const headings = getHeadings(source);
-
+export default function Docs({ headings, mdxSource, frontMatter }: PageProps) {
   return (
     <Base headings={headings}>
       <Head>
@@ -36,9 +33,10 @@ export default function Docs({ source, mdxSource, frontMatter }: PageProps) {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params?.slug || ['index'];
-  const page = await getFileBySlug('docs', [slug].flat());
+  const { source, mdxSource, frontMatter } = await getFileBySlug('docs', [slug].flat());
+  const headings = getHeadings(source);
 
-  return { props: page };
+  return { props: { headings, mdxSource, frontMatter } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
