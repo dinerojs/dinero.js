@@ -140,7 +140,25 @@ export function Base({ children, headings }: BaseProps) {
   const { asPath } = useRouter();
   const [, setIsSidebarOpen] = useState(false);
 
-  function isNodeActive({ href }: Node) {
+  const current = tree.fromUrl(asPath.replace('/docs/', ''));
+
+  const previous =
+    current.previous ||
+    ((current.parent?.previous ? current.parent : current.root)?.previous?.last
+      ?.children.length === 0
+      ? (current.parent?.previous ? current.parent : current.root)?.previous
+          ?.last
+      : (current.parent?.previous ? current.parent : current.root)?.previous
+          ?.last?.last);
+  const next =
+    current.next ||
+    ((current.parent?.next ? current.parent : current.root)?.next?.first
+      ?.children.length === 0
+      ? (current.parent?.next ? current.parent : current.root)?.next?.first
+      : (current.parent?.next ? current.parent : current.root)?.next?.first
+          ?.first);
+
+  function isNodeActive({ resource }: Sitemap) {
     const [path] = asPath.split('#');
 
     return path === `/docs${resource?.path}`;
@@ -180,6 +198,34 @@ export function Base({ children, headings }: BaseProps) {
           onKeyUp={() => setIsSidebarOpen(false)}
         >
           {children}
+          {(previous || next) && (
+            <nav role="navigation">
+              <ul>
+                {previous && (
+                  <li>
+                    <span>Previous: </span>
+                    <a
+                      href={`/docs${previous.resource?.path}`}
+                      aria-label={`Go to ${previous.resource?.label}`}
+                    >
+                      {previous.resource?.label}
+                    </a>
+                  </li>
+                )}
+                {next && (
+                  <li>
+                    <span>Next: </span>
+                    <a
+                      href={`/docs${next.resource?.path}`}
+                      aria-label={`Go to ${next.resource?.label}`}
+                    >
+                      {next.resource?.label}
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </nav>
+          )}
         </div>
         {(headings?.length ?? 0) > 0 && (
           <div>
