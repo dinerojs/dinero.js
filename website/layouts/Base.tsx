@@ -6,6 +6,7 @@ import { tree } from '../data';
 import { Heading } from '../utils';
 import { Logo } from '../components';
 import { Sitemap } from '../utils/sitemap';
+import { GitHubIcon } from '../components/icons';
 
 type SidebarItemProps = {
   node: Sitemap;
@@ -165,25 +166,30 @@ export function Base({ children, headings }: BaseProps) {
   }
 
   return (
-    <div>
-      <header>
+    <div className="relative font-sans text-base text-gray-800 bg-white">
+      <header className="sticky top-0 flex items-center justify-between px-6 py-5 space-x-4 bg-white border-b border-gray-200">
         <Link href="/">
-          <div>
-            <Logo />
-            <span>Dinero.js</span>
+          <div className="flex space-x-2">
+            <Logo className="h-6" />
+            <span className="mt-px font-semibold">Dinero.js</span>
           </div>
         </Link>
-        <div>
-          <select>
-            <option value="v2">v2.0.0</option>
-            <option value="v1">v1.8.1</option>
-          </select>
+        <div className="flex mt-px space-x-6 text-sm">
+          <form>
+            <span className="sr-only">Dinero.js version</span>
+            <select className="py-1 pr-1">
+              <option value="v2">v2.0.0</option>
+              <option value="v1">v1.8.1</option>
+            </select>
+          </form>
           <a
+            className="flex items-center space-x-2 group"
             href="https://github.com/dinerojs/dinero.js"
             target="_blank"
             rel="noreferrer noopener"
           >
-            <span>GitHub</span>
+            <GitHubIcon className="h-4 text-gray-400 transition-colors duration-100 ease-in-out text-opacity-80 group-hover:text-opacity-100" />
+            <span className="text-gray-800 transition-colors duration-100 ease-in-out text-opacity-80 group-hover:text-opacity-100">GitHub</span>
           </a>
         </div>
       </header>
