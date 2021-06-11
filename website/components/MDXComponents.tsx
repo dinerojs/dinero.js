@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import reactToText from 'react-to-text';
 import { useCopyToClipboard } from 'react-use';
+import cx from 'classnames';
 
 import {
   CustomFigure,
@@ -14,6 +15,7 @@ import {
   Parameter,
   Signature,
 } from '.';
+import { ClipboardCheckIcon, ClipboardIcon } from './icons';
 
 type MDXComponentProps<TAttribute, TElement> = React.DetailedHTMLProps<
   TAttribute,
@@ -111,30 +113,32 @@ function CustomPreformattedText(
   props: MDXComponentProps<React.HTMLAttributes<HTMLPreElement>, HTMLPreElement>
 ) {
   const code = reactToText(props.children);
-  const DEFAULT_TEXT = 'Copy';
-
-  const [buttonText, setButtonText] = useState(DEFAULT_TEXT);
   const [state, copyToClipboard] = useCopyToClipboard();
+  const [copied, setCopied] = useState(false);
+
+  const buttonText = copied ? 'Copied!' : 'Copy';
+  const Icon = copied ? ClipboardCheckIcon : ClipboardIcon;
 
   return (
-    <>
+    <div className="relative mt-6 group">
       <button
+        className={cx('absolute top-0 right-0 flex items-center mt-5 mr-5 space-x-1 text-sm transition duration-100 ease-in-out focus:outline-none group-hover:opacity-100', { 'text-gray-400 hover:text-gray-600 opacity-0': !copied, 'text-blue-600': copied })}
         type="button"
+        title={buttonText}
         onClick={() => {
           copyToClipboard(code);
-
-          const label = state.error ? "Couldn't copy, try manually" : 'Copied!';
-          setButtonText(label);
+          setCopied(true);
 
           setTimeout(() => {
-            setButtonText(DEFAULT_TEXT);
-          }, 1000);
+            setCopied(false);
+          }, 5000);
         }}
       >
-        {buttonText}
+        <span className={cx({ 'sr-only': !copied })}>{state.error ? "Couldn't copy, try manually" : buttonText}</span>
+        {!state.error && <Icon className="h-5" />}
       </button>
-      <pre {...props} />
-    </>
+      <pre {...props} className="px-6 py-5 font-mono text-sm bg-gray-100 border border-gray-200 rounded" />
+    </div>
   );
 }
 
