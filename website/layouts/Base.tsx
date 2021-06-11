@@ -142,7 +142,7 @@ export function Base({ children, headings }: BaseProps) {
   const { asPath } = useRouter();
   const [, setIsSidebarOpen] = useState(false);
 
-  const current = tree.fromUrl(asPath.replace('/docs/', ''));
+  const current = tree.fromUrl(asPath.replace('/docs/', '').replace(/(#.+)/, ''));
 
   const previous =
     current.previous ||
@@ -167,7 +167,7 @@ export function Base({ children, headings }: BaseProps) {
   }
 
   return (
-    <div className="relative font-sans text-base text-gray-800 bg-white">
+    <div className="relative font-sans text-base leading-normal text-gray-800 bg-white">
       <header className="sticky top-0 flex items-center justify-between px-6 py-5 space-x-4 bg-white border-b border-gray-200">
         <Link href="/">
           <div className="flex space-x-2">
@@ -236,12 +236,12 @@ export function Base({ children, headings }: BaseProps) {
           )}
         </div>
         {(headings?.length ?? 0) > 0 && (
-          <div>
-            <h5>On this page</h5>
-            <ul>
-              {headings?.map(({ text, slug }) => (
-                <li key={slug}>
-                  <Link href={`#${slug}`}>{text}</Link>
+          <div className="col-span-2 px-6 pb-6 pt-9">
+            <h5 className="py-2 text-xs font-semibold tracking-wide uppercase">On this page</h5>
+            <ul className="mt-2 text-sm">
+              {headings?.map(({ text, slug, level }) => (
+                <li key={slug} className={cx('py-2', { 'ml-4': level === 3 })}>
+                  <Link href={`#${slug}`}><a className="text-gray-400 transition-colors duration-100 ease-in-out hover:text-gray-600">{text}</a></Link>
                 </li>
               ))}
             </ul>
