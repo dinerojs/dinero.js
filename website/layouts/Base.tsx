@@ -7,20 +7,25 @@ import { tree } from '../data';
 import { Heading } from '../utils';
 import { Logo } from '../components';
 import { Sitemap } from '../utils/sitemap';
-import { ChevronDownIcon, GitHubIcon } from '../components/icons';
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ChevronDownIcon,
+  GitHubIcon,
+} from '../components/icons';
 
 type SidebarItemProps = {
-  node: Sitemap;
-  level: number;
-  onClick: () => void;
-  isNodeActive: (node: Sitemap) => boolean;
+  node: Sitemap,
+  level: number,
+  onClick: () => void,
+  isNodeActive: (node: Sitemap) => boolean,
   buttonProps: Pick<
     React.DetailedHTMLProps<
       React.ButtonHTMLAttributes<HTMLButtonElement>,
       HTMLButtonElement
     >,
     'aria-expanded' | 'aria-controls' | 'id'
-  >;
+  >,
 };
 
 function SidebarItem({
@@ -37,7 +42,16 @@ function SidebarItem({
   if (path && node.children.length === 0) {
     return (
       <Link href={`/docs${path}`}>
-        <a className={`block py-1 transition-colors duration-100 ease-in-out ${cx({ 'text-blue-600 hover:text-blue-700': isActive, 'text-gray-400 hover:text-gray-500': !isActive })}`}>{label}</a>
+        <a
+          className={`block py-1 transition-colors duration-100 ease-in-out ${cx(
+            {
+              'text-blue-600 hover:text-blue-700': isActive,
+              'text-gray-400 hover:text-gray-500': !isActive,
+            }
+          )}`}
+        >
+          {label}
+        </a>
       </Link>
     );
   }
@@ -46,9 +60,19 @@ function SidebarItem({
     const isOpen = buttonProps['aria-expanded'];
 
     return (
-      <button className={`flex items-center justify-between w-full py-2 space-x-2 font-semibold transition-colors duration-100 ease-in-out hover:text-gray-800 focus:outline-none ${cx({ 'text-gray-600': !isOpen, 'text-gray-800': isOpen })}`} onClick={onClick} {...buttonProps}>
+      <button
+        className={`flex items-center justify-between w-full py-2 space-x-2 font-semibold transition-colors duration-100 ease-in-out hover:text-gray-800 focus:outline-none ${cx(
+          { 'text-gray-600': !isOpen, 'text-gray-800': isOpen }
+        )}`}
+        onClick={onClick}
+        {...buttonProps}
+      >
         {label}
-        <ChevronDownIcon className={`h-4 text-gray-400 ${cx({ 'transform rotate-180': isOpen })}`} />
+        <ChevronDownIcon
+          className={`h-4 text-gray-400 ${cx({
+            'transform rotate-180': isOpen,
+          })}`}
+        />
       </button>
     );
   }
@@ -57,8 +81,8 @@ function SidebarItem({
 }
 
 type SidebarNodeWrapper = {
-  children: React.ReactNode;
-  node: Sitemap;
+  children: React.ReactNode,
+  node: Sitemap,
 };
 
 function SidebarNodeWrapper({ children, node }: SidebarNodeWrapper) {
@@ -70,9 +94,9 @@ function SidebarNodeWrapper({ children, node }: SidebarNodeWrapper) {
 }
 
 type SidebarNodeProps = {
-  node: Sitemap;
-  level: number;
-  isNodeActive: (node: Sitemap) => boolean;
+  node: Sitemap,
+  level: number,
+  isNodeActive: (node: Sitemap) => boolean,
 };
 
 function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
@@ -116,7 +140,11 @@ function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
             role="region"
             id={childId}
             aria-labelledby={parentId}
-            className={`my-2 ${cx({ 'block': isOpen, 'hidden': !isOpen, 'ml-4': isFirstLevel })}`}
+            className={`my-2 ${cx({
+              block: isOpen,
+              hidden: !isOpen,
+              'ml-4': isFirstLevel,
+            })}`}
           >
             {node.children.map((child, index) => (
               <SidebarNode
@@ -134,15 +162,17 @@ function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
 }
 
 type BaseProps = {
-  children: React.ReactNode;
-  headings: Heading[] | undefined;
+  children: React.ReactNode,
+  headings: Heading[] | undefined,
 };
 
 export function Base({ children, headings }: BaseProps) {
   const { asPath } = useRouter();
   const [, setIsSidebarOpen] = useState(false);
 
-  const current = tree.fromUrl(asPath.replace('/docs/', '').replace(/(#.+)/, ''));
+  const current = tree.fromUrl(
+    asPath.replace('/docs/', '').replace(/(#.+)/, '')
+  );
 
   const previous =
     current.previous ||
@@ -190,7 +220,9 @@ export function Base({ children, headings }: BaseProps) {
             rel="noreferrer noopener"
           >
             <GitHubIcon className="h-4 text-gray-400 transition-colors duration-100 ease-in-out text-opacity-80 group-hover:text-opacity-100" />
-            <span className="text-gray-800 transition-colors duration-100 ease-in-out text-opacity-80 group-hover:text-opacity-100">GitHub</span>
+            <span className="text-gray-800 transition-colors duration-100 ease-in-out text-opacity-80 group-hover:text-opacity-100">
+              GitHub
+            </span>
           </a>
         </div>
       </header>
@@ -201,47 +233,69 @@ export function Base({ children, headings }: BaseProps) {
         {/* The <div> element captures `click` and `keyup` events to simulate clicks outside the sidebar on small screens */}
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <div
-          className="col-span-6"
+          className="col-span-6 px-10 pb-6 pt-9"
           onClick={() => setIsSidebarOpen(false)}
           onKeyUp={() => setIsSidebarOpen(false)}
         >
           {children}
           {(previous || next) && (
-            <nav role="navigation">
-              <ul>
-                {previous && (
-                  <li>
-                    <span>Previous: </span>
-                    <a
+            <nav role="navigation" className="mt-10">
+              <ul className="flex justify-between">
+                <li className="text-left">
+                  {previous && (
+                    <Link
                       href={`/docs${previous.resource?.path}`}
                       aria-label={`Go to ${previous.resource?.label}`}
                     >
-                      {previous.resource?.label}
-                    </a>
-                  </li>
-                )}
-                {next && (
-                  <li>
-                    <span>Next: </span>
-                    <a
+                      <a className="flex items-center space-x-4 group">
+                        <ArrowLeftIcon className="h-4 transition-transform duration-100 ease-in-out transform group-hover:-translate-x-1" />
+                        <div className="grid grid-rows-2 gap-1">
+                          <span className="text-sm text-gray-500 transition-colors duration-100 ease-in-out group-hover:text-gray-700">
+                            Previous
+                          </span>
+                          <span className="font-semibold text-gray-800 transition-colors duration-100 ease-in-out group-hover:text-gray-900">
+                            {previous.resource?.label}
+                          </span>
+                        </div>
+                      </a>
+                    </Link>
+                  )}
+                </li>
+                <li className="text-right">
+                  {next && (
+                    <Link
                       href={`/docs${next.resource?.path}`}
                       aria-label={`Go to ${next.resource?.label}`}
                     >
-                      {next.resource?.label}
-                    </a>
-                  </li>
-                )}
+                      <a className="flex items-center space-x-4 group">
+                        <div className="grid grid-rows-2 gap-1">
+                          <span className="text-sm text-gray-500 transition-colors duration-100 ease-in-out group-hover:text-gray-700">Next</span>
+                          <span className="font-semibold text-gray-800 transition-colors duration-100 ease-in-out group-hover:text-gray-900">
+                            {next.resource?.label}
+                          </span>
+                        </div>
+                        <ArrowRightIcon className="h-4 transition-transform duration-100 ease-in-out transform group-hover:translate-x-1" />
+                      </a>
+                    </Link>
+                  )}
+                </li>
               </ul>
             </nav>
           )}
         </div>
         {(headings?.length ?? 0) > 0 && (
           <div className="col-span-2 px-6 pb-6 pt-9">
-            <h5 className="py-2 text-xs font-semibold tracking-wide uppercase">On this page</h5>
+            <h5 className="py-2 text-xs font-semibold tracking-wide uppercase">
+              On this page
+            </h5>
             <ul className="mt-2 text-sm">
               {headings?.map(({ text, slug, level }) => (
                 <li key={slug} className={cx('py-2', { 'ml-4': level === 3 })}>
-                  <Link href={`#${slug}`}><a className="text-gray-400 transition-colors duration-100 ease-in-out hover:text-gray-600">{text}</a></Link>
+                  <Link href={`#${slug}`}>
+                    <a className="text-gray-400 transition-colors duration-100 ease-in-out hover:text-gray-600">
+                      {text}
+                    </a>
+                  </Link>
                 </li>
               ))}
             </ul>
