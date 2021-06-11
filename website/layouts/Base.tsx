@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import cx from 'classnames';
 
 import { tree } from '../data';
 import { Heading } from '../utils';
 import { Logo } from '../components';
 import { Sitemap } from '../utils/sitemap';
-import { GitHubIcon } from '../components/icons';
+import { ChevronDownIcon, GitHubIcon } from '../components/icons';
 
 type SidebarItemProps = {
   node: Sitemap;
@@ -36,15 +37,18 @@ function SidebarItem({
   if (path && node.children.length === 0) {
     return (
       <Link href={`/docs${path}`}>
-        <a style={{ color: isActive ? 'green' : 'inherit' }}>{label}</a>
+        <a className={`block py-1 transition-colors duration-100 ease-in-out ${cx({ 'text-blue-600 hover:text-blue-700': isActive, 'text-gray-400 hover:text-gray-500': !isActive })}`}>{label}</a>
       </Link>
     );
   }
 
   if (isRootLevel) {
+    const isOpen = buttonProps['aria-expanded'];
+
     return (
-      <button onClick={onClick} {...buttonProps}>
+      <button className={`flex items-center justify-between w-full py-2 space-x-2 font-semibold transition-colors duration-100 ease-in-out hover:text-gray-800 focus:outline-none ${cx({ 'text-gray-600': !isOpen, 'text-gray-800': isOpen })}`} onClick={onClick} {...buttonProps}>
         {label}
+        <ChevronDownIcon className={`h-4 text-gray-400 ${cx({ 'transform rotate-180': isOpen })}`} />
       </button>
     );
   }
@@ -112,10 +116,7 @@ function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
             role="region"
             id={childId}
             aria-labelledby={parentId}
-            style={{
-              display: isOpen ? 'block' : 'none',
-              marginLeft: isFirstLevel ? '10px' : 0,
-            }}
+            className={`my-2 ${cx({ 'block': isOpen, 'hidden': !isOpen, 'ml-4': isFirstLevel })}`}
           >
             {node.children.map((child, index) => (
               <SidebarNode
@@ -193,13 +194,14 @@ export function Base({ children, headings }: BaseProps) {
           </a>
         </div>
       </header>
-      <main>
-        <nav>
+      <main className="grid grid-cols-10">
+        <nav className="col-span-2 px-6 py-6 border-r border-gray-200 bg-gray-50">
           <SidebarNode node={tree} level={0} isNodeActive={isNodeActive} />
         </nav>
         {/* The <div> element captures `click` and `keyup` events to simulate clicks outside the sidebar on small screens */}
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <div
+          className="col-span-6"
           onClick={() => setIsSidebarOpen(false)}
           onKeyUp={() => setIsSidebarOpen(false)}
         >

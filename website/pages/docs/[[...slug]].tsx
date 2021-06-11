@@ -22,6 +22,8 @@ export default function Docs({ headings, mdxSource, frontMatter }: PageProps) {
         <title>{frontMatter.title} | Dinero.js</title>
         <meta name="description" content={frontMatter.description} />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet" />
       </Head>
       <>
         <h1>{frontMatter.title}</h1>
