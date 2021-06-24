@@ -1,25 +1,12 @@
 ---
 title: Multiply
 description: Multiply a Dinero object.
+returns: Dinero<TAmount>
 ---
-
-<Signature>
-
-```ts
-multiply<TAmount>(
-  multiplicand: Dinero<TAmount>
-  multiplier: TAmount
-  options?: MultiplyOptions<TAmount>
-): Dinero<TAmount>
-```
-
-</Signature>
-
-## About this function
 
 Multiply a Dinero object.
 
-If you need to multiply by a fractional multiplier, you shouldn't use floats, but scaled multipliers instead. For example, instead of passing 2.1, you should pass 21 and a scale of 1. When using scaled ratios, the function converts the returned objects to the safest scale.
+If you need to multiply by a fractional multiplier, you shouldn't use floats, but scaled multipliers instead. For example, instead of passing `2.1`, you should pass `21` and a scale of `1`. When using scaled ratios, the function converts the returned objects to the safest scale.
 
 ## Parameters
 

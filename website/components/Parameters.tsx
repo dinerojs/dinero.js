@@ -1,3 +1,4 @@
+
 type ParametersProps = {
   children: React.ReactNode;
 };
@@ -14,17 +15,29 @@ export function Parameters({ children }: ParametersProps) {
 
   if (parameters.length > 0) {
     return (
-      <table>
+      <table className="w-full mt-3">
+        <thead>
+          <tr>
+            <th className="px-0 py-4 text-sm font-semibold text-left text-gray-400">Name</th>
+            <th className="px-0 py-4 text-sm font-semibold text-left text-gray-400">Type</th>
+            <th className="px-0 py-4 text-sm font-semibold text-left text-gray-400">Description</th>
+            <th className="px-0 py-4 text-sm font-semibold text-left text-gray-400">Required</th>
+          </tr>
+        </thead>
         <tbody>
           {parameters.map(({ props }) => (
             <tr key={props.name}>
-              <td>
+              <td className="px-0 py-4 text-sm align-top border-t border-gray-200">
                 <code id={`parameter-${props.name}`}>{props.name}</code>
               </td>
-              <td>
+              <td className="px-0 py-4 text-sm align-top border-t border-gray-200">
                 <code>{props.type}</code>
-                {props.required && <span>Required</span>}
-                <div>{props.children}</div>
+              </td>
+              <td className="px-0 py-4 align-top border-t border-gray-200">
+                <div className="-mt-6">{props.children}</div>
+              </td>
+              <td className="px-0 py-4 align-top border-t border-gray-200">
+                {props.required ? 'Yes' : 'No'}
               </td>
             </tr>
           ))}

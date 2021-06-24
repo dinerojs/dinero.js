@@ -10,10 +10,10 @@ import {
   ExternalLink,
   InternalLink,
   Alert,
+  AlertProps,
   Parameters,
   Panel,
   Parameter,
-  Signature,
 } from '.';
 import { ClipboardCheckIcon, ClipboardIcon } from './icons';
 
@@ -62,7 +62,7 @@ function CustomHeading2(
     HTMLHeadingElement
   >
 ) {
-  return <h2 {...props} />;
+  return <h2 {...props} className="mt-12 text-2xl font-semibold text-gray-800" />;
 }
 
 function CustomHeading3(
@@ -71,7 +71,7 @@ function CustomHeading3(
     HTMLHeadingElement
   >
 ) {
-  return <h3 {...props} />;
+  return <h3 {...props} className="mt-10 text-xl font-semibold text-gray-800" />;
 }
 
 function CustomHeading4(
@@ -80,7 +80,7 @@ function CustomHeading4(
     HTMLHeadingElement
   >
 ) {
-  return <h4 {...props} />;
+  return <h4 {...props} className="mt-6 text-lg font-semibold text-gray-800" />;
 }
 
 function CustomImage({
@@ -90,6 +90,10 @@ function CustomImage({
   React.ImgHTMLAttributes<HTMLImageElement>,
   HTMLImageElement
 >) {
+  if (src === undefined) {
+    return null;
+  }
+
   return (
     <CustomFigure alt={alt}>
       <FullWidthImage alt={alt} src={src} />
@@ -100,7 +104,7 @@ function CustomImage({
 function CustomInlineCode(
   props: MDXComponentProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
 ) {
-  return <code {...props} />;
+  return <code {...props} className="text-sm" />;
 }
 
 function CustomKeyboardInput(
@@ -122,7 +126,7 @@ function CustomPreformattedText(
   return (
     <div className="relative mt-6 group">
       <button
-        className={cx('absolute top-0 right-0 flex items-center mt-5 mr-5 space-x-1 text-sm transition duration-100 ease-in-out focus:outline-none group-hover:opacity-100', { 'text-gray-400 hover:text-gray-600 opacity-0': !copied, 'text-blue-600': copied })}
+        className={cx('hidden md:flex absolute pointer-events-auto top-0 right-0 items-center mt-8 mr-8 space-x-1 text-sm transition duration-100 ease-in-out focus:outline-none group-hover:opacity-100', { 'text-gray-400 hover:text-gray-600 opacity-0': !copied, 'text-blue-600': copied })}
         type="button"
         title={buttonText}
         onClick={() => {
@@ -137,7 +141,9 @@ function CustomPreformattedText(
         <span className={cx({ 'sr-only': !copied })}>{state.error ? "Couldn't copy, try manually" : buttonText}</span>
         {!state.error && <Icon className="h-5" />}
       </button>
-      <pre {...props} className="px-6 py-5 font-mono text-sm bg-gray-100 border border-gray-200 rounded" />
+      <div className="p-8 overflow-x-scroll font-mono text-sm leading-relaxed bg-gray-100 rounded">
+        <pre {...props} />
+      </div>
     </div>
   );
 }
@@ -172,7 +178,7 @@ function CustomTableHeaderCell(
     HTMLTableHeaderCellElement
   >
 ) {
-  return <th {...props} />;
+  return <th {...props} className="align-top" />;
 }
 
 function CustomTableDataCell(
@@ -199,7 +205,7 @@ function CustomParagraph(
     HTMLParagraphElement
   >
 ) {
-  return <p {...props} />;
+  return <p {...props} className="mt-6" />;
 }
 
 function CustomUnorderedList(
@@ -242,13 +248,20 @@ function CustomOrderedListItem(
   );
 }
 
+function CustomAlert(props: AlertProps) {
+  return (
+    <div className="mt-6">
+      <Alert {...props} />
+    </div>
+  )
+}
+
 export const MDXComponents = {
-  Alert,
+  Alert: CustomAlert,
   Image,
   Panel,
   Parameters,
   Parameter,
-  Signature,
   a: CustomLink,
   em: CustomEmphasis,
   h2: CustomHeading2,

@@ -1,27 +1,8 @@
 ---
 title: createConverter
 description: Create a Dinero object converter.
+returns: Dinero<TAmount>
 ---
-
-<Signature>
-
-```ts
-createConverter<TAmount>(
-  options: ConvertOptions<TAmount>
-): (
-  dineroObject: Dinero<TAmount>
-  newCurrency: Currency<TAmount>
-) => Dinero<TAmount>
-
-convert<TAmount>(
-  dineroObject: Dinero<TAmount>
-  newCurrency: Currency<TAmount>
-): Dinero<TAmount>
-```
-
-</Signature>
-
-## About this function
 
 Create a converter function to convert Dinero object from a currency to another.
 

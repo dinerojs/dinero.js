@@ -13,19 +13,7 @@ main pre code::after {
   content: '';
 }
 
-table td {
-  vertical-align: top;
-}
-
-table tr td {
-  border-top: 1px solid silver;
-}
-
-table tr:first-child td {
-  border: none;
-}
-
-[role="alert"] {
+/* [role="alert"] {
   align-items: center;
   display: flex;
   background-color:lightblue;
@@ -34,7 +22,7 @@ table tr:first-child td {
 
 [role="alert"]::before {
   content: '💡';
-}
+} */
 
 .token.comment,
 .token.prolog,

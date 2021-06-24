@@ -4,6 +4,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 import { Base } from '../../layouts';
 import { getHeadings, getFiles, getFileBySlug, Heading } from '../../utils';
+import { ArrowNarrowRightIcon } from '../../components/icons';
 
 type PageProps = {
   headings: Heading[];
@@ -12,6 +13,7 @@ type PageProps = {
     slug: string[];
     title: string;
     description: string;
+    returns?: string;
   };
 };
 
@@ -26,7 +28,12 @@ export default function Docs({ headings, mdxSource, frontMatter }: PageProps) {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet" />
       </Head>
       <>
-        <h1>{frontMatter.title}</h1>
+        <div className="flex items-end mb-10 space-x-3">
+          <h1 className="text-4xl font-bold text-gray-800">
+            {frontMatter.title}
+          </h1>
+          {frontMatter.returns && <><ArrowNarrowRightIcon className="h-4 mb-2 text-gray-400" /><code className="mb-1">{frontMatter.returns}</code></>}
+        </div>
         <MDXRemote {...mdxSource} />
       </>
     </Base>

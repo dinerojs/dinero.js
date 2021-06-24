@@ -1,26 +1,8 @@
 ---
 title: createFormatter
 description: Create a Dinero object formatter.
+returns: string
 ---
-
-<Signature>
-
-```ts
-createFormatter<TAmount>(
-  transformer: Transformer<TAmount>
-  options?: RoundingOptions<TAmount>
-): (
-  dineroObject: Dinero<TAmount>
-) => string
-
-format<TAmount>(
-  dineroObject: Dinero<TAmount>
-): string
-```
-
-</Signature>
-
-## About this function
 
 Create a function to format Dinero objects.
 
