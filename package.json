@@ -14,20 +14,22 @@
   "main": "build/cjs/dinero.js",
   "module": "build/esm/dinero.js",
   "scripts": {
-    "precommit": "lint-staged",
+    "build": "node tasks/build/",
+    "cdn:purge": "curl https://purge.jsdelivr.net/npm/dinero.js/build/umd/dinero.min.js",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate",
+    "coverage": "cat ./coverage/lcov.info | coveralls",
     "cz": "git-cz",
+    "deploy": "./tasks/deploy.sh",
+    "docs": "jsdoc src/ -r -d ./docs -t ./node_modules/jsdoc-template -c jsdoc.json -R ./README.md -q title=Dinero.js",
     "format": "prettier --write 'src/**/*.js' 'test/**/*.js'",
     "lint": "eslint 'src/**/*.js' 'test/**/*.js'",
     "lint!": "npm run format && npm run lint",
-    "test": "jest --coverage",
-    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "docs": "rm -rf docs && ./node_modules/.bin/jsdoc src/ -r -d ./docs -t ./node_modules/jsdoc-template -c jsdoc.json -R ./README.md -q title=Dinero.js",
-    "build": "rm -rf build && node tasks/build/",
-    "deploy": "./tasks/deploy.sh",
+    "precommit": "lint-staged",
+    "predocs": "rm -rf docs",
+    "prebuild": "rm -rf build",
     "semantic-release": "semantic-release",
-    "cdn:purge": "curl https://purge.jsdelivr.net/npm/dinero.js/build/umd/dinero.min.js",
-    "contributors:add": "all-contributors add",
-    "contributors:generate": "all-contributors generate"
+    "test": "jest --coverage"
   },
   "lint-staged": {
     "*.js": [
