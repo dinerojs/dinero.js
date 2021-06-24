@@ -168,6 +168,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "piranna",
+      "name": "Jesús Leganés-Combarro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/532414?v=4",
+      "profile": "http://piranna.github.io",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
