@@ -117,6 +117,9 @@ const Dinero = options => {
      * @return {Number}
      */
     getAmount() {
+      return this.amount
+    },
+    get amount() {
       return amount
     },
     /**
@@ -129,6 +132,9 @@ const Dinero = options => {
      * @return {String}
      */
     getCurrency() {
+      return this.currency
+    },
+    get currency() {
       return currency
     },
     /**
@@ -167,6 +173,9 @@ const Dinero = options => {
      * @return {Number}
      */
     getPrecision() {
+      return this.precision
+    },
+    get precision() {
       return precision
     },
     /**
@@ -893,6 +902,9 @@ const Dinero = options => {
      * @return {Number}
      */
     toUnit() {
+      return this.unit
+    },
+    get unit() {
       return calculator.divide(this.getAmount(), Math.pow(10, precision))
     },
     /**
