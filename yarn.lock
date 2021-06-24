@@ -5359,8 +5359,7 @@
   "version" "0.1.1"
 
 "jsdoc-template@sarahdayan/jsdoc-template":
-  "integrity" "sha512-kcA//IORlAjZtScPjAzp63Qez2DnuhiAwgmpOYjXOlYF2oyeWmNW+hc1lJIRLA4F3JfmYGDmJJqwWhDdHJ9GnA=="
-  "resolved" "https://codeload.github.com/sarahdayan/jsdoc-template/tar.gz/3be85d36a1cb33671dbe9e9705f383a7b15c6333"
+  "resolved" "git+ssh://git@github.com/sarahdayan/jsdoc-template.git#3be85d36a1cb33671dbe9e9705f383a7b15c6333"
   "version" "3.4.0"
 
 "jsdoc@3.6.4":

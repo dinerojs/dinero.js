@@ -28,6 +28,7 @@
     "precommit": "lint-staged",
     "predocs": "rm -rf docs",
     "prebuild": "rm -rf build",
+    "prepare": "npm run build",
     "semantic-release": "semantic-release",
     "test": "jest --coverage"
   },
