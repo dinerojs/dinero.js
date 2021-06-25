@@ -50,17 +50,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const pages = await getFiles('docs');
-  const slugs = pages.map((page) =>
-    page.replace('.mdx', '').split('/').filter(Boolean)
-  );
+  const paths = pages.map((page) => {
+    const slug = page.replace('.mdx', '').split('/').filter(Boolean);
+    const [root] = slug;
+
+    return { params: { slug: root === 'index' ? [] : slug } }
+  });
 
   return {
-    paths: slugs
-      .map((slug) => {
-        const [root] = slug;
-
-        return { params: { slug: root === 'index' ? [] : slug } }
-      }),
-    fallback: true,
+    paths,
+    fallback: false,
   };
 };
