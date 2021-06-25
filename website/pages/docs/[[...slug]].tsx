@@ -14,15 +14,15 @@ type PageProps = {
     title: string;
     description: string;
     returns?: string;
-  };
+  } | undefined;
 };
 
 export default function Docs({ headings, mdxSource, frontMatter }: PageProps) {
   return (
     <Base headings={headings}>
       <Head>
-        <title>{frontMatter.title} | Dinero.js</title>
-        <meta name="description" content={frontMatter.description} />
+        <title>{frontMatter?.title} | Dinero.js</title>
+        <meta name="description" content={frontMatter?.description} />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet" />
@@ -30,9 +30,9 @@ export default function Docs({ headings, mdxSource, frontMatter }: PageProps) {
       <>
         <div className="flex items-end mb-10 space-x-3">
           <h1 className="text-4xl font-bold text-gray-800">
-            {frontMatter.title}
+            {frontMatter?.title}
           </h1>
-          {frontMatter.returns && <><ArrowNarrowRightIcon className="h-4 mb-2 text-gray-400" /><code className="mb-1">{frontMatter.returns}</code></>}
+          {frontMatter?.returns && <><ArrowNarrowRightIcon className="h-4 mb-2 text-gray-400" /><code className="mb-1">{frontMatter.returns}</code></>}
         </div>
         <MDXRemote {...mdxSource} />
       </>
