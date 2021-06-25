@@ -110,7 +110,7 @@ function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
   const isFirstLevel = level === 1;
   const [isOpen, setIsOpen] = useState(!isFirstLevel || hasActiveChild(node));
 
-  const id = node.resource?.label?.toLowerCase();
+  const id = node.resource?.label?.toLowerCase().replace(/\s/g, '-');
   const parentId = node.resource?.label ? `heading-${id}` : undefined;
   const childId = node.resource?.label ? `navigation-${id}` : undefined;
 
