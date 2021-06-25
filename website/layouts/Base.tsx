@@ -197,19 +197,19 @@ export function Base({ children, headings }: BaseProps) {
   );
 
   const previous =
-    current.previous ||
-    ((current.parent?.previous ? current.parent : current.root)?.previous?.last
+    current?.previous ||
+    ((current?.parent?.previous ? current?.parent : current?.root)?.previous?.last
       ?.children.length === 0
-      ? (current.parent?.previous ? current.parent : current.root)?.previous
+      ? (current?.parent?.previous ? current?.parent : current?.root)?.previous
           ?.last
-      : (current.parent?.previous ? current.parent : current.root)?.previous
+      : (current?.parent?.previous ? current?.parent : current?.root)?.previous
           ?.last?.last);
   const next =
-    current.next ||
-    ((current.parent?.next ? current.parent : current.root)?.next?.first
+    current?.next ||
+    ((current?.parent?.next ? current?.parent : current?.root)?.next?.first
       ?.children.length === 0
-      ? (current.parent?.next ? current.parent : current.root)?.next?.first
-      : (current.parent?.next ? current.parent : current.root)?.next?.first
+      ? (current?.parent?.next ? current?.parent : current?.root)?.next?.first
+      : (current?.parent?.next ? current?.parent : current?.root)?.next?.first
           ?.first);
 
   function isNodeActive({ resource }: Sitemap) {
