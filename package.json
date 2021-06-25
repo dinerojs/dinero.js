@@ -29,7 +29,9 @@
     "test:types": "tsc --noEmit",
     "test": "jest",
     "watch": "lerna run watch --parallel --no-private",
-    "website:dev": "yarn --cwd website/ dev"
+    "website:dev": "yarn --cwd website/ dev",
+    "website:start": "yarn --cwd website/ start",
+    "website:build": "yarn --cwd website/ build"
   },
   "devDependencies": {
     "@babel/cli": "7.14.3",
