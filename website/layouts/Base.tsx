@@ -322,9 +322,9 @@ export function Base({ children, headings }: BaseProps) {
         {(headings?.length ?? 0) > 0 && (
           <div className="hidden col-span-2 px-6 pb-6 lg:block">
             <div className="sticky z-20 pt-2 pb-6 overflow-y-scroll top-24 max-h-screen-24">
-              <h5 className="py-3 text-xs font-semibold tracking-wide uppercase">
+              <h2 className="py-3 text-xs font-semibold tracking-wide uppercase">
                 On this page
-              </h5>
+              </h2>
               <ul className="mt-2 text-sm">
                 {headings?.map(({ text, slug, level }) => (
                   <li key={slug} className={cx('py-2', { 'ml-4': level === 3 })}>
