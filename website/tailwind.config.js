@@ -1,3 +1,5 @@
+const { blueGray } = require('tailwindcss/colors');
+
 module.exports = {
   mode: 'jit',
   purge: [
@@ -27,6 +29,9 @@ module.exports = {
       ],
     },
     extend: {
+      colors: {
+        gray: blueGray,
+      },
       minHeight: (theme) => {
         const spacing = Object.entries(theme('spacing'));
 
