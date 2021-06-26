@@ -18,7 +18,7 @@ export function Alert({ children, type }: AlertProps) {
     warning: 'bg-yellow-200 text-yellow-500',
   };
 
-  return <div role="alert" className="flex items-start p-6 text-sm rounded-md shadow-lg">
+  return <div role="alert" className="flex items-start p-6 text-sm rounded-md shadow-xl">
     <div className="mr-3">
       <span className={`px-2 py-1 text-xs font-semibold tracking-wider uppercase rounded-full ${classNames[type]}`}>{type}</span>
     </div>
