@@ -16,12 +16,13 @@ import {
   Parameter,
 } from '.';
 import { ClipboardCheckIcon, ClipboardIcon } from './icons';
+import { PanelProps } from './Panel';
 
 type MDXComponentProps<TAttribute, TElement> = React.DetailedHTMLProps<
   TAttribute,
   TElement
 > & {
-  children: React.ReactElement;
+  children: React.ReactElement,
 };
 
 function CustomLink(
@@ -32,7 +33,8 @@ function CustomLink(
 ) {
   const { href, children } = props;
   const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
-  const containsImage = children?.props?.originalType;
+  const containsImage = children?.props?.originalType === 'img';
+  const containsInlineCode = children?.props?.originalType === 'inlineCode';
   const LinkComponent = isInternalLink ? InternalLink : ExternalLink;
 
   if (containsImage) {
@@ -47,7 +49,14 @@ function CustomLink(
     );
   }
 
-  return <LinkComponent {...props} />;
+  return (
+    <LinkComponent
+      className={cx('text-blue-600', {
+        'hover:underline': !containsInlineCode,
+      })}
+      {...props}
+    />
+  );
 }
 
 function CustomEmphasis(
@@ -62,7 +71,9 @@ function CustomHeading2(
     HTMLHeadingElement
   >
 ) {
-  return <h2 {...props} className="mt-12 text-2xl font-semibold text-gray-800" />;
+  return (
+    <h2 {...props} className="mt-12 text-2xl font-semibold text-gray-800" />
+  );
 }
 
 function CustomHeading3(
@@ -71,7 +82,9 @@ function CustomHeading3(
     HTMLHeadingElement
   >
 ) {
-  return <h3 {...props} className="mt-10 text-xl font-semibold text-gray-800" />;
+  return (
+    <h3 {...props} className="mt-10 text-xl font-semibold text-gray-800" />
+  );
 }
 
 function CustomHeading4(
@@ -104,7 +117,7 @@ function CustomImage({
 function CustomInlineCode(
   props: MDXComponentProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
 ) {
-  return <code {...props} className="text-sm" />;
+  return <code className="text-sm" {...props} />;
 }
 
 function CustomKeyboardInput(
@@ -126,7 +139,13 @@ function CustomPreformattedText(
   return (
     <div className="relative mt-6 group">
       <button
-        className={cx('hidden md:flex absolute pointer-events-auto top-0 right-0 items-center mt-8 mr-8 space-x-1 text-sm transition duration-100 ease-in-out focus:outline-none group-hover:opacity-100', { 'text-gray-400 hover:text-gray-600 opacity-0': !copied, 'text-blue-600': copied })}
+        className={cx(
+          'hidden md:flex absolute pointer-events-auto top-0 right-0 items-center mt-8 mr-8 space-x-1 text-sm transition duration-100 ease-in-out focus:outline-none group-hover:opacity-100',
+          {
+            'text-gray-400 hover:text-gray-600 opacity-0': !copied,
+            'text-blue-600': copied,
+          }
+        )}
         type="button"
         title={buttonText}
         onClick={() => {
@@ -138,7 +157,9 @@ function CustomPreformattedText(
           }, 5000);
         }}
       >
-        <span className={cx({ 'sr-only': !copied })}>{state.error ? "Couldn't copy, try manually" : buttonText}</span>
+        <span className={cx({ 'sr-only': !copied })}>
+          {state.error ? "Couldn't copy, try manually" : buttonText}
+        </span>
         {!state.error && <Icon className="h-5" />}
       </button>
       <div className="p-8 overflow-x-scroll font-mono text-sm leading-relaxed bg-gray-100 rounded">
@@ -160,7 +181,7 @@ function CustomTable(
     HTMLTableElement
   >
 ) {
-  return <table {...props} />;
+  return <table {...props} className="w-full mt-6" />;
 }
 
 function CustomTableHeader(
@@ -178,7 +199,12 @@ function CustomTableHeaderCell(
     HTMLTableHeaderCellElement
   >
 ) {
-  return <th {...props} className="align-top" />;
+  return (
+    <th
+      {...props}
+      className="px-0 py-4 text-sm font-semibold text-left text-gray-400"
+    />
+  );
 }
 
 function CustomTableDataCell(
@@ -187,7 +213,12 @@ function CustomTableDataCell(
     HTMLTableDataCellElement
   >
 ) {
-  return <td {...props} />;
+  return (
+    <td
+      {...props}
+      className="px-0 py-4 text-sm align-top border-t border-gray-200"
+    />
+  );
 }
 
 function CustomTableRow(
@@ -250,18 +281,33 @@ function CustomOrderedListItem(
 
 function CustomAlert(props: AlertProps) {
   return (
-    <div className="mt-6">
+    <div className="my-8 last:mb-0">
       <Alert {...props} />
     </div>
-  )
+  );
+}
+
+function CustomPanel(props: PanelProps) {
+  return (
+    <div className="my-8 last:mb-0">
+      <Panel {...props} />
+    </div>
+  );
+}
+
+function Scrollable(
+  props: MDXComponentProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+) {
+  return <div className="overflow-x-scroll" {...props} />;
 }
 
 export const MDXComponents = {
   Alert: CustomAlert,
   Image,
-  Panel,
+  Panel: CustomPanel,
   Parameters,
   Parameter,
+  Scrollable,
   a: CustomLink,
   em: CustomEmphasis,
   h2: CustomHeading2,

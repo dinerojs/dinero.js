@@ -1,9 +1,11 @@
 import GithubSlugger from 'github-slugger';
+import remark from 'remark';
+import strip from 'strip-markdown';
 
 export type Heading = {
-  text: string;
-  level: number;
-  slug: string;
+  text: string,
+  level: number,
+  slug: string,
 };
 
 export function getHeadings(source: string): Heading[] {
@@ -14,7 +16,15 @@ export function getHeadings(source: string): Heading[] {
   });
 
   return headingLines.map((raw) => {
-    const text = raw.replace(/^###*\s/, '');
+    let text = '';
+
+    remark()
+      .use(strip)
+      .process(raw.replace(/^###*\s/, ''), (err, { contents }) => {
+        if (err) throw err;
+        text = String(contents);
+      });
+
     const level = raw.slice(0, 3) === '###' ? 3 : 2;
     const slug = slugger.slug(text);
 
