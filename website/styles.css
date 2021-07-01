@@ -1,18 +1,3 @@
-main code {
-  color: #e3116c;
-}
-
-main code::before,
-main code::after {
-  content: '`';
-}
-
-main pre code::before,
-main pre code::after {
-  display: none;
-  content: '';
-}
-
 .token.deleted:not(.prefix),
 .token.inserted:not(.prefix) {
   @apply block px-8 py-1 -mx-8;

@@ -117,7 +117,7 @@ function CustomImage({
 function CustomInlineCode(
   props: MDXComponentProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
 ) {
-  return <code className="text-sm" {...props} />;
+  return <code data-content="`" className="text-sm text-red-600 before:content after:content" {...props} />;
 }
 
 function CustomKeyboardInput(

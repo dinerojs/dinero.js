@@ -83,10 +83,22 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    plugin(({ addVariant, e }) => {
+      addVariant('before', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.${e(`before${separator}${className}`)}::before`;
+        });
+      });
+      addVariant('after', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.${e(`after${separator}${className}`)}::after`;
+        });
+      });
+    }),
     plugin(({ addUtilities, theme }) => {
       const spacing = Object.entries(theme('spacing'));
 
-      const newUtilities = spacing.reduce((acc, curr) => {
+      const scrollPaddingUtilities = spacing.reduce((acc, curr) => {
         const [key, value] = curr;
 
         return {
@@ -97,7 +109,20 @@ module.exports = {
         };
       }, {});
 
-      addUtilities(newUtilities);
+      const contentUtilities = {
+        '.content': {
+          content: 'attr(data-content)',
+        },
+        '.content-before': {
+          content: 'attr(data-before)',
+        },
+        '.content-after': {
+          content: 'attr(data-after)',
+        },
+      };
+
+      addUtilities(scrollPaddingUtilities);
+      addUtilities(contentUtilities, ['before', 'after']);
     }),
   ],
 };
