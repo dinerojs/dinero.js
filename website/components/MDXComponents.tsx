@@ -140,7 +140,7 @@ function CustomPreformattedText(
     <div className="relative mt-6 group">
       <button
         className={cx(
-          'hidden md:flex absolute pointer-events-auto top-0 right-0 items-center mt-8 mr-8 space-x-1 text-sm transition duration-100 ease-in-out focus:outline-none group-hover:opacity-100',
+          'hidden bg-gradient-to-b from-gray-50 to-gray-100 p-2 shadow hover:shadow-md rounded md:flex absolute pointer-events-auto top-0 right-0 items-center mt-6 mr-8 text-sm transition duration-100 ease-in-out focus:outline-none group-hover:opacity-100',
           {
             'text-gray-400 hover:text-gray-600 opacity-0': !copied,
             'text-blue-600': copied,
@@ -154,10 +154,10 @@ function CustomPreformattedText(
 
           setTimeout(() => {
             setCopied(false);
-          }, 5000);
+          }, 3000);
         }}
       >
-        <span className={cx({ 'sr-only': !copied })}>
+        <span className="sr-only">
           {state.error ? "Couldn't copy, try manually" : buttonText}
         </span>
         {!state.error && <Icon className="h-5" />}
