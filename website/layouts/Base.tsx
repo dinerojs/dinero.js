@@ -90,12 +90,21 @@ function SidebarItem({
 type SidebarNodeWrapper = {
   children: React.ReactNode,
   node: Sitemap,
-  elementRef: React.MutableRefObject<HTMLLIElement | null>;
+  isActive: boolean;
 };
 
-function SidebarNodeWrapper({ children, node, elementRef }: SidebarNodeWrapper) {
+function SidebarNodeWrapper({ children, node, isActive }: SidebarNodeWrapper) {
+  const { asPath } = useRouter();
+  const nodeRef = useRef<HTMLLIElement | null>(null);
+
+  useEffect(() => {
+    if (isActive) {
+      nodeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }
+  }, [asPath]);
+
   if (node.resource?.label) {
-    return <li ref={elementRef}>{children}</li>;
+    return <li ref={nodeRef}>{children}</li>;
   }
 
   return <>{children}</>;
@@ -109,14 +118,12 @@ type SidebarNodeProps = {
 
 function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
   const { asPath } = useRouter();
-  const nodeWrapperRef = useRef<HTMLLIElement | null>(null);
   const isFirstLevel = level === 1;
   const initialIsExpanded = !isFirstLevel || hasActiveChild(node);
   const [isExpanded, setIsExpanded] = useState(initialIsExpanded);
 
   useEffect(() => {
     setIsExpanded(initialIsExpanded);
-    nodeWrapperRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
   }, [asPath]);
 
   const id = node.resource?.label?.toLowerCase().replace(/\s/g, '-');
@@ -136,7 +143,7 @@ function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
   }
 
   return (
-    <SidebarNodeWrapper node={node} elementRef={nodeWrapperRef}>
+    <SidebarNodeWrapper node={node} isActive={isNodeActive(node)}>
       <>
         {node.resource?.label ? (
           <SidebarItem
