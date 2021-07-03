@@ -7,17 +7,49 @@ When importing the full UMD version of Dinero.js, the development build is 67 KB
 
 <Scrollable>
 
-| Uncompressed | Minified | Gzip   | Brotli |
-|--------------|----------|--------|--------|
-| 67 KB        | 23 KB    | 3.4 KB | 2.9 KB |
+|                                | Uncompressed | Minified | Gzip   | Brotli |
+|--------------------------------|--------------|----------|--------|--------|
+| `dinero.js`                    | 67 KB        | 23 KB    | 3.4 KB | 2.9 KB |
+| `@dinero.js/currencies`        | 20 KB        | 6.6 KB   | 1.4 KB | 970 B  |
+| `@dinero.js/core`              | 40 KB        | 13 KB    | 3.1 KB | 2.8 KB |
+| `@dinero.js/calculator-number` | 4.6 KB       | 1.2 KB   | 658 B  | 560 B  |
+| `@dinero.js/calculator-bigint` | 4.6 KB       | 1.2 KB   | 657 B  | 559 B  |
 
 </Scrollable>
+
+<Alert type="info">
+
+The size of `dinero.js` includes the one of its dependencies `@dinero.js/core` and `@dinero.js/calculator-number`.
+
+</Alert>
 
 ## Compress your assets
 
 If you're using the UMD build, **make sure to compress it before you serve it in production.**
 
-If you're serving Dinero.js via a CDN such as [jsDelivr](https://www.jsdelivr.com/) or [cdnjs](https://cdnjs.com/), you should get Gzip or Brotli compression out of the box. If you're hosting your own, make sure to use the production build and to compress it either manually or using an edge network like [Cloudflare](https://www.cloudflare.com/cdn) or [Cloudfront](https://aws.amazon.com/cloudfront/).
+If you're importing Dinero.js via a CDN such as [jsDelivr](https://www.jsdelivr.com/) or [cdnjs](https://cdnjs.com/), you should get Gzip or Brotli compression out of the box. If you're hosting your own, make sure to use the production build and to compress it either manually or using an edge server like [Cloudflare](https://www.cloudflare.com/cdn) or [Cloudfront](https://aws.amazon.com/cloudfront/).
+
+<Panel
+  groups={[
+    {
+      label: 'Resources',
+      links: [
+        {
+          title: 'Content delivery network',
+          url: 'https://wikipedia.org/wiki/Content_delivery_network',
+        },
+        {
+          title: 'Gzip',
+          url: 'https://gnu.org/software/gzip/',
+        },
+        {
+          title: 'Brotli',
+          url: 'https://github.com/google/brotli',
+        },
+      ],
+    },
+  ]}
+/>
 
 ## Use the ESM build
 
@@ -25,7 +57,29 @@ Dinero.js comes in two builds: **Universal Module Definition (UMD) and ECMAScrip
 
 The UMD build bundles the entire library. It's meant for usage in Node.js 13.1 or older (before ES modules support), or when your web project doesn't use a build system.
 
-If you're using a modern build system like [webpack](https://webpack.js.org/), [Parcel](https://parceljs.org/) or [Vite](https://vitejs.dev/), you should use the ESM build and bundle it yourself. This lets you take advantage of performance features like [tree-shaking](https://developer.mozilla.org/docs/Glossary/Tree_shaking) and [code splitting](https://developer.mozilla.org/docs/Glossary/Code_splitting).
+If you're using a modern build system like [webpack](https://webpack.js.org/), [Parcel](https://parceljs.org/) or [Vite](https://vitejs.dev/), you should use the ESM build and bundle it yourself. This lets you take advantage of performance features like [tree-shaking](#tree-shake-your-code) and code splitting.
+
+<Panel
+  groups={[
+    {
+      label: 'Resources',
+      links: [
+        {
+          title: 'JavaScript modules',
+          url: 'https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules',
+        },
+        {
+          title: 'Tree-shaking',
+          url: 'https://developer.mozilla.org/docs/Glossary/Tree_shaking',
+        },
+        {
+          title: 'Code splitting',
+          url: 'https://developer.mozilla.org/docs/Glossary/Code_splitting',
+        },
+      ],
+    },
+  ]}
+/>
 
 ## Tree-shake your code
 
@@ -39,3 +93,25 @@ import { USD } from '@dinero.js/currencies';
 
 // ...
 ```
+
+<Panel
+  groups={[
+    {
+      label: 'Resources',
+      links: [
+        {
+          title: 'Tree Shaking',
+          url: 'https://webpack.js.org/guides/tree-shaking/',
+        },
+        {
+          title: 'Scope Hoisting',
+          url: 'https://v2.parceljs.org/features/scope-hoisting/',
+        },
+        {
+          title: 'Building for Production',
+          url: 'https://vitejs.dev/guide/build.html',
+        },
+      ],
+    },
+  ]}
+/>
