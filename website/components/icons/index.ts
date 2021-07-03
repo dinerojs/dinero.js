@@ -6,4 +6,5 @@ export * from './ClipboardIcon';
 export * from './ClipboardCheckIcon';
 export * from './CloseIcon';
 export * from './GitHubIcon';
+export * from './LinkIcon';
 export * from './MenuIcon';

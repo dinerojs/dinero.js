@@ -1,3 +1,4 @@
+import { InlineCode } from './InlineCode';
 
 type ParametersProps = {
   children: React.ReactNode;
@@ -28,10 +29,10 @@ export function Parameters({ children }: ParametersProps) {
           {parameters.map(({ props }) => (
             <tr key={props.name}>
               <td className="px-0 py-4 text-sm align-top border-t border-gray-200">
-                <code id={`parameter-${props.name}`}>{props.name}</code>
+                <InlineCode id={`parameter-${props.name}`}>{props.name}</InlineCode>
               </td>
               <td className="px-0 py-4 text-sm align-top border-t border-gray-200">
-                <code>{props.type}</code>
+                <InlineCode>{props.type}</InlineCode>
               </td>
               <td className="px-0 py-4 align-top border-t border-gray-200">
                 <div className="-mt-6">{props.children}</div>
