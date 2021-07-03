@@ -187,6 +187,11 @@ export function Base({ children, headings }: BaseProps) {
   const navRef = useRef(null);
   const navButtonRef = useRef(null);
 
+  const sites = {
+    v1: 'https://v1.dinerojs.com/',
+    v2: 'https://dinerojs.com/',
+  };
+
   useEffect(() => {
     document
       .querySelector('body')
@@ -231,7 +236,13 @@ export function Base({ children, headings }: BaseProps) {
           <div className="flex mt-px space-x-6 text-sm">
             <form>
               <span className="sr-only">Dinero.js version</span>
-              <select className="py-1 pr-1">
+              <select className="py-1 pr-1" onChange={(event) => {
+                const url = sites[event.target.value as 'v1' | 'v2'];
+
+                if (url !== undefined) {
+                  window.location.assign(url);
+                }
+              }}>
                 <option value="v2">v2.0.0</option>
                 <option value="v1">v1.8.1</option>
               </select>
