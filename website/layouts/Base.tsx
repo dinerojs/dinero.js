@@ -107,8 +107,14 @@ type SidebarNodeProps = {
 };
 
 function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
+  const { asPath } = useRouter();
   const isFirstLevel = level === 1;
-  const [isOpen, setIsOpen] = useState(!isFirstLevel || hasActiveChild(node));
+  const initialIsExpanded = !isFirstLevel || hasActiveChild(node);
+  const [isExpanded, setIsExpanded] = useState(initialIsExpanded);
+
+  useEffect(() => {
+    setIsExpanded(initialIsExpanded);
+  }, [asPath]);
 
   const id = node.resource?.label?.toLowerCase().replace(/\s/g, '-');
   const parentId = node.resource?.label ? `heading-${id}` : undefined;
@@ -131,14 +137,14 @@ function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
       <>
         {node.resource?.label ? (
           <SidebarItem
-            onClick={() => setIsOpen((currentIsOpen) => !currentIsOpen)}
+            onClick={() => setIsExpanded((currentIsExpanded) => !currentIsExpanded)}
             node={node}
             level={level}
             isNodeActive={isNodeActive}
             buttonProps={{
               'aria-controls': childId,
               id: parentId,
-              'aria-expanded': isOpen,
+              'aria-expanded': isExpanded,
             }}
           />
         ) : null}
@@ -148,8 +154,8 @@ function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
             id={childId}
             aria-labelledby={parentId}
             className={`my-2 ${cx({
-              block: isOpen,
-              hidden: !isOpen,
+              block: isExpanded,
+              hidden: !isExpanded,
             })}`}
           >
             {node.children.map((child, index) => (
