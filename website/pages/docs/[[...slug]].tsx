@@ -1,11 +1,13 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import { useEffect } from 'react';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 import { Base } from '../../layouts';
 import { getHeadings, getFiles, getFileBySlug, Heading } from '../../utils';
 import { ArrowNarrowRightIcon } from '../../components/icons';
 import { InlineCode } from '../../components';
+import { createInit, instructions, intro } from '../../utils/console';
 
 type PageProps = {
   headings: Heading[],
@@ -21,6 +23,11 @@ type PageProps = {
 };
 
 export default function Docs({ headings, mdxSource, frontMatter }: PageProps) {
+  useEffect(() => {
+    window.init = init;
+    console.log(...intro);
+  }, []);
+
   return (
     <Base headings={headings}>
       <Head>
@@ -54,6 +61,21 @@ export default function Docs({ headings, mdxSource, frontMatter }: PageProps) {
     </Base>
   );
 }
+
+const init = createInit({
+  defaultVersion: '1.8.0',
+  async getLibrary({ version }) {
+    const url = `https://cdn.jsdelivr.net/npm/dinero.js@${version}/build/esm/dinero.min.js`;
+    const { default: library } = await import(/* webpackIgnore: true */ url);
+
+    return library;
+  },
+  onInit({ library }) {
+    window._ = library;
+
+    console.log(...instructions);
+  },
+});
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params?.slug || ['index'];
