@@ -7,7 +7,7 @@ import cx from 'classnames';
 import { tree } from '../data';
 import { Heading } from '../utils';
 import { Logo } from '../components';
-import { Sitemap } from '../utils/sitemap';
+import { getNext, getPrevious, Sitemap } from '../utils/sitemap';
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -196,21 +196,8 @@ export function Base({ children, headings }: BaseProps) {
     asPath.replace('/docs/', '').replace(/(#.+)/, '')
   );
 
-  const previous =
-    current?.previous ||
-    ((current?.parent?.previous ? current?.parent : current?.root)?.previous?.last
-      ?.children.length === 0
-      ? (current?.parent?.previous ? current?.parent : current?.root)?.previous
-          ?.last
-      : (current?.parent?.previous ? current?.parent : current?.root)?.previous
-          ?.last?.last);
-  const next =
-    current?.next ||
-    ((current?.parent?.next ? current?.parent : current?.root)?.next?.first
-      ?.children.length === 0
-      ? (current?.parent?.next ? current?.parent : current?.root)?.next?.first
-      : (current?.parent?.next ? current?.parent : current?.root)?.next?.first
-          ?.first);
+  const previous = getPrevious(current);
+  const next = getNext(current);
 
   function isNodeActive({ resource }: Sitemap) {
     const [path] = asPath.split('#');
