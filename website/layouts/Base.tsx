@@ -235,10 +235,10 @@ export function Base({ children, headings }: BaseProps) {
       <header className="sticky top-0 z-20 bg-white border-b border-gray-200">
         <div className="flex items-center justify-between h-16 px-6 mx-auto space-x-4 max-w-screen-2xl">
           <Link href="/">
-            <div className="flex space-x-2">
+            <a className="flex space-x-2">
               <Logo className="h-6" />
               <span className="mt-px font-semibold">Dinero.js</span>
-            </div>
+            </a>
           </Link>
           <div className="flex mt-px space-x-6 text-sm">
             <form>
