@@ -3,4 +3,277 @@ title: What is Dinero.js?
 description: A hello to the world.
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis turpis consectetur, sagittis elit convallis, pretium mi. Maecenas at nunc fermentum, tempus magna vitae, consectetur nunc. Nulla facilisi. Aenean dignissim mi at mauris pharetra pulvinar. Maecenas rhoncus at sem eu vestibulum. Aenean metus diam, tincidunt eu hendrerit quis, lobortis ut libero. Sed nec feugiat dolor, at gravida sem. Aliquam egestas nisl eget justo lobortis mollis.
+**Dinero.js lets you express monetary values in JavaScript.**
+
+You can perform mutations, conversions, comparisons, format them extensively, and overall make money manipulation in your application easier and safer.
+
+<Panel
+  groups={[
+    {
+      label: 'Getting started',
+      links: [
+        {
+          title: 'Quick start',
+          url: '/docs/getting-started/quick-start',
+        },
+      ],
+    },
+  ]}
+/>
+
+## Why do I even need this?
+
+**Money is more complex than you think.** It's way more than what you can stuff in a `number` type.
+
+### Floating point math is inaccurate
+
+Right now, you might be representing money with the `number` type in your site or application. Something like this:
+
+```js
+const cart = [
+  {
+    name: 'Mass Effect: Legendary Edition',
+    platform: 'Xbox One',
+    price: 69.99,
+  },
+  {
+    name: 'The Legend of Zelda: Breath of the Wild',
+    platform: 'Nintendo Switch',
+    price: 51.91,
+  }
+];
+```
+
+You might also be calculating using arithmetic operators, and ending up with results like this:
+
+```js
+const total = cart.reduce((acc, { price }) => acc + price, 0); // 121.89999999999999 😧
+```
+
+While certain programming languages like Java or C# safely support arbitrary precision decimals, JavaScript only lets you natively express decimals is with using [double precision floats](https://wikipedia.org/wiki/IEEE_754). The limitation is that it uses a binary system to represent decimal numbers, so you end up with inaccurate results when trying to math.
+
+**Using IEEE 754 floats to store monetary values is a bad idea.** As you calculate more values, imperceptible precision errors lead to larger gaps. This inevitably ends up causing rounding issues.
+
+<Panel
+  groups={[
+    {
+      label: 'Resources',
+      links: [
+        {
+          title: 'Never Use Floats for Money',
+          url: 'https://husobee.github.io/money/float/2016/09/23/never-use-floats-for-currency.html',
+        },
+        {
+          title: 'Floating Point Math',
+          url: 'https://0.30000000000000004.com/',
+        },
+        {
+          title: 'IEEE-754 Floating Point representation explained',
+          url: 'https://bartaz.github.io/ieee754-visualization/',
+        },
+      ],
+    },
+  ]}
+/>
+
+### Money is more than a number
+
+When you see the following code, can you say how much it costs?
+
+```js
+const item = {
+  name: 'Mass Effect: Legendary Edition',
+  platform: 'Xbox One',
+  price: 69.99,
+};
+```
+
+If you're in the United States, you might think it's $69.99. If you live in the European Union, you might have instinctively gone for €69.99. The bottom line is, there's no way to know. You can only guess.
+
+**The amount of a monetary value is always relative to its currency.** There's no such thing as ten "money". It's ten dollars, ten euros, ten bitcoins, etc. To add up two amounts with different currencies, you need to convert them
+first. The same goes for comparisons: if you don't know whether the two amounts share the same currency, you can't know which one is lesser or greater. Amount and currency can't go without one another.
+
+<Panel
+  groups={[
+    {
+      label: 'Core concepts',
+      links: [
+        {
+          title: 'Amount',
+          url: '/docs/core-concepts/amount',
+        },
+        {
+          title: 'Currency',
+          url: '/docs/core-concepts/currency',
+        },
+        {
+          title: 'Scale',
+          url: '/docs/core-concepts/scale',
+        },
+      ],
+    },
+  ]}
+/>
+
+### Money needs a domain model
+
+We tend to underestimate the complexity of how money works as a system. It's such an integral aspect of everyday life that we simplify its concepts to what we use and how we roughly think it works.
+
+For example, how would you stagger the following purchase in two payments?
+
+```js
+const purchase = {
+  title: 'Eccotemp i12-NG Indoor Natural Gas Tankless Water Heater',
+  price: 369.99,
+};
+```
+
+Maybe something like this:
+
+```js
+const count = 2;
+const payment = purchase.price / count;
+const payments = new Array(count).fill(null).map(() => payment);
+```
+
+Half of $369.99 is $184.995, but you can't split a penny. A straightforward solution might be to round to the nearest amount you can charge.
+
+```js
+const payment = Math.round((purchase.price / count) * 100) / 100;
+```
+
+But now, both halves would round up to $185, and you'd charge a penny extra.
+
+Basic operations like percentages or division can't cut it without adding or losing pennies. Instead of relying on simplified concepts, **you need an abstraction that accurately models the nature of money.**
+
+<Panel
+  groups={[
+    {
+      label: 'Resources',
+      links: [
+        {
+          title: 'Money',
+          url: 'https://martinfowler.com/eaaCatalog/money.html',
+        },
+      ],
+    },
+  ]}
+/>
+
+## Why Dinero.js?
+
+Dinero.js is the most advanced JavaScript library for manipulating money, with a deep understanding of the model. It's a **modern, reliable, lightweight, fully tested library that works both in the browser and on the server**. It follows [Martin Fowler's money pattern](https://martinfowler.com/eaaCatalog/money.html), it's immutable, modular, side-effects free, generic, and natively supports TypeScript.
+
+### Immutable
+
+An immutable library is safer and more predictable. Mutable operations and reference copies are a source of bugs. Immutability avoids them altogether.
+
+**Dinero.js lets you perform calculations without altering original instances.** In the following Vue.js example, calling `priceWithTax` won't alter `price`. If the instance was mutable, it would.
+
+```js
+import { ref, computed } from 'vue';
+import { dinero, allocate } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+export default {
+  setup() {
+    const price = ref(dinero({ amount: 500, currency: USD }));
+    const priceWithTax = computed(() => allocate(price.value, [20, 80])[0]);
+
+    return { price, priceWithTax };
+  },
+};
+```
+
+### Modular and composable
+
+Money is one small concern in your entire site or application; there's no reason for it to become a performance bottleneck. Dinero.js comes in pure, cleanly separated modules, so you can pull exactly what you need in your codebase.
+
+```js
+import { dinero, add, subtract, multiply } from 'dinero.js';
+
+// ...
+```
+
+<Panel
+  groups={[
+    {
+      label: 'Getting started',
+      links: [
+        {
+          title: 'Optimizing for production',
+          url: '/docs/getting-started/optimizing-for-production',
+        },
+      ],
+    },
+  ]}
+/>
+
+The API lets you quickly compose new functions that make sense in your application.
+
+```js
+import { dinero, add } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const dollars = (amount) => dinero({ amount, currency: USD });
+const addMany = (addends) => addends.reduce(add);
+
+const d1 = dollars(300);
+const d2 = dollars(200);
+const d3 = dollars(100);
+
+addMany([d1, d2, d3]);
+```
+
+You can also combine it with utility libraries such as Ramda if that's your jam.
+
+```js
+import { toFormat } from 'dinero.js';
+import { curry, flip } from 'ramda';
+
+const curriedToFormat = curry(flip(toFormat));
+
+const intlFormat = curriedToFormat(({ amount, currency }) => {
+  return amount.toLocaleString('en-US', {
+    style: 'currency',
+    currency: currency.code,
+  });
+});
+```
+
+### Generic
+
+If `number`s are no longer enough for you to represent integers, you can replace them with any data type you want. **Dinero.js is designed to be entirely generic.**
+
+```js
+import Big from 'big.js';
+import { createDinero } from 'dinero.js';
+
+const bigDinero = createDinero({
+  calculator: {
+    // ...
+  },
+});
+```
+
+<Panel
+  groups={[
+    {
+      label: 'Resources',
+      links: [
+        {
+          title: 'Using different amount types',
+          url: '/docs/advanced/using-different-amount-types',
+        },
+      ],
+    },
+  ]}
+/>
+
+### Type safe
+
+Dinero.js is written in TypeScript, granting you full type safety when manipulating money.
+
+## Getting started
+
+**Ready for more more?** Move on to the [quick start](/docs/getting-started/quick-start) guide to get started with Dinero.js.
