@@ -42,9 +42,13 @@ function SidebarItem({
   const isActive = isNodeActive(node);
   const isRootLevel = level === 1;
 
+  if (level === 0) {
+    return null;
+  }
+
   if (path && node.children.length === 0) {
     return (
-      <Link href={`/docs${path}`}>
+      <Link href={path}>
         <a
           className={`block py-1 transition-colors duration-100 ease-in-out ${cx(
             {
@@ -91,15 +95,17 @@ type SidebarNodeWrapper = {
   children: React.ReactNode,
   node: Sitemap,
   isActive: boolean;
+  onNavigate: () => void,
 };
 
-function SidebarNodeWrapper({ children, node, isActive }: SidebarNodeWrapper) {
+function SidebarNodeWrapper({ children, node, isActive, onNavigate }: SidebarNodeWrapper) {
   const { asPath } = useRouter();
   const nodeRef = useRef<HTMLLIElement | null>(null);
 
   useEffect(() => {
     if (isActive) {
       nodeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      onNavigate();
     }
   }, [asPath]);
 
@@ -114,9 +120,10 @@ type SidebarNodeProps = {
   node: Sitemap,
   level: number,
   isNodeActive: (node: Sitemap) => boolean,
+  onNavigate: () => void,
 };
 
-function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
+function SidebarNode({ node, level, isNodeActive, onNavigate }: SidebarNodeProps) {
   const { asPath } = useRouter();
   const isFirstLevel = level === 1;
   const initialIsExpanded = !isFirstLevel || hasActiveChild(node);
@@ -126,7 +133,7 @@ function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
     setIsExpanded(initialIsExpanded);
   }, [asPath]);
 
-  const id = node.resource?.label?.toLowerCase().replace(/\s/g, '-');
+  const id = node.resource?.label?.toLowerCase().replace(/\s/g, '-').replace('?', '');
   const parentId = node.resource?.label ? `heading-${id}` : undefined;
   const childId = node.resource?.label ? `navigation-${id}` : undefined;
 
@@ -143,7 +150,7 @@ function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
   }
 
   return (
-    <SidebarNodeWrapper node={node} isActive={isNodeActive(node)}>
+    <SidebarNodeWrapper node={node} isActive={isNodeActive(node)} onNavigate={onNavigate}>
       <>
         {node.resource?.label ? (
           <SidebarItem
@@ -160,7 +167,6 @@ function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
         ) : null}
         {node.children?.length ? (
           <ul
-            role="region"
             id={childId}
             aria-labelledby={parentId}
             className={`my-2 ${cx({
@@ -174,6 +180,7 @@ function SidebarNode({ node, level, isNodeActive }: SidebarNodeProps) {
                 node={child}
                 level={level + 1}
                 isNodeActive={isNodeActive}
+                onNavigate={onNavigate}
               />
             ))}
           </ul>
@@ -214,7 +221,7 @@ export function Base({ children, headings }: BaseProps) {
   });
 
   const current = tree.fromUrl(
-    asPath.replace('/docs/', '').replace(/(#.+)/, '')
+    asPath.replace('/docs', 'docs').replace(/(#.+)/, '')
   );
 
   const previous = getPrevious(current);
@@ -223,7 +230,7 @@ export function Base({ children, headings }: BaseProps) {
   function isNodeActive({ resource }: Sitemap) {
     const [path] = asPath.split('#');
 
-    return path === `/docs${resource?.path}`;
+    return path === resource?.path;
   }
 
   return (
@@ -241,7 +248,7 @@ export function Base({ children, headings }: BaseProps) {
             </a>
           </Link>
           <div className="flex mt-px space-x-6 text-sm">
-            <form>
+            <form className="mt-px">
               <span className="sr-only">Dinero.js version</span>
               <select className="py-1 pr-1" onChange={(event) => {
                 const url = sites[event.target.value as 'v1' | 'v2'];
@@ -281,7 +288,7 @@ export function Base({ children, headings }: BaseProps) {
           )}
         >
           <div className="sticky px-6 pb-6 overflow-y-scroll top-24 max-h-screen-16 sm:max-h-screen-24">
-            <SidebarNode node={tree} level={0} isNodeActive={isNodeActive} />
+            <SidebarNode node={tree} level={-1} isNodeActive={isNodeActive} onNavigate={() => setIsSidebarOpen(false)} />
           </div>
         </nav>
         <div className="col-span-10 px-8 pb-32 sm:px-10 sm:pb-6 sm:col-span-7 lg:col-span-6 pt-9">
@@ -292,7 +299,7 @@ export function Base({ children, headings }: BaseProps) {
                 <li className="text-left">
                   {previous && (
                     <Link
-                      href={`/docs${previous.resource?.path}`}
+                      href={previous.resource?.path as string}
                       aria-label={`Go to ${previous.resource?.label}`}
                     >
                       <a className="flex items-center space-x-4 group">
@@ -312,7 +319,7 @@ export function Base({ children, headings }: BaseProps) {
                 <li className="text-right">
                   {next && (
                     <Link
-                      href={`/docs${next.resource?.path}`}
+                      href={next.resource?.path as string}
                       aria-label={`Go to ${next.resource?.label}`}
                     >
                       <a className="flex items-center space-x-4 group">
