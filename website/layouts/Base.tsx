@@ -6,7 +6,7 @@ import cx from 'classnames';
 
 import { tree } from '../data';
 import { Heading } from '../utils';
-import { Logo } from '../components';
+import { ExternalLink, InternalLink, Logo } from '../components';
 import { getNext, getPrevious, Sitemap } from '../utils/sitemap';
 import {
   ArrowLeftIcon,
@@ -18,17 +18,17 @@ import {
 } from '../components/icons';
 
 type SidebarItemProps = {
-  node: Sitemap,
-  level: number,
-  onClick: () => void,
-  isNodeActive: (node: Sitemap) => boolean,
+  node: Sitemap;
+  level: number;
+  onClick: () => void;
+  isNodeActive: (node: Sitemap) => boolean;
   buttonProps: Pick<
     React.DetailedHTMLProps<
       React.ButtonHTMLAttributes<HTMLButtonElement>,
       HTMLButtonElement
     >,
     'aria-expanded' | 'aria-controls' | 'id'
-  >,
+  >;
 };
 
 function SidebarItem({
@@ -92,19 +92,28 @@ function SidebarItem({
 }
 
 type SidebarNodeWrapper = {
-  children: React.ReactNode,
-  node: Sitemap,
+  children: React.ReactNode;
+  node: Sitemap;
   isActive: boolean;
-  onNavigate: () => void,
+  onNavigate: () => void;
 };
 
-function SidebarNodeWrapper({ children, node, isActive, onNavigate }: SidebarNodeWrapper) {
+function SidebarNodeWrapper({
+  children,
+  node,
+  isActive,
+  onNavigate,
+}: SidebarNodeWrapper) {
   const { asPath } = useRouter();
   const nodeRef = useRef<HTMLLIElement | null>(null);
 
   useEffect(() => {
     if (isActive) {
-      nodeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      nodeRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'start',
+      });
       onNavigate();
     }
   }, [asPath]);
@@ -117,13 +126,18 @@ function SidebarNodeWrapper({ children, node, isActive, onNavigate }: SidebarNod
 }
 
 type SidebarNodeProps = {
-  node: Sitemap,
-  level: number,
-  isNodeActive: (node: Sitemap) => boolean,
-  onNavigate: () => void,
+  node: Sitemap;
+  level: number;
+  isNodeActive: (node: Sitemap) => boolean;
+  onNavigate: () => void;
 };
 
-function SidebarNode({ node, level, isNodeActive, onNavigate }: SidebarNodeProps) {
+function SidebarNode({
+  node,
+  level,
+  isNodeActive,
+  onNavigate,
+}: SidebarNodeProps) {
   const { asPath } = useRouter();
   const isFirstLevel = level === 1;
   const initialIsExpanded = !isFirstLevel || hasActiveChild(node);
@@ -133,7 +147,10 @@ function SidebarNode({ node, level, isNodeActive, onNavigate }: SidebarNodeProps
     setIsExpanded(initialIsExpanded);
   }, [asPath]);
 
-  const id = node.resource?.label?.toLowerCase().replace(/\s/g, '-').replace('?', '');
+  const id = node.resource?.label
+    ?.toLowerCase()
+    .replace(/\s/g, '-')
+    .replace('?', '');
   const parentId = node.resource?.label ? `heading-${id}` : undefined;
   const childId = node.resource?.label ? `navigation-${id}` : undefined;
 
@@ -150,11 +167,17 @@ function SidebarNode({ node, level, isNodeActive, onNavigate }: SidebarNodeProps
   }
 
   return (
-    <SidebarNodeWrapper node={node} isActive={isNodeActive(node)} onNavigate={onNavigate}>
+    <SidebarNodeWrapper
+      node={node}
+      isActive={isNodeActive(node)}
+      onNavigate={onNavigate}
+    >
       <>
         {node.resource?.label ? (
           <SidebarItem
-            onClick={() => setIsExpanded((currentIsExpanded) => !currentIsExpanded)}
+            onClick={() =>
+              setIsExpanded((currentIsExpanded) => !currentIsExpanded)
+            }
             node={node}
             level={level}
             isNodeActive={isNodeActive}
@@ -191,8 +214,8 @@ function SidebarNode({ node, level, isNodeActive, onNavigate }: SidebarNodeProps
 }
 
 type BaseProps = {
-  children: React.ReactNode,
-  headings: Heading[] | undefined,
+  children: React.ReactNode;
+  headings: Heading[] | undefined;
 };
 
 export function Base({ children, headings }: BaseProps) {
@@ -254,33 +277,43 @@ export function Base({ children, headings }: BaseProps) {
               <span className="mt-px font-semibold">Dinero.js</span>
             </a>
           </Link>
-          <div className="flex mt-px space-x-6 text-sm">
+          <div className="flex items-center mt-px space-x-6 text-sm">
             <form>
               <span className="sr-only">Dinero.js version</span>
-              <select className="py-1 pr-1" value={versions[0]} onChange={(event) => {
-                const { url } = sites[event.target.value as 'v1' | 'v2'];
+              <select
+                className="py-1 pr-1"
+                value={versions[0]}
+                onChange={(event) => {
+                  const { url } = sites[event.target.value as 'v1' | 'v2'];
 
-                if (url !== undefined) {
-                  window.location.assign(url);
-                }
-              }}>
+                  if (url !== undefined) {
+                    window.location.assign(url);
+                  }
+                }}
+              >
                 {versions.map((version) => (
-                  <option key={version} value={version}>{sites[version as 'v1' | 'v2'].label}</option>
+                  <option key={version} value={version}>
+                    {sites[version as 'v1' | 'v2'].label}
+                  </option>
                 ))}
                 <option value="v1">v1.8.1</option>
               </select>
             </form>
-            <a
+            <ExternalLink
               className="flex items-center space-x-2 group"
               href="https://github.com/dinerojs/dinero.js"
-              target="_blank"
-              rel="noreferrer noopener"
             >
               <GitHubIcon className="h-4 text-gray-400 transition-colors duration-100 ease-in-out text-opacity-80 group-hover:text-opacity-100" />
               <span className="text-gray-800 transition-colors duration-100 ease-in-out text-opacity-80 group-hover:text-opacity-100">
                 GitHub
               </span>
-            </a>
+            </ExternalLink>
+            <InternalLink
+              className="text-gray-800 transition-colors duration-100 ease-in-out text-opacity-80 hover:text-opacity-100"
+              href="/docs/about"
+            >
+              About
+            </InternalLink>
           </div>
         </div>
       </header>
@@ -297,7 +330,12 @@ export function Base({ children, headings }: BaseProps) {
           )}
         >
           <div className="sticky px-6 pb-6 overflow-y-scroll top-24 max-h-screen-16 sm:max-h-screen-24">
-            <SidebarNode node={tree} level={-1} isNodeActive={isNodeActive} onNavigate={() => setIsSidebarOpen(false)} />
+            <SidebarNode
+              node={tree}
+              level={-1}
+              isNodeActive={isNodeActive}
+              onNavigate={() => setIsSidebarOpen(false)}
+            />
           </div>
         </nav>
         <div className="col-span-10 px-8 pb-32 sm:px-10 sm:pb-6 sm:col-span-7 lg:col-span-6 pt-9">
@@ -357,7 +395,10 @@ export function Base({ children, headings }: BaseProps) {
               </h2>
               <ul className="mt-2 text-sm">
                 {headings?.map(({ text, slug, level }) => (
-                  <li key={slug} className={cx('py-2', { 'ml-4': level === 3 })}>
+                  <li
+                    key={slug}
+                    className={cx('py-2', { 'ml-4': level === 3 })}
+                  >
                     <Link href={`#${slug}`}>
                       <a className="text-gray-400 transition-colors duration-100 ease-in-out hover:text-gray-600">
                         {text}
