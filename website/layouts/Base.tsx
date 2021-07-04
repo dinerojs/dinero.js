@@ -226,12 +226,12 @@ export function Base({ children, headings }: BaseProps) {
 
   const sites = {
     v2: {
-      label: 'v1.8.1',
-      url: 'https://dinerojs.com/',
-    },
-    v1: {
       label: 'v2.0.0',
       url: 'https://v1.dinerojs.com/',
+    },
+    v1: {
+      label: 'v1.8.1',
+      url: 'https://dinerojs.com/',
     },
   };
   const versions = Object.keys(sites);
@@ -296,7 +296,6 @@ export function Base({ children, headings }: BaseProps) {
                     {sites[version as 'v1' | 'v2'].label}
                   </option>
                 ))}
-                <option value="v1">v1.8.1</option>
               </select>
             </form>
             <ExternalLink
