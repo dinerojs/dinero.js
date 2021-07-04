@@ -75,6 +75,7 @@ function HeadingAnchor({ id, className, children }: MDXComponentProps<
   const [, copyToClipboard] = useCopyToClipboard();
   const [pathname] = asPath.split('#');
   const url = [pathname, id].filter(Boolean).join('#');
+  const label = 'Copy link';
 
   function onClick() {
     if (window !== undefined) {
@@ -84,8 +85,9 @@ function HeadingAnchor({ id, className, children }: MDXComponentProps<
 
   return (
     <span className="relative pl-8 -ml-8 group">
-      <a href={url} onClick={onClick} className="absolute -ml-6 font-normal text-gray-400 transition-opacity duration-100 ease-in-out opacity-0 select-none focus:text-blue-600 group-hover:opacity-100">
+      <a href={url} onClick={onClick} title={label} className="absolute -ml-6 font-normal text-gray-400 transition-opacity duration-100 ease-in-out opacity-0 select-none focus:text-blue-600 group-hover:opacity-100">
         <LinkIcon className={className} />
+        <span className="sr-only">{label}</span>
       </a>
       {children}
     </span>
