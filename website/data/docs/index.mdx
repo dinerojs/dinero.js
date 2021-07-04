@@ -50,7 +50,7 @@ You might also be calculating using arithmetic operators, and ending up with res
 const total = cart.reduce((acc, { price }) => acc + price, 0); // 121.89999999999999 😧
 ```
 
-While certain programming languages like Java or C# safely support arbitrary precision decimals, JavaScript only lets you natively express decimals is with using [double precision floats](https://wikipedia.org/wiki/IEEE_754). The limitation is that it uses a binary system to represent decimal numbers, so you end up with inaccurate results when trying to math.
+While certain programming languages like Java or C# safely support arbitrary precision decimals, JavaScript only lets you natively express decimals with [double precision floats](https://wikipedia.org/wiki/IEEE_754). The limitation is that it uses a binary system to represent decimal numbers, so you end up with inaccurate results when trying to math.
 
 **Using IEEE 754 floats to store monetary values is a bad idea.** As you calculate more values, imperceptible precision errors lead to larger gaps. This inevitably ends up causing rounding issues.
 
