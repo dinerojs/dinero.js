@@ -8,3 +8,4 @@ export * from './CloseIcon';
 export * from './GitHubIcon';
 export * from './LinkIcon';
 export * from './MenuIcon';
+export * from './PencilIcon';
