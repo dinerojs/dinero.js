@@ -5,13 +5,13 @@ export function getPrevious(sitemap: Sitemap) {
     return sitemap?.previous;
   }
 
-  const parent = sitemap?.parent?.previous ? sitemap?.parent : sitemap?.root;
+  const ancestor = sitemap?.parent?.previous ? sitemap?.parent : sitemap?.root;
 
-  if (parent?.previous?.last?.children.length === 0) {
-    return parent?.previous?.last;
+  if (ancestor?.previous?.last?.children.length === 0) {
+    return ancestor?.previous?.last;
   }
 
-  return parent?.previous?.last?.last;
+  return ancestor?.previous?.last?.last || ancestor?.parent?.last;
 }
 
 export function getNext(sitemap: Sitemap) {
@@ -19,11 +19,11 @@ export function getNext(sitemap: Sitemap) {
     return sitemap?.next;
   }
 
-  const parent = sitemap?.parent?.next ? sitemap?.parent : sitemap?.root;
+  const ancestor = sitemap?.parent?.next ? sitemap?.parent : sitemap?.root;
 
-  if (parent?.next?.first?.children.length === 0) {
-    return parent?.next?.first;
+  if (ancestor?.next?.first?.children.length === 0) {
+    return ancestor?.next?.first;
   }
 
-  return parent?.next?.first?.first;
+  return ancestor?.next?.first?.first || ancestor?.children[0]?.children[0]?.children[0];
 }
