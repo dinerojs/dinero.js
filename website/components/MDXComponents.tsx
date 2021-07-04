@@ -286,13 +286,13 @@ function CustomUnorderedList(
     HTMLUListElement
   >
 ) {
-  return <ul {...props} />;
+  return <ul {...props} className="mt-2" />;
 }
 
 function CustomUnorderedListItem(
   props: MDXComponentProps<React.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>
 ) {
-  return <li {...props} />;
+  return <li {...props} data-content="•" className="relative pl-5 before:content before:absolute before:left-0 before:text-gray-400" />;
 }
 
 function CustomOrderedList(
