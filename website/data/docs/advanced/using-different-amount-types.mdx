@@ -102,7 +102,7 @@ import { createDinero } from '@dinero.js/core';
 
 // ...
 
-const dineroBigint = createDinero({ calculator });
+const bigDinero = createDinero({ calculator });
 ```
 
 You might notice that you're passing the full calculator, meaning you're shipping calculator methods you might not use. **This is unlikely to represent a bottleneck**, especially if you're using Dinero with a third-party library like [big.js](https://github.com/MikeMcl/big.js) because you're only referencing methods that already exist on every `Big` object you create.
