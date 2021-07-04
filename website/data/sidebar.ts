@@ -18,12 +18,7 @@ tree.add(Resource.create({ label: 'Mutations', path: '/docs/core-concepts/mutati
 tree.add(Resource.create({ label: 'Comparisons', path: '/docs/core-concepts/comparisons' }));
 tree.add(Resource.create({ label: 'Formatting', path: '/docs/core-concepts/formatting' }));
 
-tree.add(Resource.create({ label: 'Advanced', path: '/docs/advanced' }));
-tree.add(Resource.create({ label: 'Using different amount types', path: '/docs/advanced/using-different-amount-types' }));
-tree.add(Resource.create({ label: 'Transporting and restoring', path: '/docs/advanced/transporting-and-restoring' }));
-tree.add(Resource.create({ label: 'Formatting non-decimal currencies', path: '/docs/advanced/formatting-non-decimal-currencies' }));
-
-tree.add(Resource.create({ label: 'API Reference', path: '/docs/api' }));
+tree.add(Resource.create({ label: 'API', path: '/docs/api' }));
 tree.add(Resource.create({ label: 'Mutations', path: '/docs/api/mutations' }));
 tree.add(Resource.create({ label: 'Add', path: '/docs/api/mutations/add' }));
 tree.add(Resource.create({ label: 'Subtract', path: '/docs/api/mutations/subtract' }));
@@ -53,6 +48,11 @@ tree.add(Resource.create({ label: 'To format', path: '/docs/api/formatting/to-fo
 tree.add(Resource.create({ label: 'To snapshot', path: '/docs/api/formatting/to-snapshot' }));
 tree.add(Resource.create({ label: 'To unit', path: '/docs/api/formatting/to-unit' }));
 tree.add(Resource.create({ label: 'To rounded unit', path: '/docs/api/formatting/to-rounded-unit' }));
+
+tree.add(Resource.create({ label: 'Advanced', path: '/docs/advanced' }));
+tree.add(Resource.create({ label: 'Using different amount types', path: '/docs/advanced/using-different-amount-types' }));
+tree.add(Resource.create({ label: 'Transporting and restoring', path: '/docs/advanced/transporting-and-restoring' }));
+tree.add(Resource.create({ label: 'Formatting non-decimal currencies', path: '/docs/advanced/formatting-non-decimal-currencies' }));
 
 tree.add(Resource.create({ label: 'FAQ', path: '/docs/faq' }));
 tree.add(Resource.create({ label: 'Does Dinero.js support cryptocurrencies?', path: '/docs/faq/does-dinerojs-support-cryptocurrencies' }));
