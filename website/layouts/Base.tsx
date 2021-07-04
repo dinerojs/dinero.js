@@ -202,9 +202,16 @@ export function Base({ children, headings }: BaseProps) {
   const navButtonRef = useRef(null);
 
   const sites = {
-    v1: 'https://v1.dinerojs.com/',
-    v2: 'https://dinerojs.com/',
+    v2: {
+      label: 'v1.8.1',
+      url: 'https://dinerojs.com/',
+    },
+    v1: {
+      label: 'v2.0.0',
+      url: 'https://v1.dinerojs.com/',
+    },
   };
+  const versions = Object.keys(sites);
 
   useEffect(() => {
     document
@@ -250,14 +257,16 @@ export function Base({ children, headings }: BaseProps) {
           <div className="flex mt-px space-x-6 text-sm">
             <form>
               <span className="sr-only">Dinero.js version</span>
-              <select className="py-1 pr-1" onChange={(event) => {
-                const url = sites[event.target.value as 'v1' | 'v2'];
+              <select className="py-1 pr-1" value={versions[0]} onChange={(event) => {
+                const { url } = sites[event.target.value as 'v1' | 'v2'];
 
                 if (url !== undefined) {
                   window.location.assign(url);
                 }
               }}>
-                <option value="v2">v2.0.0</option>
+                {versions.map((version) => (
+                  <option key={version} value={version}>{sites[version as 'v1' | 'v2'].label}</option>
+                ))}
                 <option value="v1">v1.8.1</option>
               </select>
             </form>
