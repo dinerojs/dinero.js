@@ -248,7 +248,7 @@ export function Base({ children, headings }: BaseProps) {
             </a>
           </Link>
           <div className="flex mt-px space-x-6 text-sm">
-            <form className="mt-px">
+            <form>
               <span className="sr-only">Dinero.js version</span>
               <select className="py-1 pr-1" onChange={(event) => {
                 const url = sites[event.target.value as 'v1' | 'v2'];
