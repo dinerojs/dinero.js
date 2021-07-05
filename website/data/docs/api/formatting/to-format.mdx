@@ -6,7 +6,7 @@ returns: string
 
 Format a Dinero object with a custom transformer.
 
-The `transformer` parametrr exposes the amount in rounded units, the currency, and the initial Dinero object. The latter can be useful when [formatting non-decimal currencies](/docs/advanced/formatting-non-decimal-currencies).
+The `transformer` parameter exposes the amount in rounded units, the currency, and the initial Dinero object. The latter can be useful when [formatting non-decimal currencies](/docs/advanced/formatting-non-decimal-currencies).
 
 You can also specify rounding `options` to determine how to round the amount.
 
@@ -17,6 +17,18 @@ You can also specify rounding `options` to determine how to round the amount.
 <Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
 
 The Dinero object to format.
+
+</Parameter>
+
+<Parameter name="transformer" type="Transformer<TAmount>" required={true}>
+
+A transformer function.
+
+</Parameter>
+
+<Parameter name="options" type="RoundingOptions<TAmount>" required={false}>
+
+A mapping of options.
 
 </Parameter>
 
@@ -53,12 +65,14 @@ toFormat(d, transformer, options); // "USD 45.5"
 
 ### Build a reusable formatter
 
+If you're formatting many objects, you might want to reuse the same transformer without having to pass it every time. To do so, you can write your own higher-order function to build formatters.
+
 ```js
 import { dinero, toFormat } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
 function createFormatter(transformer, options = {}) {
-  return function format(dineroObject) {
+  return function formatter(dineroObject) {
     return toFormat(dineroObject, transformer, options);
   };
 }

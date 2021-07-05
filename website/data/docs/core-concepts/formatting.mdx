@@ -43,7 +43,7 @@ const d = dinero({ amount: 4545, currency: USD });
 toFormat(d, transformer, options); // "USD 45.5"
 ```
 
-If you're formatting many objects, you might want to reuse the same transformer without having to pass it every time. To do so, you can build your own higher-order function to build formatters.
+If you're formatting many objects, you might want to reuse the same transformer without having to pass it every time. To do so, you can write your own higher-order function to build formatters.
 
 ```js
 import { dinero, toFormat } from 'dinero.js';
@@ -53,7 +53,7 @@ import { USD } from '@dinero.js/currencies';
 // It returns a function that takes a Dinero object and applies the closured
 // transformer and options.
 function createFormatter(transformer, options = {}) {
-  return function format(dineroObject) {
+  return function formatter(dineroObject) {
     return toFormat(dineroObject, transformer, options);
   };
 }

@@ -1,4 +1,10 @@
-import { createFormatter, toSnapshot } from 'dinero.js';
+import { toFormat, toSnapshot } from 'dinero.js';
+
+function createFormatter(transformer, options = {}) {
+  return function formatter(dineroObject) {
+    return toFormat(dineroObject, transformer, options);
+  };
+}
 
 const formatUSD = createFormatter(({ amount, currency }) => {
   const numberFormatter = new Intl.NumberFormat('en-US', {

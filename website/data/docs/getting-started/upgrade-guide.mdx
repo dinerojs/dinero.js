@@ -286,7 +286,7 @@ To replicate the same formatting you had in v1.x, you can create a formatter tha
 import { toFormat } from 'dinero.js';
 
 function createIntlFormatter(locale, options = {}) {
-  function formatter({ amount, currency }) {
+  function transformer({ amount, currency }) {
     return amount.toLocaleString(locale, {
       ...options,
       style: 'currency',
@@ -294,8 +294,8 @@ function createIntlFormatter(locale, options = {}) {
     });
   });
 
-  return function format(dineroObject) {
-    return toFormat(dineroObject, formatter);
+  return function formatter(dineroObject) {
+    return toFormat(dineroObject, transformer);
   };
 }
 
