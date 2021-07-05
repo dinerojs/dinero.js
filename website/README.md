@@ -25,3 +25,5 @@ You can then view it by running:
 ```sh
 yarn website:start
 ```
+
+[![Powered by Vercel](powered-by-vercel.svg)](https://vercel.com/)
