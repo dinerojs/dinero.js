@@ -26,4 +26,10 @@ You can then view it by running:
 yarn website:start
 ```
 
+---
+
+<div align="center>
+
 [![Powered by Vercel](powered-by-vercel.svg)](https://vercel.com/)
+
+</div>
