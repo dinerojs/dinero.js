@@ -1,4 +1,4 @@
-import { maximum } from '../utils';
+import { isScaledAmount, maximum } from '../utils';
 
 import { transformScale } from './transformScale';
 
@@ -9,12 +9,8 @@ import type { Currency } from '@dinero.js/currencies';
 export type ConvertParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   newCurrency: Currency<TAmount>,
-  options: ConvertOptions<TAmount>
+  rates: Rates<TAmount>
 ];
-
-export type ConvertOptions<TAmount> = {
-  readonly rates: Rates<TAmount>;
-};
 
 export type ConvertDependencies<TAmount> = Dependencies<
   TAmount,
@@ -32,18 +28,21 @@ export function convert<TAmount>({ calculator }: ConvertDependencies<TAmount>) {
   const maximumFn = maximum(calculator);
 
   return function convertFn(
-    ...[dineroObject, newCurrency, { rates }]: ConvertParams<TAmount>
+    ...[dineroObject, newCurrency, rates]: ConvertParams<TAmount>
   ) {
-    const { rate, scale: rateScale } = rates[newCurrency.code];
+    const rate = rates[newCurrency.code];
     const { amount, scale: sourceScale } = dineroObject.toJSON();
-    const newScale = calculator.add(
-      sourceScale,
-      rateScale ?? calculator.zero()
-    );
+
+    const rateAmount = isScaledAmount(rate) ? rate.amount : rate;
+    const rateScale = isScaledAmount(rate)
+      ? rate?.scale ?? calculator.zero()
+      : calculator.zero();
+
+    const newScale = calculator.add(sourceScale, rateScale);
 
     return convertScaleFn(
       dineroObject.create({
-        amount: calculator.multiply(amount, rate),
+        amount: calculator.multiply(amount, rateAmount),
         currency: newCurrency,
         scale: newScale,
       }),

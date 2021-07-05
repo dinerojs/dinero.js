@@ -1,36 +1,14 @@
 ---
-title: createConverter
+title: convert
 description: Create a Dinero object converter.
 returns: Dinero<TAmount>
 ---
 
-Create a converter function to convert Dinero object from a currency to another.
-
-The `createConverter` factory lets you pass rates to convert with and returns a `convert` function you can use to convert Dinero objects to other currencies.
+Convert a Dinero object from a currency to another.
 
 If you need to use fractional rates, you shouldn't use floats, but scaled rates instead. For example, instead of passing `8.9`, you should pass `89` and a `scale` of `1`. When using scaled rates, the function converts the returned object to the safest scale.
 
 ## Parameters
-
-### createConverter
-
-<Parameters>
-
-<Parameter name="options" type="ConvertOptions<TAmount>" required={true}>
-
-A mapping of options.
-
-</Parameter>
-
-<Parameter name="options.rates" type="Rates<TAmount>" required={true}>
-
-The rates to convert with.
-
-</Parameter>
-
-</Parameters>
-
-### convert
 
 <Parameters>
 
@@ -46,6 +24,12 @@ The currency to convert into.
 
 </Parameter>
 
+<Parameter name="rates" type="Rates<TAmount>" required={true}>
+
+The rates to convert with.
+
+</Parameter>
+
 </Parameters>
 
 ## Code examples
@@ -53,38 +37,43 @@ The currency to convert into.
 ### Convert to another currency
 
 ```js
-import { dinero, createConverter } from 'dinero.js';
+import { dinero, convert } from 'dinero.js';
 import { USD, EUR } from '@dinero.js/currencies';
 
-const convert = createConverter({
-  rates: {
-    EUR: {
-      rate: 89,
-      scale: 2,
-    },
-  },
-});
-
+const rates = { EUR: { amount: 89, scale: 2 } };
 const d = dinero({ amount: 500, currency: USD });
 
-convert(d, EUR); // a Dinero object with amount 44500 and scale 4
+convert(d, EUR, rates); // a Dinero object with amount 44500 and scale 4
 ```
 
 ### Convert to a currency with a different scale
 
 ```js
-import { dinero, createConverter } from 'dinero.js';
+import { dinero, convert } from 'dinero.js';
 import { USD, IQD } from '@dinero.js/currencies';
 
-const convert = createConverter({
-  rates: {
-    EUR: {
-      rate: 1199,
-    },
-  },
-});
-
+const rates = { IQD: 1199 };
 const d = dinero({ amount: 500, currency: USD });
 
-convert(d, IQD); // a Dinero object with amount 5995000 and scale 3
+convert(d, IQD, rates); // a Dinero object with amount 5995000 and scale 3
+```
+
+### Build a reusable converter
+
+If you're converting many objects, you might want to reuse the same rates without having to pass them every time. To do so, you can write your own higher-order function to build converters.
+
+```js
+import { dinero, convert } from 'dinero.js';
+import { USD, EUR } from '@dinero.js/currencies';
+
+function createConverter(rates) {
+  return function converter(dineroObject, newCurrency) {
+    return convert(dineroObject, newCurrency, rates);
+  };
+}
+
+const rates = { EUR: { amount: 89, scale: 2 } };
+const converter = createConverter(rates);
+
+converter(d, EUR); // a Dinero object with amount 44500 and scale 4
 ```

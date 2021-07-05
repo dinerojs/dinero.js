@@ -8,6 +8,7 @@ export * from './Formatter';
 export * from './Rates';
 export * from './RoundingMode';
 export * from './RoundingOptions';
+export * from './ScaledAmount';
 export * from './Transformer';
 export * from './TransformOperation';
 export * from './UnaryOperation';

@@ -1,21 +1,17 @@
 import { EUR, IQD, USD } from '@dinero.js/currencies';
 
-import { createConverter, dinero, toSnapshot } from '../../..';
+import { convert, dinero, toSnapshot } from '../../..';
 
-describe('createConverter', () => {
+describe('convert', () => {
   it('converts a Dinero object to another currency', () => {
-    const convert = createConverter({
-      rates: {
-        EUR: {
-          rate: 89,
-          scale: 2,
-        },
-      },
-    });
-
     const d = dinero({ amount: 500, currency: USD });
 
-    const converted = convert(d, EUR);
+    const converted = convert(d, EUR, {
+      EUR: {
+        amount: 89,
+        scale: 2,
+      },
+    });
 
     expect(toSnapshot(converted)).toEqual({
       amount: 44500,
@@ -24,17 +20,11 @@ describe('createConverter', () => {
     });
   });
   it("uses the destination currency's exponent as scale", () => {
-    const convert = createConverter({
-      rates: {
-        IQD: {
-          rate: 1199,
-        },
-      },
-    });
-
     const d = dinero({ amount: 500, currency: USD });
 
-    const converted = convert(d, IQD);
+    const converted = convert(d, IQD, {
+      IQD: 1199,
+    });
 
     expect(toSnapshot(converted)).toEqual({
       amount: 5995000,

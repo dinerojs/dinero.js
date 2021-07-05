@@ -1,11 +1,15 @@
-import { createConverter } from 'dinero.js';
+import { convert } from 'dinero.js';
+
+function createConverter(rates) {
+  return function converter(dineroObject, newCurrency) {
+    return convert(dineroObject, newCurrency, rates);
+  };
+}
 
 const converter = createConverter({
-  rates: {
-    EUR: {
-      rate: 83,
-      scale: 2,
-    },
+  EUR: {
+    amount: 83,
+    scale: 2,
   },
 });
 

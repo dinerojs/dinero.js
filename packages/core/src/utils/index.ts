@@ -5,6 +5,7 @@ export * from './greaterThan';
 export * from './greaterThanOrEqual';
 export * from './isEven';
 export * from './isHalf';
+export * from './isScaledAmount';
 export * from './lessThan';
 export * from './lessThanOrEqual';
 export * from './maximum';
