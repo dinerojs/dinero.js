@@ -7,15 +7,14 @@ import type { MultiplyParams } from '@dinero.js/core';
  *
  * @param multiplicand - The Dinero object to multiply.
  * @param multiplier - The number to multiply with.
- * @param options.scale - The number of decimal places to represent.
  *
  * @returns A new Dinero object.
  */
 export function multiply<TAmount>(
-  ...[multiplicand, multiplier, options]: MultiplyParams<TAmount>
+  ...[multiplicand, multiplier]: MultiplyParams<TAmount>
 ) {
   const { calculator } = multiplicand;
   const multiplyFn = coreMultiply({ calculator });
 
-  return multiplyFn(multiplicand, multiplier, options);
+  return multiplyFn(multiplicand, multiplier);
 }

@@ -6,7 +6,7 @@ returns: Dinero<TAmount>
 
 Multiply a Dinero object.
 
-If you need to multiply by a fractional multiplier, you shouldn't use floats, but scaled multipliers instead. For example, instead of passing `2.1`, you should pass `21` and a scale of `1`. When using scaled ratios, the function converts the returned objects to the safest scale.
+If you need to multiply by a fractional multiplier, you shouldn't use floats, but scaled amounts instead. For example, instead of passing `2.1`, you should pass `{ amount: 21, scale: 1 }`. When using scaled ratios, the function converts the returned objects to the safest scale.
 
 ## Parameters
 
@@ -18,21 +18,9 @@ The Dinero object to multiply.
 
 </Parameter>
 
-<Parameter name="multiplier" type="TAmount" required={true}>
+<Parameter name="multiplier" type="ScaledAmount<TAmount> | TAmount" required={true}>
 
 The number to multiply with.
-
-</Parameter>
-
-<Parameter name="options" type="MultiplyOptions<TAmount>" required={false}>
-
-A mapping of options.
-
-</Parameter>
-
-<Parameter name="options.scale" type="TAmount" required={true}>
-
-The number of decimal places to represent.
 
 </Parameter>
 
@@ -59,5 +47,5 @@ import { USD } from '@dinero.js/currencies';
 
 const d = dinero({ amount: 401, currency: USD });
 
-multiply(d, 2001, { scale: 3 }); // a Dinero object with amount 802401 and scale 5
+multiply(d, { amount: 2001, scale: 3 }); // a Dinero object with amount 802401 and scale 5
 ```
