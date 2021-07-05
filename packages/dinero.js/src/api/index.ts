@@ -1,7 +1,6 @@
 export * from './add';
 export * from './allocate';
 export * from './createConverter';
-export * from './createFormatter';
 export * from './equal';
 export * from './greaterThan';
 export * from './greaterThanOrEqual';
@@ -18,6 +17,7 @@ export * from './minimum';
 export * from './multiply';
 export * from './normalizeScale';
 export * from './subtract';
+export * from './toFormat';
 export * from './toRoundedUnit';
 export * from './toSnapshot';
 export * from './toUnit';

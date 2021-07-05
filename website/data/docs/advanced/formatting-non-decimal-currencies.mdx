@@ -10,7 +10,7 @@ However, **you might also work with non-decimal currencies**. Typical use cases 
 Out of the box, you can format any Dinero object—decimal or not—into an accurate decimal representation. For example, there are 6 obols in a drachma, so 9 obols do represent one and a half drachmas.
 
 ```js
-import { dinero, createFormatter } from 'dinero.js';
+import { dinero, toFormat } from 'dinero.js';
 
 // Ancient Greek drachma
 const GRD = {
@@ -21,26 +21,22 @@ const GRD = {
 
 const d = dinero({ amount: 9, currency: GRD });
 
-const format = createFormatter(
-  ({ amount, currency }) => `${currency.code} ${amount}`
-);
-
-format(d); // "GRD 1.5"
+toFormat(d, ({ amount, currency }) => `${currency.code} ${amount}`); // "GRD 1.5"
 ```
 
 This should cover your needs if you want accuracy and readability because people are used to reading decimal numbers. However, such a representation might not be idiomatic.
 
 ## Building complex formatters
 
-In addition to the formatted amount and the currency, the `createFormatter` function also exposes the original object. You can leverage it to build a more complex formatter.
+In addition to the formatted amount and the currency, the `toFormat` function also exposes the original object. You can leverage it to build a more complex formatter.
 
 ```js
-import { dinero, createFormatter, toSnapshot } from 'dinero.js';
+import { dinero, toFormat, toSnapshot } from 'dinero.js';
 import pluralize from 'pluralize';
 
 // ...
 
-const format = createFormatter(({ dineroObject }) => {
+function transformer({ dineroObject }) {
   const { amount, currency } = toSnapshot(dineroObject);
 
   const drachmas = Math.trunc(amount / currency.base);
@@ -55,9 +51,9 @@ const format = createFormatter(({ dineroObject }) => {
     .filter(({ amount }) => amount > 0)
     .map(({ amount, label }) => `${amount} ${pluralize(label, amount)}`)
     .join(', ');
-});
+}
 
-format(d); // "1 drachma, 3 obols"
+toFormat(d, transformer); // "1 drachma, 3 obols"
 ```
 
 ## Handling currencies with multiple subdivisions
@@ -69,7 +65,7 @@ When working with such currencies, you can take how many of the smallest subdivi
 For example, let's say you're building a Candy Crush clone where users can buy bonuses with an in-game currency: donuts, cookies, and lollipops. In your game, a donut equals 30 cookies, and a cookie equals 16 lollipops, giving 480 lollipops to the donut. If a bonus costs 720 lollipops, you probably want to format it either into "720 lollipops" or "1 donut and 15 cookies" instead of "1.5 donuts". This way, users can understand what they can afford based on what they have.
 
 ```js
-import { dinero, createFormatter } from 'dinero.js';
+import { dinero, toFormat } from 'dinero.js';
 
 const POP = {
   code: 'POP',
@@ -77,7 +73,7 @@ const POP = {
   exponent: 1,
 };
 
-const format = createFormatter(({ dineroObject }) => {
+function transformer({ dineroObject }) {
   const { amount, currency } = toSnapshot(dineroObject);
 
   const remainder = amount % currency.base;
@@ -97,9 +93,9 @@ const format = createFormatter(({ dineroObject }) => {
     .filter(({ amount }) => amount > 0)
     .map(({ amount, label }) => `${amount} ${label}`)
     .join(' and ');
-});
+}
 
 const d = dinero({ amount: 720, currency: POP });
 
-format(d); // "1 🍩 and 15 🍪"
+toFormat(d, transformer); // "1 🍩 and 15 🍪"
 ```

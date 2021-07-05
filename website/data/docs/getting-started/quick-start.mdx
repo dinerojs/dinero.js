@@ -126,16 +126,14 @@ hasSubUnits(d4); // returns true
 You can display Dinero objects into any format, exactly the way you want. Dinero.js lets you build a formatter that exposes a pre-formatted amount, in major currency units.
 
 ```js
-import { dinero, createFormatter } from 'dinero.js';
+import { dinero, toFormat } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
-const format = createFormatter(
-  ({ amount, currency }) => `${currency.code} ${amount}`
-);
+const transformer = ({ amount, currency }) => `${currency.code} ${amount}`;
 
 const price = dinero({ amount: 1150, currency: USD });
 
-format(price); // "USD 11.5"
+toFormat(price, transformer); // "USD 11.5"
 ```
 
 Dinero objects pick up their scale from their currency exponent. If you want to represent amounts differently, you can specify a scale manually.

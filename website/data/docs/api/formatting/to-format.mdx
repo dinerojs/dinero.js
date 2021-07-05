@@ -1,50 +1,16 @@
 ---
-title: createFormatter
-description: Create a Dinero object formatter.
+title: toFormat
+description: Format a Dinero object with a custom transformer.
 returns: string
 ---
 
-Create a function to format Dinero objects.
+Format a Dinero object with a custom transformer.
 
-The `createFormatter` factory lets you pass a transformer function to return a formatted Dinero object. The `transformer` exposes the amount in rounded units, the currency, and the initial Dinero object. The latter can be useful when [formatting non-decimal currencies](/docs/advanced/formatting-non-decimal-currencies).
+The `transformer` parametrr exposes the amount in rounded units, the currency, and the initial Dinero object. The latter can be useful when [formatting non-decimal currencies](/docs/advanced/formatting-non-decimal-currencies).
 
 You can also specify rounding `options` to determine how to round the amount.
 
-The returned `format` function takes a Dinero object and formats it into a human-readable string.
-
 ## Parameters
-
-### createFormatter
-
-<Parameters>
-
-<Parameter name="transformer" type="Transformer<TAmount>" required={true}>
-
-A transformer function.
-
-</Parameter>
-
-<Parameter name="options" type="RoundingOptions<TAmount>" required={false}>
-
-A mapping of options.
-
-</Parameter>
-
-<Parameter name="options.digits" type="TAmount" required={false}>
-
-The number of fraction digits to round to.
-
-</Parameter>
-
-<Parameter name="options.round" type="RoundingMode" required={false}>
-
-The rounding function to use.
-
-</Parameter>
-
-</Parameters>
-
-### format
 
 <Parameters>
 
@@ -61,34 +27,47 @@ The Dinero object to format.
 ### Format an object with the passed transformer
 
 ```js
-import { dinero, createFormatter } from 'dinero.js';
+import { dinero, toFormat } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
-const format = createFormatter(
-  ({ amount, currency }) => `${currency.code} ${amount}`
-);
+const transformer = ({ amount, currency }) => `${currency.code} ${amount}`;
 
 const d = dinero({ amount: 500, currency: USD });
 
-format(d); // "USD 5"
+toFormat(d, transformer); // "USD 5"
 ```
 
 ### Format an object with the passed transformer and options
 
 ```js
-import { dinero, createFormatter } from 'dinero.js';
+import { dinero, toFormat } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
-const formatOptions = {
-  digits: 1,
-  round: up,
-};
-const format = createFormatter(
-  ({ amount, currency }) => `${currency.code} ${amount}`,
-  formatOptions
-);
+const options = { digits: 1, round: up };
+const transformer = ({ amount, currency }) => `${currency.code} ${amount}`;
 
 const d = dinero({ amount: 4545, currency: USD });
 
-format(d); // "USD 45.5"
+toFormat(d, transformer, options); // "USD 45.5"
+```
+
+### Build a reusable formatter
+
+```js
+import { dinero, toFormat } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+function createFormatter(transformer, options = {}) {
+  return function format(dineroObject) {
+    return toFormat(dineroObject, transformer, options);
+  };
+}
+
+const format = createFormatter(
+  ({ amount, currency }) => `${currency.code} ${amount}`
+);
+
+const d = dinero({ amount: 5000, currency: USD });
+
+format(d); // "USD 50"
 ```
