@@ -28,7 +28,7 @@ yarn website:start
 
 ---
 
-<div align="center>
+<div align="center">
 
 [![Powered by Vercel](powered-by-vercel.svg)](https://vercel.com/)
 
