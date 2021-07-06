@@ -58,7 +58,10 @@ describe('allocate', () => {
   });
   it('converts the allocated amounts to the safest scale', () => {
     const d = dinero({ amount: 100, currency: USD });
-    const shares = allocate(d, [505, 495], { scale: 1 });
+    const shares = allocate(d, [
+      { amount: 505, scale: 1 },
+      { amount: 495, scale: 1 },
+    ]);
     const [firstAllocated, secondAllocated] = shares;
 
     expect(toSnapshot(firstAllocated)).toEqual({
@@ -70,6 +73,25 @@ describe('allocate', () => {
       amount: 495,
       currency: USD,
       scale: 3,
+    });
+  });
+  it('converts the ratios to the same scale before allocating', () => {
+    const d = dinero({ amount: 100, currency: USD });
+    const shares = allocate(d, [
+      { amount: 5050, scale: 2 },
+      { amount: 495, scale: 1 },
+    ]);
+    const [firstAllocated, secondAllocated] = shares;
+
+    expect(toSnapshot(firstAllocated)).toEqual({
+      amount: 5050,
+      currency: USD,
+      scale: 4,
+    });
+    expect(toSnapshot(secondAllocated)).toEqual({
+      amount: 4950,
+      currency: USD,
+      scale: 4,
     });
   });
   it('throws when using empty ratios', () => {

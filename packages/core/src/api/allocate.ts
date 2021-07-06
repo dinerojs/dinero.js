@@ -1,22 +1,29 @@
 /* eslint-disable functional/no-expression-statement */
 import { INVALID_RATIOS_MESSAGE } from '../checks';
 import { assert } from '../helpers';
-import { distribute, greaterThan, greaterThanOrEqual } from '../utils';
+import {
+  distribute,
+  equal,
+  greaterThan,
+  greaterThanOrEqual,
+  isScaledAmount,
+  maximum,
+} from '../utils';
 
 import { transformScale } from './transformScale';
 
-import type { Dinero } from '../types';
+import type { Dinero, ScaledAmount } from '../types';
 import type { Dependencies } from './types';
+
+type UnsafeAllocateParams<TAmount> = readonly [
+  dineroObject: Dinero<TAmount>,
+  ratios: ReadonlyArray<ScaledAmount<TAmount>>
+];
 
 export type AllocateParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
-  ratios: readonly TAmount[],
-  options?: AllocateOptions<TAmount>
+  ratios: ReadonlyArray<ScaledAmount<TAmount> | TAmount>
 ];
-
-export type AllocateOptions<TAmount> = {
-  readonly scale: TAmount;
-};
 
 export type UnsafeAllocateDependencies<TAmount> = Dependencies<
   TAmount,
@@ -31,12 +38,18 @@ export type UnsafeAllocateDependencies<TAmount> = Dependencies<
   | 'modulo'
 >;
 
-export function unsafeAllocate<TAmount>({
+function unsafeAllocate<TAmount>({
   calculator,
 }: UnsafeAllocateDependencies<TAmount>) {
-  return function allocate(...[dineroObject, ratios]: AllocateParams<TAmount>) {
+  return function allocate(
+    ...[dineroObject, ratios]: UnsafeAllocateParams<TAmount>
+  ) {
     const { amount, currency, scale } = dineroObject.toJSON();
-    const shares = distribute(calculator)(amount, ratios);
+    const distributeFn = distribute(calculator);
+    const shares = distributeFn(
+      amount,
+      ratios.map((ratio) => ratio.amount)
+    );
 
     return shares.map((share) => {
       return dineroObject.create({
@@ -69,30 +82,49 @@ export function safeAllocate<TAmount>({
   const greaterThanOrEqualFn = greaterThanOrEqual(calculator);
   const greaterThanFn = greaterThan(calculator);
   const convertScaleFn = transformScale({ calculator });
+  const maximumFn = maximum(calculator);
+  const equalFn = equal(calculator);
 
-  return function allocate(
-    ...[
-      dineroObject,
-      ratios,
-      options = { scale: calculator.zero() },
-    ]: AllocateParams<TAmount>
-  ) {
+  return function allocate(...[dineroObject, ratios]: AllocateParams<TAmount>) {
     const zero = calculator.zero();
+    const ten = new Array(10)
+      .fill(null)
+      .reduce((acc) => calculator.increment(acc), zero);
 
     const hasRatios = ratios.length > 0;
-    const hasOnlyPositiveRatios = ratios.every((ratio) =>
-      greaterThanOrEqualFn(ratio, zero)
+    const highestRatioScale = hasRatios
+      ? maximumFn(
+          ratios.map((ratio) => {
+            return isScaledAmount(ratio) ? ratio?.scale ?? zero : zero;
+          })
+        )
+      : zero;
+    const normalizedRatios = ratios.map((ratio) => {
+      const ratioAmount = isScaledAmount(ratio) ? ratio.amount : ratio;
+      const ratioScale = isScaledAmount(ratio) ? ratio?.scale ?? zero : zero;
+
+      const factor = equalFn(ratioScale, highestRatioScale)
+          ? zero
+          : calculator.subtract(highestRatioScale, ratioScale);
+
+      return {
+        amount: calculator.multiply(ratioAmount, calculator.power(ten, factor)),
+        scale: ratioScale,
+      };
+    });
+    const hasOnlyPositiveRatios = normalizedRatios.every(({ amount }) =>
+      greaterThanOrEqualFn(amount, zero)
     );
-    const hasOneNonZeroRatio = ratios.some((ratio) =>
-      greaterThanFn(ratio, zero)
+    const hasOneNonZeroRatio = normalizedRatios.some(({ amount }) =>
+      greaterThanFn(amount, zero)
     );
 
     const condition = hasRatios && hasOnlyPositiveRatios && hasOneNonZeroRatio;
     assert(condition, INVALID_RATIOS_MESSAGE);
 
     const { scale } = dineroObject.toJSON();
-    const newScale = calculator.add(scale, options.scale);
+    const newScale = calculator.add(scale, highestRatioScale);
 
-    return allocateFn(convertScaleFn(dineroObject, newScale), ratios);
+    return allocateFn(convertScaleFn(dineroObject, newScale), normalizedRatios);
   };
 }
