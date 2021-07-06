@@ -1,4 +1,4 @@
-import { isScaledAmount, maximum } from '../utils';
+import { getAmountAndScale, maximum } from '../utils';
 
 import { transformScale } from './transformScale';
 
@@ -26,19 +26,19 @@ export type ConvertDependencies<TAmount> = Dependencies<
 export function convert<TAmount>({ calculator }: ConvertDependencies<TAmount>) {
   const convertScaleFn = transformScale({ calculator });
   const maximumFn = maximum(calculator);
+  const zero = calculator.zero();
 
   return function convertFn(
     ...[dineroObject, newCurrency, rates]: ConvertParams<TAmount>
   ) {
     const rate = rates[newCurrency.code];
-    const { amount, scale: sourceScale } = dineroObject.toJSON();
+    const { amount, scale } = dineroObject.toJSON();
+    const { amount: rateAmount, scale: rateScale } = getAmountAndScale(
+      rate,
+      zero
+    );
 
-    const rateAmount = isScaledAmount(rate) ? rate.amount : rate;
-    const rateScale = isScaledAmount(rate)
-      ? rate?.scale ?? calculator.zero()
-      : calculator.zero();
-
-    const newScale = calculator.add(sourceScale, rateScale);
+    const newScale = calculator.add(scale, rateScale);
 
     return convertScaleFn(
       dineroObject.create({

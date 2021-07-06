@@ -4,9 +4,9 @@ import { assert } from '../helpers';
 import {
   distribute,
   equal,
+  getAmountAndScale,
   greaterThan,
   greaterThanOrEqual,
-  isScaledAmount,
   maximum,
 } from '../utils';
 
@@ -84,32 +84,23 @@ export function safeAllocate<TAmount>({
   const convertScaleFn = transformScale({ calculator });
   const maximumFn = maximum(calculator);
   const equalFn = equal(calculator);
+  const zero = calculator.zero();
+  const ten = new Array(10).fill(null).reduce(calculator.increment, zero);
 
   return function allocate(...[dineroObject, ratios]: AllocateParams<TAmount>) {
-    const zero = calculator.zero();
-    const ten = new Array(10)
-      .fill(null)
-      .reduce((acc) => calculator.increment(acc), zero);
-
     const hasRatios = ratios.length > 0;
+    const scaledRatios = ratios.map((ratio) => getAmountAndScale(ratio, zero));
     const highestRatioScale = hasRatios
-      ? maximumFn(
-          ratios.map((ratio) => {
-            return isScaledAmount(ratio) ? ratio?.scale ?? zero : zero;
-          })
-        )
+      ? maximumFn(scaledRatios.map(({ scale }) => scale))
       : zero;
-    const normalizedRatios = ratios.map((ratio) => {
-      const ratioAmount = isScaledAmount(ratio) ? ratio.amount : ratio;
-      const ratioScale = isScaledAmount(ratio) ? ratio?.scale ?? zero : zero;
-
-      const factor = equalFn(ratioScale, highestRatioScale)
+    const normalizedRatios = scaledRatios.map(({ amount, scale }) => {
+      const factor = equalFn(scale, highestRatioScale)
         ? zero
-        : calculator.subtract(highestRatioScale, ratioScale);
+        : calculator.subtract(highestRatioScale, scale);
 
       return {
-        amount: calculator.multiply(ratioAmount, calculator.power(ten, factor)),
-        scale: ratioScale,
+        amount: calculator.multiply(amount, calculator.power(ten, factor)),
+        scale,
       };
     });
     const hasOnlyPositiveRatios = normalizedRatios.every(({ amount }) =>

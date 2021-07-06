@@ -1,4 +1,4 @@
-import { isScaledAmount } from '../utils';
+import { getAmountAndScale } from '../utils';
 
 import { transformScale } from './transformScale';
 
@@ -20,19 +20,14 @@ export function multiply<TAmount>({
   calculator,
 }: MultiplyDependencies<TAmount>) {
   const convertScaleFn = transformScale({ calculator });
+  const zero = calculator.zero();
 
   return function multiplyFn(
     ...[multiplicand, multiplier]: MultiplyParams<TAmount>
   ) {
-    const zero = calculator.zero();
     const { amount, currency, scale } = multiplicand.toJSON();
-
-    const multiplierAmount = isScaledAmount(multiplier)
-      ? multiplier.amount
-      : multiplier;
-    const multiplierScale = isScaledAmount(multiplier)
-      ? multiplier?.scale ?? zero
-      : zero;
+    const { amount: multiplierAmount, scale: multiplierScale } =
+      getAmountAndScale(multiplier, zero);
 
     const newScale = calculator.add(scale, multiplierScale);
 
