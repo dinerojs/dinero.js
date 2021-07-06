@@ -104,8 +104,8 @@ export function safeAllocate<TAmount>({
       const ratioScale = isScaledAmount(ratio) ? ratio?.scale ?? zero : zero;
 
       const factor = equalFn(ratioScale, highestRatioScale)
-          ? zero
-          : calculator.subtract(highestRatioScale, ratioScale);
+        ? zero
+        : calculator.subtract(highestRatioScale, ratioScale);
 
       return {
         amount: calculator.multiply(ratioAmount, calculator.power(ten, factor)),

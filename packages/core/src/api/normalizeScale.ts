@@ -39,7 +39,9 @@ export function normalizeScale<TAmount>({
     return dineroObjects.map((d) => {
       const { scale } = d.toJSON();
 
-      return !equalFn(scale, highestScale) ? convertScaleFn(d, highestScale) : d;
+      return !equalFn(scale, highestScale)
+        ? convertScaleFn(d, highestScale)
+        : d;
     });
   };
 }
