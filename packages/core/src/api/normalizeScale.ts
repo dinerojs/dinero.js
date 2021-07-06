@@ -1,4 +1,4 @@
-import { maximum } from '../utils';
+import { equal, maximum } from '../utils';
 
 import { transformScale } from './transformScale';
 
@@ -25,6 +25,7 @@ export function normalizeScale<TAmount>({
 }: NormalizeScaleDependencies<TAmount>) {
   const maximumFn = maximum(calculator);
   const convertScaleFn = transformScale({ calculator });
+  const equalFn = equal(calculator);
 
   return function _normalizeScale(
     ...[dineroObjects]: NormalizeScaleParams<TAmount>
@@ -38,7 +39,7 @@ export function normalizeScale<TAmount>({
     return dineroObjects.map((d) => {
       const { scale } = d.toJSON();
 
-      return scale !== highestScale ? convertScaleFn(d, highestScale) : d;
+      return !equalFn(scale, highestScale) ? convertScaleFn(d, highestScale) : d;
     });
   };
 }
