@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "VERCEL_GIT_COMMIT_REF: $VERCEL_GIT_COMMIT_REF"
+echo "VERCEL: $VERCEL"
+echo "CI: $CI"
 
 if [[ "$VERCEL_GIT_COMMIT_REF" == "main"  ]] ; then
   # Don't build
