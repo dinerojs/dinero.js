@@ -10,7 +10,7 @@ export type PanelProps = {
 
 export function Panel({ groups }: PanelProps) {
   return (
-    <div className="flex items-start px-6 py-3 text-sm transition-shadow duration-150 ease-in-out rounded-md shadow-xl hover:shadow-2xl">
+    <aside className="flex items-start px-6 py-3 text-sm transition-shadow duration-150 ease-in-out rounded-md shadow-xl hover:shadow-2xl">
       <table className="w-full table-fixed">
         <tbody>
           {groups.map(({ label, links }) => (
@@ -41,6 +41,6 @@ export function Panel({ groups }: PanelProps) {
           ))}
         </tbody>
       </table>
-    </div>
+    </aside>
   )
 }
