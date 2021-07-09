@@ -233,7 +233,7 @@ import { curry, flip } from 'ramda';
 
 const curriedToFormat = curry(flip(toFormat));
 
-const intlFormat = curriedToFormat(({ amount, currency }) => {
+const intlFormat = curriedToFormat(undefined, ({ amount, currency }) => {
   return amount.toLocaleString('en-US', {
     style: 'currency',
     currency: currency.code,
