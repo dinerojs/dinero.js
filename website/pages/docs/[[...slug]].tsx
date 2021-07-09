@@ -24,7 +24,7 @@ type PageProps = {
 };
 
 export default function Docs({ headings, mdxSource, frontMatter, filePath }: PageProps) {
-  const githubLink = `https://github.com/dinerojs/dinero.js/blob/release/v2/website/data/docs/${filePath.join('/')}.mdx`;
+  const githubLink = `https://github.com/dinerojs/dinero.js/blob/main/website/data/docs/${filePath.join('/')}.mdx`;
 
   useEffect(() => {
     window.init = init;

@@ -174,4 +174,4 @@ workflows:
             - build
           filters:
             branches:
-              only: release/v2
+              only: main
