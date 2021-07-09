@@ -65,23 +65,32 @@ toFormat(d, transformer, options); // "USD 45.5"
 
 ### Build a reusable formatter
 
-If you're formatting many objects, you might want to reuse the same transformer without having to pass it every time. To do so, you can write your own higher-order function to build formatters.
+If you're formatting many objects, you might want to reuse the same transformer without having to pass it every time. To do so, you can wrap `toFormat` in a formatter function that accepts a Dinero object and returns it formatted using a predefined formatter.
 
 ```js
 import { dinero, toFormat } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
+
+function formatter(dineroObject) {
+  return toFormat(
+    dineroObject,
+    ({ amount, currency }) => `${currency.code} ${amount}`
+  );
+}
+
+const d = dinero({ amount: 5000, currency: USD });
+
+format(d); // "USD 50"
+```
+
+You can even build your own reusable higher-order function to build formatters.
+
+```js
+// ...
 
 function createFormatter(transformer, options = {}) {
   return function formatter(dineroObject) {
     return toFormat(dineroObject, transformer, options);
   };
 }
-
-const format = createFormatter(
-  ({ amount, currency }) => `${currency.code} ${amount}`
-);
-
-const d = dinero({ amount: 5000, currency: USD });
-
-format(d); // "USD 50"
 ```
