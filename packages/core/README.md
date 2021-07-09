@@ -1,8 +1,8 @@
 # @dinero.js/core
 
-> Shared code between Dinero.js packages.
+> Internals of Dinero.js and shared code between packages.
 
-**This package contains all common types and internal functions.** Everything you need to use Dinero.js is re-exported in the `dinero.js` package, you don't need to ever install `@dinero.js/core` or care about what's inside. It's only helpful if you're willing to contribute to Dinero.js, or if you're building a different Dinero.js implementation than the one in `dinero.js`.
+**This package contains internal functions and common code shared across packages.** Everything you need to use Dinero.js is re-exported in the `dinero.js` package, so you don't need to ever install `@dinero.js/core` or care about what's inside. It's only helpful if you're willing to contribute to Dinero.js, or if you're building a different Dinero.js implementation than the one in `dinero.js`.
 
 ## 📦 Install
 
@@ -16,4 +16,4 @@ yarn add @dinero.js/core
 
 ## 📚 Documentation
 
-For full documentation, visit the [online documentation](#).
+For full documentation, visit the [online documentation](https://v2.dinerojs.com/docs).

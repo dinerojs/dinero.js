@@ -2,9 +2,7 @@
 
 > An immutable library to create, calculate and format monetary values.
 
-**This package exports Dinero.js with a side-effect free interface.** It caters to users who want to tree-shake their dependencies to control file size and those who prefer a more functional style (although it doesn't implement traditional functional patterns).
-
-It works out of the box with `number` types. You can adapt it for custom types or libraries (e.g., `bigint`, [big.js](https://github.com/MikeMcl/big.js/), etc.) by implementing the calculator and formatter functions.
+**This package exports Dinero.js.** It works out of the box with `number` types, but you can adapt it for custom types or third-party libraries by implementing a custom calculator.
 
 ## 📦 Install
 
@@ -18,7 +16,7 @@ yarn add dinero.js
 
 ## ⚡️ Quick start
 
-Pure `Dinero` objects are minimal. Every function in `dinero.js` is side-effect free, allowing you only to bundle exactly what you use.
+`Dinero` objects are minimal. Every function in `dinero.js` is side-effect free, allowing you only to bundle exactly what you use.
 
 ```js
 import { USD } from "@dinero.js/currencies";
@@ -32,4 +30,4 @@ add(d1, d2);
 
 ## 📚 Documentation
 
-For full documentation, visit the [online documentation](#).
+For full documentation, visit the [online documentation](https://v2.dinerojs.com/docs).

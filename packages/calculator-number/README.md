@@ -1,6 +1,6 @@
 # @dinero.js/calculator-number
 
-> Number alculator implementation for Dinero.js.
+> Number calculator implementation for Dinero.js.
 
 **This package contains calculator implementations for the `number` type**.
 
@@ -16,4 +16,4 @@ yarn add @dinero.js/calculator-number
 
 ## 📚 Documentation
 
-For full documentation, visit the [online documentation](#).
+For full documentation, visit the [online documentation](https://v2.dinerojs.com/docs).

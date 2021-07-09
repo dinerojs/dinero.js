@@ -1,6 +1,6 @@
 # @dinero.js/calculator-bigint
 
-> Bigint alculator implementation for Dinero.js.
+> Bigint calculator implementation for Dinero.js.
 
 **This package contains calculator implementations for the `bigint` type**.
 
@@ -16,4 +16,4 @@ yarn add @dinero.js/calculator-bigint
 
 ## 📚 Documentation
 
-For full documentation, visit the [online documentation](#).
+For full documentation, visit the [online documentation](https://v2.dinerojs.com/docs).
