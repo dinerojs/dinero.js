@@ -35,6 +35,7 @@ export default function Docs({ headings, mdxSource, frontMatter, filePath }: Pag
     <Base headings={headings}>
       <Head>
         <title>{frontMatter?.title} | Dinero.js</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=0" />
         <meta name="description" content={frontMatter?.description} />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -42,11 +43,12 @@ export default function Docs({ headings, mdxSource, frontMatter, filePath }: Pag
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap"
           rel="stylesheet"
         />
+        <link rel="preconnect" href="https://BH4D9OD16A-dsn.algolia.net" crossOrigin="true" />
       </Head>
       <>
         <div className="flex items-start mb-10 space-x-3 group">
           <div className="flex items-end flex-1 space-x-3">
-            <h1 className="text-4xl font-bold text-gray-800">
+            <h1 className="text-3xl font-bold text-gray-800 sm:text-4xl">
               {frontMatter?.title}
             </h1>
             {frontMatter?.returns && (

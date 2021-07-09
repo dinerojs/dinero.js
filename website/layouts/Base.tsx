@@ -98,14 +98,12 @@ type SidebarNodeWrapper = {
   children: React.ReactNode;
   node: Sitemap;
   isActive: boolean;
-  onNavigate: () => void;
 };
 
 function SidebarNodeWrapper({
   children,
   node,
   isActive,
-  onNavigate,
 }: SidebarNodeWrapper) {
   const { asPath } = useRouter();
   const nodeRef = useRef<HTMLLIElement | null>(null);
@@ -117,7 +115,6 @@ function SidebarNodeWrapper({
         block: 'nearest',
         inline: 'start',
       });
-      onNavigate();
     }
   }, [asPath]);
 
@@ -132,14 +129,12 @@ type SidebarNodeProps = {
   node: Sitemap;
   level: number;
   isNodeActive: (node: Sitemap) => boolean;
-  onNavigate: () => void;
 };
 
 function SidebarNode({
   node,
   level,
   isNodeActive,
-  onNavigate,
 }: SidebarNodeProps) {
   const { asPath } = useRouter();
   const isFirstLevel = level === 1;
@@ -173,7 +168,6 @@ function SidebarNode({
     <SidebarNodeWrapper
       node={node}
       isActive={isNodeActive(node)}
-      onNavigate={onNavigate}
     >
       <>
         {node.resource?.label ? (
@@ -206,7 +200,6 @@ function SidebarNode({
                 node={child}
                 level={level + 1}
                 isNodeActive={isNodeActive}
-                onNavigate={onNavigate}
               />
             ))}
           </ul>
@@ -243,7 +236,11 @@ export function Base({ children, headings }: BaseProps) {
     document
       .querySelector('body')
       ?.classList.toggle('overflow-hidden', isSidebarOpen);
-  });
+  }, [isSidebarOpen]);
+
+  useEffect(() => {
+    setIsSidebarOpen(false);
+  }, [asPath]);
 
   useClickAway(navRef, (event) => {
     const clickedNavButton = event.target === navButtonRef.current;
@@ -302,7 +299,7 @@ export function Base({ children, headings }: BaseProps) {
               </select>
             </form>
             <ExternalLink
-              className="flex items-center space-x-2 group"
+              className="items-center hidden space-x-2 sm:flex group"
               href="https://github.com/dinerojs/dinero.js"
             >
               <GitHubIcon className="h-4 text-gray-400 transition-colors duration-100 ease-in-out text-opacity-80 group-hover:text-opacity-100" />
@@ -311,7 +308,7 @@ export function Base({ children, headings }: BaseProps) {
               </span>
             </ExternalLink>
             <InternalLink
-              className="text-gray-800 transition-colors duration-100 ease-in-out text-opacity-80 hover:text-opacity-100"
+              className="hidden text-gray-800 transition-colors duration-100 ease-in-out sm:inline-block text-opacity-80 hover:text-opacity-100"
               href="/docs/about"
             >
               About
@@ -336,21 +333,37 @@ export function Base({ children, headings }: BaseProps) {
             }
           )}
         >
-          <div className="sticky px-6 pb-6 overflow-y-scroll top-24 max-h-screen-16 sm:max-h-screen-24">
+          <div className="sticky flex flex-col justify-between h-full px-6 pb-6 overflow-y-scroll top-24 max-h-screen-16 sm:max-h-screen-24">
             <SidebarNode
               node={tree}
               level={-1}
               isNodeActive={isNodeActive}
-              onNavigate={() => setIsSidebarOpen(false)}
             />
+            <div className="flex space-x-6 sm:hidden">
+              <ExternalLink
+                className="flex items-center space-x-2 group"
+                href="https://github.com/dinerojs/dinero.js"
+              >
+                <GitHubIcon className="h-4 text-gray-400 transition-colors duration-100 ease-in-out text-opacity-80 group-hover:text-opacity-100" />
+                <span className="text-gray-800 transition-colors duration-100 ease-in-out text-opacity-80 group-hover:text-opacity-100">
+                  GitHub
+                </span>
+              </ExternalLink>
+              <InternalLink
+                className="text-gray-800 transition-colors duration-100 ease-in-out text-opacity-80 hover:text-opacity-100"
+                href="/docs/about"
+              >
+                About
+              </InternalLink>
+            </div>
           </div>
         </nav>
-        <div className="col-span-10 px-8 pb-32 sm:px-10 sm:pb-6 sm:col-span-7 lg:col-span-6 pt-9">
+        <div className="col-span-10 px-6 pt-6 pb-24 sm:px-10 sm:pb-6 sm:col-span-7 lg:col-span-6">
           <article className="text-gray-600">{children}</article>
           {(previous || next) && (
             <nav className="mt-10">
               <ul className="flex justify-between">
-                <li className="text-left">
+                <li className="w-1/2 text-left">
                   {previous && (
                     <Link
                       href={previous.resource?.path as string}
@@ -358,7 +371,7 @@ export function Base({ children, headings }: BaseProps) {
                     >
                       <a className="flex items-center space-x-4 group">
                         <ArrowLeftIcon className="h-4 transition-transform duration-100 ease-in-out transform group-hover:-translate-x-1" />
-                        <div className="grid grid-rows-2 gap-1">
+                        <div className="flex flex-col space-x-1">
                           <span className="text-sm text-gray-500 transition-colors duration-100 ease-in-out group-hover:text-gray-700">
                             Previous
                           </span>
@@ -377,7 +390,7 @@ export function Base({ children, headings }: BaseProps) {
                       aria-label={`Go to ${next.resource?.label}`}
                     >
                       <a className="flex items-center space-x-4 group">
-                        <div className="grid grid-rows-2 gap-1">
+                        <div className="flex flex-col space-x-1">
                           <span className="text-sm text-gray-500 transition-colors duration-100 ease-in-out group-hover:text-gray-700">
                             Next
                           </span>
@@ -393,7 +406,7 @@ export function Base({ children, headings }: BaseProps) {
               </ul>
             </nav>
           )}
-          <footer className="col-span-2 px-6 pt-8 text-sm text-center text-gray-400">
+          <footer className="col-span-2 pt-10 text-sm text-center text-gray-400 sm:pt-6">
             <ExternalLink href="https://vercel.com/?utm_source=dinerojs&amp;utm_campaign=oss" className="inline-flex items-center space-x-1">
               <div>Powered by</div>
               <span className='sr-only'>{' '}Vercel</span>
