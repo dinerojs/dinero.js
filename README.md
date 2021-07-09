@@ -55,3 +55,11 @@ Visit the [full documentation](https://v2.dinerojs.com/docs) to know more.
 ## 📜 License
 
 [MIT](LICENSE.md)
+
+---
+
+<div align="center">
+
+[![Powered by Vercel](.github/powered-by-vercel.svg)](https://vercel.com/?utm_source=dinerojs&utm_campaign=oss)
+
+</div>
