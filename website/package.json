@@ -25,7 +25,7 @@
     "@types/react": "17.0.7",
     "@types/semver": "7.3.6",
     "autoprefixer": "10.2.6",
-    "globby": "11.0.3",
+    "globby": "11.0.4",
     "gray-matter": "4.0.3",
     "mdx-prism": "0.3.3",
     "next-mdx-remote": "3.0.2",
