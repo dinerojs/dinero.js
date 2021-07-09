@@ -1,3 +1,20 @@
+.DocSearch {
+  --docsearch-highlight-color: #14e;
+  --docsearch-primary-color: #14e;
+}
+
+.DocSearch-Screen-Icon svg {
+  @apply inline-block;
+}
+
+.DocSearch-Title {
+  @apply my-5;
+}
+
+.DocSearch-Container a {
+  color: var(--docsearch-primary-color);
+}
+
 .token.deleted:not(.prefix),
 .token.inserted:not(.prefix) {
   @apply block px-8 py-1 -mx-8;

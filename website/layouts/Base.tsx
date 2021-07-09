@@ -3,6 +3,9 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useClickAway } from 'react-use';
 import cx from 'classnames';
+import { DocSearch } from '@docsearch/react';
+
+import '@docsearch/css';
 
 import { tree } from '../data';
 import { Heading } from '../utils';
@@ -313,6 +316,7 @@ export function Base({ children, headings }: BaseProps) {
             >
               About
             </InternalLink>
+            <DocSearch apiKey="cd3d6484bf8f25f16a3b11e7bc24b702" indexName="dinerojs" />
           </div>
         </div>
       </header>
