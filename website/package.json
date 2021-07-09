@@ -30,6 +30,7 @@
     "mdx-prism": "0.3.3",
     "next-mdx-remote": "3.0.2",
     "postcss": "8.3.1",
+    "prettier": "2.3.2",
     "rehype": "11.0.0",
     "remark": "13.0.0",
     "remark-autolink-headings": "6.0.1",
