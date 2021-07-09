@@ -319,6 +319,7 @@ export function Base({ children, headings }: BaseProps) {
             <DocSearch
               apiKey="cd3d6484bf8f25f16a3b11e7bc24b702"
               indexName="dinerojs"
+              searchParameters={{ facetFilters: ['tags:v2'] }}
             />
           </div>
         </div>
