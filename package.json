@@ -22,7 +22,7 @@
     "build": "lerna run build --no-private",
     "format": "prettier --write .",
     "lint": "eslint --ext .js,.ts .",
-    "prepare": "node ./scripts/skip.js || lerna run prepare --no-private",
+    "prepare": "lerna run prepare --no-private",
     "release": "shipjs prepare",
     "start": "yarn run watch",
     "test:size": "bundlesize",
