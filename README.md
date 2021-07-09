@@ -283,6 +283,14 @@ Logo by [David DeSandro][github:desandro].
 
 Dinero.js is licensed under [MIT][license].
 
+---
+
+<div align="center">
+
+[![Powered by Vercel](powered-by-vercel.svg)](https://vercel.com/?utm_source=dinerojs&utm_campaign=oss)
+
+</div>
+
 [license]: https://github.com/dinerojs/dinero.js/blob/master/LICENSE.md
 [mdn:intl]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl
 [caniuse:intl]: https://caniuse.com/#feat=internationalization
