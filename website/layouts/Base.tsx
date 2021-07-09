@@ -345,7 +345,7 @@ export function Base({ children, headings }: BaseProps) {
           </div>
         </nav>
         <div className="col-span-10 px-8 pb-32 sm:px-10 sm:pb-6 sm:col-span-7 lg:col-span-6 pt-9">
-          <div className="text-gray-600">{children}</div>
+          <article className="text-gray-600">{children}</article>
           {(previous || next) && (
             <nav className="mt-10">
               <ul className="flex justify-between">
