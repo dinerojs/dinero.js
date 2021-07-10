@@ -1,6 +1,12 @@
 <h1 align="center">Dinero.js</h1>
 
 <p align="center">
+  <a href="https://v2.dinerojs.com/docs">
+    <img alt="Dinero.js" src=".github/banner.png">
+  </a>
+</p>
+
+<p align="center">
   <a href="http://npmjs.com/package/dinero.js"><img alt="npm" src="https://img.shields.io/npm/v/dinero.js"></a>
   <a href="https://circleci.com/gh/dinerojs/dinero.js"><img alt="CircleCI" src="https://img.shields.io/circleci/build/gh/dinerojs/dinero.js"></a>
   <a href="https://github.com/dinerojs/dinero.js/blob/master/LICENSE"><img alt="NPM" src="https://img.shields.io/npm/l/dinero.js"></a>
