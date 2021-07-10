@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postinstall": "yarn --cwd ../ build:umd"
+    "postinstall": "yarn --cwd ../ install && yarn --cwd ../ build:umd"
   },
   "dependencies": {
     "@docsearch/css": "3.0.0-alpha.37",
