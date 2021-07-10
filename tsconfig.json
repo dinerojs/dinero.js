@@ -19,7 +19,7 @@
     "**/__fixtures__/**/*",
     "**/__mocks__/**/*",
     "**/__tests__/**/*",
-    "**/dist",
+    "**/dist/esm/*",
     "**/node_modules",
     "stories",
     "examples",
