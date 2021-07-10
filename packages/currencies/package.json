@@ -29,6 +29,10 @@
   "module": "dist/esm/index.js",
   "source": "src/index.ts",
   "types": "dist/esm/index.d.ts",
+  "browser": {
+    "latest": "dist/esm/latest.js",
+    "168": "dist/esm/168.js"
+  },
   "files": [
     "dist/"
   ],

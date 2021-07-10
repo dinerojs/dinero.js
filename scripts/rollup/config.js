@@ -11,7 +11,7 @@ import { getBundleBanner } from '../getBundleBanner.mjs';
 const BUILD_MODES = ['development', 'production'];
 const extensions = ['.js', '.ts', '.json'];
 
-function createRollupConfig({ mode, pkg, config }) {
+function createRollupConfig({ mode, input, pkg, config }) {
   if (!BUILD_MODES.includes(mode)) {
     throw new Error(
       `The Rollup configuration ${JSON.stringify(mode)} mode is not supported.`
@@ -20,9 +20,9 @@ function createRollupConfig({ mode, pkg, config }) {
 
   return {
     ...config,
-    input: 'src/index.ts',
+    input: `src/${input}.ts`,
     output: {
-      file: `dist/umd/index.${mode}.js`,
+      file: `dist/umd/${input}.${mode}.js`,
       format: 'umd',
       sourcemap: true,
       name: pkg.name === 'dinero.js' ? pkg.name : pkg.name.replace('.', ''),
@@ -54,17 +54,23 @@ function createRollupConfig({ mode, pkg, config }) {
   };
 }
 
-export function createRollupConfigs({ pkg, config = {} }) {
-  return [
-    createRollupConfig({
-      mode: 'development',
-      pkg,
-      config,
-    }),
-    createRollupConfig({
-      mode: 'production',
-      pkg,
-      config,
-    }),
-  ];
+export function createRollupConfigs({ pkg, inputs = ['index'], config = {} }) {
+  return inputs
+    .map((input) => {
+      return [
+        createRollupConfig({
+          mode: 'development',
+          input,
+          pkg,
+          config,
+        }),
+        createRollupConfig({
+          mode: 'production',
+          input,
+          pkg,
+          config,
+        }),
+      ];
+    })
+    .flat();
 }

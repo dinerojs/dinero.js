@@ -130,10 +130,10 @@ const d = dinero({ amount: 1000, currency: USD });
 
 </Alert>
 
-To pin a currency to a specific amendment, you can import it from the `amendments` submodule. Amendments follow the [numbering system of the maintenance agency](https://www.six-group.com/en/products-services/financial-information/data-standards.html#scrollTo=amendments).
+To pin a currency to a specific amendment, you can import it from its submodule. Amendments follow the [numbering system of the maintenance agency](https://www.six-group.com/en/products-services/financial-information/data-standards.html#scrollTo=amendments).
 
 ```js
-import { USD } from '@dinero.js/currencies/amendments/168';
+import { USD } from '@dinero.js/currencies/168';
 
 const d = dinero({ amount: 1000, currency: USD });
 ```
