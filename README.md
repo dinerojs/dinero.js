@@ -1,10 +1,10 @@
-<h1 align="center">Dinero.js</h1>
-
 <p align="center">
   <a href="https://v2.dinerojs.com/docs">
     <img alt="Dinero.js" src=".github/banner.png">
   </a>
 </p>
+
+<h1 align="center">Dinero.js</h1>
 
 <p align="center">
   <a href="http://npmjs.com/package/dinero.js"><img alt="npm" src="https://img.shields.io/npm/v/dinero.js"></a>
