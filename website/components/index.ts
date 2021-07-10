@@ -1,4 +1,5 @@
 export * from './Alert';
+export * from './BundleSizeTable';
 export * from './Image';
 export * from './InlineCode';
 export * from './Link';

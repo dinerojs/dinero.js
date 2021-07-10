@@ -19,6 +19,13 @@ import {
 import { ClipboardCheckIcon, ClipboardIcon, LinkIcon } from './icons';
 import { PanelProps } from './Panel';
 import { InlineCode } from './InlineCode';
+import {
+  CustomTable,
+  CustomTableDataCell,
+  CustomTableHeader,
+  CustomTableHeaderCell,
+  CustomTableRow,
+} from './Table';
 
 export type MDXComponentProps<TAttribute, TElement> = React.DetailedHTMLProps<
   TAttribute,
@@ -67,7 +74,11 @@ function CustomEmphasis(
   return <em {...props} />;
 }
 
-function HeadingAnchor({ id, className, children }: MDXComponentProps<
+function HeadingAnchor({
+  id,
+  className,
+  children,
+}: MDXComponentProps<
   React.HTMLAttributes<HTMLAnchorElement>,
   HTMLAnchorElement
 >) {
@@ -85,13 +96,18 @@ function HeadingAnchor({ id, className, children }: MDXComponentProps<
 
   return (
     <span className="relative pl-8 -ml-8 group">
-      <a href={url} onClick={onClick} title={label} className="absolute -ml-6 font-normal text-gray-400 transition-opacity duration-100 ease-in-out opacity-0 select-none focus:text-blue-600 group-hover:opacity-100">
+      <a
+        href={url}
+        onClick={onClick}
+        title={label}
+        className="absolute -ml-6 font-normal text-gray-400 transition-opacity duration-100 ease-in-out opacity-0 select-none focus:text-blue-600 group-hover:opacity-100"
+      >
         <LinkIcon className={className} />
         <span className="sr-only">{label}</span>
       </a>
       {children}
     </span>
-  )
+  );
 }
 
 function CustomHeading2(
@@ -136,11 +152,13 @@ function CustomHeading4(
 ) {
   const { children, ...rest } = props;
 
-  return <h4 {...rest} className="mt-6 text-lg font-semibold text-gray-800">
-    <HeadingAnchor id={rest.id || ''} className="w-4 h-4 mt-1.5">
-      {children}
-    </HeadingAnchor>
-  </h4>;
+  return (
+    <h4 {...rest} className="mt-6 text-lg font-semibold text-gray-800">
+      <HeadingAnchor id={rest.id || ''} className="w-4 h-4 mt-1.5">
+        {children}
+      </HeadingAnchor>
+    </h4>
+  );
 }
 
 function CustomImage({
@@ -215,62 +233,6 @@ function CustomStrong(
 ) {
   return <strong {...props} />;
 }
-
-function CustomTable(
-  props: MDXComponentProps<
-    React.TableHTMLAttributes<HTMLTableElement>,
-    HTMLTableElement
-  >
-) {
-  return <table {...props} className="w-full mt-6" />;
-}
-
-function CustomTableHeader(
-  props: MDXComponentProps<
-    React.HTMLAttributes<HTMLTableSectionElement>,
-    HTMLTableSectionElement
-  >
-) {
-  return <thead {...props} />;
-}
-
-function CustomTableHeaderCell(
-  props: MDXComponentProps<
-    React.ThHTMLAttributes<HTMLTableHeaderCellElement>,
-    HTMLTableHeaderCellElement
-  >
-) {
-  return (
-    <th
-      {...props}
-      className="px-0 py-4 text-sm font-semibold text-left text-gray-400"
-    />
-  );
-}
-
-function CustomTableDataCell(
-  props: MDXComponentProps<
-    React.TdHTMLAttributes<HTMLTableDataCellElement>,
-    HTMLTableDataCellElement
-  >
-) {
-  return (
-    <td
-      {...props}
-      className="px-0 py-4 text-sm align-top border-t border-gray-200"
-    />
-  );
-}
-
-function CustomTableRow(
-  props: MDXComponentProps<
-    React.HTMLAttributes<HTMLTableRowElement>,
-    HTMLTableRowElement
-  >
-) {
-  return <tr {...props} />;
-}
-
 function CustomParagraph(
   props: MDXComponentProps<
     React.HTMLAttributes<HTMLParagraphElement>,
@@ -292,7 +254,13 @@ function CustomUnorderedList(
 function CustomUnorderedListItem(
   props: MDXComponentProps<React.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>
 ) {
-  return <li {...props} data-content="•" className="relative pl-5 before:content before:absolute before:left-0 before:text-gray-400" />;
+  return (
+    <li
+      {...props}
+      data-content="•"
+      className="relative pl-5 before:content before:absolute before:left-0 before:text-gray-400"
+    />
+  );
 }
 
 function CustomOrderedList(
