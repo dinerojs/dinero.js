@@ -4,8 +4,6 @@
   </a>
 </p>
 
-<h1 align="center">Dinero.js</h1>
-
 <p align="center">
   <a href="http://npmjs.com/package/dinero.js"><img alt="npm" src="https://img.shields.io/npm/v/dinero.js"></a>
   <a href="https://circleci.com/gh/dinerojs/dinero.js"><img alt="CircleCI" src="https://img.shields.io/circleci/build/gh/dinerojs/dinero.js"></a>
@@ -13,7 +11,7 @@
 </p>
 
 <p align="center">
-  Create, calculate, and format money safely in JavaScript and TypeScript.<br>
+  Dinero.js lets you create, calculate, and format money safely in JavaScript and TypeScript.<br>
   <a href="https://v2.dinerojs.com/docs"><strong>v2.dinerojs.com/docs</strong></a>
 </p>
 
