@@ -10,7 +10,7 @@ module.exports = {
   },
   webpack(config, { isServer }) {
     if (isServer) {
-      require('./scripts/generate.js');
+      require('./scripts/generate-sitemap.js');
     }
 
     return config;
