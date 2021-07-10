@@ -3,7 +3,6 @@ import path from 'path';
 
 import gzipSize from 'gzip-size';
 import { file as brotliSize } from 'brotli-size';
-import junk from 'junk';
 
 export type Bundle = {
   name: string,
@@ -14,11 +13,9 @@ export type Bundle = {
   brotli: number,
 };
 
-const root = path.join(process.cwd(), '..', 'packages');
-const packages = fs.readdirSync(root).filter(junk.not);
-const bundles = ['index.development.js', 'index.production.js'];
+export async function getBundleSize(packages: string[], root: string) {
+  const bundles = ['index.development.js', 'index.production.js'];
 
-export async function getBundleSize() {
   const filePaths = packages.map((pkg) => ({
     filePath: path.join(root, pkg),
     pkg,

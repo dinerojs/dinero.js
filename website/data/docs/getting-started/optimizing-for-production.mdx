@@ -3,17 +3,11 @@ title: Optimizing for production
 description: Removing unused code from your production builds for maximum performance.
 ---
 
-When importing the full UMD version of Dinero.js, the development build is 67 KB, the uncompressed production version is 23 KB, and the compressed versions are 3.4 KB with [Gzip](https://www.gnu.org/software/gzip/) and 2.9 KB with [Brotli](https://github.com/google/brotli).
+When importing the full UMD version of Dinero.js, the development build is <BundleSize pkg="dinero.js" version="development" />, the minified version is <BundleSize pkg="dinero.js" version="minified" />, and the compressed versions are <BundleSize pkg="dinero.js" version="gzip" /> with [Gzip](https://www.gnu.org/software/gzip/) and <BundleSize pkg="dinero.js" version="brotli" /> with [Brotli](https://github.com/google/brotli).
 
 <Scrollable>
 
-|                                | Uncompressed | Minified | Gzip   | Brotli |
-|--------------------------------|--------------|----------|--------|--------|
-| `dinero.js`                    | 67 KB        | 23 KB    | 3.4 KB | 2.9 KB |
-| `@dinero.js/currencies`        | 20 KB        | 6.6 KB   | 1.4 KB | 970 B  |
-| `@dinero.js/core`              | 40 KB        | 13 KB    | 3.1 KB | 2.8 KB |
-| `@dinero.js/calculator-number` | 4.6 KB       | 1.2 KB   | 658 B  | 560 B  |
-| `@dinero.js/calculator-bigint` | 4.6 KB       | 1.2 KB   | 657 B  | 559 B  |
+<BundleSizeTable />
 
 </Scrollable>
 
