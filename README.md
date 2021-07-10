@@ -52,6 +52,10 @@ The documentation lets you learn about all aspects of the library.
 
 Visit the [full documentation](https://v2.dinerojs.com/docs) to know more.
 
+## 👥 Contributors
+
+[![Dinero.js contributors](https://contrib.rocks/image?repo=dinerojs/dinero.js)](https://github.com/dinerojs/dinero.js/graphs/contributors)
+
 ## 📜 License
 
 [MIT](LICENSE.md)
