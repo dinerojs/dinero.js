@@ -34,8 +34,8 @@ yarn add dinero.js
 `Dinero` objects are minimal. Every function in `dinero.js` is side-effect free, allowing you only to bundle exactly what you use.
 
 ```js
-import { USD } from "@dinero.js/currencies";
-import { dinero, add } from "dinero.js";
+import { USD } from '@dinero.js/currencies';
+import { dinero, add } from 'dinero.js';
 
 const d1 = dinero({ amount: 500, currency: USD });
 const d2 = dinero({ amount: 800, currency: USD });
@@ -48,6 +48,7 @@ Check out the [quick start guide](https://v2.dinerojs.com/docs/getting-started/q
 ## 📚 Documentation
 
 The documentation lets you learn about all aspects of the library.
+
 - [**Getting started**](https://v2.dinerojs.com/docs/getting-started/quick-start) to get up and running quickly with Dinero.js
 - [**Core concepts**](https://v2.dinerojs.com/docs/core-concepts/amount) to learn about the underlying principles behind the library
 - [**API**](https://v2.dinerojs.com/docs/api/mutations/add) for a comprehensive list of available functions and their parameters.

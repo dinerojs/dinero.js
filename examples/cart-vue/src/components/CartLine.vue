@@ -17,7 +17,14 @@
         </div>
         <button
           @click="onRemove(item)"
-          class="text-xs font-semibold text-left text-gray-500 transition-colors ease-in-out hover:text-red-500"
+          class="
+            text-xs
+            font-semibold
+            text-left text-gray-500
+            transition-colors
+            ease-in-out
+            hover:text-red-500
+          "
         >
           {{ i18n.t('removeLabel') }}
         </button>

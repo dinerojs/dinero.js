@@ -1,7 +1,15 @@
 <template>
   <main class="container flex items-center min-h-screen mx-auto">
     <div
-      class="flex flex-col w-full my-10 overflow-hidden rounded-lg shadow-lg md:flex-row"
+      class="
+        flex flex-col
+        w-full
+        my-10
+        overflow-hidden
+        rounded-lg
+        shadow-lg
+        md:flex-row
+      "
     >
       <div class="w-full px-10 py-10 bg-white md:w-4/6">
         <div class="flex items-center justify-between pb-8 border-b">
@@ -15,8 +23,20 @@
             <select
               id="language"
               :value="currentLanguage"
-              @change="(event) => currentLanguage = event.target.value"
-              class="block w-full py-1 pl-1 text-sm border-gray-300 rounded-md shadow-sm pr-7 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+              @change="(event) => (currentLanguage = event.target.value)"
+              class="
+                block
+                w-full
+                py-1
+                pl-1
+                text-sm
+                border-gray-300
+                rounded-md
+                shadow-sm
+                pr-7
+                focus:border-green-300
+                focus:ring focus:ring-green-200 focus:ring-opacity-50
+              "
             >
               <option
                 v-for="option in languageOptions"
@@ -31,22 +51,50 @@
         <div v-if="items.length > 0" class="-mx-6">
           <div class="flex px-6 mt-10 mb-5">
             <span
-              class="w-2/5 text-xs font-semibold tracking-wide text-gray-500 uppercase "
+              class="
+                w-2/5
+                text-xs
+                font-semibold
+                tracking-wide
+                text-gray-500
+                uppercase
+              "
             >
               {{ i18n.t('productColumnTitle') }}
             </span>
             <span
-              class="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase "
+              class="
+                w-1/5
+                text-xs
+                font-semibold
+                tracking-wide
+                text-right text-gray-500
+                uppercase
+              "
             >
               {{ i18n.t('quantityColumnTitle') }}
             </span>
             <span
-              class="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase "
+              class="
+                w-1/5
+                text-xs
+                font-semibold
+                tracking-wide
+                text-right text-gray-500
+                uppercase
+              "
             >
               {{ i18n.t('priceColumnTitle') }}
             </span>
             <span
-              class="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase "
+              class="
+                w-1/5
+                text-xs
+                font-semibold
+                tracking-wide
+                text-right text-gray-500
+                uppercase
+              "
             >
               {{ i18n.t('totalColumnTitle') }}
             </span>
@@ -82,7 +130,15 @@
         </div>
       </div>
       <div
-        class="flex flex-col justify-between w-full px-8 py-10 bg-gray-100 md:w-2/6"
+        class="
+          flex flex-col
+          justify-between
+          w-full
+          px-8
+          py-10
+          bg-gray-100
+          md:w-2/6
+        "
       >
         <div>
           <div class="flex items-center justify-between pb-8 border-b">
@@ -135,9 +191,7 @@
             <span class="text-sm font-medium uppercase">
               {{ i18n.t('vatLabel') }} ({{ vatRate }}%)
             </span>
-            <span class="text-sm font-semibold">{{
-              format(vatAmount)
-            }}</span>
+            <span class="text-sm font-semibold">{{ format(vatAmount) }}</span>
           </div>
           <div class="mb-4">
             <label
@@ -150,7 +204,7 @@
               <select
                 id="shipping"
                 :value="shipping"
-                @change="(event) => shipping = event.target.value"
+                @change="(event) => (shipping = event.target.value)"
                 :class="[
                   'block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50',
                   { 'opacity-30 pointer-events-none': !hasItems },
@@ -173,7 +227,19 @@
             <span>{{ format(total) }}</span>
           </div>
           <button
-            class="w-full py-3 text-sm font-semibold text-white uppercase transition-colors ease-in-out bg-green-600 rounded hover:bg-green-700"
+            class="
+              w-full
+              py-3
+              text-sm
+              font-semibold
+              text-white
+              uppercase
+              transition-colors
+              ease-in-out
+              bg-green-600
+              rounded
+              hover:bg-green-700
+            "
           >
             {{ i18n.t('checkoutButtonLabel') }}
           </button>
@@ -241,7 +307,10 @@ export default {
       return this.items.map((item) => ({
         ...item,
         price: this.convert(
-          dinero({ amount: item.price, currency: currencies[this.defaultLanguage] }),
+          dinero({
+            amount: item.price,
+            currency: currencies[this.defaultLanguage],
+          }),
           this.currency
         ),
       }));
@@ -250,7 +319,10 @@ export default {
       return this.shippingOptions.map((option) => ({
         ...option,
         price: this.convert(
-          dinero({ amount: option.price, currency: currencies[this.defaultLanguage] }),
+          dinero({
+            amount: option.price,
+            currency: currencies[this.defaultLanguage],
+          }),
           this.currency
         ),
       }));
@@ -275,7 +347,9 @@ export default {
     },
     total() {
       const zero = dinero({ amount: 0, currency: this.currency });
-      const shippingOption = this.convertedShippingOptions.find(({ label }) => label === this.shipping);
+      const shippingOption = this.convertedShippingOptions.find(
+        ({ label }) => label === this.shipping
+      );
       const shippingAmount = this.hasItems ? shippingOption.price : zero;
 
       return [this.foo.subtotal, this.vatAmount, shippingAmount].reduce(add);
@@ -284,7 +358,7 @@ export default {
   watch: {
     currentLanguage(newValue) {
       i18n.locale(newValue);
-    }
+    },
   },
   created() {
     i18n.locale(this.currentLanguage);
