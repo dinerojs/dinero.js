@@ -9,11 +9,11 @@ This package only contains `number` implementations. You can reuse and adapt the
 ## 📦 Install
 
 ```sh
-npm install @dinero.js/currencies
+npm install @dinero.js/currencies@alpha
 
 # or
 
-yarn add @dinero.js/currencies
+yarn add @dinero.js/currencies@alpha
 ```
 
 ## 📚 Documentation

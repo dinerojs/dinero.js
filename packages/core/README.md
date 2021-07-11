@@ -7,11 +7,11 @@
 ## 📦 Install
 
 ```sh
-npm install @dinero.js/core
+npm install @dinero.js/core@alpha
 
 # or
 
-yarn add @dinero.js/core
+yarn add @dinero.js/core@alpha
 ```
 
 ## 📚 Documentation

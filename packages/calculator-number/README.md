@@ -7,11 +7,11 @@
 ## 📦 Install
 
 ```sh
-npm install @dinero.js/calculator-number
+npm install @dinero.js/calculator-number@alpha
 
 # or
 
-yarn add @dinero.js/calculator-number
+yarn add @dinero.js/calculator-number@alpha
 ```
 
 ## 📚 Documentation

@@ -7,11 +7,11 @@
 ## 📦 Install
 
 ```sh
-npm install @dinero.js/calculator-bigint
+npm install @dinero.js/calculator-bigint@alpha
 
 # or
 
-yarn add @dinero.js/calculator-bigint
+yarn add @dinero.js/calculator-bigint@alpha
 ```
 
 ## 📚 Documentation

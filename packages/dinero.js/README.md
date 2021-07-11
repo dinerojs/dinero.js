@@ -7,11 +7,11 @@
 ## 📦 Install
 
 ```sh
-npm install dinero.js
+npm install dinero.js@alpha
 
 # or
 
-yarn add dinero.js
+yarn add dinero.js@alpha
 ```
 
 ## ⚡️ Quick start
