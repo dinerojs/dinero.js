@@ -37,7 +37,7 @@
     "build:umd": "rollup --config",
     "build": "yarn build:clean && yarn build:umd && yarn build:esm && yarn build:types",
     "on:change": "concurrently \"yarn build:esm\" \"yarn build:types\"",
-    "prepare": "yarn build:esm && yarn build:types",
+    "prepare": "yarn build",
     "watch": "watch \"yarn on:change\" --ignoreDirectoryPattern \"/dist/\""
   },
   "dependencies": {

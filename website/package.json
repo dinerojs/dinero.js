@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postinstall": "yarn --cwd ../ install --ignore-scripts && yarn --cwd ../ build"
+    "postinstall": "yarn --cwd ../ install"
   },
   "dependencies": {
     "@docsearch/css": "3.0.0-alpha.37",
