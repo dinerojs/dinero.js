@@ -309,6 +309,12 @@ export function Base({ children, headings }: BaseProps) {
             </ExternalLink>
             <InternalLink
               className="hidden text-gray-800 transition-colors duration-100 ease-in-out sm:inline-block text-opacity-80 hover:text-opacity-100"
+              href="/docs/sandboxes"
+            >
+              Sandboxes
+            </InternalLink>
+            <InternalLink
+              className="hidden text-gray-800 transition-colors duration-100 ease-in-out sm:inline-block text-opacity-80 hover:text-opacity-100"
               href="/docs/about"
             >
               About
@@ -349,6 +355,12 @@ export function Base({ children, headings }: BaseProps) {
                   GitHub
                 </span>
               </ExternalLink>
+              <InternalLink
+                className="text-gray-800 transition-colors duration-100 ease-in-out text-opacity-80 hover:text-opacity-100"
+                href="/docs/sandboxes"
+              >
+                Sandboxes
+              </InternalLink>
               <InternalLink
                 className="text-gray-800 transition-colors duration-100 ease-in-out text-opacity-80 hover:text-opacity-100"
                 href="/docs/about"
