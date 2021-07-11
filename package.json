@@ -8,10 +8,10 @@
       "examples/*"
     ],
     "nohoist": [
-      "**/cart-react",
-      "**/cart-react/**",
-      "**/cart-vue",
-      "**/cart-vue/**"
+      "**/@dinero.js/example-cart-react",
+      "**/@dinero.js/example-cart-react/**",
+      "**/@dinero.js/example-cart-vue",
+      "**/@dinero.js/example-cart-vue/**"
     ]
   },
   "scripts": {
