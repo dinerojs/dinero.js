@@ -358,8 +358,8 @@ export function Base({ children, headings }: BaseProps) {
             </div>
           </div>
         </nav>
-        <div className="col-span-10 px-6 pt-6 pb-24 sm:px-10 sm:pb-6 sm:col-span-7 lg:col-span-6">
-          <article className="text-gray-600">{children}</article>
+        <div className="flex flex-col col-span-10 px-6 pt-6 pb-24 sm:px-10 sm:pb-6 sm:col-span-7 lg:col-span-6">
+          <article className="flex-1 text-gray-600">{children}</article>
           {(previous || next) && (
             <nav className="mt-10">
               <ul className="flex justify-between">
@@ -406,7 +406,7 @@ export function Base({ children, headings }: BaseProps) {
               </ul>
             </nav>
           )}
-          <footer className="col-span-2 pt-10 text-sm text-center text-gray-400 sm:pt-6">
+          <footer className="col-span-2 pt-12 text-sm text-center text-gray-400">
             <ExternalLink href="https://vercel.com/?utm_source=dinerojs&amp;utm_campaign=oss" className="inline-flex items-center space-x-1">
               <div>Powered by</div>
               <span className='sr-only'>{' '}Vercel</span>
