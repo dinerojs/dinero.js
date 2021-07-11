@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import reactToText from 'react-to-text';
@@ -66,6 +65,20 @@ function CustomLink(
       {...props}
     />
   );
+}
+
+function ButtonLink(
+  props: MDXComponentProps<React.HTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>
+) {
+  return (
+    <CustomLink {...props} className="inline-block px-8 py-5 text-gray-600 transition duration-100 ease-in-out rounded-full shadow hover:text-gray-800 bg-gradient-to-b from-white to-gray-50 hover:shadow-lg" />
+  );
+}
+
+function CenterBlock(
+  props: MDXComponentProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+) {
+  return <div {...props} className="mt-6 text-center" />
 }
 
 function CustomEmphasis(
@@ -161,6 +174,24 @@ function CustomHeading4(
   );
 }
 
+function Image({
+  src,
+  alt,
+}: MDXComponentProps<
+  React.ImgHTMLAttributes<HTMLImageElement>,
+  HTMLImageElement
+>) {
+  if (src === undefined) {
+    return null;
+  }
+
+  return (
+    <div className="mt-6 tracking-normal" style={{ wordSpacing: 0, fontSize: 0 }}>
+      <FullWidthImage alt={alt} src={src} />
+    </div>
+  );
+}
+
 function CustomImage({
   src,
   alt,
@@ -173,9 +204,11 @@ function CustomImage({
   }
 
   return (
-    <CustomFigure alt={alt}>
-      <FullWidthImage alt={alt} src={src} />
-    </CustomFigure>
+    <div className="mt-6">
+      <CustomFigure alt={alt}>
+        <FullWidthImage alt={alt} src={src} />
+      </CustomFigure>
+    </div>
   );
 }
 
@@ -312,7 +345,10 @@ function Scrollable(
 
 export const MDXComponents = {
   Alert: CustomAlert,
+  ButtonLink,
+  CenterBlock,
   Image,
+  Link: CustomLink,
   Panel: CustomPanel,
   Parameters,
   Parameter,
