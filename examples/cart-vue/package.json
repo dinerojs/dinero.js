@@ -1,5 +1,5 @@
 {
-  "name": "cart-vue",
+  "name": "@dinero.js/example-cart-vue",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",

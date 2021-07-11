@@ -1,5 +1,5 @@
 {
-  "name": "cart-react",
+  "name": "@dinero.js/example-cart-react",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
