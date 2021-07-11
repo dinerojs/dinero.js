@@ -339,13 +339,15 @@ export function Base({ children, headings }: BaseProps) {
             }
           )}
         >
-          <div className="sticky flex flex-col justify-between h-full px-6 pb-6 overflow-y-scroll top-24 max-h-screen-16 sm:max-h-screen-24">
-            <SidebarNode
-              node={tree}
-              level={-1}
-              isNodeActive={isNodeActive}
-            />
-            <div className="flex space-x-6 sm:hidden">
+          <div className="sticky flex flex-col justify-between h-full px-6 pt-6 pb-6 overflow-y-scroll sm:pt-0 top-24 max-h-screen-16 sm:max-h-screen-24">
+            <div className="sm:-my-1">
+              <SidebarNode
+                node={tree}
+                level={-1}
+                isNodeActive={isNodeActive}
+              />
+            </div>
+            <div className="flex mt-6 space-x-6 sm:hidden">
               <ExternalLink
                 className="flex items-center space-x-2 group"
                 href="https://github.com/dinerojs/dinero.js"
@@ -370,7 +372,7 @@ export function Base({ children, headings }: BaseProps) {
             </div>
           </div>
         </nav>
-        <div className="flex flex-col col-span-10 px-6 pt-6 pb-24 sm:px-10 sm:pb-6 sm:col-span-7 lg:col-span-6">
+        <div className="flex flex-col col-span-10 px-6 pt-6 pb-24 sm:px-10 sm:pt-10 sm:pb-6 sm:col-span-7 lg:col-span-6">
           <article className="flex-1 text-gray-600">{children}</article>
           {(previous || next) && (
             <nav className="mt-10">
