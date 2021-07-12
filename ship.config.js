@@ -5,6 +5,7 @@ module.exports = {
     // We rely on Lerna to bump our dependencies.
     packagesToBump: [],
     packagesToPublish: [
+      'packages/calculator-bigint',
       'packages/calculator-number',
       'packages/core',
       'packages/currencies',
