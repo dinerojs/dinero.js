@@ -29,14 +29,13 @@ const d = dinero({ amount: 5000, currency: USD });
 toFormat(d, transformer); // "USD 50"
 ```
 
-You can pass options to tell Dinero how to format and round the amount.
+Dinero.js uses the scale of the object to determine how many decimal places to represent. You can adjust it in the `transformer`.
 
 ```js
 import { dinero, toFormat, up } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
-const transformer = ({ amount, currency }) => `${currency.code} ${amount}`;
-const options = { digits: 1, round: up };
+const transformer = ({ amount, currency }) => `${currency.code} ${amount.toFixed(1)}`;
 
 const d = dinero({ amount: 4545, currency: USD });
 
@@ -52,9 +51,9 @@ import { USD } from '@dinero.js/currencies';
 // This function lets you pass a transformer and rounding options.
 // It returns a function that takes a Dinero object and applies the closured
 // transformer and options.
-function createFormatter(transformer, options = {}) {
+function createFormatter(transformer) {
   return function formatter(dineroObject) {
-    return toFormat(dineroObject, transformer, options);
+    return toFormat(dineroObject, transformer);
   };
 }
 

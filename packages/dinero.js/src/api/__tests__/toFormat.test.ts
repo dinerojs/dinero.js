@@ -1,4 +1,3 @@
-import { up } from '@dinero.js/core';
 import { USD } from '@dinero.js/currencies';
 
 import { toFormat, dinero } from '../../..';
@@ -10,15 +9,10 @@ describe('toFormat', () => {
 
     expect(toFormat(d, formatter)).toBe('USD 5');
   });
-  it('formats the Dinero object with the passed transformer and options', () => {
+  it('formats the Dinero object with the passed transformer using the scale', () => {
     const formatter = ({ amount, currency }) => `${currency.code} ${amount}`;
-    const d = dinero({ amount: 4545, currency: USD });
+    const d = dinero({ amount: 4545, currency: USD, scale: 3 });
 
-    expect(
-      toFormat(d, formatter, {
-        digits: 1,
-        round: up,
-      })
-    ).toBe('USD 45.5');
+    expect(toFormat(d, formatter)).toBe('USD 4.545');
   });
 });

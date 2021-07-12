@@ -7,15 +7,14 @@ import type { ToFormatParams } from '@dinero.js/core';
  *
  * @param dineroObject - The Dinero object to format.
  * @param transformer - A transformer function.
- * @param options - Formatting options for the amount transformer.
  *
  * @returns The object as a formatted string.
  */
 export function toFormat<TAmount>(
-  ...[dineroObject, transformer, options]: ToFormatParams<TAmount>
+  ...[dineroObject, transformer]: ToFormatParams<TAmount>
 ) {
   const { calculator } = dineroObject;
   const formatter = coreToFormat({ calculator });
 
-  return formatter(dineroObject, transformer, options);
+  return formatter(dineroObject, transformer);
 }

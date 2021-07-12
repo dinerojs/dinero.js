@@ -26,12 +26,6 @@ A transformer function.
 
 </Parameter>
 
-<Parameter name="options" type="RoundingOptions<TAmount>" required={false}>
-
-A mapping of options.
-
-</Parameter>
-
 </Parameters>
 
 ## Code examples
@@ -42,25 +36,9 @@ A mapping of options.
 import { dinero, toFormat } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
-const transformer = ({ amount, currency }) => `${currency.code} ${amount}`;
-
 const d = dinero({ amount: 500, currency: USD });
 
-toFormat(d, transformer); // "USD 5"
-```
-
-### Format an object with the passed transformer and options
-
-```js
-import { dinero, toFormat } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
-
-const options = { digits: 1, round: up };
-const transformer = ({ amount, currency }) => `${currency.code} ${amount}`;
-
-const d = dinero({ amount: 4545, currency: USD });
-
-toFormat(d, transformer, options); // "USD 45.5"
+toFormat(d, ({ amount, currency }) => `${currency.code} ${amount}`); // "USD 5"
 ```
 
 ### Build a reusable formatter
@@ -71,7 +49,7 @@ If you're formatting many objects, you might want to reuse the same transformer 
 import { dinero, toFormat } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
-function formatter(dineroObject) {
+function format(dineroObject) {
   return toFormat(
     dineroObject,
     ({ amount, currency }) => `${currency.code} ${amount}`
@@ -88,9 +66,9 @@ You can even build your own reusable higher-order function to build formatters.
 ```js
 // ...
 
-function createFormatter(transformer, options = {}) {
-  return function formatter(dineroObject) {
-    return toFormat(dineroObject, transformer, options);
+function createFormatter(transformer) {
+  return function format(dineroObject) {
+    return toFormat(dineroObject, transformer);
   };
 }
 ```

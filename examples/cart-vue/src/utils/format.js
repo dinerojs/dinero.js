@@ -1,8 +1,8 @@
 import { toFormat, toSnapshot } from 'dinero.js';
 
-function createFormatter(transformer, options = {}) {
+function createFormatter(transformer) {
   return function formatter(dineroObject) {
-    return toFormat(dineroObject, transformer, options);
+    return toFormat(dineroObject, transformer);
   };
 }
 
