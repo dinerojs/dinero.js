@@ -51,6 +51,7 @@ tree.add(Resource.create({ label: 'To unit', path: '/docs/api/formatting/to-unit
 tree.add(Resource.create({ label: 'Advanced', path: '/docs/advanced' }));
 tree.add(Resource.create({ label: 'Using different amount types', path: '/docs/advanced/using-different-amount-types' }));
 tree.add(Resource.create({ label: 'Transporting and restoring', path: '/docs/advanced/transporting-and-restoring' }));
+tree.add(Resource.create({ label: 'Formatting in a multilingual site', path: '/docs/advanced/formatting-in-a-multilingual-site' }));
 tree.add(Resource.create({ label: 'Formatting non-decimal currencies', path: '/docs/advanced/formatting-non-decimal-currencies' }));
 
 tree.add(Resource.create({ label: 'FAQ', path: '/docs/faq' }));
