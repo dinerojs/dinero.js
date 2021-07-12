@@ -45,7 +45,7 @@
     "babel-jest": "25.5.1",
     "commitizen": "4.1.2",
     "core-js": "3.6.5",
-    "coveralls": "3.1.0",
+    "coveralls": "3.1.1",
     "cz-conventional-changelog": "3.2.0",
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.11.0",
