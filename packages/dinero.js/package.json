@@ -1,6 +1,6 @@
 {
   "name": "dinero.js",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "An immutable library to create, calculate and format monetary values",
   "keywords": [
     "money",
@@ -43,8 +43,8 @@
     "watch": "watch \"yarn on:change\" --ignoreDirectoryPattern \"/dist/\""
   },
   "dependencies": {
-    "@dinero.js/calculator-number": "2.0.0-alpha.1",
-    "@dinero.js/core": "2.0.0-alpha.1",
-    "@dinero.js/currencies": "2.0.0-alpha.1"
+    "@dinero.js/calculator-number": "2.0.0-alpha.2",
+    "@dinero.js/core": "2.0.0-alpha.2",
+    "@dinero.js/currencies": "2.0.0-alpha.2"
   }
 }
