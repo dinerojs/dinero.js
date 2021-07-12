@@ -47,7 +47,6 @@ tree.add(Resource.create({ label: 'Formatting', path: '/docs/api/formatting' }))
 tree.add(Resource.create({ label: 'To format', path: '/docs/api/formatting/to-format' }));
 tree.add(Resource.create({ label: 'To snapshot', path: '/docs/api/formatting/to-snapshot' }));
 tree.add(Resource.create({ label: 'To unit', path: '/docs/api/formatting/to-unit' }));
-tree.add(Resource.create({ label: 'To rounded unit', path: '/docs/api/formatting/to-rounded-unit' }));
 
 tree.add(Resource.create({ label: 'Advanced', path: '/docs/advanced' }));
 tree.add(Resource.create({ label: 'Using different amount types', path: '/docs/advanced/using-different-amount-types' }));

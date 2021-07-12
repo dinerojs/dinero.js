@@ -18,7 +18,6 @@ export * from './multiply';
 export * from './normalizeScale';
 export * from './subtract';
 export * from './toFormat';
-export * from './toRoundedUnit';
 export * from './toSnapshot';
 export * from './toUnit';
 export * from './transformScale';

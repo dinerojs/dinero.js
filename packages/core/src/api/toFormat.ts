@@ -1,4 +1,4 @@
-import { toRoundedUnit } from './toRoundedUnit';
+import { toUnit } from './toUnit';
 
 import type { Dinero, Transformer } from '../types';
 import type { Dependencies } from './types';
@@ -16,14 +16,13 @@ export type ToFormatDependencies<TAmount> = Dependencies<
 export function toFormat<TAmount>({
   calculator,
 }: ToFormatDependencies<TAmount>) {
-  const toRoundedUnitFn = toRoundedUnit({ calculator });
+  const toUnitFn = toUnit({ calculator });
 
   return function toFormatFn(
     ...[dineroObject, transformer]: ToFormatParams<TAmount>
   ) {
     const { currency, scale } = dineroObject.toJSON();
-
-    const amount = toRoundedUnitFn(dineroObject, { digits: scale });
+    const amount = toUnitFn(dineroObject, { digits: scale });
 
     return transformer({ amount, currency, dineroObject });
   };
