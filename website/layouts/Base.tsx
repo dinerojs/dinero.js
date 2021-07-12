@@ -19,6 +19,7 @@ import {
   GitHubIcon,
   MenuIcon,
 } from '../components/icons';
+import lerna from '../../lerna.json';
 
 type SidebarItemProps = {
   node: Sitemap;
@@ -222,7 +223,7 @@ export function Base({ children, headings }: BaseProps) {
 
   const sites = {
     v2: {
-      label: 'v2.0.0',
+      label: `v${lerna.version}`,
       url: 'https://v2.dinerojs.com/',
     },
     v1: {
