@@ -99,7 +99,7 @@ type SidebarNodeWrapper = {
   children: React.ReactNode;
   node: Sitemap;
   isActive: boolean;
-  navScrollRef: React.MutableRefObject<HTMLDivElement | null>;
+  navScrollRef: MutableRefObject<HTMLDivElement | null>;
 };
 
 function SidebarNodeWrapper({
@@ -131,7 +131,7 @@ function SidebarNodeWrapper({
 type SidebarNodeProps = {
   node: Sitemap;
   level: number;
-  navScrollRef: React.MutableRefObject<HTMLDivElement | null>;
+  navScrollRef: MutableRefObject<HTMLDivElement | null>;
   isNodeActive: (node: Sitemap) => boolean;
 };
 
