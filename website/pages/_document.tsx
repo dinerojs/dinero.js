@@ -24,8 +24,8 @@ export default class CustomDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
           <meta name="twitter:description" content="Create, calculate, and format money in JavaScript and TypeScript"/>
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:image" content="/open-graph.jpg"/>
-          <meta property="og:image" content="/open-graph.jpg"/>
+          <meta name="twitter:image" content="https://v2.dinerojs.com/open-graph.jpg"/>
+          <meta property="og:image" content="https://v2.dinerojs.com/open-graph.jpg"/>
         </Head>
         <body className="sm:overflow-auto">
           <Main />
