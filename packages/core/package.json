@@ -8,7 +8,7 @@
     "amount",
     "immutable"
   ],
-  "homepage": "https://dinerojs.com",
+  "homepage": "https://v2.dinerojs.com",
   "bugs": "https://github.com/dinerojs/dinero.js/issues",
   "repository": {
     "type": "git",
