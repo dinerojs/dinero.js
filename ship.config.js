@@ -20,10 +20,6 @@ module.exports = {
     exec(
       `yarn lerna version ${version} --exact --no-git-tag-version --no-push --yes`
     );
-
-    // Ship.js reads JSON and writes with `fs.writeFileSync(JSON.stringify(json, null, 2))`
-    // which causes a lint error in the `lerna.json` file.
-    exec('yarn eslint lerna.json --fix');
   },
   // Skip preparation if it contains only `chore` commits
   shouldPrepare({ releaseType, commitNumbersPerType }) {
