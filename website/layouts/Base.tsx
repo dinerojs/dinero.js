@@ -352,7 +352,7 @@ export function Base({ children, headings }: BaseProps) {
             }
           )}
         >
-          <div ref={navScrollRef} className="sticky flex flex-col justify-between h-full px-6 pt-6 pb-6 overflow-y-scroll sm:pt-0 top-24 max-h-screen-16 sm:max-h-screen-24">
+          <div ref={navScrollRef} className="sticky flex flex-col justify-between h-full px-6 pt-6 pb-6 overflow-y-scroll sm:pt-0 top-32 max-h-screen-16 sm:max-h-screen-32">
             <div className="sm:-my-1">
               <SidebarNode
                 node={tree}
@@ -446,7 +446,7 @@ export function Base({ children, headings }: BaseProps) {
         </div>
         {(headings?.length ?? 0) > 0 && (
           <div className="hidden col-span-2 px-6 pb-6 lg:block">
-            <div className="sticky z-20 pt-2 pb-6 overflow-y-scroll top-24 max-h-screen-24">
+            <div className="sticky z-20 pt-2 pb-6 overflow-y-scroll top-32 max-h-screen-32">
               <h2 className="py-3 text-xs font-semibold tracking-wide uppercase">
                 On this page
               </h2>
