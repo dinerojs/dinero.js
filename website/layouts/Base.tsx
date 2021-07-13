@@ -110,13 +110,15 @@ function SidebarNodeWrapper({
   const nodeRef = useRef<HTMLLIElement | null>(null);
 
   useEffect(() => {
-    if (isActive) {
-      nodeRef.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start',
-      });
-    }
+    setTimeout(() => {
+      if (isActive) {
+        nodeRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'start',
+        });
+      }
+    }, 0);
   }, [asPath]);
 
   if (node.resource?.label) {
