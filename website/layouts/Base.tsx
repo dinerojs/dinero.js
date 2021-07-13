@@ -278,10 +278,10 @@ export function Base({ children, headings }: BaseProps) {
         <div className="h-full col-span-1 bg-white" />
       </div>
       <div className="sticky top-0 z-20">
-        <div className="px-4 py-2 text-xs text-center bg-blue-400 text-blue-50 sm:text-sm">
+        <div className="relative z-30 px-4 py-2 text-xs text-center bg-blue-400 text-blue-50 sm:text-sm">
           <span className="hidden md:inline">You're browsing the documentation for v{lerna.version}. Things might break!</span> <ExternalLink href="https://v1.dinerojs.com/" className="font-semibold text-white hover:underline">Click here</ExternalLink> for v1.x documentation.
         </div>
-        <header className="bg-white border-b border-gray-200">
+        <header className="relative z-30 bg-white border-b border-gray-200">
           <div className="flex items-center justify-between h-16 px-6 mx-auto space-x-4 max-w-screen-2xl">
             <Link href="/docs">
               <a className="flex space-x-2">
