@@ -1,5 +1,7 @@
+import lerna from '../../../lerna.json';
+
 export const intro = [
-  `%cDinero.js console\n%cRun %cinit()%c or %cinit('2.0.0' /* version */)\n%cto load the library in the console.`,
+  `%cDinero.js console\n%cRun %cinit()%c or %cinit('${lerna.version}' /* version */)\n%cto load the library in the console.`,
   `line-height: 28px; font-size: 22px; font-family: 'Helvetica', sans-serif; color: #2856ef`,
   `line-height: 22px; font-size: 16px; font-family: 'Helvetica', sans-serif; color: #95a3cc`,
   `line-height: 22px; font-size: 12px; font-family: monospace; color: #fff`,

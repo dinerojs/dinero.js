@@ -1,26 +1,33 @@
 import semverCoerce from 'semver/functions/coerce';
-import semverValid from 'semver/functions/valid';
 import semverSatisfies from 'semver/functions/satisfies';
+import semverValid from 'semver/functions/valid';
 
-type CreateInitParams<TInterface> = {
-  defaultVersion: string,
-  getLibrary(params: { version: string }): Promise<TInterface>,
-  onInit(params: { library: TInterface }): void,
-};
+import { instructions } from './messages';
+import lerna from '../../../lerna.json';
 
-export function createInit<TInterface>({
-  defaultVersion,
-  getLibrary,
-  onInit,
-}: CreateInitParams<TInterface>) {
-  return async function init(dirtyVersion: string = defaultVersion) {
-    const version = semverValid(semverCoerce(dirtyVersion));
-    const isValid = version && semverSatisfies(version, '1.x');
+export async function init(dirtyVersion: string = lerna.version) {
+  const allowedRange = '2.x';
+  const version = semverValid(dirtyVersion);
+  const coercedVersion = semverCoerce(version);
+  const isValid = Boolean(version && coercedVersion && semverSatisfies(coercedVersion, allowedRange));
 
-    if (version !== null && isValid) {
-      const library = await getLibrary({ version });
+  if (version && isValid) {
+    const dineroUrl = `https://cdn.jsdelivr.net/npm/dinero.js@${version}/dist/umd/index.production.js`;
+    const dineroCurrenciesUrl = `https://cdn.jsdelivr.net/npm/@dinero.js/currencies@${version}/dist/umd/index.production.js`;
 
-      onInit({ library });
+    try {
+      await import(/* webpackIgnore: true */ dineroUrl);
+      await import(/* webpackIgnore: true */ dineroCurrenciesUrl);
+    } catch(err) {
+      return;
     }
-  };
-}
+
+    window._ = { ...window.dinero.js, ...window['@dinero.js/currencies'] };
+    delete window.dinero;
+    delete window['@dinero.js/currencies'];
+
+    console.log(...instructions);
+  } else {
+    console.error(`Please provide a version which satisfies range "${allowedRange}".`);
+  }
+};

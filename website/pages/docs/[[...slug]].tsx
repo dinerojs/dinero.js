@@ -22,7 +22,7 @@ import {
   BundleSizeTable as InnerBundleSizeTable,
   BundleSize as InnerBundleSize,
 } from '../../components';
-import { createInit, instructions, intro } from '../../utils/console';
+import { init, intro } from '../../utils/console';
 
 type PageProps = {
   headings: Heading[];
@@ -117,21 +117,6 @@ export default function Docs({
     </Base>
   );
 }
-
-const init = createInit({
-  defaultVersion: '1.8.0',
-  async getLibrary({ version }) {
-    const url = `https://cdn.jsdelivr.net/npm/dinero.js@${version}/build/esm/dinero.min.js`;
-    const { default: library } = await import(/* webpackIgnore: true */ url);
-
-    return library;
-  },
-  onInit({ library }) {
-    window._ = library;
-
-    console.log(...instructions);
-  },
-});
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params?.slug || ['index'];
