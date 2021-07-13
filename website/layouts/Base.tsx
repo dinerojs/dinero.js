@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useClickAway } from 'react-use';
@@ -99,13 +99,27 @@ type SidebarNodeWrapper = {
   children: React.ReactNode;
   node: Sitemap;
   isActive: boolean;
+  navScrollRef: React.MutableRefObject<HTMLDivElement | null>;
 };
 
 function SidebarNodeWrapper({
   children,
   node,
+  isActive,
+  navScrollRef,
 }: SidebarNodeWrapper) {
+  const { asPath } = useRouter();
   const nodeRef = useRef<HTMLLIElement | null>(null);
+
+  useEffect(() => {
+    if (isActive && navScrollRef.current && nodeRef.current) {
+      navScrollRef.current.scrollTo({
+        top: nodeRef.current.offsetTop,
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
+  }, [asPath]);
 
   if (node.resource?.label) {
     return <li ref={nodeRef}>{children}</li>;
@@ -117,12 +131,14 @@ function SidebarNodeWrapper({
 type SidebarNodeProps = {
   node: Sitemap;
   level: number;
+  navScrollRef: React.MutableRefObject<HTMLDivElement | null>;
   isNodeActive: (node: Sitemap) => boolean;
 };
 
 function SidebarNode({
   node,
   level,
+  navScrollRef,
   isNodeActive,
 }: SidebarNodeProps) {
   const { asPath } = useRouter();
@@ -156,6 +172,7 @@ function SidebarNode({
   return (
     <SidebarNodeWrapper
       node={node}
+      navScrollRef={navScrollRef}
       isActive={isNodeActive(node)}
     >
       <>
@@ -188,6 +205,7 @@ function SidebarNode({
                 key={index}
                 node={child}
                 level={level + 1}
+                navScrollRef={navScrollRef}
                 isNodeActive={isNodeActive}
               />
             ))}
@@ -207,6 +225,7 @@ export function Base({ children, headings }: BaseProps) {
   const { asPath } = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navRef = useRef(null);
+  const navScrollRef = useRef(null);
   const navButtonRef = useRef(null);
 
   const sites = {
@@ -328,11 +347,12 @@ export function Base({ children, headings }: BaseProps) {
             }
           )}
         >
-          <div className="sticky flex flex-col justify-between h-full px-6 pt-6 pb-6 overflow-y-scroll sm:pt-0 top-24 max-h-screen-16 sm:max-h-screen-24">
+          <div ref={navScrollRef} className="sticky flex flex-col justify-between h-full px-6 pt-6 pb-6 overflow-y-scroll sm:pt-0 top-24 max-h-screen-16 sm:max-h-screen-24">
             <div className="sm:-my-1">
               <SidebarNode
                 node={tree}
                 level={-1}
+                navScrollRef={navScrollRef}
                 isNodeActive={isNodeActive}
               />
             </div>
