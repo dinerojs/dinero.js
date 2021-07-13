@@ -4,4 +4,6 @@ declare module 'react-style-object-to-css';
 interface Window {
   _: any;
   init: any;
+  dinero: any;
+  '@dinero.js/currencies': any;
 }
