@@ -1,6 +1,6 @@
 {
   "name": "@dinero.js/example-cart-vue",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "scripts": {
     "build:clean": "rm -rf ./dist",
     "dev": "vite",
@@ -8,8 +8,8 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@dinero.js/currencies": "2.0.0-alpha.2",
-    "dinero.js": "2.0.0-alpha.2",
+    "@dinero.js/currencies": "2.0.0-alpha.3",
+    "dinero.js": "2.0.0-alpha.3",
     "rosetta": "1.1.0",
     "vue": "3.0.5"
   },
