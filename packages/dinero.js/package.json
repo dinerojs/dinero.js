@@ -10,7 +10,7 @@
     "pure",
     "side-effect free"
   ],
-  "homepage": "https://dinerojs.com",
+  "homepage": "https://v2.dinerojs.com",
   "bugs": "https://github.com/dinerojs/dinero.js/issues",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
     "url": "https://sarahdayan.dev"
   },
   "sideEffects": false,
-  "main": "dist/umd/index.production.js",
+  "main": "dist/cjs/index.production.js",
   "umd:main": "dist/umd/index.production.js",
   "jsdelivr": "dist/umd/index.production.js",
   "unpkg": "dist/umd/index.production.js",
@@ -36,8 +36,8 @@
     "build:clean": "rm -rf ./dist",
     "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
     "build:types": "tsc -p ./tsconfig.declaration.json --outDir ./dist/esm",
-    "build:umd": "rollup --config",
-    "build": "yarn build:clean && yarn build:umd && yarn build:esm && yarn build:types",
+    "build:umd:cjs": "rollup --config",
+    "build": "yarn build:clean && yarn build:umd:cjs && yarn build:esm && yarn build:types",
     "on:change": "concurrently \"yarn build:esm\" \"yarn build:types\"",
     "prepare": "yarn build:esm && yarn build:types",
     "watch": "watch \"yarn on:change\" --ignoreDirectoryPattern \"/dist/\""

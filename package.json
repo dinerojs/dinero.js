@@ -18,7 +18,7 @@
     "build:clean": "lerna run build:clean --no-private",
     "build:esm": "lerna run build:esm --no-private",
     "build:types": "lerna run build:types --no-private",
-    "build:umd": "lerna run build:umd --no-private",
+    "build:umd:cjs": "lerna run build:umd:cjs --no-private",
     "build": "lerna run build --no-private",
     "format": "prettier --write .",
     "lint": "eslint --ext .js,.ts .",
