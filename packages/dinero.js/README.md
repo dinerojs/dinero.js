@@ -1,6 +1,6 @@
 # dinero.js
 
-> An immutable library to create, calculate and format monetary values.
+> Create, calculate, and format money in JavaScript and TypeScript
 
 **This package exports Dinero.js.** It works out of the box with `number` types, but you can adapt it for custom types or third-party libraries by implementing a custom calculator.
 

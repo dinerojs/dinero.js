@@ -1,7 +1,7 @@
 {
   "name": "dinero.js",
   "version": "2.0.0-alpha.2",
-  "description": "An immutable library to create, calculate and format monetary values",
+  "description": "Create, calculate, and format money in JavaScript and TypeScript",
   "keywords": [
     "money",
     "monetary",
