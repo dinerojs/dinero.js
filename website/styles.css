@@ -1,6 +1,6 @@
 .DocSearch {
-  --docsearch-highlight-color: #14e;
-  --docsearch-primary-color: #14e;
+  --docsearch-highlight-color: theme('colors.blue.500');
+  --docsearch-primary-color: theme('colors.blue.500');
 }
 
 .DocSearch-Screen-Icon svg {

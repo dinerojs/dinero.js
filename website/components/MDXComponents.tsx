@@ -59,7 +59,7 @@ function CustomLink(
 
   return (
     <LinkComponent
-      className={cx('text-blue-600', {
+      className={cx('text-blue-500', {
         'hover:underline': !containsInlineCode,
       })}
       {...props}
@@ -113,7 +113,7 @@ function HeadingAnchor({
         href={url}
         onClick={onClick}
         title={label}
-        className="absolute -ml-6 font-normal text-gray-400 transition-opacity duration-100 ease-in-out opacity-0 select-none focus:text-blue-600 group-hover:opacity-100"
+        className="absolute -ml-6 font-normal text-gray-400 transition-opacity duration-100 ease-in-out opacity-0 select-none focus:text-blue-400 group-hover:opacity-100"
       >
         <LinkIcon className={className} />
         <span className="sr-only">{label}</span>
@@ -235,7 +235,7 @@ function CustomPreformattedText(
           'border-gray-300 border bg-gradient-to-b from-gray-50 to-gray-100 p-2 shadow hover:shadow-md rounded flex absolute pointer-events-auto top-0 right-0 items-center mt-6 mr-8 text-sm transition duration-100 ease-in-out focus:outline-none group-hover:opacity-100',
           {
             'text-gray-400 hover:text-gray-600 opacity-0': !copied,
-            'text-blue-600': copied,
+            'text-blue-400': copied,
           }
         )}
         type="button"

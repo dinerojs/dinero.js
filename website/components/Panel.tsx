@@ -15,7 +15,7 @@ export function Panel({ groups }: PanelProps) {
         <tbody>
           {groups.map(({ label, links }) => (
             <tr key={label}>
-              <td className="hidden w-32 py-3 pr-4 font-semibold text-blue-600 align-top sm:table-cell">
+              <td className="hidden w-32 py-3 pr-4 font-semibold text-blue-400 align-top sm:table-cell">
                 {label}
               </td>
               <td className="flex-1 align-top">

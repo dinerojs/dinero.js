@@ -56,7 +56,7 @@ function SidebarItem({
         <a
           className={`block py-1 transition-colors duration-100 ease-in-out ${cx(
             {
-              'text-blue-600 hover:text-blue-700': isActive,
+              'text-blue-400 hover:text-blue-500': isActive,
               'text-gray-400 hover:text-gray-500': !isActive,
             }
           )}`}
@@ -278,7 +278,7 @@ export function Base({ children, headings }: BaseProps) {
         <div className="h-full col-span-1 bg-white" />
       </div>
       <div className="sticky top-0 z-20">
-        <div className="px-4 py-2 text-xs text-center text-blue-100 bg-blue-600 sm:text-sm">
+        <div className="px-4 py-2 text-xs text-center bg-blue-400 text-blue-50 sm:text-sm">
           <span className="hidden md:inline">You're browsing the documentation for v{lerna.version}. Things might break!</span> <ExternalLink href="https://v1.dinerojs.com/" className="font-semibold text-white hover:underline">Click here</ExternalLink> for v1.x documentation.
         </div>
         <header className="bg-white border-b border-gray-200">

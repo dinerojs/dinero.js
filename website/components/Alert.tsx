@@ -14,7 +14,7 @@ function isReactElement(children: React.ReactNode): children is React.ReactEleme
 export function Alert({ children, type }: AlertProps) {
   const content = Array.isArray(children) ? children : [children];
   const classNames: Record<AlertProps['type'], string> = {
-    info: 'bg-blue-200 text-blue-500',
+    info: 'bg-blue-100 bg-opacity-80 text-blue-400',
     warning: 'bg-yellow-200 text-yellow-500',
   };
 
