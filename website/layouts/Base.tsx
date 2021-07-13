@@ -104,22 +104,8 @@ type SidebarNodeWrapper = {
 function SidebarNodeWrapper({
   children,
   node,
-  isActive,
 }: SidebarNodeWrapper) {
-  const { asPath } = useRouter();
   const nodeRef = useRef<HTMLLIElement | null>(null);
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (isActive) {
-        nodeRef.current?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'start',
-        });
-      }
-    }, 0);
-  }, [asPath]);
 
   if (node.resource?.label) {
     return <li ref={nodeRef}>{children}</li>;
