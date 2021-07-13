@@ -277,64 +277,69 @@ export function Base({ children, headings }: BaseProps) {
         <div className="h-full col-span-1 bg-gray-100" />
         <div className="h-full col-span-1 bg-white" />
       </div>
-      <header className="sticky top-0 z-20 bg-white border-b border-gray-200">
-        <div className="flex items-center justify-between h-16 px-6 mx-auto space-x-4 max-w-screen-2xl">
-          <Link href="/docs">
-            <a className="flex space-x-2">
-              <Logo className="h-6" />
-              <span className="mt-px font-semibold">Dinero.js</span>
-            </a>
-          </Link>
-          <div className="flex items-center mt-px space-x-6 text-sm">
-            <form>
-              <span className="sr-only">Dinero.js version</span>
-              <select
-                className="py-1 pr-1"
-                value={versions[0]}
-                onChange={(event) => {
-                  const { url } = sites[event.target.value as 'v1' | 'v2'];
-
-                  if (url !== undefined) {
-                    window.location.assign(url);
-                  }
-                }}
-              >
-                {versions.map((version) => (
-                  <option key={version} value={version}>
-                    {sites[version as 'v1' | 'v2'].label}
-                  </option>
-                ))}
-              </select>
-            </form>
-            <ExternalLink
-              className="items-center hidden space-x-2 sm:flex group"
-              href="https://github.com/dinerojs/dinero.js"
-            >
-              <GitHubIcon className="h-4 text-gray-400 transition-colors duration-100 ease-in-out text-opacity-80 group-hover:text-opacity-100" />
-              <span className="text-gray-800 transition-colors duration-100 ease-in-out text-opacity-80 group-hover:text-opacity-100">
-                GitHub
-              </span>
-            </ExternalLink>
-            <InternalLink
-              className="hidden text-gray-800 transition-colors duration-100 ease-in-out sm:inline-block text-opacity-80 hover:text-opacity-100"
-              href="/docs/sandboxes"
-            >
-              Sandboxes
-            </InternalLink>
-            <InternalLink
-              className="hidden text-gray-800 transition-colors duration-100 ease-in-out sm:inline-block text-opacity-80 hover:text-opacity-100"
-              href="/docs/about"
-            >
-              About
-            </InternalLink>
-            <DocSearch
-              apiKey="cd3d6484bf8f25f16a3b11e7bc24b702"
-              indexName="dinerojs"
-              searchParameters={{ facetFilters: ['tags:v2'] }}
-            />
-          </div>
+      <div className="sticky top-0 z-20">
+        <div className="px-4 py-2 text-xs text-center text-blue-100 bg-blue-600 sm:text-sm">
+          <span className="hidden md:inline">You're browsing the documentation for v{lerna.version}. Things might break!</span> <ExternalLink href="https://v1.dinerojs.com/" className="font-semibold text-white hover:underline">Click here</ExternalLink> for v1.x documentation.
         </div>
-      </header>
+        <header className="bg-white border-b border-gray-200">
+          <div className="flex items-center justify-between h-16 px-6 mx-auto space-x-4 max-w-screen-2xl">
+            <Link href="/docs">
+              <a className="flex space-x-2">
+                <Logo className="h-6" />
+                <span className="mt-px font-semibold">Dinero.js</span>
+              </a>
+            </Link>
+            <div className="flex items-center mt-px space-x-6 text-sm">
+              <form>
+                <span className="sr-only">Dinero.js version</span>
+                <select
+                  className="py-1 pr-1"
+                  value={versions[0]}
+                  onChange={(event) => {
+                    const { url } = sites[event.target.value as 'v1' | 'v2'];
+
+                    if (url !== undefined) {
+                      window.location.assign(url);
+                    }
+                  }}
+                >
+                  {versions.map((version) => (
+                    <option key={version} value={version}>
+                      {sites[version as 'v1' | 'v2'].label}
+                    </option>
+                  ))}
+                </select>
+              </form>
+              <ExternalLink
+                className="items-center hidden space-x-2 sm:flex group"
+                href="https://github.com/dinerojs/dinero.js"
+              >
+                <GitHubIcon className="h-4 text-gray-400 transition-colors duration-100 ease-in-out text-opacity-80 group-hover:text-opacity-100" />
+                <span className="text-gray-800 transition-colors duration-100 ease-in-out text-opacity-80 group-hover:text-opacity-100">
+                  GitHub
+                </span>
+              </ExternalLink>
+              <InternalLink
+                className="hidden text-gray-800 transition-colors duration-100 ease-in-out sm:inline-block text-opacity-80 hover:text-opacity-100"
+                href="/docs/sandboxes"
+              >
+                Sandboxes
+              </InternalLink>
+              <InternalLink
+                className="hidden text-gray-800 transition-colors duration-100 ease-in-out sm:inline-block text-opacity-80 hover:text-opacity-100"
+                href="/docs/about"
+              >
+                About
+              </InternalLink>
+              <DocSearch
+                apiKey="cd3d6484bf8f25f16a3b11e7bc24b702"
+                indexName="dinerojs"
+                searchParameters={{ facetFilters: ['tags:v2'] }}
+              />
+            </div>
+          </div>
+        </header>
+      </div>
       <main className="relative grid grid-cols-10 mx-auto bg-white max-w-screen-2xl min-h-screen-16">
         <nav
           ref={navRef}
