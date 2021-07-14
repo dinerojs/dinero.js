@@ -19,6 +19,8 @@
 
 Money is complex, and the primitives of the language aren't enough to properly represent it. Dinero.js is a JavaScript library that lets you express monetary values, but also perform mutations, conversions, comparisons, formatting, and overall make money manipulation easier and safer in your application.
 
+> Dinero.js v2 is currently in alpha. For v1, check the [`v1` branch](https://github.com/dinerojs/dinero.js/tree/v1).
+
 ## 📦 Install
 
 ```sh
