@@ -27,14 +27,12 @@ body:
   - type: textarea
     attributes:
       label: Steps to reproduce
-      description: Steps to reproduce the behavior.
+      description: Steps to reproduce the behavior. You can also share a reproducible example by forking [this sandbox](https://codesandbox.io/s/github/dinerojs/dinero.js/tree/main/examples/starter).
       placeholder: |
         1. In this environment...
-        2. With this config...
-        3. Run '...'
-        4. See error...
-
-        You can also share a reproducible example by forking [this sandbox](https://codesandbox.io/s/github/dinerojs/dinero.js/tree/main/examples/starter).
+        2. Run '...'
+        3. See error...
+        4. Or: https://codesandbox.io/s/xyz
     validations:
       required: true
   - type: input
