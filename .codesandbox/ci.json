@@ -8,6 +8,10 @@
   ],
   "buildCommand": false,
   "^": "buildCommand is false because `yarn prepare` is going to build packages anyway.",
-  "sandboxes": ["/examples/cart-react", "/examples/cart-vue"],
+  "sandboxes": [
+    "/examples/cart-react",
+    "/examples/cart-vue",
+    "/examples/starter"
+  ],
   "node": "14"
 }

@@ -1,0 +1,17 @@
+{
+  "name": "@dinero.js/example-starter",
+  "version": "2.0.0-alpha.3",
+  "scripts": {
+    "build:clean": "rm -rf ./dist",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.4.2"
+  },
+  "dependencies": {
+    "@dinero.js/currencies": "2.0.0-alpha.3",
+    "dinero.js": "2.0.0-alpha.3"
+  }
+}
