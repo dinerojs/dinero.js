@@ -15,12 +15,12 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "0.2.1",
-    "@tailwindcss/jit": "0.1.5",
-    "@vitejs/plugin-vue": "1.2.2",
-    "@vue/compiler-sfc": "3.0.5",
-    "autoprefixer": "10.2.5",
-    "postcss": "8.2.10",
-    "tailwindcss": "2.0.4",
-    "vite": "2.3.3"
+    "@tailwindcss/jit": "0.1.18",
+    "@vitejs/plugin-vue": "1.2.5",
+    "@vue/compiler-sfc": "3.1.4",
+    "autoprefixer": "10.3.1",
+    "postcss": "8.3.5",
+    "tailwindcss": "2.2.4",
+    "vite": "2.4.2"
   }
 }
