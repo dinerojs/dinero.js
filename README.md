@@ -8,9 +8,6 @@
   <a href="https://github.com/dinerojs/dinero.js/blob/master/LICENSE.md">
     <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue.svg" />
   </a>
-  <a href="https://travis-ci.org/dinerojs/dinero.js">
-    <img alt="Build Status" src="https://img.shields.io/travis/dinerojs/dinero.js.svg" />
-  </a>
   <a href="https://www.npmjs.com/package/dinero.js">
     <img alt="NPM version" src="https://img.shields.io/npm/v/dinero.js.svg" />
   </a>
@@ -33,6 +30,8 @@
 - Extended formatting and rounding options.
 - Native Intl support (no additional locale files).
 - Currency conversion.
+
+> Dinero.js v2 is in alpha! Check it out on the [`main` branch](https://github.com/dinerojs/dinero.js/tree/main).
 
 ## Download/install
 
