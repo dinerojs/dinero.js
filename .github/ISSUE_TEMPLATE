@@ -1,0 +1,61 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: [bug]
+assignees:
+  - sarahdayan
+body:
+  - type: checkboxes
+    attributes:
+      label: Is there an existing issue for this?
+      description: Please search to see if an issue already exists for the bug you encountered.
+      options:
+      - label: I have searched the existing issues
+        required: true
+  - type: textarea
+    attributes:
+      label: Current behavior
+      description: A concise description of what you're experiencing.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: A concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. In this environment...
+        2. With this config...
+        3. Run '...'
+        4. See error...
+
+        You can also share a reproducible example by forking [this sandbox](https://codesandbox.io/s/github/dinerojs/dinero.js/tree/main/examples/starter).
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Version
+      description: What version of Dinero.js are you running?
+      placeholder: e.g., 2.0.0-alpha.1
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Environment
+      description: In what environment are you experiencing the problem?
+      placeholder: e.g., Firefox 89.0.2, Node.js 14.17.3
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/dinerojs/dinero.js/blob/main/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
