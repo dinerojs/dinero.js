@@ -63,6 +63,169 @@ Visit the [full documentation](https://v2.dinerojs.com/docs) to know more.
 
 [![Dinero.js contributors](https://contrib.rocks/image?repo=dinerojs/dinero.js)](https://github.com/dinerojs/dinero.js/graphs/contributors)
 
+**From v1**
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center">
+        <a href="https://sarahdayan.dev" rel="nofollow"
+          ><img
+            src="https://avatars1.githubusercontent.com/u/5370675?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Sarah Dayan</b></sub></a
+        >
+      </td>
+      <td align="center">
+        <a href="https://github.com/yacinehmito"
+          ><img
+            src="https://avatars1.githubusercontent.com/u/6893840?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Yacine Hmito</b></sub></a
+        >
+      </td>
+      <td align="center">
+        <a href="https://github.com/scotttrinh"
+          ><img
+            src="https://avatars1.githubusercontent.com/u/1682194?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Scott Trinh</b></sub></a
+        >
+      </td>
+      <td align="center">
+        <a href="https://rolandasb.com" rel="nofollow"
+          ><img
+            src="https://avatars0.githubusercontent.com/u/1409998?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Rolandas Barysas</b></sub></a
+        >
+      </td>
+      <td align="center">
+        <a href="https://www.luizpb.com/en/" rel="nofollow"
+          ><img
+            src="https://avatars1.githubusercontent.com/u/1798830?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Luiz "Bills"</b></sub></a
+        >
+      </td>
+      <td align="center">
+        <a href="https://kunst.com.br" rel="nofollow"
+          ><img
+            src="https://avatars2.githubusercontent.com/u/8649362?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Leonardo Dino</b></sub></a
+        >
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <a href="https://www.kizu.ru/" rel="nofollow"
+          ><img
+            src="https://avatars3.githubusercontent.com/u/177485?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Roman Komarov</b></sub></a
+        >
+      </td>
+      <td align="center">
+        <a href="http://jotaoncode.com/" rel="nofollow"
+          ><img
+            src="https://avatars3.githubusercontent.com/u/4575026?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Juan Garcia</b></sub></a
+        >
+      </td>
+      <td align="center">
+        <a href="https://github.com/frobinsonj"
+          ><img
+            src="https://avatars3.githubusercontent.com/u/16726902?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Freddy Robinson</b></sub></a
+        >
+      </td>
+      <td align="center">
+        <a href="https://twitter.com/andybrk" rel="nofollow"
+          ><img
+            src="https://avatars0.githubusercontent.com/u/273857?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Andy Burke</b></sub></a
+        >
+      </td>
+      <td align="center">
+        <a href="https://github.com/andrewiggins"
+          ><img
+            src="https://avatars3.githubusercontent.com/u/459878?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Andre Wiggins</b></sub></a
+        >
+      </td>
+      <td align="center">
+        <a href="https://desandro.com" rel="nofollow"
+          ><img
+            src="https://avatars0.githubusercontent.com/u/85566?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>David DeSandro</b></sub></a
+        >
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <a href="http://maxk.se" rel="nofollow"
+          ><img
+            src="https://avatars1.githubusercontent.com/u/19932622?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Max Körlinge</b></sub></a
+        >
+      </td>
+      <td align="center">
+        <a href="https://github.com/dotpack"
+          ><img
+            src="https://avatars2.githubusercontent.com/u/1175814?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Ilia Ermolin</b></sub></a
+        >
+      </td>
+      <td align="center">
+        <a href="https://coina.ge" rel="nofollow"
+          ><img
+            src="https://avatars1.githubusercontent.com/u/1531750?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Kevin Brown</b></sub></a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## 📜 License
 
 [MIT](LICENSE.md)
