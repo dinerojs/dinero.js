@@ -222,6 +222,16 @@ Visit the [full documentation](https://v2.dinerojs.com/docs) to know more.
           /><br /><sub><b>Kevin Brown</b></sub></a
         >
       </td>
+      <td align="center">
+        <a href="https://seankwalker.com" rel="nofollow"
+          ><img
+            src="https://avatars.githubusercontent.com/u/20524136?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Sean Walker</b></sub></a
+        >
+      </td>
     </tr>
   </tbody>
 </table>
