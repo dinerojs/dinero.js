@@ -168,6 +168,17 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "seankwalker",
+      "name": "Sean Walker",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20524136?v=4",
+      "profile": "https://seankwalker.com",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ]
 }
