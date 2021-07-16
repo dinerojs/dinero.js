@@ -1,6 +1,6 @@
 {
   "name": "@dinero.js/core",
-  "version": "2.0.0-alpha.3",
+  "version": "2.0.0-alpha.4",
   "description": "Common code between Dinero.js packages",
   "keywords": [
     "money",
@@ -41,6 +41,6 @@
     "watch": "watch \"yarn on:change\" --ignoreDirectoryPattern \"/dist/\""
   },
   "dependencies": {
-    "@dinero.js/currencies": "2.0.0-alpha.3"
+    "@dinero.js/currencies": "2.0.0-alpha.4"
   }
 }
