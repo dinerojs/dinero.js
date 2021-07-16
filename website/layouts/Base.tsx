@@ -399,7 +399,7 @@ export function Base({ children, headings }: BaseProps) {
                     >
                       <a className="flex items-center space-x-4 group">
                         <ArrowLeftIcon className="h-4 transition-transform duration-100 ease-in-out transform group-hover:-translate-x-1" />
-                        <div className="flex flex-col space-x-1">
+                        <div className="flex flex-col space-y-1">
                           <span className="text-sm text-gray-500 transition-colors duration-100 ease-in-out group-hover:text-gray-700">
                             Previous
                           </span>
@@ -418,7 +418,7 @@ export function Base({ children, headings }: BaseProps) {
                       aria-label={`Go to ${next.resource?.label}`}
                     >
                       <a className="flex items-center space-x-4 group">
-                        <div className="flex flex-col space-x-1">
+                        <div className="flex flex-col space-y-1">
                           <span className="text-sm text-gray-500 transition-colors duration-100 ease-in-out group-hover:text-gray-700">
                             Next
                           </span>
