@@ -12,7 +12,13 @@ export type MultiplyParams<TAmount> = readonly [
 
 export type MultiplyDependencies<TAmount> = Dependencies<
   TAmount,
-  'add' | 'multiply' | 'zero' | 'power' | 'subtract' | 'integerDivide'
+  | 'add'
+  | 'multiply'
+  | 'zero'
+  | 'compare'
+  | 'power'
+  | 'subtract'
+  | 'integerDivide'
 >;
 
 export function multiply<TAmount>({

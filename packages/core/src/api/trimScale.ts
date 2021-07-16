@@ -16,6 +16,7 @@ export type TrimScaleDependencies<TAmount> = Dependencies<
   | 'power'
   | 'subtract'
   | 'zero'
+  | 'multiply'
 >;
 
 export function trimScale<TAmount>({
