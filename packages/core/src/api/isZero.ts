@@ -5,10 +5,7 @@ import type { Dependencies } from './types';
 
 export type IsZeroParams<TAmount> = readonly [dineroObject: Dinero<TAmount>];
 
-export type IsZeroDependencies<TAmount> = Dependencies<
-  TAmount,
-  'compare' | 'zero'
->;
+export type IsZeroDependencies<TAmount> = Dependencies<TAmount>;
 
 export function isZero<TAmount>({ calculator }: IsZeroDependencies<TAmount>) {
   const equalFn = equal(calculator);

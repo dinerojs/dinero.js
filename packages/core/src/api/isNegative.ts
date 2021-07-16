@@ -7,10 +7,7 @@ export type IsNegativeParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>
 ];
 
-export type IsNegativeDependencies<TAmount> = Dependencies<
-  TAmount,
-  'compare' | 'zero'
->;
+export type IsNegativeDependencies<TAmount> = Dependencies<TAmount>;
 
 export function isNegative<TAmount>({
   calculator,

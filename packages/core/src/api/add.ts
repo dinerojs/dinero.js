@@ -13,7 +13,7 @@ export type AddParams<TAmount> = readonly [
   addend: Dinero<TAmount>
 ];
 
-export type UnsafeAddDependencies<TAmount> = Dependencies<TAmount, 'add'>;
+export type UnsafeAddDependencies<TAmount> = Dependencies<TAmount>;
 
 export function unsafeAdd<TAmount>({
   calculator,
@@ -32,16 +32,7 @@ export function unsafeAdd<TAmount>({
   };
 }
 
-export type SafeAddDependencies<TAmount> = Dependencies<
-  TAmount,
-  | 'add'
-  | 'compare'
-  | 'multiply'
-  | 'power'
-  | 'subtract'
-  | 'zero'
-  | 'integerDivide'
->;
+export type SafeAddDependencies<TAmount> = Dependencies<TAmount>;
 
 export function safeAdd<TAmount>({ calculator }: SafeAddDependencies<TAmount>) {
   const normalizeFn = normalizeScale({ calculator });

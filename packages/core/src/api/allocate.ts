@@ -25,18 +25,7 @@ export type AllocateParams<TAmount> = readonly [
   ratios: ReadonlyArray<ScaledAmount<TAmount> | TAmount>
 ];
 
-export type UnsafeAllocateDependencies<TAmount> = Dependencies<
-  TAmount,
-  | 'add'
-  | 'compare'
-  | 'integerDivide'
-  | 'increment'
-  | 'decrement'
-  | 'multiply'
-  | 'subtract'
-  | 'zero'
-  | 'modulo'
->;
+export type UnsafeAllocateDependencies<TAmount> = Dependencies<TAmount>;
 
 function unsafeAllocate<TAmount>({
   calculator,
@@ -61,19 +50,7 @@ function unsafeAllocate<TAmount>({
   };
 }
 
-export type SafeAllocateDependencies<TAmount> = Dependencies<
-  TAmount,
-  | 'add'
-  | 'compare'
-  | 'integerDivide'
-  | 'increment'
-  | 'decrement'
-  | 'multiply'
-  | 'subtract'
-  | 'zero'
-  | 'modulo'
-  | 'power'
->;
+export type SafeAllocateDependencies<TAmount> = Dependencies<TAmount>;
 
 export function safeAllocate<TAmount>({
   calculator,

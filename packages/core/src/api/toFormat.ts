@@ -8,10 +8,7 @@ export type ToFormatParams<TAmount> = readonly [
   transformer: Transformer<TAmount>
 ];
 
-export type ToFormatDependencies<TAmount> = Dependencies<
-  TAmount,
-  'multiply' | 'power' | 'toNumber'
->;
+export type ToFormatDependencies<TAmount> = Dependencies<TAmount>;
 
 export function toFormat<TAmount>({
   calculator,

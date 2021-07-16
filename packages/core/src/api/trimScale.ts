@@ -7,17 +7,7 @@ import type { Dependencies } from './types';
 
 export type TrimScaleParams<TAmount> = readonly [dineroObject: Dinero<TAmount>];
 
-export type TrimScaleDependencies<TAmount> = Dependencies<
-  TAmount,
-  | 'compare'
-  | 'increment'
-  | 'integerDivide'
-  | 'modulo'
-  | 'power'
-  | 'subtract'
-  | 'zero'
-  | 'multiply'
->;
+export type TrimScaleDependencies<TAmount> = Dependencies<TAmount>;
 
 export function trimScale<TAmount>({
   calculator,

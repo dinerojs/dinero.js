@@ -9,16 +9,7 @@ export type NormalizeScaleParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ];
 
-export type NormalizeScaleDependencies<TAmount> = Dependencies<
-  TAmount,
-  | 'add'
-  | 'compare'
-  | 'multiply'
-  | 'power'
-  | 'subtract'
-  | 'zero'
-  | 'integerDivide'
->;
+export type NormalizeScaleDependencies<TAmount> = Dependencies<TAmount>;
 
 export function normalizeScale<TAmount>({
   calculator,

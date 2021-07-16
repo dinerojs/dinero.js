@@ -13,10 +13,7 @@ export type MinimumParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ];
 
-export type UnsafeMinimumDependencies<TAmount> = Dependencies<
-  TAmount,
-  'compare'
->;
+export type UnsafeMinimumDependencies<TAmount> = Dependencies<TAmount>;
 
 export function unsafeMinimum<TAmount>({
   calculator,
@@ -43,16 +40,7 @@ export function unsafeMinimum<TAmount>({
   };
 }
 
-export type SafeMinimumDependencies<TAmount> = Dependencies<
-  TAmount,
-  | 'add'
-  | 'compare'
-  | 'multiply'
-  | 'power'
-  | 'subtract'
-  | 'zero'
-  | 'integerDivide'
->;
+export type SafeMinimumDependencies<TAmount> = Dependencies<TAmount>;
 
 export function safeMinimum<TAmount>({
   calculator,

@@ -7,10 +7,7 @@ export type HasSubUnitsParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>
 ];
 
-export type HasSubUnitsDependencies<TAmount> = Dependencies<
-  TAmount,
-  'compare' | 'modulo' | 'power' | 'zero'
->;
+export type HasSubUnitsDependencies<TAmount> = Dependencies<TAmount>;
 
 export function hasSubUnits<TAmount>({
   calculator,

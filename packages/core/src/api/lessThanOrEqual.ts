@@ -14,10 +14,7 @@ export type LessThanOrEqualParams<TAmount> = readonly [
   comparator: Dinero<TAmount>
 ];
 
-export type UnsafeLessThanOrEqualDependencies<TAmount> = Dependencies<
-  TAmount,
-  'compare'
->;
+export type UnsafeLessThanOrEqualDependencies<TAmount> = Dependencies<TAmount>;
 
 export function unsafeLessThanOrEqual<TAmount>({
   calculator,
@@ -39,16 +36,7 @@ export function unsafeLessThanOrEqual<TAmount>({
   };
 }
 
-export type SafeLessThanOrEqualDependencies<TAmount> = Dependencies<
-  TAmount,
-  | 'add'
-  | 'compare'
-  | 'multiply'
-  | 'power'
-  | 'subtract'
-  | 'zero'
-  | 'integerDivide'
->;
+export type SafeLessThanOrEqualDependencies<TAmount> = Dependencies<TAmount>;
 
 export function safeLessThanOrEqual<TAmount>({
   calculator,

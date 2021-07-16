@@ -13,10 +13,7 @@ export type MaximumParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ];
 
-export type UnsafeMaximumDependencies<TAmount> = Dependencies<
-  TAmount,
-  'compare'
->;
+export type UnsafeMaximumDependencies<TAmount> = Dependencies<TAmount>;
 
 export function unsafeMaximum<TAmount>({
   calculator,
@@ -43,16 +40,7 @@ export function unsafeMaximum<TAmount>({
   };
 }
 
-export type SafeMaximumDependencies<TAmount> = Dependencies<
-  TAmount,
-  | 'add'
-  | 'compare'
-  | 'multiply'
-  | 'power'
-  | 'subtract'
-  | 'zero'
-  | 'integerDivide'
->;
+export type SafeMaximumDependencies<TAmount> = Dependencies<TAmount>;
 
 export function safeMaximum<TAmount>({
   calculator,

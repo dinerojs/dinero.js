@@ -12,16 +12,7 @@ export type ConvertParams<TAmount> = readonly [
   rates: Rates<TAmount>
 ];
 
-export type ConvertDependencies<TAmount> = Dependencies<
-  TAmount,
-  | 'add'
-  | 'multiply'
-  | 'zero'
-  | 'power'
-  | 'subtract'
-  | 'integerDivide'
-  | 'compare'
->;
+export type ConvertDependencies<TAmount> = Dependencies<TAmount>;
 
 export function convert<TAmount>({ calculator }: ConvertDependencies<TAmount>) {
   const convertScaleFn = transformScale({ calculator });

@@ -10,16 +10,7 @@ export type MultiplyParams<TAmount> = readonly [
   multiplier: ScaledAmount<TAmount> | TAmount
 ];
 
-export type MultiplyDependencies<TAmount> = Dependencies<
-  TAmount,
-  | 'add'
-  | 'multiply'
-  | 'zero'
-  | 'compare'
-  | 'power'
-  | 'subtract'
-  | 'integerDivide'
->;
+export type MultiplyDependencies<TAmount> = Dependencies<TAmount>;
 
 export function multiply<TAmount>({
   calculator,

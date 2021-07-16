@@ -9,16 +9,7 @@ export type HaveSameAmountParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ];
 
-export type HaveSameAmountDependencies<TAmount> = Dependencies<
-  TAmount,
-  | 'add'
-  | 'compare'
-  | 'multiply'
-  | 'power'
-  | 'subtract'
-  | 'zero'
-  | 'integerDivide'
->;
+export type HaveSameAmountDependencies<TAmount> = Dependencies<TAmount>;
 
 export function haveSameAmount<TAmount>({
   calculator,

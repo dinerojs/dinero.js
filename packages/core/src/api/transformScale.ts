@@ -8,10 +8,7 @@ export type TransformScaleParams<TAmount> = readonly [
   newScale: TAmount
 ];
 
-export type TransformScaleDependencies<TAmount> = Dependencies<
-  TAmount,
-  'subtract' | 'integerDivide' | 'multiply' | 'power' | 'compare'
->;
+export type TransformScaleDependencies<TAmount> = Dependencies<TAmount>;
 
 export function transformScale<TAmount>({
   calculator,

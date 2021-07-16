@@ -6,10 +6,7 @@ export type ToUnitParams<TAmount> = readonly [
   options?: RoundingOptions<TAmount>
 ];
 
-export type ToUnitDependencies<TAmount> = Dependencies<
-  TAmount,
-  'multiply' | 'power' | 'toNumber'
->;
+export type ToUnitDependencies<TAmount> = Dependencies<TAmount>;
 
 export function toUnit<TAmount>({ calculator }: ToUnitDependencies<TAmount>) {
   return function toUnitFn(...[dineroObject, options]: ToUnitParams<TAmount>) {

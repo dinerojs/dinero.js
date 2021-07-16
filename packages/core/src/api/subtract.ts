@@ -13,10 +13,7 @@ export type SubtractParams<TAmount> = readonly [
   subtrahend: Dinero<TAmount>
 ];
 
-export type UnsafeSubtractDependencies<TAmount> = Dependencies<
-  TAmount,
-  'subtract'
->;
+export type UnsafeSubtractDependencies<TAmount> = Dependencies<TAmount>;
 
 export function unsafeSubtract<TAmount>({
   calculator,
@@ -35,17 +32,7 @@ export function unsafeSubtract<TAmount>({
   };
 }
 
-export type SafeSubtractDependencies<TAmount> = Dependencies<
-  TAmount,
-  | 'subtract'
-  | 'add'
-  | 'compare'
-  | 'multiply'
-  | 'power'
-  | 'subtract'
-  | 'zero'
-  | 'integerDivide'
->;
+export type SafeSubtractDependencies<TAmount> = Dependencies<TAmount>;
 
 export function safeSubtract<TAmount>({
   calculator,
