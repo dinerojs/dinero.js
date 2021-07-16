@@ -33,7 +33,7 @@
     "dist/"
   ],
   "scripts": {
-    "build:clean": "rm -rf ./dist",
+    "build:clean": "rimraf ./dist",
     "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
     "build:types": "tsc -p ./tsconfig.declaration.json --outDir ./dist/esm",
     "build:umd:cjs": "rollup --config",

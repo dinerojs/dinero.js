@@ -2,7 +2,7 @@
   "name": "@dinero.js/example-cart-vue",
   "version": "2.0.0-alpha.3",
   "scripts": {
-    "build:clean": "rm -rf ./dist",
+    "build:clean": "rimraf ./dist",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
