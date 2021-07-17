@@ -63,7 +63,7 @@
     "eslint-plugin-functional": "3.2.1",
     "eslint-plugin-import": "2.23.2",
     "eslint-plugin-jest": "24.3.6",
-    "eslint-plugin-jsdoc": "34.7.0",
+    "eslint-plugin-jsdoc": "34.8.2",
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-promise": "5.1.0",
     "eslint-plugin-sonarjs": "0.7.0",
