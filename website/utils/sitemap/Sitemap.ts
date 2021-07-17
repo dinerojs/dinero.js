@@ -80,14 +80,14 @@ export class Sitemap {
   /**
    * The sibling that comes right before the sitemap tree.
    */
-  get previous() {
+  get previous(): Sitemap | null | undefined {
     return this.index !== null ? this.parent?.children[this.index - 1] : null;
   }
 
   /**
    * The sibling that comes right after the sitemap tree.
    */
-  get next() {
+  get next(): Sitemap | null | undefined {
     return this.index !== null ? this.parent?.children[this.index + 1] : null;
   }
 
