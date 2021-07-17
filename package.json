@@ -74,7 +74,7 @@
     "lint-staged": "11.0.1",
     "prettier": "2.3.2",
     "rimraf": "3.0.2",
-    "rollup": "2.48.0",
+    "rollup": "2.53.2",
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-filesize": "9.1.1",
     "rollup-plugin-license": "2.3.0",
