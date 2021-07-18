@@ -38,7 +38,7 @@ aliases:
 defaults: &defaults
   working_directory: ~/dinero.js
   docker:
-    - image: circleci/node:14.17.3
+    - image: circleci/node:16.5.0
 
 cypress: &cypress
   working_directory: ~/dinero.js
