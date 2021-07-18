@@ -61,3 +61,22 @@ const d4 = dinero({ amount: 500, currency: USD });
 
 compare(d3, d4); // 0
 ```
+
+### Sort arrays of Dinero objects
+
+One of the main use cases of the `compare` function is to enable sorting arrays of Dinero objects either from low to high (default) or high to low.
+
+```js
+import { dinero, compare } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 900, currency: USD });
+const d2 = dinero({ amount: 500, currency: USD });
+const d3 = dinero({ amount: 800, currency: USD });
+
+const valuesLowToHigh = [d1, d2, d3].sort(compare);
+// [D500, D800, D900]
+
+const valuesHighToLow = [d1, d2, d3].sort((item1, item2) => -compare(item1, item2));
+// [D900, D800, D500]
+```
