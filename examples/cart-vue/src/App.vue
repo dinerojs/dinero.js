@@ -35,7 +35,9 @@
                 shadow-sm
                 pr-7
                 focus:border-green-300
-                focus:ring focus:ring-green-200 focus:ring-opacity-50
+                focus:ring
+                focus:ring-green-200
+                focus:ring-opacity-50
               "
             >
               <option
