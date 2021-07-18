@@ -28,7 +28,7 @@
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  @apply text-gray-400;
+  @apply text-gray-500;
 }
 
 .token.namespace {
@@ -42,7 +42,7 @@
 
 .token.punctuation,
 .token.operator {
-  @apply text-gray-700;
+  @apply text-gray-900;
 }
 
 .token.entity,
@@ -54,7 +54,7 @@
 .token.constant,
 .token.property,
 .token.regex {
-  color: #36acaa;
+  color: #007f80;
 }
 
 .token.inserted {
@@ -65,7 +65,7 @@
 .token.keyword,
 .token.attr-name,
 .language-autohotkey .token.selector {
-  color: #00a4db;
+  color: #0072d6;
 }
 
 .token.function,

@@ -255,7 +255,7 @@ function CustomPreformattedText(
         </span>
         {!state.error && <Icon className="h-5" />}
       </button>
-      <div className="p-8 overflow-x-scroll font-mono text-sm leading-relaxed bg-gray-100 rounded">
+      <div className="p-8 overflow-x-scroll font-mono text-sm leading-relaxed rounded bg-gray-50">
         <pre {...props} />
       </div>
     </div>
