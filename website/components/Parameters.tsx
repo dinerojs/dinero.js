@@ -1,4 +1,5 @@
 import { InlineCode } from './InlineCode';
+import { Scrollable } from './Scrollable';
 
 type ParametersProps = {
   children: React.ReactNode;
@@ -16,34 +17,46 @@ export function Parameters({ children }: ParametersProps) {
 
   if (parameters.length > 0) {
     return (
-      <table className="w-full mt-3">
-        <thead>
-          <tr>
-            <th className="px-0 py-4 text-sm font-semibold text-left text-gray-400">Name</th>
-            <th className="px-0 py-4 text-sm font-semibold text-left text-gray-400">Type</th>
-            <th className="px-0 py-4 text-sm font-semibold text-left text-gray-400">Description</th>
-            <th className="px-0 py-4 text-sm font-semibold text-left text-gray-400">Required</th>
-          </tr>
-        </thead>
-        <tbody>
-          {parameters.map(({ props }) => (
-            <tr key={props.name}>
-              <td className="px-0 py-4 text-sm align-top border-t border-gray-200">
-                <InlineCode id={`parameter-${props.name}`}>{props.name}</InlineCode>
-              </td>
-              <td className="px-0 py-4 text-sm align-top border-t border-gray-200">
-                <InlineCode>{props.type}</InlineCode>
-              </td>
-              <td className="px-0 py-4 align-top border-t border-gray-200">
-                <div className="-mt-6">{props.children}</div>
-              </td>
-              <td className="px-0 py-4 align-top border-t border-gray-200">
-                {props.required ? 'Yes' : 'No'}
-              </td>
+      <Scrollable>
+        <table className="w-full mt-3">
+          <thead>
+            <tr>
+              <th className="px-0 py-4 text-sm font-semibold text-left text-gray-400">
+                <span className="pr-8 whitespace-nowrap">Name</span>
+              </th>
+              <th className="px-0 py-4 text-sm font-semibold text-left text-gray-400">
+                <span className="pr-8 whitespace-nowrap">Type</span>
+              </th>
+              <th className="px-0 py-4 text-sm font-semibold text-left text-gray-400">
+                <span className="pr-8 whitespace-nowrap">Description</span>
+              </th>
+              <th className="px-0 py-4 text-sm font-semibold text-left text-gray-400">
+                <span className="pr-8 whitespace-nowrap">Required</span>
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {parameters.map(({ props }) => (
+              <tr key={props.name}>
+                <td className="px-0 py-4 text-sm align-top border-t border-gray-200">
+                  <InlineCode id={`parameter-${props.name}`}>{props.name}</InlineCode>
+                </td>
+                <td className="px-0 py-4 text-sm align-top border-t border-gray-200">
+                  <InlineCode>{props.type}</InlineCode>
+                </td>
+                <td className="px-0 py-4 align-top border-t border-gray-200">
+                  <div className="-mt-6">
+                    {props.children}
+                  </div>
+                </td>
+                <td className="px-0 py-4 align-top border-t border-gray-200">
+                  {props.required ? 'Yes' : 'No'}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Scrollable>
     );
   }
 
@@ -58,5 +71,5 @@ type ParameterProps = {
 };
 
 export function Parameter({ children }: ParameterProps) {
-  return children
+  return children;
 }
