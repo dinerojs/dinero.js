@@ -391,14 +391,14 @@ export function Base({ children, headings }: BaseProps) {
           {(previous || next) && (
             <nav className="mt-10">
               <ul className="flex justify-between">
-                <li className="w-1/2 text-left">
+                <li className="flex-none w-1/2 text-left">
                   {previous && (
                     <Link
                       href={previous.resource?.path as string}
                       aria-label={`Go to ${previous.resource?.label}`}
                     >
                       <a className="flex items-center space-x-4 group">
-                        <ArrowLeftIcon className="h-4 transition-transform duration-100 ease-in-out transform group-hover:-translate-x-1" />
+                        <ArrowLeftIcon className="flex-none h-4 transition-transform duration-100 ease-in-out transform group-hover:-translate-x-1" />
                         <div className="flex flex-col space-y-1">
                           <span className="text-sm text-gray-500 transition-colors duration-100 ease-in-out group-hover:text-gray-700">
                             Previous
@@ -411,7 +411,7 @@ export function Base({ children, headings }: BaseProps) {
                     </Link>
                   )}
                 </li>
-                <li className="text-right">
+                <li className="flex-none w-1/2 text-right">
                   {next && (
                     <Link
                       href={next.resource?.path as string}
@@ -426,7 +426,7 @@ export function Base({ children, headings }: BaseProps) {
                             {next.resource?.label}
                           </span>
                         </div>
-                        <ArrowRightIcon className="h-4 transition-transform duration-100 ease-in-out transform group-hover:translate-x-1" />
+                        <ArrowRightIcon className="flex-none h-4 transition-transform duration-100 ease-in-out transform group-hover:translate-x-1" />
                       </a>
                     </Link>
                   )}
