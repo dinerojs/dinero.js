@@ -5,7 +5,7 @@ import { compare } from '../compare';
 const compareFn = compare({ compare: cmp });
 
 describe('compare', () => {
-  describe('verifying it returns -1 when first operand is less than second', () => {
+  describe('inferiority', () => {
     it('returns -1 when the first number is less than the other with positive numbers', () => {
       expect(compareFn(1, 2)).toBe(-1);
     });
@@ -19,7 +19,7 @@ describe('compare', () => {
       expect(compareFn(2e5, 3e5)).toBe(-1);
     });
   });
-  describe('verifying it returns 0 when first operand is equal to the second', () => {
+  describe('equality', () => {
     it('returns 0 when the first number is equal to the other with positive numbers', () => {
       expect(compareFn(4, 4)).toBe(0);
     });
@@ -33,7 +33,7 @@ describe('compare', () => {
       expect(compareFn(3e5, 3e5)).toBe(0);
     });
   });
-  describe('verifying it returns 1 when first operand is greater than second', () => {
+  describe('superiority', () => {
     it('returns 1 when the first number is greater than the other with positive numbers', () => {
       expect(compareFn(4, 3)).toBe(1);
     });

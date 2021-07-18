@@ -1,12 +1,15 @@
 ---
 title: compare
-description: Compares the value of a Dinero object relative to another.
+description: Compare the value of a Dinero object relative to another.
 returns: number
 ---
 
-Compares the value of a Dinero object relative to another; useful for sorting Dinero objects.
+Compare the value of a Dinero object relative to another. This is useful for sorting Dinero objects.
 
-Returns a negative number if the Dinero object is less than the other; 0 if they are equal; or a positive number if greater than the other.
+Possible return values are:
+- `-1` if the first Dinero object is less than the other
+- `1` if the first Dinero object is greater than the other
+- `0` if both objects are equal
 
 **You can only compare objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before comparing them.
 

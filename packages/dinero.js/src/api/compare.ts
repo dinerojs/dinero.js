@@ -3,14 +3,12 @@ import { safeCompare } from '@dinero.js/core';
 import type { CompareParams } from '@dinero.js/core';
 
 /**
- * Compares the value of a Dinero object relative to another.
+ * Compare the value of a Dinero object relative to another.
  *
  * @param dineroObject - The Dinero object to compare.
  * @param comparator - The Dinero object to compare to.
  *
- * @returns A negative number if the Dinero to compare is than the other;
- *          0 if they are equal;
- *          or a positive number if it is greater.
+ * @returns One of -1, 0, or 1 depending on whether the first Dinero object is less than, equal to, or greater than the other.
  */
 export function compare<TAmount>(
   ...[dineroObject, comparator]: CompareParams<TAmount>
