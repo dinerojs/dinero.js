@@ -14,6 +14,7 @@ import {
   Parameters,
   Panel,
   Parameter,
+  Scrollable,
 } from '.';
 import { ClipboardCheckIcon, ClipboardIcon, LinkIcon } from './icons';
 import { PanelProps } from './Panel';
@@ -335,12 +336,6 @@ function CustomPanel(props: PanelProps) {
       <Panel {...props} />
     </div>
   );
-}
-
-function Scrollable(
-  props: MDXComponentProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
-) {
-  return <div className="overflow-x-scroll" {...props} />;
 }
 
 export const MDXComponents = {
