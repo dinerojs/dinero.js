@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { NextSeo } from 'next-seo';
 import junk from 'junk';
 
 import { Base } from '../../layouts';
@@ -23,6 +24,7 @@ import {
   BundleSize as InnerBundleSize,
 } from '../../components';
 import { init, intro } from '../../utils/console';
+import { title } from '../_app';
 
 type PageProps = {
   headings: Heading[];
@@ -63,27 +65,21 @@ export default function Docs({
     return <InnerBundleSize {...props} bundles={bundleSize} />;
   }
 
+  const description = frontMatter?.description;
+
   return (
     <Base headings={headings}>
       <Head>
-        <title>{frontMatter?.title} | Dinero.js</title>
         <meta
           name="viewport"
           content="initial-scale=1.0, width=device-width, user-scalable=0"
         />
-        <meta name="description" content={frontMatter?.description} />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap"
-          rel="stylesheet"
-        />
-        <link
-          rel="preconnect"
-          href="https://BH4D9OD16A-dsn.algolia.net"
-          crossOrigin="true"
-        />
       </Head>
+      <NextSeo
+        title={`${frontMatter?.title} | ${title}`}
+        description={description}
+        openGraph={{ description }}
+      />
       <>
         <div className="flex items-start mb-10 space-x-3 group">
           <div className="flex items-end flex-1 space-x-3">
