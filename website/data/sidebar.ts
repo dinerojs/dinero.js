@@ -31,6 +31,7 @@ tree.add(Resource.create({ label: 'Transform scale', path: '/docs/api/conversion
 tree.add(Resource.create({ label: 'Trim scale', path: '/docs/api/conversions/trim-scale' }));
 tree.add(Resource.create({ label: 'Comparisons', path: '/docs/api/comparisons' }));
 tree.add(Resource.create({ label: 'Equal', path: '/docs/api/comparisons/equal' }));
+tree.add(Resource.create({ label: 'Compare', path: '/docs/api/comparisons/compare' }));
 tree.add(Resource.create({ label: 'Greater than', path: '/docs/api/comparisons/greater-than' }));
 tree.add(Resource.create({ label: 'Greater than or equal', path: '/docs/api/comparisons/greater-than-or-equal' }));
 tree.add(Resource.create({ label: 'Less than', path: '/docs/api/comparisons/less-than' }));
