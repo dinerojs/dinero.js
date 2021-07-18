@@ -1,5 +1,6 @@
 export * from './add';
 export * from './allocate';
+export * from './compare';
 export * from './convert';
 export * from './equal';
 export * from './greaterThan';
