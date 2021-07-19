@@ -18,6 +18,13 @@ tree.add(Resource.create({ label: 'Mutations', path: '/docs/core-concepts/mutati
 tree.add(Resource.create({ label: 'Comparisons', path: '/docs/core-concepts/comparisons' }));
 tree.add(Resource.create({ label: 'Formatting', path: '/docs/core-concepts/formatting' }));
 
+tree.add(Resource.create({ label: 'Guides', path: '/docs/guides' }));
+tree.add(Resource.create({ label: 'Using different amount types', path: '/docs/guides/using-different-amount-types' }));
+tree.add(Resource.create({ label: 'Transporting and restoring', path: '/docs/guides/transporting-and-restoring' }));
+tree.add(Resource.create({ label: 'Formatting in a multilingual site', path: '/docs/guides/formatting-in-a-multilingual-site' }));
+tree.add(Resource.create({ label: 'Integrating with payment services', path: '/docs/guides/integrating-with-payment-services' }));
+tree.add(Resource.create({ label: 'Formatting non-decimal currencies', path: '/docs/guides/formatting-non-decimal-currencies' }));
+
 tree.add(Resource.create({ label: 'API', path: '/docs/api' }));
 tree.add(Resource.create({ label: 'Mutations', path: '/docs/api/mutations' }));
 tree.add(Resource.create({ label: 'Add', path: '/docs/api/mutations/add' }));
@@ -48,13 +55,6 @@ tree.add(Resource.create({ label: 'Formatting', path: '/docs/api/formatting' }))
 tree.add(Resource.create({ label: 'To format', path: '/docs/api/formatting/to-format' }));
 tree.add(Resource.create({ label: 'To snapshot', path: '/docs/api/formatting/to-snapshot' }));
 tree.add(Resource.create({ label: 'To unit', path: '/docs/api/formatting/to-unit' }));
-
-tree.add(Resource.create({ label: 'Advanced', path: '/docs/advanced' }));
-tree.add(Resource.create({ label: 'Using different amount types', path: '/docs/advanced/using-different-amount-types' }));
-tree.add(Resource.create({ label: 'Transporting and restoring', path: '/docs/advanced/transporting-and-restoring' }));
-tree.add(Resource.create({ label: 'Formatting in a multilingual site', path: '/docs/advanced/formatting-in-a-multilingual-site' }));
-tree.add(Resource.create({ label: 'Integrating with payment services', path: '/docs/advanced/integrating-with-payment-services' }));
-tree.add(Resource.create({ label: 'Formatting non-decimal currencies', path: '/docs/advanced/formatting-non-decimal-currencies' }));
 
 tree.add(Resource.create({ label: 'FAQ', path: '/docs/faq' }));
 tree.add(Resource.create({ label: 'Does Dinero.js support cryptocurrencies?', path: '/docs/faq/does-dinerojs-support-cryptocurrencies' }));

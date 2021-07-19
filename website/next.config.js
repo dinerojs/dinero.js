@@ -6,6 +6,11 @@ module.exports = {
         destination: '/docs',
         permanent: true,
       },
+      {
+        source: '/docs/advanced/:slug*',
+        destination: '/docs/guides/:slug*',
+        permanent: true,
+      },
     ];
   },
   webpack(config, { isServer }) {
