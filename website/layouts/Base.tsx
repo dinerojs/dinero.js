@@ -396,9 +396,9 @@ export function Base({ children, headings }: BaseProps) {
                       href={previous.resource?.path as string}
                       aria-label={`Go to ${previous.resource?.label}`}
                     >
-                      <a className="flex items-center flex-none space-x-4 group">
+                      <a className="flex items-center flex-none w-full space-x-4 group">
                         <ArrowLeftIcon className="flex-none h-4 transition-transform duration-100 ease-in-out transform group-hover:-translate-x-1" />
-                        <div className="flex flex-col space-y-1">
+                        <div className="flex flex-col self-start space-y-1">
                           <span className="text-sm text-gray-500 transition-colors duration-100 ease-in-out group-hover:text-gray-700">
                             Previous
                           </span>
@@ -416,8 +416,8 @@ export function Base({ children, headings }: BaseProps) {
                       href={next.resource?.path as string}
                       aria-label={`Go to ${next.resource?.label}`}
                     >
-                      <a className="flex items-center flex-none space-x-4 group">
-                        <div className="flex flex-col space-y-1">
+                      <a className="flex items-center justify-end flex-none w-full space-x-4 group">
+                        <div className="flex flex-col self-start space-y-1">
                           <span className="text-sm text-gray-500 transition-colors duration-100 ease-in-out group-hover:text-gray-700">
                             Next
                           </span>
