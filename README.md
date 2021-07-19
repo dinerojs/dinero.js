@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://v2.dinerojs.com/docs">
-    <img alt="Dinero.js" src=".github/banner.png">
+    <img alt="Dinero.js" src="https://raw.githubusercontent.com/dinerojs/dinero.js/main/.github/banner.png">
   </a>
 </p>
 
