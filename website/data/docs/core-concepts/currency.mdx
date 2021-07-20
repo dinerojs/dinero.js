@@ -111,7 +111,7 @@ const d1 = dinero({ amount: 1000, currency: USD });
 const d2 = dinero({ amount: 1000, currency: EUR });
 ```
 
-Currencies fluctuates, meaning their code and exponent can change, there can be new currencies, and existing currencies can disappear. ISO 4217 currencies account for these changes with amendments, maintained by the [Secretariat of the Maintenance Agency](https://www.six-group.com/en/products-services/financial-information/data-standards.html).
+Currencies fluctuate, meaning their code and exponent can change, there can be new currencies, and existing currencies can disappear. ISO 4217 currencies account for these changes with amendments, maintained by the [Secretariat of the Maintenance Agency](https://www.six-group.com/en/products-services/financial-information/data-standards.html).
 
 Dinero.js tracks those amendments and updates currencies accordingly. Such changes are, by definition, breaking. To preserve fixed versioning, the library's entry point doesn't export updated currencies. In other words, if you import currencies from the path `@dinero.js/currencies`, they won't change.
 
