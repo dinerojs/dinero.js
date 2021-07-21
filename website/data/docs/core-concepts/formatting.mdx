@@ -49,8 +49,8 @@ import { dinero, toFormat } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
 // This function lets you pass a transformer and rounding options.
-// It returns a function that takes a Dinero object and applies the closured
-// transformer and options.
+// It returns a function that takes a Dinero object and applies
+// the closured transformer.
 function createFormatter(transformer) {
   return function formatter(dineroObject) {
     return toFormat(dineroObject, transformer);
