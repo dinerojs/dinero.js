@@ -1,11 +1,8 @@
 # [2.0.0-alpha.6](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.5...v2.0.0-alpha.6) (2021-07-21)
 
-
 ### Bug Fixes
 
 * **currencies:** use proper base and exponents for MRU and MGA ([ac2bb8d](https://github.com/dinerojs/dinero.js/commit/ac2bb8da8f53e8f461423745c2aaf4c5730e0421))
-
-
 
 # [2.0.0-alpha.5](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.4...v2.0.0-alpha.5) (2021-07-19)
 
