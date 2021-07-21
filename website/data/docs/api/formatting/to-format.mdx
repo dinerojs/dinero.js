@@ -61,7 +61,7 @@ const d = dinero({ amount: 5000, currency: USD });
 format(d); // "USD 50"
 ```
 
-You can even build your own reusable higher-order function to build formatters.
+You can even build your own reusable higher-order function to build formatters. This can be useful if you need to create multiple formatters, for example to cater to multiple locales.
 
 ```js
 // ...
@@ -71,4 +71,16 @@ function createFormatter(transformer) {
     return toFormat(dineroObject, transformer);
   };
 }
+
+const frenchFormat = createFormatter(({ amount, currency }) => {
+  return `${amount.toFixed(currency.exponent).replace('.', ',')} ${
+    currency.code
+  }`;
+});
+
+const americanFormat = createFormatter(({ amount, currency }) => {
+  return `${currency.code} ${amount.toFixed(currency.exponent)}`;
+});
 ```
+
+In such a situation, you can also [create a single formatter based on the Internationalization API](/docs/guides/formatting-in-a-multilingual-site).
