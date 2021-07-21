@@ -155,7 +155,7 @@ const FRF = {
 };
 ```
 
-If you're a TypeScript user, you can implement the `Currency` type.
+If you're a TypeScript user, you can implement the `Currency` type. It takes a generic parameter `TAmount` which represents the type you're using for numeric values (`number` by default).
 
 ```js
 import { Currency } from 'dinero.js';
@@ -166,3 +166,19 @@ const FRF: Currency<number> = {
   exponent: 2,
 };
 ```
+
+If you want to use a different amount type, you'll need to pass a custom `Calculator` to Dinero.
+
+<Panel
+  groups={[
+    {
+      label: 'Guides',
+      links: [
+        {
+          title: 'Using different amount types',
+          url: '/docs/guides/using-different-amount-types',
+        },
+      ],
+    },
+  ]}
+/>
