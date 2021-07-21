@@ -5,6 +5,6 @@ import type { Currency } from '../../../types';
  */
 export const MRU: Currency<number> = {
   code: 'MRU',
-  base: 10,
-  exponent: 2,
+  base: 5,
+  exponent: 1,
 };
