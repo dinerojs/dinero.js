@@ -57,18 +57,22 @@ To represent these currencies, you can take how many of the smallest subdivision
 const GBP = {
   code: 'GBP',
   base: 240,
-  // ...
+  exponent: 1,
 };
 
 // Great Britain wizarding currency (Harry Potter universe)
 const GBW = {
   code: 'GBW',
   base: 493,
-  // ...
+  exponent: 1,
 };
 ```
 
-When working with such currencies, you should set the exponent to 1.
+<Alert type="info">
+
+When working with non-decimal currencies, you should set the exponent to `1`.
+
+</Alert>
 
 ## Currency exponent
 

@@ -30,7 +30,7 @@ import { JPY } from '@dinero.js/currencies';
 const d = dinero({ amount: 5000, currency: JPY });
 ```
 
-When working with such currencies, you need to set the [currency exponent](/docs/core-concepts/currency#currency-exponent) to 0.
+When working with currencies with no minor units, you need to set the [currency exponent](/docs/core-concepts/currency#currency-exponent) to `0`.
 
 ## Non-decimal currencies
 
@@ -62,4 +62,18 @@ const GBP = {
 const d2 = dinero({ amount: 12000, currency: GBP });
 ```
 
-When working with such currencies, you need to set the [currency exponent](/docs/core-concepts/currency#currency-exponent) to 1. To format them, check the advanced guide on [formatting non-decimal currencies](/docs/advanced/formatting-non-decimal-currencies).
+When working with non-decimal currencies, you need to set the [currency exponent](/docs/core-concepts/currency#currency-exponent) to `1`.
+
+<Panel
+  groups={[
+    {
+      label: 'Guides',
+      links: [
+        {
+          title: 'Formatting non-decimal currencies',
+          url: '/docs/guides/formatting-non-decimal-currencies',
+        },
+      ],
+    },
+  ]}
+/>
