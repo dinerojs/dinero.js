@@ -13,17 +13,15 @@
     >
       <div class="w-full px-10 py-10 bg-white md:w-4/6">
         <div class="flex items-center justify-between pb-8 border-b">
-          <h1 class="text-2xl font-semibold capitalize">
-            {{ i18n.t('shoppingCartTitle') }}
-          </h1>
+          <h1 class="text-2xl font-semibold capitalize">Shopping cart</h1>
           <div class="flex items-center">
             <label htmlFor="language" class="mr-3 text-sm whitespace-nowrap">
-              {{ i18n.t('languageSelectLabel') }}
+              Select a currency
             </label>
             <select
-              id="language"
-              :value="currentLanguage"
-              @change="(event) => (currentLanguage = event.target.value)"
+              id="currency"
+              :value="currencyCode"
+              @change="(event) => (currencyCode = event.target.value)"
               class="
                 block
                 w-full
@@ -41,11 +39,11 @@
               "
             >
               <option
-                v-for="option in languageOptions"
-                :key="option.code"
-                :value="option.code"
+                v-for="option in currencyOptions"
+                :key="option.currency"
+                :value="option.currency"
               >
-                {{ i18n.t(`languages.${option.code}`) }} ({{ option.currency }})
+                {{ option.currency }} ({{ option.symbol }})
               </option>
             </select>
           </div>
@@ -53,52 +51,24 @@
         <div v-if="items.length > 0" class="-mx-6">
           <div class="flex px-6 mt-10 mb-5">
             <span
-              class="
-                w-2/5
-                text-xs
-                font-semibold
-                tracking-wide
-                text-gray-500
-                uppercase
-              "
+              className="w-2/5 text-xs font-semibold tracking-wide text-gray-500 uppercase"
             >
-              {{ i18n.t('productColumnTitle') }}
+              Product
             </span>
             <span
-              class="
-                w-1/5
-                text-xs
-                font-semibold
-                tracking-wide
-                text-right text-gray-500
-                uppercase
-              "
+              className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase"
             >
-              {{ i18n.t('quantityColumnTitle') }}
+              Quantity
             </span>
             <span
-              class="
-                w-1/5
-                text-xs
-                font-semibold
-                tracking-wide
-                text-right text-gray-500
-                uppercase
-              "
+              className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase"
             >
-              {{ i18n.t('priceColumnTitle') }}
+              Price
             </span>
             <span
-              class="
-                w-1/5
-                text-xs
-                font-semibold
-                tracking-wide
-                text-right text-gray-500
-                uppercase
-              "
+              className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase"
             >
-              {{ i18n.t('totalColumnTitle') }}
+              Total
             </span>
           </div>
           <CartLine
@@ -144,9 +114,7 @@
       >
         <div>
           <div class="flex items-center justify-between pb-8 border-b">
-            <h1 class="text-2xl font-semibold capitalize">
-              {{ i18n.t('checkoutTitle') }}
-            </h1>
+            <h1 class="text-2xl font-semibold capitalize">Order summary</h1>
             <div class="relative mx-2">
               <svg
                 class="w-5 text-gray-800 stroke-current"
@@ -177,21 +145,19 @@
                   text-xs
                 "
               >
-                {{ foo.count }}
+                {{ calculatedItems.count }}
               </span>
             </div>
           </div>
           <div class="flex justify-between mt-10 mb-5">
-            <span class="text-sm font-medium uppercase">
-              {{ i18n.t('subtotalLabel') }}
-            </span>
+            <span class="text-sm font-medium uppercase"> Subtotal </span>
             <span class="text-sm font-semibold">{{
-              format(foo.subtotal)
+              format(calculatedItems.subtotal)
             }}</span>
           </div>
           <div class="flex justify-between mt-4 mb-5">
             <span class="text-sm font-medium uppercase">
-              {{ i18n.t('vatLabel') }} ({{ vatRate }}%)
+              VAT ({{ vatRate }}%)
             </span>
             <span class="text-sm font-semibold">{{ format(vatAmount) }}</span>
           </div>
@@ -200,7 +166,7 @@
               htmlFor="shipping"
               class="inline-block mb-3 text-sm font-medium uppercase"
             >
-              {{ i18n.t('shippingLabel') }}
+              Shipping
             </label>
             <div :class="{ 'cursor-not-allowed': !hasItems }">
               <select
@@ -217,7 +183,7 @@
                   :key="label"
                   :value="label"
                 >
-                  {{ i18n.t(`shipping.${label}`) }} — {{ format(price) }}
+                  {{ label }} — {{ format(price) }}
                 </option>
               </select>
             </div>
@@ -225,7 +191,7 @@
         </div>
         <div class="mt-8 border-t">
           <div class="flex justify-between my-5 text-sm font-medium uppercase">
-            <span>{{ i18n.t('totalLabel') }}</span>
+            <span>Total</span>
             <span>{{ format(total) }}</span>
           </div>
           <button
@@ -243,7 +209,7 @@
               hover:bg-green-700
             "
           >
-            {{ i18n.t('checkoutButtonLabel') }}
+            Checkout
           </button>
         </div>
       </div>
@@ -257,9 +223,9 @@ import { EUR, USD } from '@dinero.js/currencies';
 
 import CartLine from './components/CartLine.vue';
 
-import { format, createConvert, i18n } from './utils';
+import { format, createConverter } from './utils';
 
-const currencies = { fr_FR: EUR, en_US: USD };
+const currencies = { EUR, USD };
 const vatRate = 20;
 
 export default {
@@ -268,15 +234,14 @@ export default {
   },
   props: {
     initialItems: Array,
-    languageOptions: Array,
+    currencyOptions: Array,
     shippingOptions: Array,
-    defaultLanguage: String,
+    defaultCurrencyCode: String,
     defaultShippingOption: String,
   },
   data() {
     return {
-      currentLanguage: this.defaultLanguage,
-      i18n,
+      currencyCode: this.defaultCurrencyCode,
       items: this.initialItems,
       shipping: this.defaultShippingOption,
       vatRate,
@@ -300,10 +265,10 @@ export default {
       return this.items.length !== 0;
     },
     currency() {
-      return currencies[this.currentLanguage];
+      return currencies[this.currencyCode];
     },
     convert() {
-      return createConvert(this.currency);
+      return createConverter(this.currency);
     },
     convertedItems() {
       return this.items.map((item) => ({
@@ -311,7 +276,7 @@ export default {
         price: this.convert(
           dinero({
             amount: item.price,
-            currency: currencies[this.defaultLanguage],
+            currency: currencies[this.defaultCurrencyCode],
           }),
           this.currency
         ),
@@ -323,13 +288,13 @@ export default {
         price: this.convert(
           dinero({
             amount: option.price,
-            currency: currencies[this.defaultLanguage],
+            currency: currencies[this.defaultCurrencyCode],
           }),
           this.currency
         ),
       }));
     },
-    foo() {
+    calculatedItems() {
       const zero = dinero({ amount: 0, currency: this.currency });
 
       return this.convertedItems.reduce(
@@ -343,7 +308,10 @@ export default {
       );
     },
     vatAmount() {
-      const [vatAmount] = allocate(this.foo.subtotal, [vatRate, 100 - vatRate]);
+      const [vatAmount] = allocate(this.calculatedItems.subtotal, [
+        vatRate,
+        100 - vatRate,
+      ]);
 
       return vatAmount;
     },
@@ -354,16 +322,12 @@ export default {
       );
       const shippingAmount = this.hasItems ? shippingOption.price : zero;
 
-      return [this.foo.subtotal, this.vatAmount, shippingAmount].reduce(add);
+      return [
+        this.calculatedItems.subtotal,
+        this.vatAmount,
+        shippingAmount,
+      ].reduce(add);
     },
-  },
-  watch: {
-    currentLanguage(newValue) {
-      i18n.locale(newValue);
-    },
-  },
-  created() {
-    i18n.locale(this.currentLanguage);
   },
 };
 </script>

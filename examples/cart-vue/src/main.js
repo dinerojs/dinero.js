@@ -1,15 +1,15 @@
 import { createApp } from 'vue';
 
 import App from './App.vue';
-import { items, shipping, languages } from './data';
+import { items, shipping, currencies } from './data';
 
 import 'tailwindcss/tailwind.css';
 
 // eslint-disable-next-line functional/no-expression-statement
 createApp(App, {
   initialItems: items,
-  languageOptions: languages,
+  currencyOptions: currencies,
   shippingOptions: shipping,
-  defaultLanguage: languages[0].code,
+  defaultCurrencyCode: currencies[0].currency,
   defaultShippingOption: shipping[0].label,
 }).mount('#app');

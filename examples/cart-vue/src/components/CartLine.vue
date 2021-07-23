@@ -26,7 +26,7 @@
             hover:text-red-500
           "
         >
-          {{ i18n.t('removeLabel') }}
+          Remove
         </button>
       </div>
     </div>
@@ -89,7 +89,7 @@
 <script>
 import { multiply } from 'dinero.js';
 
-import { format, i18n } from '../utils';
+import { format } from '../utils';
 
 export default {
   props: {
@@ -100,7 +100,6 @@ export default {
   },
   data() {
     return {
-      i18n,
       format,
     };
   },
