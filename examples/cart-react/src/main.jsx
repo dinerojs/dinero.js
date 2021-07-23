@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App';
-import { items, shipping, languages } from './data';
+import { items, shipping, currencies } from './data';
 
 import 'tailwindcss/tailwind.css';
 
@@ -10,9 +10,9 @@ ReactDOM.render(
   <React.StrictMode>
     <App
       initialItems={items}
-      languageOptions={languages}
+      currencyOptions={currencies}
       shippingOptions={shipping}
-      defaultLanguage={languages[0].code}
+      defaultCurrencyCode={currencies[0].currency}
       defaultShippingOption={shipping[0].label}
     />
   </React.StrictMode>,

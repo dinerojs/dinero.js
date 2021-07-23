@@ -1,34 +1,29 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
-import rosetta from 'rosetta';
 import { EUR, USD } from '@dinero.js/currencies';
 import { dinero, add, allocate, multiply } from 'dinero.js';
 
-import { format, createConvert } from './utils';
-import * as translations from './translations';
+import { format, createConverter } from './utils';
 
-const i18n = rosetta(translations);
-const currencies = { fr_FR: EUR, en_US: USD };
+const currencies = { EUR, USD };
 const vatRate = 20;
 
 function App({
   initialItems,
   shippingOptions,
-  languageOptions,
-  defaultLanguage,
+  currencyOptions,
+  defaultCurrencyCode,
   defaultShippingOption,
 }) {
   const [items, setItems] = useState(initialItems);
   const [shipping, setShipping] = useState(defaultShippingOption);
-  const [currentLanguage, setCurrentLanguage] = useState(defaultLanguage);
-
-  i18n.locale(currentLanguage);
+  const [currencyCode, setCurrencyCode] = useState(defaultCurrencyCode);
 
   const hasItems = items.length !== 0;
-  const defaultCurrency = currencies[defaultLanguage];
-  const currency = currencies[currentLanguage];
+  const defaultCurrency = currencies[defaultCurrencyCode];
+  const currency = currencies[currencyCode];
 
-  const convert = createConvert(currency);
+  const convert = createConverter(currency);
 
   const zero = dinero({ amount: 0, currency });
   const convertedItems = items.map((item) => ({
@@ -38,15 +33,13 @@ function App({
       currency
     ),
   }));
-  const convertedShippingOptions = shippingOptions.map((option) => {
-    return {
-      ...option,
-      price: convert(
-        dinero({ amount: option.price, currency: defaultCurrency }),
-        currency
-      ),
-    };
-  });
+  const convertedShippingOptions = shippingOptions.map((option) => ({
+    ...option,
+    price: convert(
+      dinero({ amount: option.price, currency: defaultCurrency }),
+      currency
+    ),
+  }));
   const shippingOption = convertedShippingOptions.find(
     ({ label }) => label === shipping
   );
@@ -80,25 +73,23 @@ function App({
       <div className="flex flex-col w-full my-10 overflow-hidden rounded-lg shadow-lg md:flex-row">
         <div className="w-full px-10 py-10 bg-white md:w-4/6">
           <div className="flex items-center justify-between pb-8 border-b">
-            <h1 className="text-2xl font-semibold capitalize">
-              {i18n.t('shoppingCartTitle')}
-            </h1>
+            <h1 className="text-2xl font-semibold capitalize">Shopping cart</h1>
             <div className="flex items-center">
               <label
                 htmlFor="language"
                 className="mr-3 text-sm whitespace-nowrap"
               >
-                {i18n.t('languageSelectLabel')}
+                Select a currency
               </label>
               <select
-                id="language"
-                value={currentLanguage}
-                onChange={(event) => setCurrentLanguage(event.target.value)}
+                id="currency"
+                value={currencyCode}
+                onChange={(event) => setCurrencyCode(event.target.value)}
                 className="block w-full py-1 pl-1 text-sm border-gray-300 rounded-md shadow-sm pr-7 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
               >
-                {languageOptions.map((option) => (
-                  <option key={option.code} value={option.code}>
-                    {i18n.t(`languages.${option.code}`)} ({option.currency})
+                {currencyOptions.map((option) => (
+                  <option key={option.currency} value={option.currency}>
+                    {option.currency} ({option.symbol})
                   </option>
                 ))}
               </select>
@@ -108,16 +99,16 @@ function App({
             <div className="-mx-6">
               <div className="flex px-6 mt-10 mb-5">
                 <span className="w-2/5 text-xs font-semibold tracking-wide text-gray-500 uppercase">
-                  {i18n.t('productColumnTitle')}
+                  Product
                 </span>
                 <span className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase">
-                  {i18n.t('quantityColumnTitle')}
+                  Quantity
                 </span>
                 <span className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase">
-                  {i18n.t('priceColumnTitle')}
+                  Price
                 </span>
                 <span className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase">
-                  {i18n.t('totalColumnTitle')}
+                  Total
                 </span>
               </div>
               {convertedItems.map((item, index) => (
@@ -150,7 +141,7 @@ function App({
           <div>
             <div className="flex items-center justify-between pb-8 border-b">
               <h1 className="text-2xl font-semibold capitalize">
-                {i18n.t('checkoutTitle')}
+                Order summary
               </h1>
               <div className="relative mx-2">
                 <svg
@@ -172,14 +163,12 @@ function App({
               </div>
             </div>
             <div className="flex justify-between mt-10 mb-5">
-              <span className="text-sm font-medium uppercase">
-                {i18n.t('subtotalLabel')}
-              </span>
+              <span className="text-sm font-medium uppercase">Subtotal</span>
               <span className="text-sm font-semibold">{format(subtotal)}</span>
             </div>
             <div className="flex justify-between mt-4 mb-5">
               <span className="text-sm font-medium uppercase">
-                {i18n.t('vatLabel')} ({vatRate}%)
+                VAT ({vatRate}%)
               </span>
               <span className="text-sm font-semibold">{format(vatAmount)}</span>
             </div>
@@ -188,7 +177,7 @@ function App({
                 htmlFor="shipping"
                 className="inline-block mb-3 text-sm font-medium uppercase"
               >
-                {i18n.t('shippingLabel')}
+                Shipping
               </label>
               <div className={cx({ 'cursor-not-allowed': !hasItems })}>
                 <select
@@ -203,7 +192,7 @@ function App({
                   {convertedShippingOptions.map(({ label, price }) => {
                     return (
                       <option key={label} value={label}>
-                        {i18n.t(`shipping.${label}`)} — {format(price)}
+                        {label} — {format(price)}
                       </option>
                     );
                   })}
@@ -213,11 +202,11 @@ function App({
           </div>
           <div className="mt-8 border-t">
             <div className="flex justify-between my-5 text-sm font-medium uppercase">
-              <span>{i18n.t('totalLabel')}</span>
+              <span>Total</span>
               <span>{format(total)}</span>
             </div>
             <button className="w-full py-3 text-sm font-semibold text-white uppercase transition-colors ease-in-out bg-blue-600 rounded hover:bg-blue-700">
-              {i18n.t('checkoutButtonLabel')}
+              Checkout
             </button>
           </div>
         </div>
@@ -251,7 +240,7 @@ function CartLine({ item, onDecrease, onIncrease, onRemove }) {
             onClick={() => onRemove(item)}
             className="text-xs font-semibold text-left text-gray-500 transition-colors ease-in-out hover:text-red-500"
           >
-            {i18n.t('removeLabel')}
+            Remove
           </button>
         </div>
       </div>

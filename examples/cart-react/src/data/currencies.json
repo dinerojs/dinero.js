@@ -1,10 +1,10 @@
 [
   {
     "currency": "USD",
-    "code": "en_US"
+    "symbol": "$"
   },
   {
     "currency": "EUR",
-    "code": "fr_FR"
+    "symbol": "€"
   }
 ]

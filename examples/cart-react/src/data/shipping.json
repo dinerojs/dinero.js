@@ -1,14 +1,14 @@
 [
   {
-    "label": "standard",
+    "label": "Standard",
+    "price": 500
+  },
+  {
+    "label": "Tracked",
     "price": 1000
   },
   {
-    "label": "tracked",
+    "label": "Expedite",
     "price": 1500
-  },
-  {
-    "label": "expedite",
-    "price": 2000
   }
 ]
