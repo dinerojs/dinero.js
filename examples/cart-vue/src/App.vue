@@ -1,216 +1,202 @@
 <template>
-  <main class="container flex items-center min-h-screen mx-auto">
+  <main class="relative">
     <div
-      class="
-        flex flex-col
-        w-full
-        my-10
-        overflow-hidden
-        rounded-lg
-        shadow-lg
-        md:flex-row
-      "
+      class="fixed top-0 left-0 right-0 w-full px-4 py-2 text-sm text-center text-white bg-green-600 shadow-lg "
     >
-      <div class="w-full px-10 py-10 bg-white md:w-4/6">
-        <div class="flex items-center justify-between pb-8 border-b">
-          <h1 class="text-2xl font-semibold capitalize">Shopping cart</h1>
-          <div class="flex items-center">
-            <label htmlFor="language" class="mr-3 text-sm whitespace-nowrap">
-              Select a currency
-            </label>
-            <select
-              id="currency"
-              :value="currencyCode"
-              @change="(event) => (currencyCode = event.target.value)"
-              class="
-                block
-                w-full
-                py-1
-                pl-1
-                text-sm
-                border-gray-300
-                rounded-md
-                shadow-sm
-                pr-7
-                focus:border-green-300
-                focus:ring
-                focus:ring-green-200
-                focus:ring-opacity-50
-              "
-            >
-              <option
-                v-for="option in currencyOptions"
-                :key="option.currency"
-                :value="option.currency"
-              >
-                {{ option.currency }} ({{ option.symbol }})
-              </option>
-            </select>
-          </div>
-        </div>
-        <div v-if="items.length > 0" class="-mx-6">
-          <div class="flex px-6 mt-10 mb-5">
-            <span
-              className="w-2/5 text-xs font-semibold tracking-wide text-gray-500 uppercase"
-            >
-              Product
-            </span>
-            <span
-              className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase"
-            >
-              Quantity
-            </span>
-            <span
-              className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase"
-            >
-              Price
-            </span>
-            <span
-              className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase"
-            >
-              Total
-            </span>
-          </div>
-          <CartLine
-            v-for="(item, index) in convertedItems"
-            :key="item.name"
-            :item="item"
-            :on-increase="
-              (item) => {
-                setItemByName(item.name, {
-                  ...items[index],
-                  amount: item.amount + 1,
-                });
-              }
-            "
-            :on-decrease="
-              (item) => {
-                if (item.amount > 1) {
-                  setItemByName(item.name, {
-                    ...items[index],
-                    amount: item.amount - 1,
-                  });
-                }
-              }
-            "
-            :on-remove="
-              (item) => {
-                setItemByName(item.name, null);
-              }
-            "
-          />
-        </div>
-      </div>
-      <div
-        class="
-          flex flex-col
-          justify-between
-          w-full
-          px-8
-          py-10
-          bg-gray-100
-          md:w-2/6
-        "
+      Built with
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://v2.dinerojs.com/"
+        class="font-semibold hover:underline"
       >
-        <div>
+        Dinero.js
+      </a>
+      and
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://vuejs.org/"
+        class="font-semibold hover:underline"
+      >
+        Vue.js
+      </a>
+    </div>
+    <div
+      class="container flex flex-col items-center justify-center min-h-screen mx-auto "
+    >
+      <div
+        class="flex flex-col w-full my-10 overflow-hidden rounded-lg shadow-lg  md:flex-row"
+      >
+        <div class="w-full px-10 py-10 bg-white md:w-4/6">
           <div class="flex items-center justify-between pb-8 border-b">
-            <h1 class="text-2xl font-semibold capitalize">Order summary</h1>
-            <div class="relative mx-2">
-              <svg
-                class="w-5 text-gray-800 stroke-current"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                />
-              </svg>
-              <span
-                v-if="items.length > 0"
-                class="
-                  absolute
-                  top-0
-                  right-0
-                  -mt-1.5
-                  -mr-2
-                  bg-green-200
-                  text-green-700
-                  font-normal
-                  rounded-full
-                  px-1
-                  text-xs
-                "
-              >
-                {{ calculatedItems.count }}
-              </span>
-            </div>
-          </div>
-          <div class="flex justify-between mt-10 mb-5">
-            <span class="text-sm font-medium uppercase"> Subtotal </span>
-            <span class="text-sm font-semibold">{{
-              format(calculatedItems.subtotal)
-            }}</span>
-          </div>
-          <div class="flex justify-between mt-4 mb-5">
-            <span class="text-sm font-medium uppercase">
-              VAT ({{ vatRate }}%)
-            </span>
-            <span class="text-sm font-semibold">{{ format(vatAmount) }}</span>
-          </div>
-          <div class="mb-4">
-            <label
-              htmlFor="shipping"
-              class="inline-block mb-3 text-sm font-medium uppercase"
-            >
-              Shipping
-            </label>
-            <div :class="{ 'cursor-not-allowed': !hasItems }">
+            <h1 class="text-2xl font-semibold capitalize">Shopping cart</h1>
+            <div class="flex items-center">
+              <label htmlFor="language" class="mr-3 text-sm whitespace-nowrap">
+                Select a currency
+              </label>
               <select
-                id="shipping"
-                :value="shipping"
-                @change="(event) => (shipping = event.target.value)"
-                :class="[
-                  'block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50',
-                  { 'opacity-30 pointer-events-none': !hasItems },
-                ]"
+                id="currency"
+                :value="currencyCode"
+                @change="(event) => (currencyCode = event.target.value)"
+                class="block w-full py-1 pl-1 text-sm border-gray-300 rounded-md shadow-sm  pr-7 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
               >
                 <option
-                  v-for="{ label, price } in convertedShippingOptions"
-                  :key="label"
-                  :value="label"
+                  v-for="option in currencyOptions"
+                  :key="option.currency"
+                  :value="option.currency"
                 >
-                  {{ label }} — {{ format(price) }}
+                  {{ option.currency }} ({{ option.symbol }})
                 </option>
               </select>
             </div>
           </div>
-        </div>
-        <div class="mt-8 border-t">
-          <div class="flex justify-between my-5 text-sm font-medium uppercase">
-            <span>Total</span>
-            <span>{{ format(total) }}</span>
+          <div v-if="items.length > 0" class="-mx-6">
+            <div class="flex px-6 mt-10 mb-5">
+              <span
+                className="w-2/5 text-xs font-semibold tracking-wide text-gray-500 uppercase"
+              >
+                Product
+              </span>
+              <span
+                className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase"
+              >
+                Quantity
+              </span>
+              <span
+                className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase"
+              >
+                Price
+              </span>
+              <span
+                className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase"
+              >
+                Total
+              </span>
+            </div>
+            <CartLine
+              v-for="(item, index) in convertedItems"
+              :key="item.name"
+              :item="item"
+              :on-increase="
+                (item) => {
+                  setItemByName(item.name, {
+                    ...items[index],
+                    amount: item.amount + 1,
+                  });
+                }
+              "
+              :on-decrease="
+                (item) => {
+                  if (item.amount > 1) {
+                    setItemByName(item.name, {
+                      ...items[index],
+                      amount: item.amount - 1,
+                    });
+                  }
+                }
+              "
+              :on-remove="
+                (item) => {
+                  setItemByName(item.name, null);
+                }
+              "
+            />
           </div>
-          <button
-            class="
-              w-full
-              py-3
-              text-sm
-              font-semibold
-              text-white
-              uppercase
-              transition-colors
-              ease-in-out
-              bg-green-600
-              rounded
-              hover:bg-green-700
-            "
-          >
-            Checkout
-          </button>
+        </div>
+        <div
+          class="flex flex-col justify-between w-full px-8 py-10 bg-gray-100  md:w-2/6"
+        >
+          <div>
+            <div class="flex items-center justify-between pb-8 border-b">
+              <h1 class="text-2xl font-semibold capitalize">Order summary</h1>
+              <div class="relative mx-2">
+                <svg
+                  class="w-5 text-gray-800 stroke-current"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                <span
+                  v-if="items.length > 0"
+                  class="
+                    absolute
+                    top-0
+                    right-0
+                    -mt-1.5
+                    -mr-2
+                    bg-green-200
+                    text-green-700
+                    font-normal
+                    rounded-full
+                    px-1
+                    text-xs
+                  "
+                >
+                  {{ calculatedItems.count }}
+                </span>
+              </div>
+            </div>
+            <div class="flex justify-between mt-10 mb-5">
+              <span class="text-sm font-medium uppercase"> Subtotal </span>
+              <span class="text-sm font-semibold">{{
+                format(calculatedItems.subtotal)
+              }}</span>
+            </div>
+            <div class="flex justify-between mt-4 mb-5">
+              <span class="text-sm font-medium uppercase">
+                VAT ({{ vatRate }}%)
+              </span>
+              <span class="text-sm font-semibold">{{ format(vatAmount) }}</span>
+            </div>
+            <div class="mb-4">
+              <label
+                htmlFor="shipping"
+                class="inline-block mb-3 text-sm font-medium uppercase"
+              >
+                Shipping
+              </label>
+              <div :class="{ 'cursor-not-allowed': !hasItems }">
+                <select
+                  id="shipping"
+                  :value="shipping"
+                  @change="(event) => (shipping = event.target.value)"
+                  :class="[
+                    'block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50',
+                    { 'opacity-30 pointer-events-none': !hasItems },
+                  ]"
+                >
+                  <option
+                    v-for="{ label, price } in convertedShippingOptions"
+                    :key="label"
+                    :value="label"
+                  >
+                    {{ label }} — {{ format(price) }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 border-t">
+            <div
+              class="flex justify-between my-5 text-sm font-medium uppercase"
+            >
+              <span>Total</span>
+              <span>{{ format(total) }}</span>
+            </div>
+            <button
+              class="w-full py-3 text-sm font-semibold text-white uppercase transition-colors ease-in-out bg-green-600 rounded  hover:bg-green-700"
+            >
+              Checkout
+            </button>
+          </div>
         </div>
       </div>
     </div>
