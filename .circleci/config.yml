@@ -40,14 +40,6 @@ defaults: &defaults
   docker:
     - image: circleci/node:14.17.3
 
-cypress: &cypress
-  working_directory: ~/dinero.js
-  docker:
-    - image: cypress/browsers:node14.15.0-chrome86-ff82
-      environment:
-        ## this enables colors in the output
-        TERM: xterm
-
 references:
   workspace_root: &workspace_root /tmp/workspace
   attach_workspace: &attach_workspace
