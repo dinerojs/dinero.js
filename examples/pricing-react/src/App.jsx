@@ -19,8 +19,28 @@ function App({ items }) {
   }));
 
   return (
-    <div className="bg-white">
-      <div className="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div className="relative bg-white">
+      <div className="fixed top-0 left-0 right-0 w-full px-4 py-2 text-sm text-center text-white bg-blue-600 shadow-lg">
+        Built with{' '}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://v2.dinerojs.com/"
+          className="font-semibold hover:underline"
+        >
+          Dinero.js
+        </a>{' '}
+        and{' '}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://reactjs.org/"
+          className="font-semibold hover:underline"
+        >
+          React
+        </a>
+      </div>
+      <div className="px-4 py-20 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="sm:flex sm:flex-col sm:align-center">
           <h1 className="text-5xl font-extrabold text-gray-900 sm:text-center">
             Pricing Plans
