@@ -20,7 +20,7 @@ function App({ items }) {
 
   return (
     <div className="relative bg-white">
-      <div className="fixed top-0 left-0 right-0 w-full px-4 py-2 text-sm text-center text-white bg-blue-600 shadow-lg">
+      <div className="fixed top-0 left-0 right-0 z-30 w-full px-4 py-2 text-sm text-center text-white bg-blue-600 shadow-lg">
         Built with{' '}
         <a
           target="_blank"

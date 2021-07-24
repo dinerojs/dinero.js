@@ -6,6 +6,7 @@
         top-0
         left-0
         right-0
+        z-30
         w-full
         px-4
         py-2
