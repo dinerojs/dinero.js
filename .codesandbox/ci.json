@@ -11,6 +11,7 @@
   "sandboxes": [
     "/examples/cart-react",
     "/examples/cart-vue",
+    "/examples/pricing-react",
     "/examples/starter"
   ],
   "node": "14"

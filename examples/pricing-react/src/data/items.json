@@ -1,0 +1,55 @@
+[
+  {
+    "name": "Personal",
+    "monthlyPrice": 0,
+    "individual": true,
+    "description": "For organizing every corner of your life.",
+    "featuresHeading": "Free for individuals",
+    "features": [
+      "Single user",
+      "Unlimited pages & blocks",
+      "Share with 5 guests",
+      "Sync across devices"
+    ]
+  },
+  {
+    "name": "Freelancer",
+    "monthlyPrice": 400,
+    "individual": true,
+    "description": "For power users who want to do even more.",
+    "featuresHeading": "Everything in Personal, plus",
+    "features": [
+      "Single user",
+      "Unlimited file uploads",
+      "Unlimited guests",
+      "Version history"
+    ]
+  },
+  {
+    "name": "Team",
+    "monthlyPrice": 800,
+    "individual": false,
+    "description": "For teams who want to work together in one place.",
+    "featuresHeading": "Everything in Pro, plus",
+    "features": [
+      "Unlimited team members",
+      "Collaborative workspace",
+      "Advanced permissions",
+      "Admin tools"
+    ]
+  },
+  {
+    "name": "Enterprise",
+    "monthlyPrice": 1600,
+    "individual": false,
+    "description": "Controls and support to run your company.",
+    "featuresHeading": "Everything in Team, plus",
+    "features": [
+      "SAML SSO",
+      "User provisioning (SCIM)",
+      "Advanced security",
+      "Dedicated manager",
+      "Custom contract"
+    ]
+  }
+]
