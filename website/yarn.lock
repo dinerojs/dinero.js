@@ -3863,10 +3863,10 @@ strip-indent@^3.0.0:
   dependencies:
     min-indent "^1.0.0"
 
-strip-markdown@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/strip-markdown/-/strip-markdown-4.0.0.tgz#1f48aeb5ce81b646487d9f8fbdc18f8bf1416ba2"
-  integrity sha512-jwoS5zwHNFjergQjg4RFzmdS4n5WOd5DXDIwRY0jye9ALYMscLWfwZVBMt4P/va5aRmm7Dlj6O4NjMuaD7609Q==
+strip-markdown@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/strip-markdown/-/strip-markdown-4.1.0.tgz#429bd8b7ad607dfef2a5c0c0324114aaca308fca"
+  integrity sha512-UftncHtaclyKLQ04Bj1REGyD72UWx3i/EJQRwASjrlmNhIFGlJLssUz1u6y9X1paOPi/+v/hd4e0IGwu/Xy3rA==
 
 style-to-object@0.3.0, style-to-object@^0.3.0:
   version "0.3.0"
