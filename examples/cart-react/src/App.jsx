@@ -1,3 +1,4 @@
+/* eslint-disable functional/no-expression-statement */
 import { EUR, USD } from '@dinero.js/currencies';
 import cx from 'classnames';
 import { dinero, add, allocate, multiply } from 'dinero.js';
@@ -46,10 +47,10 @@ function App({
 
   const { count, subtotal } = convertedItems.reduce(
     (acc, item) => {
-      const count = acc.count + item.amount;
-      const subtotal = add(acc.subtotal, multiply(item.price, item.amount));
-
-      return { count, subtotal };
+      return {
+        count: acc.count + item.amount,
+        subtotal: add(acc.subtotal, multiply(item.price, item.amount)),
+      };
     },
     { count: 0, subtotal: zero }
   );
@@ -138,13 +139,13 @@ function App({
                   <CartLine
                     key={item.name}
                     item={item}
-                    onIncrease={(item) => {
+                    onIncrease={() => {
                       setItemByName(item.name, {
                         ...items[index],
                         amount: item.amount + 1,
                       });
                     }}
-                    onDecrease={(item) => {
+                    onDecrease={() => {
                       if (item.amount > 1) {
                         setItemByName(item.name, {
                           ...items[index],
@@ -152,7 +153,7 @@ function App({
                         });
                       }
                     }}
-                    onRemove={(item) => {
+                    onRemove={() => {
                       setItemByName(item.name, null);
                     }}
                   />
