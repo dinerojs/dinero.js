@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import globby from 'globby';
+import { globby } from 'globby';
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 import mdxPrism from 'mdx-prism';

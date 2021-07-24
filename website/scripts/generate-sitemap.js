@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const globby = require('globby');
+const { globby } = require('globby');
 const prettier = require('prettier');
 
 (async () => {
