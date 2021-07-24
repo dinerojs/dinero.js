@@ -2,7 +2,7 @@ import { ComparisonOperator } from '../types';
 
 import type { Calculator } from '../types';
 
-type EqualCalculator<TAmount> = Pick<Calculator<TAmount>, 'compare'>;
+type EqualCalculator<TAmount> = Calculator<TAmount>;
 
 /**
  * Returns an equal function.

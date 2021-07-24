@@ -7,18 +7,7 @@ import { lessThan } from './lessThan';
 
 import type { Calculator } from '../types';
 
-type DistributeCalculator<TAmount> = Pick<
-  Calculator<TAmount>,
-  | 'add'
-  | 'compare'
-  | 'integerDivide'
-  | 'increment'
-  | 'decrement'
-  | 'multiply'
-  | 'subtract'
-  | 'zero'
-  | 'modulo'
->;
+type DistributeCalculator<TAmount> = Calculator<TAmount>;
 
 /**
  * Returns a distribute function.

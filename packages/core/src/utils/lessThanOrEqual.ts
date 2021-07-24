@@ -3,7 +3,7 @@ import { lessThan } from './lessThan';
 
 import type { Calculator } from '../types';
 
-type LessThanOrEqualCalculator<TAmount> = Pick<Calculator<TAmount>, 'compare'>;
+type LessThanOrEqualCalculator<TAmount> = Calculator<TAmount>;
 
 /**
  * Returns a lessThanOrEqual function.

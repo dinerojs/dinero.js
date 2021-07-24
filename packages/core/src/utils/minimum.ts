@@ -2,7 +2,7 @@ import { greaterThan } from './greaterThan';
 
 import type { Calculator } from '../types';
 
-type MinimumCalculator<TAmount> = Pick<Calculator<TAmount>, 'compare'>;
+type MinimumCalculator<TAmount> = Calculator<TAmount>;
 
 /**
  * Returns a minimum function.

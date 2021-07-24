@@ -3,10 +3,7 @@ import { greaterThan } from './greaterThan';
 
 import type { Calculator } from '../types';
 
-type GreaterThanOrEqualCalculator<TAmount> = Pick<
-  Calculator<TAmount>,
-  'compare'
->;
+type GreaterThanOrEqualCalculator<TAmount> = Calculator<TAmount>;
 
 /**
  * Returns a greaterThanOrEqual function.

@@ -2,7 +2,7 @@ import { ComparisonOperator } from '../types';
 
 import type { Calculator } from '../types';
 
-type GreaterThanCalculator<TAmount> = Pick<Calculator<TAmount>, 'compare'>;
+type GreaterThanCalculator<TAmount> = Calculator<TAmount>;
 
 /**
  * Returns a greaterThan function.

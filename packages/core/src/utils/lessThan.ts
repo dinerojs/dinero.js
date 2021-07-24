@@ -2,7 +2,7 @@ import { ComparisonOperator } from '../types';
 
 import type { Calculator } from '../types';
 
-type LessThanCalculator<TAmount> = Pick<Calculator<TAmount>, 'compare'>;
+type LessThanCalculator<TAmount> = Calculator<TAmount>;
 
 /**
  * Returns a lessThan function.

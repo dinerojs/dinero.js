@@ -3,10 +3,7 @@ import { equal } from './equal';
 
 import type { Calculator } from '../types';
 
-type CountTrailingZerosCalculator<TAmount> = Pick<
-  Calculator<TAmount>,
-  'compare' | 'integerDivide' | 'increment' | 'zero' | 'modulo'
->;
+type CountTrailingZerosCalculator<TAmount> = Calculator<TAmount>;
 
 export function countTrailingZeros<TAmount>(
   calculator: CountTrailingZerosCalculator<TAmount>

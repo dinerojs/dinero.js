@@ -1,6 +1,6 @@
 import type { Calculator } from '../types';
 
-type ComparisonCalculator<TAmount> = Pick<Calculator<TAmount>, 'compare'>;
+type ComparisonCalculator<TAmount> = Calculator<TAmount>;
 
 /**
  * Returns a compare function.

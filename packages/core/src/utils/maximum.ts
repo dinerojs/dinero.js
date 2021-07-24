@@ -2,7 +2,7 @@ import { lessThan } from './lessThan';
 
 import type { Calculator } from '../types';
 
-type MaximumCalculator<TAmount> = Pick<Calculator<TAmount>, 'compare'>;
+type MaximumCalculator<TAmount> = Calculator<TAmount>;
 
 /**
  * Returns a maximum function.
