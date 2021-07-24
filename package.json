@@ -11,7 +11,9 @@
       "**/@dinero.js/example-cart-react",
       "**/@dinero.js/example-cart-react/**",
       "**/@dinero.js/example-cart-vue",
-      "**/@dinero.js/example-cart-vue/**"
+      "**/@dinero.js/example-cart-vue/**",
+      "**/@dinero.js/example-pricing-react",
+      "**/@dinero.js/example-pricing-react/**"
     ]
   },
   "scripts": {
