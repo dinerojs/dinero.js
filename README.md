@@ -8,9 +8,6 @@
   <a href="https://github.com/dinerojs/dinero.js/blob/master/LICENSE.md">
     <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue.svg" />
   </a>
-  <a href="https://travis-ci.org/dinerojs/dinero.js">
-    <img alt="Build Status" src="https://img.shields.io/travis/dinerojs/dinero.js.svg" />
-  </a>
   <a href="https://www.npmjs.com/package/dinero.js">
     <img alt="NPM version" src="https://img.shields.io/npm/v/dinero.js.svg" />
   </a>
@@ -33,6 +30,8 @@
 - Extended formatting and rounding options.
 - Native Intl support (no additional locale files).
 - Currency conversion.
+
+> Dinero.js v2 is in alpha! Check it out on the [`main` branch](https://github.com/dinerojs/dinero.js/tree/main).
 
 ## Download/install
 
@@ -264,6 +263,7 @@ Show some love by [upvoting on Product Hunt][producthunt:dinerojs] if you like, 
     <td align="center"><a href="http://maxk.se"><img src="https://avatars1.githubusercontent.com/u/19932622?v=4" width="100px;" alt=""/><br /><sub><b>Max Körlinge</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=fongie" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/dotpack"><img src="https://avatars2.githubusercontent.com/u/1175814?v=4" width="100px;" alt=""/><br /><sub><b>Ilia Ermolin</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=dotpack" title="Code">💻</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=dotpack" title="Documentation">📖</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=dotpack" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://coina.ge"><img src="https://avatars1.githubusercontent.com/u/1531750?v=4" width="100px;" alt=""/><br /><sub><b>Kevin Brown</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=thekevinbrown" title="Code">💻</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=thekevinbrown" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://seankwalker.com"><img src="https://avatars.githubusercontent.com/u/20524136?v=4" width="100px;" alt=""/><br /><sub><b>Sean Walker</b></sub></a><br /><a href="https://github.com/dinerojs/dinero.js/commits?author=seankwalker" title="Code">💻</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=seankwalker" title="Documentation">📖</a> <a href="https://github.com/dinerojs/dinero.js/commits?author=seankwalker" title="Tests">⚠️</a></td>
     <td align="center"><a href="http://jnguyen.me/"><img src="https://avatars0.githubusercontent.com/u/1127677?v=4" width="100px;" alt=""/><br /><sub><b>John Nguyen</b></sub></a><br /><a href="#infra-nguyenj" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
   </tr>
 </table>
@@ -283,6 +283,14 @@ Logo by [David DeSandro][github:desandro].
 ## License
 
 Dinero.js is licensed under [MIT][license].
+
+---
+
+<div align="center">
+
+[![Powered by Vercel](powered-by-vercel.svg)](https://vercel.com/?utm_source=dinerojs&utm_campaign=oss)
+
+</div>
 
 [license]: https://github.com/dinerojs/dinero.js/blob/master/LICENSE.md
 [mdn:intl]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl

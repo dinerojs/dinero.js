@@ -327,18 +327,22 @@ const Dinero = options => {
      * As rounding is applied, precision may be lost in the process. If you want to accurately split a Dinero object, use {@link module:Dinero~allocate allocate} instead.
      *
      * @param  {Number} percentage - The percentage to extract (between 0 and 100).
+     * @param  {String} [roundingMode='HALF_EVEN'] - The rounding mode to use: `'HALF_ODD'`, `'HALF_EVEN'`, `'HALF_UP'`, `'HALF_DOWN'`, `'HALF_TOWARDS_ZERO'`, `'HALF_AWAY_FROM_ZERO'` or `'DOWN'`.
      *
      * @example
      * // returns a Dinero object with amount 5000
      * Dinero({ amount: 10000 }).percentage(50)
+     * @example
+     * // returns a Dinero object with amount 29
+     * Dinero({ amount: 57 }).percentage(50, "HALF_ODD")
      *
      * @throws {RangeError} If `percentage` is out of range.
      *
      * @return {Dinero}
      */
-    percentage(percentage) {
+    percentage(percentage, roundingMode = globalRoundingMode) {
       assertPercentage(percentage)
-      return this.multiply(calculator.divide(percentage, 100))
+      return this.multiply(calculator.divide(percentage, 100), roundingMode)
     },
     /**
      * Allocates the amount of a Dinero object according to a list of ratios.
