@@ -1680,7 +1680,7 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@es-joy/jsdoccomment@^0.9.0-alpha.1":
+"@es-joy/jsdoccomment@0.9.0-alpha.1":
   version "0.9.0-alpha.1"
   resolved "https://registry.yarnpkg.com/@es-joy/jsdoccomment/-/jsdoccomment-0.9.0-alpha.1.tgz#f48bd162e185ec7f9f222273a282d10e52fe52f7"
   integrity sha512-Clxxc0PwpISoYYBibA+1L2qFJ7gvFVhI2Hos87S06K+Q0cXdOhZQJNKWuaQGPAeHjZEuUB/YoWOfwjuF2wirqA==
@@ -5534,12 +5534,12 @@ eslint-plugin-jest@24.4.0:
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.0.1"
 
-eslint-plugin-jsdoc@35.4.7:
-  version "35.4.7"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-35.4.7.tgz#83874a9341128fca0aec7a2a1ad5569b5f7c8ff0"
-  integrity sha512-1EfFQ9qsAXYOr3ev6Q5OboVWmP8Wm2ed30Y9Ag/CLcrA6csNs2qzE4zJnxKA3574dguU9N7S3+NvIhRrYVgw7w==
+eslint-plugin-jsdoc@35.5.1:
+  version "35.5.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-35.5.1.tgz#45932ee22669bbe06c97b82b936d56361efad370"
+  integrity sha512-pPYPWtsykwVEue1tYEyoppBj4dgF7XicF67tLLLraY6RQYBq7qMKjUHji19+hfiTtYKKBD0YfeK8hgjPAE5viw==
   dependencies:
-    "@es-joy/jsdoccomment" "^0.9.0-alpha.1"
+    "@es-joy/jsdoccomment" "0.9.0-alpha.1"
     comment-parser "1.1.6-beta.0"
     debug "^4.3.2"
     esquery "^1.4.0"
