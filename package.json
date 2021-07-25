@@ -42,7 +42,7 @@
     "@babel/preset-env": "7.14.8",
     "@babel/preset-typescript": "7.14.5",
     "@rollup/plugin-json": "4.1.0",
-    "@rollup/plugin-node-resolve": "13.0.3",
+    "@rollup/plugin-node-resolve": "13.0.4",
     "@rollup/plugin-replace": "3.0.0",
     "@types/jest": "26.0.24",
     "@typescript-eslint/eslint-plugin": "4.28.4",
