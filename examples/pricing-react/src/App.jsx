@@ -7,7 +7,7 @@ import ReactSlider from 'react-slider';
 
 import { format } from './utils';
 
-const discountRate = 10;
+const DISCOUNT_RATE = 10;
 
 function App({ items }) {
   const [monthlyBilling, setMonthlyBilling] = useState(true);
@@ -77,7 +77,7 @@ function App({ items }) {
                   }
                 )}
               >
-                -{discountRate}%
+                -{DISCOUNT_RATE}%
               </span>
             </button>
           </div>
@@ -114,83 +114,91 @@ function App({ items }) {
           </div>
         </div>
         <div className="space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-4">
-          {tiers.map((tier) => (
-            <Tier
-              key={tier.name}
-              {...tier}
-              monthly={monthlyBilling}
-              seats={seats}
-            />
-          ))}
+          {tiers.map((item) => {
+            const isActive = !item.individual || seats === 1;
+            const TierPrice = monthlyBilling
+              ? TierMonthlyPrice
+              : TierYearlyPrice;
+            const price = multiply(
+              item.monthlyPrice,
+              item.individual ? 1 : seats
+            );
+
+            return (
+              <Tier key={item.name} isActive={isActive} item={item}>
+                <TierPrice price={price} />
+              </Tier>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 }
 
-function Tier({
-  name,
-  monthlyPrice,
-  individual,
-  description,
-  featuresHeading,
-  features,
-  monthly,
-  seats,
-}) {
-  const inactive = individual && seats > 1;
+function TierMonthlyPrice({ price }) {
+  return (
+    <>
+      <span className="text-3xl font-extrabold text-gray-900">
+        {format(price)}
+      </span>{' '}
+      <span className="flex flex-col text-xs justify-end font-medium text-gray-400 transform -translate-y-1.5">
+        <span className="leading-none">per month</span>
+      </span>
+    </>
+  );
+}
 
-  const fullMonthlyPrice = multiply(monthlyPrice, individual ? 1 : seats);
-  const fullYearlyPrice = multiply(fullMonthlyPrice, 12);
-  const [yearlyDiscount] = allocate(fullYearlyPrice, [
-    discountRate,
-    100 - discountRate,
-  ]);
-  const yearlyDiscountedPrice = subtract(fullYearlyPrice, yearlyDiscount);
+function TierYearlyPrice({ price }) {
+  const fullPrice = multiply(price, 12);
+  const [discount] = allocate(fullPrice, [DISCOUNT_RATE, 100 - DISCOUNT_RATE]);
+  const discountedPrice = subtract(fullPrice, discount);
 
-  const price = monthly ? fullMonthlyPrice : yearlyDiscountedPrice;
+  return (
+    <>
+      <span className="text-3xl font-extrabold text-gray-900">
+        {format(discountedPrice)}
+      </span>{' '}
+      <span className="flex flex-col text-xs justify-end font-medium text-gray-400 transform -translate-y-1.5">
+        {!isZero(fullPrice) && (
+          <span className="leading-none line-through">{format(fullPrice)}</span>
+        )}
+        <span className="leading-none">per year</span>
+      </span>
+    </>
+  );
+}
 
+function Tier({ isActive, item, children }) {
   return (
     <div
       className={cx(
         'h-full border divide-y divide-gray-200 rounded-lg shadow-sm transition duration-150',
-        { 'grayscale opacity-60': inactive }
+        { 'grayscale opacity-60': !isActive }
       )}
     >
       <div className="p-6">
-        <h2 className="text-lg font-medium leading-6 text-gray-900">{name}</h2>
-        <p className="mt-4 text-sm text-gray-500">{description}</p>
-        <p className="flex mt-8 space-x-1">
-          <span className="text-3xl font-extrabold text-gray-900">
-            {format(price)}
-          </span>{' '}
-          <span className="flex flex-col text-xs justify-end font-medium text-gray-400 transform -translate-y-1.5">
-            {!isZero(fullYearlyPrice) && !monthly && (
-              <span className="leading-none line-through">
-                {format(fullYearlyPrice)}
-              </span>
-            )}
-            <span className="leading-none">
-              per {monthly ? 'month' : 'year'}
-            </span>
-          </span>
-        </p>
+        <h2 className="text-lg font-medium leading-6 text-gray-900">
+          {item.name}
+        </h2>
+        <p className="mt-4 text-sm text-gray-500">{item.description}</p>
+        <p className="flex mt-8 space-x-1">{children}</p>
         <a
           href="#"
           className={cx(
-            'block w-full py-2 mt-8 text-sm font-semibold text-center text-white bg-blue-800 border border-blue-800 transition duration-150 rounded-md hover:bg-blue-900',
-            { 'cursor-not-allowed': inactive }
+            'block w-full py-2 mt-8 text-sm font-semibold text-center text-white bg-blue-800 border border-blue-800 transition duration-150 rounded-md',
+            { 'cursor-not-allowed': !isActive, 'hover:bg-blue-900': isActive }
           )}
         >
-          Buy {name}
+          Buy {item.name}
         </a>
       </div>
       <div className="px-6 pt-6 pb-8">
         <h3 className="text-xs font-medium tracking-wide text-gray-900 uppercase">
-          {featuresHeading}
+          {item.featuresHeading}
         </h3>
         <ul className="mt-6 space-y-4">
-          {features.map((feature) => (
+          {item.features.map((feature) => (
             <li key={feature} className="flex space-x-3">
               <div className="p-1 bg-green-100 rounded-full">
                 <CheckIcon
