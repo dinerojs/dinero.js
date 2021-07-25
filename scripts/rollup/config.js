@@ -1,4 +1,4 @@
-/* eslint-disable functional/no-throw-statement */
+/* eslint-disable functional/no-throw-statement, functional/no-expression-statement */
 import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
@@ -18,7 +18,45 @@ function createRollupConfig({ mode, format, input, pkg, config }) {
     );
   }
 
-  return {
+  const bundles = [];
+
+  if (format === 'cjs') {
+    bundles.push({
+      ...config,
+      input: '../../scripts/rollup/cjs.js',
+      output: {
+        file: `dist/cjs/${input}.js`,
+        format,
+        sourcemap: false,
+        ...config.output,
+      },
+      plugins: [
+        replace({
+          preventAssignment: false,
+          delimiters: ['', ''],
+          values: {
+            __BUNDLE__: input,
+          },
+        }),
+        json(),
+        resolve({
+          extensions,
+        }),
+        babel({
+          exclude: 'node_modules/**',
+          extensions,
+          rootMode: 'upward',
+        }),
+        filesize({
+          showMinifiedSize: false,
+          showGzippedSize: true,
+        }),
+        ...(config.plugins || []),
+      ].filter(Boolean),
+    });
+  }
+
+  bundles.push({
     ...config,
     input: `src/${input}.ts`,
     output: {
@@ -54,7 +92,9 @@ function createRollupConfig({ mode, format, input, pkg, config }) {
       }),
       ...(config.plugins || []),
     ].filter(Boolean),
-  };
+  });
+
+  return bundles;
 }
 
 export function createRollupConfigs({ pkg, inputs = ['index'], config = {} }) {
@@ -91,5 +131,5 @@ export function createRollupConfigs({ pkg, inputs = ['index'], config = {} }) {
         }),
       ];
     })
-    .flat();
+    .flat(2);
 }

@@ -20,7 +20,7 @@
     "url": "https://sarahdayan.dev"
   },
   "sideEffects": false,
-  "main": "dist/cjs/index.production.js",
+  "main": "dist/cjs/index.js",
   "umd:main": "dist/umd/index.production.js",
   "jsdelivr": "dist/umd/index.production.js",
   "unpkg": "dist/umd/index.production.js",
