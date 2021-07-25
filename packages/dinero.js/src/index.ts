@@ -11,6 +11,7 @@ export type {
   Transformer,
 } from '@dinero.js/core';
 export {
+  createDinero,
   down,
   halfAwayFromZero,
   halfDown,
