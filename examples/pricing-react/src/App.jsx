@@ -93,18 +93,18 @@ function App({ items }) {
                 <div
                   {...props}
                   style={{ ...props.style, zIndex: 20 }}
-                  className="relative flex flex-col items-center w-6 h-6 -mt-2 outline-none"
+                  className="relative flex flex-col items-center w-8 h-8 -mt-2 outline-none"
                 >
                   <div className="absolute top-0 inline-block px-2 py-1 mb-2 -mt-8 text-xs text-white bg-gray-900 rounded-sm whitespace-nowrap">
                     {state.valueNow} user{state.valueNow > 1 && 's'}
                   </div>
-                  <div className="w-6 h-6 bg-blue-800 border-4 border-white rounded-full shadow-lg cursor-pointer" />
+                  <div className="w-8 h-8 bg-white border-4 border-blue-700 rounded-full shadow-lg cursor-pointer" />
                 </div>
               )}
               renderTrack={(props, state) => (
                 <div
                   {...props}
-                  className={cx('h-2 rounded-full cursor-pointer', {
+                  className={cx('h-4 rounded-full cursor-pointer', {
                     'bg-gray-100': state.index === 1,
                     'bg-blue-700 z-10': state.index === 0,
                   })}
