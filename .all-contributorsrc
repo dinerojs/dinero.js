@@ -179,6 +179,15 @@
         "doc",
         "test"
       ]
+    },
+    {
+      "login": "nguyenj",
+      "name": "John Nguyen",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1127677?v=4",
+      "profile": "http://jnguyen.me/",
+      "contributions": [
+        "infra"
+      ]
     }
   ]
 }
