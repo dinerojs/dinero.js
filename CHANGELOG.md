@@ -1,3 +1,18 @@
+# [2.0.0-alpha.7](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.6...v2.0.0-alpha.7) (2021-07-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency docsearch monorepo ([d81e41a](https://github.com/dinerojs/dinero.js/commit/d81e41a9c22f8af7fce1d45ccee540814e26843d))
+* **dinero.js:** properly re-export types and rounding functions ([d40a7e2](https://github.com/dinerojs/dinero.js/commit/d40a7e29aff102c4e16b8416a2600cc9e0d6add6))
+
+
+### Features
+
+* **dinero.js:** re-export createDinero ([d8d149f](https://github.com/dinerojs/dinero.js/commit/d8d149f77e8efce20a60a22aba1df6b21f0f4f25))
+
+
+
 # [2.0.0-alpha.6](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.5...v2.0.0-alpha.6) (2021-07-21)
 
 ### Bug Fixes
