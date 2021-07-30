@@ -1,6 +1,6 @@
 {
   "name": "@dinero.js/example-cart-vue",
-  "version": "2.0.0-alpha.6",
+  "version": "2.0.0-alpha.7",
   "scripts": {
     "build:clean": "rimraf ./dist",
     "dev": "vite",
@@ -8,8 +8,8 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@dinero.js/currencies": "2.0.0-alpha.6",
-    "dinero.js": "2.0.0-alpha.6",
+    "@dinero.js/currencies": "2.0.0-alpha.7",
+    "dinero.js": "2.0.0-alpha.7",
     "vue": "3.0.5"
   },
   "devDependencies": {
