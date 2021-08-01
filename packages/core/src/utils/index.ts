@@ -4,6 +4,7 @@ export * from './countTrailingZeros';
 export * from './distribute';
 export * from './equal';
 export * from './getAmountAndScale';
+export * from './getDivisors';
 export * from './greaterThan';
 export * from './greaterThanOrEqual';
 export * from './isArray';
