@@ -2492,14 +2492,17 @@ mdurl@^1.0.0:
   resolved "https://registry.yarnpkg.com/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
   integrity sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=
 
-mdx-prism@0.3.3:
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/mdx-prism/-/mdx-prism-0.3.3.tgz#cd8651f1fa0f82fe43715ef19571e2697aa74d70"
-  integrity sha512-1Q4eIb5lbmZx0NC4pdeJqUy79tEV1tX5X//pjouaoBJfzPelGpMxxd57+dU2TnRYzHsGa4IHTcsA40H2cTFyAg==
+mdx-prism@0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/mdx-prism/-/mdx-prism-0.3.4.tgz#ab99b9e6e5f50e29b5dcb871354c5039b90b27fe"
+  integrity sha512-Ijy/BB0NINK5Vn6WgOATgX75q6JEdWcGZuXtpePoGiILbjEWFiOkacTdGDpu+VGTrxu0nszlX2Spkf0bhC5O6A==
   dependencies:
     hast-util-to-string "^1.0.0"
     parse-numeric-range "^0.0.2"
     refractor "3.3.0"
+    rehype "^11.0.0"
+    rehype-parse "^7.0.1"
+    unified "^9.2.1"
     unist-util-visit "^1.1.3"
 
 meow@^9.0.0:
@@ -3351,7 +3354,7 @@ regenerator-runtime@^0.13.4:
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
   integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
 
-rehype-parse@^7.0.0:
+rehype-parse@^7.0.0, rehype-parse@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/rehype-parse/-/rehype-parse-7.0.1.tgz#58900f6702b56767814afc2a9efa2d42b1c90c57"
   integrity sha512-fOiR9a9xH+Le19i4fGzIEowAbwG7idy2Jzs4mOrFWBSJ0sNUgy0ev871dwWnbOo371SjgjG4pwzrbgSVrKxecw==
@@ -3366,7 +3369,7 @@ rehype-stringify@^8.0.0:
   dependencies:
     hast-util-to-html "^7.1.1"
 
-rehype@11.0.0:
+rehype@11.0.0, rehype@^11.0.0:
   version "11.0.0"
   resolved "https://registry.yarnpkg.com/rehype/-/rehype-11.0.0.tgz#d81729e65f4ac2b26f5de0b6bafc257eb0780e1f"
   integrity sha512-qXqRqiCFJD5CJ61CSJuNImTFrm3zVkOU9XywHDwrUuvWN74MWt72KJ67c5CM5x8g0vGcOkRVCrYj85vqkmHulQ==
@@ -4124,6 +4127,18 @@ unified@^9.0.0, unified@^9.1.0:
   version "9.2.1"
   resolved "https://registry.yarnpkg.com/unified/-/unified-9.2.1.tgz#ae18d5674c114021bfdbdf73865ca60f410215a3"
   integrity sha512-juWjuI8Z4xFg8pJbnEZ41b5xjGUWGHqXALmBZ3FC3WX0PIx1CZBIIJ6mXbYMcf6Yw4Fi0rFUTA1cdz/BglbOhA==
+  dependencies:
+    bail "^1.0.0"
+    extend "^3.0.0"
+    is-buffer "^2.0.0"
+    is-plain-obj "^2.0.0"
+    trough "^1.0.0"
+    vfile "^4.0.0"
+
+unified@^9.2.1:
+  version "9.2.2"
+  resolved "https://registry.yarnpkg.com/unified/-/unified-9.2.2.tgz#67649a1abfc3ab85d2969502902775eb03146975"
+  integrity sha512-Sg7j110mtefBD+qunSLO1lqOEKdrwBFBrR6Qd8f4uwkhWNlbkaqwHse6e7QvD3AP/MNoJdEDLaf8OxYyoWgorQ==
   dependencies:
     bail "^1.0.0"
     extend "^3.0.0"
