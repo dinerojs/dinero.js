@@ -16,17 +16,17 @@ toUnit(d, { digits: 1, round: down }); // 10.5
 
 ## Displaying an object
 
-Dinero objects are ideal to safely manipulate money, but at some point, you need to display them. The `toFormat` function lets you display objects the way you want. It exposes a pre-formatted amount for convenience.
+Dinero objects are ideal to safely manipulate money, but at some point, you need to display them. The `toFormat` function lets you display objects the way you want. It exposes a pre-formatted amount in `units` and in stringified `decimal` format (if the currency is decimal and single-base), for convenience.
 
 ```js
 import { dinero, toFormat } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
-const transformer = ({ amount, currency }) => `${currency.code} ${amount}`;
+const transformer = ({ decimal, currency }) => `${currency.code} ${decimal}`;
 
 const d = dinero({ amount: 5000, currency: USD });
 
-toFormat(d, transformer); // "USD 50"
+toFormat(d, transformer); // "USD 50.00"
 ```
 
 Dinero.js uses the scale of the object to determine how many decimal places to represent. You can adjust it in the `transformer`.
@@ -35,11 +35,13 @@ Dinero.js uses the scale of the object to determine how many decimal places to r
 import { dinero, toFormat, up } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
-const transformer = ({ amount, currency }) => `${currency.code} ${amount.toFixed(1)}`;
+const transformer = ({ decimal, currency }) => {
+  return `${currency.code} ${Number(decimal).toFixed(1)}`;
+};
 
 const d = dinero({ amount: 4545, currency: USD });
 
-toFormat(d, transformer, options); // "USD 45.5"
+toFormat(d, transformer); // "USD 45.5"
 ```
 
 If you're formatting many objects, you might want to reuse the same transformer without having to pass it every time. To do so, you can write your own higher-order function to build formatters.
@@ -60,12 +62,12 @@ function createFormatter(transformer) {
 // This function is reusable to format any Dinero object
 // with the same transformer.
 const format = createFormatter(
-  ({ amount, currency }) => `${currency.code} ${amount}`
+  ({ decimal, currency }) => `${currency.code} ${decimal}`
 );
 
 const d = dinero({ amount: 5000, currency: USD });
 
-format(d); // "USD 50"
+format(d); // "USD 50.00"
 ```
 
 <Panel

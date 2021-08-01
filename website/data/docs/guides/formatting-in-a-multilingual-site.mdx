@@ -16,8 +16,8 @@ import { dinero, toFormat } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
 function intlFormat(dineroObject, locale, options = {}) {
-  function transformer({ amount, currency }) {
-    return amount.toLocaleString(locale, {
+  function transformer({ decimal, currency }) {
+    return Number(decimal).toLocaleString(locale, {
       ...options,
       style: 'currency',
       currency: currency.code,

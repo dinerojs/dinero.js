@@ -6,9 +6,13 @@ returns: string
 
 Format a Dinero object with a custom transformer.
 
-The `transformer` parameter exposes the amount in rounded units, the currency, and the initial Dinero object. The latter can be useful when [formatting non-decimal currencies](/docs/advanced/formatting-non-decimal-currencies).
+The function takes a `transformer` function which exposes useful information to format the object.
 
-You can also specify rounding `options` to determine how to round the amount.
+The `transformer` parameter exposes an object with the following properties:
+- `units`: the amount divided into each unit and sub-unit. It uses [`toUnits`](/docs/api/formatting/to-units) under the hood.
+- `decimal`: a stringified decimal representation of the amount, in major currency units. If the currency isn't decimal and expressed with a single base, this is `undefined`.
+- `currency`: the object's currency.
+- `dineroObject`: the initial Dinero object. This can be useful when [formatting non-decimal currencies](/docs/advanced/formatting-non-decimal-currencies).
 
 ## Parameters
 
@@ -38,7 +42,7 @@ import { USD } from '@dinero.js/currencies';
 
 const d = dinero({ amount: 500, currency: USD });
 
-toFormat(d, ({ amount, currency }) => `${currency.code} ${amount}`); // "USD 5"
+toFormat(d, ({ decimal, currency }) => `${currency.code} ${decimal}`); // "USD 5.00"
 ```
 
 ### Build a reusable formatter
@@ -52,13 +56,13 @@ import { USD } from '@dinero.js/currencies';
 function format(dineroObject) {
   return toFormat(
     dineroObject,
-    ({ amount, currency }) => `${currency.code} ${amount}`
+    ({ decimal, currency }) => `${currency.code} ${decimal}`
   );
 }
 
 const d = dinero({ amount: 5000, currency: USD });
 
-format(d); // "USD 50"
+format(d); // "USD 50.00"
 ```
 
 You can even build your own reusable higher-order function to build formatters. This can be useful if you need to create multiple formatters, for example to cater to multiple locales.
@@ -72,14 +76,14 @@ function createFormatter(transformer) {
   };
 }
 
-const frenchFormat = createFormatter(({ amount, currency }) => {
-  return `${amount.toFixed(currency.exponent).replace('.', ',')} ${
+const frenchFormat = createFormatter(({ decimal, currency }) => {
+  return `${Number(decimal).toFixed(currency.exponent).replace('.', ',')} ${
     currency.code
   }`;
 });
 
-const americanFormat = createFormatter(({ amount, currency }) => {
-  return `${currency.code} ${amount.toFixed(currency.exponent)}`;
+const americanFormat = createFormatter(({ decimal, currency }) => {
+  return `${currency.code} ${Number(decimal).toFixed(currency.exponent)}`;
 });
 ```
 
