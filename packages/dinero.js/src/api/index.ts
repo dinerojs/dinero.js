@@ -21,5 +21,6 @@ export * from './subtract';
 export * from './toFormat';
 export * from './toSnapshot';
 export * from './toUnit';
+export * from './toUnits';
 export * from './transformScale';
 export * from './trimScale';

@@ -123,4 +123,23 @@ describe('haveSameCurrency', () => {
       expect(haveSameCurrency([d1, d2])).toBe(true);
     });
   });
+  it('returns true when multi-base currencies are structurally equal', () => {
+    const GBP = { code: 'GBP', base: [20, 12], exponent: 1 };
+    const d1 = dinero({ amount: 240, currency: GBP });
+    const d2 = dinero({ amount: 240, currency: GBP });
+
+    expect(haveSameCurrency([d1, d2])).toBe(true);
+  });
+  it('returns true when multi-base currencies compute to the same base', () => {
+    const d1 = dinero({
+      amount: 240,
+      currency: { code: 'GBP', base: [20, 12], exponent: 1 },
+    });
+    const d2 = dinero({
+      amount: 240,
+      currency: { code: 'GBP', base: 240, exponent: 1 },
+    });
+
+    expect(haveSameCurrency([d1, d2])).toBe(true);
+  });
 });

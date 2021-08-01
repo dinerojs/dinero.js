@@ -6,7 +6,7 @@ export type Currency<TAmount> = {
   /**
    * The base, or radix of the currency.
    */
-  readonly base: TAmount;
+  readonly base: TAmount | readonly TAmount[];
   /**
    * The exponent of the currency.
    */

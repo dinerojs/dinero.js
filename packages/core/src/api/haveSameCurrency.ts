@@ -1,4 +1,4 @@
-import { equal } from '../utils';
+import { computeBase, equal } from '../utils';
 
 import type { Dinero } from '../types';
 
@@ -6,15 +6,19 @@ export function haveSameCurrency<TAmount>(
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ) {
   const [firstDinero, ...otherDineros] = dineroObjects;
+  const computeBaseFn = computeBase(firstDinero.calculator);
+
   const { currency: comparator } = firstDinero.toJSON();
   const equalFn = equal(firstDinero.calculator);
+  const comparatorBase = computeBaseFn(comparator.base);
 
   return otherDineros.every((d) => {
     const { currency: subject } = d.toJSON();
+    const subjectBase = computeBaseFn(subject.base);
 
     return (
       subject.code === comparator.code &&
-      equalFn(subject.base, comparator.base) &&
+      equalFn(subjectBase, comparatorBase) &&
       equalFn(subject.exponent, comparator.exponent)
     );
   });

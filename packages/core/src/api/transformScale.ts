@@ -1,4 +1,4 @@
-import { greaterThan } from '../utils';
+import { computeBase, greaterThan } from '../utils';
 
 import type { Calculator, Dinero } from '../types';
 
@@ -9,24 +9,19 @@ export type TransformScaleParams<TAmount> = readonly [
 
 export function transformScale<TAmount>(calculator: Calculator<TAmount>) {
   const greaterThanFn = greaterThan(calculator);
+  const computeBaseFn = computeBase(calculator);
 
   return function transformScaleFn(
     ...[dineroObject, newScale]: TransformScaleParams<TAmount>
   ) {
     const { amount, currency, scale } = dineroObject.toJSON();
 
-    const isNewScaleLarger = greaterThanFn(newScale, scale);
-    const operation = isNewScaleLarger
-      ? calculator.multiply
-      : calculator.integerDivide;
-    const terms = isNewScaleLarger
-      ? ([newScale, scale] as const)
-      : ([scale, newScale] as const);
+    const isLarger = greaterThanFn(newScale, scale);
+    const operation = isLarger ? calculator.multiply : calculator.integerDivide;
+    const [a, b] = isLarger ? [newScale, scale] : [scale, newScale];
+    const base = computeBaseFn(currency.base);
 
-    const factor = calculator.power(
-      currency.base,
-      calculator.subtract(...terms)
-    );
+    const factor = calculator.power(base, calculator.subtract(a, b));
 
     return dineroObject.create({
       amount: operation(amount, factor),

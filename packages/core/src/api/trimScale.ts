@@ -1,4 +1,4 @@
-import { countTrailingZeros, equal, maximum } from '../utils';
+import { computeBase, countTrailingZeros, equal, maximum } from '../utils';
 
 import { transformScale } from './transformScale';
 
@@ -10,15 +10,16 @@ export function trimScale<TAmount>(calculator: Calculator<TAmount>) {
   const countTrailingZerosFn = countTrailingZeros(calculator);
   const equalFn = equal(calculator);
   const maximumFn = maximum(calculator);
-  const transformScaleFn = transformScale(calculator);
+const transformScaleFn = transformScale(calculator);
+const computeBaseFn = computeBase(calculator);
 
   return function trimScaleFn(...[dineroObject]: TrimScaleParams<TAmount>) {
     const { amount, currency, scale } = dineroObject.toJSON();
-    const { base, exponent } = currency;
+    const base = computeBaseFn(currency.base);
 
     const trailingZerosLength = countTrailingZerosFn(amount, base);
     const difference = calculator.subtract(scale, trailingZerosLength);
-    const newScale = maximumFn([difference, exponent]);
+    const newScale = maximumFn([difference, currency.exponent]);
 
     if (equalFn(newScale, scale)) {
       return dineroObject;
