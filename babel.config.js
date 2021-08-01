@@ -8,8 +8,6 @@ module.exports = (api) => {
 
   if (isTest) {
     targets.node = true;
-  } else {
-    targets.browsers = ['last 2 versions', 'ie >= 9'];
   }
 
   return {
