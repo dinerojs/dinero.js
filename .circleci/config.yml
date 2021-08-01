@@ -38,7 +38,7 @@ aliases:
 defaults: &defaults
   working_directory: ~/dinero.js
   docker:
-    - image: circleci/node:14.17.3
+    - image: circleci/node:14.17.4
 
 references:
   workspace_root: &workspace_root /tmp/workspace
