@@ -2,8 +2,8 @@ import { toFormat, toSnapshot } from 'dinero.js';
 
 function intlFormat(locale, options = {}) {
   return function formatter(dineroObject) {
-    function transformer({ amount, currency }) {
-      return amount.toLocaleString(locale, {
+    function transformer({ decimal, currency }) {
+      return Number(decimal).toLocaleString(locale, {
         ...options,
         style: 'currency',
         currency: currency.code,
@@ -15,8 +15,8 @@ function intlFormat(locale, options = {}) {
 }
 
 function formatDefault(dineroObject) {
-  return toFormat(dineroObject, ({ amount, currency }) => {
-    return `${currency.code} ${amount.toFixed(currency.exponent)}`;
+  return toFormat(dineroObject, ({ decimal, currency }) => {
+    return `${currency.code} ${Number(decimal).toFixed(currency.exponent)}`;
   });
 }
 
