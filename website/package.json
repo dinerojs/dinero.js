@@ -32,7 +32,7 @@
     "gray-matter": "4.0.3",
     "gzip-size-cli": "5.0.0",
     "junk": "3.1.0",
-    "mdx-prism": "0.3.3",
+    "mdx-prism": "0.3.4",
     "next-mdx-remote": "3.0.4",
     "postcss": "8.3.6",
     "prettier": "2.3.2",
