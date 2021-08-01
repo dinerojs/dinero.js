@@ -45,6 +45,10 @@ references:
   attach_workspace: &attach_workspace
     attach_workspace:
       at: *workspace_root
+  add_ssh_keys: &add_ssh_keys
+    add_ssh_keys:
+      fingerprints:
+        - 'b5:f1:15:d1:d3:bf:9a:95:52:97:48:27:6b:cb:01:d0'
 
 jobs:
   build:
@@ -138,6 +142,7 @@ jobs:
       - run: *run_yarn_install
       - save_cache: *save_yarn_cache
       - run: *restore_dist_folders
+      - *add_ssh_keys
       - run:
           name: Release if needed
           command: yarn run shipjs trigger
