@@ -1,3 +1,4 @@
-import type { Dinero } from '.';
-
-export type Formatter<TAmount> = (dineroObject: Dinero<TAmount>) => string;
+export type Formatter<TAmount> = {
+  readonly toNumber: (value?: TAmount) => number;
+  readonly toString: (value?: TAmount) => string;
+};

@@ -46,5 +46,8 @@
     "@dinero.js/calculator-number": "2.0.0-alpha.7",
     "@dinero.js/core": "2.0.0-alpha.7",
     "@dinero.js/currencies": "2.0.0-alpha.7"
+  },
+  "devDependencies": {
+    "@dinero.js/calculator-bigint": "2.0.0-alpha.7"
   }
 }
