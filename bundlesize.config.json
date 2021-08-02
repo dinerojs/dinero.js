@@ -10,7 +10,7 @@
     },
     {
       "path": "packages/core/dist/umd/index.production.js",
-      "maxSize": "3.55 KB"
+      "maxSize": "3.9 KB"
     },
     {
       "path": "packages/currencies/dist/umd/index.production.js",
@@ -18,7 +18,7 @@
     },
     {
       "path": "packages/dinero.js/dist/umd/index.production.js",
-      "maxSize": "3.9 KB"
+      "maxSize": "4.4 KB"
     }
   ]
 }
