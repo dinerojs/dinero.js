@@ -53,8 +53,8 @@ The documentation lets you learn about all aspects of the library.
 
 - [**Getting started**](https://v2.dinerojs.com/docs/getting-started/quick-start) to get up and running quickly with Dinero.js
 - [**Core concepts**](https://v2.dinerojs.com/docs/core-concepts/amount) to learn about the underlying principles behind the library
+- [**Guides**](https://v2.dinerojs.com/docs/guides/using-different-amount-types) to dig deeper into specific use cases.
 - [**API**](https://v2.dinerojs.com/docs/api/mutations/add) for a comprehensive list of available functions and their parameters.
-- [**Advanced**](https://v2.dinerojs.com/docs/advanced/using-different-amount-types) for less common or more complex topics.
 - [**FAQ**](https://v2.dinerojs.com/docs/faq/does-dinerojs-support-cryptocurrencies) for common answers to questions you might have
 
 Visit the [full documentation](https://v2.dinerojs.com/docs) to know more.
