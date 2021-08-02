@@ -132,12 +132,12 @@ Former methods and new functions don't all have the same signature. Refer to the
 
 <Scrollable>
 
-| Dinero v1.x                 | Dinero v2                                                            |
-|-----------------------------|----------------------------------------------------------------------|
-| `d1.toFormat(format)`       | [`toFormat(d1, ...args)`](/docs/api/formatting/to-format)            |
-| `d1.toObject()`             | [`toSnapshot(d1)`](/docs/api/formatting/to-snapshot)                 |
-| `d1.toUnit(...args)`        | [`toUnit(d1, ...args)`](/docs/api/formatting/to-unit)                |
-| `d1.toRoundedUnit(...args)` | [`toUnit(d1, ...args)`](/docs/api/formatting/to-unit)                |
+| Dinero v1.x                 | Dinero v2                                                                              |
+|-----------------------------|----------------------------------------------------------------------------------------|
+| `d1.toFormat(format)`       | [`toFormat(d1, ...args)`](/docs/api/formatting/to-format)                              |
+| `d1.toObject()`             | [`toSnapshot(d1)`](/docs/api/formatting/to-snapshot)                                   |
+| `d1.toUnit(...args)`        | Dropped, [see replacement](#replace-tounit-and-toroundedunit-with-tounits-or-toformat) |
+| `d1.toRoundedUnit(...args)` | Dropped, [see replacement](#replace-tounit-and-toroundedunit-with-tounits-or-toformat) |
 
 </Scrollable>
 
@@ -271,6 +271,28 @@ Dinero.js v2 no longer has a built-in `percentage` function. You can build your 
         {
           title: 'How do I calculate a percentage?',
           url: '/docs/faq/how-do-i-calculate-a-percentage',
+        },
+      ],
+    },
+  ]}
+/>
+
+## Replace toUnit and toRoundedUnit with toUnits or toFormat
+
+Dinero.js v2 no longer has a built-in `toUnit` and `toRoundedUnit` functions. Use [`toUnits`](/docs/api/formatting/to-units) or [`toFormat`](/docs/api/formatting/to-format) instead.
+
+<Panel
+  groups={[
+    {
+      label: 'API',
+      links: [
+        {
+          title: 'To unit',
+          url: '/docs/api/formatting/to-unit',
+        },
+        {
+          title: 'To format',
+          url: '/docs/api/formatting/to-format',
         },
       ],
     },
