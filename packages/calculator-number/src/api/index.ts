@@ -7,5 +7,4 @@ export * from './modulo';
 export * from './multiply';
 export * from './power';
 export * from './subtract';
-export * from './toNumber';
 export * from './zero';
