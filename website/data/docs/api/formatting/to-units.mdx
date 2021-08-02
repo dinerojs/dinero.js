@@ -6,7 +6,7 @@ returns: TAmount[]
 
 Get the amount of a Dinero object in units.
 
-This function returns the total amount divided into each unit and sub-unit, as an array. For example, an object representing $10.45 expressed as `1045` (with currency `USD` and no custom `scale`) would return `[1, 45]` for 1 dollar and 45 cents.
+This function returns the total amount divided into each unit and sub-unit, as an array. For example, an object representing $10.45 expressed as `1045` (with currency `USD` and no custom `scale`) would return `[10, 45]` for 10 dollars and 45 cents.
 
 When specifying multiple bases, the function returns as many units as necessary.
 
