@@ -11,7 +11,7 @@ import type { IsZeroParams } from '@dinero.js/core';
  */
 export function isZero<TAmount>(...[dineroObject]: IsZeroParams<TAmount>) {
   const { calculator } = dineroObject;
-  const isZeroFn = coreIsZero({ calculator });
+  const isZeroFn = coreIsZero(calculator);
 
   return isZeroFn(dineroObject);
 }

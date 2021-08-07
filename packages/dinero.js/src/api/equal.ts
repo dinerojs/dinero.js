@@ -14,7 +14,7 @@ export function equal<TAmount>(
   ...[dineroObject, comparator]: EqualParams<TAmount>
 ) {
   const { calculator } = dineroObject;
-  const equalFn = coreEqual({ calculator });
+  const equalFn = coreEqual(calculator);
 
   return equalFn(dineroObject, comparator);
 }

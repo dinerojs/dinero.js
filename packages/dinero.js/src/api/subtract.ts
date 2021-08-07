@@ -14,7 +14,7 @@ export function subtract<TAmount>(
   ...[minuend, subtrahend]: SubtractParams<TAmount>
 ) {
   const { calculator } = minuend;
-  const subtractFn = safeSubtract({ calculator });
+  const subtractFn = safeSubtract(calculator);
 
   return subtractFn(minuend, subtrahend);
 }

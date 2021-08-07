@@ -6,19 +6,14 @@ import { compare as cmp } from '../utils';
 import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
 
-import type { Dinero } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero } from '../types';
 
 export type CompareParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   comparator: Dinero<TAmount>
 ];
 
-export type UnsafeCompareDependencies<TAmount> = Dependencies<TAmount>;
-
-export function unsafeCompare<TAmount>({
-  calculator,
-}: UnsafeCompareDependencies<TAmount>) {
+function unsafeCompare<TAmount>(calculator: Calculator<TAmount>) {
   const compareFn = cmp(calculator);
 
   return function compare(
@@ -36,15 +31,9 @@ export function unsafeCompare<TAmount>({
   };
 }
 
-export type SafeCompareDependencies<TAmount> = Dependencies<TAmount>;
-
-export function safeCompare<TAmount>({
-  calculator,
-}: SafeCompareDependencies<TAmount>) {
-  const normalizeFn = normalizeScale({ calculator });
-  const compareFn = unsafeCompare({
-    calculator,
-  });
+export function safeCompare<TAmount>(calculator: Calculator<TAmount>) {
+  const normalizeFn = normalizeScale(calculator);
+  const compareFn = unsafeCompare(calculator);
 
   return function compare(
     ...[dineroObject, comparator]: CompareParams<TAmount>

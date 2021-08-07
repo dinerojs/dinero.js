@@ -14,7 +14,7 @@ export function compare<TAmount>(
   ...[dineroObject, comparator]: CompareParams<TAmount>
 ) {
   const { calculator } = dineroObject;
-  const compareFn = safeCompare({ calculator });
+  const compareFn = safeCompare(calculator);
 
   return compareFn(dineroObject, comparator);
 }

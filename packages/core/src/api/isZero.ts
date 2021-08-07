@@ -1,13 +1,10 @@
 import { equal } from '../utils';
 
-import type { Dinero } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero } from '../types';
 
 export type IsZeroParams<TAmount> = readonly [dineroObject: Dinero<TAmount>];
 
-export type IsZeroDependencies<TAmount> = Dependencies<TAmount>;
-
-export function isZero<TAmount>({ calculator }: IsZeroDependencies<TAmount>) {
+export function isZero<TAmount>(calculator: Calculator<TAmount>) {
   const equalFn = equal(calculator);
 
   return function _isZero(...[dineroObject]: IsZeroParams<TAmount>) {

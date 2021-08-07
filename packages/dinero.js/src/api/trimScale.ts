@@ -13,7 +13,7 @@ export function trimScale<TAmount>(
   ...[dineroObject]: TrimScaleParams<TAmount>
 ) {
   const { calculator } = dineroObject;
-  const trimScaleFn = coreTrimScale({ calculator });
+  const trimScaleFn = coreTrimScale(calculator);
 
   return trimScaleFn(dineroObject);
 }

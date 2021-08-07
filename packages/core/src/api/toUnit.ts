@@ -1,14 +1,11 @@
-import type { Dinero, RoundingOptions } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero, RoundingOptions } from '../types';
 
 export type ToUnitParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   options?: RoundingOptions<TAmount>
 ];
 
-export type ToUnitDependencies<TAmount> = Dependencies<TAmount>;
-
-export function toUnit<TAmount>({ calculator }: ToUnitDependencies<TAmount>) {
+export function toUnit<TAmount>(calculator: Calculator<TAmount>) {
   return function toUnitFn(...[dineroObject, options]: ToUnitParams<TAmount>) {
     const round = options?.round || identity;
     const { amount, currency, scale } = dineroObject.toJSON();

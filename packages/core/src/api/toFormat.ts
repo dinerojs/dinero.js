@@ -1,19 +1,14 @@
 import { toUnit } from './toUnit';
 
-import type { Dinero, Transformer } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero, Transformer } from '../types';
 
 export type ToFormatParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   transformer: Transformer<TAmount>
 ];
 
-export type ToFormatDependencies<TAmount> = Dependencies<TAmount>;
-
-export function toFormat<TAmount>({
-  calculator,
-}: ToFormatDependencies<TAmount>) {
-  const toUnitFn = toUnit({ calculator });
+export function toFormat<TAmount>(calculator: Calculator<TAmount>) {
+  const toUnitFn = toUnit(calculator);
 
   return function toFormatFn(
     ...[dineroObject, transformer]: ToFormatParams<TAmount>

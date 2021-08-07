@@ -12,24 +12,14 @@ import {
 
 import { transformScale } from './transformScale';
 
-import type { Dinero, ScaledAmount } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero, ScaledAmount } from '../types';
 
 type UnsafeAllocateParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   ratios: ReadonlyArray<ScaledAmount<TAmount>>
 ];
 
-export type AllocateParams<TAmount> = readonly [
-  dineroObject: Dinero<TAmount>,
-  ratios: ReadonlyArray<ScaledAmount<TAmount> | TAmount>
-];
-
-export type UnsafeAllocateDependencies<TAmount> = Dependencies<TAmount>;
-
-function unsafeAllocate<TAmount>({
-  calculator,
-}: UnsafeAllocateDependencies<TAmount>) {
+function unsafeAllocate<TAmount>(calculator: Calculator<TAmount>) {
   return function allocate(
     ...[dineroObject, ratios]: UnsafeAllocateParams<TAmount>
   ) {
@@ -50,15 +40,16 @@ function unsafeAllocate<TAmount>({
   };
 }
 
-export type SafeAllocateDependencies<TAmount> = Dependencies<TAmount>;
+export type AllocateParams<TAmount> = readonly [
+  dineroObject: Dinero<TAmount>,
+  ratios: ReadonlyArray<ScaledAmount<TAmount> | TAmount>
+];
 
-export function safeAllocate<TAmount>({
-  calculator,
-}: SafeAllocateDependencies<TAmount>) {
-  const allocateFn = unsafeAllocate({ calculator });
+export function safeAllocate<TAmount>(calculator: Calculator<TAmount>) {
+  const allocateFn = unsafeAllocate(calculator);
   const greaterThanOrEqualFn = greaterThanOrEqual(calculator);
   const greaterThanFn = greaterThan(calculator);
-  const convertScaleFn = transformScale({ calculator });
+  const convertScaleFn = transformScale(calculator);
   const maximumFn = maximum(calculator);
   const equalFn = equal(calculator);
   const zero = calculator.zero();

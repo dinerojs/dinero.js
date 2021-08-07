@@ -14,7 +14,7 @@ export function multiply<TAmount>(
   ...[multiplicand, multiplier]: MultiplyParams<TAmount>
 ) {
   const { calculator } = multiplicand;
-  const multiplyFn = coreMultiply({ calculator });
+  const multiplyFn = coreMultiply(calculator);
 
   return multiplyFn(multiplicand, multiplier);
 }

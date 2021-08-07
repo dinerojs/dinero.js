@@ -14,7 +14,7 @@ export function transformScale<TAmount>(
   ...[dineroObject, newScale]: TransformScaleParams<TAmount>
 ) {
   const { calculator } = dineroObject;
-  const transformScaleFn = coreTransformScale({ calculator });
+  const transformScaleFn = coreTransformScale(calculator);
 
   return transformScaleFn(dineroObject, newScale);
 }

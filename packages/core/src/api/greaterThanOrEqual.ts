@@ -6,20 +6,14 @@ import { greaterThanOrEqual as gte } from '../utils';
 import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
 
-import type { Dinero } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero } from '../types';
 
 export type GreaterThanOrEqualParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   comparator: Dinero<TAmount>
 ];
 
-export type UnsafeGreaterThanOrEqualDependencies<TAmount> =
-  Dependencies<TAmount>;
-
-export function unsafeGreaterThanOrEqual<TAmount>({
-  calculator,
-}: UnsafeGreaterThanOrEqualDependencies<TAmount>) {
+function unsafeGreaterThanOrEqual<TAmount>(calculator: Calculator<TAmount>) {
   const greaterThanOrEqualFn = gte(calculator);
 
   return function greaterThanOrEqual(
@@ -37,15 +31,11 @@ export function unsafeGreaterThanOrEqual<TAmount>({
   };
 }
 
-export type SafeGreaterThanOrEqualDependencies<TAmount> = Dependencies<TAmount>;
-
-export function safeGreaterThanOrEqual<TAmount>({
-  calculator,
-}: SafeGreaterThanOrEqualDependencies<TAmount>) {
-  const normalizeFn = normalizeScale({ calculator });
-  const greaterThanOrEqualFn = unsafeGreaterThanOrEqual({
-    calculator,
-  });
+export function safeGreaterThanOrEqual<TAmount>(
+  calculator: Calculator<TAmount>
+) {
+  const normalizeFn = normalizeScale(calculator);
+  const greaterThanOrEqualFn = unsafeGreaterThanOrEqual(calculator);
 
   return function greaterThanOrEqual(
     ...[dineroObject, comparator]: GreaterThanOrEqualParams<TAmount>

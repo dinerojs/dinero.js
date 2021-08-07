@@ -6,19 +6,14 @@ import { greaterThan as gt } from '../utils';
 import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
 
-import type { Dinero } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero } from '../types';
 
 export type GreaterThanParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   comparator: Dinero<TAmount>
 ];
 
-export type UnsafeGreaterThanDependencies<TAmount> = Dependencies<TAmount>;
-
-export function unsafeGreaterThan<TAmount>({
-  calculator,
-}: UnsafeGreaterThanDependencies<TAmount>) {
+function unsafeGreaterThan<TAmount>(calculator: Calculator<TAmount>) {
   const greaterThanFn = gt(calculator);
 
   return function greaterThan(
@@ -36,13 +31,9 @@ export function unsafeGreaterThan<TAmount>({
   };
 }
 
-export type SafeGreaterThanDependencies<TAmount> = Dependencies<TAmount>;
-
-export function safeGreaterThan<TAmount>({
-  calculator,
-}: SafeGreaterThanDependencies<TAmount>) {
-  const normalizeFn = normalizeScale({ calculator });
-  const greaterThanFn = unsafeGreaterThan({ calculator });
+export function safeGreaterThan<TAmount>(calculator: Calculator<TAmount>) {
+  const normalizeFn = normalizeScale(calculator);
+  const greaterThanFn = unsafeGreaterThan(calculator);
 
   return function greaterThan(
     ...[dineroObject, comparator]: GreaterThanParams<TAmount>

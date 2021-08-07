@@ -2,20 +2,15 @@ import { getAmountAndScale } from '../utils';
 
 import { transformScale } from './transformScale';
 
-import type { Dinero, ScaledAmount } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero, ScaledAmount } from '../types';
 
 export type MultiplyParams<TAmount> = readonly [
   multiplicand: Dinero<TAmount>,
   multiplier: ScaledAmount<TAmount> | TAmount
 ];
 
-export type MultiplyDependencies<TAmount> = Dependencies<TAmount>;
-
-export function multiply<TAmount>({
-  calculator,
-}: MultiplyDependencies<TAmount>) {
-  const convertScaleFn = transformScale({ calculator });
+export function multiply<TAmount>(calculator: Calculator<TAmount>) {
+  const convertScaleFn = transformScale(calculator);
   const zero = calculator.zero();
 
   return function multiplyFn(

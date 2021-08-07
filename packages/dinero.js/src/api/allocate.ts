@@ -14,7 +14,7 @@ export function allocate<TAmount>(
   ...[dineroObject, ratios]: AllocateParams<TAmount>
 ) {
   const { calculator } = dineroObject;
-  const allocateFn = safeAllocate({ calculator });
+  const allocateFn = safeAllocate(calculator);
 
   return allocateFn(dineroObject, ratios);
 }

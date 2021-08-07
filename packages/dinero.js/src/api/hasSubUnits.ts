@@ -13,7 +13,7 @@ export function hasSubUnits<TAmount>(
   ...[dineroObject]: HasSubUnitsParams<TAmount>
 ) {
   const { calculator } = dineroObject;
-  const hasSubUnitsFn = coreHasSubUnits({ calculator });
+  const hasSubUnitsFn = coreHasSubUnits(calculator);
 
   return hasSubUnitsFn(dineroObject);
 }

@@ -6,19 +6,14 @@ import { lessThan as lt } from '../utils';
 import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
 
-import type { Dinero } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero } from '../types';
 
 export type LessThanParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   comparator: Dinero<TAmount>
 ];
 
-export type UnsafeLessThanDependencies<TAmount> = Dependencies<TAmount>;
-
-export function unsafeLessThan<TAmount>({
-  calculator,
-}: UnsafeLessThanDependencies<TAmount>) {
+function unsafeLessThan<TAmount>(calculator: Calculator<TAmount>) {
   const lessThanFn = lt(calculator);
 
   return function lessThan(
@@ -36,13 +31,9 @@ export function unsafeLessThan<TAmount>({
   };
 }
 
-export type SafeLessThanDependencies<TAmount> = Dependencies<TAmount>;
-
-export function safeLessThan<TAmount>({
-  calculator,
-}: SafeLessThanDependencies<TAmount>) {
-  const normalizeFn = normalizeScale({ calculator });
-  const lessThanFn = unsafeLessThan({ calculator });
+export function safeLessThan<TAmount>(calculator: Calculator<TAmount>) {
+  const normalizeFn = normalizeScale(calculator);
+  const lessThanFn = unsafeLessThan(calculator);
 
   return function lessThan(
     ...[dineroObject, comparator]: LessThanParams<TAmount>

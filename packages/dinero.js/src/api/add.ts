@@ -12,7 +12,7 @@ import type { AddParams } from '@dinero.js/core';
  */
 export function add<TAmount>(...[augend, addend]: AddParams<TAmount>) {
   const { calculator } = augend;
-  const addFn = safeAdd({ calculator });
+  const addFn = safeAdd(calculator);
 
   return addFn(augend, addend);
 }

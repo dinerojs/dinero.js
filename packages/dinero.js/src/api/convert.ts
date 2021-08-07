@@ -15,7 +15,7 @@ export function convert<TAmount>(
   ...[dineroObject, newCurrency, rates]: ConvertParams<TAmount>
 ) {
   const { calculator } = dineroObject;
-  const converter = coreConvert({ calculator });
+  const converter = coreConvert(calculator);
 
   return converter(dineroObject, newCurrency, rates);
 }

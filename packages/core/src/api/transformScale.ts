@@ -1,18 +1,13 @@
 import { greaterThan } from '../utils';
 
-import type { Dinero } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero } from '../types';
 
 export type TransformScaleParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   newScale: TAmount
 ];
 
-export type TransformScaleDependencies<TAmount> = Dependencies<TAmount>;
-
-export function transformScale<TAmount>({
-  calculator,
-}: TransformScaleDependencies<TAmount>) {
+export function transformScale<TAmount>(calculator: Calculator<TAmount>) {
   const greaterThanFn = greaterThan(calculator);
 
   return function transformScaleFn(

@@ -14,7 +14,7 @@ export function lessThan<TAmount>(
   ...[dineroObject, comparator]: LessThanParams<TAmount>
 ) {
   const { calculator } = dineroObject;
-  const lessThanFn = safeLessThan({ calculator });
+  const lessThanFn = safeLessThan(calculator);
 
   return lessThanFn(dineroObject, comparator);
 }

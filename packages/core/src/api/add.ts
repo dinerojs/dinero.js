@@ -5,19 +5,14 @@ import { assert } from '../helpers';
 import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
 
-import type { Dinero } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero } from '../types';
 
 export type AddParams<TAmount> = readonly [
   augend: Dinero<TAmount>,
   addend: Dinero<TAmount>
 ];
 
-export type UnsafeAddDependencies<TAmount> = Dependencies<TAmount>;
-
-export function unsafeAdd<TAmount>({
-  calculator,
-}: UnsafeAddDependencies<TAmount>) {
+function unsafeAdd<TAmount>(calculator: Calculator<TAmount>) {
   return function add(...[augend, addend]: AddParams<TAmount>) {
     const { amount: augendAmount, currency, scale } = augend.toJSON();
     const { amount: addendAmount } = addend.toJSON();
@@ -32,11 +27,9 @@ export function unsafeAdd<TAmount>({
   };
 }
 
-export type SafeAddDependencies<TAmount> = Dependencies<TAmount>;
-
-export function safeAdd<TAmount>({ calculator }: SafeAddDependencies<TAmount>) {
-  const normalizeFn = normalizeScale({ calculator });
-  const addFn = unsafeAdd({ calculator });
+export function safeAdd<TAmount>(calculator: Calculator<TAmount>) {
+  const normalizeFn = normalizeScale(calculator);
+  const addFn = unsafeAdd(calculator);
 
   return function add(...[augend, addend]: AddParams<TAmount>) {
     const condition = haveSameCurrency([augend, addend]);

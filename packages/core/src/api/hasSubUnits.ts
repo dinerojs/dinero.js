@@ -1,17 +1,12 @@
 import { equal } from '../utils';
 
-import type { Dinero } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero } from '../types';
 
 export type HasSubUnitsParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>
 ];
 
-export type HasSubUnitsDependencies<TAmount> = Dependencies<TAmount>;
-
-export function hasSubUnits<TAmount>({
-  calculator,
-}: HasSubUnitsDependencies<TAmount>) {
+export function hasSubUnits<TAmount>(calculator: Calculator<TAmount>) {
   const equalFn = equal(calculator);
 
   return function _hasSubUnits(...[dineroObject]: HasSubUnitsParams<TAmount>) {

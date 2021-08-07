@@ -13,7 +13,7 @@ export function haveSameAmount<TAmount>(
   ...[dineroObjects]: HaveSameAmountParams<TAmount>
 ) {
   const { calculator } = dineroObjects[0];
-  const haveSameAmountFn = coreHaveSameAmount({ calculator });
+  const haveSameAmountFn = coreHaveSameAmount(calculator);
 
   return haveSameAmountFn(dineroObjects);
 }

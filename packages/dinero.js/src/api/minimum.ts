@@ -10,7 +10,8 @@ import type { MinimumParams } from '@dinero.js/core';
  * @returns A new Dinero object.
  */
 export function minimum<TAmount>(...[dineroObjects]: MinimumParams<TAmount>) {
-  const minimumFn = safeMinimum({ calculator: dineroObjects[0].calculator });
+  const { calculator } = dineroObjects[0];
+  const minimumFn = safeMinimum(calculator);
 
   return minimumFn(dineroObjects);
 }

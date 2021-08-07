@@ -15,7 +15,7 @@ export function toUnit<TAmount>(
   ...[dineroObject, options]: ToUnitParams<TAmount>
 ) {
   const { calculator } = dineroObject;
-  const toUnitFn = coreToUnit({ calculator });
+  const toUnitFn = coreToUnit(calculator);
 
   return toUnitFn(dineroObject, options);
 }

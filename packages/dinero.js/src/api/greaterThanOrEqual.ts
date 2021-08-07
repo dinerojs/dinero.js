@@ -14,7 +14,7 @@ export function greaterThanOrEqual<TAmount>(
   ...[dineroObject, comparator]: GreaterThanOrEqualParams<TAmount>
 ) {
   const { calculator } = dineroObject;
-  const greaterThanOrEqualFn = safeGreaterThanOrEqual({ calculator });
+  const greaterThanOrEqualFn = safeGreaterThanOrEqual(calculator);
 
   return greaterThanOrEqualFn(dineroObject, comparator);
 }

@@ -2,20 +2,15 @@ import { equal, maximum } from '../utils';
 
 import { transformScale } from './transformScale';
 
-import type { Dinero } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero } from '../types';
 
 export type NormalizeScaleParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ];
 
-export type NormalizeScaleDependencies<TAmount> = Dependencies<TAmount>;
-
-export function normalizeScale<TAmount>({
-  calculator,
-}: NormalizeScaleDependencies<TAmount>) {
+export function normalizeScale<TAmount>(calculator: Calculator<TAmount>) {
   const maximumFn = maximum(calculator);
-  const convertScaleFn = transformScale({ calculator });
+  const convertScaleFn = transformScale(calculator);
   const equalFn = equal(calculator);
 
   return function _normalizeScale(

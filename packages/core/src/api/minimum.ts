@@ -6,18 +6,13 @@ import { minimum as min } from '../utils';
 import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
 
-import type { Dinero } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero } from '../types';
 
 export type MinimumParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ];
 
-export type UnsafeMinimumDependencies<TAmount> = Dependencies<TAmount>;
-
-export function unsafeMinimum<TAmount>({
-  calculator,
-}: UnsafeMinimumDependencies<TAmount>) {
+function unsafeMinimum<TAmount>(calculator: Calculator<TAmount>) {
   const minFn = min(calculator);
 
   return function minimum(...[dineroObjects]: MinimumParams<TAmount>) {
@@ -40,13 +35,9 @@ export function unsafeMinimum<TAmount>({
   };
 }
 
-export type SafeMinimumDependencies<TAmount> = Dependencies<TAmount>;
-
-export function safeMinimum<TAmount>({
-  calculator,
-}: SafeMinimumDependencies<TAmount>) {
-  const normalizeFn = normalizeScale({ calculator });
-  const minFn = unsafeMinimum({ calculator });
+export function safeMinimum<TAmount>(calculator: Calculator<TAmount>) {
+  const normalizeFn = normalizeScale(calculator);
+  const minFn = unsafeMinimum(calculator);
 
   return function maximum(...[dineroObjects]: MinimumParams<TAmount>) {
     const condition = haveSameCurrency(dineroObjects);

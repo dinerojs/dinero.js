@@ -13,7 +13,7 @@ export function isNegative<TAmount>(
   ...[dineroObject]: IsNegativeParams<TAmount>
 ) {
   const { calculator } = dineroObject;
-  const isNegativeFn = coreIsNegative({ calculator });
+  const isNegativeFn = coreIsNegative(calculator);
 
   return isNegativeFn(dineroObject);
 }

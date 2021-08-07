@@ -14,7 +14,7 @@ export function toFormat<TAmount>(
   ...[dineroObject, transformer]: ToFormatParams<TAmount>
 ) {
   const { calculator } = dineroObject;
-  const formatter = coreToFormat({ calculator });
+  const formatter = coreToFormat(calculator);
 
   return formatter(dineroObject, transformer);
 }

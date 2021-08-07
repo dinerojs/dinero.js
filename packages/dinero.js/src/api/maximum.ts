@@ -10,7 +10,8 @@ import type { MaximumParams } from '@dinero.js/core';
  * @returns A new Dinero object.
  */
 export function maximum<TAmount>(...[dineroObjects]: MaximumParams<TAmount>) {
-  const maximumFn = safeMaximum({ calculator: dineroObjects[0].calculator });
+  const { calculator } = dineroObjects[0];
+  const maximumFn = safeMaximum(calculator);
 
   return maximumFn(dineroObjects);
 }

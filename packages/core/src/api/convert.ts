@@ -2,8 +2,7 @@ import { getAmountAndScale, maximum } from '../utils';
 
 import { transformScale } from './transformScale';
 
-import type { Dinero, Rates } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero, Rates } from '../types';
 import type { Currency } from '@dinero.js/currencies';
 
 export type ConvertParams<TAmount> = readonly [
@@ -12,10 +11,8 @@ export type ConvertParams<TAmount> = readonly [
   rates: Rates<TAmount>
 ];
 
-export type ConvertDependencies<TAmount> = Dependencies<TAmount>;
-
-export function convert<TAmount>({ calculator }: ConvertDependencies<TAmount>) {
-  const convertScaleFn = transformScale({ calculator });
+export function convert<TAmount>(calculator: Calculator<TAmount>) {
+  const convertScaleFn = transformScale(calculator);
   const maximumFn = maximum(calculator);
   const zero = calculator.zero();
 

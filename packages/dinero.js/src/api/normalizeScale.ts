@@ -13,7 +13,7 @@ export function normalizeScale<TAmount>(
   ...[dineroObjects]: NormalizeScaleParams<TAmount>
 ) {
   const { calculator } = dineroObjects[0];
-  const normalizeScaleFn = coreNormalizeScale({ calculator });
+  const normalizeScaleFn = coreNormalizeScale(calculator);
 
   return normalizeScaleFn(dineroObjects);
 }
