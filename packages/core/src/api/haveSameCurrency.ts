@@ -1,26 +1,21 @@
-import type { Dinero } from '../types';
-import type { Currency } from '@dinero.js/currencies';
+import { equal } from '../utils';
 
-function currencyEqual<TAmount>(
-  subject: Currency<TAmount>,
-  comparator: Currency<TAmount>
-) {
-  return (
-    subject.code === comparator.code &&
-    subject.base === comparator.base &&
-    subject.exponent === comparator.exponent
-  );
-}
+import type { Dinero } from '../types';
 
 export function haveSameCurrency<TAmount>(
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ) {
   const [firstDinero, ...otherDineros] = dineroObjects;
   const { currency: comparator } = firstDinero.toJSON();
+  const equalFn = equal(firstDinero.calculator);
 
   return otherDineros.every((d) => {
     const { currency: subject } = d.toJSON();
 
-    return currencyEqual(subject, comparator);
+    return (
+      subject.code === comparator.code &&
+      equalFn(subject.base, comparator.base) &&
+      equalFn(subject.exponent, comparator.exponent)
+    );
   });
 }
