@@ -1,7 +1,6 @@
 import { USD } from '@dinero.js/currencies';
 
-import { toSnapshot } from '..';
-import { dinero } from '../dinero';
+import { toSnapshot, dinero } from '..';
 
 describe('dinero', () => {
   it('creates a Dinero object', () => {
