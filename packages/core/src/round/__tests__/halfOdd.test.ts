@@ -7,8 +7,11 @@ describe('halfOdd', () => {
   it('rounds down with a negative float below half', () => {
     expect(halfOdd(-1.4)).toBe(-1);
   });
-  it('rounds to nearest odd integer with a positive half float', () => {
+  it('rounds to nearest odd integer with a positive half float rounding to an even integer', () => {
     expect(halfOdd(1.5)).toBe(1);
+  });
+  it('rounds to nearest odd integer with a positive half float rounding to an odd integer', () => {
+    expect(halfOdd(2.5)).toBe(3);
   });
   it('rounds to nearest odd integer with a negative half float', () => {
     expect(halfOdd(-2.5)).toBe(-3);
