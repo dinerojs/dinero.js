@@ -1,6 +1,8 @@
 export * from './api';
 export * from './dinero';
 export type {
+  Calculator,
+  ComparisonOperator,
   Dinero,
   DineroFactory,
   DineroOptions,
