@@ -1,21 +1,73 @@
 import { USD } from '@dinero.js/currencies';
+import Big from 'big.js';
 
-import { dinero, isPositive } from '../../..';
+import { isPositive } from '..';
+import {
+  castToBigintCurrency,
+  castToBigjsCurrency,
+  createNumberDinero,
+  createBigintDinero,
+  createBigjsDinero,
+} from '../../../../../test/utils';
 
 describe('isPositive', () => {
-  it('returns false when amount is less than 0', () => {
-    const d = dinero({ amount: -100, currency: USD });
+  describe('number', () => {
+    const dinero = createNumberDinero;
 
-    expect(isPositive(d)).toBe(false);
+    it('returns false when amount is less than 0', () => {
+      const d = dinero({ amount: -100, currency: USD });
+
+      expect(isPositive(d)).toBe(false);
+    });
+    it('returns true when amount is greater than 0', () => {
+      const d = dinero({ amount: 100, currency: USD });
+
+      expect(isPositive(d)).toBe(true);
+    });
+    it('returns true when amount is equal to 0', () => {
+      const d = dinero({ amount: 0, currency: USD });
+
+      expect(isPositive(d)).toBe(true);
+    });
   });
-  it('returns true when amount is greater than 0', () => {
-    const d = dinero({ amount: 100, currency: USD });
+  describe('bigint', () => {
+    const dinero = createBigintDinero;
+    const bigintUSD = castToBigintCurrency(USD);
 
-    expect(isPositive(d)).toBe(true);
+    it('returns false when amount is less than 0', () => {
+      const d = dinero({ amount: -100n, currency: bigintUSD });
+
+      expect(isPositive(d)).toBe(false);
+    });
+    it('returns true when amount is greater than 0', () => {
+      const d = dinero({ amount: 100n, currency: bigintUSD });
+
+      expect(isPositive(d)).toBe(true);
+    });
+    it('returns true when amount is equal to 0', () => {
+      const d = dinero({ amount: 0n, currency: bigintUSD });
+
+      expect(isPositive(d)).toBe(true);
+    });
   });
-  it('returns true when amount is equal to 0', () => {
-    const d = dinero({ amount: 0, currency: USD });
+  describe('Big.js', () => {
+    const dinero = createBigjsDinero;
+    const bigjsUSD = castToBigjsCurrency(USD);
 
-    expect(isPositive(d)).toBe(true);
+    it('returns false when amount is less than 0', () => {
+      const d = dinero({ amount: new Big(-100), currency: bigjsUSD });
+
+      expect(isPositive(d)).toBe(false);
+    });
+    it('returns true when amount is greater than 0', () => {
+      const d = dinero({ amount: new Big(100), currency: bigjsUSD });
+
+      expect(isPositive(d)).toBe(true);
+    });
+    it('returns true when amount is equal to 0', () => {
+      const d = dinero({ amount: new Big(0), currency: bigjsUSD });
+
+      expect(isPositive(d)).toBe(true);
+    });
   });
 });

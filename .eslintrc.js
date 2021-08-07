@@ -54,6 +54,7 @@ module.exports = {
       rules: {
         'functional/no-expression-statement': ['off'],
         'import/no-extraneous-dependencies': ['off'],
+        'sonarjs/no-duplicate-string': ['off'],
       },
     },
     {
