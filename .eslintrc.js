@@ -44,6 +44,12 @@ module.exports = {
   },
   overrides: [
     {
+      files: ['test/**/*'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+      },
+    },
+    {
       files: ['**/__tests__/**'],
       rules: {
         'functional/no-expression-statement': ['off'],

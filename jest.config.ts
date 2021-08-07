@@ -4,7 +4,7 @@ export default {
   testEnvironment: 'node',
   rootDir: process.cwd(),
   testPathIgnorePatterns: ['node_modules/', 'dist/'],
-  coveragePathIgnorePatterns: ['node_modules/', 'dist/'],
+  coveragePathIgnorePatterns: ['node_modules/', 'dist/', 'test/'],
   watchPlugins: [
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
