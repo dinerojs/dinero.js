@@ -1,13 +1,10 @@
 import { isArray, getDivisors } from '../utils';
 
-import type { Dinero } from '../types';
-import type { Dependencies } from './types';
+import type { Calculator, Dinero } from '../types';
 
 export type ToUnitsParams<TAmount> = readonly [dineroObject: Dinero<TAmount>];
 
-export type ToUnitsDependencies<TAmount> = Dependencies<TAmount>;
-
-export function toUnits<TAmount>({ calculator }: ToUnitsDependencies<TAmount>) {
+export function toUnits<TAmount>(calculator: Calculator<TAmount>) {
   const getDivisorsFn = getDivisors(calculator);
 
   return function toUnitsFn(...[dineroObject]: ToUnitsParams<TAmount>) {

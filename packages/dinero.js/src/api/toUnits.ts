@@ -11,7 +11,7 @@ import type { ToUnitsParams } from '@dinero.js/core';
  */
 export function toUnits<TAmount>(...[dineroObject]: ToUnitsParams<TAmount>) {
   const { calculator } = dineroObject;
-  const toUnitsFn = coreToUnits({ calculator });
+  const toUnitsFn = coreToUnits(calculator);
 
   return toUnitsFn(dineroObject);
 }
