@@ -1,3 +1,18 @@
+# [2.0.0-alpha.8](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.7...v2.0.0-alpha.8) (2021-08-08)
+
+
+### Bug Fixes
+
+* use equal function to compare currency base and exponent ([ac4724f](https://github.com/dinerojs/dinero.js/commit/ac4724f12d6625e4838dd49a517d0cd214f57f6e))
+* **calculator-bigint:** avoid transpiling exponentiation operator ([53bf974](https://github.com/dinerojs/dinero.js/commit/53bf974de377455c2e1156c1c9a321276dfb11a3))
+
+
+### Features
+
+* expose types ([b17bfc1](https://github.com/dinerojs/dinero.js/commit/b17bfc111c2462c9226b1a7fa7d6786b055a54ca))
+
+
+
 # [2.0.0-alpha.7](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.6...v2.0.0-alpha.7) (2021-07-26)
 
 ### Bug Fixes

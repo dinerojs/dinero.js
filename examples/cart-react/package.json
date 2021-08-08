@@ -1,6 +1,6 @@
 {
   "name": "@dinero.js/example-cart-react",
-  "version": "2.0.0-alpha.7",
+  "version": "2.0.0-alpha.8",
   "scripts": {
     "build:clean": "rimraf ./dist",
     "dev": "vite",
@@ -8,9 +8,9 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@dinero.js/currencies": "2.0.0-alpha.7",
+    "@dinero.js/currencies": "2.0.0-alpha.8",
     "classnames": "2.2.6",
-    "dinero.js": "2.0.0-alpha.7",
+    "dinero.js": "2.0.0-alpha.8",
     "react": "17.0.0",
     "react-dom": "17.0.0"
   },
