@@ -31,14 +31,4 @@ module.exports = {
 
     return releaseType !== 'patch' || fix !== 0;
   },
-  afterPublish: ({ exec }) => {
-    exec(
-      `git config --global user.email "5370675+sarahdayan@users.noreply.github.com"`
-    );
-    exec(`git config --global user.name "Sarah Dayan"`);
-
-    exec('git checkout docs');
-    exec('git rebase main');
-    exec('git push origin docs');
-  },
 };
