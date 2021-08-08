@@ -10,9 +10,10 @@ export type Heading = {
 
 export function getHeadings(source: string): Heading[] {
   const slugger = new GithubSlugger();
+  const regex = /^#{2,3}\s/;
 
   const headingLines = source.split('\n').filter((line) => {
-    return line.match(/^###*\s/);
+    return line.match(regex);
   });
 
   return headingLines.map((raw) => {
@@ -20,7 +21,7 @@ export function getHeadings(source: string): Heading[] {
 
     remark()
       .use(strip)
-      .process(raw.replace(/^###*\s/, ''), (err, { contents }) => {
+      .process(raw.replace(regex, ''), (err, { contents }) => {
         if (err) throw err;
         text = String(contents);
       });
