@@ -5598,10 +5598,10 @@ eslint-plugin-eslint-comments@3.2.0:
     escape-string-regexp "^1.0.5"
     ignore "^5.0.5"
 
-eslint-plugin-functional@3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-functional/-/eslint-plugin-functional-3.5.0.tgz#3bd24cdc939286f15045b280b64266f8ae70282d"
-  integrity sha512-F4ovkdg7eIRlAqeMgCv36I6v2yUHybyPdxZ78vT3YHtvRb3HAOtSKZY87ioUMKd2MgfBFoWmGTd/5Ev/JcGVIw==
+eslint-plugin-functional@3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-functional/-/eslint-plugin-functional-3.6.0.tgz#566126a33cd05b64ffb1bcaa11c96ee280398a44"
+  integrity sha512-Utujj1dfQ5Bf79kN2BCoMHqnpM4KTMjQ5emMicaWHtcvySBc01+drGVEo9AEojUD9Rs9siprMCzbrT4zwFYzRA==
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.9.1"
     array.prototype.flatmap "^1.2.4"
