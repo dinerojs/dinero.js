@@ -1,6 +1,5 @@
-import { equal } from '../utils';
-
 import type { Calculator, Dinero } from '../types';
+import { equal } from '../utils';
 
 export type HasSubUnitsParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>

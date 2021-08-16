@@ -1,5 +1,4 @@
 import { safeAdd } from '@dinero.js/core';
-
 import type { AddParams } from '@dinero.js/core';
 
 /**

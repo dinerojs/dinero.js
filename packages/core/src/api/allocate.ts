@@ -1,6 +1,7 @@
 /* eslint-disable functional/no-expression-statement */
 import { INVALID_RATIOS_MESSAGE } from '../checks';
 import { assert } from '../helpers';
+import type { Calculator, Dinero, ScaledAmount } from '../types';
 import {
   distribute,
   equal,
@@ -11,8 +12,6 @@ import {
 } from '../utils';
 
 import { transformScale } from './transformScale';
-
-import type { Calculator, Dinero, ScaledAmount } from '../types';
 
 type UnsafeAllocateParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,

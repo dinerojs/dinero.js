@@ -1,5 +1,4 @@
 import { safeAllocate } from '@dinero.js/core';
-
 import type { AllocateParams } from '@dinero.js/core';
 
 /**

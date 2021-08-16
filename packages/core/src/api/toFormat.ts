@@ -1,6 +1,6 @@
-import { toUnit } from './toUnit';
-
 import type { Calculator, Dinero, Transformer } from '../types';
+
+import { toUnit } from './toUnit';
 
 export type ToFormatParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,

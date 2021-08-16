@@ -1,5 +1,4 @@
 import { isZero as coreIsZero } from '@dinero.js/core';
-
 import type { IsZeroParams } from '@dinero.js/core';
 
 /**

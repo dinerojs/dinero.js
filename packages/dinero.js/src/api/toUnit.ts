@@ -1,5 +1,4 @@
 import { toUnit as coreToUnit } from '@dinero.js/core';
-
 import type { ToUnitParams } from '@dinero.js/core';
 
 /**

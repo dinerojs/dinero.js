@@ -1,5 +1,4 @@
 import { hasSubUnits as coreHasSubUnits } from '@dinero.js/core';
-
 import type { HasSubUnitsParams } from '@dinero.js/core';
 
 /**

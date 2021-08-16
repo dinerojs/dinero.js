@@ -1,5 +1,4 @@
 import { transformScale as coreTransformScale } from '@dinero.js/core';
-
 import type { TransformScaleParams } from '@dinero.js/core';
 
 /**
