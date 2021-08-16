@@ -1,5 +1,4 @@
 import { safeCompare } from '@dinero.js/core';
-
 import type { CompareParams } from '@dinero.js/core';
 
 /**

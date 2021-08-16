@@ -1,6 +1,5 @@
-import { equal } from '../utils';
-
 import type { Dinero } from '../types';
+import { equal } from '../utils';
 
 export function haveSameCurrency<TAmount>(
   dineroObjects: ReadonlyArray<Dinero<TAmount>>

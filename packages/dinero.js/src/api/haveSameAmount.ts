@@ -1,5 +1,4 @@
 import { haveSameAmount as coreHaveSameAmount } from '@dinero.js/core';
-
 import type { HaveSameAmountParams } from '@dinero.js/core';
 
 /**

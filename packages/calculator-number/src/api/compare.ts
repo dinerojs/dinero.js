@@ -1,5 +1,4 @@
 import { ComparisonOperator } from '@dinero.js/core';
-
 import type { BinaryOperation } from '@dinero.js/core';
 
 /**

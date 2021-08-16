@@ -1,5 +1,4 @@
 import { normalizeScale as coreNormalizeScale } from '@dinero.js/core';
-
 import type { NormalizeScaleParams } from '@dinero.js/core';
 
 /**

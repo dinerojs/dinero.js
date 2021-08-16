@@ -1,5 +1,4 @@
 import { safeGreaterThanOrEqual } from '@dinero.js/core';
-
 import type { GreaterThanOrEqualParams } from '@dinero.js/core';
 
 /**

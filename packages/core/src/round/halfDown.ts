@@ -1,6 +1,5 @@
-import { isHalf } from '../utils';
-
 import type { RoundingMode } from '../types';
+import { isHalf } from '../utils';
 
 /**
  * Round a number with half values down.
