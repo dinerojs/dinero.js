@@ -3,7 +3,7 @@ title: Formatting
 description: Formatting Dinero objects into rounded numbers or string representation.
 ---
 
-When working with money on the front end, comes a time when you need to display amounts on the user interface. The Dinero.js API provides functions to format objects.
+When working with money on the front end, comes a time when you need to display amounts on the user interface. **The Dinero.js API provides functions to format objects.**
 
 ```js
 import { dinero, toUnits, down } from 'dinero.js';
@@ -11,25 +11,31 @@ import { USD } from '@dinero.js/currencies';
 
 const d = dinero({ amount: 1055, currency: USD });
 
-toUnits(d); // [10, 50]
+toUnits(d); // [10, 55]
 ```
 
 ## Displaying an object
 
-Dinero objects are ideal to safely manipulate money, but at some point, you need to display them. The `toFormat` function lets you display objects the way you want. It exposes a pre-formatted amount in `units` and in stringified `decimal` format (if the currency is decimal and single-base), for convenience.
+The `toFormat` function lets you display objects the way you want using a transformer function. It exposes a pre-formatted amount and the object's `currency`.
+
+The pre-formatted amount comes in two forms:
+- In stringified `decimal` when the currency is decimal and single-based.
+- In `units`, as an array of units for each subdivision.
 
 ```js
 import { dinero, toFormat } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD, MGA } from '@dinero.js/currencies';
 
-const transformer = ({ decimal, currency }) => `${currency.code} ${decimal}`;
+const d1 = dinero({ amount: 5000, currency: USD });
+const d2 = dinero({ amount: 13, currency: MGA });
 
-const d = dinero({ amount: 5000, currency: USD });
+toFormat(d1, ({ decimal, currency }) => `${currency.code} ${decimal}`); // "USD 50.00"
+toFormat(d1, ({ units }) => `${units[0]} dollars, ${units[1]} cents`); // "50 dollars, 0 cents"
 
-toFormat(d, transformer); // "USD 50.00"
+toFormat(d2, ({ units }) => `${units[0]} ariary, ${units[1]} iraimbilanja`); // "2 ariary, 3 iraimbilanja"
 ```
 
-Dinero.js uses the scale of the object to determine how many decimal places to represent. You can adjust it in the `transformer`.
+Dinero.js uses the object's scale to determine how many decimal places to represent. You can adjust it in the `transformer`.
 
 ```js
 import { dinero, toFormat, up } from 'dinero.js';
@@ -78,6 +84,19 @@ format(d); // "USD 50.00"
         {
           title: 'To format',
           url: '/docs/api/formatting/to-format',
+        },
+      ],
+    },
+    {
+      label: 'Guides',
+      links: [
+        {
+          title: 'Formatting in a multilingual site',
+          url: '/docs/guides/formatting-in-a-multilingual-site',
+        },
+        {
+          title: 'Formatting non-decimal currencies',
+          url: '/docs/guides/formatting-non-decimal-currencies',
         },
       ],
     },
