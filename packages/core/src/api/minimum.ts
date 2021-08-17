@@ -1,12 +1,11 @@
 /* eslint-disable functional/no-expression-statement */
 import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
 import { assert } from '../helpers';
+import type { Calculator, Dinero } from '../types';
 import { minimum as min } from '../utils';
 
 import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
-
-import type { Calculator, Dinero } from '../types';
 
 export type MinimumParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>

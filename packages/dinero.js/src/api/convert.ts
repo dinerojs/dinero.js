@@ -1,5 +1,4 @@
 import { convert as coreConvert } from '@dinero.js/core';
-
 import type { ConvertParams } from '@dinero.js/core';
 
 /**

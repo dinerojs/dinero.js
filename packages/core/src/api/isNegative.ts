@@ -1,6 +1,5 @@
-import { lessThan } from '../utils';
-
 import type { Calculator, Dinero } from '../types';
+import { lessThan } from '../utils';
 
 export type IsNegativeParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>

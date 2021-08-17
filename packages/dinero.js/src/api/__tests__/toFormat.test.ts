@@ -1,5 +1,6 @@
 import { MGA, USD } from '@dinero.js/currencies';
 import Big from 'big.js';
+import type { Dinero } from 'dinero.js';
 
 import { toFormat } from '..';
 import {
@@ -9,8 +10,6 @@ import {
   createBigintDinero,
   createBigjsDinero,
 } from '../../../../../test/utils';
-
-import type { Dinero } from 'dinero.js';
 
 function toIntlFormat<TAmount>(d: Dinero<TAmount>) {
   return toFormat(d, ({ decimal, currency }) => {

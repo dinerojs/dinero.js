@@ -1,5 +1,4 @@
 import { toFormat as coreToFormat } from '@dinero.js/core';
-
 import type { ToFormatParams } from '@dinero.js/core';
 
 /**

@@ -1,5 +1,4 @@
 import { equal as coreEqual } from '@dinero.js/core';
-
 import type { EqualParams } from '@dinero.js/core';
 
 /**

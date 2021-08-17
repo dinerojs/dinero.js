@@ -1,6 +1,6 @@
-import { isArray } from './isArray';
-
 import type { Calculator } from '../types';
+
+import { isArray } from './isArray';
 
 export function computeBase<TAmount>(calculator: Calculator<TAmount>) {
   return (base: TAmount | readonly TAmount[]) => {

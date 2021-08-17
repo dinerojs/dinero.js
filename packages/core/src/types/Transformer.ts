@@ -1,5 +1,6 @@
-import type { Dinero } from './Dinero';
 import type { Currency } from '@dinero.js/currencies';
+
+import type { Dinero } from './Dinero';
 
 export type TransformerOptions<TAmount> = {
   readonly units: readonly TAmount[];

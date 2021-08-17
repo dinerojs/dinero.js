@@ -1,6 +1,5 @@
-import { computeBase, equal } from '../utils';
-
 import type { Dinero } from '../types';
+import { computeBase, equal } from '../utils';
 
 export function haveSameCurrency<TAmount>(
   dineroObjects: ReadonlyArray<Dinero<TAmount>>

@@ -1,5 +1,4 @@
 import { safeMaximum } from '@dinero.js/core';
-
 import type { MaximumParams } from '@dinero.js/core';
 
 /**

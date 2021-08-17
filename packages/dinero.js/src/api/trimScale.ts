@@ -1,5 +1,4 @@
 import { trimScale as coreTrimScale } from '@dinero.js/core';
-
 import type { TrimScaleParams } from '@dinero.js/core';
 
 /**

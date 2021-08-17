@@ -1,8 +1,7 @@
+import type { Calculator, Dinero } from '../types';
 import { computeBase, countTrailingZeros, equal, maximum } from '../utils';
 
 import { transformScale } from './transformScale';
-
-import type { Calculator, Dinero } from '../types';
 
 export type TrimScaleParams<TAmount> = readonly [dineroObject: Dinero<TAmount>];
 

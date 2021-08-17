@@ -1,5 +1,4 @@
 import { isNegative as coreIsNegative } from '@dinero.js/core';
-
 import type { IsNegativeParams } from '@dinero.js/core';
 
 /**

@@ -1,5 +1,4 @@
 import { ComparisonOperator } from '../types';
-
 import type { Calculator } from '../types';
 
 type EqualCalculator<TAmount> = Calculator<TAmount>;

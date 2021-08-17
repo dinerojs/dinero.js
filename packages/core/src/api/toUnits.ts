@@ -1,6 +1,5 @@
-import { isArray, getDivisors } from '../utils';
-
 import type { Calculator, Dinero } from '../types';
+import { isArray, getDivisors } from '../utils';
 
 export type ToUnitsParams<TAmount> = readonly [dineroObject: Dinero<TAmount>];
 

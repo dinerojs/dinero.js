@@ -1,7 +1,7 @@
+import type { Calculator } from '../types';
+
 import { equal } from './equal';
 import { greaterThan } from './greaterThan';
-
-import type { Calculator } from '../types';
 
 type GreaterThanOrEqualCalculator<TAmount> = Calculator<TAmount>;
 

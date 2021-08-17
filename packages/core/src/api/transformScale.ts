@@ -1,6 +1,5 @@
-import { computeBase, greaterThan } from '../utils';
-
 import type { Calculator, Dinero } from '../types';
+import { computeBase, greaterThan } from '../utils';
 
 export type TransformScaleParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,

@@ -1,6 +1,6 @@
-import { isScaledAmount } from './isScaledAmount';
-
 import type { ScaledAmount } from '../types';
+
+import { isScaledAmount } from './isScaledAmount';
 
 export function getAmountAndScale<TAmount>(
   value: ScaledAmount<TAmount> | TAmount,
