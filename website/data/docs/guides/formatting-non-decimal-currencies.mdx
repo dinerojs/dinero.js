@@ -7,32 +7,9 @@ The great majority of circulating currencies are decimal. If you're working with
 
 However, **you might also work with non-decimal currencies**. Typical use cases are ancient currencies such as the ancient Greek drachma, or fictional currencies like the wizarding currencies in the Harry Potter universe. If you're building a numismatic site or a game with its own currency, you might have advanced formatting needs.
 
+## Handling currencies with a single subdivision
+
 Out of the box, you can format any non-decimal Dinero object using the exposed `units` property.
-
-<!--
-
-```js
-import { dinero, toFormat } from 'dinero.js';
-
-// Ancient Greek drachma
-const GRD = {
-  code: 'GRD',
-  base: 6,
-  exponent: 1,
-};
-
-const d = dinero({ amount: 9, currency: GRD });
-
-toFormat(d, ({ units }) => `${units[0]} drachma, ${units[1]} obols`); // "1 drachma, 3 obols"
-```
-
-This should cover your needs if you want accuracy and readability because people are used to reading decimal numbers. However, such a representation might not be idiomatic.
-
-## Building complex formatters
-
-In addition to the formatted amount and the currency, the `toFormat` function also exposes the original object. You can leverage it to build a more complex formatter.
-
--->
 
 ```js
 import { dinero, toFormat, toSnapshot } from 'dinero.js';
@@ -56,6 +33,12 @@ function transformer({ dineroObject }) {
 
 toFormat(d, transformer); // "1 drachma, 3 obols"
 ```
+
+<Alert type="info">
+
+When working with non-decimal currencies, the exposed [`decimal` property](/docs/api/formatting/to-format#parameters) is `undefined`.
+
+</Alert>
 
 ## Handling currencies with multiple subdivisions
 
