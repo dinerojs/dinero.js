@@ -37,7 +37,7 @@
     "postcss": "8.3.6",
     "prettier": "2.3.2",
     "rehype": "11.0.0",
-    "remark": "13.0.0",
+    "remark": "14.0.1",
     "remark-autolink-headings": "6.1.0",
     "remark-code-titles": "0.1.2",
     "remark-slug": "6.1.0",
