@@ -57,7 +57,7 @@
     "bundlesize": "0.18.1",
     "concurrently": "6.2.1",
     "eslint": "7.32.0",
-    "eslint-config-algolia": "18.0.0",
+    "eslint-config-algolia": "19.0.2",
     "eslint-config-prettier": "8.3.0",
     "eslint-import-resolver-alias": "1.1.2",
     "eslint-import-resolver-typescript": "2.4.0",
