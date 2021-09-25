@@ -62,7 +62,7 @@
     "eslint-import-resolver-alias": "1.1.2",
     "eslint-import-resolver-typescript": "2.5.0",
     "eslint-plugin-eslint-comments": "3.2.0",
-    "eslint-plugin-functional": "3.7.0",
+    "eslint-plugin-functional": "3.7.2",
     "eslint-plugin-import": "2.24.2",
     "eslint-plugin-jest": "24.4.0",
     "eslint-plugin-jsdoc": "36.1.0",
