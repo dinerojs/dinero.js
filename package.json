@@ -64,7 +64,7 @@
     "eslint-plugin-eslint-comments": "3.2.0",
     "eslint-plugin-functional": "3.7.2",
     "eslint-plugin-import": "2.24.2",
-    "eslint-plugin-jest": "24.4.2",
+    "eslint-plugin-jest": "24.5.0",
     "eslint-plugin-jsdoc": "36.1.0",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-promise": "5.1.0",
