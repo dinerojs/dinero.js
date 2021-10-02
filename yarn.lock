@@ -6189,10 +6189,10 @@ jest-validate@^27.2.2:
     leven "^3.1.0"
     pretty-format "^27.2.2"
 
-jest-watch-typeahead@0.6.4:
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/jest-watch-typeahead/-/jest-watch-typeahead-0.6.4.tgz#ea70bf1bec34bd4f55b5b72d471b02d997899c3e"
-  integrity sha512-tGxriteVJqonyrDj/xZHa0E2glKMiglMLQqISLCjxLUfeueRBh9VoRF2FKQyYO2xOqrWDTg7781zUejx411ZXA==
+jest-watch-typeahead@0.6.5:
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/jest-watch-typeahead/-/jest-watch-typeahead-0.6.5.tgz#b809f79eed106b6cf832e59a5fe54481f2d1918e"
+  integrity sha512-GIbV6h37/isatMDtqZlA8Q5vC6T3w+5qdvtF+3LIkPc58zEWzbKmTHvlUIp3wvBm400RzrQWcVPcsAJqKWu7XQ==
   dependencies:
     ansi-escapes "^4.3.1"
     chalk "^4.0.0"
