@@ -238,7 +238,7 @@ Visit the [full documentation](https://v2.dinerojs.com/docs) to know more.
 
 ## 📜 License
 
-[MIT](LICENSE.md)
+[MIT](LICENSE)
 
 ---
 
