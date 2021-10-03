@@ -1,15 +1,11 @@
 import { down } from '../divide';
-import type { Calculator, Dinero } from '../types';
+import type { Calculator, Dinero, DivideOperation } from '../types';
 import { computeBase, greaterThan } from '../utils';
 
 export type TransformScaleParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   newScale: TAmount,
-  divide?: (
-    amount: TAmount,
-    factor: TAmount,
-    calculator: Calculator<TAmount>
-  ) => TAmount
+  divide?: DivideOperation
 ];
 
 export function transformScale<TAmount>(calculator: Calculator<TAmount>) {
