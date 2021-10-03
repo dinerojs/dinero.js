@@ -12,14 +12,10 @@ However, **you might also work with non-decimal currencies**. Typical use cases 
 Out of the box, you can format any non-decimal Dinero object using the exposed `units` property.
 
 ```js
-import { dinero, toFormat, toSnapshot } from 'dinero.js';
+import { dinero, toFormat } from 'dinero.js';
 import pluralize from 'pluralize';
 
-// ...
-
-function transformer({ dineroObject }) {
-  const { units, currency } = toSnapshot(dineroObject);
-
+function transformer({ units, currency }) {
   const amounts = [
     { amount: units[0], label: 'drachma' },
     { amount: units[1], label: 'obol' },
@@ -30,6 +26,15 @@ function transformer({ dineroObject }) {
     .map(({ amount, label }) => `${amount} ${pluralize(label, amount)}`)
     .join(', ');
 }
+
+const d = dinero({
+  amount: 9,
+  currency: {
+    code: 'GRD',
+    base: 6,
+    exponent: 1,
+  },
+});
 
 toFormat(d, transformer); // "1 drachma, 3 obols"
 ```

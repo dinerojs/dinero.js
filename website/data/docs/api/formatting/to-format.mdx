@@ -1,7 +1,7 @@
 ---
 title: toFormat
 description: Format a Dinero object with a custom transformer.
-returns: string
+returns: TOutput
 ---
 
 Format a Dinero object with a custom transformer.
@@ -12,7 +12,24 @@ The `transformer` parameter exposes an object with the following properties:
 - `units`: the amount divided into each unit and sub-unit. It uses [`toUnits`](/docs/api/formatting/to-units) under the hood.
 - `decimal`: a stringified decimal representation of the amount, in major currency units. If the currency isn't decimal and expressed with a single base, this is `undefined`.
 - `currency`: the object's currency.
-- `dineroObject`: the initial Dinero object. This can be useful when [formatting non-decimal currencies](/docs/advanced/formatting-non-decimal-currencies).
+
+<Panel
+  groups={[
+    {
+      label: 'Guides',
+      links: [
+        {
+          title: 'Formatting in a multilingual site',
+          url: '/docs/guides/formatting-in-a-multilingual-site',
+        },
+        {
+          title: 'Formatting non-decimal currencies',
+          url: '/docs/guides/formatting-non-decimal-currencies',
+        }
+      ],
+    },
+  ]}
+/>
 
 ## Parameters
 
@@ -64,27 +81,3 @@ const d = dinero({ amount: 5000, currency: USD });
 
 format(d); // "USD 50.00"
 ```
-
-You can even build your own reusable higher-order function to build formatters. This can be useful if you need to create multiple formatters, for example to cater to multiple locales.
-
-```js
-// ...
-
-function createFormatter(transformer) {
-  return function format(dineroObject) {
-    return toFormat(dineroObject, transformer);
-  };
-}
-
-const frenchFormat = createFormatter(({ decimal, currency }) => {
-  return `${Number(decimal).toFixed(currency.exponent).replace('.', ',')} ${
-    currency.code
-  }`;
-});
-
-const americanFormat = createFormatter(({ decimal, currency }) => {
-  return `${currency.code} ${Number(decimal).toFixed(currency.exponent)}`;
-});
-```
-
-In such a situation, you can also [create a single formatter based on the Internationalization API](/docs/guides/formatting-in-a-multilingual-site).

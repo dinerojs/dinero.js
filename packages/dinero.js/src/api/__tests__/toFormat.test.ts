@@ -32,6 +32,13 @@ describe('toFormat', () => {
           toFormat(d, ({ decimal, currency }) => `${currency.code} ${decimal}`)
         ).toBe('USD 10.50');
       });
+      it('formats the Dinero object using the `decimal` value, with trailing zeros', () => {
+        const d = dinero({ amount: 1000, currency: USD });
+
+        expect(
+          toFormat(d, ({ decimal, currency }) => `${currency.code} ${decimal}`)
+        ).toBe('USD 10.00');
+      });
       it('formats the Dinero object and pads the decimal part', () => {
         const d = dinero({ amount: 500, currency: USD });
 
@@ -65,7 +72,7 @@ describe('toFormat', () => {
 
         expect(toFormat(d, ({ decimal }) => decimal)).toBeUndefined();
       });
-      it('does not consider decimal a currency which compiles to a multiple of 10', () => {
+      it('does not consider decimal a multi-base currency which compiles to a multiple of 10', () => {
         const d = dinero({
           amount: 13,
           currency: { code: 'ABC', exponent: 1, base: [5, 2] },

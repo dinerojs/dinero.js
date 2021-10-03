@@ -3,18 +3,18 @@ import { computeBase, equal, isArray } from '../utils';
 
 import { toUnits } from './toUnits';
 
-export type ToFormatParams<TAmount> = readonly [
+export type ToFormatParams<TAmount, TOutput> = readonly [
   dineroObject: Dinero<TAmount>,
-  transformer: Transformer<TAmount>
+  transformer: Transformer<TAmount, TOutput>
 ];
 
-export function toFormat<TAmount>(calculator: Calculator<TAmount>) {
+export function toFormat<TAmount, TOutput>(calculator: Calculator<TAmount>) {
   const toUnitsFn = toUnits(calculator);
   const computeBaseFn = computeBase(calculator);
   const equalFn = equal(calculator);
 
   return function toFormatFn(
-    ...[dineroObject, transformer]: ToFormatParams<TAmount>
+    ...[dineroObject, transformer]: ToFormatParams<TAmount, TOutput>
   ) {
     const { currency, scale } = dineroObject.toJSON();
 
@@ -30,7 +30,7 @@ export function toFormat<TAmount>(calculator: Calculator<TAmount>) {
     const units = toUnitsFn(dineroObject);
     const decimal = isDecimal ? getDecimalFn(units, scale) : undefined;
 
-    return transformer({ units, decimal, currency, dineroObject });
+    return transformer({ units, decimal, currency });
   };
 }
 
@@ -39,7 +39,7 @@ function getDecimal<TAmount>(formatter: Formatter<TAmount>) {
     return units
       .map((unit, index) => {
         const isLast = units.length - 1 === index;
-        const unitAsString = String(unit);
+        const unitAsString = formatter.toString(unit);
 
         if (isLast) {
           return unitAsString.padEnd(formatter.toNumber(scale), '0');
