@@ -1,9 +1,13 @@
-import type { RoundingMode } from '..';
+import type { DivideOperation } from '..';
 import { sign, isHalf, absolute } from '../utils';
 
 import { halfUp, up } from '.';
 
-export const halfAwayFromZero: RoundingMode = (amount, factor, calculator) => {
+export const halfAwayFromZero: DivideOperation = (
+  amount,
+  factor,
+  calculator
+) => {
   const signFn = sign(calculator);
   const isHalfFn = isHalf(calculator);
   const absoluteFn = absolute(calculator);

@@ -1,9 +1,9 @@
-import type { RoundingMode } from '..';
+import type { DivideOperation } from '..';
 import { isEven, isHalf } from '../utils';
 
 import { halfUp } from '.';
 
-export const halfOdd: RoundingMode = (amount, factor, calculator) => {
+export const halfOdd: DivideOperation = (amount, factor, calculator) => {
   const isEvenFn = isEven(calculator);
   const isHalfFn = isHalf(calculator);
 

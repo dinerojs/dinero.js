@@ -1,7 +1,7 @@
-import type { RoundingMode } from '..';
+import type { DivideOperation } from '..';
 import { greaterThanOrEqual } from '../utils';
 
-export const down: RoundingMode = (amount, factor, calculator) => {
+export const down: DivideOperation = (amount, factor, calculator) => {
   const greaterThanOrEqualFn = greaterThanOrEqual(calculator);
 
   const zero = calculator.zero();
