@@ -1,3 +1,4 @@
+export * from './absolute';
 export * from './compare';
 export * from './computeBase';
 export * from './countTrailingZeros';
@@ -15,3 +16,4 @@ export * from './lessThan';
 export * from './lessThanOrEqual';
 export * from './maximum';
 export * from './minimum';
+export * from './sign';
