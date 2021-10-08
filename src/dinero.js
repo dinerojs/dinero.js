@@ -191,12 +191,18 @@ const Dinero = options => {
      */
     convertPrecision(newPrecision, roundingMode = globalFormatRoundingMode) {
       assertInteger(newPrecision)
+      const precision = this.getPrecision()
+      const isNewPrecisionLarger = newPrecision > precision
+      const operation = isNewPrecisionLarger
+        ? calculator.multiply
+        : calculator.divide
+      const terms = isNewPrecisionLarger
+        ? [newPrecision, precision]
+        : [precision, newPrecision]
+      const factor = Math.pow(10, calculator.subtract(...terms))
       return create.call(this, {
         amount: calculator.round(
-          calculator.multiply(
-            this.getAmount(),
-            Math.pow(10, calculator.subtract(newPrecision, this.getPrecision()))
-          ),
+          operation(this.getAmount(), factor),
           roundingMode
         ),
         precision: newPrecision
