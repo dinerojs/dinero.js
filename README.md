@@ -232,6 +232,26 @@ Visit the [full documentation](https://v2.dinerojs.com/docs) to know more.
           /><br /><sub><b>Sean Walker</b></sub></a
         >
       </td>
+      <td align="center">
+        <a href="http://jnguyen.me/" rel="nofollow"
+          ><img
+            src="https://avatars0.githubusercontent.com/u/1127677?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>John Nguyen</b></sub></a
+        >
+      </td>
+      <td align="center">
+        <a href="https://journal.artfuldev.com" rel="nofollow"
+          ><img
+            src="https://avatars.githubusercontent.com/u/3091087?v=4"
+            alt=""
+            width="50"
+            height="50"
+          /><br /><sub><b>Sudarsan Balaji</b></sub></a
+        >
+      </td>
     </tr>
   </tbody>
 </table>
