@@ -135,6 +135,13 @@ describe('Dinero', () => {
           .toObject()
       ).toMatchObject({ amount: 333, precision: 2 })
     })
+    test('should convert from larger precisions with rounding correctly', () => {
+      expect(
+        Dinero({ amount: 15000, precision: 6 })
+          .convertPrecision(2, 'HALF_EVEN')
+          .toObject()
+      ).toMatchObject({ amount: 2, precision: 2 })
+    })
   })
   describe('#add', () => {
     test('should return a new Dinero object with same amount plus the amount of the other', () => {
