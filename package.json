@@ -73,7 +73,7 @@
     "jest": "27.2.4",
     "jest-watch-typeahead": "1.0.0",
     "lerna": "4.0.0",
-    "lint-staged": "11.1.2",
+    "lint-staged": "11.2.3",
     "prettier": "2.4.1",
     "rimraf": "3.0.2",
     "rollup": "2.58.0",
