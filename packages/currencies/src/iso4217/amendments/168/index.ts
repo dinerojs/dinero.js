@@ -2,6 +2,7 @@ export * from './aed';
 export * from './afn';
 export * from './all';
 export * from './amd';
+export * from './ang';
 export * from './aoa';
 export * from './ars';
 export * from './aud';
