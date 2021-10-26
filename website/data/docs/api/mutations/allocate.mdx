@@ -42,7 +42,7 @@ import { USD } from '@dinero.js/currencies';
 
 const d = dinero({ amount: 500, currency: USD });
 
-const [d1, d2] = allocate(d1, [50, 50]);
+const [d1, d2] = allocate(d, [50, 50]);
 
 d1; // a Dinero object with amount 250
 d2; // a Dinero object with amount 250
@@ -56,7 +56,7 @@ import { USD } from '@dinero.js/currencies';
 
 const d = dinero({ amount: 100, currency: USD });
 
-const [d1, d2] = allocate(d1, [1, 3]);
+const [d1, d2] = allocate(d, [1, 3]);
 
 d1; // a Dinero object with amount 25
 d2; // a Dinero object with amount 75
@@ -70,7 +70,7 @@ import { USD } from '@dinero.js/currencies';
 
 const d = dinero({ amount: 1003, currency: USD });
 
-const [d1, d2] = allocate(d1, [50, 50]);
+const [d1, d2] = allocate(d, [50, 50]);
 
 d1; // a Dinero object with amount 502
 d2; // a Dinero object with amount 501
@@ -84,7 +84,7 @@ import { USD } from '@dinero.js/currencies';
 
 const d = dinero({ amount: 1003, currency: USD });
 
-const [d1, d2, d3] = allocate(d1, [0, 50, 50]);
+const [d1, d2, d3] = allocate(d, [0, 50, 50]);
 
 d1; // a Dinero object with amount 0
 d2; // a Dinero object with amount 502
