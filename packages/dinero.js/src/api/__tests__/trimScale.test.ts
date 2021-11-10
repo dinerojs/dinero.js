@@ -34,9 +34,9 @@ describe('trimScale', () => {
     });
     it("doesn't crash on zero amounts", () => {
       const d = dinero({ amount: 0, currency: USD });
-      const result = toSnapshot(trimScale(d));
+      const snapshot = toSnapshot(trimScale(d));
       
-      expect(result).toMatchObject({
+      expect(snapshot).toMatchObject({
         amount: 0,
         scale: 2,
         currency: USD,
