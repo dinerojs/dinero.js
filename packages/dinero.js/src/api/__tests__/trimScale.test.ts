@@ -32,9 +32,10 @@ describe('trimScale', () => {
 
       expect(snapshot).toMatchObject({ amount: 5555, scale: 3 });
     });
-    it('should not crash on 0 amounts', () => {
+    it("doesn't crash on zero amounts", () => {
       const d = dinero({ amount: 0, currency: USD });
       const result = toSnapshot(trimScale(d));
+      
       expect(result).toMatchObject({
         amount: 0,
         scale: 2,
@@ -64,9 +65,10 @@ describe('trimScale', () => {
 
       expect(snapshot).toMatchObject({ amount: 5555n, scale: 3n });
     });
-    it('should not crash on 0 amounts', () => {
+    it("doesn't crash on zero amounts", () => {
       const d = dinero({ amount: 0n, currency: bigintUSD });
       const snapshot = toSnapshot(trimScale(d));
+  
       expect(snapshot).toMatchObject({
         amount: 0n,
         scale: 2n,
@@ -117,9 +119,10 @@ describe('trimScale', () => {
         scale: new Big(3),
       });
     });
-    it('should not crash on 0 amounts', () => {
+    it("doesn't crash on zero amounts", () => {
       const d = dinero({ amount: new Big(0), currency: bigjsUSD });
       const snapshot = toSnapshot(trimScale(d));
+      
       expect(snapshot).toMatchObject({
         amount: new Big(0),
         scale: new Big(2),
