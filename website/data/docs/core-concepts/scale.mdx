@@ -30,7 +30,7 @@ import { dinero, add, multiply, toSnapshot } from 'dinero.js';
 import { EUR } from '@dinero.js/currencies';
 
 const price = dinero({ amount: 1995, currency: EUR });
-const tax = multiply(price, 55, { scale: 3 });
+const tax = multiply(price, { amount: 55, scale: 3 });
 const total = add(price, tax);
 
 toSnapshot(total);
@@ -101,7 +101,7 @@ import { USD } from '@dinero.js/currencies';
 
 const d = dinero({ amount: 400, currency: USD });
 
-multiply(d, 82, { scale: 2 }); // a Dinero object with amount 32800 and scale 4
+multiply(d, { amount: 82,  scale: 2 }); // a Dinero object with amount 32800 and scale 4
 
 const [d1, d2] = allocate(d1, [505, 495], { scale: 1 }); // translates to ratios 50.5 and 49.5
 

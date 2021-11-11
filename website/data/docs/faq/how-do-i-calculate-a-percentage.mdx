@@ -24,7 +24,7 @@ import { USD } from '@dinero.js/currencies';
 
 const price = dinero({ amount: 5000, currency: USD });
 
-const tax = multiply(price, 15, { scale: 2 });
+const tax = multiply(price, { amount: 15, scale: 2 });
 ```
 
 If you need this often, you can abstract it into your own `percentage` function.
