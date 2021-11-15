@@ -49,7 +49,7 @@ axios.post('http://example.org/api/products', {
 If you want to serialize a Dinero object into JSON, you can directly call [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) on it, without turning them into a snapshot first.
 
 ```js
-import { dinero, toSnapshot } from 'dinero.js';
+import { dinero } from 'dinero.js';
 import { EUR } from '@dinero.js/currencies';
 
 const product = {
@@ -95,7 +95,7 @@ When serializing, make sure to pass a [custom replacer](https://developer.mozill
 
 ```js
 import { calculator } from '@dinero.js/calculator-bigint';
-import { createDinero, toSnapshot } from 'dinero.js';
+import { createDinero } from 'dinero.js';
 import { EUR } from '@dinero.js/currencies';
 
 const dineroBigint = createDinero({ calculator });
