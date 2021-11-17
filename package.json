@@ -41,6 +41,7 @@
     "@babel/plugin-proposal-nullish-coalescing-operator": "7.16.0",
     "@babel/preset-env": "7.16.0",
     "@babel/preset-typescript": "7.16.0",
+    "@microsoft/api-extractor": "^7.18.19",
     "@rollup/plugin-json": "4.1.0",
     "@rollup/plugin-node-resolve": "13.0.6",
     "@rollup/plugin-replace": "3.0.0",
