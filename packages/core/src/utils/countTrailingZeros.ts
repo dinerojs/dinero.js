@@ -13,6 +13,10 @@ export function countTrailingZeros<TAmount>(
   return (input: TAmount, base: TAmount) => {
     const zero = calculator.zero();
 
+    if (equalFn(zero, input)) {
+      return calculator.zero();
+    }
+
     let i = zero;
     let temp = input;
 
