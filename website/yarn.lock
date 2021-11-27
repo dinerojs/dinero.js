@@ -1788,21 +1788,21 @@ gray-matter@4.0.3:
     section-matter "^1.0.0"
     strip-bom-string "^1.0.0"
 
-gzip-size-cli@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/gzip-size-cli/-/gzip-size-cli-5.0.1.tgz#24a040eab008df29d8892ab9ca375636ff5d3c0b"
-  integrity sha512-gWYw4PzFzyBTI23Gdx24kaOHoIxoRnKnKAYR5RyiVFYc67US6VJhmhEognXoEiIgYMn+blGHwY//P9u816nlnw==
+gzip-size-cli@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/gzip-size-cli/-/gzip-size-cli-5.1.0.tgz#95f74563f3d865c3e537d251401daf6b50482229"
+  integrity sha512-XBC1Ia0IWm0/cbiU33fPfNL6uFCq7IjngRkFCelullMBcEna9Re4DNPfpsRgREDpOR5FGNupBfdb377uI5o7iQ==
   dependencies:
     chalk "^4.1.2"
     get-stdin "^9.0.0"
-    gzip-size "^6.0.0"
-    meow "^10.1.1"
+    gzip-size "^7.0.0"
+    meow "^10.1.2"
     pretty-bytes "^5.6.0"
 
-gzip-size@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-6.0.0.tgz#065367fd50c239c0671cbcbad5be3e2eeb10e462"
-  integrity sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q==
+gzip-size@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-7.0.0.tgz#9f9644251f15bc78460fccef4055ae5a5562ac60"
+  integrity sha512-O1Ld7Dr+nqPnmGpdhzLmMTQ4vAsD+rHwMm1NLUmoUFFymBOMKxCCrtDxqdBRYXdeEPEi3SyoR4TizJLQrnKBNA==
   dependencies:
     duplexer "^0.1.2"
 
@@ -2603,7 +2603,7 @@ mdx-prism@0.3.4:
     unified "^9.2.1"
     unist-util-visit "^1.1.3"
 
-meow@^10.1.1:
+meow@^10.1.2:
   version "10.1.2"
   resolved "https://registry.yarnpkg.com/meow/-/meow-10.1.2.tgz#62951cb69afa69594142c8250806bc30a3912e4d"
   integrity sha512-zbuAlN+V/sXlbGchNS9WTWjUzeamwMt/BApKCJi7B0QyZstZaMx0n4Unll/fg0njGtMdC9UP5SAscvOCLYdM+Q==
