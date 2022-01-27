@@ -2,24 +2,24 @@
 # yarn lockfile v1
 
 
-"@algolia/autocomplete-core@1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-core/-/autocomplete-core-1.2.2.tgz#c121e70c78fd0175c989a219918124ad7758e48b"
-  integrity sha512-JOQaURze45qVa8OOFDh+ozj2a/ObSRsVyz6Zd0aiBeej+RSTqrr1hDVpGNbbXYLW26G5ujuc9QIdH+rBHn95nw==
+"@algolia/autocomplete-core@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-core/-/autocomplete-core-1.5.0.tgz#6c91c9de7748e9c103846828a58dfe92bd4d6689"
+  integrity sha512-E7+VJwcvwMM8vPeaVn7fNUgix8WHV8A1WUeHDi2KHemCaaGc8lvUnP3QnvhMxiDhTe7OpMEv4o2TBUMyDgThaw==
   dependencies:
-    "@algolia/autocomplete-shared" "1.2.2"
+    "@algolia/autocomplete-shared" "1.5.0"
 
-"@algolia/autocomplete-preset-algolia@1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-preset-algolia/-/autocomplete-preset-algolia-1.2.2.tgz#da734ef9e42a5f64cdad2dfc81c4e9fbf805d976"
-  integrity sha512-AZkh+bAMaJDzMZTelFOXJTJqkp5VPGH8W3n0B+Ggce7DdozlMRsDLguKTCQAkZ0dJ1EbBPyFL5ztL/JImB137Q==
+"@algolia/autocomplete-preset-algolia@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-preset-algolia/-/autocomplete-preset-algolia-1.5.0.tgz#61671f09c0c77133d9baf1356719f8378c48437a"
+  integrity sha512-iiFxKERGHkvkiupmrFJbvESpP/zv5jSgH714XRiP5LDvUHaYOo4GLAwZCFf2ef/L5tdtPBARvekn6k1Xf33gjA==
   dependencies:
-    "@algolia/autocomplete-shared" "1.2.2"
+    "@algolia/autocomplete-shared" "1.5.0"
 
-"@algolia/autocomplete-shared@1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-shared/-/autocomplete-shared-1.2.2.tgz#ff25dc308f2a296b2b9b325f1e3b57498eea3e0c"
-  integrity sha512-mLTl7d2C1xVVazHt/bqh9EE/u2lbp5YOxLDdcjILXmUqOs5HH1D4SuySblXaQG1uf28FhTqMGp35qE5wJQnqAw==
+"@algolia/autocomplete-shared@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-shared/-/autocomplete-shared-1.5.0.tgz#09580bc89408a2ab5f29e312120dad68f58019bd"
+  integrity sha512-bRSkqHHHSwZYbFY3w9hgMyQRm86Wz27bRaGCbNldLfbk0zUjApmE4ajx+ZCVSLqxvcUEjMqZFJzDsder12eKsg==
 
 "@algolia/cache-browser-local-storage@4.11.0":
   version "4.11.0"
@@ -375,24 +375,19 @@
     "@babel/helper-validator-identifier" "^7.15.7"
     to-fast-properties "^2.0.0"
 
-"@docsearch/css@3.0.0-alpha.41":
-  version "3.0.0-alpha.41"
-  resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.0.0-alpha.41.tgz#c5c8e803541bd157ad86e764c2c1e9f1b5a68592"
-  integrity sha512-AP1jqcF/9jCrm4s0lcES3QAtHueyipKjd14L/pguk0CZYK7uI7hC0FWodmRmrgK3/HST9jiHa1waUMR6ZYedlQ==
-
 "@docsearch/css@3.0.0-alpha.42":
   version "3.0.0-alpha.42"
   resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.0.0-alpha.42.tgz#deb6049e999d6ca9451eba4793cb5b6da28c8773"
   integrity sha512-AGwI2AXUacYhVOHmYnsXoYDJKO6Ued2W+QO80GERbMLhC7GH5tfvtW5REs/s7jSdcU3vzFoxT8iPDBCh/PkrlQ==
 
-"@docsearch/react@3.0.0-alpha.41":
-  version "3.0.0-alpha.41"
-  resolved "https://registry.yarnpkg.com/@docsearch/react/-/react-3.0.0-alpha.41.tgz#07e85a664e85f251ce3d13153abce65a4d5997ab"
-  integrity sha512-UL0Gdter/NUea04lGuBGH0GzQ2/2q/hBfn7Rjo71rRKbjtfkQCM92leJ9tZ+9j9sFLoyuHb9XMm/B8vCjWwTEg==
+"@docsearch/react@3.0.0-alpha.42":
+  version "3.0.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@docsearch/react/-/react-3.0.0-alpha.42.tgz#1d22a2b05779f24d090ff8d7ff2699e4d50dff5c"
+  integrity sha512-1aOslZJDxwUUcm2QRNmlEePUgL8P5fOAeFdOLDMctHQkV2iTja9/rKVbkP8FZbIUnZxuuCCn8ErLrjD/oXWOag==
   dependencies:
-    "@algolia/autocomplete-core" "1.2.2"
-    "@algolia/autocomplete-preset-algolia" "1.2.2"
-    "@docsearch/css" "3.0.0-alpha.41"
+    "@algolia/autocomplete-core" "1.5.0"
+    "@algolia/autocomplete-preset-algolia" "1.5.0"
+    "@docsearch/css" "3.0.0-alpha.42"
     algoliasearch "^4.0.0"
 
 "@hapi/accept@5.0.2":
