@@ -33,7 +33,7 @@
     "gzip-size-cli": "5.0.1",
     "junk": "3.1.0",
     "mdx-prism": "0.3.4",
-    "next-mdx-remote": "3.0.8",
+    "next-mdx-remote": "4.0.0",
     "postcss": "8.4.8",
     "prettier": "2.5.1",
     "rehype": "11.0.0",
