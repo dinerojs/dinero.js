@@ -40,6 +40,14 @@ defaults: &defaults
   docker:
     - image: circleci/node:16.13.1
 
+cypress: &cypress
+  working_directory: ~/autocomplete
+  docker:
+    - image: cypress/browsers:node16.13.2-chrome97-ff96
+      environment:
+        # Enables colors in the output
+        TERM: xterm
+
 references:
   workspace_root: &workspace_root /tmp/workspace
   attach_workspace: &attach_workspace
@@ -128,6 +136,23 @@ jobs:
       - run:
           name: Test packages size
           command: yarn run test:size
+  test_cypress:
+    <<: *cypress
+    steps:
+      - checkout
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run:
+          name: Cypress test Actions
+          command: yarn run cy:run
+      - store_test_results:
+          path: cypress-results
+      - store_artifacts:
+          path: cypress\screenshots
+      - store_artifacts:
+          path: cypress\videos
   release:
     <<: *defaults
     steps:
@@ -157,12 +182,16 @@ workflows:
       - test_size:
           requires:
             - build
+      - test_cypress:
+          requires:
+            - build
       - release:
           requires:
             - test_unit
             - test_lint
             - test_types
             - test_size
+            - test_cypress
             - build
           filters:
             branches:

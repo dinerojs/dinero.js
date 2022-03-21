@@ -50,11 +50,17 @@ module.exports = {
       },
     },
     {
-      files: ['**/__tests__/**'],
+      files: ['**/__tests__/**', 'cypress/**/*'],
       rules: {
         'functional/no-expression-statement': ['off'],
         'import/no-extraneous-dependencies': ['off'],
         'sonarjs/no-duplicate-string': ['off'],
+      },
+    },
+    {
+      files: ['cypress/**/*'],
+      rules: {
+        'jest/expect-expect': ['off'],
       },
     },
     {
@@ -74,4 +80,5 @@ module.exports = {
       },
     },
   },
+  ignorePatterns: ['cypress/plugins/**/*'],
 };

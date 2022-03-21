@@ -3,3 +3,5 @@ coverage
 dist
 .DS_Store
 .env
+cypress/screenshots/
+cypress/videos/

@@ -100,7 +100,7 @@ function App({
               </h1>
               <div className="flex items-center">
                 <label
-                  htmlFor="language"
+                  htmlFor="currency"
                   className="mr-3 text-sm whitespace-nowrap"
                 >
                   Select a currency
@@ -182,7 +182,8 @@ function App({
                     />
                   </svg>
                   <span className="absolute top-0 right-0 -mt-1.5 -mr-2 bg-blue-200 text-blue-700 font-normal rounded-full px-1 text-xs">
-                    {items.length > 0 && count}
+                    {items.length > 0 && count}{' '}
+                    <span className="sr-only">items in the cart</span>
                   </span>
                 </div>
               </div>
@@ -230,7 +231,7 @@ function App({
             </div>
             <div className="mt-8 border-t">
               <div className="flex justify-between my-5 text-sm font-medium uppercase">
-                <span>Total</span>
+                <span>Order total</span>
                 <span>{format(total)}</span>
               </div>
               <button className="w-full py-3 text-sm font-semibold text-white uppercase transition-colors ease-in-out bg-blue-600 rounded hover:bg-blue-700">
@@ -249,8 +250,8 @@ function CartLine({ item, onDecrease, onIncrease, onRemove }) {
   const canDecrease = item.amount > 1;
 
   return (
-    <div className="flex items-center px-6 py-5 hover:bg-gray-100">
-      <div className="flex w-2/5">
+    <div className="flex items-center px-6 py-5 hover:bg-gray-100" role="row">
+      <div className="flex w-2/5" role="cell">
         <div className="flex items-center flex-none w-20 p-2 bg-white rounded xl:w-24">
           <img
             className="object-contain h-12 mx-auto xl:h-16"
@@ -273,7 +274,7 @@ function CartLine({ item, onDecrease, onIncrease, onRemove }) {
           </button>
         </div>
       </div>
-      <div className="flex justify-end w-1/5">
+      <div className="flex justify-end w-1/5" role="cell">
         <button
           className={cx('border rounded px-1', {
             'border-gray-500 cursor-not-allowed opacity-10': !canDecrease,
@@ -318,12 +319,12 @@ function CartLine({ item, onDecrease, onIncrease, onRemove }) {
           </svg>
         </button>
       </div>
-      <span className="w-1/5 text-sm font-semibold text-right">
+      <div className="w-1/5 text-sm font-semibold text-right" role="cell">
         {format(item.price)}
-      </span>
-      <span className="w-1/5 text-sm font-semibold text-right">
+      </div>
+      <div className="w-1/5 text-sm font-semibold text-right" role="cell">
         {format(totalPrice)}
-      </span>
+      </div>
     </div>
   );
 }

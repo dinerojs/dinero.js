@@ -13,7 +13,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ESNEXT"
+    "target": "ESNEXT",
+    "types": ["cypress", "@testing-library/cypress"]
   },
   "exclude": [
     "**/__fixtures__/**/*",

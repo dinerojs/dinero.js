@@ -33,7 +33,16 @@
     "watch": "lerna run watch --parallel --no-private",
     "website:dev": "yarn --cwd website/ dev",
     "website:start": "yarn --cwd website/ start",
-    "website:build": "yarn --cwd website/ build"
+    "website:build": "yarn --cwd website/ build",
+    "cy:clean": "rimraf cypress/screenshots && rimraf cypress/videos",
+    "cy:test": "cypress run --spec 'cypress/integration/**/*' --headless",
+    "cy:info": "cypress info",
+    "cy:run:chrome": "yarn run cy:run --browser chrome",
+    "cy:run:edge": "yarn run cy:run --browser edge",
+    "cy:run:firefox": "yarn run cy:run --browser firefox",
+    "cy:run": "start-server-and-test cy:start http-get://localhost:3000 cy:test",
+    "cy:start": "yarn workspace @dinero.js/example-cart-react dev",
+    "cy:verify": "cypress verify"
   },
   "devDependencies": {
     "@babel/cli": "7.16.0",
@@ -44,6 +53,7 @@
     "@rollup/plugin-json": "4.1.0",
     "@rollup/plugin-node-resolve": "13.1.3",
     "@rollup/plugin-replace": "3.0.1",
+    "@testing-library/cypress": "8.0.2",
     "@types/big.js": "6.1.2",
     "@types/jest": "27.4.0",
     "@typescript-eslint/eslint-plugin": "5.15.0",
@@ -56,6 +66,7 @@
     "big.js": "6.1.1",
     "bundlesize": "0.18.1",
     "concurrently": "6.5.1",
+    "cypress": "9.5.2",
     "eslint": "7.32.0",
     "eslint-config-algolia": "19.0.2",
     "eslint-config-prettier": "8.3.0",
@@ -82,6 +93,7 @@
     "rollup-plugin-license": "2.6.1",
     "rollup-plugin-terser": "7.0.2",
     "shipjs": "0.24.1",
+    "start-server-and-test": "1.14.0",
     "ts-node": "10.7.0",
     "typescript": "4.6.2",
     "watch": "1.0.2"

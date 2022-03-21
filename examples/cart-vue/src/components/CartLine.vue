@@ -1,6 +1,6 @@
 <template>
-  <div class="flex items-center px-6 py-5 hover:bg-gray-100">
-    <div class="flex w-2/5">
+  <div class="flex items-center px-6 py-5 hover:bg-gray-100" role="row">
+    <div class="flex w-2/5" role="cell">
       <div
         class="flex items-center flex-none w-20 p-2 bg-white rounded xl:w-24"
       >
@@ -17,20 +17,13 @@
         </div>
         <button
           @click="onRemove(item)"
-          class="
-            text-xs
-            font-semibold
-            text-left text-gray-500
-            transition-colors
-            ease-in-out
-            hover:text-red-500
-          "
+          class="text-xs font-semibold text-left text-gray-500 transition-colors ease-in-out hover:text-red-500"
         >
           Remove
         </button>
       </div>
     </div>
-    <div class="flex justify-end w-1/5">
+    <div class="flex justify-end w-1/5" role="cell">
       <button
         :class="[
           'border rounded px-1',
@@ -77,12 +70,12 @@
         </svg>
       </button>
     </div>
-    <span class="w-1/5 text-sm font-semibold text-right">
+    <div class="w-1/5 text-sm font-semibold text-right" role="cell">
       {{ format(item.price) }}
-    </span>
-    <span class="w-1/5 text-sm font-semibold text-right">
+    </div>
+    <div class="w-1/5 text-sm font-semibold text-right" role="cell">
       {{ format(totalPrice) }}
-    </span>
+    </div>
   </div>
 </template>
 
