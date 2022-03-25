@@ -3308,10 +3308,10 @@ react-refresh@0.8.3:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
 
-react-to-text@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-to-text/-/react-to-text-1.0.1.tgz#d487ebe19e8bc4700ccda2630c34ff00f1bcddd9"
-  integrity sha512-CzOhwQaSEWMKH9NiY+567BmNsIm9e26EgqD0ErvIVRSbBKVcwia2tbHk7+pMyKvJ6BSMICtfGvXanGwDVUduuA==
+react-to-text@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-to-text/-/react-to-text-1.1.0.tgz#b7402f02b93e0c7a0389d769f921b3678d214cbc"
+  integrity sha512-LiNQO0E1ybvd1u2ILsUoPohCNZFeAlEFg5RMfdrrq0I+M6bB+7SBkGXX6OVSK49ysr8Be1ZAxs82zWn6dzO9+Q==
 
 react-universal-interface@^0.6.2:
   version "0.6.2"
