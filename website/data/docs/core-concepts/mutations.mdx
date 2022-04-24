@@ -39,7 +39,7 @@ const subtotal = products.reduce(
   dinero({ amount: 0, currency: USD })
 );
 
-const [discount] = allocate([20, 80]);
+const [discount] = allocate(subtotal,[20, 80]);
 const discounted = subtract(subtotal, discount);
 
 const shipping = dinero({ amount: 1000, currency: USD });
