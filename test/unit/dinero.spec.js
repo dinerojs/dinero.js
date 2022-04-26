@@ -253,7 +253,7 @@ describe('Dinero', () => {
     test('should respect roundingMode', () => {
       expect(
         Dinero({ amount: 57 })
-          .percentage(50, "HALF_ODD")
+          .percentage(50, 'HALF_ODD')
           .toObject()
       ).toMatchObject({ amount: 29 })
     })
@@ -277,6 +277,10 @@ describe('Dinero', () => {
       const shares = Dinero({ amount: 1003 }).allocate([0, 50, 50])
       expect(shares.map(share => share.getAmount())).toEqual([0, 502, 501])
     })
+    test('should allocate the amount of the Dinero object into new ones and distribute the remainder when one of ratios is float number', () => {
+      const shares = Dinero({ amount: 1000 }).allocate([1.618, 1])
+      expect(shares.map(share => share.getAmount())).toEqual([619, 381])
+    })
     test('should throw when all ratios are equal to zero', () => {
       expect(() => Dinero({ amount: 1003 }).allocate([0, 0])).toThrow()
     })
@@ -285,6 +289,15 @@ describe('Dinero', () => {
     })
     test('should throw when array of ratios is empty', () => {
       expect(() => Dinero({ amount: 1003 }).allocate([])).toThrow()
+    })
+    test('should throw when one of ratios is not number', () => {
+      expect(() => Dinero({ amount: 100 }).allocate([2, '98'])).toThrow()
+    })
+    test('should throw when one of ratios is Infinity', () => {
+      expect(() => Dinero({ amount: 1000 }).allocate([0, Infinity])).toThrow()
+    })
+    test('should throw when one of ratios is NaN', () => {
+      expect(() => Dinero({ amount: 1000 }).allocate([0, NaN])).toThrow()
     })
   })
   describe('#convert', () => {
