@@ -74,7 +74,7 @@
     "jest-watch-typeahead": "1.0.0",
     "lerna": "4.0.0",
     "lint-staged": "12.3.7",
-    "prettier": "2.6.0",
+    "prettier": "2.7.1",
     "rimraf": "3.0.2",
     "rollup": "2.70.1",
     "rollup-plugin-babel": "4.4.0",
