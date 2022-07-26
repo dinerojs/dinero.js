@@ -2,6 +2,7 @@ import { USD } from '@dinero.js/currencies';
 import Big from 'big.js';
 
 import { toFormat } from '..';
+import type { Transformer } from '../../..';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
@@ -11,58 +12,164 @@ import {
 } from '../../../../../test/utils';
 
 describe('toFormat', () => {
+  const simpleFormatter = ({ amount, currency }) =>
+    `${currency.code} ${amount}`;
+
   describe('number', () => {
     const dinero = createNumberDinero;
 
-    it('formats the Dinero object with the passed transformer', () => {
-      const formatter = ({ amount, currency }) => `${currency.code} ${amount}`;
-      const d = dinero({ amount: 500, currency: USD });
+    describe('with simple formatter', () => {
+      it('formats the Dinero object with the passed transformer', () => {
+        const d = dinero({ amount: 500, currency: USD });
 
-      expect(toFormat(d, formatter)).toBe('USD 5');
+        expect(toFormat(d, simpleFormatter)).toBe('USD 5');
+      });
+      it('formats the Dinero object with the passed transformer using the scale', () => {
+        const d = dinero({ amount: 4545, currency: USD, scale: 3 });
+
+        expect(toFormat(d, simpleFormatter)).toBe('USD 4.545');
+      });
     });
-    it('formats the Dinero object with the passed transformer using the scale', () => {
-      const formatter = ({ amount, currency }) => `${currency.code} ${amount}`;
-      const d = dinero({ amount: 4545, currency: USD, scale: 3 });
+    describe('with complex formatter', () => {
+      const complexFormatter: Transformer<
+        number,
+        readonly Intl.NumberFormatPart[]
+      > = ({ amount, currency }) => {
+        const numberFormat = new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: currency.code,
+        });
+        return numberFormat.formatToParts(amount);
+      };
 
-      expect(toFormat(d, formatter)).toBe('USD 4.545');
+      it('formats the Dinero object with the passed transformer', () => {
+        const d = dinero({ amount: 500, currency: USD });
+
+        expect(toFormat(d, complexFormatter)).toEqual([
+          { type: 'currency', value: '$' },
+          { type: 'integer', value: '5' },
+          { type: 'decimal', value: '.' },
+          { type: 'fraction', value: '00' },
+        ]);
+      });
+      it('formats the Dinero object with the passed transformer using the scale', () => {
+        const d = dinero({ amount: 4545, currency: USD, scale: 3 });
+
+        expect(toFormat(d, complexFormatter)).toEqual([
+          { type: 'currency', value: '$' },
+          { type: 'integer', value: '4' },
+          { type: 'decimal', value: '.' },
+          { type: 'fraction', value: '55' },
+        ]);
+      });
     });
   });
   describe('bigint', () => {
     const dinero = createBigintDinero;
     const bigintUSD = castToBigintCurrency(USD);
 
-    it('formats the Dinero object with the passed transformer', () => {
-      const formatter = ({ amount, currency }) => `${currency.code} ${amount}`;
-      const d = dinero({ amount: 500n, currency: bigintUSD });
+    describe('with simple formatter', () => {
+      it('formats the Dinero object with the passed transformer', () => {
+        const d = dinero({ amount: 500n, currency: bigintUSD });
 
-      expect(toFormat(d, formatter)).toBe('USD 5');
+        expect(toFormat(d, simpleFormatter)).toBe('USD 5');
+      });
+      it('formats the Dinero object with the passed transformer using the scale', () => {
+        const d = dinero({ amount: 4545n, currency: bigintUSD, scale: 3n });
+
+        expect(toFormat(d, simpleFormatter)).toBe('USD 4.545');
+      });
     });
-    it('formats the Dinero object with the passed transformer using the scale', () => {
-      const formatter = ({ amount, currency }) => `${currency.code} ${amount}`;
-      const d = dinero({ amount: 4545n, currency: bigintUSD, scale: 3n });
+    describe('with complex formatter', () => {
+      const complexFormatter: Transformer<
+        bigint,
+        readonly Intl.NumberFormatPart[]
+      > = ({ amount, currency }) => {
+        const numberFormat = new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: currency.code,
+        });
+        return numberFormat.formatToParts(Number(amount));
+      };
 
-      expect(toFormat(d, formatter)).toBe('USD 4.545');
+      it('formats the Dinero object with the passed transformer', () => {
+        const d = dinero({ amount: 500n, currency: bigintUSD });
+
+        expect(toFormat(d, complexFormatter)).toEqual([
+          { type: 'currency', value: '$' },
+          { type: 'integer', value: '5' },
+          { type: 'decimal', value: '.' },
+          { type: 'fraction', value: '00' },
+        ]);
+      });
+      it('formats the Dinero object with the passed transformer using the scale', () => {
+        const d = dinero({ amount: 4545n, currency: bigintUSD, scale: 3n });
+
+        expect(toFormat(d, complexFormatter)).toEqual([
+          { type: 'currency', value: '$' },
+          { type: 'integer', value: '4' },
+          { type: 'decimal', value: '.' },
+          { type: 'fraction', value: '55' },
+        ]);
+      });
     });
   });
   describe('Big.js', () => {
     const dinero = createBigjsDinero;
     const bigjsUSD = castToBigjsCurrency(USD);
 
-    it('formats the Dinero object with the passed transformer', () => {
-      const formatter = ({ amount, currency }) => `${currency.code} ${amount}`;
-      const d = dinero({ amount: new Big(500), currency: bigjsUSD });
+    describe('with simple formatter', () => {
+      it('formats the Dinero object with the passed transformer', () => {
+        const d = dinero({ amount: new Big(500), currency: bigjsUSD });
 
-      expect(toFormat(d, formatter)).toBe('USD 5');
-    });
-    it('formats the Dinero object with the passed transformer using the scale', () => {
-      const formatter = ({ amount, currency }) => `${currency.code} ${amount}`;
-      const d = dinero({
-        amount: new Big(4545),
-        currency: bigjsUSD,
-        scale: new Big(3),
+        expect(toFormat(d, simpleFormatter)).toBe('USD 5');
       });
+      it('formats the Dinero object with the passed transformer using the scale', () => {
+        const d = dinero({
+          amount: new Big(4545),
+          currency: bigjsUSD,
+          scale: new Big(3),
+        });
 
-      expect(toFormat(d, formatter)).toBe('USD 4.545');
+        expect(toFormat(d, simpleFormatter)).toBe('USD 4.545');
+      });
+    });
+    describe('with complex formatter', () => {
+      const complexFormatter: Transformer<
+        Big,
+        readonly Intl.NumberFormatPart[]
+      > = ({ amount, currency }) => {
+        const numberFormat = new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: currency.code,
+        });
+        return numberFormat.formatToParts(Number(amount.toFixed(3)));
+      };
+
+      it('formats the Dinero object with the passed transformer', () => {
+        const d = dinero({ amount: new Big(500), currency: bigjsUSD });
+
+        expect(toFormat(d, complexFormatter)).toEqual([
+          { type: 'currency', value: '$' },
+          { type: 'integer', value: '5' },
+          { type: 'decimal', value: '.' },
+          { type: 'fraction', value: '00' },
+        ]);
+      });
+      it('formats the Dinero object with the passed transformer using the scale', () => {
+        const d = dinero({
+          amount: new Big(4545),
+          currency: bigjsUSD,
+          scale: new Big(3),
+        });
+
+        expect(toFormat(d, complexFormatter)).toEqual([
+          { type: 'currency', value: '$' },
+          { type: 'integer', value: '4' },
+          { type: 'decimal', value: '.' },
+          { type: 'fraction', value: '55' },
+        ]);
+      });
     });
   });
 });

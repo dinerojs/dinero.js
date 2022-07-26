@@ -8,6 +8,6 @@ export type TransformerOptions<TAmount> = {
   readonly dineroObject: Dinero<TAmount>;
 };
 
-export type Transformer<TAmount> = (
+export type Transformer<TAmount, TResult = string> = (
   options: TransformerOptions<TAmount>
-) => string;
+) => TResult;
