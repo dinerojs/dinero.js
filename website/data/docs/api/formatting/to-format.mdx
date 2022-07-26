@@ -20,7 +20,7 @@ The Dinero object to format.
 
 </Parameter>
 
-<Parameter name="transformer" type="Transformer<TAmount>" required={true}>
+<Parameter name="transformer" type="Transformer<TAmount, TResult = string>" required={true}>
 
 A transformer function.
 
@@ -39,6 +39,31 @@ import { USD } from '@dinero.js/currencies';
 const d = dinero({ amount: 500, currency: USD });
 
 toFormat(d, ({ amount, currency }) => `${currency.code} ${amount}`); // "USD 5"
+```
+
+### Format to a complex result object
+
+Although formatting to a single string value is the most common scenario, there are other times (such as when more complex rendering is required) where it is desirable to format to a more complex return type.
+
+For example [Intl.NumberFormat#formatToParts(number)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/formatToParts) returns each formatted component in an ordered array to allow for more complex rendering options.
+
+This could be used to display the currency symbol separately from the numeric value in an input control, as follows:
+
+```js
+import { dinero, toFormat } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 500, currency: USD });
+
+// More complex formatting - returning separate formatted parts
+toFormat(d, ({ amount, currency }) => {
+  const formatter = new Intl.NumberFormat('fr-CA', {
+    style: 'currency',
+    currency: currency.code,
+  });
+
+  return formatter.formatToParts(amount);
+}); // [{"type":"integer","value":"5"}, {"type":"decimal","value":","}, {"type":"fraction","value":"00"}, {"type":"literal","value":" "}, {"type":"currency","value":"$ US"}]
 ```
 
 ### Build a reusable formatter
