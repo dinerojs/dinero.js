@@ -9,7 +9,7 @@
     "postinstall": "yarn --cwd ../ install && yarn --cwd ../ build"
   },
   "dependencies": {
-    "@docsearch/css": "3.0.0-alpha.42",
+    "@docsearch/css": "3.2.1",
     "@docsearch/react": "3.0.0-alpha.42",
     "classnames": "2.3.1",
     "github-slugger": "1.4.0",
