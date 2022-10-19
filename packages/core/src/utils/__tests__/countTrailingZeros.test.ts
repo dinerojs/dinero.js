@@ -23,4 +23,8 @@ describe('countTrailingZeros', () => {
   it("doesn't retrieve trailing zeros from floats", () => {
     expect(countTrailingZerosFn(12.5, 10)).toEqual(0);
   });
+  it('correctly handles zero inputs', () => {
+    expect(countTrailingZerosFn(0, 10)).toEqual(0);
+    expect(countTrailingZerosFn(0, 2)).toEqual(0);
+  });
 });
