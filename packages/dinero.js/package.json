@@ -28,7 +28,7 @@
   "unpkg": "dist/umd/index.production.js",
   "module": "dist/esm/index.js",
   "source": "src/index.ts",
-  "types": "dist/dinero.js.d.ts",
+  "types": "dist/esm/dinero.js.d.ts",
   "files": [
     "dist/"
   ],

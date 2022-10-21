@@ -221,7 +221,7 @@
      * SUPPORTED TOKENS: <projectFolder>, <packageName>, <unscopedPackageName>
      * DEFAULT VALUE: ""
      */
-    "publicTrimmedFilePath": "<projectFolder>/dist/<unscopedPackageName>.d.ts"
+    "publicTrimmedFilePath": "<projectFolder>/dist/esm/<unscopedPackageName>.d.ts"
 
     /**
      * When a declaration is trimmed, by default it will be replaced by a code comment such as
