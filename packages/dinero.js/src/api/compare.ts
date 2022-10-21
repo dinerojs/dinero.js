@@ -8,6 +8,8 @@ import type { CompareParams } from '@dinero.js/core';
  * @param comparator - The Dinero object to compare to.
  *
  * @returns One of -1, 0, or 1 depending on whether the first Dinero object is less than, equal to, or greater than the other.
+ *
+ * @public
  */
 export function compare<TAmount>(
   ...[dineroObject, comparator]: CompareParams<TAmount>

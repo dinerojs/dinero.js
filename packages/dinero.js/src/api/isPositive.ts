@@ -7,6 +7,8 @@ import type { IsPositiveParams } from '@dinero.js/core';
  * @param dineroObject - The Dinero object to check.
  *
  * @returns Whether the Dinero object is positive.
+ *
+ * @public
  */
 export function isPositive<TAmount>(
   ...[dineroObject]: IsPositiveParams<TAmount>

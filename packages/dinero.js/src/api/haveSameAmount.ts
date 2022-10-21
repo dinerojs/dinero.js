@@ -7,6 +7,8 @@ import type { HaveSameAmountParams } from '@dinero.js/core';
  * @param dineroObjects - The Dinero objects to compare.
  *
  * @returns Whether the Dinero objects have the same amount.
+ *
+ * @public
  */
 export function haveSameAmount<TAmount>(
   ...[dineroObjects]: HaveSameAmountParams<TAmount>

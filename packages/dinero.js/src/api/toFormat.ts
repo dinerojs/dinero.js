@@ -8,6 +8,8 @@ import type { ToFormatParams } from '@dinero.js/core';
  * @param transformer - A transformer function.
  *
  * @returns The object as a formatted string.
+ *
+ * @public
  */
 export function toFormat<TAmount>(
   ...[dineroObject, transformer]: ToFormatParams<TAmount>

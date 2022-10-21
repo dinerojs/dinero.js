@@ -9,6 +9,8 @@ import type { ToUnitParams } from '@dinero.js/core';
  * @param options.round - The rounding function to use.
  *
  * @returns The amount in units.
+ *
+ * @public
  */
 export function toUnit<TAmount>(
   ...[dineroObject, options]: ToUnitParams<TAmount>

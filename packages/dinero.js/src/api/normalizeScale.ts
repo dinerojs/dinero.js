@@ -7,6 +7,8 @@ import type { NormalizeScaleParams } from '@dinero.js/core';
  * @param dineroObjects - The Dinero objects to normalize.
  *
  * @returns A new set of Dinero objects.
+ *
+ * @public
  */
 export function normalizeScale<TAmount>(
   ...[dineroObjects]: NormalizeScaleParams<TAmount>

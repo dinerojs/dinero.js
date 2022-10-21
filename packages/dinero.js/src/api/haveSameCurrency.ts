@@ -6,5 +6,7 @@ import { haveSameCurrency as coreHaveSameCurrency } from '@dinero.js/core';
  * @param dineroObjects - The Dinero objects to compare.
  *
  * @returns Whether the Dinero objects have the same currency.
+ *
+ * @public
  */
 export const haveSameCurrency = coreHaveSameCurrency;

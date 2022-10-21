@@ -8,6 +8,8 @@ import type { TransformScaleParams } from '@dinero.js/core';
  * @param newScale - The new scale.
  *
  * @returns A new Dinero object.
+ *
+ * @public
  */
 export function transformScale<TAmount>(
   ...[dineroObject, newScale]: TransformScaleParams<TAmount>

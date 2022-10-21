@@ -8,6 +8,8 @@ import type { AllocateParams } from '@dinero.js/core';
  * @param ratios - The ratios to allocate the amount to.
  *
  * @returns A new Dinero object.
+ *
+ * @public
  */
 export function allocate<TAmount>(
   ...[dineroObject, ratios]: AllocateParams<TAmount>

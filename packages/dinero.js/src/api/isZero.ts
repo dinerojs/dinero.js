@@ -7,6 +7,8 @@ import type { IsZeroParams } from '@dinero.js/core';
  * @param dineroObject - The Dinero object to check.
  *
  * @returns Whether the value of a Dinero object is zero.
+ *
+ * @public
  */
 export function isZero<TAmount>(...[dineroObject]: IsZeroParams<TAmount>) {
   const { calculator } = dineroObject;

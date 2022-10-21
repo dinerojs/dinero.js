@@ -9,6 +9,8 @@ import type { ConvertParams } from '@dinero.js/core';
  * @param rates - The rates to convert with.
  *
  * @returns A converted Dinero object.
+ *
+ * @public
  */
 export function convert<TAmount>(
   ...[dineroObject, newCurrency, rates]: ConvertParams<TAmount>
