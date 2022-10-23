@@ -28,7 +28,7 @@
   "unpkg": "dist/umd/index.production.js",
   "module": "dist/esm/index.js",
   "source": "src/index.ts",
-  "types": "dist/esm/index.d.ts",
+  "types": "dist/esm/currencies.d.ts",
   "browser": {
     "168": "dist/esm/168.js",
     "latest": "dist/esm/latest.js"
