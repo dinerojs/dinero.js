@@ -28,14 +28,14 @@
   "unpkg": "dist/umd/index.production.js",
   "module": "dist/esm/index.js",
   "source": "src/index.ts",
-  "types": "dist/esm/dinero.js.d.ts",
+  "types": "dist/esm/index.d.ts",
   "files": [
     "dist/"
   ],
   "scripts": {
-    "build:clean": "rimraf ./{dist,lib,temp}",
+    "build:clean": "rimraf ./{dist,temp}",
     "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
-    "build:tsc": "tsc -p ./tsconfig.json",
+    "build:tsc": "tsc -p ./tsconfig.declaration.json",
     "build:types": "yarn run build:tsc && api-extractor run --local --verbose",
     "build:umd:cjs": "rollup --config",
     "build": "yarn build:clean && yarn build:umd:cjs && yarn build:esm && yarn build:types",

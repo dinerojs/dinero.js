@@ -1,8 +1,9 @@
 {
   "extends": "./tsconfig",
   "compilerOptions": {
+    "sourceMap": true,
     "declaration": true,
-    "emitDeclarationOnly": true,
-    "noEmit": false
-  }
+    "declarationMap": true,
+    "incremental": true
+  },
 }
