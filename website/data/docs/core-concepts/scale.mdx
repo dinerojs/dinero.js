@@ -122,7 +122,7 @@ import { dinero, add, trimScale } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
 const d1 = dinero({ amount: 100, currency: USD });
-const d1 = dinero({ amount: 2000000, currency: USD, scale: 6 });
+const d2 = dinero({ amount: 2000000, currency: USD, scale: 6 });
 
 const d3 = add(d1, d2); // a Dinero object with amount 3000000 and scale 6
 
