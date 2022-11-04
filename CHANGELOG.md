@@ -1,3 +1,14 @@
+# [2.0.0-alpha.9](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.8...v2.0.0-alpha.9) (2022-11-04)
+
+### Bug Fixes
+
+* **currencies:** add missing ANG export ([#447](https://github.com/dinerojs/dinero.js/issues/447)) ([8a0f67b](https://github.com/dinerojs/dinero.js/commit/8a0f67bda699ca8082d7a68def21a9d11fa5f1a8))
+* **trimScale:** check for zero value in countTrailingZeros ([#448](https://github.com/dinerojs/dinero.js/issues/448)) ([6eefe8b](https://github.com/dinerojs/dinero.js/commit/6eefe8b17c2a3497f836301e6001b05901ac9dec))
+
+### Reverts
+
+* revert snapshot process ([78db2dd](https://github.com/dinerojs/dinero.js/commit/78db2ddf2914a81d1e2c10ea0d1c72d3bdeee3b1))
+
 # [2.0.0-alpha.8](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.7...v2.0.0-alpha.8) (2021-08-08)
 
 ### Bug Fixes
