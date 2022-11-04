@@ -43,7 +43,7 @@
     "@babel/preset-typescript": "7.18.6",
     "@rollup/plugin-json": "4.1.0",
     "@rollup/plugin-node-resolve": "13.3.0",
-    "@rollup/plugin-replace": "3.1.0",
+    "@rollup/plugin-replace": "4.0.0",
     "@types/big.js": "6.1.6",
     "@types/jest": "28.1.8",
     "@typescript-eslint/eslint-plugin": "5.38.0",
