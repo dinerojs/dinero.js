@@ -1,6 +1,6 @@
 {
   "name": "@dinero.js/example-cart-vue",
-  "version": "2.0.0-alpha.8",
+  "version": "2.0.0-alpha.9",
   "scripts": {
     "build:clean": "rimraf ./dist",
     "dev": "vite",
@@ -8,8 +8,8 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@dinero.js/currencies": "2.0.0-alpha.8",
-    "dinero.js": "2.0.0-alpha.8",
+    "@dinero.js/currencies": "2.0.0-alpha.9",
+    "dinero.js": "2.0.0-alpha.9",
     "vue": "3.0.5"
   },
   "devDependencies": {
@@ -20,6 +20,6 @@
     "autoprefixer": "10.2.5",
     "postcss": "8.2.13",
     "tailwindcss": "2.0.4",
-    "vite": "2.3.3"
+    "vite": "2.9.13"
   }
 }
