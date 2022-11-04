@@ -1,19 +1,7 @@
 <template>
   <main class="relative">
     <div
-      class="
-        fixed
-        top-0
-        left-0
-        right-0
-        z-30
-        w-full
-        px-4
-        py-2
-        text-sm text-center text-white
-        bg-green-600
-        shadow-lg
-      "
+      class="fixed top-0 left-0 right-0 z-30 w-full px-4 py-2 text-sm text-center text-white bg-green-600 shadow-lg"
     >
       Built with
       <a
@@ -35,25 +23,10 @@
       </a>
     </div>
     <div
-      class="
-        container
-        flex flex-col
-        items-center
-        justify-center
-        min-h-screen
-        mx-auto
-      "
+      class="container flex flex-col items-center justify-center min-h-screen mx-auto"
     >
       <div
-        class="
-          flex flex-col
-          w-full
-          my-10
-          overflow-hidden
-          rounded-lg
-          shadow-lg
-          md:flex-row
-        "
+        class="flex flex-col w-full my-10 overflow-hidden rounded-lg shadow-lg md:flex-row"
       >
         <div class="w-full px-10 py-10 bg-white md:w-4/6">
           <div class="flex items-center justify-between pb-8 border-b">
@@ -66,21 +39,7 @@
                 id="currency"
                 :value="currencyCode"
                 @change="(event) => (currencyCode = event.target.value)"
-                class="
-                  block
-                  w-full
-                  py-1
-                  pl-1
-                  text-sm
-                  border-gray-300
-                  rounded-md
-                  shadow-sm
-                  pr-7
-                  focus:border-green-300
-                  focus:ring
-                  focus:ring-green-200
-                  focus:ring-opacity-50
-                "
+                class="block w-full py-1 pl-1 text-sm border-gray-300 rounded-md shadow-sm pr-7 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
               >
                 <option
                   v-for="option in currencyOptions"
@@ -146,15 +105,7 @@
           </div>
         </div>
         <div
-          class="
-            flex flex-col
-            justify-between
-            w-full
-            px-8
-            py-10
-            bg-gray-100
-            md:w-2/6
-          "
+          class="flex flex-col justify-between w-full px-8 py-10 bg-gray-100 md:w-2/6"
         >
           <div>
             <div class="flex items-center justify-between pb-8 border-b">
@@ -175,19 +126,7 @@
                 </svg>
                 <span
                   v-if="items.length > 0"
-                  class="
-                    absolute
-                    top-0
-                    right-0
-                    -mt-1.5
-                    -mr-2
-                    bg-green-200
-                    text-green-700
-                    font-normal
-                    rounded-full
-                    px-1
-                    text-xs
-                  "
+                  class="absolute top-0 right-0 -mt-1.5 -mr-2 bg-green-200 text-green-700 font-normal rounded-full px-1 text-xs"
                 >
                   {{ calculatedItems.count }}
                 </span>
@@ -241,19 +180,7 @@
               <span>{{ format(total) }}</span>
             </div>
             <button
-              class="
-                w-full
-                py-3
-                text-sm
-                font-semibold
-                text-white
-                uppercase
-                transition-colors
-                ease-in-out
-                bg-green-600
-                rounded
-                hover:bg-green-700
-              "
+              class="w-full py-3 text-sm font-semibold text-white uppercase transition-colors ease-in-out bg-green-600 rounded hover:bg-green-700"
             >
               Checkout
             </button>
