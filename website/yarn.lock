@@ -364,6 +364,11 @@
   resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.0.0-alpha.42.tgz#deb6049e999d6ca9451eba4793cb5b6da28c8773"
   integrity sha512-AGwI2AXUacYhVOHmYnsXoYDJKO6Ued2W+QO80GERbMLhC7GH5tfvtW5REs/s7jSdcU3vzFoxT8iPDBCh/PkrlQ==
 
+"@docsearch/css@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.2.1.tgz#c05d7818b0e43b42f9efa2d82a11c36606b37b27"
+  integrity sha512-gaP6TxxwQC+K8D6TRx5WULUWKrcbzECOPA2KCVMuI+6C7dNiGUk5yXXzVhc5sld79XKYLnO9DRTI4mjXDYkh+g==
+
 "@docsearch/react@3.0.0-alpha.42":
   version "3.0.0-alpha.42"
   resolved "https://registry.yarnpkg.com/@docsearch/react/-/react-3.0.0-alpha.42.tgz#1d22a2b05779f24d090ff8d7ff2699e4d50dff5c"
