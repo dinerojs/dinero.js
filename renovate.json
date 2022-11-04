@@ -1,3 +1,12 @@
 {
-  "extends": ["config:js-lib", "algolia"]
+  "extends": ["config:js-lib", "schedule:monthly"],
+  "timezone": "Europe/Paris",
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true,
+      "automergeType": "branch"
+    }
+  ]
 }
