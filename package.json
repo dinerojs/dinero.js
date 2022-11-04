@@ -68,7 +68,7 @@
     "eslint-plugin-jsdoc": "38.1.6",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-promise": "6.1.1",
-    "eslint-plugin-sonarjs": "0.15.0",
+    "eslint-plugin-sonarjs": "0.16.0",
     "husky": "7.0.4",
     "jest": "28.1.3",
     "jest-watch-typeahead": "1.1.0",
