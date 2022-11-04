@@ -18,7 +18,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-to-text": "1.1.0",
-    "react-use": "17.3.2",
+    "react-use": "17.4.0",
     "semver": "7.3.5"
   },
   "devDependencies": {
