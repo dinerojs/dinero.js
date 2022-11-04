@@ -55,7 +55,7 @@
     "babel-plugin-module-resolver": "4.1.0",
     "big.js": "6.1.1",
     "bundlesize": "0.18.1",
-    "concurrently": "7.0.0",
+    "concurrently": "7.5.0",
     "eslint": "7.32.0",
     "eslint-config-algolia": "20.0.0",
     "eslint-config-prettier": "8.5.0",
