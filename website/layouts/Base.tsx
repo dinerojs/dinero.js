@@ -52,17 +52,13 @@ function SidebarItem({
 
   if (path && node.children.length === 0) {
     return (
-      <Link href={path}>
-        <a
-          className={`block py-1 transition-colors duration-100 ease-in-out ${cx(
-            {
-              'text-blue-400 hover:text-blue-500': isActive,
-              'text-gray-600 hover:text-gray-700 text-opacity-90': !isActive,
-            }
-          )}`}
-        >
-          {label}
-        </a>
+      <Link href={path} className={`block py-1 transition-colors duration-100 ease-in-out ${cx(
+        {
+          'text-blue-400 hover:text-blue-500': isActive,
+          'text-gray-600 hover:text-gray-700 text-opacity-90': !isActive,
+        }
+      )}`}>
+        {label}
       </Link>
     );
   }
@@ -282,11 +278,9 @@ export function Base({ children, headings }: BaseProps) {
         </div>
         <header className="relative z-30 bg-white border-b border-gray-200">
           <div className="flex items-center justify-between h-16 px-6 mx-auto space-x-4 max-w-screen-2xl">
-            <Link href="/docs">
-              <a className="flex space-x-2">
-                <Logo className="h-6" />
-                <span className="mt-px font-semibold">Dinero.js</span>
-              </a>
+            <Link href="/docs" className="flex space-x-2">
+              <Logo className="h-6" />
+              <span className="mt-px font-semibold">Dinero.js</span>
             </Link>
             <div className="flex items-center mt-px space-x-6 text-sm">
               <form>
@@ -396,18 +390,17 @@ export function Base({ children, headings }: BaseProps) {
                     <Link
                       href={previous.resource?.path as string}
                       aria-label={`Go to ${previous.resource?.label}`}
+                      className="flex items-center flex-none w-full space-x-4 group"
                     >
-                      <a className="flex items-center flex-none w-full space-x-4 group">
-                        <ArrowLeftIcon className="flex-none h-4 transition-transform duration-100 ease-in-out transform group-hover:-translate-x-1" />
-                        <div className="flex flex-col self-start space-y-1">
-                          <span className="text-sm text-gray-500 transition-colors duration-100 ease-in-out group-hover:text-gray-700">
-                            Previous
-                          </span>
-                          <span className="font-semibold text-gray-800 transition-colors duration-100 ease-in-out group-hover:text-gray-900">
-                            {previous.resource?.label}
-                          </span>
-                        </div>
-                      </a>
+                      <ArrowLeftIcon className="flex-none h-4 transition-transform duration-100 ease-in-out transform group-hover:-translate-x-1" />
+                      <div className="flex flex-col self-start space-y-1">
+                        <span className="text-sm text-gray-500 transition-colors duration-100 ease-in-out group-hover:text-gray-700">
+                          Previous
+                        </span>
+                        <span className="font-semibold text-gray-800 transition-colors duration-100 ease-in-out group-hover:text-gray-900">
+                          {previous.resource?.label}
+                        </span>
+                      </div>
                     </Link>
                   )}
                 </li>
@@ -416,18 +409,17 @@ export function Base({ children, headings }: BaseProps) {
                     <Link
                       href={next.resource?.path as string}
                       aria-label={`Go to ${next.resource?.label}`}
+                      className="flex items-center justify-end flex-none w-full space-x-4 group"
                     >
-                      <a className="flex items-center justify-end flex-none w-full space-x-4 group">
-                        <div className="flex flex-col self-start space-y-1">
-                          <span className="text-sm text-gray-500 transition-colors duration-100 ease-in-out group-hover:text-gray-700">
-                            Next
-                          </span>
-                          <span className="font-semibold text-gray-800 transition-colors duration-100 ease-in-out group-hover:text-gray-900">
-                            {next.resource?.label}
-                          </span>
-                        </div>
-                        <ArrowRightIcon className="flex-none h-4 transition-transform duration-100 ease-in-out transform group-hover:translate-x-1" />
-                      </a>
+                      <div className="flex flex-col self-start space-y-1">
+                        <span className="text-sm text-gray-500 transition-colors duration-100 ease-in-out group-hover:text-gray-700">
+                          Next
+                        </span>
+                        <span className="font-semibold text-gray-800 transition-colors duration-100 ease-in-out group-hover:text-gray-900">
+                          {next.resource?.label}
+                        </span>
+                      </div>
+                      <ArrowRightIcon className="flex-none h-4 transition-transform duration-100 ease-in-out transform group-hover:translate-x-1" />
                     </Link>
                   )}
                 </li>
@@ -456,10 +448,8 @@ export function Base({ children, headings }: BaseProps) {
                     key={slug}
                     className={cx('py-2', { 'ml-4': level === 3 })}
                   >
-                    <Link href={`#${slug}`}>
-                      <a className="text-gray-400 transition-colors duration-100 ease-in-out hover:text-gray-600">
-                        {text}
-                      </a>
+                    <Link href={`#${slug}`} className="text-gray-400 transition-colors duration-100 ease-in-out hover:text-gray-600">
+                      {text}
                     </Link>
                   </li>
                 ))}
