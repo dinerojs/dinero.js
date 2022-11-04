@@ -71,7 +71,7 @@
     "eslint-plugin-sonarjs": "0.15.0",
     "husky": "7.0.4",
     "jest": "27.5.1",
-    "jest-watch-typeahead": "1.0.0",
+    "jest-watch-typeahead": "1.1.0",
     "lerna": "4.0.0",
     "lint-staged": "12.3.7",
     "prettier": "2.7.1",
