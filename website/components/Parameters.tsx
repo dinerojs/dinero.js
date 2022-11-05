@@ -2,18 +2,22 @@ import { InlineCode } from './InlineCode';
 import { Scrollable } from './Scrollable';
 
 type ParametersProps = {
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 };
 
-function isReactElement(element: React.ReactNode): element is React.ReactElement {
+function isReactElement(
+  element: React.ReactNode
+): element is React.ReactElement {
   return (element as React.ReactElement).hasOwnProperty('props');
 }
 
 export function Parameters({ children }: ParametersProps) {
   const items = Array.isArray(children) ? children : [children];
-  const parameters = items.filter((child: React.ReactNode): child is React.ReactElement => {
-    return isReactElement(child) && child.props.mdxType === 'Parameter';
-  });
+  const parameters = items.filter(
+    (child: React.ReactNode): child is React.ReactElement => {
+      return isReactElement(child) && child.props.mdxType === 'Parameter';
+    }
+  );
 
   if (parameters.length > 0) {
     return (
@@ -39,15 +43,15 @@ export function Parameters({ children }: ParametersProps) {
             {parameters.map(({ props }) => (
               <tr key={props.name}>
                 <td className="px-0 py-4 text-sm align-top border-t border-gray-200">
-                  <InlineCode id={`parameter-${props.name}`}>{props.name}</InlineCode>
+                  <InlineCode id={`parameter-${props.name}`}>
+                    {props.name}
+                  </InlineCode>
                 </td>
                 <td className="px-0 py-4 text-sm align-top border-t border-gray-200">
                   <InlineCode>{props.type}</InlineCode>
                 </td>
                 <td className="px-0 py-4 align-top border-t border-gray-200">
-                  <div className="-mt-6">
-                    {props.children}
-                  </div>
+                  <div className="-mt-6">{props.children}</div>
                 </td>
                 <td className="px-0 py-4 align-top border-t border-gray-200">
                   {props.required ? 'Yes' : 'No'}
@@ -64,10 +68,10 @@ export function Parameters({ children }: ParametersProps) {
 }
 
 type ParameterProps = {
-  children: React.ReactNode;
-  name: string;
-  type: string;
-  required: boolean;
+  readonly children: React.ReactNode;
+  readonly name: string;
+  readonly type: string;
+  readonly required: boolean;
 };
 
 export function Parameter({ children }: ParameterProps) {

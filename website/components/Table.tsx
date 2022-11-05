@@ -1,8 +1,8 @@
 import cx from 'classnames';
 
-import { MDXComponentProps } from './MDXComponents';
+import type { MDXComponentProps } from './MDXComponents';
 
-type AlignProps = { align?: 'left' | 'right' };
+type AlignProps = { readonly align?: 'left' | 'right' };
 
 export function CustomTable(
   props: MDXComponentProps<
@@ -27,7 +27,7 @@ export function CustomTableHeaderCell({
   ...props
 }: MDXComponentProps<
   React.ThHTMLAttributes<HTMLTableHeaderCellElement>,
-  HTMLTableHeaderCellElement & AlignProps
+  AlignProps & HTMLTableHeaderCellElement
 >) {
   return (
     <th
@@ -44,7 +44,7 @@ export function CustomTableDataCell({
   ...props
 }: MDXComponentProps<
   React.TdHTMLAttributes<HTMLTableDataCellElement>,
-  HTMLTableDataCellElement & AlignProps
+  AlignProps & HTMLTableDataCellElement
 >) {
   return (
     <td

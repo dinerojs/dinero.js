@@ -6,7 +6,5 @@ export function ExternalLink(props: React.ComponentProps<'a'>) {
 }
 
 export function InternalLink(props: Parameters<typeof Link>[0]) {
-  return (
-    <Link {...props} />
-  );
+  return <Link {...props} />;
 }

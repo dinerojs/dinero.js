@@ -1,24 +1,14 @@
+/* eslint-disable */
+// @ts-nocheck
+import cx from 'classnames';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import reactToText from 'react-to-text';
 import { useCopyToClipboard } from 'react-use';
-import cx from 'classnames';
 
-import {
-  CustomFigure,
-  FullWidthImage,
-  ExternalLink,
-  InternalLink,
-  Alert,
-  AlertProps,
-  Parameters,
-  Panel,
-  Parameter,
-  Scrollable,
-} from '.';
 import { ClipboardCheckIcon, ClipboardIcon, LinkIcon } from './icons';
-import { PanelProps } from './Panel';
 import { InlineCode } from './InlineCode';
+import type { PanelProps } from './Panel';
 import {
   CustomTable,
   CustomTableDataCell,
@@ -27,11 +17,24 @@ import {
   CustomTableRow,
 } from './Table';
 
+import {
+  CustomFigure,
+  FullWidthImage,
+  ExternalLink,
+  InternalLink,
+  Alert,
+  Parameters,
+  Panel,
+  Parameter,
+  Scrollable,
+} from '.';
+import type { AlertProps } from '.';
+
 export type MDXComponentProps<TAttribute, TElement> = React.DetailedHTMLProps<
   TAttribute,
   TElement
 > & {
-  children: React.ReactElement,
+  readonly children: React.ReactElement;
 };
 
 function CustomLink(
@@ -69,17 +72,23 @@ function CustomLink(
 }
 
 function ButtonLink(
-  props: MDXComponentProps<React.HTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>
+  props: MDXComponentProps<
+    React.HTMLAttributes<HTMLAnchorElement>,
+    HTMLAnchorElement
+  >
 ) {
   return (
-    <CustomLink {...props} className="inline-block px-8 py-5 text-gray-600 transition duration-100 ease-in-out rounded-full shadow hover:text-gray-800 bg-gradient-to-b from-white to-gray-50 hover:shadow-lg" />
+    <CustomLink
+      {...props}
+      className="inline-block px-8 py-5 text-gray-600 transition duration-100 ease-in-out rounded-full shadow hover:text-gray-800 bg-gradient-to-b from-white to-gray-50 hover:shadow-lg"
+    />
   );
 }
 
 function CenterBlock(
   props: MDXComponentProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 ) {
-  return <div {...props} className="mt-6 text-center" />
+  return <div {...props} className="mt-6 text-center" />;
 }
 
 function CustomEmphasis(
@@ -187,7 +196,10 @@ function Image({
   }
 
   return (
-    <div className="mt-6 tracking-normal" style={{ wordSpacing: 0, fontSize: 0 }}>
+    <div
+      className="mt-6 tracking-normal"
+      style={{ wordSpacing: 0, fontSize: 0 }}
+    >
       <FullWidthImage alt={alt} src={src} />
     </div>
   );

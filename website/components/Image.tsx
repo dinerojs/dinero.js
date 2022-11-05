@@ -1,11 +1,12 @@
-import Image, { ImageProps } from 'next/image';
+import type { ImageProps } from 'next/image';
+import Image from 'next/image';
 
 type FigureProps = {
-  alt: React.ReactNode;
-  children: React.ReactElement;
+  readonly alt: React.ReactNode;
+  readonly children: React.ReactElement;
 };
 
-type FullWidthImageProps = Pick<ImageProps, 'src' | 'alt'>;
+type FullWidthImageProps = Pick<ImageProps, 'alt' | 'src'>;
 
 export function CustomFigure({ alt, children }: FigureProps) {
   return (
