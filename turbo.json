@@ -41,13 +41,14 @@
     "lint": {
       // A package's `lint` script has no dependencies and
       // can be run whenever. It also has no filesystem outputs.
-      "outputs": []
+      "outputs": [],
+      "inputs": ["**/*.ts", "**/*.js"]
     },
     "deploy": {
       // A package's `deploy` script depends on the `build`,
       // `test`, and `lint` scripts of the same package
       // being completed. It also has no filesystem outputs.
-      "dependsOn": ["build", /* "test", */ "lint"],
+      "dependsOn": ["build", "test", "lint"],
       "outputs": []
     }
   },

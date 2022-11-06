@@ -1,27 +1,21 @@
 {
   "name": "@dinero.js/monorepo",
+  "version": "2.0.0-alpha.9",
   "private": true,
   "license": "MIT",
-  "workspaces": {
-    "packages": [
-      "packages/*",
-      "examples/*"
-    ],
-    "nohoist": [
-      "**/@dinero.js/example-cart-react",
-      "**/@dinero.js/example-cart-react/**",
-      "**/@dinero.js/example-cart-vue",
-      "**/@dinero.js/example-cart-vue/**",
-      "**/@dinero.js/example-pricing-react",
-      "**/@dinero.js/example-pricing-react/**"
-    ]
-  },
+  "workspaces": [
+    "packages/calculator-bigint",
+    "packages/calculator-number",
+    "packages/core",
+    "packages/currencies",
+    "packages/dinero.js"
+  ],
   "scripts": {
-    "build:clean": "lerna run build:clean --no-private",
-    "build:esm": "lerna run build:esm --no-private",
-    "build:types": "lerna run build:types --no-private",
-    "build:umd:cjs": "lerna run build:umd:cjs --no-private",
-    "build": "lerna run build --no-private",
+    "build:clean": "turbo clean",
+    "build:esm": "turbo build:esm",
+    "build:types": "turbo build:types",
+    "build:umd:cjs": "turbo build:umd:cjs",
+    "build": "turbo build",
     "format": "prettier --write .",
     "lint": "eslint --ext .js,.ts .",
     "prepare": "husky install && lerna run prepare --no-private",
@@ -29,7 +23,7 @@
     "start": "yarn run watch",
     "test:size": "bundlesize",
     "test:types": "tsc --noEmit",
-    "test": "lerna run test --no-private",
+    "test": "turbo test",
     "watch": "lerna run watch --parallel --no-private",
     "website:dev": "yarn --cwd website/ dev",
     "website:start": "yarn --cwd website/ start",
@@ -84,6 +78,7 @@
     "rollup-plugin-terser": "7.0.2",
     "shipjs": "0.24.4",
     "ts-node": "10.9.1",
+    "turbo": "^1.6.3",
     "typescript": "4.8.4",
     "watch": "1.0.2"
   }
