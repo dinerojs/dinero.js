@@ -8,6 +8,8 @@ import type { EqualParams } from '@dinero.js/core';
  * @param comparator - The second Dinero object to compare.
  *
  * @returns Whether the Dinero objects are equal.
+ *
+ * @public
  */
 export function equal<TAmount>(
   ...[dineroObject, comparator]: EqualParams<TAmount>

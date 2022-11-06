@@ -4,3 +4,4 @@ node_modules
 website
 **/*.json
 **/*.md
+**/lib

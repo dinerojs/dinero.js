@@ -7,6 +7,8 @@ import type { HasSubUnitsParams } from '@dinero.js/core';
  * @param dineroObject - The Dinero object to check.
  *
  * @returns Whether the Dinero object has minor currency units.
+ *
+ * @public
  */
 export function hasSubUnits<TAmount>(
   ...[dineroObject]: HasSubUnitsParams<TAmount>

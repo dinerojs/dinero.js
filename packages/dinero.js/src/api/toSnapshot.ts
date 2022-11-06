@@ -6,5 +6,7 @@ import { toSnapshot as coreToSnapshot } from '@dinero.js/core';
  * @param dineroObject - The Dinero object to transform.
  *
  * @returns A snapshot of the object.
+ *
+ * @public
  */
 export const toSnapshot = coreToSnapshot;

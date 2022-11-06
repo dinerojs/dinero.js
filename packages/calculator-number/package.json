@@ -33,9 +33,10 @@
     "dist/"
   ],
   "scripts": {
-    "build:clean": "rimraf ./dist",
+    "build:clean": "rimraf ./{dist,temp}",
     "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
-    "build:types": "tsc -p ./tsconfig.declaration.json --outDir ./dist/esm",
+    "build:tsc": "tsc -p ./tsconfig.declaration.json",
+    "build:types": "yarn run build:tsc && api-extractor run --local --verbose",
     "build:umd:cjs": "rollup --config",
     "build": "yarn build:clean && yarn build:umd:cjs && yarn build:esm && yarn build:types",
     "on:change": "concurrently \"yarn build:esm\" \"yarn build:types\"",

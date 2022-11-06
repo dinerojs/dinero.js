@@ -8,6 +8,8 @@ import type { GreaterThanOrEqualParams } from '@dinero.js/core';
  * @param comparator - The Dinero object to compare to.
  *
  * @returns Whether the Dinero to compare is greater than or equal the other.
+ *
+ * @public
  */
 export function greaterThanOrEqual<TAmount>(
   ...[dineroObject, comparator]: GreaterThanOrEqualParams<TAmount>

@@ -7,6 +7,8 @@ import type { TrimScaleParams } from '@dinero.js/core';
  * @param dineroObject - The Dinero object which scale to trim.
  *
  * @returns A new Dinero object.
+ *
+ * @public
  */
 export function trimScale<TAmount>(
   ...[dineroObject]: TrimScaleParams<TAmount>

@@ -8,6 +8,8 @@ import type { LessThanOrEqualParams } from '@dinero.js/core';
  * @param comparator - The Dinero object to compare to.
  *
  * @returns Whether the Dinero to compare is lesser than or equal to the other.
+ *
+ * @public
  */
 export function lessThanOrEqual<TAmount>(
   ...[dineroObject, comparator]: LessThanOrEqualParams<TAmount>

@@ -8,6 +8,8 @@ import type { AddParams } from '@dinero.js/core';
  * @param addend - The Dinero object to add.
  *
  * @returns A new Dinero object.
+ *
+ * @public
  */
 export function add<TAmount>(...[augend, addend]: AddParams<TAmount>) {
   const { calculator } = augend;
