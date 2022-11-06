@@ -36,7 +36,7 @@
     "build:clean": "rimraf ./{dist,temp}",
     "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
     "build:tsc": "tsc -b",
-    "build:types": "yarn run build:tsc && api-extractor run --local",
+    "build:types": "api-extractor run --local --verbose",
     "build:umd:cjs": "rollup --config",
     "lint": "eslint --config ../../.eslintrc.js --ignore-path ../../.eslintignore --ext .js,.ts .",
     "on:change": "concurrently \"yarn build:esm\" \"yarn build:types\"",
