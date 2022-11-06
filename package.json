@@ -8,7 +8,11 @@
     "packages/calculator-number",
     "packages/core",
     "packages/currencies",
-    "packages/dinero.js"
+    "packages/dinero.js",
+    "examples/cart-react",
+    "examples/cart-vue",
+    "examples/pricing-react",
+    "examples/starter"
   ],
   "scripts": {
     "build:clean": "turbo clean",
@@ -17,8 +21,8 @@
     "build:umd:cjs": "turbo build:umd:cjs",
     "build": "turbo build",
     "format": "prettier --write .",
-    "lint": "eslint --ext .js,.ts .",
-    "prepare": "husky install && lerna run prepare --no-private",
+    "lint": "turbo lint",
+    "prepare": "husky install && turbo run deploy",
     "release": "shipjs prepare",
     "start": "yarn run watch",
     "test:size": "bundlesize",
