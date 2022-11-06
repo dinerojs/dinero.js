@@ -19,7 +19,7 @@ yarn add dinero.js@alpha
 `Dinero` objects are minimal. Every function in `dinero.js` is side-effect free, allowing you only to bundle exactly what you use.
 
 ```js
-import { USD } from '@dinero.js/currencies';
+import { USD } from '@dinero.js/currencies-number';
 import { dinero, add } from 'dinero.js';
 
 const d1 = dinero({ amount: 500, currency: USD });

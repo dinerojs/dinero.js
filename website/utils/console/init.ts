@@ -22,9 +22,9 @@ export async function init(dirtyVersion: string = lerna.version) {
       return;
     }
 
-    window._ = { ...window.dinero.js, ...window['@dinero.js/currencies'] };
+    window._ = { ...window.dinero.js, ...window['@dinero.js/currencies-number'] };
     delete window.dinero;
-    delete window['@dinero.js/currencies'];
+    delete window['@dinero.js/currencies-number'];
 
     console.log(...instructions);
   } else {

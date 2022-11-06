@@ -9,7 +9,7 @@ If you want to send a Dinero object over the network or save it into some storag
 
 ```js
 import { dinero, toSnapshot } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from '@dinero.js/currencies-number';
 
 const price = dinero({ amount: 500, currency: USD });
 
@@ -32,7 +32,7 @@ You can use snapshots with any API that accepts serializable data types.
 
 ```js
 import { dinero, toSnapshot } from 'dinero.js';
-import { EUR } from '@dinero.js/currencies';
+import { EUR } from '@dinero.js/currencies-number';
 import axios from 'axios';
 
 const price = dinero({ amount: 6999, currency: EUR });
@@ -50,7 +50,7 @@ If you want to serialize a Dinero object into JSON, you can directly call [JSON.
 
 ```js
 import { dinero } from 'dinero.js';
-import { EUR } from '@dinero.js/currencies';
+import { EUR } from '@dinero.js/currencies-number';
 
 const product = {
   name: 'Mass Effect: Legendary Edition',
@@ -96,7 +96,7 @@ When serializing, make sure to pass a [custom replacer](https://developer.mozill
 ```js
 import { calculator } from '@dinero.js/calculator-bigint';
 import { createDinero } from 'dinero.js';
-import { EUR } from '@dinero.js/currencies';
+import { EUR } from '@dinero.js/currencies-number';
 
 const dineroBigint = createDinero({ calculator });
 

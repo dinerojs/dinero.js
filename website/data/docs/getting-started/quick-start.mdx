@@ -50,10 +50,10 @@ Then import it in your project:
 
 ```js
 // ES import
-import { USD } from '@dinero.js/currencies';
+import { USD } from '@dinero.js/currencies-number';
 
 // Node.js
-const { USD } = require('@dinero.js/currencies');
+const { USD } = require('@dinero.js/currencies-number');
 ```
 
 If you don’t use a package manager, you can use the HTML `script` element:
@@ -61,7 +61,7 @@ If you don’t use a package manager, you can use the HTML `script` element:
 ```bash
 <script src="https://cdn.jsdelivr.net/npm/@dinero.js/currencies@alpha/dist/umd/index.production.js"></script>
 <script>
-  const { USD } = window['@dinero.js/currencies'];
+  const { USD } = window['@dinero.js/currencies-number'];
 </script>
 ```
 
@@ -93,7 +93,7 @@ You can add or subtract any amount you want, by passing it another Dinero object
 
 ```js
 import { dinero, add, subtract } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from '@dinero.js/currencies-number';
 
 const price = dinero({ amount: 5000, currency: USD });
 
@@ -114,7 +114,7 @@ You can ask all kinds of questions to your Dinero objects.
 
 ```js
 import { dinero, equal, isZero, hasSubUnits } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from '@dinero.js/currencies-number';
 
 const d1 = dinero({ amount: 500, currency: USD });
 const d2 = dinero({ amount: 500, currency: USD });
@@ -131,7 +131,7 @@ You can display Dinero objects into any format, exactly the way you want. Dinero
 
 ```js
 import { dinero, toFormat } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from '@dinero.js/currencies-number';
 
 const transformer = ({ amount, currency }) => `${currency.code} ${amount}`;
 

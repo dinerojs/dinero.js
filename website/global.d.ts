@@ -5,5 +5,5 @@ interface Window {
   _: any;
   init: any;
   dinero: any;
-  '@dinero.js/currencies': any;
+  '@dinero.js/currencies-number': any;
 }

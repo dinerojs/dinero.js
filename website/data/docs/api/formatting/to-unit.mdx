@@ -46,7 +46,7 @@ The rounding function to use.
 
 ```js
 import { dinero, toUnit } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from '@dinero.js/currencies-number';
 
 const d = dinero({ amount: 1050, currency: USD });
 
@@ -57,7 +57,7 @@ toUnit(d); // 10.5
 
 ```js
 import { dinero, toUnit } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from '@dinero.js/currencies-number';
 
 const d = dinero({ amount: 10545, currency: USD, scale: 3 });
 
@@ -68,7 +68,7 @@ toUnit(d); // 10.545
 
 ```js
 import { dinero, toUnit, down } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from '@dinero.js/currencies-number';
 
 const d = dinero({ amount: 1055, currency: USD });
 

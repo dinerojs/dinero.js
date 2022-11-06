@@ -24,7 +24,7 @@ The Dinero object to trim.
 
 ```js
 import { dinero, trimScale } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from '@dinero.js/currencies-number';
 
 const d = dinero({ amount: 500000, currency: USD, scale: 5 });
 
@@ -35,7 +35,7 @@ trimScale(d); // a Dinero object with amount 500 and scale 2
 
 ```js
 import { dinero, trimScale } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from '@dinero.js/currencies-number';
 
 const d = dinero({ amount: 99950, currency: USD, scale: 4 });
 

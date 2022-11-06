@@ -1,4 +1,4 @@
-import { EUR, USD } from '@dinero.js/currencies';
+import { EUR, USD } from '@dinero.js/currencies-number';
 import Big from 'big.js';
 
 import { minimum, toSnapshot } from '..';

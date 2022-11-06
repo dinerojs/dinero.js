@@ -988,6 +988,11 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@dinero.js/currencies@2.0.0-alpha.9":
+  version "2.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/@dinero.js/currencies/-/currencies-2.0.0-alpha.9.tgz#dcdaf11e96998cd53c3d8064457d348610f9b134"
+  integrity sha512-TUI/feKxW7CUfpiyw0cpNh6KiyeiguyUONPp6cAs9zdzWS2V+ahk6qxCaSk9CaSu2UUP6SF9cpWgXmikJ3p7YQ==
+
 "@es-joy/jsdoccomment@~0.36.0":
   version "0.36.0"
   resolved "https://registry.yarnpkg.com/@es-joy/jsdoccomment/-/jsdoccomment-0.36.0.tgz#e3898aad334281a10ceb3c0ec406297a79f2b043"

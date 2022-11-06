@@ -1,5 +1,5 @@
 /* eslint-disable functional/no-expression-statement, no-console */
-import { USD } from '@dinero.js/currencies';
+import { USD } from '@dinero.js/currencies-number';
 import { dinero, toFormat, toSnapshot } from 'dinero.js';
 
 const transformer = (props) => `${props.currency.code} ${props.amount}`;

@@ -1,7 +1,7 @@
 {
-  "name": "@dinero.js/currencies",
+  "name": "@dinero.js/currencies-number",
   "version": "2.0.0-alpha.9",
-  "description": "Common currency implementations for Dinero.js",
+  "description": "Common currency implementations for Dinero.js for JavaScript number",
   "keywords": [
     "money",
     "monetary",

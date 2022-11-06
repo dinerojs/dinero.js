@@ -173,7 +173,7 @@ An immutable library is safer and more predictable. Mutable operations and refer
 ```js
 import { ref, computed } from 'vue';
 import { dinero, allocate } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from '@dinero.js/currencies-number';
 
 export default {
   setup() {
@@ -213,7 +213,7 @@ The API lets you quickly compose new functions that make sense in your applicati
 
 ```js
 import { dinero, add } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from '@dinero.js/currencies-number';
 
 const dollars = (amount) => dinero({ amount, currency: USD });
 const addMany = (addends) => addends.reduce(add);

@@ -11,7 +11,7 @@
     "vite": "^2.4.2"
   },
   "dependencies": {
-    "@dinero.js/currencies": "2.0.0-alpha.9",
+    "@dinero.js/currencies-number": "2.0.0-alpha.9",
     "dinero.js": "2.0.0-alpha.9"
   }
 }
