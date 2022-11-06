@@ -1,0 +1,9 @@
+{
+  "extends": "../../../tsconfig",
+  "references": [
+    { "path": "../../../../core" },
+    { "path": "../../../../currencies" },
+    { "path": "../../../../../test" }
+  ],
+  "exclude": []
+}

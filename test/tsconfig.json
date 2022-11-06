@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.test",
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    { "path": "../packages/dinero.js" },
+    { "path": "../packages/calculator-bigint" }
+  ],
+  "include": ["utils"]
+}

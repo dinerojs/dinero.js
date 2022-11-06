@@ -1,14 +1,14 @@
 import { EUR, USD, MGA } from '@dinero.js/currencies';
-import Big from 'big.js';
-
-import { compare } from '..';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from '../../../../../test/utils';
+} from '@dinero.js/test';
+import Big from 'big.js';
+
+import { compare } from '..';
 
 describe('compare', () => {
   describe('number', () => {

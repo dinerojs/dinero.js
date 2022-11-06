@@ -1,14 +1,14 @@
 import { USD } from '@dinero.js/currencies';
-import Big from 'big.js';
-
-import { toSnapshot } from '..';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from '../../../../../test/utils';
+} from '@dinero.js/test';
+import Big from 'big.js';
+
+import { toSnapshot } from '..';
 
 describe('toSnapshot', () => {
   describe('number', () => {

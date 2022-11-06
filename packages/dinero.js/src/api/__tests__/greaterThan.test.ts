@@ -1,14 +1,14 @@
 import { EUR, MGA, USD } from '@dinero.js/currencies';
-import Big from 'big.js';
-
-import { greaterThan } from '..';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from '../../../../../test/utils';
+} from '@dinero.js/test';
+import Big from 'big.js';
+
+import { greaterThan } from '..';
 
 describe('greaterThan', () => {
   describe('number', () => {

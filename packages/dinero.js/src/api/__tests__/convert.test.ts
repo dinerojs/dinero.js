@@ -1,14 +1,14 @@
 import { EUR, IQD, USD, MGA, MRU } from '@dinero.js/currencies';
-import Big from 'big.js';
-
-import { convert, toSnapshot } from '..';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from '../../../../../test/utils';
+} from '@dinero.js/test';
+import Big from 'big.js';
+
+import { convert, toSnapshot } from '..';
 
 describe('convert', () => {
   describe('number', () => {
