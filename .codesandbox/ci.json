@@ -3,7 +3,7 @@
     "packages/calculator-bigint",
     "packages/calculator-number",
     "packages/core",
-    "packages/currencies",
+    "packages/currencies-number",
     "packages/dinero.js"
   ],
   "buildCommand": false,
