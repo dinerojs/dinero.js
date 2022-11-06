@@ -13,7 +13,16 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ESNEXT"
+    "target": "ESNEXT",
+    "baseUrl": "./",
+    "paths": {
+      "dinero.js": ["packages/dinero.js/src/index"],
+      "@dinero.js/core": ["packages/core/src/index"],
+      "@dinero.js/currencies": ["packages/currencies/src/index"],
+      "@dinero.js/calculator-bigint": ["packages/calculator-bigint/src/index"],
+      "@dinero.js/calculator-number": ["packages/calculator-number/src/index"],
+      "@dinero.js/test": ["test/utils/index.ts"]
+    }
   },
   "exclude": [
     "**/__fixtures__/**/*",
