@@ -1,4 +1,4 @@
-titleAndCommits: true
+titleOnly: true
 allowMergeCommits: false
 allowRevertCommits: false
 types:
