@@ -1,4 +1,4 @@
-import { MDXComponentProps } from './MDXComponents';
+import type { MDXComponentProps } from './MDXComponents';
 
 export function Scrollable(
   props: MDXComponentProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>

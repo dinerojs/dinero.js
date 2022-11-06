@@ -1,42 +1,45 @@
+/* eslint-disable */
+// @ts-nocheck
 import fs from 'fs';
 import path from 'path';
-import { GetStaticPaths, GetStaticProps } from 'next';
+
+import junk from 'junk';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { MDXRemote } from 'next-mdx-remote';
+import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import { useEffect } from 'react';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { NextSeo } from 'next-seo';
-import junk from 'junk';
 
-import { Base } from '../../layouts';
-import {
-  getHeadings,
-  getFiles,
-  getFileBySlug,
-  Heading,
-  getBundleSize,
-  Bundle,
-} from '../../utils';
-import { ArrowNarrowRightIcon, PencilIcon } from '../../components/icons';
 import {
   ExternalLink,
   InlineCode,
   BundleSizeTable as InnerBundleSizeTable,
   BundleSize as InnerBundleSize,
 } from '../../components';
+import { ArrowNarrowRightIcon, PencilIcon } from '../../components/icons';
+import { Base } from '../../layouts';
+import type { Heading, Bundle } from '../../utils';
+import {
+  getHeadings,
+  getFiles,
+  getFileBySlug,
+  getBundleSize,
+} from '../../utils';
 import { init, intro } from '../../utils/console';
 import { title } from '../_app';
 
 type PageProps = {
-  headings: Heading[];
-  mdxSource: MDXRemoteSerializeResult;
-  filePath: string[];
-  bundleSize: Array<Bundle>;
-  frontMatter:
+  readonly headings: readonly Heading[];
+  readonly mdxSource: MDXRemoteSerializeResult;
+  readonly filePath: readonly string[];
+  readonly bundleSize: readonly Bundle[];
+  readonly frontMatter:
     | {
-        slug: string[];
-        title: string;
-        description: string;
-        returns?: string;
+        readonly slug: readonly string[];
+        readonly title: string;
+        readonly description: string;
+        readonly returns?: string;
       }
     | undefined;
 };
@@ -107,6 +110,7 @@ export default function Docs({
         </div>
         <MDXRemote
           {...mdxSource}
+          // @ts-expect-error
           components={{ BundleSizeTable, BundleSize }}
         />
       </>

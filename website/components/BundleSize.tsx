@@ -1,3 +1,7 @@
+/* eslint-disable */
+import type { Bundle } from '../utils';
+
+import { InlineCode } from './InlineCode';
 import {
   CustomTable,
   CustomTableDataCell,
@@ -5,17 +9,15 @@ import {
   CustomTableHeaderCell,
   CustomTableRow,
 } from './Table';
-import { InlineCode } from './InlineCode';
-import { Bundle } from '../utils';
 
 type BundleSizeTableProps = {
-  bundles: Array<Bundle>;
+  readonly bundles: readonly Bundle[];
 };
 
 type BundleSizeProps = {
-  bundles: Array<Bundle>;
-  pkg: string;
-  version: Exclude<keyof Bundle, 'pkg' | 'name'>;
+  readonly bundles: readonly Bundle[];
+  readonly pkg: string;
+  readonly version: Exclude<keyof Bundle, 'name' | 'pkg'>;
 };
 
 function toKilobytes(sizeinBytes: number) {
@@ -59,39 +61,42 @@ export function BundleSizeTable({ bundles }: BundleSizeTableProps) {
           </CustomTableRow>
         </CustomTableHeader>
         <tbody>
-          {bundles.slice().reverse().map(({ name, development, minified, gzip, brotli }) => {
-            return (
-              <CustomTableRow key={name}>
-                <>
-                  <CustomTableDataCell>
-                    <InlineCode>
-                      <>{name}</>
-                    </InlineCode>
-                  </CustomTableDataCell>
-                  <CustomTableDataCell align="right">
-                    <span className="pl-8 whitespace-nowrap">
-                      {toKilobytes(development).toFixed(1)} KB
-                    </span>
-                  </CustomTableDataCell>
-                  <CustomTableDataCell align="right">
-                    <span className="pl-8 whitespace-nowrap">
-                      {toKilobytes(minified).toFixed(1)} KB
-                    </span>
-                  </CustomTableDataCell>
-                  <CustomTableDataCell align="right">
-                    <span className="pl-8 whitespace-nowrap">
-                      {toKilobytes(gzip).toFixed(1)} KB
-                    </span>
-                  </CustomTableDataCell>
-                  <CustomTableDataCell align="right">
-                    <span className="pl-8 whitespace-nowrap">
-                      {toKilobytes(brotli).toFixed(1)} KB
-                    </span>
-                  </CustomTableDataCell>
-                </>
-              </CustomTableRow>
-            );
-          })}
+          {bundles
+            .slice()
+            .reverse()
+            .map(({ name, development, minified, gzip, brotli }) => {
+              return (
+                <CustomTableRow key={name}>
+                  <>
+                    <CustomTableDataCell>
+                      <InlineCode>
+                        <>{name}</>
+                      </InlineCode>
+                    </CustomTableDataCell>
+                    <CustomTableDataCell align="right">
+                      <span className="pl-8 whitespace-nowrap">
+                        {toKilobytes(development).toFixed(1)} KB
+                      </span>
+                    </CustomTableDataCell>
+                    <CustomTableDataCell align="right">
+                      <span className="pl-8 whitespace-nowrap">
+                        {toKilobytes(minified).toFixed(1)} KB
+                      </span>
+                    </CustomTableDataCell>
+                    <CustomTableDataCell align="right">
+                      <span className="pl-8 whitespace-nowrap">
+                        {toKilobytes(gzip).toFixed(1)} KB
+                      </span>
+                    </CustomTableDataCell>
+                    <CustomTableDataCell align="right">
+                      <span className="pl-8 whitespace-nowrap">
+                        {toKilobytes(brotli).toFixed(1)} KB
+                      </span>
+                    </CustomTableDataCell>
+                  </>
+                </CustomTableRow>
+              );
+            })}
         </tbody>
       </>
     </CustomTable>

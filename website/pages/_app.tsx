@@ -1,14 +1,15 @@
-import type { AppProps } from 'next/app';
 import { MDXProvider } from '@mdx-js/react';
 import { NextSeo } from 'next-seo';
+import type { AppProps } from 'next/app';
 
 import 'tailwindcss/tailwind.css';
-import '../styles.css'
+import '../styles.css';
 
 import { MDXComponents } from '../components';
 
 export const title = 'Dinero.js';
-const description = 'Create, calculate, and format money in JavaScript and TypeScript.';
+const description =
+  'Create, calculate, and format money in JavaScript and TypeScript.';
 const twitter = '@frontstuff_io';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -28,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               width: 2400,
               height: 1200,
               alt: `${description} | ${title}`,
-            }
+            },
           ],
           site_name: title,
         }}
