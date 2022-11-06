@@ -1,5 +1,6 @@
 export * from './BinaryOperation';
 export * from './Calculator';
+export * from './Currency';
 export * from './Dinero';
 export * from './DineroFactory';
 export * from './DineroOptions';

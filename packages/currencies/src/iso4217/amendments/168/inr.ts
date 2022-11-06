@@ -1,4 +1,4 @@
-import type { Currency } from '../../../types';
+import type { Currency } from '@dinero.js/core';
 
 /**
  * Indian rupee.

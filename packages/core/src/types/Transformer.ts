@@ -1,5 +1,4 @@
-import type { Currency } from '@dinero.js/currencies';
-
+import type { Currency } from './Currency';
 import type { Dinero } from './Dinero';
 
 export type TransformerOptions<TAmount> = {
