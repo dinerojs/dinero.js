@@ -1,21 +1,17 @@
+import base from './jest.base';
+
 export default {
-  clearMocks: true,
-  coverageDirectory: 'coverage',
-  testEnvironment: 'node',
-  rootDir: process.cwd(),
-  testPathIgnorePatterns: ['node_modules/', 'dist/'],
-  coveragePathIgnorePatterns: ['node_modules/', 'dist/', 'test/'],
-  watchPlugins: [
-    'jest-watch-typeahead/filename',
-    'jest-watch-typeahead/testname',
-  ],
-  globals: {
-    __DEV__: true,
-    __TEST__: true,
-  },
+  ...base,
   moduleNameMapper: {
     '^test-utils$': '<rootDir>/test/utils/',
     '^@dinero.js/(.*)$': '<rootDir>/packages/$1/src/',
     '^dinero.js$': '<rootDir>/packages/dinero.js/src/',
   },
+  projects: [
+    '<rootDir>/packages/calculator-bigint/jest.config.ts',
+    '<rootDir>/packages/calculator-number/jest.config.ts',
+    '<rootDir>/packages/core/jest.config.ts',
+    '<rootDir>/packages/currencies/jest.config.ts',
+    '<rootDir>/packages/dinero.js/jest.config.ts',
+  ],
 };
