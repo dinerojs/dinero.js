@@ -19,7 +19,7 @@ import {
   GitHubIcon,
   MenuIcon,
 } from '../components/icons';
-import lerna from '../../lerna.json';
+import pkg from '../../package.json';
 
 type SidebarItemProps = {
   node: Sitemap;
@@ -228,7 +228,7 @@ export function Base({ children, headings }: BaseProps) {
 
   const sites = {
     v2: {
-      label: `v${lerna.version}`,
+      label: `v${pkg.version}`,
       url: 'https://v2.dinerojs.com/',
     },
     v1: {
@@ -278,7 +278,7 @@ export function Base({ children, headings }: BaseProps) {
       <div className="sticky top-0 z-20">
         <div className="relative z-30 px-4 py-2 text-xs text-center bg-blue-400 text-blue-50 sm:text-sm">
           <span className="hidden md:inline">
-            You're browsing the documentation for v{lerna.version}. Things might
+            You're browsing the documentation for v{pkg.version}. Things might
             break!
           </span>{' '}
           <ExternalLink
