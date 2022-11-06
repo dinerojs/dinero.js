@@ -28,6 +28,7 @@
     "test:size": "bundlesize",
     "test:types": "tsc --noEmit",
     "test": "turbo test",
+    "test:ci": "turbo test -- --maxWorkers=4",
     "watch": "lerna run watch --parallel --no-private",
     "website:dev": "yarn --cwd website/ dev",
     "website:start": "yarn --cwd website/ start",
