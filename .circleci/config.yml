@@ -18,22 +18,45 @@ aliases:
   - &run_yarn_install
     name: Install dependencies
     command: yarn install --frozen-lockfile --ignore-scripts
-  - &restore_dist_folders
-    name: Restore dist folders
+  - &restore_build_folders
+    name: Restore build folders
+    command: |
+      set -xu
+
+      cp -R /tmp/workspace/packages/calculator-bigint/{dist,lib} packages/calculator-bigint
+      cp -R /tmp/workspace/packages/calculator-number/{dist,lib} packages/calculator-number
+      cp -R /tmp/workspace/packages/core/{dist,lib} packages/core
+      cp -R /tmp/workspace/packages/currencies/{dist,lib} packages/currencies
+      cp -R /tmp/workspace/packages/dinero.js/{dist,lib} packages/dinero.js
+  - &save_build_folders
+    name: Save build folders
     command: |
       set -exu
 
-      mkdir -p packages/calculator-bigint/dist
-      mkdir -p packages/calculator-number/dist
-      mkdir -p packages/core/dist
-      mkdir -p packages/currencies/dist
-      mkdir -p packages/dinero.js/dist
+      mkdir -p /tmp/workspace/packages/{calculator-bigint,calculator-number,core,currencies,dinero.js}
 
-      cp -R /tmp/workspace/packages/calculator-bigint/dist packages/calculator-bigint
-      cp -R /tmp/workspace/packages/calculator-number/dist packages/calculator-number
-      cp -R /tmp/workspace/packages/core/dist packages/core
-      cp -R /tmp/workspace/packages/currencies/dist packages/currencies
-      cp -R /tmp/workspace/packages/dinero.js/dist packages/dinero.js
+      cp -R packages/calculator-bigint/{dist,lib} /tmp/workspace/packages/calculator-bigint
+      cp -R packages/calculator-number/{dist,lib} /tmp/workspace/packages/calculator-number
+      cp -R packages/core/{dist,lib} /tmp/workspace/packages/core
+      cp -R packages/currencies/{dist,lib} /tmp/workspace/packages/currencies
+      cp -R packages/dinero.js/{dist,lib} /tmp/workspace/packages/dinero.js
+  - &restore_turbo_cache
+    name: Restore turbo cache
+    command: |
+      set -xu
+
+      mkdir -p node_modules/.cache/turbo
+      mkdir -p /tmp/workspace/node_modules/.cache/turbo
+
+      cp -R /tmp/workspace/node_modules/.cache/turbo node_modules/.cache
+  - &save_turbo_cache
+    name: Save turbo cache
+    command: |
+      set -exu
+
+      mkdir -p /tmp/workspace/node_modules/.cache/turbo
+
+      cp -R node_modules/.cache/turbo /tmp/workspace/node_modules/.cache
 
 defaults: &defaults
   working_directory: ~/dinero.js
@@ -55,29 +78,17 @@ jobs:
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
       - save_cache: *save_yarn_cache
+      - run: *restore_turbo_cache
       - run:
           name: Build
           command: yarn run build
-      - run:
-          name: Move dist folders to workspace
-          command: |
-            set -exu
-
-            mkdir -p /tmp/workspace/packages/calculator-bigint/dist
-            mkdir -p /tmp/workspace/packages/calculator-number/dist
-            mkdir -p /tmp/workspace/packages/core/dist
-            mkdir -p /tmp/workspace/packages/currencies/dist
-            mkdir -p /tmp/workspace/packages/dinero.js/dist
-
-            cp -R packages/calculator-bigint/dist /tmp/workspace/packages/calculator-bigint
-            cp -R packages/calculator-number/dist /tmp/workspace/packages/calculator-number
-            cp -R packages/core/dist /tmp/workspace/packages/core
-            cp -R packages/currencies/dist /tmp/workspace/packages/currencies
-            cp -R packages/dinero.js/dist /tmp/workspace/packages/dinero.js
+      - run: *save_build_folders
+      - run: *save_turbo_cache
       - persist_to_workspace:
           root: *workspace_root
           paths:
             - packages
+            - node_modules/.cache/turbo
   test_lint:
     <<: *defaults
     steps:
@@ -87,10 +98,17 @@ jobs:
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
       - save_cache: *save_yarn_cache
-      - run: *restore_dist_folders
+      - run: *restore_build_folders
+      - run: *restore_turbo_cache
       - run:
           name: Linting
           command: yarn run lint
+      - run: *save_turbo_cache
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - packages
+            - node_modules/.cache/turbo
   test_types:
     <<: *defaults
     steps:
@@ -111,10 +129,17 @@ jobs:
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
       - save_cache: *save_yarn_cache
-      - run: *restore_dist_folders
+      - run: *restore_build_folders
+      - run: *restore_turbo_cache
       - run:
           name: Unit tests
           command: yarn run test:ci
+      - run: *save_turbo_cache
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - packages
+            - node_modules/.cache/turbo
   test_size:
     <<: *defaults
     steps:
@@ -124,10 +149,11 @@ jobs:
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
       - save_cache: *save_yarn_cache
-      - run: *restore_dist_folders
+      - run: *restore_build_folders
       - run:
           name: Test packages size
           command: yarn run test:size
+      - run: *save_turbo_cache
   release:
     <<: *defaults
     steps:
@@ -137,7 +163,8 @@ jobs:
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
       - save_cache: *save_yarn_cache
-      - run: *restore_dist_folders
+      - run: *restore_build_folders
+      - run: *restore_turbo_cache
       - run:
           name: Release if needed
           command: yarn run shipjs trigger
