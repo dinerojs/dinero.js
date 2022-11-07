@@ -1,12 +1,12 @@
 import { EUR, MGA, USD } from '@dinero.js/currencies';
+import Big from 'big.js';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from '@dinero.js/test';
-import Big from 'big.js';
+} from 'test-utils';
 
 import { equal } from '..';
 
