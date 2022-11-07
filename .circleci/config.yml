@@ -46,7 +46,6 @@ aliases:
       set -xu
 
       mkdir -p node_modules/.cache/turbo
-      mkdir -p /tmp/workspace/node_modules/.cache/turbo
 
       cp -R /tmp/workspace/node_modules/.cache/turbo node_modules/.cache
   - &save_turbo_cache
@@ -79,6 +78,7 @@ jobs:
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
       - save_cache: *save_yarn_cache
+      - run: *restore_build_folders
       - run: *restore_turbo_cache
       - run:
           name: Build
@@ -120,6 +120,7 @@ jobs:
       - run: *run_yarn_install
       - save_cache: *save_yarn_cache
       - run: *restore_build_folders
+      - run: *restore_turbo_cache
       - run:
           name: Type checking
           command: yarn run test:types
@@ -156,7 +157,6 @@ jobs:
       - run:
           name: Test packages size
           command: yarn run test:size
-      - run: *save_turbo_cache
   release:
     <<: *defaults
     steps:
