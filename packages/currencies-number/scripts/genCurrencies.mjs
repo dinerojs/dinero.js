@@ -49,7 +49,7 @@ async function genCurrencies() {
       ''
     );
 
-  fs.promises.writeFile(
+  await fs.promises.writeFile(
     path.join(outputPath, 'index.ts'),
     format(indexModuleText, { ...options, parser: 'babel' })
   );
