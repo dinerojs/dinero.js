@@ -74,6 +74,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - *attach_workspace
       - run: *install_yarn_version
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
@@ -113,10 +114,12 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - *attach_workspace
       - run: *install_yarn_version
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
       - save_cache: *save_yarn_cache
+      - run: *restore_build_folders
       - run:
           name: Type checking
           command: yarn run test:types
@@ -177,7 +180,9 @@ workflows:
       - test_lint:
           requires:
             - build
-      - test_types
+      - test_types:
+          requires:
+            - build
       - test_unit:
           requires:
             - build
