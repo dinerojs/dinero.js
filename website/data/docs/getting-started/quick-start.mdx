@@ -36,14 +36,14 @@ If you don’t use a package manager, you can use the HTML `script` element:
 
 ### Install currencies
 
-The Dinero.js library provides the `@dinero.js/currencies` package so you can have access to currency objects out of the box.
+The Dinero.js library provides the `@dinero.js/currencies-number` package so you can have access to currency objects out of the box.
 
 ```bash
-npm install @dinero.js/currencies@alpha
+npm install @dinero.js/currencies-number@alpha
 
 # or
 
-yarn add @dinero.js/currencies@alpha
+yarn add @dinero.js/currencies-number@alpha
 ```
 
 Then import it in your project:
@@ -59,7 +59,7 @@ const { USD } = require('@dinero.js/currencies-number');
 If you don’t use a package manager, you can use the HTML `script` element:
 
 ```bash
-<script src="https://cdn.jsdelivr.net/npm/@dinero.js/currencies@alpha/dist/umd/index.production.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@dinero.js/currencies-number@alpha/dist/umd/index.production.js"></script>
 <script>
   const { USD } = window['@dinero.js/currencies-number'];
 </script>

@@ -2,6 +2,8 @@ import type { Currency } from '@dinero.js/core';
 
 /**
  * Macedonian denar.
+ *
+ * @public
  */
 export const MKD: Currency<number> = {
   code: 'MKD',

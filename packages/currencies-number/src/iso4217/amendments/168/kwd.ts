@@ -2,6 +2,8 @@ import type { Currency } from '@dinero.js/core';
 
 /**
  * Kuwaiti dinar.
+ *
+ * @public
  */
 export const KWD: Currency<number> = {
   code: 'KWD',

@@ -13,7 +13,7 @@
       "maxSize": "3.55 KB"
     },
     {
-      "path": "packages/currencies/dist/umd/index.production.js",
+      "path": "packages/currencies-number/dist/umd/index.production.js",
       "maxSize": "1.65 KB"
     },
     {

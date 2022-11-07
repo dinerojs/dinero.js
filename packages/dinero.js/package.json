@@ -46,6 +46,6 @@
   "dependencies": {
     "@dinero.js/calculator-number": "2.0.0-alpha.9",
     "@dinero.js/core": "2.0.0-alpha.9",
-    "@dinero.js/currencies": "2.0.0-alpha.9"
+    "@dinero.js/currencies-number": "2.0.0-alpha.9"
   }
 }

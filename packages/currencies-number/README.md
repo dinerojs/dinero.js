@@ -1,4 +1,4 @@
-# @dinero.js/currencies
+# @dinero.js/currencies-number
 
 > ISO 4217 currency implementations for Dinero.js.
 
@@ -9,11 +9,11 @@ This package only contains `number` implementations. You can reuse and adapt the
 ## 📦 Install
 
 ```sh
-npm install @dinero.js/currencies@alpha
+npm install @dinero.js/currencies-number@alpha
 
 # or
 
-yarn add @dinero.js/currencies@alpha
+yarn add @dinero.js/currencies-number@alpha
 ```
 
 ## 📚 Documentation

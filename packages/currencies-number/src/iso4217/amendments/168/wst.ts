@@ -2,6 +2,8 @@ import type { Currency } from '@dinero.js/core';
 
 /**
  * Samoan tālā.
+ *
+ * @public
  */
 export const WST: Currency<number> = {
   code: 'WST',

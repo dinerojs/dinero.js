@@ -2,6 +2,8 @@ import type { Currency } from '@dinero.js/core';
 
 /**
  * Bangladeshi taka.
+ *
+ * @public
  */
 export const BDT: Currency<number> = {
   code: 'BDT',

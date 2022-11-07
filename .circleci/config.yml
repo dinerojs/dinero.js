@@ -26,13 +26,13 @@ aliases:
       mkdir -p packages/calculator-bigint/dist
       mkdir -p packages/calculator-number/dist
       mkdir -p packages/core/dist
-      mkdir -p packages/currencies/dist
+      mkdir -p packages/currencies-number/dist
       mkdir -p packages/dinero.js/dist
 
       cp -R /tmp/workspace/packages/calculator-bigint/dist packages/calculator-bigint
       cp -R /tmp/workspace/packages/calculator-number/dist packages/calculator-number
       cp -R /tmp/workspace/packages/core/dist packages/core
-      cp -R /tmp/workspace/packages/currencies/dist packages/currencies
+      cp -R /tmp/workspace/packages/currencies-number/dist packages/currencies-number
       cp -R /tmp/workspace/packages/dinero.js/dist packages/dinero.js
 
 defaults: &defaults
@@ -66,13 +66,13 @@ jobs:
             mkdir -p /tmp/workspace/packages/calculator-bigint/dist
             mkdir -p /tmp/workspace/packages/calculator-number/dist
             mkdir -p /tmp/workspace/packages/core/dist
-            mkdir -p /tmp/workspace/packages/currencies/dist
+            mkdir -p /tmp/workspace/packages/currencies-number/dist
             mkdir -p /tmp/workspace/packages/dinero.js/dist
 
             cp -R packages/calculator-bigint/dist /tmp/workspace/packages/calculator-bigint
             cp -R packages/calculator-number/dist /tmp/workspace/packages/calculator-number
             cp -R packages/core/dist /tmp/workspace/packages/core
-            cp -R packages/currencies/dist /tmp/workspace/packages/currencies
+            cp -R packages/currencies-number/dist /tmp/workspace/packages/currencies-number
             cp -R packages/dinero.js/dist /tmp/workspace/packages/dinero.js
       - persist_to_workspace:
           root: *workspace_root

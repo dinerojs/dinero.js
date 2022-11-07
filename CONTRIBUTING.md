@@ -51,7 +51,7 @@ packages/
 ├── calculator-bigint/
 ├── calculator-number/
 ├── core/
-├── currencies/
+├── currencies-number/
 └── dinero.js/
 ```
 

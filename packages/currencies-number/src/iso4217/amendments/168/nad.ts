@@ -2,6 +2,8 @@ import type { Currency } from '@dinero.js/core';
 
 /**
  * Namibian dollar.
+ *
+ * @public
  */
 export const NAD: Currency<number> = {
   code: 'NAD',

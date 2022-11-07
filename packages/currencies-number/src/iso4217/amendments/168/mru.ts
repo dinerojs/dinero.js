@@ -2,6 +2,8 @@ import type { Currency } from '@dinero.js/core';
 
 /**
  * Mauritanian ouguiya.
+ *
+ * @public
  */
 export const MRU: Currency<number> = {
   code: 'MRU',

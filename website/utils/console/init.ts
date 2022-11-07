@@ -13,7 +13,7 @@ export async function init(dirtyVersion: string = lerna.version) {
 
   if (version && isValid) {
     const dineroUrl = `https://cdn.jsdelivr.net/npm/dinero.js@${version}/dist/umd/index.production.js`;
-    const dineroCurrenciesUrl = `https://cdn.jsdelivr.net/npm/@dinero.js/currencies@${version}/dist/umd/index.production.js`;
+    const dineroCurrenciesUrl = `https://cdn.jsdelivr.net/npm/@dinero.js/currencies-number@${version}/dist/umd/index.production.js`;
 
     try {
       await import(/* webpackIgnore: true */ dineroUrl);

@@ -2,6 +2,8 @@ import type { Currency } from '@dinero.js/core';
 
 /**
  * Renminbi (Chinese) yuan.
+ *
+ * @public
  */
 export const CNY: Currency<number> = {
   code: 'CNY',

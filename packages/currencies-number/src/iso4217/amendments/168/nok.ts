@@ -2,6 +2,8 @@ import type { Currency } from '@dinero.js/core';
 
 /**
  * Norwegian krone.
+ *
+ * @public
  */
 export const NOK: Currency<number> = {
   code: 'NOK',
