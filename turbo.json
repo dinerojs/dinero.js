@@ -18,7 +18,7 @@
     "build:esm": {
       "dependsOn": ["^build:esm", "build:clean"],
       "inputs": ["src/**/*.ts"],
-      "outputs": ["dist/esm/index.js"]
+      "outputs": ["dist/esm/**/*.js"]
     },
     "build:umd:cjs": {
       "dependsOn": ["^build:umd:cjs", "build:clean", "build:esm"],
