@@ -1,14 +1,14 @@
 import { USD } from '@dinero.js/currencies';
 import Big from 'big.js';
-
-import { isNegative } from '..';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from '../../../../../test/utils';
+} from 'test-utils';
+
+import { isNegative } from '..';
 
 describe('isNegative', () => {
   describe('number', () => {

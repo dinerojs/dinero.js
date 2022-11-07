@@ -1,14 +1,14 @@
 import { USD } from '@dinero.js/currencies';
 import Big from 'big.js';
-
-import { haveSameAmount } from '..';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from '../../../../../test/utils';
+} from 'test-utils';
+
+import { haveSameAmount } from '..';
 
 describe('haveSameAmount', () => {
   describe('number', () => {

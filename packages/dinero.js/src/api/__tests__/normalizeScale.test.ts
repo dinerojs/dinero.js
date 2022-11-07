@@ -1,14 +1,14 @@
 import { USD } from '@dinero.js/currencies';
 import Big from 'big.js';
-
-import { normalizeScale, toSnapshot } from '..';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from '../../../../../test/utils';
+} from 'test-utils';
+
+import { normalizeScale, toSnapshot } from '..';
 
 describe('normalizeScale', () => {
   describe('number', () => {

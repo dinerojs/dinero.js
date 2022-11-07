@@ -1,14 +1,14 @@
 import { USD, MGA } from '@dinero.js/currencies';
 import Big from 'big.js';
-
-import { allocate, toSnapshot } from '..';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from '../../../../../test/utils';
+} from 'test-utils';
+
+import { allocate, toSnapshot } from '..';
 
 describe('allocate', () => {
   describe('number', () => {

@@ -1,14 +1,14 @@
 import { EUR, USD } from '@dinero.js/currencies';
 import Big from 'big.js';
-
-import { maximum, toSnapshot } from '..';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from '../../../../../test/utils';
+} from 'test-utils';
+
+import { maximum, toSnapshot } from '..';
 
 describe('maximum', () => {
   describe('number', () => {

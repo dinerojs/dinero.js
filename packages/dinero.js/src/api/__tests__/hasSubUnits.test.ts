@@ -1,14 +1,14 @@
 import { USD } from '@dinero.js/currencies';
 import Big from 'big.js';
-
-import { hasSubUnits } from '..';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from '../../../../../test/utils';
+} from 'test-utils';
+
+import { hasSubUnits } from '..';
 
 describe('hasSubUnits', () => {
   describe('number', () => {

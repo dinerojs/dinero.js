@@ -1,14 +1,14 @@
 import { EUR, USD } from '@dinero.js/currencies';
 import Big from 'big.js';
-
-import { greaterThanOrEqual } from '..';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from '../../../../../test/utils';
+} from 'test-utils';
+
+import { greaterThanOrEqual } from '..';
 
 describe('greaterThanOrEqual', () => {
   describe('number', () => {

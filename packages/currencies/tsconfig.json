@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.declaration",
+  "compilerOptions": {
+    "outDir": "lib",
+    "rootDir": "src",
+    "composite": true,
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "include": ["src"]
+}

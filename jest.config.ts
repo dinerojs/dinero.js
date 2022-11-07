@@ -14,6 +14,7 @@ export default {
     __TEST__: true,
   },
   moduleNameMapper: {
+    '^test-utils$': '<rootDir>/test/utils/',
     '^@dinero.js/(.*)$': '<rootDir>/packages/$1/src/',
     '^dinero.js$': '<rootDir>/packages/dinero.js/src/',
   },
