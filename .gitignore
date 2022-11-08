@@ -6,3 +6,4 @@ temp
 .DS_Store
 .env
 .turbo
+packages/currencies/src/iso4217/amendments

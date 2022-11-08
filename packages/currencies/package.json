@@ -42,6 +42,10 @@
     "build:definitions": "tsc -b",
     "build:types": "node ../../scripts/build-types.mjs",
     "build:umd:cjs": "rollup --config",
-    "lint": "node ../../scripts/lint.mjs --ext .js,.ts ."
+    "lint": "node ../../scripts/lint.mjs --ext .js,.ts .",
+    "generate": "yarn generate:currencies",
+    "generate:clean": "rimraf ./src/iso4217/amendments",
+    "generate:currencies": "node ../../scripts/genCurrencies.mjs",
+    "prepare": "yarn generate"
   }
 }
