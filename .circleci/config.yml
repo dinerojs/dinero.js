@@ -122,7 +122,9 @@ jobs:
       - *attach_workspace
       - run: *install_yarn_version
       - restore_cache: *restore_yarn_cache
-      - run: *run_yarn_install
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile
       - save_cache: *save_yarn_cache
       - run: *restore_dist_folders
       - run:
