@@ -1,6 +1,11 @@
 {
   "name": "@dinero.js/example-starter",
+<<<<<<< HEAD
   "version": "2.0.0-alpha.10",
+=======
+  "version": "2.0.0-alpha.9",
+  "private": true,
+>>>>>>> ef49b3a (build: add "private" to examples package.json)
   "scripts": {
     "build:clean": "rimraf ./dist",
     "dev": "vite",
