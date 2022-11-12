@@ -82,12 +82,10 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - *attach_workspace
       - run: *install_yarn_version
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
       - save_cache: *save_yarn_cache
-      - run: *restore_dist_folders
       - run:
           name: Linting
           command: yarn run lint
@@ -95,10 +93,12 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - *attach_workspace
       - run: *install_yarn_version
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
       - save_cache: *save_yarn_cache
+      - run: *restore_dist_folders
       - run:
           name: Type checking
           command: yarn run test:types
@@ -106,12 +106,10 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - *attach_workspace
       - run: *install_yarn_version
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
       - save_cache: *save_yarn_cache
-      - run: *restore_dist_folders
       - run:
           name: Unit tests
           command: yarn run test --maxWorkers=4
@@ -134,12 +132,10 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - *attach_workspace
       - run: *install_yarn_version
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
       - save_cache: *save_yarn_cache
-      - run: *restore_dist_folders
       - run:
           name: Release if needed
           command: yarn run shipjs trigger
@@ -149,13 +145,11 @@ workflows:
   ci:
     jobs:
       - build
-      - test_lint:
+      - test_lint
+      - test_types:
           requires:
             - build
-      - test_types
-      - test_unit:
-          requires:
-            - build
+      - test_unit
       - test_size:
           requires:
             - build

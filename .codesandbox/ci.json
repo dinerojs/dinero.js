@@ -6,8 +6,7 @@
     "packages/currencies",
     "packages/dinero.js"
   ],
-  "buildCommand": false,
-  "^": "buildCommand is false because `yarn prepare` is going to build packages anyway.",
+  "buildCommand": "build",
   "sandboxes": [
     "/examples/cart-react",
     "/examples/cart-vue",
