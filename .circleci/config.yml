@@ -17,7 +17,7 @@ aliases:
       - ~/.cache/yarn
   - &run_yarn_install
     name: Install dependencies
-    command: yarn install --frozen-lockfile --ignore-scripts
+    command: yarn install --frozen-lockfile
   - &restore_dist_folders
     name: Restore dist folders
     command: |
@@ -120,9 +120,7 @@ jobs:
       - *attach_workspace
       - run: *install_yarn_version
       - restore_cache: *restore_yarn_cache
-      - run:
-          name: Install dependencies
-          command: yarn install --frozen-lockfile
+      - run: *run_yarn_install
       - save_cache: *save_yarn_cache
       - run: *restore_dist_folders
       - run:
