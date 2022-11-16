@@ -12,9 +12,11 @@ export function createDinero<TAmount>({
 }: CreateDineroOptions<TAmount>) {
   return function dinero({
     amount,
-    currency,
-    scale = currency.exponent,
+    currency: { code, base, exponent },
+    scale = exponent,
   }: DineroOptions<TAmount>): Dinero<TAmount> {
+    const currency = { code, base, exponent };
+
     onCreate?.({ amount, currency, scale });
 
     return {
