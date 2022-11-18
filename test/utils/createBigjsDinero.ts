@@ -14,7 +14,6 @@ const dinero = createDinero({
     multiply: (a, b) => a.times(b),
     power: (a, b) => a.pow(Number(b)),
     subtract: (a, b) => a.minus(b),
-    toNumber: (v) => v.toNumber(),
     zero: () => new Big(0),
   },
 });

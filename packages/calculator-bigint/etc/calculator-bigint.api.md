@@ -6,7 +6,6 @@
 
 import { BinaryOperation } from '@dinero.js/core';
 import { ComparisonOperator } from '@dinero.js/core';
-import { TransformOperation } from '@dinero.js/core';
 import { UnaryOperation } from '@dinero.js/core';
 
 // @public
@@ -15,7 +14,9 @@ export const add: BinaryOperation<bigint>;
 // @public (undocumented)
 export const calculator: {
     add: BinaryOperation<bigint, bigint>;
-    compare: BinaryOperation<bigint, ComparisonOperator>;
+    compare: BinaryOperation<bigint,
+    ComparisonOperator
+    >;
     decrement: UnaryOperation<bigint, bigint>;
     increment: UnaryOperation<bigint, bigint>;
     integerDivide: BinaryOperation<bigint, bigint>;
@@ -23,7 +24,6 @@ export const calculator: {
     multiply: BinaryOperation<bigint, bigint>;
     power: BinaryOperation<bigint, bigint>;
     subtract: BinaryOperation<bigint, bigint>;
-    toNumber: TransformOperation<bigint, number>;
     zero: typeof zero;
 };
 
@@ -50,9 +50,6 @@ export const power: BinaryOperation<bigint>;
 
 // @public
 export const subtract: BinaryOperation<bigint>;
-
-// @public
-export const toNumber: TransformOperation<bigint, number>;
 
 // @public
 export function zero(): bigint;

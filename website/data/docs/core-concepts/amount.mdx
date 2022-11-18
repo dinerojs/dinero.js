@@ -34,7 +34,7 @@ When working with currencies with no minor units, you need to set the [currency 
 
 ## Non-decimal currencies
 
-When using a non-decimal currency (with or without multiple subdivisions), you should express the amount in the smallest subdivision.
+When using a non-decimal currency, you should express the amount in the smallest subdivision. If the currency has multiple subdivisions (such as the pre-decimal British pound sterling), you can specify them with an array.
 
 ```js
 import { dinero } from 'dinero.js';
@@ -51,9 +51,11 @@ const GRD = {
 const d1 = dinero({ amount: 6, currency: GRD });
 
 // Pre-decimal Great Britain pound sterling
+// 20 shillings in a pound
+// 12 pence in a shilling
 const GBP = {
   code: 'GBP',
-  base: 240,
+  base: [20, 12],
   exponent: 1,
 };
 

@@ -1,22 +1,22 @@
-import { toFormat, toSnapshot } from 'dinero.js';
+import { toDecimal, toSnapshot } from 'dinero.js';
 
 function intlFormat(locale, options = {}) {
   return function formatter(dineroObject) {
-    function transformer({ amount, currency }) {
-      return amount.toLocaleString(locale, {
+    function transformer({ value, currency }) {
+      return Number(value).toLocaleString(locale, {
         ...options,
         style: 'currency',
         currency: currency.code,
       });
     }
 
-    return toFormat(dineroObject, transformer);
+    return toDecimal(dineroObject, transformer);
   };
 }
 
 function formatDefault(dineroObject) {
-  return toFormat(dineroObject, ({ amount, currency }) => {
-    return `${currency.code} ${amount.toFixed(currency.exponent)}`;
+  return toDecimal(dineroObject, ({ value, currency }) => {
+    return `${currency.code} ${Number(value).toFixed(currency.exponent)}`;
   });
 }
 
