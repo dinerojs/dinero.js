@@ -4,3 +4,4 @@ export const INVALID_RATIOS_MESSAGE = 'Ratios are invalid.';
 export const UNEQUAL_SCALES_MESSAGE = 'Objects must have the same scale.';
 export const UNEQUAL_CURRENCIES_MESSAGE =
   'Objects must have the same currency.';
+export const NON_DECIMAL_CURRENCY_MESSAGE = 'Currency is not decimal.';

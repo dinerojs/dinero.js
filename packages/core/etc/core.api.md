@@ -38,7 +38,6 @@ export type Calculator<TInput> = {
     readonly multiply: BinaryOperation<TInput>;
     readonly power: BinaryOperation<TInput>;
     readonly subtract: BinaryOperation<TInput>;
-    readonly toNumber: TransformOperation<TInput, number>;
     readonly zero: () => TInput;
 };
 
@@ -78,6 +77,7 @@ rates: Rates<TAmount>
 export function createDinero<TAmount>({
     calculator,
     onCreate,
+    formatter,
 }: CreateDineroOptions<TAmount>): ({
     amount,
     currency: { code, base, exponent },
@@ -87,12 +87,14 @@ export function createDinero<TAmount>({
 // @public (undocumented)
 export type CreateDineroOptions<TAmount> = {
     readonly calculator: Calculator<TAmount>;
+    readonly formatter?: Formatter<TAmount>;
     readonly onCreate?: (options: DineroOptions<TAmount>) => void;
 };
 
 // @public (undocumented)
 export type Dinero<TAmount> = {
     readonly calculator: Calculator<TAmount>;
+    readonly formatter: Formatter<TAmount>;
     readonly create: (options: DineroOptions<TAmount>) => Dinero<TAmount>;
     readonly toJSON: () => DineroSnapshot<TAmount>;
 };
@@ -118,8 +120,15 @@ export type DineroSnapshot<TAmount> = {
     readonly scale: TAmount;
 };
 
-// @public
-export const down: RoundingMode;
+// @public (undocumented)
+export type DivideOperation = <TAmount>(
+amount: TAmount,
+factor: TAmount,
+calculator: Calculator<TAmount>
+) => TAmount;
+
+// @public (undocumented)
+export const down: DivideOperation;
 
 // @public (undocumented)
 export function equal<TAmount>(
@@ -133,9 +142,10 @@ comparator: Dinero<TAmount>
 ];
 
 // @public (undocumented)
-export type Formatter<TAmount> = (
-dineroObject: Dinero<TAmount>
-) => string;
+export type Formatter<TAmount> = {
+    readonly toNumber: (value?: TAmount) => number;
+    readonly toString: (value?: TAmount) => string;
+};
 
 // @public (undocumented)
 export type GreaterThanOrEqualParams<TAmount> = readonly [
@@ -149,23 +159,23 @@ dineroObject: Dinero<TAmount>,
 comparator: Dinero<TAmount>
 ];
 
-// @public
-export const halfAwayFromZero: RoundingMode;
+// @public (undocumented)
+export const halfAwayFromZero: DivideOperation;
 
-// @public
-export const halfDown: RoundingMode;
+// @public (undocumented)
+export const halfDown: DivideOperation;
 
-// @public
-export const halfEven: RoundingMode;
+// @public (undocumented)
+export const halfEven: DivideOperation;
 
-// @public
-export const halfOdd: RoundingMode;
+// @public (undocumented)
+export const halfOdd: DivideOperation;
 
-// @public
-export const halfTowardsZero: RoundingMode;
+// @public (undocumented)
+export const halfTowardsZero: DivideOperation;
 
-// @public
-export const halfUp: RoundingMode;
+// @public (undocumented)
+export const halfUp: DivideOperation;
 
 // @public (undocumented)
 export function hasSubUnits<TAmount>(
@@ -268,6 +278,9 @@ multiplier: ScaledAmount<TAmount> | TAmount
 ];
 
 // @public (undocumented)
+export const NON_DECIMAL_CURRENCY_MESSAGE = 'Currency is not decimal.';
+
+// @public (undocumented)
 export function normalizeScale<TAmount>(
 calculator: Calculator<TAmount>
 ): (dineroObjects: readonly Dinero<TAmount>[]) => Dinero<TAmount>[];
@@ -284,16 +297,9 @@ export type Rate<TAmount> = ScaledAmount<TAmount> | TAmount;
 export type Rates<TAmount> = Record<string, Rate<TAmount>>;
 
 // @public (undocumented)
-export type RoundingMode = (value: number) => number;
-
-// @public (undocumented)
-export type RoundingOptions<TAmount> = {
-    readonly digits?: TAmount;
-    readonly round?: RoundingMode;
-};
-
-// @public (undocumented)
-export function safeAdd<TAmount>(calculator: Calculator<TAmount>): (augend: Dinero<TAmount>, addend: Dinero<TAmount>) => Dinero<TAmount>;
+export function safeAdd<TAmount>(
+calculator: Calculator<TAmount>
+): (augend: Dinero<TAmount>, addend: Dinero<TAmount>) => Dinero<TAmount>;
 
 // @public (undocumented)
 export function safeAllocate<TAmount>(
@@ -358,63 +364,78 @@ minuend: Dinero<TAmount>,
 subtrahend: Dinero<TAmount>
 ];
 
+// Warning: (ae-forgotten-export) The symbol "Transformer_3" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export function toFormat<TAmount>(
-calculator: Calculator<TAmount>
-): (dineroObject: Dinero<TAmount>, transformer: Transformer_2<TAmount>) => string;
-
-// @public (undocumented)
-export type ToFormatParams<TAmount> = readonly [
-dineroObject: Dinero<TAmount>,
-transformer: Transformer_2<TAmount>
-];
-
-// @public (undocumented)
-export function toSnapshot<TAmount>(
-dineroObject: Dinero<TAmount>
-): DineroSnapshot<TAmount>;
-
-// @public (undocumented)
-export function toUnit<TAmount>(
+export function toDecimal<TAmount, TOutput>(
 calculator: Calculator<TAmount>
 ): (
 dineroObject: Dinero<TAmount>,
-options?: RoundingOptions<TAmount> | undefined
-) => number;
+transformer?: Transformer_3<TAmount, TOutput> | undefined
+) => TOutput;
 
 // @public (undocumented)
-export type ToUnitParams<TAmount> = readonly [
+export type ToDecimalParams<TAmount, TOutput> = readonly [
 dineroObject: Dinero<TAmount>,
-options?: RoundingOptions<TAmount>
+transformer?: Transformer_3<TAmount, TOutput>
 ];
 
 // @public (undocumented)
-type Transformer_2<TAmount> = (
+export function toSnapshot<TAmount, TOutput>(
+...[dineroObject, transformer]: ToSnapshotParams<TAmount, TOutput>
+): TOutput;
+
+// Warning: (ae-forgotten-export) The symbol "Transformer_4" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type ToSnapshotParams<TAmount, TOutput> = readonly [
+dineroObject: Dinero<TAmount>,
+transformer?: Transformer_4<TAmount, TOutput>
+];
+
+// Warning: (ae-forgotten-export) The symbol "Transformer_5" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export function toUnits<TAmount, TOutput>(
+calculator: Calculator<TAmount>
+): (
+dineroObject: Dinero<TAmount>,
+transformer?: Transformer_5<TAmount, TOutput> | undefined
+) => TOutput;
+
+// @public (undocumented)
+export type ToUnitsParams<TAmount, TOutput> = readonly [
+dineroObject: Dinero<TAmount>,
+transformer?: Transformer_5<TAmount, TOutput>
+];
+
+// @public (undocumented)
+type Transformer_2<TAmount, TOutput> = (
 options: TransformerOptions<TAmount>
-) => string;
+) => TOutput;
 export { Transformer_2 as Transformer }
 
 // @public (undocumented)
 export type TransformerOptions<TAmount> = {
-    readonly amount: number;
+    readonly units: readonly TAmount[];
+    readonly decimal?: string;
     readonly currency: Currency<TAmount>;
-    readonly dineroObject: Dinero<TAmount>;
 };
-
-// @public (undocumented)
-export type TransformOperation<TInput, TOutput = TInput> = (
-input: TInput
-) => TOutput;
 
 // @public (undocumented)
 export function transformScale<TAmount>(
 calculator: Calculator<TAmount>
-): (dineroObject: Dinero<TAmount>, newScale: TAmount) => Dinero<TAmount>;
+): (
+dineroObject: Dinero<TAmount>,
+newScale: TAmount,
+divide?: DivideOperation | undefined
+) => Dinero<TAmount>;
 
 // @public (undocumented)
 export type TransformScaleParams<TAmount> = readonly [
 dineroObject: Dinero<TAmount>,
-newScale: TAmount
+newScale: TAmount,
+divide?: DivideOperation
 ];
 
 // @public (undocumented)
@@ -440,8 +461,8 @@ export const UNEQUAL_CURRENCIES_MESSAGE =
 export const UNEQUAL_SCALES_MESSAGE =
 'Objects must have the same scale.';
 
-// @public
-export const up: RoundingMode;
+// @public (undocumented)
+export const up: DivideOperation;
 
 // (No @packageDocumentation comment for this package)
 

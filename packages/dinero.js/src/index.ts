@@ -7,9 +7,9 @@ export type {
   DineroFactory,
   DineroOptions,
   DineroSnapshot,
+  DivideOperation,
   Formatter,
   Rates,
-  RoundingOptions,
   Transformer,
 } from '@dinero.js/core';
 export {

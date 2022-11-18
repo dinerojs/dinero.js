@@ -5,7 +5,9 @@ export function castToBigintCurrency(
 ): Currency<bigint> {
   return {
     ...currency,
-    base: BigInt(currency.base),
+    base: Array.isArray(currency.base)
+      ? currency.base.map(BigInt)
+      : BigInt(currency.base as number),
     exponent: BigInt(currency.exponent),
   };
 }

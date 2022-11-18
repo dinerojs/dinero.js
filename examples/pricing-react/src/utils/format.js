@@ -1,11 +1,11 @@
-import { hasSubUnits, toFormat, toSnapshot } from 'dinero.js';
+import { hasSubUnits, toDecimal, toSnapshot } from 'dinero.js';
 
 export function format(dineroObject) {
-  function transformer({ amount, currency }) {
+  function transformer({ value, currency }) {
     const { scale } = toSnapshot(dineroObject);
     const minimumFractionDigits = hasSubUnits(dineroObject) ? scale : 0;
 
-    return amount.toLocaleString('en-US', {
+    return Number(value).toLocaleString('en-US', {
       style: 'currency',
       currency: currency.code,
       maximumFractionDigits: scale,
@@ -13,5 +13,5 @@ export function format(dineroObject) {
     });
   }
 
-  return toFormat(dineroObject, transformer);
+  return toDecimal(dineroObject, transformer);
 }

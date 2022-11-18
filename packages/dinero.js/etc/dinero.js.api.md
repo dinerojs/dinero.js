@@ -16,6 +16,7 @@ import { Dinero } from '@dinero.js/core';
 import { DineroFactory } from '@dinero.js/core';
 import { DineroOptions } from '@dinero.js/core';
 import { DineroSnapshot } from '@dinero.js/core';
+import { DivideOperation } from '@dinero.js/core';
 import { down } from '@dinero.js/core';
 import type { EqualParams } from '@dinero.js/core';
 import { Formatter } from '@dinero.js/core';
@@ -40,11 +41,10 @@ import type { MinimumParams } from '@dinero.js/core';
 import type { MultiplyParams } from '@dinero.js/core';
 import type { NormalizeScaleParams } from '@dinero.js/core';
 import { Rates } from '@dinero.js/core';
-import { RoundingOptions } from '@dinero.js/core';
 import type { SubtractParams } from '@dinero.js/core';
-import type { ToFormatParams } from '@dinero.js/core';
+import type { ToDecimalParams } from '@dinero.js/core';
 import { toSnapshot as toSnapshot_2 } from '@dinero.js/core';
-import type { ToUnitParams } from '@dinero.js/core';
+import type { ToUnitsParams } from '@dinero.js/core';
 import { Transformer as Transformer_2 } from '@dinero.js/core';
 import type { TransformScaleParams } from '@dinero.js/core';
 import type { TrimScaleParams } from '@dinero.js/core';
@@ -92,6 +92,8 @@ export { DineroFactory }
 export { DineroOptions }
 
 export { DineroSnapshot }
+
+export { DivideOperation }
 
 export { down }
 
@@ -184,31 +186,29 @@ export function normalizeScale<TAmount>(
 
 export { Rates }
 
-export { RoundingOptions }
-
 // @public
 export function subtract<TAmount>(
 ...[minuend, subtrahend]: SubtractParams<TAmount>
 ): Dinero<TAmount>;
 
 // @public
-export function toFormat<TAmount>(
-...[dineroObject, transformer]: ToFormatParams<TAmount>
-): string;
+export function toDecimal<TAmount, TOutput>(
+...[dineroObject, transformer]: ToDecimalParams<TAmount, TOutput>
+): TOutput;
 
 // @public
 export const toSnapshot: typeof toSnapshot_2;
 
 // @public
-export function toUnit<TAmount>(
-...[dineroObject, options]: ToUnitParams<TAmount>
-): number;
+export function toUnits<TAmount, TOutput>(
+...[dineroObject, transformer]: ToUnitsParams<TAmount, TOutput>
+): TOutput;
 
 export { Transformer_2 as Transformer }
 
 // @public
 export function transformScale<TAmount>(
-...[dineroObject, newScale]: TransformScaleParams<TAmount>
+...[dineroObject, newScale, divide]: TransformScaleParams<TAmount>
 ): Dinero<TAmount>;
 
 // @public
