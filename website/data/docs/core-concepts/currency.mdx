@@ -50,20 +50,20 @@ const MRU = {
 
 Some currencies have multiple subdivisions. For example, before [decimalization](https://en.wikipedia.org/wiki/Decimalisation), the British pound sterling was divided into 20 shillings, and each shilling into 12 pence. You also have examples in fiction, like Harry Potter, where one Galleon is divided into 17 Sickles, and each Sickle into 29 Knuts.
 
-To represent these currencies, you can take how many of the smallest subdivision there are in the major one. There are 240 pence in a pound sterling, and in Harry Potter, 493 Knuts in a Galleon.
+To represent these currencies, you can specify each subdivision with an array.
 
 ```js
 // Pre-decimal Great Britain pound sterling
 const GBP = {
   code: 'GBP',
-  base: 240,
+  base: [20, 12],
   exponent: 1,
 };
 
 // Great Britain wizarding currency (Harry Potter universe)
 const GBW = {
   code: 'GBW',
-  base: 493,
+  base: [17, 29],
   exponent: 1,
 };
 ```

@@ -6,13 +6,11 @@ returns: Dinero<TAmount>
 
 Transform a Dinero object to a new scale.
 
-Transforming to a higher scale means that the internal `amount` value increases by orders of magnitude. If you're using the default Dinero.js implementation (with the `number` calculator), be careful not to exceed the minimum and maximum safe integers.
+When transforming to a higher scale, the internal `amount` value increases by orders of magnitude. If you're using the default Dinero.js implementation (with the `number` calculator), be careful not to exceed the minimum and maximum safe integers.
 
-<Alert type="info">
+When transforming to a smaller scale, the `amount` loses precision. By default, the function rounds down the amount. You can specify how to round by [passing a custom divide function](#pass-a-custom-divide-function).
 
-When transforming to smaller scales, `transformScale` truncates the amount.
-
-</Alert>
+For convenience, Dinero.js provides the following rounding functions: `up`, `down`, `halfUp`, `halfDown`, `halfOdd`, `halfEven` ([bankers rounding](https://wiki.c2.com/?BankersRounding)), `halfTowardsZero`, and `halfAwayFromZero`.
 
 ## Parameters
 
@@ -30,6 +28,12 @@ The new scale.
 
 </Parameter>
 
+<Parameter name="divide" type="DivideOperation" required={false}>
+
+A custom divide function.
+
+</Parameter>
+
 </Parameters>
 
 ## Code examples
@@ -43,4 +47,15 @@ import { USD } from '@dinero.js/currencies';
 const d = dinero({ amount: 500, currency: USD, scale: 2 });
 
 transformScale(d, 4); // a Dinero object with amount 50000 and scale 4
+```
+
+### Pass a custom divide function
+
+```js
+import { dinero, transformScale, up } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 10455, currency: USD, scale: 3 });
+
+transformScale(d, 2, up); // a Dinero object with amount 1046 and scale 2
 ```

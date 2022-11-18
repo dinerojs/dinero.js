@@ -1,0 +1,86 @@
+---
+title: toUnits
+description: Get the amount of a Dinero object in units.
+returns: TAmount[]
+---
+
+Get the amount of a Dinero object in units.
+
+This function returns the total amount divided into each unit and sub-unit, as an array. For example, an object representing $10.45 expressed as `1045` (with currency `USD` and no custom `scale`) would return `[10, 45]` for 10 dollars and 45 cents.
+
+When specifying multiple bases, the function returns as many units as necessary.
+
+## Parameters
+
+<Parameters>
+
+<Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
+
+The Dinero object to format.
+
+</Parameter>
+
+<Parameter name="transformer" type="Transformer<TAmount>" required={false}>
+
+An optional transformer function.
+
+</Parameter>
+
+</Parameters>
+
+## Code examples
+
+### Format an object in units
+
+```js
+import { dinero, toUnits } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 1050, currency: USD });
+const d2 = dinero({ amount: 10545, currency: USD, scale: 3 });
+
+toUnits(d1); // [10, 50]
+toUnits(d2); // [10, 545]
+```
+
+### Format a non-decimal object
+
+```js
+import { dinero, toUnits } from 'dinero.js';
+
+const GRD = { code: 'GRD', base: 6, exponent: 1 };
+const d = dinero({ amount: 9, currency: GRD });
+
+toUnits(d); // [1, 3]
+```
+
+### Format an object with multiple subdivisions
+
+```js
+import { dinero, toUnits } from 'dinero.js';
+
+const GBP = { code: 'GBP', base: [20, 12], exponent: 1 };
+const d = dinero({ amount: 267, currency: GBP });
+
+toUnits(d); // [1, 2, 3]
+```
+
+### Use a custom transformer
+
+If you need to further transform the snapshot before returning it, you can pass a custom function.
+
+```js
+import { dinero, toUnits } from 'dinero.js';
+
+const GBP = { code: 'GBP', base: [20, 12], exponent: 1 };
+const d = dinero({ amount: 267, currency: GBP });
+
+const labels = ['pounds', 'shillings', 'pence'];
+
+toUnits(d, ({ value }) =>
+  value
+    .filter((amount) => amount > 0)
+    .map((amount, index) => `${amount} ${labels[index]}`)
+    .join(', ')
+);
+```

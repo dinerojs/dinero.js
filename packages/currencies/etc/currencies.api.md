@@ -124,7 +124,7 @@ export const CUP: Currency<number>;
 // @public (undocumented)
 export type Currency<TAmount> = {
     readonly code: string;
-    readonly base: TAmount;
+    readonly base: TAmount | readonly TAmount[];
     readonly exponent: TAmount;
 };
 

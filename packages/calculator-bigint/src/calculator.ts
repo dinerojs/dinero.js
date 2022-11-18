@@ -8,7 +8,6 @@ import {
   multiply,
   power,
   subtract,
-  toNumber,
   zero,
 } from './api';
 
@@ -22,6 +21,5 @@ export const calculator = {
   multiply,
   power,
   subtract,
-  toNumber,
   zero,
 };

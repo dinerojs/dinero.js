@@ -228,13 +228,13 @@ addMany([d1, d2, d3]);
 You can also combine it with utility libraries like [Ramda](https://ramdajs.com/) if that's your jam.
 
 ```js
-import { toFormat } from 'dinero.js';
+import { toDecimal } from 'dinero.js';
 import { curry, flip } from 'ramda';
 
-const curriedToFormat = curry(flip(toFormat));
+const curriedToFormat = curry(flip(toDecimal));
 
-const intlFormat = curriedToFormat(({ amount, currency }) => {
-  return amount.toLocaleString('en-US', {
+const intlFormat = curriedToFormat(({ value, currency }) => {
+  return Number(value).toLocaleString('en-US', {
     style: 'currency',
     currency: currency.code,
   });

@@ -5,26 +5,26 @@ description: Displaying currencies in a site or application that supports severa
 
 Different languages and locations can have radically different formatting styles when it comes to money. For example, ten U.S. dollars in American English should be written down "$10.00". However, in Canadian French, the same amount would be "10,00 $ US".
 
-Dinero.js provides a [`toFormat`](/docs/api/formatting/to-format) function that gives you full control over how to format a Dinero object. Yet, if you're working on a multilingual site or app, such as a booking site for a hotel, **you might want to rely on established formatting conventions.**
+Dinero.js provides formatting functions that give you full control over how to format a Dinero object.
 
 ## Building a custom Internationalization formatter
 
-ECMAScript provides an [Internationalization API](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl) (`Intl`) that lets you natively format monetary values into a given language by passing a locale. You can create your own `Intl` formatter by wrapping `toFormat`.
+ECMAScript provides an [Internationalization API](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl) (`Intl`) that lets you natively format monetary values into a given language by passing a locale. You can create your own `Intl` formatter by wrapping [`toDecimal`](/docs/api/formatting/to-decimal).
 
 ```js
-import { dinero, toFormat } from 'dinero.js';
+import { dinero, toDecimal } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
 function intlFormat(dineroObject, locale, options = {}) {
-  function transformer({ amount, currency }) {
-    return amount.toLocaleString(locale, {
+  function transformer({ value, currency }) {
+    return Number(value).toLocaleString(locale, {
       ...options,
       style: 'currency',
       currency: currency.code,
     });
   };
 
-  return toFormat(dineroObject, transformer);
+  return toDecimal(dineroObject, transformer);
 };
 
 const d = dinero({ amount: 1000, currency: USD });
