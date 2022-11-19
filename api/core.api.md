@@ -22,7 +22,10 @@ ratios: ReadonlyArray<ScaledAmount<TAmount> | TAmount>
 export function assert(condition: boolean, message: string): void;
 
 // @public (undocumented)
-export type BinaryOperation<TInput, TOutput = TInput> = (a: TInput, b: TInput) => TOutput;
+export type BinaryOperation<TInput, TOutput = TInput> = (
+a: TInput,
+b: TInput
+) => TOutput;
 
 // @public (undocumented)
 export type Calculator<TInput> = {
@@ -52,11 +55,17 @@ export enum ComparisonOperator {
     // (undocumented)
     GT = 1,
     // (undocumented)
-    LT = -1
+    LT = -1,
 }
 
 // @public (undocumented)
-export function convert<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, newCurrency: Currency<TAmount>, rates: Rates<TAmount>) => Dinero<TAmount>;
+export function convert<TAmount>(
+calculator: Calculator<TAmount>
+): (
+dineroObject: Dinero<TAmount>,
+newCurrency: Currency<TAmount>,
+rates: Rates<TAmount>
+) => Dinero<TAmount>;
 
 // @public (undocumented)
 export type ConvertParams<TAmount> = readonly [
@@ -66,7 +75,14 @@ rates: Rates<TAmount>
 ];
 
 // @public (undocumented)
-export function createDinero<TAmount>({ calculator, onCreate, }: CreateDineroOptions<TAmount>): ({ amount, currency, scale, }: DineroOptions<TAmount>) => Dinero<TAmount>;
+export function createDinero<TAmount>({
+    calculator,
+    onCreate,
+}: CreateDineroOptions<TAmount>): ({
+    amount,
+    currency: { code, base, exponent },
+    scale,
+}: DineroOptions<TAmount>) => Dinero<TAmount>;
 
 // @public (undocumented)
 export type CreateDineroOptions<TAmount> = {
@@ -82,7 +98,11 @@ export type Dinero<TAmount> = {
 };
 
 // @public (undocumented)
-export type DineroFactory<TAmount> = ({ amount, currency, scale, }: DineroOptions<TAmount>) => Dinero<TAmount>;
+export type DineroFactory<TAmount> = ({
+    amount,
+    currency,
+    scale,
+}: DineroOptions<TAmount>) => Dinero<TAmount>;
 
 // @public (undocumented)
 export type DineroOptions<TAmount> = {
@@ -102,7 +122,9 @@ export type DineroSnapshot<TAmount> = {
 export const down: RoundingMode;
 
 // @public (undocumented)
-export function equal<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => boolean;
+export function equal<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => boolean;
 
 // @public (undocumented)
 export type EqualParams<TAmount> = readonly [
@@ -111,7 +133,9 @@ comparator: Dinero<TAmount>
 ];
 
 // @public (undocumented)
-export type Formatter<TAmount> = (dineroObject: Dinero<TAmount>) => string;
+export type Formatter<TAmount> = (
+dineroObject: Dinero<TAmount>
+) => string;
 
 // @public (undocumented)
 export type GreaterThanOrEqualParams<TAmount> = readonly [
@@ -144,7 +168,9 @@ export const halfTowardsZero: RoundingMode;
 export const halfUp: RoundingMode;
 
 // @public (undocumented)
-export function hasSubUnits<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>) => boolean;
+export function hasSubUnits<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>) => boolean;
 
 // @public (undocumented)
 export type HasSubUnitsParams<TAmount> = readonly [
@@ -152,7 +178,9 @@ dineroObject: Dinero<TAmount>
 ];
 
 // @public (undocumented)
-export function haveSameAmount<TAmount>(calculator: Calculator<TAmount>): (dineroObjects: readonly Dinero<TAmount>[]) => boolean;
+export function haveSameAmount<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObjects: readonly Dinero<TAmount>[]) => boolean;
 
 // @public (undocumented)
 export type HaveSameAmountParams<TAmount> = readonly [
@@ -160,19 +188,23 @@ dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ];
 
 // @public (undocumented)
-export function haveSameCurrency<TAmount>(dineroObjects: ReadonlyArray<Dinero<TAmount>>): boolean;
+export function haveSameCurrency<TAmount>(
+dineroObjects: ReadonlyArray<Dinero<TAmount>>
+): boolean;
 
 // @public (undocumented)
-export const INVALID_AMOUNT_MESSAGE = "Amount is invalid.";
+export const INVALID_AMOUNT_MESSAGE = 'Amount is invalid.';
 
 // @public (undocumented)
-export const INVALID_RATIOS_MESSAGE = "Ratios are invalid.";
+export const INVALID_RATIOS_MESSAGE = 'Ratios are invalid.';
 
 // @public (undocumented)
-export const INVALID_SCALE_MESSAGE = "Scale is invalid.";
+export const INVALID_SCALE_MESSAGE = 'Scale is invalid.';
 
 // @public (undocumented)
-export function isNegative<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>) => boolean;
+export function isNegative<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>) => boolean;
 
 // @public (undocumented)
 export type IsNegativeParams<TAmount> = readonly [
@@ -180,7 +212,9 @@ dineroObject: Dinero<TAmount>
 ];
 
 // @public (undocumented)
-export function isPositive<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>) => boolean;
+export function isPositive<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>) => boolean;
 
 // @public (undocumented)
 export type IsPositiveParams<TAmount> = readonly [
@@ -188,10 +222,14 @@ dineroObject: Dinero<TAmount>
 ];
 
 // @public (undocumented)
-export function isZero<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>) => boolean;
+export function isZero<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>) => boolean;
 
 // @public (undocumented)
-export type IsZeroParams<TAmount> = readonly [dineroObject: Dinero<TAmount>];
+export type IsZeroParams<TAmount> = readonly [
+dineroObject: Dinero<TAmount>
+];
 
 // @public (undocumented)
 export type LessThanOrEqualParams<TAmount> = readonly [
@@ -216,7 +254,12 @@ dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ];
 
 // @public (undocumented)
-export function multiply<TAmount>(calculator: Calculator<TAmount>): (multiplicand: Dinero<TAmount>, multiplier: TAmount | ScaledAmount<TAmount>) => Dinero<TAmount>;
+export function multiply<TAmount>(
+calculator: Calculator<TAmount>
+): (
+multiplicand: Dinero<TAmount>,
+multiplier: TAmount | ScaledAmount<TAmount>
+) => Dinero<TAmount>;
 
 // @public (undocumented)
 export type MultiplyParams<TAmount> = readonly [
@@ -225,7 +268,9 @@ multiplier: ScaledAmount<TAmount> | TAmount
 ];
 
 // @public (undocumented)
-export function normalizeScale<TAmount>(calculator: Calculator<TAmount>): (dineroObjects: readonly Dinero<TAmount>[]) => Dinero<TAmount>[];
+export function normalizeScale<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObjects: readonly Dinero<TAmount>[]) => Dinero<TAmount>[];
 
 // @public (undocumented)
 export type NormalizeScaleParams<TAmount> = readonly [
@@ -248,34 +293,60 @@ export type RoundingOptions<TAmount> = {
 };
 
 // @public (undocumented)
-export function safeAdd<TAmount>(calculator: Calculator<TAmount>): (augend: Dinero<TAmount>, addend: Dinero<TAmount>) => Dinero<TAmount>;
+export function safeAdd<TAmount>(
+calculator: Calculator<TAmount>
+): (augend: Dinero<TAmount>, addend: Dinero<TAmount>) => Dinero<TAmount>;
 
 // @public (undocumented)
-export function safeAllocate<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, ratios: readonly (TAmount | ScaledAmount<TAmount>)[]) => Dinero<TAmount>[];
+export function safeAllocate<TAmount>(
+calculator: Calculator<TAmount>
+): (
+dineroObject: Dinero<TAmount>,
+ratios: readonly (TAmount | ScaledAmount<TAmount>)[]
+) => Dinero<TAmount>[];
 
 // @public (undocumented)
-export function safeCompare<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => ComparisonOperator;
+export function safeCompare<TAmount>(
+calculator: Calculator<TAmount>
+): (
+dineroObject: Dinero<TAmount>,
+comparator: Dinero<TAmount>
+) => ComparisonOperator;
 
 // @public (undocumented)
-export function safeGreaterThan<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => boolean;
+export function safeGreaterThan<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => boolean;
 
 // @public (undocumented)
-export function safeGreaterThanOrEqual<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => boolean;
+export function safeGreaterThanOrEqual<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => boolean;
 
 // @public (undocumented)
-export function safeLessThan<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => boolean;
+export function safeLessThan<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => boolean;
 
 // @public (undocumented)
-export function safeLessThanOrEqual<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => boolean;
+export function safeLessThanOrEqual<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => boolean;
 
 // @public (undocumented)
-export function safeMaximum<TAmount>(calculator: Calculator<TAmount>): (dineroObjects: readonly Dinero<TAmount>[]) => Dinero<TAmount>;
+export function safeMaximum<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObjects: readonly Dinero<TAmount>[]) => Dinero<TAmount>;
 
 // @public (undocumented)
-export function safeMinimum<TAmount>(calculator: Calculator<TAmount>): (dineroObjects: readonly Dinero<TAmount>[]) => Dinero<TAmount>;
+export function safeMinimum<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObjects: readonly Dinero<TAmount>[]) => Dinero<TAmount>;
 
 // @public (undocumented)
-export function safeSubtract<TAmount>(calculator: Calculator<TAmount>): (minuend: Dinero<TAmount>, subtrahend: Dinero<TAmount>) => Dinero<TAmount>;
+export function safeSubtract<TAmount>(
+calculator: Calculator<TAmount>
+): (minuend: Dinero<TAmount>, subtrahend: Dinero<TAmount>) => Dinero<TAmount>;
 
 // @public (undocumented)
 export type ScaledAmount<TAmount> = {
@@ -290,7 +361,9 @@ subtrahend: Dinero<TAmount>
 ];
 
 // @public (undocumented)
-export function toFormat<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, transformer: Transformer_2<TAmount>) => string;
+export function toFormat<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>, transformer: Transformer_2<TAmount>) => string;
 
 // @public (undocumented)
 export type ToFormatParams<TAmount> = readonly [
@@ -299,10 +372,17 @@ transformer: Transformer_2<TAmount>
 ];
 
 // @public (undocumented)
-export function toSnapshot<TAmount>(dineroObject: Dinero<TAmount>): DineroSnapshot<TAmount>;
+export function toSnapshot<TAmount>(
+dineroObject: Dinero<TAmount>
+): DineroSnapshot<TAmount>;
 
 // @public (undocumented)
-export function toUnit<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, options?: RoundingOptions<TAmount> | undefined) => number;
+export function toUnit<TAmount>(
+calculator: Calculator<TAmount>
+): (
+dineroObject: Dinero<TAmount>,
+options?: RoundingOptions<TAmount> | undefined
+) => number;
 
 // @public (undocumented)
 export type ToUnitParams<TAmount> = readonly [
@@ -311,7 +391,9 @@ options?: RoundingOptions<TAmount>
 ];
 
 // @public (undocumented)
-type Transformer_2<TAmount> = (options: TransformerOptions<TAmount>) => string;
+type Transformer_2<TAmount> = (
+options: TransformerOptions<TAmount>
+) => string;
 export { Transformer_2 as Transformer }
 
 // @public (undocumented)
@@ -322,10 +404,14 @@ export type TransformerOptions<TAmount> = {
 };
 
 // @public (undocumented)
-export type TransformOperation<TInput, TOutput = TInput> = (input: TInput) => TOutput;
+export type TransformOperation<TInput, TOutput = TInput> = (
+input: TInput
+) => TOutput;
 
 // @public (undocumented)
-export function transformScale<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, newScale: TAmount) => Dinero<TAmount>;
+export function transformScale<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>, newScale: TAmount) => Dinero<TAmount>;
 
 // @public (undocumented)
 export type TransformScaleParams<TAmount> = readonly [
@@ -334,19 +420,27 @@ newScale: TAmount
 ];
 
 // @public (undocumented)
-export function trimScale<TAmount>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>) => Dinero<TAmount>;
+export function trimScale<TAmount>(
+calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>) => Dinero<TAmount>;
 
 // @public (undocumented)
-export type TrimScaleParams<TAmount> = readonly [dineroObject: Dinero<TAmount>];
+export type TrimScaleParams<TAmount> = readonly [
+dineroObject: Dinero<TAmount>
+];
 
 // @public (undocumented)
-export type UnaryOperation<TInput, TOutput = TInput> = (value: TInput) => TOutput;
+export type UnaryOperation<TInput, TOutput = TInput> = (
+value: TInput
+) => TOutput;
 
 // @public (undocumented)
-export const UNEQUAL_CURRENCIES_MESSAGE = "Objects must have the same currency.";
+export const UNEQUAL_CURRENCIES_MESSAGE =
+'Objects must have the same currency.';
 
 // @public (undocumented)
-export const UNEQUAL_SCALES_MESSAGE = "Objects must have the same scale.";
+export const UNEQUAL_SCALES_MESSAGE =
+'Objects must have the same scale.';
 
 // @public
 export const up: RoundingMode;

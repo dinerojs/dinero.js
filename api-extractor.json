@@ -109,7 +109,8 @@
     /**
      * (REQUIRED) Whether to generate an API report.
      */
-    "enabled": true
+    "enabled": true,
+    "reportFolder": "api"
 
     /**
      * The filename for the API report files.  It will be combined with "reportFolder" or "reportTempFolder" to produce
@@ -120,6 +121,7 @@
      * SUPPORTED TOKENS: <packageName>, <unscopedPackageName>
      * DEFAULT VALUE: "<unscopedPackageName>.api.md"
      */
+
     // "reportFileName": "<unscopedPackageName>.api.md",
 
     /**
