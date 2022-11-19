@@ -1,5 +1,9 @@
 {
-  "extends": ["config:js-lib", "schedule:monthly"],
+  "extends": [
+    "config:js-lib",
+    "schedule:monthly",
+    ":semanticCommitTypeAll(chore)"
+  ],
   "timezone": "Europe/Paris",
   "packageRules": [
     {
