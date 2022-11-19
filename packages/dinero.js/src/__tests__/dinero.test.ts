@@ -17,4 +17,20 @@ describe('dinero', () => {
 
     expect(snapshot).toMatchObject({ amount: 500, currency: USD, scale: 2 });
   });
+  it('cleans up unwanted properties from the options', () => {
+    const d = dinero({
+      amount: 500,
+      // @ts-expect-error
+      currency: { code: 'USD', exponent: 2, base: 10, _extraProperty: 123 },
+      _extraProperty: 123,
+    });
+
+    const snapshot = toSnapshot(d);
+
+    expect(snapshot).toStrictEqual({
+      amount: 500,
+      currency: USD,
+      scale: 2,
+    });
+  });
 });
