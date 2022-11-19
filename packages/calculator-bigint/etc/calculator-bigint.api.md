@@ -15,7 +15,9 @@ export const add: BinaryOperation<bigint>;
 // @public (undocumented)
 export const calculator: {
     add: BinaryOperation<bigint, bigint>;
-    compare: BinaryOperation<bigint, ComparisonOperator>;
+    compare: BinaryOperation<bigint,
+    ComparisonOperator
+    >;
     decrement: UnaryOperation<bigint, bigint>;
     increment: UnaryOperation<bigint, bigint>;
     integerDivide: BinaryOperation<bigint, bigint>;
