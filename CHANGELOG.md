@@ -1,3 +1,9 @@
+# [2.0.0-alpha.10](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.9...v2.0.0-alpha.10) (2022-11-19)
+
+### Bug Fixes
+
+* **dinero.js:** don't accept extra fields inside the currency options on create ([#673](https://github.com/dinerojs/dinero.js/issues/673)) ([9e72f9e](https://github.com/dinerojs/dinero.js/commit/9e72f9efdc75349d9fd01e4efe57f38b4b59102c))
+
 # [2.0.0-alpha.9](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.8...v2.0.0-alpha.9) (2022-11-04)
 
 ### Bug Fixes
