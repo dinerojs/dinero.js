@@ -12,8 +12,7 @@
     "/examples/cart-react",
     "/examples/cart-vue",
     "/examples/pricing-react",
-    "/examples/starter",
-    "/examples/deno"
+    "/examples/starter"
   ],
   "node": "14"
 }
