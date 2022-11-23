@@ -1,19 +1,8 @@
-import type { Currency } from '@dinero.js/currencies';
-
-import type { Dinero, DineroSnapshot } from '../types';
-
-type TransformerOptions<TAmount> = {
-  readonly value: DineroSnapshot<TAmount>;
-  readonly currency: Currency<TAmount>;
-};
-
-type Transformer<TAmount, TOutput> = (
-  options: TransformerOptions<TAmount>
-) => TOutput;
+import type { Dinero, DineroSnapshot, Transformer } from '../types';
 
 export type ToSnapshotParams<TAmount, TOutput> = readonly [
   dineroObject: Dinero<TAmount>,
-  transformer?: Transformer<TAmount, TOutput>
+  transformer?: Transformer<TAmount, TOutput, DineroSnapshot<TAmount>>
 ];
 
 export function toSnapshot<TAmount, TOutput>(
