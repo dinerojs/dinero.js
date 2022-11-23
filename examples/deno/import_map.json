@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "@dinero.js/calculator-number": "https://www.unpkg.com/@dinero.js/calculator-number@2.0.0-alpha.10/dist/esm/index.js",
+    "@dinero.js/core": "https://www.unpkg.com/@dinero.js/core@2.0.0-alpha.10/dist/esm/index.js",
+    "@dinero.js/currencies": "https://www.unpkg.com/@dinero.js/currencies@2.0.0-alpha.10/dist/esm/index.js",
+    "dinero.js": "https://www.unpkg.com/dinero.js@2.0.0-alpha.10/dist/esm/index.js"
+  }
+}
