@@ -364,47 +364,40 @@ minuend: Dinero<TAmount>,
 subtrahend: Dinero<TAmount>
 ];
 
-// Warning: (ae-forgotten-export) The symbol "Transformer_3" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, transformer?: Transformer_3<TAmount, TOutput> | undefined) => TOutput;
+export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, transformer?: Transformer_2<TAmount, TOutput, string> | undefined) => TOutput;
 
 // @public (undocumented)
 export type ToDecimalParams<TAmount, TOutput> = readonly [
 dineroObject: Dinero<TAmount>,
-transformer?: Transformer_3<TAmount, TOutput>
+transformer?: Transformer_2<TAmount, TOutput, string>
 ];
 
 // @public (undocumented)
 export function toSnapshot<TAmount, TOutput>(...[dineroObject, transformer,]: ToSnapshotParams<TAmount, TOutput>): TOutput;
 
-// Warning: (ae-forgotten-export) The symbol "Transformer_4" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type ToSnapshotParams<TAmount, TOutput> = readonly [
 dineroObject: Dinero<TAmount>,
-transformer?: Transformer_4<TAmount, TOutput>
+transformer?: Transformer_2<TAmount, TOutput, DineroSnapshot<TAmount>>
 ];
 
-// Warning: (ae-forgotten-export) The symbol "Transformer_5" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export function toUnits<TAmount, TOutput>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, transformer?: Transformer_5<TAmount, TOutput> | undefined) => TOutput;
+export function toUnits<TAmount, TOutput>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, transformer?: Transformer_2<TAmount, TOutput, readonly TAmount[]> | undefined) => TOutput;
 
 // @public (undocumented)
 export type ToUnitsParams<TAmount, TOutput> = readonly [
 dineroObject: Dinero<TAmount>,
-transformer?: Transformer_5<TAmount, TOutput>
+transformer?: Transformer_2<TAmount, TOutput, readonly TAmount[]>
 ];
 
 // @public (undocumented)
-type Transformer_2<TAmount, TOutput> = (options: TransformerOptions<TAmount>) => TOutput;
+type Transformer_2<TAmount, TOutput, TValue> = (options: TransformerOptions<TAmount, TValue>) => TOutput;
 export { Transformer_2 as Transformer }
 
 // @public (undocumented)
-export type TransformerOptions<TAmount> = {
-    readonly units: readonly TAmount[];
-    readonly decimal?: string;
+export type TransformerOptions<TAmount, TValue> = {
+    readonly value: TValue;
     readonly currency: Currency<TAmount>;
 };
 

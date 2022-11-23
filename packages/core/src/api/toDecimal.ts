@@ -1,24 +1,13 @@
-import type { Currency } from '@dinero.js/currencies';
-
 import { NON_DECIMAL_CURRENCY_MESSAGE } from '../checks';
 import { assert } from '../helpers';
-import type { Calculator, Dinero, Formatter } from '../types';
+import type { Calculator, Dinero, Formatter, Transformer } from '../types';
 import { computeBase, equal, isArray } from '../utils';
 
 import { toUnits } from './toUnits';
 
-type TransformerOptions<TAmount> = {
-  readonly value: string;
-  readonly currency: Currency<TAmount>;
-};
-
-type Transformer<TAmount, TOutput> = (
-  options: TransformerOptions<TAmount>
-) => TOutput;
-
 export type ToDecimalParams<TAmount, TOutput> = readonly [
   dineroObject: Dinero<TAmount>,
-  transformer?: Transformer<TAmount, TOutput>
+  transformer?: Transformer<TAmount, TOutput, string>
 ];
 
 export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>) {
