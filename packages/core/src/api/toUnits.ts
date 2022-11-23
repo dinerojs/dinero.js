@@ -1,20 +1,9 @@
-import type { Currency } from '@dinero.js/currencies';
-
-import type { Calculator, Dinero } from '../types';
+import type { Calculator, Dinero, Transformer } from '../types';
 import { isArray, getDivisors } from '../utils';
-
-type TransformerOptions<TAmount> = {
-  readonly value: readonly TAmount[];
-  readonly currency: Currency<TAmount>;
-};
-
-type Transformer<TAmount, TOutput> = (
-  options: TransformerOptions<TAmount>
-) => TOutput;
 
 export type ToUnitsParams<TAmount, TOutput> = readonly [
   dineroObject: Dinero<TAmount>,
-  transformer?: Transformer<TAmount, TOutput>
+  transformer?: Transformer<TAmount, TOutput, readonly TAmount[]>
 ];
 
 export function toUnits<TAmount, TOutput>(calculator: Calculator<TAmount>) {
