@@ -1,6 +1,6 @@
 /* eslint-disable functional/no-expression-statement, no-console, import/no-unresolved */
-import { USD } from 'npm:@dinero.js/currencies@2.0.0-alpha.10';
-import { dinero, toFormat, toSnapshot } from 'npm:dinero.js@2.0.0-alpha.10';
+import { USD } from 'npm:@dinero.js/currencies';
+import { dinero, toFormat, toSnapshot } from 'npm:dinero.js';
 
 const transformer = (props) => `${props.currency.code} ${props.amount}`;
 

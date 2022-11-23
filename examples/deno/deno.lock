@@ -3,8 +3,8 @@
   "remote": {},
   "npm": {
     "specifiers": {
-      "@dinero.js/currencies@2.0.0-alpha.10": "@dinero.js/currencies@2.0.0-alpha.10",
-      "dinero.js@2.0.0-alpha.10": "dinero.js@2.0.0-alpha.10"
+      "@dinero.js/currencies": "@dinero.js/currencies@2.0.0-alpha.10",
+      "dinero.js": "dinero.js@2.0.0-alpha.10"
     },
     "packages": {
       "@dinero.js/calculator-number@2.0.0-alpha.10": {
