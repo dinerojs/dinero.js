@@ -1,21 +1,7 @@
-# Dinero.js Deno Example
+# Dinero.js Deno example
 
-This example demonstrates how to use Dinero.js ES Modules in Deno.
+This example demonstrates how to use Dinero.js with Deno.
 
-> ℹ️ Using an import map is required in order for Dinero.js modules to find dependencies.
-
-To run the example
-
-1. You need [Deno](https://deno.land/manual@v1.28.1/getting_started/installation) installed.
-
-2. Switch to the example directory `cd dinero.js/examples/deno`
-
-3. To run the example Deno needs to be aware of the location of the import map.
-
-   Run as a task, Deno finds the import map through the deno.json file.
-
-   `deno task start`
-
-   Run directly from Deno requires an `import-map` cli flag.
-
-   `deno run --import-map=./import_map.json main.ts`
+1. Install [Deno](https://deno.land/manual@v1.28.1/getting_started/installation) on your local environment.
+2. Navigate to the Deno example: `cd examples/deno/`.
+3. Run the example: `deno task start`.
