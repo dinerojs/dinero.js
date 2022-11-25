@@ -53,7 +53,7 @@ function toPaypalMoney(dineroObject) {
   const { currency, scale } = toSnapshot(dineroObject);
 
   return {
-    value: toDecimal(dineroObject, ({ value }) => value),
+    value: toDecimal(dineroObject),
     currency_code: currency.code,
   };
 }
