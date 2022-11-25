@@ -71,5 +71,5 @@ function transformer({ value }) {
 const d = dinero({ amount: 720, currency: POP });
 
 toUnits(d, transformer); // "1 🍩 and 15 🍪"
-toSnapshot(d, ({ value }) => `${value.amount} 🍭`); // // "720 🍭"
+toSnapshot(d, ({ value }) => `${value.amount} 🍭`); // "720 🍭"
 ```
