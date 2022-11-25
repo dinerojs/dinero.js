@@ -40,7 +40,9 @@ describe('transformScale', () => {
         expect(snapshot).toMatchObject({ amount: 333, scale: 2 });
       });
       it('uses a custom divide function', () => {
-        const divideFn = jest.fn(() => 1045);
+        const divideFn = jest.fn(() => 1045) as Parameters<
+          typeof transformScale
+        >[2];
         const d = dinero({ amount: 10455, currency: USD, scale: 3 });
 
         const snapshot = toSnapshot(transformScale(d, 2, divideFn));
