@@ -2,10 +2,11 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build:clean": {
+      "inputs": ["lib/**/*", "dist/**/*"],
       "outputs": []
     },
     "build:tsc": {
-      "dependsOn": ["build:clean"],
+      "dependsOn": ["^build:tsc"],
       "inputs": ["src/**/*.ts"],
       "outputs": ["lib/**/*"]
     },
@@ -15,12 +16,12 @@
       "outputs": ["etc/**/*", "dist/esm/index.d.ts"]
     },
     "build:esm": {
-      "dependsOn": ["build:clean"],
+      "dependsOn": [],
       "inputs": ["src/**/*.ts"],
       "outputs": ["dist/esm/**/*.js"]
     },
     "build:umd:cjs": {
-      "dependsOn": ["build:clean", "build:esm"],
+      "dependsOn": ["build:esm"],
       "inputs": ["src/**/*.ts"],
       "outputs": ["dist/cjs/**/*.js", "dist/umd/**/*.js"]
     },

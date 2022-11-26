@@ -15,7 +15,7 @@
     "examples/starter"
   ],
   "scripts": {
-    "build:clean": "turbo clean",
+    "build:clean": "turbo build:clean",
     "build:esm": "turbo build:esm --filter=./packages/*",
     "build:types": "turbo build:types --filter=./packages/*",
     "build:umd:cjs": "turbo build:umd:cjs --filter=./packages/*",
