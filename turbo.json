@@ -2,11 +2,10 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build:clean": {
-      "dependsOn": ["^build:clean"],
       "outputs": []
     },
     "build:tsc": {
-      "dependsOn": ["^build:tsc", "build:clean"],
+      "dependsOn": ["build:clean"],
       "inputs": ["src/**/*.ts"],
       "outputs": ["lib/**/*"]
     },
@@ -16,26 +15,22 @@
       "outputs": ["etc/**/*", "dist/esm/index.d.ts"]
     },
     "build:esm": {
-      "dependsOn": ["^build:esm", "build:clean"],
+      "dependsOn": ["build:clean"],
       "inputs": ["src/**/*.ts"],
       "outputs": ["dist/esm/**/*.js"]
     },
     "build:umd:cjs": {
-      "dependsOn": ["^build:umd:cjs", "build:clean", "build:esm"],
+      "dependsOn": ["build:clean", "build:esm"],
       "inputs": ["src/**/*.ts"],
       "outputs": ["dist/cjs/**/*.js", "dist/umd/**/*.js"]
     },
     "test": {
-      // A package's `test` script depends on that package's
-      // own `build` script being completed first.
-      "dependsOn": ["^test"],
+      "dependsOn": ["test"],
       "outputs": [],
-      // A package's `test` script should only be rerun when
-      // a .ts` file has changed in `src` or `test` folders.
-      "inputs": ["src/**/*.ts", "__tests__/**/*.tsx"]
+      "inputs": ["src/**/*.ts"]
     },
     "build": {
-      "dependsOn": ["^build", "build:esm", "build:umd:cjs", "build:types"],
+      "dependsOn": ["build:esm", "build:umd:cjs", "build:types"],
       "outputs": ["dist/**"]
     },
     "lint": {
@@ -45,10 +40,7 @@
       "inputs": ["**/*.ts", "**/*.js"]
     },
     "prepare": {
-      // A package's `deploy` script depends on the `build`,
-      // `test`, and `lint` scripts of the same package
-      // being completed. It also has no filesystem outputs.
-      "dependsOn": ["build", "test", "lint"],
+      "dependsOn": ["build"],
       "outputs": []
     }
   },
