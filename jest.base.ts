@@ -16,7 +16,7 @@ export default {
   // This module mapper is for the jest configs in the package folders
   // It is overridden by the toplevel jest config
   moduleNameMapper: {
-    '^@dinero.js/test$': '<rootDir>/../../test/utils/',
+    '^test-utils$': '<rootDir>/../../test/utils/',
     '^@dinero.js/(.*)$': '<rootDir>/../$1/src/',
     '^dinero.js$': '<rootDir>/../dinero.js/src/',
   },
