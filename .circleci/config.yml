@@ -17,7 +17,7 @@ aliases:
       - ~/.cache/yarn
   - &run_yarn_install
     name: Install dependencies
-    command: yarn install --frozen-lockfile --ignore-scripts
+    command: yarn install --frozen-lockfile
   - &restore_turbo_cache
     name: Restore Turbo cache
     key: previous-build-{{ .Branch }}

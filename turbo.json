@@ -44,7 +44,7 @@
       "outputs": [],
       "inputs": ["**/*.ts", "**/*.js"]
     },
-    "deploy": {
+    "prepare": {
       // A package's `deploy` script depends on the `build`,
       // `test`, and `lint` scripts of the same package
       // being completed. It also has no filesystem outputs.
