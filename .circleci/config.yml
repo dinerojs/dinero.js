@@ -114,6 +114,7 @@ jobs:
           root: *workspace_root
           paths:
             - packages
+            - node_modules/.cache/turbo
   test_lint:
     <<: *defaults
     steps:
