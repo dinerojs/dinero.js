@@ -42,7 +42,7 @@ const response = await client.charges.create({
 
 ## Integrating with Paypal
 
-The [Paypal](https://www.paypal.com/) payment platform provides APIs to process payments and manage orders. Unlike most platforms, it expects a money representation with an amount in major currency units. You can use [`toDecimal`](/docs/api/formatting/to-decimal) to retrieve this value.
+The [Paypal](https://www.paypal.com/) payment platform provides APIs to process payments and manage orders. Unlike most platforms, it expects a string representation with an amount in major currency units. You can use [`toDecimal`](/docs/api/formatting/to-decimal) to format the object and pass this value to Paypal.
 
 ```js
 const paypal = require('@paypal/checkout-server-sdk');
