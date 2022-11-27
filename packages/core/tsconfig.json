@@ -7,5 +7,6 @@
     "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
   },
   "references": [{ "path": "../currencies" }],
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": [ "**/__tests__/**/*"]
 }
