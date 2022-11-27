@@ -1,8 +1,8 @@
-import { compare as cmp } from '@dinero.js/calculator-number';
+import { calculator } from '@dinero.js/calculator-number';
 
 import { compare } from '../compare';
 
-const compareFn = compare({ compare: cmp });
+const compareFn = compare(calculator);
 
 describe('compare', () => {
   describe('inferiority', () => {

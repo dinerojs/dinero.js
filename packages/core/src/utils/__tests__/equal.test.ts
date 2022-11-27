@@ -1,8 +1,8 @@
-import { compare } from '@dinero.js/calculator-number';
+import { calculator } from '@dinero.js/calculator-number';
 
 import { equal } from '../equal';
 
-const equalFn = equal({ compare });
+const equalFn = equal(calculator);
 
 describe('equal', () => {
   it('returns true with equal positive numbers', () => {

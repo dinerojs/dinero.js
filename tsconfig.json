@@ -24,16 +24,5 @@
       "test-utils": ["test/utils/index"]
     }
   },
-  "exclude": [
-    "**/__fixtures__/**/*",
-    "**/__mocks__/**/*",
-    "**/__tests__/**/*",
-    "**/dist",
-    "**/lib",
-    "**/temp",
-    "**/node_modules",
-    "stories",
-    "examples",
-    "website"
-  ]
+  "exclude": ["**/dist", "**/lib", "**/temp", "**/node_modules", "website"]
 }

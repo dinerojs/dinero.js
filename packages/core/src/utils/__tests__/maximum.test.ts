@@ -1,8 +1,8 @@
-import { compare } from '@dinero.js/calculator-number';
+import { calculator } from '@dinero.js/calculator-number';
 
 import { maximum } from '../maximum';
 
-const maximumFn = maximum({ compare });
+const maximumFn = maximum(calculator);
 
 describe('maximum', () => {
   it('gets the greatest from positive numbers', () => {

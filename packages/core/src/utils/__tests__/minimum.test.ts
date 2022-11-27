@@ -1,8 +1,8 @@
-import { compare } from '@dinero.js/calculator-number';
+import { calculator } from '@dinero.js/calculator-number';
 
 import { minimum } from '../minimum';
 
-const minimumFn = minimum({ compare });
+const minimumFn = minimum(calculator);
 
 describe('minimum', () => {
   it('gets the lowest from positive numbers', () => {

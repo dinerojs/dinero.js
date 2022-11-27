@@ -1,8 +1,8 @@
-import { compare } from '@dinero.js/calculator-number';
+import { calculator } from '@dinero.js/calculator-number';
 
 import { lessThan } from '../lessThan';
 
-const lessThanFn = lessThan({ compare });
+const lessThanFn = lessThan(calculator);
 
 describe('lessThan', () => {
   it('returns true when the first number is less than the other with positive numbers', () => {
