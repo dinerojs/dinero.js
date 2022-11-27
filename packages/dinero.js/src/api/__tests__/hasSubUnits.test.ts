@@ -118,7 +118,7 @@ describe('hasSubUnits', () => {
     const bigjsGBP = {
       code: 'GBP',
       base: [new Big(20), new Big(12)],
-      exponent: 1n,
+      exponent: new Big(1),
     };
 
     describe('decimal currencies', () => {
