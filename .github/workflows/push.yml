@@ -36,7 +36,8 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT # https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/
+        # run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - name: Cache node_modules
         uses: actions/cache@v3
@@ -48,7 +49,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Packages
-        run: yarn install --frozen-lockfile # this won't work for the script `test:size`
+        run: yarn install --frozen-lockfile
         env:
           CI: true
 
@@ -74,7 +75,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       - name: Cache node_modules
         uses: actions/cache@v3
@@ -86,7 +87,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Packages
-        run: yarn install --frozen-lockfile # this won't work for the script `test:size`
+        run: yarn install --frozen-lockfile
         env:
           CI: true
 
@@ -112,7 +113,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       - name: Cache node_modules
         uses: actions/cache@v3
@@ -124,7 +125,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Packages
-        run: yarn install --frozen-lockfile # this won't work for the script `test:size`
+        run: yarn install --frozen-lockfile
         env:
           CI: true
 
@@ -150,7 +151,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       - name: Cache node_modules
         uses: actions/cache@v3
@@ -162,7 +163,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Packages
-        run: yarn install --frozen-lockfile # this won't work for the script `test:size`
+        run: yarn install --frozen-lockfile
         env:
           CI: true
 
@@ -188,7 +189,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       - name: Cache node_modules
         uses: actions/cache@v3
@@ -200,7 +201,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Packages
-        run: yarn install --frozen-lockfile # this won't work for the script `test:size`
+        run: yarn install --frozen-lockfile
         env:
           CI: true
 
