@@ -181,6 +181,7 @@ describe('transformScale', () => {
   describe('bigint', () => {
     const dinero = createBigintDinero;
     const bigintUSD = castToBigintCurrency(USD);
+    const bigintMGA = castToBigintCurrency(MGA);
 
     describe('decimal currencies', () => {
       it('returns a new Dinero object with a new scale and a converted amount', () => {
@@ -323,10 +324,25 @@ describe('transformScale', () => {
         );
       });
     });
+    describe('non-decimal currencies', () => {
+      it('returns a new Dinero object with a new scale and a converted amount', () => {
+        const d = dinero({ amount: 5n, currency: bigintMGA });
+        const snapshot = toSnapshot(transformScale(d, 2n));
+
+        expect(snapshot).toMatchObject({ amount: 25n, scale: 2n });
+      });
+      it('returns a new Dinero object with a new scale and a converted, rounded down amount', () => {
+        const d = dinero({ amount: 26n, currency: bigintMGA, scale: 2n });
+        const snapshot = toSnapshot(transformScale(d, 1n));
+
+        expect(snapshot).toMatchObject({ amount: 5n, scale: 1n });
+      });
+    });
   });
   describe('Big.js', () => {
     const dinero = createBigjsDinero;
     const bigjsUSD = castToBigjsCurrency(USD);
+    const bigjsMGA = castToBigjsCurrency(MGA);
 
     describe('decimal currencies', () => {
       it('returns a new Dinero object with a new scale and a converted amount', () => {
@@ -572,6 +588,30 @@ describe('transformScale', () => {
             zero: expect.any(Function),
           })
         );
+      });
+    });
+    describe('non-decimal currencies', () => {
+      it('returns a new Dinero object with a new scale and a converted amount', () => {
+        const d = dinero({ amount: new Big(5), currency: bigjsMGA });
+        const snapshot = toSnapshot(transformScale(d, new Big(2)));
+
+        expect(snapshot).toMatchObject({
+          amount: new Big(25),
+          scale: new Big(2),
+        });
+      });
+      it('returns a new Dinero object with a new scale and a converted, rounded down amount', () => {
+        const d = dinero({
+          amount: new Big(26),
+          currency: bigjsMGA,
+          scale: new Big(2),
+        });
+        const snapshot = toSnapshot(transformScale(d, new Big(1)));
+
+        expect(snapshot).toMatchObject({
+          amount: new Big(5),
+          scale: new Big(1),
+        });
       });
     });
   });
