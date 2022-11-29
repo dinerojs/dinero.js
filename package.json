@@ -22,7 +22,7 @@
     "build": "turbo build --filter=./packages/*",
     "format": "prettier --write .",
     "lint": "turbo lint --filter=./packages/*",
-    "prepare": "husky install && turbo run prepare --filter=./packages/*",
+    "prepare": "husky install && turbo run prepare --filter=./packages/* --api=\"http://127.0.0.1:9080\" --token=$TURBO_SERVER_TOKEN --team=\"foo\"",
     "release": "shipjs prepare",
     "start": "yarn run watch",
     "test:size": "bundlesize",

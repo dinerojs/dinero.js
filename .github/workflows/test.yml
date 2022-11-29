@@ -15,12 +15,20 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      TURBO_SERVER_TOKEN: ${{ secrets.TURBO_SERVER_TOKEN }}
     steps:
       - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+
+      - name: Turborepo local server
+        uses: felixmosh/turborepo-gh-artifacts@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -36,19 +44,15 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Packages
-        run: yarn install --frozen-lockfile --ignore-scripts # this won't work for the script `test:size`
+        run: yarn install --frozen-lockfile # this won't work for the script `test:size`
         env:
           CI: true
 
-      - name: Turborepo local server
-        uses: felixmosh/turborepo-gh-artifacts@v2
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
-
       - name: Lint
-        run: yarn lint --api="http://127.0.0.1:9080" --token="${{ secrets.TURBO_SERVER_TOKEN }}" --team="foo"
+        run: yarn lint --api="http://127.0.0.1:9080" --token=$TURBO_SERVER_TOKEN --team="foo"
       - name: Test
-        run: yarn test --api="http://127.0.0.1:9080" --token="${{ secrets.TURBO_SERVER_TOKEN }}" --team="foo"
+        run: yarn test --api="http://127.0.0.1:9080" --token=$TURBO_SERVER_TOKEN --team="foo"
+      - name: Test Types
+        run: yarn test:types
       - name: Build
-        run: yarn build --api="http://127.0.0.1:9080" --token="${{ secrets.TURBO_SERVER_TOKEN }}" --team="foo"
+        run: yarn build --api="http://127.0.0.1:9080" --token=$TURBO_SERVER_TOKEN --team="foo"
