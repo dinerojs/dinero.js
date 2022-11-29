@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        command: [lint, test, build]
+        command: ['ci:lint', 'ci:test', 'ci:build', 'test:types', 'test:size']
     env:
       TURBO_SERVER_TOKEN: ${{ secrets.TURBO_SERVER_TOKEN }}
     steps:
@@ -52,6 +52,4 @@ jobs:
           CI: true
 
       - name: ${{ matrix.command }}
-        run: yarn ${{ matrix.command }} --api="http://127.0.0.1:9080" --token=$TURBO_SERVER_TOKEN --team="foo"
-      # - name: Test Types
-      #   run: yarn test:types
+        run: yarn ${{ matrix.command }}
