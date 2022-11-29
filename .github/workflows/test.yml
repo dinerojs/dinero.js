@@ -2,9 +2,9 @@ name: Test
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - 'ci/*'
+  # push:
+  #   branches:
+  #     - 'ci/*'
 
 permissions:
   checks: write
