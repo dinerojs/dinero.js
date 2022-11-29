@@ -1,4 +1,4 @@
-import type { Calculator, Dinero, Transformer, UnaryOperation } from '../types';
+import type { Calculator, Dinero, Transformer } from '../types';
 import { isArray, getDivisors } from '../utils';
 
 export type ToUnitsParams<TAmount, TOutput> = readonly [
@@ -8,13 +8,7 @@ export type ToUnitsParams<TAmount, TOutput> = readonly [
 
 export function toUnits<TAmount, TOutput>(
   calculator: Calculator<TAmount>
-): UnaryOperation<
-  Dinero<TAmount>,
-  readonly [
-    transformer?: Transformer<TAmount, TOutput, readonly TAmount[]> | undefined
-  ],
-  TOutput
-> {
+): (...params: ToUnitsParams<TAmount, TOutput>) => TOutput {
   const getDivisorsFn = getDivisors(calculator);
 
   return function toUnitsFn(

@@ -1,11 +1,10 @@
 import { down } from '../divide';
-import type {
-  Calculator,
-  Dinero,
-  DivideOperation,
-  UnaryOperation,
-} from '../types';
+import type { Calculator, Dinero, DivideOperation } from '../types';
 import { computeBase, greaterThan } from '../utils';
+
+export type TRest<T> = T extends readonly [unknown, ...infer Rest]
+  ? Rest
+  : never;
 
 export type TransformScaleParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
@@ -15,10 +14,7 @@ export type TransformScaleParams<TAmount> = readonly [
 
 export function transformScale<TAmount>(
   calculator: Calculator<TAmount>
-): UnaryOperation<
-  Dinero<TAmount>,
-  readonly [amount: TAmount, divide?: DivideOperation | undefined]
-> {
+): (...params: TransformScaleParams<TAmount>) => Dinero<TAmount> {
   const greaterThanFn = greaterThan(calculator);
   const computeBaseFn = computeBase(calculator);
 

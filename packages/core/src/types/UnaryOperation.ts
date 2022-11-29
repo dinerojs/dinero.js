@@ -1,4 +1,3 @@
-export type UnaryOperation<TInput, TParams = readonly [], TOutput = TInput> = (
-  operand: TInput,
-  ...rest: TParams extends readonly [...infer TRest] ? TRest : never
+export type UnaryOperation<TInput, TOutput = TInput> = (
+  value: TInput
 ) => TOutput;
