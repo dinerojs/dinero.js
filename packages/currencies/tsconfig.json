@@ -3,8 +3,8 @@
   "compilerOptions": {
     "outDir": "lib",
     "rootDir": "src",
-    "composite": true,
     "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
   },
   "include": ["src"],
-  "exclude": [ "**/__tests__/**/*"]}
+  "exclude": ["**/__tests__/**/*"]
+}
