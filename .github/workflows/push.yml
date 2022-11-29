@@ -1,4 +1,4 @@
-name: Test
+name: On Push
 
 on:
   workflow_dispatch:
@@ -131,6 +131,7 @@ jobs:
       - name: Test
         run: yarn ci:test
   test_types:
+    needs: build
     runs-on: ubuntu-latest
     env:
       TURBO_SERVER_TOKEN: ${{ secrets.TURBO_SERVER_TOKEN }}
