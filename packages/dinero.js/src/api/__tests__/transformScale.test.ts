@@ -20,6 +20,8 @@ import {
 
 import { toSnapshot, transformScale } from '..';
 
+const ABC = { code: 'ABC', base: 6, exponent: 1 };
+
 type DivideOperation = Parameters<typeof transformScale>[2];
 
 describe('transformScale', () => {
@@ -176,12 +178,111 @@ describe('transformScale', () => {
 
         expect(snapshot).toMatchObject({ amount: 5, scale: 1 });
       });
+      it('uses the provided `up` divide function', () => {
+        const d = dinero({ amount: 33, currency: ABC, scale: 2 });
+        const snapshot = toSnapshot(transformScale(d, 1, up));
+
+        expect(snapshot).toMatchObject({ amount: 6, scale: 1 });
+      });
+      it('uses the provided `down` divide function', () => {
+        const d = dinero({ amount: 33, currency: ABC, scale: 2 });
+        const snapshot = toSnapshot(transformScale(d, 1, down));
+
+        expect(snapshot).toMatchObject({ amount: 5, scale: 1 });
+      });
+      it('uses the provided `halfOdd` divide function', () => {
+        const d1 = dinero({ amount: 33, currency: ABC, scale: 2 });
+        const d2 = dinero({ amount: 39, currency: ABC, scale: 2 });
+
+        expect(toSnapshot(transformScale(d1, 1, halfOdd))).toMatchObject({
+          amount: 5,
+          scale: 1,
+        });
+        expect(toSnapshot(transformScale(d2, 1, halfOdd))).toMatchObject({
+          amount: 7,
+          scale: 1,
+        });
+      });
+      it('uses the provided `halfEven` divide function', () => {
+        const d1 = dinero({ amount: 33, currency: ABC, scale: 2 });
+        const d2 = dinero({ amount: 39, currency: ABC, scale: 2 });
+
+        expect(toSnapshot(transformScale(d1, 1, halfEven))).toMatchObject({
+          amount: 6,
+          scale: 1,
+        });
+        expect(toSnapshot(transformScale(d2, 1, halfEven))).toMatchObject({
+          amount: 6,
+          scale: 1,
+        });
+      });
+      it('uses the provided `halfDown` divide function', () => {
+        const d1 = dinero({ amount: 33, currency: ABC, scale: 2 });
+        const d2 = dinero({ amount: 39, currency: ABC, scale: 2 });
+
+        expect(toSnapshot(transformScale(d1, 1, halfDown))).toMatchObject({
+          amount: 5,
+          scale: 1,
+        });
+        expect(toSnapshot(transformScale(d2, 1, halfDown))).toMatchObject({
+          amount: 6,
+          scale: 1,
+        });
+      });
+      it('uses the provided `halfUp` divide function', () => {
+        const d1 = dinero({ amount: 33, currency: ABC, scale: 2 });
+        const d2 = dinero({ amount: 39, currency: ABC, scale: 2 });
+
+        expect(toSnapshot(transformScale(d1, 1, halfUp))).toMatchObject({
+          amount: 6,
+          scale: 1,
+        });
+        expect(toSnapshot(transformScale(d2, 1, halfUp))).toMatchObject({
+          amount: 7,
+          scale: 1,
+        });
+      });
+      it('uses the provided `halfTowardsZero` divide function', () => {
+        const d1 = dinero({ amount: 33, currency: ABC, scale: 2 });
+        const d2 = dinero({ amount: 39, currency: ABC, scale: 2 });
+
+        expect(
+          toSnapshot(transformScale(d1, 1, halfTowardsZero))
+        ).toMatchObject({
+          amount: 5,
+          scale: 1,
+        });
+        expect(
+          toSnapshot(transformScale(d2, 1, halfTowardsZero))
+        ).toMatchObject({
+          amount: 6,
+          scale: 1,
+        });
+      });
+      it('uses the provided `halfAwayFromZero` divide function', () => {
+        const d1 = dinero({ amount: 33, currency: ABC, scale: 2 });
+        const d2 = dinero({ amount: 39, currency: ABC, scale: 2 });
+
+        expect(
+          toSnapshot(transformScale(d1, 1, halfAwayFromZero))
+        ).toMatchObject({
+          amount: 6,
+          scale: 1,
+        });
+        expect(
+          toSnapshot(transformScale(d2, 1, halfAwayFromZero))
+        ).toMatchObject({
+          amount: 7,
+          scale: 1,
+        });
+      });
     });
   });
   describe('bigint', () => {
     const dinero = createBigintDinero;
     const bigintUSD = castToBigintCurrency(USD);
     const bigintMGA = castToBigintCurrency(MGA);
+    const bigintABC = castToBigintCurrency(ABC);
 
     describe('decimal currencies', () => {
       it('returns a new Dinero object with a new scale and a converted amount', () => {
@@ -337,12 +438,111 @@ describe('transformScale', () => {
 
         expect(snapshot).toMatchObject({ amount: 5n, scale: 1n });
       });
+      it('uses the provided `up` divide function', () => {
+        const d = dinero({ amount: 33n, currency: bigintABC, scale: 2n });
+        const snapshot = toSnapshot(transformScale(d, 1n, up));
+
+        expect(snapshot).toMatchObject({ amount: 6n, scale: 1n });
+      });
+      it('uses the provided `down` divide function', () => {
+        const d = dinero({ amount: 33n, currency: bigintABC, scale: 2n });
+        const snapshot = toSnapshot(transformScale(d, 1n, down));
+
+        expect(snapshot).toMatchObject({ amount: 5n, scale: 1n });
+      });
+      it('uses the provided `halfOdd` divide function', () => {
+        const d1 = dinero({ amount: 33n, currency: bigintABC, scale: 2n });
+        const d2 = dinero({ amount: 39n, currency: bigintABC, scale: 2n });
+
+        expect(toSnapshot(transformScale(d1, 1n, halfOdd))).toMatchObject({
+          amount: 5n,
+          scale: 1n,
+        });
+        expect(toSnapshot(transformScale(d2, 1n, halfOdd))).toMatchObject({
+          amount: 7n,
+          scale: 1n,
+        });
+      });
+      it('uses the provided `halfEven` divide function', () => {
+        const d1 = dinero({ amount: 33n, currency: bigintABC, scale: 2n });
+        const d2 = dinero({ amount: 39n, currency: bigintABC, scale: 2n });
+
+        expect(toSnapshot(transformScale(d1, 1n, halfEven))).toMatchObject({
+          amount: 6n,
+          scale: 1n,
+        });
+        expect(toSnapshot(transformScale(d2, 1n, halfEven))).toMatchObject({
+          amount: 6n,
+          scale: 1n,
+        });
+      });
+      it('uses the provided `halfDown` divide function', () => {
+        const d1 = dinero({ amount: 33n, currency: bigintABC, scale: 2n });
+        const d2 = dinero({ amount: 39n, currency: bigintABC, scale: 2n });
+
+        expect(toSnapshot(transformScale(d1, 1n, halfDown))).toMatchObject({
+          amount: 5n,
+          scale: 1n,
+        });
+        expect(toSnapshot(transformScale(d2, 1n, halfDown))).toMatchObject({
+          amount: 6n,
+          scale: 1n,
+        });
+      });
+      it('uses the provided `halfUp` divide function', () => {
+        const d1 = dinero({ amount: 33n, currency: bigintABC, scale: 2n });
+        const d2 = dinero({ amount: 39n, currency: bigintABC, scale: 2n });
+
+        expect(toSnapshot(transformScale(d1, 1n, halfUp))).toMatchObject({
+          amount: 6n,
+          scale: 1n,
+        });
+        expect(toSnapshot(transformScale(d2, 1n, halfUp))).toMatchObject({
+          amount: 7n,
+          scale: 1n,
+        });
+      });
+      it('uses the provided `halfTowardsZero` divide function', () => {
+        const d1 = dinero({ amount: 33n, currency: bigintABC, scale: 2n });
+        const d2 = dinero({ amount: 39n, currency: bigintABC, scale: 2n });
+
+        expect(
+          toSnapshot(transformScale(d1, 1n, halfTowardsZero))
+        ).toMatchObject({
+          amount: 5n,
+          scale: 1n,
+        });
+        expect(
+          toSnapshot(transformScale(d2, 1n, halfTowardsZero))
+        ).toMatchObject({
+          amount: 6n,
+          scale: 1n,
+        });
+      });
+      it('uses the provided `halfAwayFromZero` divide function', () => {
+        const d1 = dinero({ amount: 33n, currency: bigintABC, scale: 2n });
+        const d2 = dinero({ amount: 39n, currency: bigintABC, scale: 2n });
+
+        expect(
+          toSnapshot(transformScale(d1, 1n, halfAwayFromZero))
+        ).toMatchObject({
+          amount: 6n,
+          scale: 1n,
+        });
+        expect(
+          toSnapshot(transformScale(d2, 1n, halfAwayFromZero))
+        ).toMatchObject({
+          amount: 7n,
+          scale: 1n,
+        });
+      });
     });
   });
   describe('Big.js', () => {
     const dinero = createBigjsDinero;
     const bigjsUSD = castToBigjsCurrency(USD);
     const bigjsMGA = castToBigjsCurrency(MGA);
+    const bigjsABC = castToBigjsCurrency(ABC);
 
     describe('decimal currencies', () => {
       it('returns a new Dinero object with a new scale and a converted amount', () => {
@@ -610,6 +810,182 @@ describe('transformScale', () => {
 
         expect(snapshot).toMatchObject({
           amount: new Big(5),
+          scale: new Big(1),
+        });
+      });
+      it('uses the provided `up` divide function', () => {
+        const d = dinero({
+          amount: new Big(33),
+          currency: bigjsABC,
+          scale: new Big(2),
+        });
+        const snapshot = toSnapshot(transformScale(d, new Big(1), up));
+
+        expect(snapshot).toMatchObject({
+          amount: new Big(6),
+          scale: new Big(1),
+        });
+      });
+      it('uses the provided `down` divide function', () => {
+        const d = dinero({
+          amount: new Big(33),
+          currency: bigjsABC,
+          scale: new Big(2),
+        });
+        const snapshot = toSnapshot(transformScale(d, new Big(1), down));
+
+        expect(snapshot).toMatchObject({
+          amount: new Big(5),
+          scale: new Big(1),
+        });
+      });
+      it('uses the provided `halfOdd` divide function', () => {
+        const d1 = dinero({
+          amount: new Big(33),
+          currency: bigjsABC,
+          scale: new Big(2),
+        });
+        const d2 = dinero({
+          amount: new Big(39),
+          currency: bigjsABC,
+          scale: new Big(2),
+        });
+
+        expect(
+          toSnapshot(transformScale(d1, new Big(1), halfOdd))
+        ).toMatchObject({
+          amount: new Big(5),
+          scale: new Big(1),
+        });
+        expect(
+          toSnapshot(transformScale(d2, new Big(1), halfOdd))
+        ).toMatchObject({
+          amount: new Big(7),
+          scale: new Big(1),
+        });
+      });
+      it('uses the provided `halfEven` divide function', () => {
+        const d1 = dinero({
+          amount: new Big(33),
+          currency: bigjsABC,
+          scale: new Big(2),
+        });
+        const d2 = dinero({
+          amount: new Big(39),
+          currency: bigjsABC,
+          scale: new Big(2),
+        });
+
+        expect(
+          toSnapshot(transformScale(d1, new Big(1), halfEven))
+        ).toMatchObject({
+          amount: new Big(6),
+          scale: new Big(1),
+        });
+        expect(
+          toSnapshot(transformScale(d2, new Big(1), halfEven))
+        ).toMatchObject({
+          amount: new Big(6),
+          scale: new Big(1),
+        });
+      });
+      it('uses the provided `halfDown` divide function', () => {
+        const d1 = dinero({
+          amount: new Big(33),
+          currency: bigjsABC,
+          scale: new Big(2),
+        });
+        const d2 = dinero({
+          amount: new Big(39),
+          currency: bigjsABC,
+          scale: new Big(2),
+        });
+
+        expect(
+          toSnapshot(transformScale(d1, new Big(1), halfDown))
+        ).toMatchObject({
+          amount: new Big(5),
+          scale: new Big(1),
+        });
+        expect(
+          toSnapshot(transformScale(d2, new Big(1), halfDown))
+        ).toMatchObject({
+          amount: new Big(6),
+          scale: new Big(1),
+        });
+      });
+      it('uses the provided `halfUp` divide function', () => {
+        const d1 = dinero({
+          amount: new Big(33),
+          currency: bigjsABC,
+          scale: new Big(2),
+        });
+        const d2 = dinero({
+          amount: new Big(39),
+          currency: bigjsABC,
+          scale: new Big(2),
+        });
+
+        expect(
+          toSnapshot(transformScale(d1, new Big(1), halfUp))
+        ).toMatchObject({
+          amount: new Big(6),
+          scale: new Big(1),
+        });
+        expect(
+          toSnapshot(transformScale(d2, new Big(1), halfUp))
+        ).toMatchObject({
+          amount: new Big(7),
+          scale: new Big(1),
+        });
+      });
+      it('uses the provided `halfTowardsZero` divide function', () => {
+        const d1 = dinero({
+          amount: new Big(33),
+          currency: bigjsABC,
+          scale: new Big(2),
+        });
+        const d2 = dinero({
+          amount: new Big(39),
+          currency: bigjsABC,
+          scale: new Big(2),
+        });
+
+        expect(
+          toSnapshot(transformScale(d1, new Big(1), halfTowardsZero))
+        ).toMatchObject({
+          amount: new Big(5),
+          scale: new Big(1),
+        });
+        expect(
+          toSnapshot(transformScale(d2, new Big(1), halfTowardsZero))
+        ).toMatchObject({
+          amount: new Big(6),
+          scale: new Big(1),
+        });
+      });
+      it('uses the provided `halfAwayFromZero` divide function', () => {
+        const d1 = dinero({
+          amount: new Big(33),
+          currency: bigjsABC,
+          scale: new Big(2),
+        });
+        const d2 = dinero({
+          amount: new Big(39),
+          currency: bigjsABC,
+          scale: new Big(2),
+        });
+
+        expect(
+          toSnapshot(transformScale(d1, new Big(1), halfAwayFromZero))
+        ).toMatchObject({
+          amount: new Big(6),
+          scale: new Big(1),
+        });
+        expect(
+          toSnapshot(transformScale(d2, new Big(1), halfAwayFromZero))
+        ).toMatchObject({
+          amount: new Big(7),
           scale: new Big(1),
         });
       });
