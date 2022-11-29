@@ -22,7 +22,7 @@ export function toUnits<TAmount, TOutput>(
  */
 export function toUnits<TAmount, TOutput>(
   ...[dineroObject, transformer]: ToUnitsParams<TAmount, TOutput>
-) {
+): TOutput {
   const { calculator } = dineroObject;
   const toUnitsFn = coreToUnits<TAmount, TOutput>(calculator);
 

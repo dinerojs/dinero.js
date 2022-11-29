@@ -1,18 +1,22 @@
-import type { Calculator, Dinero } from '../types';
+import type { Calculator, Dinero, UnaryOperation } from '../types';
 import { computeBase, countTrailingZeros, equal, maximum } from '../utils';
 
 import { transformScale } from './transformScale';
 
 export type TrimScaleParams<TAmount> = readonly [dineroObject: Dinero<TAmount>];
 
-export function trimScale<TAmount>(calculator: Calculator<TAmount>) {
+export function trimScale<TAmount>(
+  calculator: Calculator<TAmount>
+): UnaryOperation<Dinero<TAmount>> {
   const countTrailingZerosFn = countTrailingZeros(calculator);
   const equalFn = equal(calculator);
   const maximumFn = maximum(calculator);
   const transformScaleFn = transformScale(calculator);
   const computeBaseFn = computeBase(calculator);
 
-  return function trimScaleFn(...[dineroObject]: TrimScaleParams<TAmount>) {
+  return function trimScaleFn(
+    ...[dineroObject]: TrimScaleParams<TAmount>
+  ): Dinero<TAmount> {
     const { amount, currency, scale } = dineroObject.toJSON();
     const base = computeBaseFn(currency.base);
 
