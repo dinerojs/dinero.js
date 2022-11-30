@@ -27,12 +27,6 @@ describe('toSnapshot', () => {
         scale: 2,
       });
     });
-
-    it('uses a custom transformer', () => {
-      const d = dinero({ amount: 500, currency: USD });
-
-      expect(toSnapshot(d, ({ value }) => value.amount)).toBe(500);
-    });
   });
   describe('bigint', () => {
     const dinero = createBigintDinero;
@@ -51,12 +45,6 @@ describe('toSnapshot', () => {
         scale: 2n,
       });
     });
-
-    it('uses a custom transformer', () => {
-      const d = dinero({ amount: 500n, currency: bigintUSD });
-
-      expect(toSnapshot(d, ({ value }) => value.amount)).toBe(500n);
-    });
   });
   describe('Big.js', () => {
     const dinero = createBigjsDinero;
@@ -74,13 +62,6 @@ describe('toSnapshot', () => {
         },
         scale: new Big(2),
       });
-    });
-
-    it('uses a custom transformer', () => {
-      const amount = new Big(500);
-      const d = dinero({ amount, currency: bigjsUSD });
-
-      expect(toSnapshot(d, ({ value }) => value.amount)).toBe(amount);
     });
   });
 });
