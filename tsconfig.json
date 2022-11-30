@@ -25,5 +25,12 @@
       "test-utils": ["test/utils/index"]
     }
   },
-  "exclude": ["**/dist", "**/lib", "**/temp", "**/node_modules", "website"]
+  "exclude": [
+    "**/dist",
+    "**/lib",
+    "**/temp",
+    "**/node_modules",
+    "website",
+    "examples/deno"
+  ]
 }
