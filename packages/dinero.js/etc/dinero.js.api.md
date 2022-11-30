@@ -42,9 +42,7 @@ import type { MultiplyParams } from '@dinero.js/core';
 import type { NormalizeScaleParams } from '@dinero.js/core';
 import { Rates } from '@dinero.js/core';
 import type { SubtractParams } from '@dinero.js/core';
-import type { ToDecimalParams } from '@dinero.js/core';
 import { toSnapshot as toSnapshot_2 } from '@dinero.js/core';
-import type { ToUnitsParams } from '@dinero.js/core';
 import { Transformer as Transformer_2 } from '@dinero.js/core';
 import type { TransformScaleParams } from '@dinero.js/core';
 import type { TrimScaleParams } from '@dinero.js/core';
@@ -191,14 +189,20 @@ export function subtract<TAmount>(
 ...[minuend, subtrahend]: SubtractParams<TAmount>
 ): Dinero<TAmount>;
 
-// @public
-export function toDecimal<TAmount, TOutput>(...[dineroObject, transformer]: ToDecimalParams<TAmount, TOutput>): TOutput;
+// @public (undocumented)
+export function toDecimal<TAmount>(dineroObject: Dinero<TAmount>): string;
+
+// @public (undocumented)
+export function toDecimal<TAmount, TOutput>(dineroObject: Dinero<TAmount>, transformer: Transformer_2<TAmount, TOutput, string>): TOutput;
 
 // @public
 export const toSnapshot: typeof toSnapshot_2;
 
-// @public
-export function toUnits<TAmount, TOutput>(...[dineroObject, transformer]: ToUnitsParams<TAmount, TOutput>): TOutput;
+// @public (undocumented)
+export function toUnits<TAmount>(dineroObject: Dinero<TAmount>): readonly TAmount[];
+
+// @public (undocumented)
+export function toUnits<TAmount, TOutput>(dineroObject: Dinero<TAmount>, transformer: Transformer_2<TAmount, TOutput, readonly TAmount[]>): TOutput;
 
 export { Transformer_2 as Transformer }
 

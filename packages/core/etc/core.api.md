@@ -374,13 +374,7 @@ transformer?: Transformer_2<TAmount, TOutput, string>
 ];
 
 // @public (undocumented)
-export function toSnapshot<TAmount, TOutput>(...[dineroObject, transformer,]: ToSnapshotParams<TAmount, TOutput>): TOutput;
-
-// @public (undocumented)
-export type ToSnapshotParams<TAmount, TOutput> = readonly [
-dineroObject: Dinero<TAmount>,
-transformer?: Transformer_2<TAmount, TOutput, DineroSnapshot<TAmount>>
-];
+export function toSnapshot<TAmount>(dineroObject: Dinero<TAmount>): DineroSnapshot<TAmount>;
 
 // @public (undocumented)
 export function toUnits<TAmount, TOutput>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, transformer?: Transformer_2<TAmount, TOutput, readonly TAmount[]> | undefined) => TOutput;
