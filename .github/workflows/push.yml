@@ -22,8 +22,11 @@ jobs:
     env:
       TURBO_SERVER_TOKEN: ${{ secrets.TURBO_SERVER_TOKEN }}
     steps:
-      - uses: johnhooks/node-turbo@v1
-
+      - name: Prepare environment
+        uses: johnhooks/node-turbo@v1
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          server_token: ${{ secrets.TURBO_SERVER_TOKEN }}
       - name: Build
         run: yarn ci:build
 
