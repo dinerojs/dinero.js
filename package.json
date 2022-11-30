@@ -22,7 +22,7 @@
     "build": "turbo build --filter=./packages/*",
     "ci:build": "turbo build --filter=./packages/* --api=\"http://127.0.0.1:9080\" --token=$TURBO_SERVER_TOKEN --team=\"foo\"",
     "ci:lint": "turbo lint --filter=./packages/* --api=\"http://127.0.0.1:9080\" --token=$TURBO_SERVER_TOKEN --team=\"foo\"",
-    "ci:test": "turbo test --filter=./packages/* -- --maxWorkers=4 --api=\"http://127.0.0.1:9080\" --token=$TURBO_SERVER_TOKEN --team=\"foo\"",
+    "ci:test": "turbo test --filter=./packages/* --api=\"http://127.0.0.1:9080\" --token=$TURBO_SERVER_TOKEN --team=\"foo\" -- --maxWorkers=4 ",
     "format": "prettier --write .",
     "lint": "turbo lint --filter=./packages/*",
     "prepare": "husky install && turbo run prepare --filter=./packages/* --api=\"http://127.0.0.1:9080\" --token=$TURBO_SERVER_TOKEN --team=\"foo\"",
