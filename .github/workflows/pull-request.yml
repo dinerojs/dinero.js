@@ -1,4 +1,4 @@
-name: On Push
+name: On Pull Request
 
 on:
   workflow_dispatch:
