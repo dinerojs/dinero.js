@@ -22,8 +22,8 @@ jobs:
       - name: Prepare environment
         uses: johnhooks/node-turbo@v1
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          server_token: ${{ secrets.TURBO_SERVER_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
       - name: Build
         run: yarn ci:build
   lint:
@@ -35,8 +35,8 @@ jobs:
       - name: Prepare environment
         uses: johnhooks/node-turbo@v1
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          server_token: ${{ secrets.TURBO_SERVER_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
       - name: Lint
         run: yarn ci:lint
   test:
@@ -48,8 +48,8 @@ jobs:
       - name: Prepare environment
         uses: johnhooks/node-turbo@v1
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          server_token: ${{ secrets.TURBO_SERVER_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
       - name: Test
         run: yarn ci:test
   test-types:
@@ -61,8 +61,8 @@ jobs:
       - name: Prepare environment
         uses: johnhooks/node-turbo@v1
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          server_token: ${{ secrets.TURBO_SERVER_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
       - name: Test types
         run: yarn test:types
   test-size:
@@ -74,7 +74,7 @@ jobs:
       - name: Prepare environment
         uses: johnhooks/node-turbo@v1
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          server_token: ${{ secrets.TURBO_SERVER_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
       - name: Test bundle size
         run: yarn test:size
