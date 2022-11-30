@@ -48,10 +48,10 @@ While most circulating currencies have a single minor currency unit, **many anci
 
 When working with such currencies, **you can specify each subdivision with an array.**
 
-For example, let's say you're building a Candy Crush clone where users can buy bonuses with an in-game currency: donuts, cookies, and lollipops. In your game, a donut equals 30 cookies, and a cookie equals 16 lollipops. If a bonus costs 720 lollipops, you probably want to format it either into "720 lollipops" or "1 donut and 15 cookies".
+For example, let's say you're building a Candy Crush clone where users can buy bonuses with an in-game currency: donuts, cookies, and lollipops. In your game, a donut equals 30 cookies, and a cookie equals 16 lollipops. If a bonus costs 720 lollipops, you might want to format it as "1 donut and 15 cookies".
 
 ```js
-import { dinero, toUnits, toSnapshot } from 'dinero.js';
+import { dinero, toUnits } from 'dinero.js';
 
 const POP = {
   code: 'POP',
@@ -71,5 +71,4 @@ function transformer({ value }) {
 const d = dinero({ amount: 720, currency: POP });
 
 toUnits(d, transformer); // "1 🍩 and 15 🍪"
-toSnapshot(d, ({ value }) => `${value.amount} 🍭`); // "720 🍭"
 ```
