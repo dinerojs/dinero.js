@@ -1,6 +1,7 @@
 coverage
 node_modules
 dist
+lib
 build
 website
 **/*.md
