@@ -1,7 +1,7 @@
 ---
 title: toUnits
 description: Get the amount of a Dinero object in units.
-returns: TAmount[]
+returns: TOutput = TAmount[]
 ---
 
 Get the amount of a Dinero object in units.
@@ -20,7 +20,7 @@ The Dinero object to format.
 
 </Parameter>
 
-<Parameter name="transformer" type="Transformer<TAmount>" required={false}>
+<Parameter name="transformer" type="Transformer<TAmount, TOutput>" required={false}>
 
 An optional transformer function.
 
@@ -67,7 +67,7 @@ toUnits(d); // [1, 2, 3]
 
 ### Use a custom transformer
 
-If you need to further transform the snapshot before returning it, you can pass a custom function.
+If you need to further transform the value before returning it, you can pass a custom function.
 
 ```js
 import { dinero, toUnits } from 'dinero.js';
