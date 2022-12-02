@@ -7,12 +7,12 @@
     },
     "build:tsc": {
       "dependsOn": ["^build:tsc"],
-      "inputs": ["src/**/*.ts"],
-      "outputs": ["lib/**/*"]
+      "inputs": ["src/**/*.ts", "tsconfig.json"],
+      "outputs": ["lib/**/*.d.ts"]
     },
     "build:types": {
       "dependsOn": ["^build:types", "build:tsc"],
-      "inputs": ["lib/**/*.d.ts"],
+      "inputs": ["lib/**/*.d.ts", "api-extractor.json"],
       "outputs": ["etc/**/*", "dist/esm/index.d.ts"]
     },
     "build:esm": {
@@ -27,8 +27,8 @@
     },
     "test": {
       "dependsOn": [],
-      "outputs": [],
-      "inputs": ["src/**/*.ts"]
+      "inputs": ["src/**/*.ts", "jest.config.ts"],
+      "outputs": []
     },
     "build": {
       "dependsOn": ["build:esm", "build:umd:cjs", "build:types"],
@@ -45,5 +45,12 @@
       "outputs": []
     }
   },
-  "globalDependencies": [".eslintrc.js", ".prettierrc", "tsconfig.json"]
+  "globalDependencies": [
+    ".eslintrc.js",
+    ".prettierrc",
+    "tsconfig.json",
+    "babel.config.js",
+    "api-extractor.json",
+    "scripts/**/*"
+  ]
 }
