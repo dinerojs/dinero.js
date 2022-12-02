@@ -19,7 +19,7 @@ jobs:
       matrix:
         command: ['ci:lint', 'ci:test', 'ci:build', 'test:types', 'test:size']
     env:
-      TURBO_SERVER_TOKEN: ${{ secrets.TURBO_SERVER_TOKEN }}
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
     steps:
       - uses: actions/checkout@v3
 
@@ -31,7 +31,7 @@ jobs:
         uses: felixmosh/turborepo-gh-artifacts@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
+          server-token: ${{ secrets.TURBO_TOKEN }}
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path

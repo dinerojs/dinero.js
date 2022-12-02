@@ -55,6 +55,5 @@
     "babel.config.js",
     "api-extractor.json",
     "scripts/**/*"
-  ],
-
+  ]
 }

@@ -13,68 +13,64 @@ permissions:
   statuses: write
   pull-requests: read
 
+env:
+  TURBO_API: 'http://127.0.0.1:9080' # https://github.com/vercel/turbo/blob/658dcadceb227c815d9db0ebdf248e78daf65482/cli/internal/config/config_file.go#L196
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: 'dinero'
+  TURBO_REMOTE_ONLY: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      TURBO_SERVER_TOKEN: ${{ secrets.TURBO_SERVER_TOKEN }}
     steps:
       - name: Prepare environment
         uses: johnhooks/node-turbo@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
+          server-token: ${{ secrets.TURBO_TOKEN }}
       - name: Build
-        run: yarn ci:build
+        run: yarn build
   lint:
     needs: build
     runs-on: ubuntu-latest
-    env:
-      TURBO_SERVER_TOKEN: ${{ secrets.TURBO_SERVER_TOKEN }}
     steps:
       - name: Prepare environment
         uses: johnhooks/node-turbo@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
+          server-token: ${{ secrets.TURBO_TOKEN }}
       - name: Lint
-        run: yarn ci:lint
+        run: yarn lint
   test:
     needs: build
     runs-on: ubuntu-latest
-    env:
-      TURBO_SERVER_TOKEN: ${{ secrets.TURBO_SERVER_TOKEN }}
     steps:
       - name: Prepare environment
         uses: johnhooks/node-turbo@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
+          server-token: ${{ secrets.TURBO_TOKEN }}
       - name: Test
-        run: yarn ci:test
+        run: yarn test
   test-types:
     needs: build
     runs-on: ubuntu-latest
-    env:
-      TURBO_SERVER_TOKEN: ${{ secrets.TURBO_SERVER_TOKEN }}
     steps:
       - name: Prepare environment
         uses: johnhooks/node-turbo@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
+          server-token: ${{ secrets.TURBO_TOKEN }}
       - name: Test types
         run: yarn test:types
   test-size:
     needs: build
     runs-on: ubuntu-latest
-    env:
-      TURBO_SERVER_TOKEN: ${{ secrets.TURBO_SERVER_TOKEN }}
     steps:
       - name: Prepare environment
         uses: johnhooks/node-turbo@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
+          server-token: ${{ secrets.TURBO_TOKEN }}
       - name: Test bundle size
         run: yarn test:size
