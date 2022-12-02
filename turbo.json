@@ -43,6 +43,9 @@
     "prepare": {
       "dependsOn": ["build"],
       "outputs": []
+    },
+    "dev": {
+      "cache": false
     }
   },
   "globalDependencies": [
@@ -52,5 +55,6 @@
     "babel.config.js",
     "api-extractor.json",
     "scripts/**/*"
-  ]
+  ],
+
 }
