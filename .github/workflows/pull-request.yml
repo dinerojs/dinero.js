@@ -13,60 +13,49 @@ permissions:
   statuses: write
   pull-requests: read
 
-env:
-  TURBO_API: 'http://127.0.0.1:9080' # https://github.com/vercel/turbo/blob/658dcadceb227c815d9db0ebdf248e78daf65482/cli/internal/config/config_file.go#L196
-  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-  TURBO_TEAM: 'dinero'
-  TURBO_REMOTE_ONLY: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Prepare environment
-        uses: johnhooks/node-turbo@v1
+      - uses: actions/checkout@v3
+      - uses: ./actions/turbo
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          server-token: ${{ secrets.TURBO_TOKEN }}
       - name: Build
         run: yarn build
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Prepare environment
-        uses: johnhooks/node-turbo@v1
+      - uses: actions/checkout@v3
+      - uses: ./actions/turbo
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          server-token: ${{ secrets.TURBO_TOKEN }}
       - name: Lint
         run: yarn lint
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Prepare environment
-        uses: johnhooks/node-turbo@v1
+      - uses: actions/checkout@v3
+      - uses: ./actions/turbo
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          server-token: ${{ secrets.TURBO_TOKEN }}
       - name: Test
         run: yarn test:ci
   test-types:
     runs-on: ubuntu-latest
     steps:
-      - name: Prepare environment
-        uses: johnhooks/node-turbo@v1
+      - uses: actions/checkout@v3
+      - uses: ./actions/turbo
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          server-token: ${{ secrets.TURBO_TOKEN }}
       - name: Test types
         run: yarn test:types
   test-size:
     runs-on: ubuntu-latest
     steps:
-      - name: Prepare environment
-        uses: johnhooks/node-turbo@v1
+      - uses: actions/checkout@v3
+      - uses: ./actions/turbo
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          server-token: ${{ secrets.TURBO_TOKEN }}
       - name: Test bundle size
         run: yarn test:size
