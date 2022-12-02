@@ -31,7 +31,6 @@ jobs:
       - name: Build
         run: yarn build
   lint:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Prepare environment
@@ -42,7 +41,6 @@ jobs:
       - name: Lint
         run: yarn lint
   test:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Prepare environment
@@ -53,7 +51,6 @@ jobs:
       - name: Test
         run: yarn test:ci
   test-types:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Prepare environment
@@ -64,7 +61,6 @@ jobs:
       - name: Test types
         run: yarn test:types
   test-size:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Prepare environment
