@@ -7,6 +7,12 @@ on:
     branches:
       - 'ci/*'
 
+env:
+  TURBO_API: 'http://127.0.0.1:9080' # https://github.com/vercel/turbo/blob/658dcadceb227c815d9db0ebdf248e78daf65482/cli/internal/config/config_file.go#L196
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: 'dinero'
+  TURBO_REMOTE_ONLY: true
+
 permissions:
   checks: write
   contents: read
@@ -18,7 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./actions/turbo
+      - name: Prepare Environment
+        uses: ./.github/actions/turbo
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
@@ -27,7 +34,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./actions/turbo
+      - name: Prepare Environment
+        uses: ./.github/actions/turbo
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Lint
@@ -36,7 +44,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./actions/turbo
+      - name: Prepare Environment
+        uses: ./.github/actions/turbo
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Test
@@ -45,7 +54,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./actions/turbo
+      - name: Prepare Environment
+        uses: ./.github/actions/turbo
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Test types
@@ -54,7 +64,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./actions/turbo
+      - name: Prepare Environment
+        uses: ./.github/actions/turbo
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Test bundle size

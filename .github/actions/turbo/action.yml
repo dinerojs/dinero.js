@@ -5,12 +5,6 @@ inputs:
     description: 'Token to access the repo'
     required: true
 
-env:
-  TURBO_API: 'http://127.0.0.1:9080' # https://github.com/vercel/turbo/blob/658dcadceb227c815d9db0ebdf248e78daf65482/cli/internal/config/config_file.go#L196
-  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-  TURBO_TEAM: 'dinero'
-  TURBO_REMOTE_ONLY: true
-
 runs:
   using: 'composite'
   steps:
