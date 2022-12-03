@@ -16,10 +16,7 @@ export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>) {
   const equalFn = equal(calculator);
 
   return function toDecimalFn(
-    ...[
-      dineroObject,
-      transformer = ({ value }) => value as TOutput,
-    ]: ToDecimalParams<TAmount, TOutput>
+    ...[dineroObject, transformer]: ToDecimalParams<TAmount, TOutput>
   ) {
     const { currency, scale } = dineroObject.toJSON();
 
@@ -38,6 +35,10 @@ export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>) {
 
     const getDecimalFn = getDecimal(dineroObject.formatter);
     const value = getDecimalFn(units, scale);
+
+    if (!transformer) {
+      return value;
+    }
 
     return transformer({ value, currency });
   };

@@ -365,7 +365,7 @@ subtrahend: Dinero<TAmount>
 ];
 
 // @public (undocumented)
-export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, transformer?: Transformer_2<TAmount, TOutput, string> | undefined) => TOutput;
+export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, transformer?: Transformer_2<TAmount, TOutput, string> | undefined) => string | TOutput;
 
 // @public (undocumented)
 export type ToDecimalParams<TAmount, TOutput> = readonly [
@@ -377,7 +377,7 @@ transformer?: Transformer_2<TAmount, TOutput, string>
 export function toSnapshot<TAmount>(dineroObject: Dinero<TAmount>): DineroSnapshot<TAmount>;
 
 // @public (undocumented)
-export function toUnits<TAmount, TOutput>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, transformer?: Transformer_2<TAmount, TOutput, readonly TAmount[]> | undefined) => TOutput;
+export function toUnits<TAmount, TOutput>(calculator: Calculator<TAmount>): (dineroObject: Dinero<TAmount>, transformer?: Transformer_2<TAmount, TOutput, readonly TAmount[]> | undefined) => TOutput | readonly TAmount[];
 
 // @public (undocumented)
 export type ToUnitsParams<TAmount, TOutput> = readonly [
