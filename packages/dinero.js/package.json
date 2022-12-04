@@ -1,6 +1,6 @@
 {
   "name": "dinero.js",
-  "version": "2.0.0-alpha.10",
+  "version": "2.0.0-alpha.11",
   "description": "Create, calculate, and format money in JavaScript and TypeScript",
   "keywords": [
     "money",
@@ -44,11 +44,11 @@
     "watch": "watch \"yarn on:change\" --ignoreDirectoryPattern \"/dist/\""
   },
   "dependencies": {
-    "@dinero.js/calculator-number": "2.0.0-alpha.10",
-    "@dinero.js/core": "2.0.0-alpha.10",
-    "@dinero.js/currencies": "2.0.0-alpha.10"
+    "@dinero.js/calculator-number": "2.0.0-alpha.11",
+    "@dinero.js/core": "2.0.0-alpha.11",
+    "@dinero.js/currencies": "2.0.0-alpha.11"
   },
   "devDependencies": {
-    "@dinero.js/calculator-bigint": "2.0.0-alpha.10"
+    "@dinero.js/calculator-bigint": "2.0.0-alpha.11"
   }
 }
