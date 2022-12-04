@@ -3,49 +3,53 @@ title: Formatting
 description: Formatting Dinero objects into rounded numbers or string representation.
 ---
 
-When working with money on the front end, comes a time when you need to display amounts on the user interface. The Dinero.js API provides functions to format objects.
+When working with money on the front end, comes a time when you need to display amounts on the user interface. **The Dinero.js API provides functions to format Dinero objects.**
 
 ```js
-import { dinero, toUnit, down } from 'dinero.js';
+import { dinero, toUnits, down } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
 const d = dinero({ amount: 1055, currency: USD });
 
-toUnit(d, { digits: 1, round: down }); // 10.5
+toUnits(d); // [10, 55]
 ```
 
 ## Displaying an object
 
-Dinero objects are ideal to safely manipulate money, but at some point, you need to display them. The `toFormat` function lets you display objects the way you want. It exposes a pre-formatted amount for convenience.
+The [`toDecimal`](/docs/api/formatting/to-decimal) function exposes a pre-formatted amount in decimal format and the object's `currency`. It lets you display objects the way you want using a transformer function.
 
 ```js
-import { dinero, toFormat } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { dinero, toDecimal, toUnits } from 'dinero.js';
+import { USD, MGA } from '@dinero.js/currencies';
 
-const transformer = ({ amount, currency }) => `${currency.code} ${amount}`;
+const d1 = dinero({ amount: 5000, currency: USD });
+const d2 = dinero({ amount: 13, currency: MGA });
 
-const d = dinero({ amount: 5000, currency: USD });
+toDecimal(d1, ({ value, currency }) => `${currency.code} ${value}`); // "USD 50.00"
+toUnits(d1, ({ value }) => `${value[0]} dollars, ${value[1]} cents`); // "50 dollars, 0 cents"
 
-toFormat(d, transformer); // "USD 50"
+toUnits(d2, ({ value }) => `${value[0]} ariary, ${value[1]} iraimbilanja`); // "2 ariary, 3 iraimbilanja"
 ```
 
-Dinero.js uses the scale of the object to determine how many decimal places to represent. You can adjust it in the `transformer`.
+Dinero.js uses the object's scale to determine how many decimal places to represent. You can adjust it in the `transformer`.
 
 ```js
-import { dinero, toFormat, up } from 'dinero.js';
+import { dinero, toDecimal, up } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
-const transformer = ({ amount, currency }) => `${currency.code} ${amount.toFixed(1)}`;
+const transformer = ({ value, currency }) => {
+  return `${currency.code} ${Number(value).toFixed(1)}`;
+};
 
 const d = dinero({ amount: 4545, currency: USD });
 
-toFormat(d, transformer, options); // "USD 45.5"
+toDecimal(d, transformer); // "USD 45.5"
 ```
 
 If you're formatting many objects, you might want to reuse the same transformer without having to pass it every time. To do so, you can write your own higher-order function to build formatters.
 
 ```js
-import { dinero, toFormat } from 'dinero.js';
+import { dinero, toDecimal } from 'dinero.js';
 import { USD } from '@dinero.js/currencies';
 
 // This function lets you pass a transformer and rounding options.
@@ -53,19 +57,19 @@ import { USD } from '@dinero.js/currencies';
 // the closured transformer.
 function createFormatter(transformer) {
   return function formatter(dineroObject) {
-    return toFormat(dineroObject, transformer);
+    return toDecimal(dineroObject, transformer);
   };
 }
 
 // This function is reusable to format any Dinero object
 // with the same transformer.
 const format = createFormatter(
-  ({ amount, currency }) => `${currency.code} ${amount}`
+  ({ value, currency }) => `${currency.code} ${value}`
 );
 
 const d = dinero({ amount: 5000, currency: USD });
 
-format(d); // "USD 50"
+format(d); // "USD 50.00"
 ```
 
 <Panel
@@ -74,8 +78,25 @@ format(d); // "USD 50"
       label: 'API',
       links: [
         {
-          title: 'To format',
-          url: '/docs/api/formatting/to-format',
+          title: 'To decimal',
+          url: '/docs/api/formatting/to-decimal',
+        },
+        {
+          title: 'To units',
+          url: '/docs/api/formatting/to-units',
+        },
+      ],
+    },
+    {
+      label: 'Guides',
+      links: [
+        {
+          title: 'Formatting in a multilingual site',
+          url: '/docs/guides/formatting-in-a-multilingual-site',
+        },
+        {
+          title: 'Formatting non-decimal currencies',
+          url: '/docs/guides/formatting-non-decimal-currencies',
         },
       ],
     },

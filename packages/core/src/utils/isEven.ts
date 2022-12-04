@@ -1,10 +1,13 @@
-/**
- * Return whether a number is even.
- *
- * @param value - The number to test.
- *
- * @returns Whether the number is even.
- */
-export function isEven(value: number) {
-  return value % 2 === 0;
+import type { Calculator } from '../types';
+
+import { equal } from '.';
+
+export function isEven<TAmount>(calculator: Calculator<TAmount>) {
+  const equalFn = equal(calculator);
+  const zero = calculator.zero();
+  const two = calculator.increment(calculator.increment(zero));
+
+  return (input: TAmount) => {
+    return equalFn(calculator.modulo(input, two), zero);
+  };
 }

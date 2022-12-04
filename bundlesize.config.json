@@ -2,23 +2,23 @@
   "files": [
     {
       "path": "packages/calculator-bigint/dist/umd/index.production.js",
-      "maxSize": "680 B"
+      "maxSize": "625 B"
     },
     {
       "path": "packages/calculator-number/dist/umd/index.production.js",
-      "maxSize": "680 B"
+      "maxSize": "650 B"
     },
     {
       "path": "packages/core/dist/umd/index.production.js",
-      "maxSize": "3.55 KB"
+      "maxSize": "4 KB"
     },
     {
       "path": "packages/currencies/dist/umd/index.production.js",
-      "maxSize": "1.65 KB"
+      "maxSize": "1.5 KB"
     },
     {
       "path": "packages/dinero.js/dist/umd/index.production.js",
-      "maxSize": "3.9 KB"
+      "maxSize": "4.75 KB"
     }
   ]
 }

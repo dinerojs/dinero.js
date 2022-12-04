@@ -42,18 +42,18 @@ const response = await client.charges.create({
 
 ## Integrating with Paypal
 
-The [Paypal](https://www.paypal.com/) payment platform provides APIs to process payments and manage orders. Unlike most platforms, it expects a money representation with an amount in major currency units. You can use [`toUnit`](/docs/api/formatting/to-unit) to retrieve this value.
+The [Paypal](https://www.paypal.com/) payment platform provides APIs to process payments and manage orders. Unlike most platforms, it expects a string representation with an amount in major currency units. You can use [`toDecimal`](/docs/api/formatting/to-decimal) to format the object and pass this value to Paypal.
 
 ```js
 const paypal = require('@paypal/checkout-server-sdk');
-const { dinero, toSnapshot } = require('dinero.js');
+const { dinero, toSnapshot, toDecimal } = require('dinero.js');
 const { USD } = require('@dinero.js/currencies');
 
 function toPaypalMoney(dineroObject) {
   const { currency, scale } = toSnapshot(dineroObject);
 
   return {
-    value: toUnit(dineroObject).toFixed(scale),
+    value: toDecimal(dineroObject),
     currency_code: currency.code,
   };
 }

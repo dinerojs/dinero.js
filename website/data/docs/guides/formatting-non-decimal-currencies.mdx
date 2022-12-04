@@ -7,95 +7,62 @@ The great majority of circulating currencies are decimal. If you're working with
 
 However, **you might also work with non-decimal currencies**. Typical use cases are ancient currencies such as the ancient Greek drachma, or fictional currencies like the wizarding currencies in the Harry Potter universe. If you're building a numismatic site or a game with its own currency, you might have advanced formatting needs.
 
-Out of the box, you can format any Dinero object—decimal or not—into an accurate decimal representation. For example, there are 6 obols in a drachma, so 9 obols do represent one and a half drachmas.
+## Handling currencies with a single subdivision
+
+Out of the box, you can format any non-decimal Dinero object using [`toUnits`](/docs/api/formatting/to-units).
 
 ```js
-import { dinero, toFormat } from 'dinero.js';
-
-// Ancient Greek drachma
-const GRD = {
-  code: 'GRD',
-  base: 6,
-  exponent: 1,
-};
-
-const d = dinero({ amount: 9, currency: GRD });
-
-toFormat(d, ({ amount, currency }) => `${currency.code} ${amount}`); // "GRD 1.5"
-```
-
-This should cover your needs if you want accuracy and readability because people are used to reading decimal numbers. However, such a representation might not be idiomatic.
-
-## Building complex formatters
-
-In addition to the formatted amount and the currency, the `toFormat` function also exposes the original object. You can leverage it to build a more complex formatter.
-
-```js
-import { dinero, toFormat, toSnapshot } from 'dinero.js';
+import { dinero, toUnits } from 'dinero.js';
 import pluralize from 'pluralize';
 
-// ...
+const labels = ['drachma', 'obol'];
 
-function transformer({ dineroObject }) {
-  const { amount, currency } = toSnapshot(dineroObject);
-
-  const drachmas = Math.trunc(amount / currency.base);
-  const obols = amount % currency.base;
-
-  const amounts = [
-    { amount: drachmas, label: 'drachma' },
-    { amount: obols, label: 'obol' },
-  ];
-
-  return amounts
-    .filter(({ amount }) => amount > 0)
-    .map(({ amount, label }) => `${amount} ${pluralize(label, amount)}`)
+function transformer({ value, currency }) {
+  return value
+    .filter((amount) => amount > 0)
+    .map((amount, index) => `${amount} ${pluralize(labels[index], amount)}`)
     .join(', ');
 }
 
-toFormat(d, transformer); // "1 drachma, 3 obols"
+const d = dinero({
+  amount: 9,
+  currency: {
+    code: 'GRD',
+    base: 6,
+    exponent: 1,
+  },
+});
+
+toUnits(d, transformer); // "1 drachma, 3 obols"
 ```
 
 ## Handling currencies with multiple subdivisions
 
 While most circulating currencies have a single minor currency unit, **many ancient currencies have multiple subdivisions.** That's the case for most pre-decimalization European currencies such as the livre tournois in the French Old Regime or the pound sterling in Great Britain before 1971. That's also the case of some fictional currencies.
 
-When working with such currencies, you can take how many of the smallest subdivision there are in the major one (e.g., 240 pence in a pound). **The intermediate subdivisions only matter when you're formatting a Dinero object.**
+When working with such currencies, **you can specify each subdivision with an array.**
 
-For example, let's say you're building a Candy Crush clone where users can buy bonuses with an in-game currency: donuts, cookies, and lollipops. In your game, a donut equals 30 cookies, and a cookie equals 16 lollipops, giving 480 lollipops to the donut. If a bonus costs 720 lollipops, you probably want to format it either into "720 lollipops" or "1 donut and 15 cookies" instead of "1.5 donuts". This way, users can understand what they can afford based on what they have.
+For example, let's say you're building a Candy Crush clone where users can buy bonuses with an in-game currency: donuts, cookies, and lollipops. In your game, a donut equals 30 cookies, and a cookie equals 16 lollipops. If a bonus costs 720 lollipops, you might want to format it as "1 donut and 15 cookies".
 
 ```js
-import { dinero, toFormat } from 'dinero.js';
+import { dinero, toUnits } from 'dinero.js';
 
 const POP = {
   code: 'POP',
-  base: 480,
+  base: [30, 16],
   exponent: 1,
 };
 
-function transformer({ dineroObject }) {
-  const { amount, currency } = toSnapshot(dineroObject);
+const labels = ['🍩', '🍪', '🍭'];
 
-  const remainder = amount % currency.base;
-  const cookieBase = 16;
-
-  const donuts = Math.trunc(amount / currency.base);
-  const cookies = Math.trunc(remainder / cookieBase);
-  const lollipops = remainder % cookieBase;
-
-  const amounts = [
-    { amount: donuts, label: '🍩' },
-    { amount: cookies, label: '🍪' },
-    { amount: lollipops, label: '🍭' },
-  ];
-
-  return amounts
-    .filter(({ amount }) => amount > 0)
-    .map(({ amount, label }) => `${amount} ${label}`)
+function transformer({ value }) {
+  return value
+    .filter((amount) => amount > 0)
+    .map((amount, index) => `${amount} ${labels[index]}`)
     .join(' and ');
 }
 
 const d = dinero({ amount: 720, currency: POP });
 
-toFormat(d, transformer); // "1 🍩 and 15 🍪"
+toUnits(d, transformer); // "1 🍩 and 15 🍪"
 ```

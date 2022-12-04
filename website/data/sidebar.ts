@@ -52,9 +52,9 @@ tree.add(Resource.create({ label: 'haveSameAmount', path: '/docs/api/comparisons
 tree.add(Resource.create({ label: 'haveSameCurrency', path: '/docs/api/comparisons/have-same-currency' }));
 tree.add(Resource.create({ label: 'hasSubUnits', path: '/docs/api/comparisons/has-sub-units' }));
 tree.add(Resource.create({ label: 'Formatting', path: '/docs/api/formatting' }));
-tree.add(Resource.create({ label: 'toFormat', path: '/docs/api/formatting/to-format' }));
 tree.add(Resource.create({ label: 'toSnapshot', path: '/docs/api/formatting/to-snapshot' }));
-tree.add(Resource.create({ label: 'toUnit', path: '/docs/api/formatting/to-unit' }));
+tree.add(Resource.create({ label: 'toUnits', path: '/docs/api/formatting/to-units' }));
+tree.add(Resource.create({ label: 'toDecimal', path: '/docs/api/formatting/to-decimal' }));
 
 tree.add(Resource.create({ label: 'FAQ', path: '/docs/faq' }));
 tree.add(Resource.create({ label: 'Does Dinero.js support cryptocurrencies?', path: '/docs/faq/does-dinerojs-support-cryptocurrencies' }));
