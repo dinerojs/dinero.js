@@ -40,6 +40,11 @@ describe('toDecimal', () => {
 
         expect(toDecimal(d)).toBe('5.00');
       });
+      it('returns the negative amount in decimal format', () => {
+        const d = dinero({ amount: -1050, currency: USD });
+
+        expect(toDecimal(d)).toEqual('-10.50');
+      });
       it('uses a custom transformer', () => {
         const d = dinero({ amount: 1050, currency: USD });
 
@@ -107,6 +112,11 @@ describe('toDecimal', () => {
         const d = dinero({ amount: 500n, currency: bigintUSD });
 
         expect(toDecimal(d)).toBe('5.00');
+      });
+      it('returns the negative amount in decimal format', () => {
+        const d = dinero({ amount: -1050n, currency: bigintUSD });
+
+        expect(toDecimal(d)).toEqual('-10.50');
       });
       it('uses a custom transformer', () => {
         const d = dinero({ amount: 1050n, currency: bigintUSD });
@@ -182,6 +192,11 @@ describe('toDecimal', () => {
         const d = dinero({ amount: new Big(500), currency: bigjsUSD });
 
         expect(toDecimal(d)).toBe('5.00');
+      });
+      it('returns the negative amount in decimal format', () => {
+        const d = dinero({ amount: new Big(-1005), currency: bigjsUSD });
+
+        expect(toDecimal(d)).toEqual('-10.05');
       });
       it('uses a custom transformer', () => {
         const d = dinero({ amount: new Big(1050), currency: bigjsUSD });

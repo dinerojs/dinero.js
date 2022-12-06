@@ -1,7 +1,7 @@
 import { NON_DECIMAL_CURRENCY_MESSAGE } from '../checks';
 import { assert } from '../helpers';
 import type { Calculator, Dinero, Formatter, Transformer } from '../types';
-import { computeBase, equal, isArray } from '../utils';
+import { absolute, computeBase, equal, isArray } from '../utils';
 
 import { toUnits } from './toUnits';
 
@@ -33,7 +33,7 @@ export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>) {
 
     const units = toUnitsFn(dineroObject);
 
-    const getDecimalFn = getDecimal(dineroObject.formatter);
+    const getDecimalFn = getDecimal(calculator, dineroObject.formatter);
     const value = getDecimalFn(units, scale);
 
     if (!transformer) {
@@ -44,12 +44,21 @@ export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>) {
   };
 }
 
-function getDecimal<TAmount>(formatter: Formatter<TAmount>) {
+function getDecimal<TAmount>(
+  calculator: Calculator<TAmount>,
+  formatter: Formatter<TAmount>
+) {
+  const absoluteFn = absolute(calculator);
+
   return (units: readonly TAmount[], scale: TAmount) => {
     return units
       .map((unit, index) => {
+        const isFirst = index === 0;
         const isLast = units.length - 1 === index;
-        const unitAsString = formatter.toString(unit);
+
+        const unitAsString = formatter.toString(
+          isFirst ? unit : absoluteFn(unit)
+        );
 
         if (isLast) {
           return unitAsString.padStart(formatter.toNumber(scale), '0');
