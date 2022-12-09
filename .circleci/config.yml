@@ -18,8 +18,8 @@ aliases:
   - &run_yarn_install
     name: Install dependencies
     command: yarn install --frozen-lockfile
-  - &restore_build_folders
-    name: Restore build folders
+  - &restore_dist_folders
+    name: Restore dist folders
     command: |
       set -exu
 
@@ -37,8 +37,8 @@ aliases:
       cp -R /tmp/workspace/packages/core/{dist,lib,.turbo} packages/core
       cp -R /tmp/workspace/packages/currencies/{dist,lib,.turbo} packages/currencies
       cp -R /tmp/workspace/packages/dinero.js/{dist,lib,.turbo} packages/dinero.js
-  - &save_build_folders
-    name: Save build folders
+  - &save_dist_folders
+    name: Save dist folders
     command: |
       set -exu
 
@@ -77,7 +77,7 @@ jobs:
       - run:
           name: Build
           command: yarn run build
-      - run: *save_build_folders
+      - run: *save_dist_folders
       - persist_to_workspace:
           root: *workspace_root
           paths:
@@ -88,7 +88,7 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - run: *restore_build_folders
+      - run: *restore_dist_folders
       - run: *install_yarn_version
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
@@ -101,7 +101,7 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - run: *restore_build_folders
+      - run: *restore_dist_folders
       - run: *install_yarn_version
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
@@ -114,7 +114,7 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - run: *restore_build_folders
+      - run: *restore_dist_folders
       - run: *install_yarn_version
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
@@ -127,7 +127,7 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - run: *restore_build_folders
+      - run: *restore_dist_folders
       - run: *install_yarn_version
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install
@@ -140,7 +140,7 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - run: *restore_build_folders
+      - run: *restore_dist_folders
       - run: *install_yarn_version
       - restore_cache: *restore_yarn_cache
       - run: *run_yarn_install

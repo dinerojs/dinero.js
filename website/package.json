@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "yarn --cwd ../ install"
+    "postinstall": "yarn --cwd ../ install && yarn --cwd ../ build"
   },
   "dependencies": {
     "@docsearch/css": "3.2.1",

@@ -2,7 +2,13 @@
 module.exports = {
   monorepo: {
     mainVersionFile: 'package.json',
-    packagesToBump: [],
+    packagesToBump: [
+      'packages/calculator-bigint',
+      'packages/calculator-number',
+      'packages/core',
+      'packages/currencies',
+      'packages/dinero.js',
+    ],
     packagesToPublish: [
       'packages/calculator-bigint',
       'packages/calculator-number',

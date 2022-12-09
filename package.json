@@ -1,28 +1,22 @@
 {
   "name": "@dinero.js/monorepo",
-  "version": "2.0.0-alpha.10",
+  "version": "2.0.0-alpha.12",
   "private": true,
   "license": "MIT",
   "workspaces": [
-    "packages/calculator-bigint",
-    "packages/calculator-number",
-    "packages/core",
-    "packages/currencies",
-    "packages/dinero.js",
-    "examples/cart-react",
-    "examples/cart-vue",
-    "examples/pricing-react",
-    "examples/starter"
+    "packages/*",
+    "examples/*"
   ],
   "scripts": {
     "build:clean": "turbo build:clean",
     "build:esm": "turbo build:esm --filter=./packages/*",
+    "build:definitions": "turbo build:definitions --filter=./packages/*",
     "build:types": "turbo build:types --filter=./packages/*",
     "build:umd:cjs": "turbo build:umd:cjs --filter=./packages/*",
     "build": "turbo build --filter=./packages/*",
     "format": "prettier --write .",
     "lint": "turbo lint --filter=./packages/*",
-    "prepare": "husky install && turbo run prepare --filter=./packages/* && yarn build",
+    "prepare": "husky install && yarn build",
     "release": "shipjs prepare",
     "test:size": "bundlesize",
     "test:types": "tsc --noEmit",

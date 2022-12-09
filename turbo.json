@@ -5,13 +5,13 @@
       "inputs": ["lib/**/*", "dist/**/*"],
       "outputs": []
     },
-    "build:tsc": {
-      "dependsOn": ["^build:tsc"],
+    "build:definitions": {
+      "dependsOn": ["^build:definitions"],
       "inputs": ["src/**/*.ts", "tsconfig.json"],
       "outputs": ["lib/**/*.d.ts"]
     },
     "build:types": {
-      "dependsOn": ["^build:types", "build:tsc"],
+      "dependsOn": ["^build:types", "build:definitions"],
       "inputs": ["lib/**/*.d.ts", "api-extractor.json"],
       "outputs": ["etc/**/*", "dist/esm/index.d.ts"]
     },
@@ -36,10 +36,6 @@
     },
     "lint": {
       "inputs": ["**/*.ts", "**/*.js"],
-      "outputs": []
-    },
-    "prepare": {
-      "dependsOn": ["^prepare"],
       "outputs": []
     },
     "dev": {

@@ -13,15 +13,14 @@ export default {
     __DEV__: true,
     __TEST__: true,
   },
-  // This module mapper is for the jest configs in the package folders
-  // It is overridden by the toplevel jest config
+  // This module mapper is for the Jest configurations in the `packages` folders
+  // It is overridden by the top-level Jest configuration
   moduleNameMapper: {
     '^test-utils$': '<rootDir>/../../test/utils/',
     '^@dinero.js/(.*)$': '<rootDir>/../$1/src/',
     '^dinero.js$': '<rootDir>/../dinero.js/src/',
   },
   transform: {
-    // '\\.ts': 'babel-jest',
     '\\.ts': ['babel-jest', { rootMode: 'upward' }],
   },
 };
