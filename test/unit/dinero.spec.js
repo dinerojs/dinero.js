@@ -286,6 +286,15 @@ describe('Dinero', () => {
     test('should throw when array of ratios is empty', () => {
       expect(() => Dinero({ amount: 1003 }).allocate([])).toThrow()
     })
+    test('should throw when one of ratios is not number', () => {
+      expect(() => Dinero({ amount: 100 }).allocate([2, '98'])).toThrow()
+    })
+    test('should throw when one of ratios is Infinity', () => {
+      expect(() => Dinero({ amount: 1000 }).allocate([0, Infinity])).toThrow()
+    })
+    test('should throw when one of ratios is NaN', () => {
+      expect(() => Dinero({ amount: 1000 }).allocate([0, NaN])).toThrow()
+    })
   })
   describe('#convert', () => {
     beforeEach(() => {

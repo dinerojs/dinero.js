@@ -33,7 +33,7 @@ export function isPercentage(percentage) {
 export function areValidRatios(ratios) {
   return (
     ratios.length > 0 &&
-    ratios.every(ratio => ratio >= 0) &&
+    ratios.every(ratio => typeof ratio === 'number' && isNumeric(ratio) && ratio >= 0) &&
     ratios.some(ratio => ratio > 0)
   )
 }
