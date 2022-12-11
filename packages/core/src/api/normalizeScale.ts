@@ -11,6 +11,7 @@ export function normalizeScale<TAmount>(calculator: Calculator<TAmount>) {
   const maximumFn = maximum(calculator);
   const convertScaleFn = transformScale(calculator);
   const equalFn = equal(calculator);
+  const zero = calculator.zero();
 
   return function _normalizeScale(
     ...[dineroObjects]: NormalizeScaleParams<TAmount>
@@ -19,7 +20,7 @@ export function normalizeScale<TAmount>(calculator: Calculator<TAmount>) {
       const { scale } = current.toJSON();
 
       return maximumFn([highest, scale]);
-    }, calculator.zero());
+    }, zero);
 
     return dineroObjects.map((d) => {
       const { scale } = d.toJSON();

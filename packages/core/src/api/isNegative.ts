@@ -7,10 +7,11 @@ export type IsNegativeParams<TAmount> = readonly [
 
 export function isNegative<TAmount>(calculator: Calculator<TAmount>) {
   const lessThanFn = lessThan(calculator);
+  const zero = calculator.zero();
 
   return function _isNegative(...[dineroObject]: IsNegativeParams<TAmount>) {
     const { amount } = dineroObject.toJSON();
 
-    return lessThanFn(amount, calculator.zero());
+    return lessThanFn(amount, zero);
   };
 }

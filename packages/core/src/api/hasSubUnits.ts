@@ -8,6 +8,7 @@ export type HasSubUnitsParams<TAmount> = readonly [
 export function hasSubUnits<TAmount>(calculator: Calculator<TAmount>) {
   const equalFn = equal(calculator);
   const computeBaseFn = computeBase(calculator);
+  const zero = calculator.zero();
 
   return function _hasSubUnits(...[dineroObject]: HasSubUnitsParams<TAmount>) {
     const { amount, currency, scale } = dineroObject.toJSON();
@@ -15,7 +16,7 @@ export function hasSubUnits<TAmount>(calculator: Calculator<TAmount>) {
 
     return !equalFn(
       calculator.modulo(amount, calculator.power(base, scale)),
-      calculator.zero()
+      zero
     );
   };
 }

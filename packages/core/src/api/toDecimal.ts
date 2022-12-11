@@ -14,6 +14,8 @@ export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>) {
   const toUnitsFn = toUnits<TAmount, readonly TAmount[]>(calculator);
   const computeBaseFn = computeBase(calculator);
   const equalFn = equal(calculator);
+  const zero = calculator.zero();
+  const ten = new Array(10).fill(null).reduce(calculator.increment, zero);
 
   return function toDecimalFn(
     ...[dineroObject, transformer]: ToDecimalParams<TAmount, TOutput>
@@ -21,8 +23,6 @@ export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>) {
     const { currency, scale } = dineroObject.toJSON();
 
     const base = computeBaseFn(currency.base);
-    const zero = calculator.zero();
-    const ten = new Array(10).fill(null).reduce(calculator.increment, zero);
 
     const isMultiBase = isArray(currency.base);
     const isBaseTen = equalFn(calculator.modulo(base, ten), zero);

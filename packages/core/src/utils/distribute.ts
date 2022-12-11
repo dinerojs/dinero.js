@@ -25,6 +25,7 @@ export function distribute<TAmount>(calculator: DistributeCalculator<TAmount>) {
 
     const zero = calculator.zero();
     const one = calculator.increment(zero);
+    const minusOne = calculator.decrement(zero);
 
     const total = ratios.reduce((a, b) => calculator.add(a, b), zero);
 
@@ -46,7 +47,7 @@ export function distribute<TAmount>(calculator: DistributeCalculator<TAmount>) {
 
     const isPositive = greaterThanOrEqualFn(value, zero);
     const compare = isPositive ? greaterThanFn : lessThanFn;
-    const amount = isPositive ? one : calculator.decrement(zero);
+    const amount = isPositive ? one : minusOne;
 
     let i = 0;
 

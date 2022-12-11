@@ -7,10 +7,11 @@ export type IsPositiveParams<TAmount> = readonly [
 
 export function isPositive<TAmount>(calculator: Calculator<TAmount>) {
   const greaterThanOrEqualFn = greaterThanOrEqual(calculator);
+  const zero = calculator.zero();
 
   return function _isPositive(...[dineroObject]: IsPositiveParams<TAmount>) {
     const { amount } = dineroObject.toJSON();
 
-    return greaterThanOrEqualFn(amount, calculator.zero());
+    return greaterThanOrEqualFn(amount, zero);
   };
 }
