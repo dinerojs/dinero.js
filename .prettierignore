@@ -4,6 +4,7 @@ dist
 lib
 build
 website/data
+data/iso4217/amendments
 .next
 **/*.md
 **/*.mdx

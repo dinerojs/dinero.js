@@ -1,156 +1,46 @@
 [
-  {
-    "code": "AED",
-    "base": 10,
-    "exponent": 2,
-    "description": "United Arab Emirates dirham"
-  },
+  { "code": "AED", "base": 10, "exponent": 2, "description": "United Arab Emirates dirham" },
   { "code": "AFN", "base": 10, "exponent": 2, "description": "Afghan afghani" },
   { "code": "ALL", "base": 10, "exponent": 2, "description": "Albanian lek" },
   { "code": "AMD", "base": 10, "exponent": 2, "description": "Armenian dram" },
-  {
-    "code": "ANG",
-    "base": 10,
-    "exponent": 2,
-    "description": "Netherlands Antillean guilder"
-  },
+  { "code": "ANG", "base": 10, "exponent": 2, "description": "Netherlands Antillean guilder" },
   { "code": "AOA", "base": 10, "exponent": 2, "description": "Angolan kwanza" },
   { "code": "ARS", "base": 10, "exponent": 2, "description": "Argentine peso" },
-  {
-    "code": "AUD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Australian dollar"
-  },
+  { "code": "AUD", "base": 10, "exponent": 2, "description": "Australian dollar" },
   { "code": "AWG", "base": 10, "exponent": 2, "description": "Aruban florin" },
-  {
-    "code": "AZN",
-    "base": 10,
-    "exponent": 2,
-    "description": "Azerbaijani manat"
-  },
-  {
-    "code": "BAM",
-    "base": 10,
-    "exponent": 2,
-    "description": "Bosnia and Herzegovina convertible mark"
-  },
-  {
-    "code": "BBD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Barbados dollar"
-  },
-  {
-    "code": "BDT",
-    "base": 10,
-    "exponent": 2,
-    "description": "Bangladeshi taka"
-  },
+  { "code": "AZN", "base": 10, "exponent": 2, "description": "Azerbaijani manat" },
+  { "code": "BAM", "base": 10, "exponent": 2, "description": "Bosnia and Herzegovina convertible mark" },
+  { "code": "BBD", "base": 10, "exponent": 2, "description": "Barbados dollar" },
+  { "code": "BDT", "base": 10, "exponent": 2, "description": "Bangladeshi taka" },
   { "code": "BGN", "base": 10, "exponent": 2, "description": "Bulgarian lev" },
   { "code": "BHD", "base": 10, "exponent": 3, "description": "Bahraini dinar" },
-  {
-    "code": "BIF",
-    "base": 10,
-    "exponent": 0,
-    "description": "Burundian franc"
-  },
-  {
-    "code": "BMD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Bermudian dollar"
-  },
+  { "code": "BIF", "base": 10, "exponent": 0, "description": "Burundian franc" },
+  { "code": "BMD", "base": 10, "exponent": 2, "description": "Bermudian dollar" },
   { "code": "BND", "base": 10, "exponent": 2, "description": "Brunei dollar" },
-  {
-    "code": "BOB",
-    "base": 10,
-    "exponent": 2,
-    "description": "Bolivian boliviano"
-  },
+  { "code": "BOB", "base": 10, "exponent": 2, "description": "Bolivian boliviano" },
   { "code": "BOV", "base": 10, "exponent": 2, "description": "Bolivian Mvdol" },
   { "code": "BRL", "base": 10, "exponent": 2, "description": "Brazilian real" },
-  {
-    "code": "BSD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Bahamian dollar"
-  },
-  {
-    "code": "BTN",
-    "base": 10,
-    "exponent": 2,
-    "description": "Bhutanese ngultrum"
-  },
+  { "code": "BSD", "base": 10, "exponent": 2, "description": "Bahamian dollar" },
+  { "code": "BTN", "base": 10, "exponent": 2, "description": "Bhutanese ngultrum" },
   { "code": "BWP", "base": 10, "exponent": 2, "description": "Botswana pula" },
-  {
-    "code": "BYN",
-    "base": 10,
-    "exponent": 2,
-    "description": "Belarusian ruble"
-  },
+  { "code": "BYN", "base": 10, "exponent": 2, "description": "Belarusian ruble" },
   { "code": "BZD", "base": 10, "exponent": 2, "description": "Belize dollar" },
-  {
-    "code": "CAD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Canadian dollar"
-  },
-  {
-    "code": "CDF",
-    "base": 10,
-    "exponent": 2,
-    "description": "Congolese franc"
-  },
+  { "code": "CAD", "base": 10, "exponent": 2, "description": "Canadian dollar" },
+  { "code": "CDF", "base": 10, "exponent": 2, "description": "Congolese franc" },
   { "code": "CHE", "base": 10, "exponent": 2, "description": "WIR Euro" },
   { "code": "CHF", "base": 10, "exponent": 2, "description": "Swiss franc" },
   { "code": "CHW", "base": 10, "exponent": 2, "description": "WIR Franc" },
-  {
-    "code": "CLF",
-    "base": 10,
-    "exponent": 4,
-    "description": "Unidad de Fomento"
-  },
+  { "code": "CLF", "base": 10, "exponent": 4, "description": "Unidad de Fomento" },
   { "code": "CLP", "base": 10, "exponent": 0, "description": "Chilean peso" },
-  {
-    "code": "CNY",
-    "base": 10,
-    "exponent": 2,
-    "description": "Renminbi (Chinese) yuan"
-  },
+  { "code": "CNY", "base": 10, "exponent": 2, "description": "Renminbi (Chinese) yuan" },
   { "code": "COP", "base": 10, "exponent": 2, "description": "Colombian peso" },
-  {
-    "code": "COU",
-    "base": 10,
-    "exponent": 2,
-    "description": "Unidad de Valor Real"
-  },
-  {
-    "code": "CRC",
-    "base": 10,
-    "exponent": 2,
-    "description": "Costa Rican colón"
-  },
-  {
-    "code": "CUC",
-    "base": 10,
-    "exponent": 2,
-    "description": "Cuban convertible peso"
-  },
+  { "code": "COU", "base": 10, "exponent": 2, "description": "Unidad de Valor Real" },
+  { "code": "CRC", "base": 10, "exponent": 2, "description": "Costa Rican colón" },
+  { "code": "CUC", "base": 10, "exponent": 2, "description": "Cuban convertible peso" },
   { "code": "CUP", "base": 10, "exponent": 2, "description": "Cuban peso" },
-  {
-    "code": "CVE",
-    "base": 10,
-    "exponent": 2,
-    "description": "Cape Verdean escudo"
-  },
+  { "code": "CVE", "base": 10, "exponent": 2, "description": "Cape Verdean escudo" },
   { "code": "CZK", "base": 10, "exponent": 2, "description": "Czech koruna" },
-  {
-    "code": "DJF",
-    "base": 10,
-    "exponent": 0,
-    "description": "Djiboutian franc"
-  },
+  { "code": "DJF", "base": 10, "exponent": 0, "description": "Djiboutian franc" },
   { "code": "DKK", "base": 10, "exponent": 2, "description": "Danish krone" },
   { "code": "DOP", "base": 10, "exponent": 2, "description": "Dominican peso" },
   { "code": "DZD", "base": 10, "exponent": 2, "description": "Algerian dinar" },
@@ -159,470 +49,120 @@
   { "code": "ETB", "base": 10, "exponent": 2, "description": "Ethiopian birr" },
   { "code": "EUR", "base": 10, "exponent": 2, "description": "Euro" },
   { "code": "FJD", "base": 10, "exponent": 2, "description": "Fiji dollar" },
-  {
-    "code": "FKP",
-    "base": 10,
-    "exponent": 2,
-    "description": "Falkland Islands pound"
-  },
+  { "code": "FKP", "base": 10, "exponent": 2, "description": "Falkland Islands pound" },
   { "code": "GBP", "base": 10, "exponent": 2, "description": "Pound sterling" },
   { "code": "GEL", "base": 10, "exponent": 2, "description": "Georgian lari" },
   { "code": "GHS", "base": 10, "exponent": 2, "description": "Ghanaian cedi" },
-  {
-    "code": "GIP",
-    "base": 10,
-    "exponent": 2,
-    "description": "Gibraltar pound"
-  },
+  { "code": "GIP", "base": 10, "exponent": 2, "description": "Gibraltar pound" },
   { "code": "GMD", "base": 10, "exponent": 2, "description": "Gambian dalasi" },
   { "code": "GNF", "base": 10, "exponent": 0, "description": "Guinean franc" },
-  {
-    "code": "GTQ",
-    "base": 10,
-    "exponent": 2,
-    "description": "Guatemalan quetzal"
-  },
-  {
-    "code": "GYD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Guyanese dollar"
-  },
-  {
-    "code": "HKD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Hong Kong dollar"
-  },
-  {
-    "code": "HNL",
-    "base": 10,
-    "exponent": 2,
-    "description": "Honduran lempira"
-  },
+  { "code": "GTQ", "base": 10, "exponent": 2, "description": "Guatemalan quetzal" },
+  { "code": "GYD", "base": 10, "exponent": 2, "description": "Guyanese dollar" },
+  { "code": "HKD", "base": 10, "exponent": 2, "description": "Hong Kong dollar" },
+  { "code": "HNL", "base": 10, "exponent": 2, "description": "Honduran lempira" },
   { "code": "HRK", "base": 10, "exponent": 2, "description": "Croatian kuna" },
   { "code": "HTG", "base": 10, "exponent": 2, "description": "Haitian gourde" },
-  {
-    "code": "HUF",
-    "base": 10,
-    "exponent": 2,
-    "description": "Hungarian forint"
-  },
-  {
-    "code": "IDR",
-    "base": 10,
-    "exponent": 2,
-    "description": "Indonesian rupiah"
-  },
-  {
-    "code": "ILS",
-    "base": 10,
-    "exponent": 2,
-    "description": "Israeli new shekel"
-  },
+  { "code": "HUF", "base": 10, "exponent": 2, "description": "Hungarian forint" },
+  { "code": "IDR", "base": 10, "exponent": 2, "description": "Indonesian rupiah" },
+  { "code": "ILS", "base": 10, "exponent": 2, "description": "Israeli new shekel" },
   { "code": "INR", "base": 10, "exponent": 2, "description": "Indian rupee" },
   { "code": "IQD", "base": 10, "exponent": 3, "description": "Iraqi dinar" },
   { "code": "IRR", "base": 10, "exponent": 2, "description": "Iranian rial" },
-  {
-    "code": "ISK",
-    "base": 10,
-    "exponent": 0,
-    "description": "Icelandic króna"
-  },
-  {
-    "code": "JMD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Jamaican dollar"
-  },
-  {
-    "code": "JOD",
-    "base": 10,
-    "exponent": 3,
-    "description": "Jordanian dinar"
-  },
+  { "code": "ISK", "base": 10, "exponent": 0, "description": "Icelandic króna" },
+  { "code": "JMD", "base": 10, "exponent": 2, "description": "Jamaican dollar" },
+  { "code": "JOD", "base": 10, "exponent": 3, "description": "Jordanian dinar" },
   { "code": "JPY", "base": 10, "exponent": 0, "description": "Japanese yen" },
-  {
-    "code": "KES",
-    "base": 10,
-    "exponent": 2,
-    "description": "Kenyan shilling"
-  },
-  {
-    "code": "KGS",
-    "base": 10,
-    "exponent": 2,
-    "description": "Kyrgyzstani som"
-  },
+  { "code": "KES", "base": 10, "exponent": 2, "description": "Kenyan shilling" },
+  { "code": "KGS", "base": 10, "exponent": 2, "description": "Kyrgyzstani som" },
   { "code": "KHR", "base": 10, "exponent": 2, "description": "Cambodian riel" },
   { "code": "KMF", "base": 10, "exponent": 0, "description": "Comoro franc" },
-  {
-    "code": "KPW",
-    "base": 10,
-    "exponent": 2,
-    "description": "North Korean won"
-  },
-  {
-    "code": "KRW",
-    "base": 10,
-    "exponent": 0,
-    "description": "South Korean won"
-  },
+  { "code": "KPW", "base": 10, "exponent": 2, "description": "North Korean won" },
+  { "code": "KRW", "base": 10, "exponent": 0, "description": "South Korean won" },
   { "code": "KWD", "base": 10, "exponent": 3, "description": "Kuwaiti dinar" },
-  {
-    "code": "KYD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Cayman Islands dollar"
-  },
-  {
-    "code": "KZT",
-    "base": 10,
-    "exponent": 2,
-    "description": "Kazakhstani tenge"
-  },
+  { "code": "KYD", "base": 10, "exponent": 2, "description": "Cayman Islands dollar" },
+  { "code": "KZT", "base": 10, "exponent": 2, "description": "Kazakhstani tenge" },
   { "code": "LAK", "base": 10, "exponent": 2, "description": "Lao kip" },
   { "code": "LBP", "base": 10, "exponent": 2, "description": "Lebanese pound" },
-  {
-    "code": "LKR",
-    "base": 10,
-    "exponent": 2,
-    "description": "Sri Lankan rupee"
-  },
-  {
-    "code": "LRD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Liberian dollar"
-  },
+  { "code": "LKR", "base": 10, "exponent": 2, "description": "Sri Lankan rupee" },
+  { "code": "LRD", "base": 10, "exponent": 2, "description": "Liberian dollar" },
   { "code": "LSL", "base": 10, "exponent": 2, "description": "Lesotho loti" },
   { "code": "LYD", "base": 10, "exponent": 3, "description": "Libyan dinar" },
-  {
-    "code": "MAD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Moroccan dirham"
-  },
+  { "code": "MAD", "base": 10, "exponent": 2, "description": "Moroccan dirham" },
   { "code": "MDL", "base": 10, "exponent": 2, "description": "Moldovan leu" },
   { "code": "MGA", "base": 5, "exponent": 1, "description": "Malagasy ariary" },
-  {
-    "code": "MKD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Macedonian denar"
-  },
+  { "code": "MKD", "base": 10, "exponent": 2, "description": "Macedonian denar" },
   { "code": "MMK", "base": 10, "exponent": 2, "description": "Myanmar kyat" },
-  {
-    "code": "MNT",
-    "base": 10,
-    "exponent": 2,
-    "description": "Mongolian tögrög"
-  },
-  {
-    "code": "MOP",
-    "base": 10,
-    "exponent": 2,
-    "description": "Macanese pataca"
-  },
-  {
-    "code": "MRU",
-    "base": 5,
-    "exponent": 1,
-    "description": "Mauritanian ouguiya"
-  },
-  {
-    "code": "MUR",
-    "base": 10,
-    "exponent": 2,
-    "description": "Mauritian rupee"
-  },
-  {
-    "code": "MVR",
-    "base": 10,
-    "exponent": 2,
-    "description": "Maldivian rufiyaa"
-  },
-  {
-    "code": "MWK",
-    "base": 10,
-    "exponent": 2,
-    "description": "Malawian kwacha"
-  },
+  { "code": "MNT", "base": 10, "exponent": 2, "description": "Mongolian tögrög" },
+  { "code": "MOP", "base": 10, "exponent": 2, "description": "Macanese pataca" },
+  { "code": "MRU", "base": 5, "exponent": 1, "description": "Mauritanian ouguiya" },
+  { "code": "MUR", "base": 10, "exponent": 2, "description": "Mauritian rupee" },
+  { "code": "MVR", "base": 10, "exponent": 2, "description": "Maldivian rufiyaa" },
+  { "code": "MWK", "base": 10, "exponent": 2, "description": "Malawian kwacha" },
   { "code": "MXN", "base": 10, "exponent": 2, "description": "Mexican peso" },
-  {
-    "code": "MXV",
-    "base": 10,
-    "exponent": 2,
-    "description": "Mexican Unidad de Inversion"
-  },
-  {
-    "code": "MYR",
-    "base": 10,
-    "exponent": 2,
-    "description": "Malaysian ringgit"
-  },
-  {
-    "code": "MZN",
-    "base": 10,
-    "exponent": 2,
-    "description": "Mozambican metical"
-  },
-  {
-    "code": "NAD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Namibian dollar"
-  },
+  { "code": "MXV", "base": 10, "exponent": 2, "description": "Mexican Unidad de Inversion" },
+  { "code": "MYR", "base": 10, "exponent": 2, "description": "Malaysian ringgit" },
+  { "code": "MZN", "base": 10, "exponent": 2, "description": "Mozambican metical" },
+  { "code": "NAD", "base": 10, "exponent": 2, "description": "Namibian dollar" },
   { "code": "NGN", "base": 10, "exponent": 2, "description": "Nigerian naira" },
-  {
-    "code": "NIO",
-    "base": 10,
-    "exponent": 2,
-    "description": "Nicaraguan córdoba"
-  },
-  {
-    "code": "NOK",
-    "base": 10,
-    "exponent": 2,
-    "description": "Norwegian krone"
-  },
+  { "code": "NIO", "base": 10, "exponent": 2, "description": "Nicaraguan córdoba" },
+  { "code": "NOK", "base": 10, "exponent": 2, "description": "Norwegian krone" },
   { "code": "NPR", "base": 10, "exponent": 2, "description": "Nepalese rupee" },
-  {
-    "code": "NZD",
-    "base": 10,
-    "exponent": 2,
-    "description": "New Zealand dollar"
-  },
+  { "code": "NZD", "base": 10, "exponent": 2, "description": "New Zealand dollar" },
   { "code": "OMR", "base": 10, "exponent": 3, "description": "Omani rial" },
-  {
-    "code": "PAB",
-    "base": 10,
-    "exponent": 2,
-    "description": "Panamanian balboa"
-  },
+  { "code": "PAB", "base": 10, "exponent": 2, "description": "Panamanian balboa" },
   { "code": "PEN", "base": 10, "exponent": 2, "description": "Peruvian sol" },
-  {
-    "code": "PGK",
-    "base": 10,
-    "exponent": 2,
-    "description": "Papua New Guinean kina"
-  },
-  {
-    "code": "PHP",
-    "base": 10,
-    "exponent": 2,
-    "description": "Philippine peso"
-  },
-  {
-    "code": "PKR",
-    "base": 10,
-    "exponent": 2,
-    "description": "Pakistani rupee"
-  },
+  { "code": "PGK", "base": 10, "exponent": 2, "description": "Papua New Guinean kina" },
+  { "code": "PHP", "base": 10, "exponent": 2, "description": "Philippine peso" },
+  { "code": "PKR", "base": 10, "exponent": 2, "description": "Pakistani rupee" },
   { "code": "PLN", "base": 10, "exponent": 2, "description": "Polish złoty" },
-  {
-    "code": "PYG",
-    "base": 10,
-    "exponent": 0,
-    "description": "Paraguayan guaraní"
-  },
+  { "code": "PYG", "base": 10, "exponent": 0, "description": "Paraguayan guaraní" },
   { "code": "QAR", "base": 10, "exponent": 2, "description": "Qatari riyal" },
   { "code": "RON", "base": 10, "exponent": 2, "description": "Romanian leu" },
   { "code": "RSD", "base": 10, "exponent": 2, "description": "Serbian dinar" },
   { "code": "RUB", "base": 10, "exponent": 2, "description": "Russian ruble" },
   { "code": "RWF", "base": 10, "exponent": 0, "description": "Rwandan franc" },
   { "code": "SAR", "base": 10, "exponent": 2, "description": "Saudi riyal" },
-  {
-    "code": "SBD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Solomon Islands dollar"
-  },
-  {
-    "code": "SCR",
-    "base": 10,
-    "exponent": 2,
-    "description": "Seychelles rupee"
-  },
+  { "code": "SBD", "base": 10, "exponent": 2, "description": "Solomon Islands dollar" },
+  { "code": "SCR", "base": 10, "exponent": 2, "description": "Seychelles rupee" },
   { "code": "SDG", "base": 10, "exponent": 2, "description": "Sudanese pound" },
   { "code": "SEK", "base": 10, "exponent": 2, "description": "Swedish krona" },
-  {
-    "code": "SGD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Singapore dollar"
-  },
-  {
-    "code": "SHP",
-    "base": 10,
-    "exponent": 2,
-    "description": "Saint Helena pound"
-  },
-  {
-    "code": "SLL",
-    "base": 10,
-    "exponent": 2,
-    "description": "Sierra Leonean leone"
-  },
-  {
-    "code": "SOS",
-    "base": 10,
-    "exponent": 2,
-    "description": "Somali shilling"
-  },
-  {
-    "code": "SRD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Surinamese dollar"
-  },
-  {
-    "code": "SSP",
-    "base": 10,
-    "exponent": 2,
-    "description": "South Sudanese pound"
-  },
-  {
-    "code": "STN",
-    "base": 10,
-    "exponent": 2,
-    "description": "São Tomé and Príncipe dobra"
-  },
-  {
-    "code": "SVC",
-    "base": 10,
-    "exponent": 2,
-    "description": "Salvadoran colón"
-  },
+  { "code": "SGD", "base": 10, "exponent": 2, "description": "Singapore dollar" },
+  { "code": "SHP", "base": 10, "exponent": 2, "description": "Saint Helena pound" },
+  { "code": "SLL", "base": 10, "exponent": 2, "description": "Sierra Leonean leone" },
+  { "code": "SOS", "base": 10, "exponent": 2, "description": "Somali shilling" },
+  { "code": "SRD", "base": 10, "exponent": 2, "description": "Surinamese dollar" },
+  { "code": "SSP", "base": 10, "exponent": 2, "description": "South Sudanese pound" },
+  { "code": "STN", "base": 10, "exponent": 2, "description": "São Tomé and Príncipe dobra" },
+  { "code": "SVC", "base": 10, "exponent": 2, "description": "Salvadoran colón" },
   { "code": "SYP", "base": 10, "exponent": 2, "description": "Syrian pound" },
-  {
-    "code": "SZL",
-    "base": 10,
-    "exponent": 2,
-    "description": "Swazi lilangeni"
-  },
+  { "code": "SZL", "base": 10, "exponent": 2, "description": "Swazi lilangeni" },
   { "code": "THB", "base": 10, "exponent": 2, "description": "Thai baht" },
-  {
-    "code": "TJS",
-    "base": 10,
-    "exponent": 2,
-    "description": "Tajikistani somoni"
-  },
-  {
-    "code": "TMT",
-    "base": 10,
-    "exponent": 2,
-    "description": "Turkmenistan manat"
-  },
+  { "code": "TJS", "base": 10, "exponent": 2, "description": "Tajikistani somoni" },
+  { "code": "TMT", "base": 10, "exponent": 2, "description": "Turkmenistan manat" },
   { "code": "TND", "base": 10, "exponent": 3, "description": "Tunisian dinar" },
   { "code": "TOP", "base": 10, "exponent": 2, "description": "Tongan paʻanga" },
   { "code": "TRY", "base": 10, "exponent": 2, "description": "Turkish lira" },
-  {
-    "code": "TTD",
-    "base": 10,
-    "exponent": 2,
-    "description": "Trinidad and Tobago dollar"
-  },
-  {
-    "code": "TWD",
-    "base": 10,
-    "exponent": 2,
-    "description": "New Taiwan dollar"
-  },
-  {
-    "code": "TZS",
-    "base": 10,
-    "exponent": 2,
-    "description": "Tanzanian shilling"
-  },
-  {
-    "code": "UAH",
-    "base": 10,
-    "exponent": 2,
-    "description": "Ukrainian hryvnia"
-  },
-  {
-    "code": "UGX",
-    "base": 10,
-    "exponent": 0,
-    "description": "Ugandan shilling"
-  },
-  {
-    "code": "USD",
-    "base": 10,
-    "exponent": 2,
-    "description": "United States dollar"
-  },
-  {
-    "code": "USN",
-    "base": 10,
-    "exponent": 2,
-    "description": "United States dollar (next day)"
-  },
-  {
-    "code": "UYI",
-    "base": 10,
-    "exponent": 0,
-    "description": "Uruguay Peso en Unidades Indexadas"
-  },
+  { "code": "TTD", "base": 10, "exponent": 2, "description": "Trinidad and Tobago dollar" },
+  { "code": "TWD", "base": 10, "exponent": 2, "description": "New Taiwan dollar" },
+  { "code": "TZS", "base": 10, "exponent": 2, "description": "Tanzanian shilling" },
+  { "code": "UAH", "base": 10, "exponent": 2, "description": "Ukrainian hryvnia" },
+  { "code": "UGX", "base": 10, "exponent": 0, "description": "Ugandan shilling" },
+  { "code": "USD", "base": 10, "exponent": 2, "description": "United States dollar" },
+  { "code": "USN", "base": 10, "exponent": 2, "description": "United States dollar (next day)" },
+  { "code": "UYI", "base": 10, "exponent": 0, "description": "Uruguay Peso en Unidades Indexadas" },
   { "code": "UYU", "base": 10, "exponent": 2, "description": "Uruguayan peso" },
-  {
-    "code": "UYW",
-    "base": 10,
-    "exponent": 4,
-    "description": "Unidad previsional"
-  },
-  {
-    "code": "UZS",
-    "base": 10,
-    "exponent": 2,
-    "description": "Uzbekistani soʻm"
-  },
-  {
-    "code": "VES",
-    "base": 10,
-    "exponent": 2,
-    "description": "Venezuelan bolívar"
-  },
-  {
-    "code": "VND",
-    "base": 10,
-    "exponent": 0,
-    "description": "Vietnamese đồng"
-  },
+  { "code": "UYW", "base": 10, "exponent": 4, "description": "Unidad previsional" },
+  { "code": "UZS", "base": 10, "exponent": 2, "description": "Uzbekistani soʻm" },
+  { "code": "VES", "base": 10, "exponent": 2, "description": "Venezuelan bolívar" },
+  { "code": "VND", "base": 10, "exponent": 0, "description": "Vietnamese đồng" },
   { "code": "VUV", "base": 10, "exponent": 0, "description": "Vanuatu vatu" },
   { "code": "WST", "base": 10, "exponent": 2, "description": "Samoan tālā" },
-  {
-    "code": "XAF",
-    "base": 10,
-    "exponent": 0,
-    "description": "Central African CFA franc"
-  },
-  {
-    "code": "XCD",
-    "base": 10,
-    "exponent": 2,
-    "description": "East Caribbean dollar"
-  },
-  {
-    "code": "XOF",
-    "base": 10,
-    "exponent": 0,
-    "description": "West African CFA franc"
-  },
+  { "code": "XAF", "base": 10, "exponent": 0, "description": "Central African CFA franc" },
+  { "code": "XCD", "base": 10, "exponent": 2, "description": "East Caribbean dollar" },
+  { "code": "XOF", "base": 10, "exponent": 0, "description": "West African CFA franc" },
   { "code": "XPF", "base": 10, "exponent": 0, "description": "CFP franc" },
   { "code": "YER", "base": 10, "exponent": 2, "description": "Yemeni rial" },
-  {
-    "code": "ZAR",
-    "base": 10,
-    "exponent": 2,
-    "description": "South African rand"
-  },
+  { "code": "ZAR", "base": 10, "exponent": 2, "description": "South African rand" },
   { "code": "ZMW", "base": 10, "exponent": 2, "description": "Zambian kwacha" },
-  {
-    "code": "ZWL",
-    "base": 10,
-    "exponent": 2,
-    "description": "Zimbabwean dollar"
-  }
+  { "code": "ZWL", "base": 10, "exponent": 2, "description": "Zimbabwean dollar" }
 ]
