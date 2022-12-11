@@ -25,5 +25,8 @@ export function getNext(sitemap: Sitemap) {
     return ancestor?.next?.first;
   }
 
-  return ancestor?.next?.first?.first || ancestor?.children[0]?.children[0]?.children[0];
+  return (
+    ancestor?.next?.first?.first ||
+    ancestor?.children[0]?.children[0]?.children[0]
+  );
 }

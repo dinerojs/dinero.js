@@ -3,9 +3,9 @@ import remark from 'remark';
 import strip from 'strip-markdown';
 
 export type Heading = {
-  text: string,
-  level: number,
-  slug: string,
+  text: string;
+  level: number;
+  slug: string;
 };
 
 export function getHeadings(source: string): Heading[] {

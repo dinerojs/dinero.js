@@ -5,12 +5,12 @@ import gzipSize from 'gzip-size';
 import { file as brotliSize } from 'brotli-size';
 
 export type Bundle = {
-  name: string,
-  pkg: string,
-  development: number,
-  minified: number,
-  gzip: number,
-  brotli: number,
+  name: string;
+  pkg: string;
+  development: number;
+  minified: number;
+  gzip: number;
+  brotli: number;
 };
 
 export async function getBundleSize(packages: string[], root: string) {
