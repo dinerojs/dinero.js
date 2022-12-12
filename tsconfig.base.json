@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNEXT",
+    "composite": true,
+    "incremental": true,
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "paths": {
+      "dinero.js": ["./packages/dinero.js/src/index"],
+      "@dinero.js/core": ["./packages/core/src/index"],
+      "@dinero.js/currencies": ["./packages/currencies/src/index"],
+      "@dinero.js/calculator-bigint": [
+        "./packages/calculator-bigint/src/index"
+      ],
+      "@dinero.js/calculator-number": [
+        "./packages/calculator-number/src/index"
+      ],
+      "test-utils": ["./test/utils/index"]
+    }
+  }
+}

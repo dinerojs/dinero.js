@@ -1,36 +1,6 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact",
-    "module": "es2015",
-    "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": false,
-    "noImplicitReturns": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "ESNEXT",
-    "noEmit": true,
-    "baseUrl": "./",
-    "paths": {
-      "dinero.js": ["packages/dinero.js/src/index"],
-      "@dinero.js/core": ["packages/core/src/index"],
-      "@dinero.js/currencies": ["packages/currencies/src/index"],
-      "@dinero.js/calculator-bigint": ["packages/calculator-bigint/src/index"],
-      "@dinero.js/calculator-number": ["packages/calculator-number/src/index"],
-      "test-utils": ["test/utils/index"]
-    }
-  },
-  "exclude": [
-    "**/dist",
-    "**/lib",
-    "**/temp",
-    "**/node_modules",
-    "website",
-    "examples/deno"
-  ]
+  "extends": "./tsconfig.base",
+  "files": [],
+  "include": [],
+  "references": [{ "path": "./packages" }, { "path": "./test" }]
 }

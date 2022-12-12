@@ -1,7 +1,9 @@
 {
-  "extends": "../tsconfig.test",
+  "extends": "../tsconfig.base",
   "compilerOptions": {
-    "composite": true
+    "outDir": "lib",
+    "rootDir": "utils",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
   },
   "references": [
     { "path": "../packages/dinero.js" },
