@@ -128,7 +128,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const headings = getHeadings(source);
 
   const root = path.join(process.cwd(), '..', 'packages');
-  const packages = fs.readdirSync(root).filter(junk.not);
+  const packages = fs
+    .readdirSync(root)
+    .filter(junk.not)
+    .filter((file) => !/tsconfig\.json/.test(file));
   const bundleSize = await getBundleSize(packages, root);
 
   return { props: { headings, mdxSource, frontMatter, filePath, bundleSize } };
