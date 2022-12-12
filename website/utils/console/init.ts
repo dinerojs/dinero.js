@@ -9,7 +9,9 @@ export async function init(dirtyVersion: string = lerna.version) {
   const allowedRange = '2.x';
   const version = semverValid(dirtyVersion);
   const coercedVersion = semverCoerce(version);
-  const isValid = Boolean(version && coercedVersion && semverSatisfies(coercedVersion, allowedRange));
+  const isValid = Boolean(
+    version && coercedVersion && semverSatisfies(coercedVersion, allowedRange)
+  );
 
   if (version && isValid) {
     const dineroUrl = `https://cdn.jsdelivr.net/npm/dinero.js@${version}/dist/umd/index.production.js`;
@@ -18,7 +20,7 @@ export async function init(dirtyVersion: string = lerna.version) {
     try {
       await import(/* webpackIgnore: true */ dineroUrl);
       await import(/* webpackIgnore: true */ dineroCurrenciesUrl);
-    } catch(err) {
+    } catch (err) {
       return;
     }
 
@@ -28,6 +30,8 @@ export async function init(dirtyVersion: string = lerna.version) {
 
     console.log(...instructions);
   } else {
-    console.error(`Please provide a version which satisfies range "${allowedRange}".`);
+    console.error(
+      `Please provide a version which satisfies range "${allowedRange}".`
+    );
   }
-};
+}

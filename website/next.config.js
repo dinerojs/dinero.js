@@ -29,5 +29,5 @@ module.exports = {
     }
 
     return config;
-  }
+  },
 };

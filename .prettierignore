@@ -3,5 +3,7 @@ node_modules
 dist
 lib
 build
-website
+website/data
+.next
 **/*.md
+**/*.mdx
