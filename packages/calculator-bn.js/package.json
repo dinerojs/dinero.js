@@ -1,6 +1,6 @@
 {
   "name": "@dinero.js/calculator-bn.js",
-  "version": "2.0.0-alpha.12",
+  "version": "1.0.0-alpha.0",
   "description": "BN.js calculator implementation for Dinero.js",
   "keywords": [
     "money",
@@ -18,8 +18,8 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Sarah Dayan",
-    "url": "https://sarahdayan.dev"
+    "name": "Exodus Movement, Inc.",
+    "url": "https://exodus.com"
   },
   "sideEffects": false,
   "main": "dist/cjs/index.js",
