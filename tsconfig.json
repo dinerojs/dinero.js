@@ -22,6 +22,7 @@
       "@dinero.js/currencies": ["packages/currencies/src/index"],
       "@dinero.js/calculator-bigint": ["packages/calculator-bigint/src/index"],
       "@dinero.js/calculator-number": ["packages/calculator-number/src/index"],
+      "@dinero.js/calculator-bn.js": ["packages/calculator-bn.js/src/index"],
       "test-utils": ["test/utils/index"]
     }
   },
