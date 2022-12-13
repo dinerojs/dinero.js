@@ -1,0 +1,12 @@
+# Avoids transpilation of the exponentiation operator into `Math.pow`
+# https://github.com/babel/babel/blob/main/packages/babel-compat-data/data/plugins.json#L166-L176
+
+chrome > 52
+opera > 39
+edge > 14
+firefox > 52
+safari > 10.1
+node > 7
+ios > 10.3
+samsung > 6
+electron > 1.3
