@@ -21,7 +21,6 @@
     "test:size": "bundlesize",
     "test:types": "tsc --noEmit",
     "test": "turbo test --filter=./packages/*",
-    "test:ci": "turbo test --filter=./packages/* -- --maxWorkers=4",
     "website:dev": "yarn --cwd website/ dev",
     "website:start": "yarn --cwd website/ start",
     "website:build": "yarn --cwd website/ build"
@@ -47,6 +46,7 @@
     "babel-plugin-module-resolver": "4.1.0",
     "big.js": "6.2.1",
     "bundlesize": "0.18.1",
+    "cross-spawn": "7.0.3",
     "eslint": "7.32.0",
     "eslint-config-algolia": "20.0.0",
     "eslint-config-prettier": "8.5.0",

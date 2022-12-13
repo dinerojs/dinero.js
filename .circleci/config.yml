@@ -57,6 +57,8 @@ defaults: &defaults
   working_directory: ~/dinero.js
   docker:
     - image: circleci/node:16.13.1
+  environment:
+    CI: true
 
 references:
   workspace_root: &workspace_root /tmp/workspace
@@ -121,7 +123,7 @@ jobs:
       - save_cache: *save_yarn_cache
       - run:
           name: Unit tests
-          command: yarn run test:ci
+          command: yarn run test
   test_size:
     <<: *defaults
     steps:
