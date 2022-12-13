@@ -1,11 +1,14 @@
 import { EUR, USD, MGA, MRU } from '@dinero.js/currencies';
 import Big from 'big.js';
+import BN from 'bn.js';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
+  castToBnjsCurrency,
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
+  createBnjsDinero,
 } from 'test-utils';
 
 import { add, toSnapshot } from '..';
@@ -378,6 +381,149 @@ describe('add', () => {
       it('throws when using different currencies', () => {
         const d1 = dinero({ amount: new Big(8), currency: bigjsMRU });
         const d2 = dinero({ amount: new Big(8), currency: bigjsMGA });
+
+        expect(() => {
+          add(d1, d2);
+        }).toThrowErrorMatchingInlineSnapshot(
+          `"[Dinero.js] Objects must have the same currency."`
+        );
+      });
+    });
+  });
+
+  describe('bn.js', () => {
+    const dinero = createBnjsDinero;
+    const bigjsUSD = castToBnjsCurrency(USD);
+    const bigjsEUR = castToBnjsCurrency(EUR);
+    const bigjsMGA = castToBnjsCurrency(MGA);
+    const bigjsMRU = castToBnjsCurrency(MRU);
+
+    describe('decimal currencies', () => {
+      it('adds up positive Dinero objects', () => {
+        const d1 = dinero({ amount: new BN(500), currency: bigjsUSD });
+        const d2 = dinero({ amount: new BN(100), currency: bigjsUSD });
+
+        const snapshot = toSnapshot(add(d1, d2));
+
+        expect(snapshot).toEqual({
+          amount: new BN(600),
+          currency: bigjsUSD,
+          scale: new BN(2),
+        });
+      });
+      it('adds up positive Dinero objects with large integers', () => {
+        const d1 = dinero({
+          amount: new BN('1000000000000000050'),
+          currency: bigjsUSD,
+        });
+        const d2 = dinero({ amount: new BN(10), currency: bigjsUSD });
+
+        const snapshot = toSnapshot(add(d1, d2));
+
+        expect(snapshot).toEqual({
+          amount: new BN('1000000000000000060'),
+          currency: bigjsUSD,
+          scale: new BN(2),
+        });
+      });
+      it('adds up negative Dinero objects', () => {
+        const d1 = dinero({ amount: new BN(-500), currency: bigjsUSD });
+        const d2 = dinero({ amount: new BN(-100), currency: bigjsUSD });
+
+        const snapshot = toSnapshot(add(d1, d2));
+
+        expect(snapshot).toEqual({
+          amount: new BN(-600),
+          currency: bigjsUSD,
+          scale: new BN(2),
+        });
+      });
+      it('adds up negative Dinero objects with large integers', () => {
+        const d1 = dinero({
+          amount: new BN('-1000000000000000050'),
+          currency: bigjsUSD,
+        });
+        const d2 = dinero({ amount: new BN(-10), currency: bigjsUSD });
+
+        const snapshot = toSnapshot(add(d1, d2));
+
+        expect(snapshot).toEqual({
+          amount: new BN('-1000000000000000060'),
+          currency: bigjsUSD,
+          scale: new BN(2),
+        });
+      });
+      it('normalizes the result to the highest scale', () => {
+        const d1 = dinero({ amount: new BN(500), currency: bigjsUSD });
+        const d2 = dinero({
+          amount: new BN(1000),
+          currency: bigjsUSD,
+          scale: new BN(3),
+        });
+
+        const snapshot = toSnapshot(add(d1, d2));
+
+        expect(snapshot).toEqual({
+          amount: new BN(6000),
+          currency: bigjsUSD,
+          scale: new BN(3),
+        });
+      });
+      it('throws when using different currencies', () => {
+        const d1 = dinero({ amount: new BN(500), currency: bigjsUSD });
+        const d2 = dinero({ amount: new BN(100), currency: bigjsEUR });
+
+        expect(() => {
+          add(d1, d2);
+        }).toThrowErrorMatchingInlineSnapshot(
+          `"[Dinero.js] Objects must have the same currency."`
+        );
+      });
+    });
+    describe('non-decimal currencies', () => {
+      it('adds up positive Dinero objects', () => {
+        const d1 = dinero({ amount: new BN(8), currency: bigjsMGA });
+        const d2 = dinero({ amount: new BN(3), currency: bigjsMGA });
+
+        const snapshot = toSnapshot(add(d1, d2));
+
+        expect(snapshot).toEqual({
+          amount: new BN(11),
+          currency: bigjsMGA,
+          scale: new BN(1),
+        });
+      });
+      it('adds up negative Dinero objects', () => {
+        const d1 = dinero({ amount: new BN(-8), currency: bigjsMGA });
+        const d2 = dinero({ amount: new BN(-3), currency: bigjsMGA });
+
+        const snapshot = toSnapshot(add(d1, d2));
+
+        expect(snapshot).toEqual({
+          amount: new BN(-11),
+          currency: bigjsMGA,
+          scale: new BN(1),
+        });
+      });
+      it('normalizes the result to the highest scale', () => {
+        const d1 = dinero({ amount: new BN(8), currency: bigjsMGA });
+        const d2 = dinero({
+          amount: new BN(10),
+          currency: bigjsMGA,
+          scale: new BN(2),
+        });
+
+        const snapshot = toSnapshot(add(d1, d2));
+
+        expect(snapshot).toEqual({
+          amount: new BN(50),
+          currency: bigjsMGA,
+          scale: new BN(2),
+        });
+      });
+      it('throws when using different currencies', () => {
+        const d1 = dinero({ amount: new BN(8), currency: bigjsMRU });
+        const d2 = dinero({ amount: new BN(8), currency: bigjsMGA });
 
         expect(() => {
           add(d1, d2);
