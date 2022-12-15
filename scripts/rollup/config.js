@@ -1,4 +1,5 @@
 /* eslint-disable functional/no-throw-statement, functional/no-expression-statement */
+import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
@@ -90,6 +91,7 @@ function createRollupConfig({ mode, format, input, pkg, config }) {
         showMinifiedSize: false,
         showGzippedSize: true,
       }),
+      commonjs(),
       ...(config.plugins || []),
     ].filter(Boolean),
   });
