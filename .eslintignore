@@ -5,4 +5,3 @@ website
 **/*.json
 **/*.md
 **/lib
-bn.js.d.ts
