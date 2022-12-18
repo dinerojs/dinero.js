@@ -54,17 +54,17 @@ function getDecimal<TAmount>(
   const zero = calculator.zero();
 
   return (units: readonly TAmount[], scale: TAmount) => {
-    const integer = formatter.toString(units[0]);
+    const whole = formatter.toString(units[0]);
     const fractional = formatter.toString(absoluteFn(units[1]));
 
     const scaleNumber = formatter.toNumber(scale);
-    const decimal = `${integer}.${fractional.padStart(scaleNumber, '0')}`;
+    const decimal = `${whole}.${fractional.padStart(scaleNumber, '0')}`;
 
-    // A leading negative zero is a special case because the toString
-    // formatter (generally String) won't preserve its negative sign.
     const leadsWithZero = equalFn(units[0], zero);
     const isNegative = lessThanFn(units[1], zero);
 
+    // A leading negative zero is a special case because the `toString`
+    // formatter won't preserve its negative sign (since 0 === -0).
     return leadsWithZero && isNegative ? `-${decimal}` : decimal;
   };
 }
