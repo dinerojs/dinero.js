@@ -1,6 +1,6 @@
 {
   "name": "@dinero.js/calculator-bigint",
-  "version": "2.0.0-alpha.12",
+  "version": "2.0.0-alpha.13",
   "description": "Bigint calculator implementation for Dinero.js",
   "keywords": [
     "money",
@@ -44,6 +44,6 @@
     "watch": "watch \"yarn on:change\" --ignoreDirectoryPattern \"/dist/\""
   },
   "dependencies": {
-    "@dinero.js/core": "2.0.0-alpha.12"
+    "@dinero.js/core": "2.0.0-alpha.13"
   }
 }
