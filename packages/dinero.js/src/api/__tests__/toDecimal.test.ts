@@ -45,6 +45,16 @@ describe('toDecimal', () => {
 
         expect(toDecimal(d)).toEqual('-10.50');
       });
+      it('returns the negative amount with a leading zero in decimal format', () => {
+        const d = dinero({ amount: -1, currency: USD });
+
+        expect(toDecimal(d)).toEqual('-0.01');
+      });
+      it('returns negative zero amount as a positive value in decimal format', () => {
+        const d = dinero({ amount: -0, currency: USD });
+
+        expect(toDecimal(d)).toEqual('0.00');
+      });
       it('uses a custom transformer', () => {
         const d = dinero({ amount: 1050, currency: USD });
 
@@ -117,6 +127,16 @@ describe('toDecimal', () => {
         const d = dinero({ amount: -1050n, currency: bigintUSD });
 
         expect(toDecimal(d)).toEqual('-10.50');
+      });
+      it('returns the negative amount with a leading zero in decimal format', () => {
+        const d = dinero({ amount: -1n, currency: bigintUSD });
+
+        expect(toDecimal(d)).toEqual('-0.01');
+      });
+      it('returns negative zero amount as a positive value in decimal format', () => {
+        const d = dinero({ amount: -0n, currency: bigintUSD });
+
+        expect(toDecimal(d)).toEqual('0.00');
       });
       it('uses a custom transformer', () => {
         const d = dinero({ amount: 1050n, currency: bigintUSD });
@@ -197,6 +217,16 @@ describe('toDecimal', () => {
         const d = dinero({ amount: new Big(-1005), currency: bigjsUSD });
 
         expect(toDecimal(d)).toEqual('-10.05');
+      });
+      it('returns the negative amount with a leading zero in decimal format', () => {
+        const d = dinero({ amount: new Big(-1), currency: bigjsUSD });
+
+        expect(toDecimal(d)).toEqual('-0.01');
+      });
+      it('returns negative zero amount as a positive value in decimal format', () => {
+        const d = dinero({ amount: new Big(-0), currency: bigjsUSD });
+
+        expect(toDecimal(d)).toEqual('0.00');
       });
       it('uses a custom transformer', () => {
         const d = dinero({ amount: new Big(1050), currency: bigjsUSD });

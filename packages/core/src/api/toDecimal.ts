@@ -1,7 +1,7 @@
 import { NON_DECIMAL_CURRENCY_MESSAGE } from '../checks';
 import { assert } from '../helpers';
 import type { Calculator, Dinero, Formatter, Transformer } from '../types';
-import { absolute, computeBase, equal, isArray } from '../utils';
+import { absolute, computeBase, equal, isArray, lessThan } from '../utils';
 
 import { toUnits } from './toUnits';
 
@@ -49,23 +49,22 @@ function getDecimal<TAmount>(
   formatter: Formatter<TAmount>
 ) {
   const absoluteFn = absolute(calculator);
+  const equalFn = equal(calculator);
+  const lessThanFn = lessThan(calculator);
+  const zero = calculator.zero();
 
   return (units: readonly TAmount[], scale: TAmount) => {
-    return units
-      .map((unit, index) => {
-        const isFirst = index === 0;
-        const isLast = units.length - 1 === index;
+    const whole = formatter.toString(units[0]);
+    const fractional = formatter.toString(absoluteFn(units[1]));
 
-        const unitAsString = formatter.toString(
-          isFirst ? unit : absoluteFn(unit)
-        );
+    const scaleNumber = formatter.toNumber(scale);
+    const decimal = `${whole}.${fractional.padStart(scaleNumber, '0')}`;
 
-        if (isLast) {
-          return unitAsString.padStart(formatter.toNumber(scale), '0');
-        }
+    const leadsWithZero = equalFn(units[0], zero);
+    const isNegative = lessThanFn(units[1], zero);
 
-        return unitAsString;
-      })
-      .join('.');
+    // A leading negative zero is a special case because the `toString`
+    // formatter won't preserve its negative sign (since 0 === -0).
+    return leadsWithZero && isNegative ? `-${decimal}` : decimal;
   };
 }
