@@ -1,4 +1,3 @@
-/* eslint-disable no-console, no-process-exit, functional/no-expression-statement */
 import path from 'path';
 import * as url from 'url';
 
@@ -12,10 +11,10 @@ const eslintPath = path.resolve(
 const args = process.argv.slice(2);
 
 /**
- * ESLint cli args.
+ * ESLint CLI arguments
  *
- * ESlint needs to be run in each project for `turbo` to cache the results. Though it doesn't look
- * up the file tree for the .eslintrc or .eslintignore files.
+ * ESlint needs to be run in each project for `turbo` to cache the results, so
+ * it doesn't look up the file tree for `.eslintrc` or `.eslintignore`.
  */
 const eslintArgs = [
   '--config=../../.eslintrc.js',

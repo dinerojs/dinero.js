@@ -1,15 +1,14 @@
-/* eslint-disable no-void, no-console, functional/no-expression-statement, jsdoc/require-description, valid-jsdoc */
 import { spawn } from 'cross-spawn';
 
 /**
- * Async exec.
+ * Async `exec`.
  *
- * Inspired by `remix-run` build scripts, [reference](https://github.com/remix-run/remix/blob/534e1ec071f17654a4db8622e30d6ff70548ce26/scripts/build.mjs).
+ * Inspired by `remix-run` build scripts
+ * https://github.com/remix-run/remix/blob/534e1ec071f17654a4db8622e30d6ff70548ce26/scripts/build.mjs
  *
  * @param {string} command - Shell command to execute.
  * @param {string[]} [args] - Command arguments.
  * @param {import('node:child_process').SpawnOptions} options - Options to pass to `cross-spawn`.
- * @returns {Promise} Returns prom.
  */
 export function exec(command, args = [], options = {}) {
   /** @type {(data: Error) => any} */

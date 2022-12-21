@@ -1,4 +1,3 @@
-/* eslint-disable no-console, no-process-exit, functional/no-expression-statement, @typescript-eslint/naming-convention */
 import path from 'path';
 import * as url from 'url';
 
@@ -13,11 +12,11 @@ const jestPath = path.resolve(__dirname, '../node_modules/.bin/jest');
 
 const args = process.argv.slice(2);
 
-// When in CI, `jest` should only use 4 workers.
+// When in CI, Jest should only use 4 workers to avoid out of memory errors.
 const maxWorkers = process.env.CI ? ['--maxWorkers=4'] : [];
 
 /**
- * Jest cli args.
+ * Jest CLI arguments
  */
 const jestArgs = [...args, ...maxWorkers];
 

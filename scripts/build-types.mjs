@@ -1,29 +1,29 @@
-/* eslint-disable no-console, no-process-exit, functional/no-expression-statement */
 import path from 'path';
 import * as url from 'url';
 
 import { exec } from './utils/exec.mjs';
 
 const apiExtractorPath = path.resolve(
-  url.fileURLToPath(new URL('.', import.meta.url)), // __dirname es module style
+  url.fileURLToPath(new URL('.', import.meta.url)),
   '../node_modules/.bin/api-extractor'
 );
 
 // Strip `--local` out. It will be configured only by this script.
 const args = process.argv.slice(2).filter((arg) => arg !== '--local');
 
-// When in CI, `api-extractor` shouldn't apply the local flag, this script will error if an api
-// change has occurred without being committed in an `api.md` file.
+// When in CI, `api-extractor` shouldn't apply the local flag. This script will
+// error if an API change occurs without being committed in an `api.md` file.
+// @todo Uncomment once we're ready to enforce the API
 // const localFlag = process.env.CI ? [] : ['--local'];
 
 /**
- * ApiExtractor cli args.
+ * ApiExtractor CLI arguments
  */
 const apiExtractorArgs = ['run', '--local', ...args /* , ...localFlag */];
 
 console.log(`api-extractor ${apiExtractorArgs.join(' ')}`);
 
-exec(apiExtractorPath, [...apiExtractorArgs])
+exec(apiExtractorPath, apiExtractorArgs)
   .then(() => process.exit(0))
   .catch((err) => {
     console.error(err);
