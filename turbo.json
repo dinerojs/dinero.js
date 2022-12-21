@@ -37,9 +37,6 @@
     "lint": {
       "inputs": ["**/*.ts", "**/*.js"],
       "outputs": []
-    },
-    "dev": {
-      "cache": false
     }
   },
   "globalDependencies": [
