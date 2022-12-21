@@ -24,7 +24,7 @@
     "test": "turbo test --filter=./packages/*",
     "website:dev": "yarn --cwd website/ dev",
     "website:start": "yarn --cwd website/ start",
-    "website:build": "yarn --cwd website/ build"
+    "website:build": "turbo build --filter=./packages/* --filter=./website"
   },
   "devDependencies": {
     "@babel/cli": "7.19.3",
