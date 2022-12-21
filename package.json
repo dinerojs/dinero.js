@@ -20,7 +20,7 @@
     "prepare": "husky install && yarn build",
     "release": "shipjs prepare",
     "test:size": "bundlesize",
-    "test:types": "tsc --noEmit",
+    "test:types": "tsc -b",
     "test": "turbo test --filter=./packages/*",
     "website:dev": "yarn --cwd website/ dev",
     "website:start": "yarn --cwd website/ start",

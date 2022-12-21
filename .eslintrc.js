@@ -47,7 +47,6 @@ module.exports = {
       files: ['test/**/*'],
       rules: {
         'import/no-extraneous-dependencies': 'off',
-        'import/no-named-as-default': 'off',
       },
     },
     {
@@ -68,7 +67,6 @@ module.exports = {
       rules: {
         'functional/no-expression-statement': ['off'],
         'import/no-extraneous-dependencies': ['off'],
-        'import/no-named-as-default': 'off',
         'sonarjs/no-duplicate-string': ['off'],
       },
     },

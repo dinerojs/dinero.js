@@ -246,7 +246,7 @@ const intlFormat = curriedToFormat(({ value, currency }) => {
 If `number`s are no longer enough for you to represent integers, you can replace them with any data type you want. **Dinero.js is designed to be entirely generic.**
 
 ```js
-import Big from 'big.js';
+import { Big } from 'big.js';
 import { createDinero } from 'dinero.js';
 
 const bigDinero = createDinero({

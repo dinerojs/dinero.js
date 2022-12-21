@@ -1,5 +1,5 @@
 import { MGA, USD } from '@dinero.js/currencies';
-import Big from 'big.js';
+import { Big } from 'big.js';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,

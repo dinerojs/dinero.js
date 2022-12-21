@@ -1,4 +1,4 @@
-import Big from 'big.js';
+import { Big } from 'big.js';
 
 import type { Currency } from 'dinero.js';
 

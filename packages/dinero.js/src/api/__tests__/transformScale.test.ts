@@ -9,7 +9,7 @@ import {
   up,
 } from '@dinero.js/core';
 import { USD, MGA } from '@dinero.js/currencies';
-import Big from 'big.js';
+import { Big } from 'big.js';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,

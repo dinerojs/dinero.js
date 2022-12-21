@@ -77,7 +77,7 @@ Dinero.js delegates all calculations to a type-specific calculator object. You c
 A calculator implements the `Calculator` interface. For example, here's what it can look like with [big.js](https://github.com/MikeMcl/big.js).
 
 ```ts
-import Big from 'big.js';
+import { Big } from 'big.js';
 import { Calculator, ComparisonOperator } from 'dinero.js';
 
 const calculator: Calculator<Big> = {
