@@ -59,7 +59,6 @@ module.exports = {
         '@typescript-eslint/naming-convention': 'off',
         'jsdoc/require-description': 'off',
         'jsdoc/match-description': 'off',
-        'jsdoc/require-description-complete-sentence': 'off',
         'valid-jsdoc': 'off',
       },
     },

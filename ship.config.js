@@ -8,6 +8,7 @@ module.exports = {
       'packages/core',
       'packages/currencies',
       'packages/dinero.js',
+      'website',
     ],
     packagesToPublish: [
       'packages/calculator-bigint',

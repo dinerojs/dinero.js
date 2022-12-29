@@ -2,8 +2,7 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build:clean": {
-      "inputs": ["lib/**/*", "dist/**/*"],
-      "outputs": []
+      "cache": false
     },
     "build:definitions": {
       "dependsOn": ["^build:definitions"],
@@ -31,7 +30,7 @@
       "outputs": []
     },
     "build": {
-      "dependsOn": ["build:esm", "build:umd:cjs", "build:types"],
+      "dependsOn": ["^build", "build:esm", "build:umd:cjs", "build:types"],
       "outputs": ["dist/**"]
     },
     "lint": {
