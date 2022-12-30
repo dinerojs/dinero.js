@@ -2,21 +2,8 @@
 module.exports = {
   monorepo: {
     mainVersionFile: 'package.json',
-    packagesToBump: [
-      'packages/calculator-bigint',
-      'packages/calculator-number',
-      'packages/core',
-      'packages/currencies',
-      'packages/dinero.js',
-      'website',
-    ],
-    packagesToPublish: [
-      'packages/calculator-bigint',
-      'packages/calculator-number',
-      'packages/core',
-      'packages/currencies',
-      'packages/dinero.js',
-    ],
+    packagesToBump: ['packages/*', 'website'],
+    packagesToPublish: ['packages/*'],
   },
   publishCommand({ tag }) {
     return `yarn publish --access public --tag ${tag}`;
