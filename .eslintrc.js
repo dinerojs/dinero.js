@@ -50,6 +50,19 @@ module.exports = {
       },
     },
     {
+      files: ['scripts/**/*'],
+      rules: {
+        'no-void': 'off',
+        'no-console': 'off',
+        'no-process-exit': 'off',
+        'functional/no-expression-statement': 'off',
+        '@typescript-eslint/naming-convention': 'off',
+        'jsdoc/require-description': 'off',
+        'jsdoc/match-description': 'off',
+        'valid-jsdoc': 'off',
+      },
+    },
+    {
       files: ['**/__tests__/**'],
       rules: {
         'functional/no-expression-statement': ['off'],

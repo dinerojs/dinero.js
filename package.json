@@ -1,39 +1,30 @@
 {
   "name": "@dinero.js/monorepo",
+  "version": "2.0.0-alpha.13",
   "private": true,
   "license": "MIT",
-  "workspaces": {
-    "packages": [
-      "packages/*",
-      "examples/*"
-    ],
-    "nohoist": [
-      "**/@dinero.js/example-cart-react",
-      "**/@dinero.js/example-cart-react/**",
-      "**/@dinero.js/example-cart-vue",
-      "**/@dinero.js/example-cart-vue/**",
-      "**/@dinero.js/example-pricing-react",
-      "**/@dinero.js/example-pricing-react/**"
-    ]
-  },
+  "workspaces": [
+    "packages/*",
+    "examples/*",
+    "website"
+  ],
   "scripts": {
-    "build:clean": "lerna run build:clean --no-private",
-    "build:esm": "lerna run build:esm --no-private",
-    "build:types": "lerna run build:types --no-private",
-    "build:umd:cjs": "lerna run build:umd:cjs --no-private",
-    "build": "lerna run build --no-private",
+    "build:clean": "turbo build:clean",
+    "build:esm": "turbo build:esm --filter=./packages/*",
+    "build:definitions": "turbo build:definitions --filter=./packages/*",
+    "build:types": "turbo build:types --filter=./packages/*",
+    "build:umd:cjs": "turbo build:umd:cjs --filter=./packages/*",
+    "build": "turbo build --filter=./packages/*",
     "format": "prettier --write .",
-    "lint": "eslint --ext .js,.ts .",
-    "prepare": "husky install && lerna run prepare --no-private",
+    "lint": "turbo lint --filter=./packages/*",
+    "prepare": "husky install && yarn build",
     "release": "shipjs prepare",
-    "start": "yarn run watch",
     "test:size": "bundlesize",
     "test:types": "tsc --noEmit",
-    "test": "jest",
-    "watch": "lerna run watch --parallel --no-private",
+    "test": "turbo test --filter=./packages/*",
     "website:dev": "yarn --cwd website/ dev",
     "website:start": "yarn --cwd website/ start",
-    "website:build": "yarn --cwd website/ build"
+    "website:build": "turbo build --filter=./packages/* --filter=./website"
   },
   "devDependencies": {
     "@babel/cli": "7.19.3",
@@ -56,7 +47,7 @@
     "babel-plugin-module-resolver": "4.1.0",
     "big.js": "6.2.1",
     "bundlesize": "0.18.1",
-    "concurrently": "7.5.0",
+    "cross-spawn": "7.0.3",
     "eslint": "7.32.0",
     "eslint-config-algolia": "20.0.0",
     "eslint-config-prettier": "8.5.0",
@@ -73,7 +64,6 @@
     "husky": "8.0.1",
     "jest": "28.1.3",
     "jest-watch-typeahead": "1.1.0",
-    "lerna": "4.0.0",
     "lint-staged": "12.5.0",
     "prettier": "2.7.1",
     "rimraf": "3.0.2",
@@ -84,7 +74,7 @@
     "rollup-plugin-terser": "7.0.2",
     "shipjs": "0.24.4",
     "ts-node": "10.9.1",
-    "typescript": "4.8.4",
-    "watch": "1.0.2"
+    "turbo": "1.6.3",
+    "typescript": "4.8.4"
   }
 }

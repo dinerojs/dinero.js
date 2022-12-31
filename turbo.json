@@ -1,0 +1,53 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "build:clean": {
+      "cache": false
+    },
+    "build:definitions": {
+      "dependsOn": ["^build:definitions"],
+      "inputs": ["src/**/*.ts", "tsconfig.json"],
+      "outputs": ["lib/**/*.d.ts"]
+    },
+    "build:types": {
+      "dependsOn": ["^build:types", "build:definitions"],
+      "inputs": ["lib/**/*.d.ts", "api-extractor.json"],
+      "outputs": ["etc/**/*", "dist/esm/index.d.ts"]
+    },
+    "build:esm": {
+      "dependsOn": [],
+      "inputs": ["src/**/*.ts"],
+      "outputs": ["dist/esm/**/*.js"]
+    },
+    "build:umd:cjs": {
+      "dependsOn": ["build:esm"],
+      "inputs": ["src/**/*.ts"],
+      "outputs": ["dist/cjs/**/*.js", "dist/umd/**/*.js"]
+    },
+    "test": {
+      "dependsOn": [],
+      "inputs": ["src/**/*.ts", "jest.config.ts"],
+      "outputs": []
+    },
+    "build": {
+      "dependsOn": ["^build", "build:esm", "build:umd:cjs", "build:types"],
+      "outputs": ["dist/**"]
+    },
+    "lint": {
+      "inputs": ["**/*.ts", "**/*.js"],
+      "outputs": []
+    }
+  },
+  "globalDependencies": [
+    ".eslintrc.js",
+    ".prettierrc",
+    "api-extractor.json",
+    "babel.config.js",
+    "bundlesize.config.json",
+    "jest.base.ts",
+    "jest.config.ts",
+    "tsconfig.json",
+    "tsconfig.declaration.json",
+    "scripts/**/*"
+  ]
+}

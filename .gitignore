@@ -5,3 +5,4 @@ dist
 temp
 .DS_Store
 .env
+.turbo

@@ -3,9 +3,9 @@ import semverSatisfies from 'semver/functions/satisfies';
 import semverValid from 'semver/functions/valid';
 
 import { instructions } from './messages';
-import lerna from '../../../lerna.json';
+import pkg from '../../../package.json';
 
-export async function init(dirtyVersion: string = lerna.version) {
+export async function init(dirtyVersion: string = pkg.version) {
   const allowedRange = '2.x';
   const version = semverValid(dirtyVersion);
   const coercedVersion = semverCoerce(version);

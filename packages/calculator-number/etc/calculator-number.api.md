@@ -14,9 +14,7 @@ export const add: BinaryOperation<number>;
 // @public (undocumented)
 export const calculator: {
     add: BinaryOperation<number, number>;
-    compare: BinaryOperation<number,
-    ComparisonOperator
-    >;
+    compare: BinaryOperation<number, ComparisonOperator>;
     decrement: UnaryOperation<number, number>;
     increment: UnaryOperation<number, number>;
     integerDivide: BinaryOperation<number, number>;

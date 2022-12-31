@@ -35,13 +35,11 @@
   "scripts": {
     "build:clean": "rimraf ./{dist,temp}",
     "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
-    "build:tsc": "tsc -b",
-    "build:types": "yarn run build:tsc && api-extractor run --local",
+    "build:definitions": "tsc -b",
+    "build:types": "node ../../scripts/build-types.mjs",
     "build:umd:cjs": "rollup --config",
-    "build": "yarn build:clean && yarn build:umd:cjs && yarn build:esm && yarn build:types",
-    "on:change": "concurrently \"yarn build:esm\" \"yarn build:types\"",
-    "prepare": "yarn build:esm && yarn build:types",
-    "watch": "watch \"yarn on:change\" --ignoreDirectoryPattern \"/dist/\""
+    "lint": "node ../../scripts/lint.mjs --ext .js,.ts .",
+    "test": "node ../../scripts/test.mjs --projects=./packages/dinero.js"
   },
   "dependencies": {
     "@dinero.js/calculator-number": "2.0.0-alpha.13",

@@ -95,13 +95,7 @@ Pull requests should target the `main` branch unless fixing critical issues in p
 
 ### Tests
 
-The project uses [Jest](https://jestjs.io/) for testing. **Every public API should be tested**. The project is organized as a monorepo, so you should make sure to watch changes before you start coding so that tests pick up up-to-date dependencies.
-
-```sh
-yarn watch
-```
-
-You should run tests before you commit, or at least before you open a pull request. Pull requests need to pass all checks to be reviewed, so doing it beforehand will save you time.
+The project uses [Jest](https://jestjs.io/) for testing. **Every public API should be tested**. You should run tests before you commit, or at least before you open a pull request. Pull requests need to pass all checks to be reviewed, so doing it beforehand will save you time.
 
 ```sh
 yarn test
