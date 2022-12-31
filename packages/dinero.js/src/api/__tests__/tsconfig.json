@@ -3,7 +3,7 @@
   "references": [
     { "path": "../../../../core" },
     { "path": "../../../../currencies" },
-    { "path": "../../../../../test" }
+    { "path": "../../../../test-utils" }
   ],
   "exclude": []
 }

@@ -7,6 +7,7 @@
     { "path": "./calculator-number" },
     { "path": "./core" },
     { "path": "./currencies" },
-    { "path": "./dinero.js" }
+    { "path": "./dinero.js" },
+    { "path": "./test-utils" }
   ]
 }

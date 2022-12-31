@@ -44,7 +44,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['test/**/*'],
+      files: ['packages/test-utils/**/*'],
       rules: {
         'import/no-extraneous-dependencies': 'off',
       },

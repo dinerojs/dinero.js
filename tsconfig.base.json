@@ -29,7 +29,7 @@
       "@dinero.js/calculator-number": [
         "./packages/calculator-number/src/index"
       ],
-      "test-utils": ["./test/utils/index"]
+      "@dinero.js/test-utils": ["./packages/test-utils/src/index"]
     }
   }
 }
