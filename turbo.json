@@ -31,7 +31,7 @@
     },
     "build": {
       "dependsOn": ["^build", "build:esm", "build:umd:cjs", "build:types"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**", ".next/**/*"]
     },
     "lint": {
       "inputs": ["**/*.ts", "**/*.js"],
