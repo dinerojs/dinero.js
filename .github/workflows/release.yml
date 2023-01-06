@@ -1,0 +1,92 @@
+name: Release if needed
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+env:
+  # environment variables to config `turbo` to use the local cache server
+  TURBO_API: 'http://127.0.0.1:9080'
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: 'dinero'
+  # Used by scripts/build-types.mjs
+  CI: true
+
+permissions:
+  checks: write
+  contents: read
+  statuses: write
+  pull-requests: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Prepare Environment
+        uses: ./.github/actions/turbo
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build
+        run: yarn build
+  lint:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
+      - name: Prepare Environment
+        uses: ./.github/actions/turbo
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Lint
+        run: yarn lint
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
+      - name: Prepare Environment
+        uses: ./.github/actions/turbo
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Test
+        run: yarn test
+  test-types:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
+      - name: Prepare Environment
+        uses: ./.github/actions/turbo
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Test types
+        run: yarn test:types
+  test-size:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
+      - name: Prepare Environment
+        uses: ./.github/actions/turbo
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Test bundle size
+        run: yarn test:size
+  release:
+    runs-on: ubuntu-latest
+    needs: [build, lint, test, test-types, test-size]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Prepare Environment
+        uses: ./.github/actions/turbo
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release if needed
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        shell: bash
+        run: yarn run shipjs trigger
