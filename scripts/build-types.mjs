@@ -17,7 +17,7 @@ const args = process.argv.slice(2).filter((arg) => arg !== '--local');
 // const localFlag = process.env.CI ? [] : ['--local'];
 
 /**
- * ApiExtractor CLI arguments
+ * ApiExtractor CLI arguments.
  */
 const apiExtractorArgs = ['run', '--local', ...args /* , ...localFlag */];
 
@@ -25,7 +25,6 @@ console.log(`api-extractor ${apiExtractorArgs.join(' ')}`);
 
 exec(apiExtractorPath, apiExtractorArgs)
   .then(() => process.exit(0))
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
+  .catch((code) => {
+    process.exit(code);
   });

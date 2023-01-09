@@ -11,7 +11,7 @@ const eslintPath = path.resolve(
 const args = process.argv.slice(2);
 
 /**
- * ESLint CLI arguments
+ * ESLint CLI arguments.
  *
  * ESlint needs to be run in each project for `turbo` to cache the results, so
  * it doesn't look up the file tree for `.eslintrc` or `.eslintignore`.
@@ -26,7 +26,6 @@ console.log(`eslint ${eslintArgs.join(' ')}`);
 
 exec(eslintPath, eslintArgs)
   .then(() => process.exit(0))
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
+  .catch((code) => {
+    process.exit(code);
   });
