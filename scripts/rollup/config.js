@@ -6,7 +6,7 @@ import babel from 'rollup-plugin-babel';
 import filesize from 'rollup-plugin-filesize';
 import { terser } from 'rollup-plugin-terser';
 
-import { getBundleBanner } from '../getBundleBanner.mjs';
+import { getBundleBanner } from '../utils/getBundleBanner.mjs';
 
 const BUILD_MODES = ['development', 'production'];
 const extensions = ['.js', '.ts', '.json'];
