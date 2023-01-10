@@ -16,7 +16,7 @@ const args = process.argv.slice(2);
 const maxWorkers = process.env.CI ? ['--maxWorkers=4'] : [];
 
 /**
- * Jest CLI arguments
+ * Jest CLI arguments.
  */
 const jestArgs = [...args, ...maxWorkers];
 
@@ -24,7 +24,6 @@ console.log(`jest ${jestArgs.join(' ')}`);
 
 exec(jestPath, jestArgs, { cwd: rootDir })
   .then(() => process.exit(0))
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
+  .catch((code) => {
+    process.exit(code);
   });
