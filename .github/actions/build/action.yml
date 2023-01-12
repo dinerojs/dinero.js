@@ -1,0 +1,20 @@
+name: Build package
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build package
+      shell: bash
+      run: yarn build
+
+    - name: Test package
+      shell: bash
+      run: yarn test
+
+    - name: Lint package
+      shell: bash
+      run: yarn lint
+
+    - name: Type check package
+      shell: bash
+      run: yarn run check
