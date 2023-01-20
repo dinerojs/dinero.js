@@ -1,5 +1,5 @@
 import { USD } from '@dinero.js/currencies';
-import Big from 'big.js';
+import { Big } from 'big.js';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
@@ -14,7 +14,7 @@ describe('multiply', () => {
   describe('number', () => {
     const dinero = createNumberDinero;
 
-    it('multiplies positive Dinero objects', () => {
+    it('multiplies positive Dinero objects by a positive value', () => {
       const d = dinero({ amount: 400, currency: USD });
 
       expect(toSnapshot(multiply(d, 4))).toEqual({
@@ -38,6 +38,83 @@ describe('multiply', () => {
       });
       expect(toSnapshot(multiply(d, 1))).toEqual({
         amount: -400,
+        scale: 2,
+        currency: USD,
+      });
+    });
+    it('multiplies positive Dinero objects by a negative value', () => {
+      const d = dinero({ amount: 400, currency: USD });
+
+      const snapshot = toSnapshot(multiply(d, -4));
+
+      expect(snapshot).toEqual({
+        amount: -1600,
+        scale: 2,
+        currency: USD,
+      });
+    });
+    it('multiplies positive Dinero objects by positive one', () => {
+      const d = dinero({ amount: 400, currency: USD });
+
+      const snapshot = toSnapshot(multiply(d, 1));
+
+      expect(snapshot).toEqual({
+        amount: 400,
+        scale: 2,
+        currency: USD,
+      });
+    });
+    it('multiplies positive Dinero objects by negative one', () => {
+      const d = dinero({ amount: 400, currency: USD });
+
+      const snapshot = toSnapshot(multiply(d, -1));
+
+      expect(snapshot).toEqual({
+        amount: -400,
+        scale: 2,
+        currency: USD,
+      });
+    });
+    it('multiplies negative Dinero objects by a positive value', () => {
+      const d = dinero({ amount: -400, currency: USD });
+
+      const snapshot = toSnapshot(multiply(d, 4));
+
+      expect(snapshot).toEqual({
+        amount: -1600,
+        scale: 2,
+        currency: USD,
+      });
+    });
+    it('multiplies negative Dinero objects by a negative value', () => {
+      const d = dinero({ amount: -400, currency: USD });
+
+      const snapshot = toSnapshot(multiply(d, -4));
+
+      expect(snapshot).toEqual({
+        amount: 1600,
+        scale: 2,
+        currency: USD,
+      });
+    });
+    it('multiplies negative Dinero objects by positive one', () => {
+      const d = dinero({ amount: -400, currency: USD });
+
+      const snapshot = toSnapshot(multiply(d, 1));
+
+      expect(snapshot).toEqual({
+        amount: -400,
+        scale: 2,
+        currency: USD,
+      });
+    });
+    it('multiplies negative Dinero objects by negative one', () => {
+      const d = dinero({ amount: -400, currency: USD });
+
+      const snapshot = toSnapshot(multiply(d, -1));
+
+      expect(snapshot).toEqual({
+        amount: 400,
         scale: 2,
         currency: USD,
       });
