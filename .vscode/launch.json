@@ -21,7 +21,7 @@
       "outputCapture": "std",
       "internalConsoleOptions": "openOnSessionStart",
       "skipFiles": [
-        "${workspaceRoot}/../../node_modules/**/*",
+        "${workspaceRoot}/node_modules/**/*",
         "<node_internals>/**/*"
       ],
       "windows": {
