@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Test Spec File",
+      "protocol": "inspector",
+      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
+      "args": [
+        "--collectCoverage=false",
+        "--colors",
+        "--config",
+        "${workspaceRoot}/jest.config.ts",
+        "--runInBand",
+        "--runTestsByPath",
+        "${relativeFile}",
+        "--testPathPattern=${fileDirname}",
+        "--testTimeout=10000000"
+      ],
+      "outputCapture": "std",
+      "internalConsoleOptions": "openOnSessionStart",
+      "skipFiles": [
+        "${workspaceRoot}/node_modules/**/*",
+        "<node_internals>/**/*"
+      ],
+      "windows": {
+        "skipFiles": ["C:\\**\\node_modules\\**\\*", "<node_internals>/**/*"]
+      },
+      "disableOptimisticBPs": true
+    }
+  ]
+}
