@@ -25,8 +25,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       spa: 'auto',
     });
 
-    function onRouteChangeComplete() {
-      trackPageview();
+    function onRouteChangeComplete(url: string) {
+      trackPageview({
+        url: `https://v2.dinerojs.com${url}`,
+      });
     }
 
     events.on('routeChangeComplete', onRouteChangeComplete);
