@@ -102,7 +102,7 @@ export type DineroSnapshot<TAmount> = {
 // @public (undocumented)
 export type DivideOperation = <TAmount>(amount: TAmount, factor: TAmount, calculator: Calculator<TAmount>) => TAmount;
 
-// @public (undocumented)
+// @public
 export const down: DivideOperation;
 
 // @public (undocumented)
@@ -132,22 +132,22 @@ dineroObject: Dinero<TAmount>,
 comparator: Dinero<TAmount>
 ];
 
-// @public (undocumented)
+// @public
 export const halfAwayFromZero: DivideOperation;
 
-// @public (undocumented)
+// @public
 export const halfDown: DivideOperation;
 
-// @public (undocumented)
+// @public
 export const halfEven: DivideOperation;
 
-// @public (undocumented)
+// @public
 export const halfOdd: DivideOperation;
 
-// @public (undocumented)
+// @public
 export const halfTowardsZero: DivideOperation;
 
-// @public (undocumented)
+// @public
 export const halfUp: DivideOperation;
 
 // @public (undocumented)
@@ -346,7 +346,7 @@ export const UNEQUAL_CURRENCIES_MESSAGE = "Objects must have the same currency."
 // @public (undocumented)
 export const UNEQUAL_SCALES_MESSAGE = "Objects must have the same scale.";
 
-// @public (undocumented)
+// @public
 export const up: DivideOperation;
 
 // (No @packageDocumentation comment for this package)
