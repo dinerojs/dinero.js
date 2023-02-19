@@ -1,3 +1,4 @@
+import { trackGoal } from 'fathom-client';
 import semverCoerce from 'semver/functions/coerce';
 import semverSatisfies from 'semver/functions/satisfies';
 import semverValid from 'semver/functions/valid';
@@ -20,6 +21,7 @@ export async function init(dirtyVersion: string = pkg.version) {
     try {
       await import(/* webpackIgnore: true */ dineroUrl);
       await import(/* webpackIgnore: true */ dineroCurrenciesUrl);
+      trackGoal('6KFSDPK5', 0);
     } catch (err) {
       return;
     }
