@@ -1,4 +1,4 @@
-/* eslint-disable functional/no-expression-statement,functional/no-throw-statement, valid-jsdoc, jsdoc/require-description, no-console */
+/* eslint-disable functional/no-throw-statement */
 
 /**
  * @typedef {import("./genCurrencies").CurrencyData} CurrencyData
@@ -9,10 +9,10 @@
  * @returns {string} - The generated currency source file.
  */
 
-import { promises as fs } from 'fs';
-import path from 'path';
-import { performance } from 'perf_hooks';
-import * as url from 'url';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { performance } from 'node:perf_hooks';
+import * as url from 'node:url';
 
 // eslint-disable-next-line import/default
 import prettier from 'prettier';
