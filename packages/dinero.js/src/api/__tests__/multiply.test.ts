@@ -17,10 +17,27 @@ describe('multiply', () => {
     it('multiplies positive Dinero objects', () => {
       const d = dinero({ amount: 400, currency: USD });
 
-      const snapshot = toSnapshot(multiply(d, 4));
-
-      expect(snapshot).toEqual({
+      expect(toSnapshot(multiply(d, 4))).toEqual({
         amount: 1600,
+        scale: 2,
+        currency: USD,
+      });
+      expect(toSnapshot(multiply(d, -1))).toEqual({
+        amount: -400,
+        scale: 2,
+        currency: USD,
+      });
+    });
+    it('multiplies negative Dinero objects', () => {
+      const d = dinero({ amount: -400, currency: USD });
+
+      expect(toSnapshot(multiply(d, 4))).toEqual({
+        amount: -1600,
+        scale: 2,
+        currency: USD,
+      });
+      expect(toSnapshot(multiply(d, 1))).toEqual({
+        amount: -400,
         scale: 2,
         currency: USD,
       });
@@ -44,10 +61,27 @@ describe('multiply', () => {
     it('multiplies positive Dinero objects', () => {
       const d = dinero({ amount: 400n, currency: bigintUSD });
 
-      const snapshot = toSnapshot(multiply(d, 4n));
-
-      expect(snapshot).toEqual({
+      expect(toSnapshot(multiply(d, 4n))).toEqual({
         amount: 1600n,
+        scale: 2n,
+        currency: bigintUSD,
+      });
+      expect(toSnapshot(multiply(d, -1n))).toEqual({
+        amount: -400n,
+        scale: 2n,
+        currency: bigintUSD,
+      });
+    });
+    it('multiplies negative Dinero objects', () => {
+      const d = dinero({ amount: -400n, currency: bigintUSD });
+
+      expect(toSnapshot(multiply(d, 4n))).toEqual({
+        amount: -1600n,
+        scale: 2n,
+        currency: bigintUSD,
+      });
+      expect(toSnapshot(multiply(d, 1n))).toEqual({
+        amount: -400n,
         scale: 2n,
         currency: bigintUSD,
       });
@@ -71,10 +105,27 @@ describe('multiply', () => {
     it('multiplies positive Dinero objects', () => {
       const d = dinero({ amount: new Big(400), currency: bigjsUSD });
 
-      const snapshot = toSnapshot(multiply(d, new Big(4)));
-
-      expect(snapshot).toEqual({
+      expect(toSnapshot(multiply(d, new Big(4)))).toEqual({
         amount: new Big(1600),
+        scale: new Big(2),
+        currency: bigjsUSD,
+      });
+      expect(toSnapshot(multiply(d, new Big(-1)))).toEqual({
+        amount: new Big(-400),
+        scale: new Big(2),
+        currency: bigjsUSD,
+      });
+    });
+    it('multiplies negative Dinero objects', () => {
+      const d = dinero({ amount: new Big(-400), currency: bigjsUSD });
+
+      expect(toSnapshot(multiply(d, new Big(4)))).toEqual({
+        amount: new Big(-1600),
+        scale: new Big(2),
+        currency: bigjsUSD,
+      });
+      expect(toSnapshot(multiply(d, new Big(1)))).toEqual({
+        amount: new Big(-400),
         scale: new Big(2),
         currency: bigjsUSD,
       });
