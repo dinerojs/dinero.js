@@ -1,6 +1,7 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "eslint-comments/no-unlimited-disable": "off"
+    "eslint-comments/no-unlimited-disable": "off",
+    "functional/no-expression-statement": "off"
   }
 }

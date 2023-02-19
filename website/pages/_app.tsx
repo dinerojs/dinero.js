@@ -1,6 +1,9 @@
 import { MDXProvider } from '@mdx-js/react';
+import * as Fathom from 'fathom-client';
 import { NextSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 import 'tailwindcss/tailwind.css';
 import '../styles.css';
@@ -13,6 +16,22 @@ const description =
 const twitter = '@frontstuff_io';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  useEffect(() => {
+    Fathom.load('PSUFDDGC', {
+      url: 'https://heavenly-impressive.dinerojs.com/script.js',
+      includedDomains: ['v2.dinerojs.com'],
+    });
+
+    router.events.on('routeChangeComplete', onRouteChangeComplete);
+
+    return () => {
+      router.events.off('routeChangeComplete', onRouteChangeComplete);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <MDXProvider components={MDXComponents}>
       <NextSeo
@@ -42,6 +61,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
     </MDXProvider>
   );
+}
+
+function onRouteChangeComplete() {
+  Fathom.trackPageview();
 }
 
 export default MyApp;
