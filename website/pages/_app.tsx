@@ -16,22 +16,23 @@ const description =
 const twitter = '@frontstuff_io';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter();
+  const { events } = useRouter();
 
   useEffect(() => {
     load('PSUFDDGC', {
       url: 'https://heavenly-impressive.dinerojs.com/script.js',
       includedDomains: ['v2.dinerojs.com'],
+      spa: 'auto',
     });
 
     function onRouteChangeComplete() {
       trackPageview();
     }
 
-    router.events.on('routeChangeComplete', onRouteChangeComplete);
+    events.on('routeChangeComplete', onRouteChangeComplete);
 
     return () => {
-      router.events.off('routeChangeComplete', onRouteChangeComplete);
+      events.off('routeChangeComplete', onRouteChangeComplete);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
