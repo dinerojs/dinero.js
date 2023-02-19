@@ -1,4 +1,4 @@
-import Big from 'big.js';
+import { Big } from 'big.js';
 
 import { createDinero } from 'dinero.js';
 import type { DineroOptions, ComparisonOperator } from 'dinero.js';
@@ -15,6 +15,12 @@ const dinero = createDinero({
     power: (a, b) => a.pow(Number(b)),
     subtract: (a, b) => a.minus(b),
     zero: () => new Big(0),
+  },
+  formatter: {
+    // @ts-expect-error
+    toNumber: (v) => v.toNumber(),
+    // @ts-expect-error
+    toString: (v) => v.toFixed(),
   },
 });
 
