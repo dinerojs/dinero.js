@@ -24,10 +24,12 @@ describe('isPositive', () => {
 
       expect(isPositive(d)).toBe(true);
     });
-    it('returns true when amount is equal to 0', () => {
-      const d = dinero({ amount: 0, currency: USD });
+    it('returns false when amount is equal to 0', () => {
+      const d1 = dinero({ amount: 0, currency: USD });
+      const d2 = dinero({ amount: -0, currency: USD });
 
-      expect(isPositive(d)).toBe(true);
+      expect(isPositive(d1)).toBe(false);
+      expect(isPositive(d2)).toBe(false);
     });
   });
   describe('bigint', () => {
@@ -44,10 +46,12 @@ describe('isPositive', () => {
 
       expect(isPositive(d)).toBe(true);
     });
-    it('returns true when amount is equal to 0', () => {
-      const d = dinero({ amount: 0n, currency: bigintUSD });
+    it('returns false when amount is equal to 0', () => {
+      const d1 = dinero({ amount: 0n, currency: bigintUSD });
+      const d2 = dinero({ amount: -0n, currency: bigintUSD });
 
-      expect(isPositive(d)).toBe(true);
+      expect(isPositive(d1)).toBe(false);
+      expect(isPositive(d2)).toBe(false);
     });
   });
   describe('Big.js', () => {
@@ -64,10 +68,12 @@ describe('isPositive', () => {
 
       expect(isPositive(d)).toBe(true);
     });
-    it('returns true when amount is equal to 0', () => {
-      const d = dinero({ amount: new Big(0), currency: bigjsUSD });
+    it('returns false when amount is equal to 0', () => {
+      const d1 = dinero({ amount: new Big(0), currency: bigjsUSD });
+      const d2 = dinero({ amount: new Big(-0), currency: bigjsUSD });
 
-      expect(isPositive(d)).toBe(true);
+      expect(isPositive(d1)).toBe(false);
+      expect(isPositive(d2)).toBe(false);
     });
   });
 });
