@@ -1,5 +1,5 @@
 import { MDXProvider } from '@mdx-js/react';
-import * as Fathom from 'fathom-client';
+import { load, trackPageview } from 'fathom-client';
 import { NextSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    Fathom.load('PSUFDDGC', {
+    load('PSUFDDGC', {
       url: 'https://heavenly-impressive.dinerojs.com/script.js',
       includedDomains: ['v2.dinerojs.com'],
     });
@@ -64,7 +64,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 function onRouteChangeComplete() {
-  Fathom.trackPageview();
+  trackPageview();
 }
 
 export default MyApp;
