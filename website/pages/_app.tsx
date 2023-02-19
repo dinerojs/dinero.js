@@ -24,6 +24,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       includedDomains: ['v2.dinerojs.com'],
     });
 
+    function onRouteChangeComplete() {
+      trackPageview();
+    }
+
     router.events.on('routeChangeComplete', onRouteChangeComplete);
 
     return () => {
@@ -61,10 +65,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
     </MDXProvider>
   );
-}
-
-function onRouteChangeComplete() {
-  trackPageview();
 }
 
 export default MyApp;
