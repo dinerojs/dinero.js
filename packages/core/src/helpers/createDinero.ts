@@ -3,17 +3,14 @@ import type { Calculator, Dinero, DineroOptions, Formatter } from '../types';
 
 export type CreateDineroOptions<TAmount> = {
   readonly calculator: Calculator<TAmount>;
-  readonly formatter?: Formatter<TAmount>;
+  readonly formatter: Formatter<TAmount>;
   readonly onCreate?: (options: DineroOptions<TAmount>) => void;
 };
 
 export function createDinero<TAmount>({
   calculator,
+  formatter,
   onCreate,
-  formatter = {
-    toNumber: Number,
-    toString: String,
-  },
 }: CreateDineroOptions<TAmount>) {
   return function dinero({
     amount,

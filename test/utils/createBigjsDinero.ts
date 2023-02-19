@@ -17,9 +17,7 @@ const dinero = createDinero({
     zero: () => new Big(0),
   },
   formatter: {
-    // @ts-expect-error
     toNumber: (v) => v.toNumber(),
-    // @ts-expect-error
     toString: (v) => v.toFixed(),
   },
 });
