@@ -20,6 +20,10 @@ import {
  */
 export const dinero = createDinero({
   calculator,
+  formatter: {
+    toNumber: Number,
+    toString: String,
+  },
   onCreate({ amount, scale }) {
     assert(Number.isInteger(amount), INVALID_AMOUNT_MESSAGE);
     assert(Number.isInteger(scale), INVALID_SCALE_MESSAGE);

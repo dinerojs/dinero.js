@@ -65,12 +65,12 @@ rates: Rates<TAmount>
 ];
 
 // @public (undocumented)
-export function createDinero<TAmount>({ calculator, onCreate, formatter, }: CreateDineroOptions<TAmount>): ({ amount, currency: { code, base, exponent }, scale, }: DineroOptions<TAmount>) => Dinero<TAmount>;
+export function createDinero<TAmount>({ calculator, formatter, onCreate, }: CreateDineroOptions<TAmount>): ({ amount, currency: { code, base, exponent }, scale, }: DineroOptions<TAmount>) => Dinero<TAmount>;
 
 // @public (undocumented)
 export type CreateDineroOptions<TAmount> = {
     readonly calculator: Calculator<TAmount>;
-    readonly formatter?: Formatter<TAmount>;
+    readonly formatter: Formatter<TAmount>;
     readonly onCreate?: (options: DineroOptions<TAmount>) => void;
 };
 
@@ -116,8 +116,8 @@ comparator: Dinero<TAmount>
 
 // @public (undocumented)
 export type Formatter<TAmount> = {
-    readonly toNumber: (value?: TAmount) => number;
-    readonly toString: (value?: TAmount) => string;
+    readonly toNumber: (value: TAmount) => number;
+    readonly toString: (value: TAmount) => string;
 };
 
 // @public (undocumented)
