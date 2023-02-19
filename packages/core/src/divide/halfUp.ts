@@ -3,6 +3,21 @@ import { absolute, greaterThan, isHalf } from '../utils';
 
 import { down, up } from '.';
 
+/**
+ * Divide and round towards "nearest neighbor" unless both neighbors are
+ * equidistant, in which case round up.
+ *
+ * Rounding up happens when:
+ * - The quotient is half (e.g., -1.5, 1.5).
+ * - The quotient is positive and greater than half (e.g., 1.6).
+ * - The quotient is negative and less than half (e.g., -1.4).
+ *
+ * @param amount - The amount to divide.
+ * @param factor - The factor to divide by.
+ * @param calculator - The calculator to use.
+ *
+ * @returns The rounded amount.
+ */
 export const halfUp: DivideOperation = (amount, factor, calculator) => {
   const greaterThanFn = greaterThan(calculator);
   const isHalfFn = isHalf(calculator);
@@ -13,14 +28,6 @@ export const halfUp: DivideOperation = (amount, factor, calculator) => {
   const difference = calculator.subtract(factor, remainder);
   const isLessThanHalf = greaterThanFn(difference, remainder);
   const isPositive = greaterThanFn(amount, zero);
-
-  // Round up in these three cases:
-  // (1) the quotient is half:
-  //   e.g. ... -2.5,  -1.5,  -0.5,  0.5,  1.5,  2.5 ...
-  // (2) the quotient is positive, and greater than half:
-  //   e.g.                          0.51, 1.51, 2.51 ...
-  // (3) the quotient is negative, and less than half:
-  //   e.g. ... -2.49, -1.49, -0.49
 
   if (
     isHalfFn(amount, factor) ||
