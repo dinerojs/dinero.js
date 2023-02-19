@@ -1,5 +1,5 @@
 import { MGA, USD } from '@dinero.js/currencies';
-import Big from 'big.js';
+import { Big } from 'big.js';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
@@ -188,6 +188,15 @@ describe('toDecimal', () => {
         });
 
         expect(toDecimal(d)).toEqual('10000000000000000.50');
+      });
+      it('returns the amount in decimal format with large integers and large scale', () => {
+        const d = dinero({
+          amount: new Big('10000000000000000000000000000050'),
+          scale: new Big(22),
+          currency: bigjsUSD,
+        });
+
+        expect(toDecimal(d)).toBe('1000000000.0000000000000000000050');
       });
       it('returns the amount in decimal format based on a custom scale', () => {
         const d = dinero({
