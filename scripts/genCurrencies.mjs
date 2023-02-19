@@ -9,7 +9,7 @@
  * @returns {string} - The generated currency source file.
  */
 
-import { fs } from 'node:fs/promises';
+import fs from 'node:fs/promises';
 import path from 'node:path';
 import { performance } from 'node:perf_hooks';
 import * as url from 'node:url';
