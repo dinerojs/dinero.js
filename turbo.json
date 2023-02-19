@@ -36,6 +36,10 @@
     "lint": {
       "inputs": ["**/*.ts", "**/*.js"],
       "outputs": []
+    },
+    "prepare": {
+      "dependsOn": ["^prepare"],
+      "cache": false
     }
   },
   "globalDependencies": [

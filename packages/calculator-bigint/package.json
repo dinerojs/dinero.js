@@ -33,7 +33,7 @@
     "dist/"
   ],
   "scripts": {
-    "build:clean": "rimraf ./{dist,temp}",
+    "build:clean": "rimraf ./{dist,lib,temp,.turbo}",
     "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
     "build:definitions": "tsc -b",
     "build:types": "node ../../scripts/build-types.mjs",
