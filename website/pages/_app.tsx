@@ -1,14 +1,12 @@
 import { MDXProvider } from '@mdx-js/react';
-import { load, trackPageview } from 'fathom-client';
 import { NextSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 
 import 'tailwindcss/tailwind.css';
 import '../styles.css';
 
 import { MDXComponents } from '../components';
+import { useFathom } from '../hooks';
 
 export const title = 'Dinero.js';
 const description =
@@ -16,28 +14,11 @@ const description =
 const twitter = '@frontstuff_io';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { events } = useRouter();
-
-  useEffect(() => {
-    load('PSUFDDGC', {
-      url: 'https://heavenly-impressive.dinerojs.com/script.js',
-      includedDomains: ['v2.dinerojs.com'],
-      spa: 'auto',
-    });
-
-    function onRouteChangeComplete(url: string) {
-      trackPageview({
-        url: `https://v2.dinerojs.com${url}`,
-      });
-    }
-
-    events.on('routeChangeComplete', onRouteChangeComplete);
-
-    return () => {
-      events.off('routeChangeComplete', onRouteChangeComplete);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useFathom('PSUFDDGC', {
+    url: 'https://heavenly-impressive.dinerojs.com/script.js',
+    includedDomains: ['v2.dinerojs.com'],
+    spa: 'auto',
+  });
 
   return (
     <MDXProvider components={MDXComponents}>
