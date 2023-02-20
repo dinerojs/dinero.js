@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useClickAway } from 'react-use';
 import cx from 'classnames';
 import { DocSearch } from '@docsearch/react';
+import { trackGoal } from 'fathom-client';
 
 import '@docsearch/css';
 
@@ -284,6 +285,9 @@ export function Base({ children, headings }: BaseProps) {
           <ExternalLink
             href="https://v1.dinerojs.com/"
             className="font-semibold text-white hover:underline"
+            onClick={() => {
+              trackGoal('QHN9GSLE', 0);
+            }}
           >
             Click here for v1.x documentation
           </ExternalLink>
@@ -305,6 +309,7 @@ export function Base({ children, headings }: BaseProps) {
                     const { url } = sites[event.target.value as 'v1' | 'v2'];
 
                     if (url !== undefined) {
+                      trackGoal('49HTDWU1', 0);
                       window.location.assign(url);
                     }
                   }}

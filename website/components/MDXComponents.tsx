@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import reactToText from 'react-to-text';
 import { useCopyToClipboard } from 'react-use';
+import { trackGoal } from 'fathom-client';
 
 import { ClipboardCheckIcon, ClipboardIcon, LinkIcon } from './icons';
 import { InlineCode } from './InlineCode';
@@ -256,6 +257,7 @@ function CustomPreformattedText(
         onClick={() => {
           copyToClipboard(code);
           setCopied(true);
+          trackGoal('QJ1G67BS', 0);
 
           setTimeout(() => {
             setCopied(false);
