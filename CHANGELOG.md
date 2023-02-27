@@ -1,3 +1,13 @@
+# [2.0.0-alpha.14](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.13...v2.0.0-alpha.14) (2023-02-27)
+
+
+### Bug Fixes
+
+* **isPositive:** return `false` with zero ([#728](https://github.com/dinerojs/dinero.js/issues/728)) ([140fe68](https://github.com/dinerojs/dinero.js/commit/140fe68ba516ce47a12a01a06a6425c7df5bd455))
+* **up, down, halfUp:** fix handling of numbers close to 0 and rounding of integer results ([#711](https://github.com/dinerojs/dinero.js/issues/711)) ([6b30aa0](https://github.com/dinerojs/dinero.js/commit/6b30aa09aa5d887cd00170d2659d0bf044081d93)), closes [#710](https://github.com/dinerojs/dinero.js/issues/710) [#713](https://github.com/dinerojs/dinero.js/issues/713)
+
+
+
 # [2.0.0-alpha.13](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.12...v2.0.0-alpha.13) (2022-12-19)
 
 
