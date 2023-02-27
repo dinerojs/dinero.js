@@ -1245,6 +1245,25 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@dinero.js/calculator-number@2.0.0-alpha.13":
+  version "2.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/@dinero.js/calculator-number/-/calculator-number-2.0.0-alpha.13.tgz#d4fbadf910f62fb93691590ae821c4d01f597df8"
+  integrity sha512-Mo/0FUVFq4dVb/RfBIASUxPFbQbkHYC0VBe36DgWfbbhwG6K6ONuzTLBU5W6LdrMpB7D/CxgZISdQ0pyZKwg9w==
+  dependencies:
+    "@dinero.js/core" "2.0.0-alpha.13"
+
+"@dinero.js/core@2.0.0-alpha.13":
+  version "2.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/@dinero.js/core/-/core-2.0.0-alpha.13.tgz#784c845b918edc8746a4e07128df7168358e7139"
+  integrity sha512-RLZz8WmYe1ehqD2YtTpzCzdk0Hqf6oaAVmRlULLkua6vuEVEXjPQEhuyTMLHcS6/Gppy9nuEw8mpSNvU+Sy8QQ==
+  dependencies:
+    "@dinero.js/currencies" "2.0.0-alpha.13"
+
+"@dinero.js/currencies@2.0.0-alpha.13":
+  version "2.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/@dinero.js/currencies/-/currencies-2.0.0-alpha.13.tgz#8e9871a9706d4cdd13b760052a590670944effd8"
+  integrity sha512-vEfDara+xAqOrLww80FyFVw4usWcCsR4HwhaoCvwIzB5UdsLPDeUviAGFi8CoWjtLCR44iIeOHdn9jDr7Jj+TQ==
+
 "@docsearch/css@3.2.1":
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.2.1.tgz#c05d7818b0e43b42f9efa2d82a11c36606b37b27"
@@ -4181,6 +4200,15 @@ diff@^4.0.1:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/diff/-/diff-4.0.2.tgz#60f3aecb89d5fae520c11aa19efc2bb982aade7d"
   integrity sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==
+
+dinero.js@2.0.0-alpha.13:
+  version "2.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/dinero.js/-/dinero.js-2.0.0-alpha.13.tgz#4f4faeb9abae0334dbc535ae1b2e2b8eb44bd86c"
+  integrity sha512-xuBgE/3/67SXOW/UKjmaRd/YJQkUSlYS+6DvfglFg1Mbfn2K7cp+WQcgU76CLJpJPkJABgILsPjw1Om9OJ5puA==
+  dependencies:
+    "@dinero.js/calculator-number" "2.0.0-alpha.13"
+    "@dinero.js/core" "2.0.0-alpha.13"
+    "@dinero.js/currencies" "2.0.0-alpha.13"
 
 dir-glob@^3.0.1:
   version "3.0.1"
