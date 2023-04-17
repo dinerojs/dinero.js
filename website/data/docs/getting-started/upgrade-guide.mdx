@@ -315,7 +315,7 @@ function createIntlFormatter(locale, options = {}) {
       style: 'currency',
       currency: currency.code,
     });
-  });
+  }
 
   return function formatter(dineroObject) {
     return toDecimal(dineroObject, transformer);

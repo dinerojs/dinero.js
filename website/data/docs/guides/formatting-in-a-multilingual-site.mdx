@@ -22,7 +22,7 @@ function intlFormat(dineroObject, locale, options = {}) {
       style: 'currency',
       currency: currency.code,
     });
-  };
+  }
 
   return toDecimal(dineroObject, transformer);
 };
