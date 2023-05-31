@@ -4551,10 +4551,10 @@ escape-string-regexp@^4.0.0:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz#14ba83a5d373e3d311e5afca29cf5bfad965bf34"
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
 
-eslint-config-algolia@20.0.0:
-  version "20.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-algolia/-/eslint-config-algolia-20.0.0.tgz#6605d569396f61216ef0336c94d0c14decd0076a"
-  integrity sha512-muVTnOGQuvbr1mWkOYd9+8AZ6hKxezZdQQxq58FcILMYPknuFMjWVOC9IGLyflWOGTJ5mUJf9f56Ai5fgDW8nA==
+eslint-config-algolia@20.1.0:
+  version "20.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-algolia/-/eslint-config-algolia-20.1.0.tgz#8886e4131515585b9e9d863d435ad51f38144bbf"
+  integrity sha512-3cP5Kq+qUjk2vPDaFIHTc4Z416UORlLcbxYPO3qmwYjUc3/qfqKlVxVOroD0bLKvk+3NpJHMQ43JoxeJOstAkA==
 
 eslint-config-next@13.0.2:
   version "13.0.2"
@@ -5760,10 +5760,10 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-husky@8.0.3:
-  version "8.0.3"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.3.tgz#4936d7212e46d1dea28fef29bb3a108872cd9184"
-  integrity sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==
+husky@8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.1.tgz#511cb3e57de3e3190514ae49ed50f6bc3f50b3e9"
+  integrity sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==
 
 hyphenate-style-name@^1.0.3:
   version "1.0.4"
