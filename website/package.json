@@ -22,7 +22,7 @@
     "react-dom": "18.2.0",
     "react-to-text": "1.1.0",
     "react-use": "17.4.0",
-    "semver": "7.3.8"
+    "semver": "7.5.2"
   },
   "devDependencies": {
     "@mdx-js/react": "1.6.22",
