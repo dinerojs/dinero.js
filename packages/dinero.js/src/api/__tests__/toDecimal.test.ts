@@ -1,4 +1,4 @@
-import {JPY, MGA, USD} from '@dinero.js/currencies';
+import { JPY, MGA, USD } from '@dinero.js/currencies';
 import Big from 'big.js';
 import {
   castToBigintCurrency,
@@ -8,7 +8,7 @@ import {
   createBigjsDinero,
 } from 'test-utils';
 
-import {toDecimal} from '..';
+import { toDecimal } from '..';
 
 describe('toDecimal', () => {
   describe('number', () => {
@@ -62,12 +62,10 @@ describe('toDecimal', () => {
           toDecimal(d, ({ value, currency }) => `${currency.code} ${value}`)
         ).toBe('USD 10.50');
       });
-
-     it('returns whole numbers when scale is zero', () => {
-       const d = dinero({ amount: 100, currency: JPY });
-       expect(toDecimal(d)).toEqual('100');
-     });
-
+      it('returns whole numbers when scale is zero', () => {
+        const d = dinero({ amount: 100, currency: JPY });
+        expect(toDecimal(d)).toEqual('100');
+      });
     });
     describe('non-decimal currencies', () => {
       it('throws when passing a Dinero object using a non-decimal currency', () => {
@@ -251,7 +249,6 @@ describe('toDecimal', () => {
         const d = dinero({ amount: new Big(100), currency: bigjsJPY });
         expect(toDecimal(d)).toEqual('100');
       });
-
     });
     describe('non-decimal currencies', () => {
       it('throws when passing a Dinero object using a non-decimal currency', () => {
