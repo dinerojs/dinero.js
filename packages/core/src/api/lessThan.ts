@@ -12,12 +12,14 @@ export type LessThanParams<TAmount> = readonly [
   comparator: Dinero<TAmount>
 ];
 
-function unsafeLessThan<TAmount>(calculator: Calculator<TAmount>) {
+function unsafeLessThan<TAmount>(
+  calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => boolean {
   const lessThanFn = lt(calculator);
 
   return function lessThan(
     ...[dineroObject, comparator]: LessThanParams<TAmount>
-  ) {
+  ): boolean {
     const dineroObjects = [dineroObject, comparator];
 
     const [subjectAmount, comparatorAmount] = dineroObjects.map((d) => {
@@ -30,13 +32,15 @@ function unsafeLessThan<TAmount>(calculator: Calculator<TAmount>) {
   };
 }
 
-export function safeLessThan<TAmount>(calculator: Calculator<TAmount>) {
+export function safeLessThan<TAmount>(
+  calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => boolean {
   const normalizeFn = normalizeScale(calculator);
   const lessThanFn = unsafeLessThan(calculator);
 
   return function lessThan(
     ...[dineroObject, comparator]: LessThanParams<TAmount>
-  ) {
+  ): boolean {
     const condition = haveSameCurrency([dineroObject, comparator]);
     assert(condition, UNEQUAL_CURRENCIES_MESSAGE);
 

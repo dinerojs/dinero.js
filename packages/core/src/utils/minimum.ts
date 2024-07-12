@@ -11,7 +11,9 @@ type MinimumCalculator<TAmount> = Calculator<TAmount>;
  *
  * @returns The minimum function.
  */
-export function minimum<TAmount>(calculator: MinimumCalculator<TAmount>) {
+export function minimum<TAmount>(
+  calculator: MinimumCalculator<TAmount>
+): (values: readonly TAmount[]) => TAmount {
   const greaterThanFn = greaterThan(calculator);
 
   return (values: readonly TAmount[]) => {

@@ -1,5 +1,11 @@
 /* eslint-disable functional/no-mixed-type, functional/no-return-void, functional/no-expression-statement */
-import type { Calculator, Dinero, DineroOptions, Formatter } from '../types';
+import type {
+  Calculator,
+  Dinero,
+  DineroOptions,
+  DineroSnapshot,
+  Formatter,
+} from '../types';
 
 export type CreateDineroOptions<TAmount> = {
   readonly calculator: Calculator<TAmount>;
@@ -28,7 +34,7 @@ export function createDinero<TAmount>({
       calculator,
       formatter,
       create: dinero,
-      toJSON() {
+      toJSON(): DineroSnapshot<TAmount> {
         return {
           amount,
           currency,

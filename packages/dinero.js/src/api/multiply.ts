@@ -1,5 +1,5 @@
 import { multiply as coreMultiply } from '@dinero.js/core';
-import type { MultiplyParams } from '@dinero.js/core';
+import type { Dinero, MultiplyParams } from '@dinero.js/core';
 
 /**
  * Multiply the passed Dinero object.
@@ -13,7 +13,7 @@ import type { MultiplyParams } from '@dinero.js/core';
  */
 export function multiply<TAmount>(
   ...[multiplicand, multiplier]: MultiplyParams<TAmount>
-) {
+): Dinero<TAmount> {
   const { calculator } = multiplicand;
   const multiplyFn = coreMultiply(calculator);
 

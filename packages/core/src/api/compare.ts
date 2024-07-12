@@ -1,7 +1,7 @@
 /* eslint-disable functional/no-expression-statement */
 import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
 import { assert } from '../helpers';
-import type { Calculator, Dinero } from '../types';
+import type { Calculator, ComparisonOperator, Dinero } from '../types';
 import { compare as cmp } from '../utils';
 
 import { haveSameCurrency } from './haveSameCurrency';
@@ -12,12 +12,17 @@ export type CompareParams<TAmount> = readonly [
   comparator: Dinero<TAmount>
 ];
 
-function unsafeCompare<TAmount>(calculator: Calculator<TAmount>) {
+function unsafeCompare<TAmount>(
+  calculator: Calculator<TAmount>
+): (
+  dineroObject: Dinero<TAmount>,
+  comparator: Dinero<TAmount>
+) => ComparisonOperator {
   const compareFn = cmp(calculator);
 
   return function compare(
     ...[dineroObject, comparator]: CompareParams<TAmount>
-  ) {
+  ): ComparisonOperator {
     const dineroObjects = [dineroObject, comparator];
 
     const [subjectAmount, comparatorAmount] = dineroObjects.map((d) => {
@@ -30,13 +35,18 @@ function unsafeCompare<TAmount>(calculator: Calculator<TAmount>) {
   };
 }
 
-export function safeCompare<TAmount>(calculator: Calculator<TAmount>) {
+export function safeCompare<TAmount>(
+  calculator: Calculator<TAmount>
+): (
+  dineroObject: Dinero<TAmount>,
+  comparator: Dinero<TAmount>
+) => ComparisonOperator {
   const normalizeFn = normalizeScale(calculator);
   const compareFn = unsafeCompare(calculator);
 
   return function compare(
     ...[dineroObject, comparator]: CompareParams<TAmount>
-  ) {
+  ): ComparisonOperator {
     const condition = haveSameCurrency([dineroObject, comparator]);
     assert(condition, UNEQUAL_CURRENCIES_MESSAGE);
 

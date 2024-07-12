@@ -1,5 +1,5 @@
 import { safeAdd } from '@dinero.js/core';
-import type { AddParams } from '@dinero.js/core';
+import type { AddParams, Dinero } from '@dinero.js/core';
 
 /**
  * Add up the passed Dinero objects.
@@ -11,7 +11,9 @@ import type { AddParams } from '@dinero.js/core';
  *
  * @public
  */
-export function add<TAmount>(...[augend, addend]: AddParams<TAmount>) {
+export function add<TAmount>(
+  ...[augend, addend]: AddParams<TAmount>
+): Dinero<TAmount> {
   const { calculator } = augend;
   const addFn = safeAdd(calculator);
 

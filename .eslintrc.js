@@ -12,7 +12,7 @@ module.exports = {
   rules: {
     'functional/no-conditional-statement': ['off'],
     'functional/functional-parameters': ['off'],
-    '@typescript-eslint/explicit-function-return-type': ['off'],
+    '@typescript-eslint/explicit-function-return-type': ['warn'],
     'valid-jsdoc': [
       'error',
       {

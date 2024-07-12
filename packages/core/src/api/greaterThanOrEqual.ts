@@ -12,12 +12,14 @@ export type GreaterThanOrEqualParams<TAmount> = readonly [
   comparator: Dinero<TAmount>
 ];
 
-function unsafeGreaterThanOrEqual<TAmount>(calculator: Calculator<TAmount>) {
+function unsafeGreaterThanOrEqual<TAmount>(
+  calculator: Calculator<TAmount>
+): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => boolean {
   const greaterThanOrEqualFn = gte(calculator);
 
   return function greaterThanOrEqual(
     ...[dineroObject, comparator]: GreaterThanOrEqualParams<TAmount>
-  ) {
+  ): boolean {
     const dineroObjects = [dineroObject, comparator];
 
     const [subjectAmount, comparatorAmount] = dineroObjects.map((d) => {
@@ -32,13 +34,13 @@ function unsafeGreaterThanOrEqual<TAmount>(calculator: Calculator<TAmount>) {
 
 export function safeGreaterThanOrEqual<TAmount>(
   calculator: Calculator<TAmount>
-) {
+): (dineroObject: Dinero<TAmount>, comparator: Dinero<TAmount>) => boolean {
   const normalizeFn = normalizeScale(calculator);
   const greaterThanOrEqualFn = unsafeGreaterThanOrEqual(calculator);
 
   return function greaterThanOrEqual(
     ...[dineroObject, comparator]: GreaterThanOrEqualParams<TAmount>
-  ) {
+  ): boolean {
     const condition = haveSameCurrency([dineroObject, comparator]);
     assert(condition, UNEQUAL_CURRENCIES_MESSAGE);
 

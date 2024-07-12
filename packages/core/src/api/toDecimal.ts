@@ -10,7 +10,12 @@ export type ToDecimalParams<TAmount, TOutput> = readonly [
   transformer?: Transformer<TAmount, TOutput, string>
 ];
 
-export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>) {
+export function toDecimal<TAmount, TOutput>(
+  calculator: Calculator<TAmount>
+): (
+  dineroObject: Dinero<TAmount>,
+  transformer?: Transformer<TAmount, TOutput, string> | undefined
+) => TOutput | string {
   const toUnitsFn = toUnits<TAmount, readonly TAmount[]>(calculator);
   const computeBaseFn = computeBase(calculator);
   const equalFn = equal(calculator);
@@ -47,7 +52,7 @@ export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>) {
 function getDecimal<TAmount>(
   calculator: Calculator<TAmount>,
   formatter: Formatter<TAmount>
-) {
+): (units: readonly TAmount[], scale: TAmount) => string {
   const absoluteFn = absolute(calculator);
   const equalFn = equal(calculator);
   const lessThanFn = lessThan(calculator);

@@ -16,7 +16,9 @@ type DistributeCalculator<TAmount> = Calculator<TAmount>;
  *
  * @returns The distribute function.
  */
-export function distribute<TAmount>(calculator: DistributeCalculator<TAmount>) {
+export function distribute<TAmount>(
+  calculator: DistributeCalculator<TAmount>
+): (value: TAmount, ratios: readonly TAmount[]) => readonly TAmount[] {
   return (value: TAmount, ratios: readonly TAmount[]) => {
     const equalFn = equal(calculator);
     const greaterThanFn = greaterThan(calculator);

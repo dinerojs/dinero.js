@@ -1,6 +1,8 @@
 import type { Calculator } from '../types';
 
-export function getDivisors<TAmount>(calculator: Calculator<TAmount>) {
+export function getDivisors<TAmount>(
+  calculator: Calculator<TAmount>
+): (bases: readonly TAmount[]) => readonly TAmount[] {
   const { multiply } = calculator;
 
   return (bases: readonly TAmount[]) => {

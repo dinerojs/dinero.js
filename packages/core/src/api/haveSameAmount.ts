@@ -7,7 +7,9 @@ export type HaveSameAmountParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ];
 
-export function haveSameAmount<TAmount>(calculator: Calculator<TAmount>) {
+export function haveSameAmount<TAmount>(
+  calculator: Calculator<TAmount>
+): (dineroObjects: ReadonlyArray<Dinero<TAmount>>) => boolean {
   const normalizeFn = normalizeScale(calculator);
   const equalFn = equal(calculator);
 

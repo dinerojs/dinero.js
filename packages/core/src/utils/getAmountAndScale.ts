@@ -5,7 +5,7 @@ import { isScaledAmount } from './isScaledAmount';
 export function getAmountAndScale<TAmount>(
   value: ScaledAmount<TAmount> | TAmount,
   zero: TAmount
-) {
+): ScaledAmount<TAmount> {
   if (isScaledAmount(value)) {
     return { amount: value.amount, scale: value?.scale ?? zero };
   }

@@ -12,7 +12,7 @@ type GreaterThanCalculator<TAmount> = Calculator<TAmount>;
  */
 export function greaterThan<TAmount>(
   calculator: GreaterThanCalculator<TAmount>
-) {
+): (subject: TAmount, comparator: TAmount) => boolean {
   return (subject: TAmount, comparator: TAmount) => {
     return calculator.compare(subject, comparator) === ComparisonOperator.GT;
   };

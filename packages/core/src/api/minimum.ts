@@ -11,7 +11,9 @@ export type MinimumParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ];
 
-function unsafeMinimum<TAmount>(calculator: Calculator<TAmount>) {
+function unsafeMinimum<TAmount>(
+  calculator: Calculator<TAmount>
+): (dineroObjects: ReadonlyArray<Dinero<TAmount>>) => Dinero<TAmount> {
   const minFn = min(calculator);
 
   return function minimum(...[dineroObjects]: MinimumParams<TAmount>) {
@@ -34,11 +36,15 @@ function unsafeMinimum<TAmount>(calculator: Calculator<TAmount>) {
   };
 }
 
-export function safeMinimum<TAmount>(calculator: Calculator<TAmount>) {
+export function safeMinimum<TAmount>(
+  calculator: Calculator<TAmount>
+): (dineroObjects: ReadonlyArray<Dinero<TAmount>>) => Dinero<TAmount> {
   const normalizeFn = normalizeScale(calculator);
   const minFn = unsafeMinimum(calculator);
 
-  return function maximum(...[dineroObjects]: MinimumParams<TAmount>) {
+  return function maximum(
+    ...[dineroObjects]: MinimumParams<TAmount>
+  ): Dinero<TAmount> {
     const condition = haveSameCurrency(dineroObjects);
     assert(condition, UNEQUAL_CURRENCIES_MESSAGE);
 

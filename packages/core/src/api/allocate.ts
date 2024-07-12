@@ -21,7 +21,7 @@ type UnsafeAllocateParams<TAmount> = readonly [
 function unsafeAllocate<TAmount>(calculator: Calculator<TAmount>) {
   return function allocate(
     ...[dineroObject, ratios]: UnsafeAllocateParams<TAmount>
-  ) {
+  ): ReadonlyArray<Dinero<TAmount>> {
     const { amount, currency, scale } = dineroObject.toJSON();
     const distributeFn = distribute(calculator);
     const shares = distributeFn(
@@ -44,7 +44,12 @@ export type AllocateParams<TAmount> = readonly [
   ratios: ReadonlyArray<ScaledAmount<TAmount> | TAmount>
 ];
 
-export function safeAllocate<TAmount>(calculator: Calculator<TAmount>) {
+export function safeAllocate<TAmount>(
+  calculator: Calculator<TAmount>
+): (
+  dineroObject: Dinero<TAmount>,
+  ratios: ReadonlyArray<ScaledAmount<TAmount> | TAmount>
+) => ReadonlyArray<Dinero<TAmount>> {
   const allocateFn = unsafeAllocate(calculator);
   const greaterThanOrEqualFn = greaterThanOrEqual(calculator);
   const greaterThanFn = greaterThan(calculator);
@@ -58,12 +63,12 @@ export function safeAllocate<TAmount>(calculator: Calculator<TAmount>) {
     const hasRatios = ratios.length > 0;
     const scaledRatios = ratios.map((ratio) => getAmountAndScale(ratio, zero));
     const highestRatioScale = hasRatios
-      ? maximumFn(scaledRatios.map(({ scale }) => scale))
+      ? maximumFn(scaledRatios.map(({ scale }) => scale ?? zero))
       : zero;
     const normalizedRatios = scaledRatios.map(({ amount, scale }) => {
-      const factor = equalFn(scale, highestRatioScale)
+      const factor = equalFn(scale ?? zero, highestRatioScale)
         ? zero
-        : calculator.subtract(highestRatioScale, scale);
+        : calculator.subtract(highestRatioScale, scale ?? zero);
 
       return {
         amount: calculator.multiply(amount, calculator.power(ten, factor)),

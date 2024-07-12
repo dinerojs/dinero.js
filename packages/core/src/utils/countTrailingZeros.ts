@@ -7,7 +7,7 @@ type CountTrailingZerosCalculator<TAmount> = Calculator<TAmount>;
 
 export function countTrailingZeros<TAmount>(
   calculator: CountTrailingZerosCalculator<TAmount>
-) {
+): (input: TAmount, base: TAmount) => TAmount {
   const equalFn = equal(calculator);
 
   return (input: TAmount, base: TAmount) => {

@@ -10,7 +10,9 @@ type LessThanCalculator<TAmount> = Calculator<TAmount>;
  *
  * @returns The lessThan function.
  */
-export function lessThan<TAmount>(calculator: LessThanCalculator<TAmount>) {
+export function lessThan<TAmount>(
+  calculator: LessThanCalculator<TAmount>
+): (subject: TAmount, comparator: TAmount) => boolean {
   return (subject: TAmount, comparator: TAmount) => {
     return calculator.compare(subject, comparator) === ComparisonOperator.LT;
   };

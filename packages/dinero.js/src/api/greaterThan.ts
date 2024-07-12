@@ -13,7 +13,7 @@ import type { GreaterThanParams } from '@dinero.js/core';
  */
 export function greaterThan<TAmount>(
   ...[dineroObject, comparator]: GreaterThanParams<TAmount>
-) {
+): boolean {
   const { calculator } = dineroObject;
   const greaterThanFn = safeGreaterThan(calculator);
 

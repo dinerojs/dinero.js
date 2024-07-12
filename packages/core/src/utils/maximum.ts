@@ -11,7 +11,9 @@ type MaximumCalculator<TAmount> = Calculator<TAmount>;
  *
  * @returns The maximum function.
  */
-export function maximum<TAmount>(calculator: MaximumCalculator<TAmount>) {
+export function maximum<TAmount>(
+  calculator: MaximumCalculator<TAmount>
+): (values: readonly TAmount[]) => TAmount {
   const lessThanFn = lessThan(calculator);
 
   return (values: readonly TAmount[]) => {
