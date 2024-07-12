@@ -1,5 +1,5 @@
 import { normalizeScale as coreNormalizeScale } from '@dinero.js/core';
-import type { NormalizeScaleParams } from '@dinero.js/core';
+import type { Dinero, NormalizeScaleParams } from '@dinero.js/core';
 
 /**
  * Normalize a set of Dinero objects to the highest scale of the set.
@@ -12,7 +12,7 @@ import type { NormalizeScaleParams } from '@dinero.js/core';
  */
 export function normalizeScale<TAmount>(
   ...[dineroObjects]: NormalizeScaleParams<TAmount>
-) {
+): ReadonlyArray<Dinero<TAmount>> {
   const { calculator } = dineroObjects[0];
   const normalizeScaleFn = coreNormalizeScale(calculator);
 

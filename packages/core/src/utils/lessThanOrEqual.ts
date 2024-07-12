@@ -14,7 +14,7 @@ type LessThanOrEqualCalculator<TAmount> = Calculator<TAmount>;
  */
 export function lessThanOrEqual<TAmount>(
   calculator: LessThanOrEqualCalculator<TAmount>
-) {
+): (subject: TAmount, comparator: TAmount) => boolean {
   return (subject: TAmount, comparator: TAmount) => {
     return (
       lessThan(calculator)(subject, comparator) ||

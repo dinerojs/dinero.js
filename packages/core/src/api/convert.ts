@@ -11,14 +11,20 @@ export type ConvertParams<TAmount> = readonly [
   rates: Rates<TAmount>
 ];
 
-export function convert<TAmount>(calculator: Calculator<TAmount>) {
+export function convert<TAmount>(
+  calculator: Calculator<TAmount>
+): (
+  dineroObject: Dinero<TAmount>,
+  newCurrency: Currency<TAmount>,
+  rates: Rates<TAmount>
+) => Dinero<TAmount> {
   const convertScaleFn = transformScale(calculator);
   const maximumFn = maximum(calculator);
   const zero = calculator.zero();
 
   return function convertFn(
     ...[dineroObject, newCurrency, rates]: ConvertParams<TAmount>
-  ) {
+  ): Dinero<TAmount> {
     const rate = rates[newCurrency.code];
     const { amount, scale } = dineroObject.toJSON();
     const { amount: rateAmount, scale: rateScale } = getAmountAndScale(
@@ -26,7 +32,7 @@ export function convert<TAmount>(calculator: Calculator<TAmount>) {
       zero
     );
 
-    const newScale = calculator.add(scale, rateScale);
+    const newScale = calculator.add(scale, rateScale ?? zero);
 
     return convertScaleFn(
       dineroObject.create({

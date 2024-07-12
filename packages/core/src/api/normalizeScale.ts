@@ -7,14 +7,18 @@ export type NormalizeScaleParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ];
 
-export function normalizeScale<TAmount>(calculator: Calculator<TAmount>) {
+export function normalizeScale<TAmount>(
+  calculator: Calculator<TAmount>
+): (
+  dineroObjects: ReadonlyArray<Dinero<TAmount>>
+) => ReadonlyArray<Dinero<TAmount>> {
   const maximumFn = maximum(calculator);
   const convertScaleFn = transformScale(calculator);
   const equalFn = equal(calculator);
 
   return function _normalizeScale(
     ...[dineroObjects]: NormalizeScaleParams<TAmount>
-  ) {
+  ): ReadonlyArray<Dinero<TAmount>> {
     const highestScale = dineroObjects.reduce((highest, current) => {
       const { scale } = current.toJSON();
 

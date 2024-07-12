@@ -1,5 +1,5 @@
 import { safeMaximum } from '@dinero.js/core';
-import type { MaximumParams } from '@dinero.js/core';
+import type { Dinero, MaximumParams } from '@dinero.js/core';
 
 /**
  * Get the greatest of the passed Dinero objects.
@@ -10,7 +10,9 @@ import type { MaximumParams } from '@dinero.js/core';
  *
  * @public
  */
-export function maximum<TAmount>(...[dineroObjects]: MaximumParams<TAmount>) {
+export function maximum<TAmount>(
+  ...[dineroObjects]: MaximumParams<TAmount>
+): Dinero<TAmount> {
   const { calculator } = dineroObjects[0];
   const maximumFn = safeMaximum(calculator);
 

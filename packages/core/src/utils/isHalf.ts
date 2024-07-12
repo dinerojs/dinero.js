@@ -2,7 +2,9 @@ import type { Calculator } from '../types';
 
 import { equal, absolute } from '.';
 
-export function isHalf<TAmount>(calculator: Calculator<TAmount>) {
+export function isHalf<TAmount>(
+  calculator: Calculator<TAmount>
+): (input: TAmount, total: TAmount) => boolean {
   const equalFn = equal(calculator);
   const absoluteFn = absolute(calculator);
 

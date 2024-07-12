@@ -3,7 +3,7 @@ import { computeBase, equal } from '../utils';
 
 export function haveSameCurrency<TAmount>(
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
-) {
+): boolean {
   const [firstDinero, ...otherDineros] = dineroObjects;
   const computeBaseFn = computeBase(firstDinero.calculator);
 

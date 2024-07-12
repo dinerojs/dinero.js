@@ -1,5 +1,5 @@
 import { safeSubtract } from '@dinero.js/core';
-import type { SubtractParams } from '@dinero.js/core';
+import type { Dinero, SubtractParams } from '@dinero.js/core';
 
 /**
  * Subtract the passed Dinero objects.
@@ -13,7 +13,7 @@ import type { SubtractParams } from '@dinero.js/core';
  */
 export function subtract<TAmount>(
   ...[minuend, subtrahend]: SubtractParams<TAmount>
-) {
+): Dinero<TAmount> {
   const { calculator } = minuend;
   const subtractFn = safeSubtract(calculator);
 

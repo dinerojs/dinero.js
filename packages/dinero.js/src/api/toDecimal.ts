@@ -20,7 +20,7 @@ export function toDecimal<TAmount, TOutput>(
  */
 export function toDecimal<TAmount, TOutput>(
   ...[dineroObject, transformer]: ToDecimalParams<TAmount, TOutput>
-) {
+): TOutput | string {
   const { calculator } = dineroObject;
   const toDecimalFn = coreToDecimal<TAmount, TOutput>(calculator);
 

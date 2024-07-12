@@ -3,7 +3,9 @@ import type { Calculator } from '../types';
 import { equal } from './equal';
 import { lessThan } from './lessThan';
 
-export function sign<TAmount>(calculator: Calculator<TAmount>) {
+export function sign<TAmount>(
+  calculator: Calculator<TAmount>
+): (input: TAmount) => TAmount {
   const equalFn = equal(calculator);
   const lessThanFn = lessThan(calculator);
   const zero = calculator.zero();

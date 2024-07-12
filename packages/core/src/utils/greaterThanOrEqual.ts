@@ -14,7 +14,7 @@ type GreaterThanOrEqualCalculator<TAmount> = Calculator<TAmount>;
  */
 export function greaterThanOrEqual<TAmount>(
   calculator: GreaterThanOrEqualCalculator<TAmount>
-) {
+): (subject: TAmount, comparator: TAmount) => boolean {
   return (subject: TAmount, comparator: TAmount) => {
     return (
       greaterThan(calculator)(subject, comparator) ||

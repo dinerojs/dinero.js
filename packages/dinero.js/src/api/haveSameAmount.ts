@@ -12,7 +12,7 @@ import type { HaveSameAmountParams } from '@dinero.js/core';
  */
 export function haveSameAmount<TAmount>(
   ...[dineroObjects]: HaveSameAmountParams<TAmount>
-) {
+): boolean {
   const { calculator } = dineroObjects[0];
   const haveSameAmountFn = coreHaveSameAmount(calculator);
 

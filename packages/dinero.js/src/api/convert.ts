@@ -1,5 +1,5 @@
 import { convert as coreConvert } from '@dinero.js/core';
-import type { ConvertParams } from '@dinero.js/core';
+import type { ConvertParams, Dinero } from '@dinero.js/core';
 
 /**
  * Convert a Dinero object to another currency.
@@ -14,7 +14,7 @@ import type { ConvertParams } from '@dinero.js/core';
  */
 export function convert<TAmount>(
   ...[dineroObject, newCurrency, rates]: ConvertParams<TAmount>
-) {
+): Dinero<TAmount> {
   const { calculator } = dineroObject;
   const converter = coreConvert(calculator);
 

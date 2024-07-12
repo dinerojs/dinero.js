@@ -1,5 +1,5 @@
 import { safeCompare } from '@dinero.js/core';
-import type { CompareParams } from '@dinero.js/core';
+import type { CompareParams, ComparisonOperator } from '@dinero.js/core';
 
 /**
  * Compare the value of a Dinero object relative to another.
@@ -13,7 +13,7 @@ import type { CompareParams } from '@dinero.js/core';
  */
 export function compare<TAmount>(
   ...[dineroObject, comparator]: CompareParams<TAmount>
-) {
+): ComparisonOperator {
   const { calculator } = dineroObject;
   const compareFn = safeCompare(calculator);
 

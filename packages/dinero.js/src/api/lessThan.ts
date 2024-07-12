@@ -13,7 +13,7 @@ import type { LessThanParams } from '@dinero.js/core';
  */
 export function lessThan<TAmount>(
   ...[dineroObject, comparator]: LessThanParams<TAmount>
-) {
+): boolean {
   const { calculator } = dineroObject;
   const lessThanFn = safeLessThan(calculator);
 

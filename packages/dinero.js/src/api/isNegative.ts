@@ -12,7 +12,7 @@ import type { IsNegativeParams } from '@dinero.js/core';
  */
 export function isNegative<TAmount>(
   ...[dineroObject]: IsNegativeParams<TAmount>
-) {
+): boolean {
   const { calculator } = dineroObject;
   const isNegativeFn = coreIsNegative(calculator);
 

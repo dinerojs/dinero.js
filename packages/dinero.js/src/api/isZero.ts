@@ -10,7 +10,9 @@ import type { IsZeroParams } from '@dinero.js/core';
  *
  * @public
  */
-export function isZero<TAmount>(...[dineroObject]: IsZeroParams<TAmount>) {
+export function isZero<TAmount>(
+  ...[dineroObject]: IsZeroParams<TAmount>
+): boolean {
   const { calculator } = dineroObject;
   const isZeroFn = coreIsZero(calculator);
 

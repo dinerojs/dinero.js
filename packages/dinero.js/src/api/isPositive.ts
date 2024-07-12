@@ -12,7 +12,7 @@ import type { IsPositiveParams } from '@dinero.js/core';
  */
 export function isPositive<TAmount>(
   ...[dineroObject]: IsPositiveParams<TAmount>
-) {
+): boolean {
   const { calculator } = dineroObject;
   const isPositiveFn = coreIsPositive(calculator);
 

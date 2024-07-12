@@ -12,7 +12,9 @@ export type SubtractParams<TAmount> = readonly [
 ];
 
 function unsafeSubtract<TAmount>(calculator: Calculator<TAmount>) {
-  return function subtract(...[minuend, subtrahend]: SubtractParams<TAmount>) {
+  return function subtract(
+    ...[minuend, subtrahend]: SubtractParams<TAmount>
+  ): Dinero<TAmount> {
     const { amount: minuendAmount, currency, scale } = minuend.toJSON();
     const { amount: subtrahendAmount } = subtrahend.toJSON();
 
@@ -26,11 +28,15 @@ function unsafeSubtract<TAmount>(calculator: Calculator<TAmount>) {
   };
 }
 
-export function safeSubtract<TAmount>(calculator: Calculator<TAmount>) {
+export function safeSubtract<TAmount>(
+  calculator: Calculator<TAmount>
+): (minuend: Dinero<TAmount>, subtrahend: Dinero<TAmount>) => Dinero<TAmount> {
   const normalizeFn = normalizeScale(calculator);
   const subtractFn = unsafeSubtract(calculator);
 
-  return function subtract(...[minuend, subtrahend]: SubtractParams<TAmount>) {
+  return function subtract(
+    ...[minuend, subtrahend]: SubtractParams<TAmount>
+  ): Dinero<TAmount> {
     const condition = haveSameCurrency([minuend, subtrahend]);
     assert(condition, UNEQUAL_CURRENCIES_MESSAGE);
 

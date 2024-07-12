@@ -12,7 +12,7 @@ import type { HasSubUnitsParams } from '@dinero.js/core';
  */
 export function hasSubUnits<TAmount>(
   ...[dineroObject]: HasSubUnitsParams<TAmount>
-) {
+): boolean {
   const { calculator } = dineroObject;
   const hasSubUnitsFn = coreHasSubUnits(calculator);
 

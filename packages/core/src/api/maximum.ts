@@ -11,10 +11,14 @@ export type MaximumParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>
 ];
 
-function unsafeMaximum<TAmount>(calculator: Calculator<TAmount>) {
+function unsafeMaximum<TAmount>(
+  calculator: Calculator<TAmount>
+): (dineroObjects: ReadonlyArray<Dinero<TAmount>>) => Dinero<TAmount> {
   const maxFn = max(calculator);
 
-  return function maximum(...[dineroObjects]: MaximumParams<TAmount>) {
+  return function maximum(
+    ...[dineroObjects]: MaximumParams<TAmount>
+  ): Dinero<TAmount> {
     const [firstDinero] = dineroObjects;
     const { currency, scale } = firstDinero.toJSON();
 
@@ -34,11 +38,15 @@ function unsafeMaximum<TAmount>(calculator: Calculator<TAmount>) {
   };
 }
 
-export function safeMaximum<TAmount>(calculator: Calculator<TAmount>) {
+export function safeMaximum<TAmount>(
+  calculator: Calculator<TAmount>
+): (dineroObjects: ReadonlyArray<Dinero<TAmount>>) => Dinero<TAmount> {
   const normalizeFn = normalizeScale(calculator);
   const maxFn = unsafeMaximum(calculator);
 
-  return function maximum(...[dineroObjects]: MaximumParams<TAmount>) {
+  return function maximum(
+    ...[dineroObjects]: MaximumParams<TAmount>
+  ): Dinero<TAmount> {
     const condition = haveSameCurrency(dineroObjects);
     assert(condition, UNEQUAL_CURRENCIES_MESSAGE);
 

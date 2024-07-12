@@ -12,7 +12,9 @@ export type AddParams<TAmount> = readonly [
 ];
 
 function unsafeAdd<TAmount>(calculator: Calculator<TAmount>) {
-  return function add(...[augend, addend]: AddParams<TAmount>) {
+  return function add(
+    ...[augend, addend]: AddParams<TAmount>
+  ): Dinero<TAmount> {
     const { amount: augendAmount, currency, scale } = augend.toJSON();
     const { amount: addendAmount } = addend.toJSON();
 
@@ -26,7 +28,9 @@ function unsafeAdd<TAmount>(calculator: Calculator<TAmount>) {
   };
 }
 
-export function safeAdd<TAmount>(calculator: Calculator<TAmount>) {
+export function safeAdd<TAmount>(
+  calculator: Calculator<TAmount>
+): (augend: Dinero<TAmount>, addend: Dinero<TAmount>) => Dinero<TAmount> {
   const normalizeFn = normalizeScale(calculator);
   const addFn = unsafeAdd(calculator);
 

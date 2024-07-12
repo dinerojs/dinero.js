@@ -1,5 +1,5 @@
 import { safeAllocate } from '@dinero.js/core';
-import type { AllocateParams } from '@dinero.js/core';
+import type { AllocateParams, Dinero } from '@dinero.js/core';
 
 /**
  * Distribute the amount of a Dinero object across a list of ratios.
@@ -13,7 +13,7 @@ import type { AllocateParams } from '@dinero.js/core';
  */
 export function allocate<TAmount>(
   ...[dineroObject, ratios]: AllocateParams<TAmount>
-) {
+): ReadonlyArray<Dinero<TAmount>> {
   const { calculator } = dineroObject;
   const allocateFn = safeAllocate(calculator);
 

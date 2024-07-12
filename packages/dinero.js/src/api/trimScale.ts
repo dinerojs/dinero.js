@@ -1,5 +1,5 @@
 import { trimScale as coreTrimScale } from '@dinero.js/core';
-import type { TrimScaleParams } from '@dinero.js/core';
+import type { Dinero, TrimScaleParams } from '@dinero.js/core';
 
 /**
  * Trim a Dinero object's scale as much as possible, down to the currency exponent.
@@ -12,7 +12,7 @@ import type { TrimScaleParams } from '@dinero.js/core';
  */
 export function trimScale<TAmount>(
   ...[dineroObject]: TrimScaleParams<TAmount>
-) {
+): Dinero<TAmount> {
   const { calculator } = dineroObject;
   const trimScaleFn = coreTrimScale(calculator);
 

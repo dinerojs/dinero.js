@@ -6,12 +6,17 @@ export type ToUnitsParams<TAmount, TOutput> = readonly [
   transformer?: Transformer<TAmount, TOutput, readonly TAmount[]>
 ];
 
-export function toUnits<TAmount, TOutput>(calculator: Calculator<TAmount>) {
+export function toUnits<TAmount, TOutput>(
+  calculator: Calculator<TAmount>
+): (
+  dineroObject: Dinero<TAmount>,
+  transformer?: Transformer<TAmount, TOutput, readonly TAmount[]> | undefined
+) => TOutput | readonly TAmount[] {
   const getDivisorsFn = getDivisors(calculator);
 
   return function toUnitsFn(
     ...[dineroObject, transformer]: ToUnitsParams<TAmount, TOutput>
-  ) {
+  ): TOutput | readonly TAmount[] {
     const { amount, currency, scale } = dineroObject.toJSON();
     const { power, integerDivide, modulo } = calculator;
 

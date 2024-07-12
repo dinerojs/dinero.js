@@ -9,7 +9,9 @@ export type EqualParams<TAmount> = readonly [
 ];
 
 export function equal<TAmount>(calculator: Calculator<TAmount>) {
-  return function _equal(...[dineroObject, comparator]: EqualParams<TAmount>) {
+  return function _equal(
+    ...[dineroObject, comparator]: EqualParams<TAmount>
+  ): boolean {
     return (
       haveSameAmount(calculator)([dineroObject, comparator]) &&
       haveSameCurrency([dineroObject, comparator])

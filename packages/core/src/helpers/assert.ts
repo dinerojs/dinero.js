@@ -1,3 +1,4 @@
+/* eslint-disable functional/no-return-void */
 /* eslint-disable functional/no-throw-statement, valid-jsdoc */
 /**
  * Assert a condition.
@@ -7,7 +8,7 @@
  *
  * @throws If the condition isn't met.
  */
-export function assert(condition: boolean, message: string) {
+export function assert(condition: boolean, message: string): void {
   if (!condition) {
     throw new Error(`[Dinero.js] ${message}`);
   }

@@ -3,6 +3,6 @@
  *
  * @returns Zero as a bigint.
  */
-export function zero() {
+export function zero(): bigint {
   return 0n;
 }
