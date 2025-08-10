@@ -39,7 +39,7 @@
     "junk": "3.1.0",
     "mdx-prism": "0.3.4",
     "next-mdx-remote": "3.0.8",
-    "postcss": "8.4.18",
+    "postcss": "8.4.31",
     "prettier": "2.7.1",
     "rehype": "11.0.0",
     "remark": "13.0.0",
