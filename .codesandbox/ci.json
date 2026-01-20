@@ -7,12 +7,10 @@
     "packages/dinero.js"
   ],
   "buildCommand": false,
-  "^": "buildCommand is false because `yarn prepare` is going to build packages anyway.",
   "sandboxes": [
     "/examples/cart-react",
     "/examples/cart-vue",
     "/examples/pricing-react",
     "/examples/starter"
-  ],
-  "node": "14"
+  ]
 }

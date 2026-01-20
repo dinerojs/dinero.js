@@ -1,4 +1,3 @@
-/* eslint-disable functional/no-mixed-type */
 import type { BinaryOperation, UnaryOperation } from '.';
 
 export enum ComparisonOperator {

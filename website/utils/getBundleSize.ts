@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
+import { brotliCompressSync } from 'zlib';
 
 import gzipSize from 'gzip-size';
-import { file as brotliSize } from 'brotli-size';
 
 export type Bundle = {
   name: string;
@@ -31,7 +31,8 @@ export async function getBundleSize(packages: string[], root: string) {
         path.join(filePath, 'dist/umd', bundle)
       );
       const gzip = await gzipSize.file(minified);
-      const brotli = await brotliSize(minified);
+      const fileContent = fs.readFileSync(minified);
+      const brotli = brotliCompressSync(fileContent).length;
 
       return {
         name,

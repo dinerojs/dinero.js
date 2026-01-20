@@ -28,7 +28,6 @@ export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>) {
     const isBaseTen = equalFn(calculator.modulo(base, ten), zero);
     const isDecimal = !isMultiBase && isBaseTen;
 
-    // eslint-disable-next-line functional/no-expression-statement
     assert(isDecimal, NON_DECIMAL_CURRENCY_MESSAGE);
 
     const units = toUnitsFn(dineroObject);

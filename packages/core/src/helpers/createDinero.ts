@@ -1,4 +1,3 @@
-/* eslint-disable functional/no-mixed-type, functional/no-return-void, functional/no-expression-statement */
 import type { Calculator, Dinero, DineroOptions, Formatter } from '../types';
 
 export type CreateDineroOptions<TAmount> = {

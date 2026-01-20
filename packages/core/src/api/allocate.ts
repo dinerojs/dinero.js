@@ -1,4 +1,3 @@
-/* eslint-disable functional/no-expression-statement */
 import { INVALID_RATIOS_MESSAGE } from '../checks';
 import { assert } from '../helpers';
 import type { Calculator, Dinero, ScaledAmount } from '../types';

@@ -56,7 +56,7 @@ aliases:
 defaults: &defaults
   working_directory: ~/dinero.js
   docker:
-    - image: cimg/node:16.13.1
+    - image: cimg/node:22.13.1
   environment:
     CI: true
 

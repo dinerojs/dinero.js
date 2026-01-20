@@ -13,12 +13,14 @@ const args = process.argv.slice(2);
 /**
  * ESLint CLI arguments.
  *
- * ESlint needs to be run in each project for `turbo` to cache the results, so
- * it doesn't look up the file tree for `.eslintrc` or `.eslintignore`.
+ * ESLint v9 uses flat config by default and finds eslint.config.js automatically.
+ * Ignores are configured in the flat config file.
  */
 const eslintArgs = [
-  '--config=../../.eslintrc.js',
-  '--ignore-path=../../.eslintignore',
+  '--ignore-pattern',
+  'dist/',
+  '--ignore-pattern',
+  'lib/',
   ...args,
 ];
 
