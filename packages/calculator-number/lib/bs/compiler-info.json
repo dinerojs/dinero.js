@@ -1,8 +1,0 @@
-{
-  "version": "12.1.0",
-  "bsc_path": "/Users/nathantranquilla/git/dinero.js/node_modules/@rescript/darwin-arm64/bin/bsc.exe",
-  "bsc_hash": "340a7e2b339410675a6975bc92b33655778382cba67c386d81edba3a9f4ea31d",
-  "rescript_config_hash": "71963ba55afefc569a206d40cc0ef2a20a21c36bd8709a89504ba1f90475353c",
-  "runtime_path": "/Users/nathantranquilla/git/dinero.js/node_modules/@rescript/runtime",
-  "generated_at": "1769010286956"
-}
