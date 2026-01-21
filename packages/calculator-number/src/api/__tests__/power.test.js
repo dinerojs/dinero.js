@@ -42,54 +42,10 @@ describe('powerFloat', () => {
   });
 });
 
-describe('power (BigInt operations)', () => {
-  it('raises a large number (BigInt) to an integer exponent', () => {
-    // 1e15 should be converted to BigInt, 2^3 = 8 * 1e15
-    const result = power(fromValue(1e15), fromValue(3));
-    expect(result.NAME).toBe('BigInt');
-    expect(result.VAL.toString()).toBe('1000000000000000000000000000000000000000000000');
-  });
-  
-  it('raises a large negative number (BigInt) to an odd exponent', () => {
-    const result = power(fromValue(-1e15), fromValue(3));
-    expect(result.NAME).toBe('BigInt');
-    expect(result.VAL.toString()).toBe('-1000000000000000000000000000000000000000000000');
-  });
-  
-  it('raises a large negative number (BigInt) to an even exponent', () => {
-    const result = power(fromValue(-1e15), fromValue(2));
-    expect(result.NAME).toBe('BigInt');
-    expect(result.VAL.toString()).toBe('1000000000000000000000000000000');
-  });
-
-  it('raises a BigInt to zero exponent returns 1', () => {
-    const result = power(fromValue(1e15), fromValue(0));
-    expect(result.NAME).toBe('BigInt');
-    expect(result.VAL.toString()).toBe('1');
-  });
-
-  it('raises a BigInt to exponent 1 returns the same BigInt', () => {
-    const result = power(fromValue(1e15), fromValue(1));
-    expect(result.NAME).toBe('BigInt');
-    expect(result.VAL.toString()).toBe('1000000000000000');
-  });
-
-  it('raises a BigInt base to a float exponent returns Float', () => {
-    const result = power(fromValue(1e15), fromValue(2.5));
-    expect(result.NAME).toBe('Float');
-    expect(typeof result.VAL).toBe('number');
-    expect(result.VAL).toBeGreaterThan(0);
-  });
-
-  it('raises a small BigInt base to a large exponent', () => {
-    const result = power(fromValue(2e15), fromValue(4));
-    expect(result.NAME).toBe('BigInt');
-    expect(result.VAL.toString()).toBe('16000000000000000000000000000000000000000000000000000000000000');
-  });
-
-  it('throws error for BigInt base with negative exponent', () => {
+describe('fromValue runtime checks', () => {
+  it('throws error when passed a BigInt value', () => {
     expect(() => {
-      power(fromValue(1e15), fromValue(-2));
-    }).toThrow('Negative exponents not supported for BigInt');
+      fromValue(123n);
+    }).toThrow('BigInt values not supported in calculator-number. Use calculator-bigint package instead.');
   });
 });

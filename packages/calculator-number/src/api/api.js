@@ -31,8 +31,6 @@ let powerInt = Power.powerInt;
 
 let powerFloat = Power.powerFloat;
 
-let powerBigInt = Power.powerBigInt;
-
 let power = Power.power;
 
 let subtract = Subtract.subtract;
@@ -50,7 +48,6 @@ export {
   fromValue,
   powerInt,
   powerFloat,
-  powerBigInt,
   power,
   subtract,
   zero,

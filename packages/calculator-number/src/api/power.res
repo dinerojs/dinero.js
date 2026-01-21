@@ -1,18 +1,14 @@
-type numberInput = [#Int(int) | #Float(float) | #BigInt(BigInt.t)]
+type numberInput = [#Int(int) | #Float(float)]
 
 /**
  * Helper function to create polymorphic variant from a value that could be int or float
  */
 let fromValue = (value: 'a): numberInput => {
-  if Type.typeof(value) === #number {
+  if Type.typeof(value) === #bigint {
+    JsError.throwWithMessage("BigInt values not supported in calculator-number. Use calculator-bigint package instead.")
+  } else if Type.typeof(value) === #number {
     let num = (Obj.magic(value): float)
-    // Check if this is a large number in BigInt notation that should be BigInt
-    if num >= 1e15 || num <= -1e15 {
-      switch BigInt.fromFloat(num) {
-      | Some(bigintVal) => #BigInt(bigintVal)
-      | None => #Float(num) // Fallback to float if BigInt conversion fails
-      }
-    } else if num == Math.floor(num) {
+    if num == Math.floor(num) {
       #Int((Obj.magic(value): int))
     } else {
       #Float(num)
@@ -47,28 +43,6 @@ let powerFloat = (base: float, exponent: float): float => {
 }
 
 /**
- * BigInt power function using exponentiation by squaring for integer exponents
- */
-let rec powerBigInt = (base: BigInt.t, exponent: int): BigInt.t => {
-  if exponent == 0 {
-    BigInt.fromInt(1)
-  } else if exponent == 1 {
-    base
-  } else if exponent < 0 {
-    // For negative exponents, we'd need fractional results, so this should error
-    JsError.throwWithMessage("Negative exponents not supported for BigInt")
-  } else if exponent % 2 == 0 {
-    // Even exponent: base^(2n) = (base^2)^n
-    let squared = BigInt.mul(base, base)
-    powerBigInt(squared, exponent / 2)
-  } else {
-    // Odd exponent: base^(2n+1) = base * (base^2)^n
-    let squared = BigInt.mul(base, base)
-    BigInt.mul(base, powerBigInt(squared, exponent / 2))
-  }
-}
-
-/**
  * General power function that accepts polymorphic variants.
  *
  * @param base - The base number as polymorphic variant.
@@ -82,8 +56,5 @@ let power = (base: numberInput, exponent: numberInput): numberInput => {
   | (#Float(b), #Float(e)) => #Float(powerFloat(b, e))
   | (#Float(b), #Int(e)) => #Float(powerFloat(b, Float.fromInt(e)))
   | (#Int(b), #Float(e)) => #Float(powerFloat(Float.fromInt(b), e))
-  | (#BigInt(b), #Int(e)) => #BigInt(powerBigInt(b, e))
-  | (#BigInt(b), #Float(e)) => #Float(Math.pow(BigInt.toFloat(b), ~exp=e))
-  | _ => JsError.throwWithMessage("Invalid base/exponent combination")
   }
 }

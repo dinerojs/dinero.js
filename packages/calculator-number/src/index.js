@@ -23,8 +23,6 @@ let powerInt = Api.powerInt;
 
 let powerFloat = Api.powerFloat;
 
-let powerBigInt = Api.powerBigInt;
-
 let power = Api.power;
 
 let subtract = Api.subtract;
@@ -44,7 +42,6 @@ export {
   fromValue,
   powerInt,
   powerFloat,
-  powerBigInt,
   power,
   subtract,
   zero,
