@@ -1,0 +1,14 @@
+{
+  "name": "a",
+  "sources": {
+    "dir": "packages/core/src",
+    "subdirs": true
+  },
+  "package-specs": {
+    "module": "esmodule",
+    "in-source": true
+  },
+  "suffix": ".js",
+  "dependencies": [],
+  "compiler-flags": []
+}
