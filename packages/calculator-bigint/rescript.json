@@ -1,0 +1,14 @@
+{
+  "name": "@dinero.js/calculator-bigint",
+  "sources": {
+    "dir": "src",
+    "subdirs": true
+  },
+  "package-specs": {
+    "module": "esmodule",
+    "in-source": true
+  },
+  "suffix": ".js",
+  "namespace": false,
+  "dependencies": []
+}
