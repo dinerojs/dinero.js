@@ -1,0 +1,18 @@
+{
+  "name": "@dinero.js/currencies",
+  "version": "11.1.0",
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "esmodule",
+      "in-source": true
+    }
+  ],
+  "suffix": ".js",
+  "bs-dependencies": []
+}

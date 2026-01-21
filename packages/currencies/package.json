@@ -37,11 +37,7 @@
     "dist/"
   ],
   "scripts": {
-    "build:clean": "rimraf ./{dist,temp}",
-    "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
-    "build:definitions": "tsc -b",
-    "build:types": "node ../../scripts/build-types.mjs",
-    "build:umd:cjs": "rollup --config",
-    "lint": "node ../../scripts/lint.mjs --ext .js,.ts ."
+    "res:build": "rescript",
+    "res:clean": "rescript clean"
   }
 }
