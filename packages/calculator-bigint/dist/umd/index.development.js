@@ -1,0 +1,164 @@
+/*! @dinero.js/calculator-bigint 2.0.0-alpha.14 (UNRELEASED 0bf77da) | MIT License | © Sarah Dayan and contributors | https://v2.dinerojs.com */
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["@dinero.js/calculator-bigint"] = {}));
+})(this, (function (exports) { 'use strict';
+
+  /**
+   * Returns the sum of two bigints.
+   *
+   * @param augend - The bigint to add to.
+   * @param addend - The bigint to add.
+   *
+   * @returns The sum of the two bigints.
+   */
+  const add = (augend, addend) => {
+    return augend + addend;
+  };
+
+  var ComparisonOperator = /*#__PURE__*/function (ComparisonOperator) {
+    ComparisonOperator[ComparisonOperator["LT"] = -1] = "LT";
+    ComparisonOperator[ComparisonOperator["EQ"] = 0] = "EQ";
+    ComparisonOperator[ComparisonOperator["GT"] = 1] = "GT";
+    return ComparisonOperator;
+  }({});
+
+  /**
+   * Compare two bigints.
+   *
+   * @param a - The first bigint to compare.
+   * @param b - The second bigint to compare.
+   *
+   * @returns Whether the two bigints are equal, or whether the first one is greater or less than the other.
+   */
+  const compare = (a, b) => {
+    if (a < b) {
+      return ComparisonOperator.LT;
+    }
+    if (a > b) {
+      return ComparisonOperator.GT;
+    }
+    return ComparisonOperator.EQ;
+  };
+
+  /**
+   * Returns an decremented bigint.
+   *
+   * @param value - The bigint to decrement.
+   *
+   * @returns The decremented bigint.
+   */
+  const decrement = value => {
+    return value - 1n;
+  };
+
+  /**
+   * Returns an incremented bigint.
+   *
+   * @param value - The bigint to increment.
+   *
+   * @returns The incremented bigint.
+   */
+  const increment = value => {
+    return value + 1n;
+  };
+
+  /**
+   * Returns the quotient of two bigints with no fractional part.
+   *
+   * @param dividend - The bigint to divide.
+   * @param divisor - The bigint to divide with.
+   *
+   * @returns The quotient of the two bigints.
+   */
+  const integerDivide = (dividend, divisor) => {
+    return dividend / divisor;
+  };
+
+  /**
+   * Returns the remainder of two bigints.
+   *
+   * @param dividend - The bigint to divide.
+   * @param divisor - The bigint to divide with.
+   *
+   * @returns The remainder of the two bigints.
+   */
+  const modulo = (dividend, divisor) => {
+    return dividend % divisor;
+  };
+
+  /**
+   * Returns the product of two bigints.
+   *
+   * @param multiplicand - The bigint to multiply.
+   * @param multiplier - The bigint to multiply with.
+   *
+   * @returns The product of the two bigints.
+   */
+  const multiply = (multiplicand, multiplier) => {
+    return multiplicand * multiplier;
+  };
+
+  /**
+   * Returns an bigint to the power of an exponent.
+   *
+   * @param base - The base bigint.
+   * @param exponent - The exponent to raise the base to.
+   *
+   * @returns The base to the power of the exponent.
+   */
+  const power = (base, exponent) => {
+    return base ** exponent;
+  };
+
+  /**
+   * Returns the difference between two bigints.
+   *
+   * @param minuend - The bigint to subtract from.
+   * @param subtrahend - The bigint to subtract.
+   *
+   * @returns The difference of the two bigints.
+   */
+  const subtract = (minuend, subtrahend) => {
+    return minuend - subtrahend;
+  };
+
+  /**
+   * Return zero as a bigint.
+   *
+   * @returns Zero as a bigint.
+   */
+  function zero() {
+    return 0n;
+  }
+
+  const calculator = {
+    add,
+    compare,
+    decrement,
+    increment,
+    integerDivide,
+    modulo,
+    multiply,
+    power,
+    subtract,
+    zero
+  };
+
+  exports.add = add;
+  exports.calculator = calculator;
+  exports.compare = compare;
+  exports.decrement = decrement;
+  exports.increment = increment;
+  exports.integerDivide = integerDivide;
+  exports.modulo = modulo;
+  exports.multiply = multiply;
+  exports.power = power;
+  exports.subtract = subtract;
+  exports.zero = zero;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
+//# sourceMappingURL=index.development.js.map

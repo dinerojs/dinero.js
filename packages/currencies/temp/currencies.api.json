@@ -1,0 +1,4865 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.33.5",
+    "schemaVersion": 1010,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      },
+      "reportUnsupportedHtmlElements": false
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "@dinero.js/currencies!",
+  "docComment": "",
+  "name": "@dinero.js/currencies",
+  "preserveMemberOrder": false,
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@dinero.js/currencies!",
+      "name": "",
+      "preserveMemberOrder": false,
+      "members": [
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!AED:var",
+          "docComment": "/**\n * United Arab Emirates dirham.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "AED: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/aed.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "AED",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!AFN:var",
+          "docComment": "/**\n * Afghan afghani.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "AFN: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/afn.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "AFN",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!ALL:var",
+          "docComment": "/**\n * Albanian lek.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "ALL: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/all.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "ALL",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!AMD:var",
+          "docComment": "/**\n * Armenian dram.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "AMD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/amd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "AMD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!ANG:var",
+          "docComment": "/**\n * Netherlands Antillean guilder.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "ANG: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/ang.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "ANG",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!AOA:var",
+          "docComment": "/**\n * Angolan kwanza.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "AOA: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/aoa.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "AOA",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!ARS:var",
+          "docComment": "/**\n * Argentine peso.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "ARS: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/ars.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "ARS",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!AUD:var",
+          "docComment": "/**\n * Australian dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "AUD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/aud.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "AUD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!AWG:var",
+          "docComment": "/**\n * Aruban florin.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "AWG: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/awg.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "AWG",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!AZN:var",
+          "docComment": "/**\n * Azerbaijani manat.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "AZN: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/azn.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "AZN",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BAM:var",
+          "docComment": "/**\n * Bosnia and Herzegovina convertible mark.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BAM: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/bam.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BAM",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BBD:var",
+          "docComment": "/**\n * Barbados dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BBD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/bbd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BBD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BDT:var",
+          "docComment": "/**\n * Bangladeshi taka.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BDT: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/bdt.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BDT",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BGN:var",
+          "docComment": "/**\n * Bulgarian lev.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BGN: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/bgn.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BGN",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BHD:var",
+          "docComment": "/**\n * Bahraini dinar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BHD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/bhd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BHD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BIF:var",
+          "docComment": "/**\n * Burundian franc.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BIF: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/bif.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BIF",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BMD:var",
+          "docComment": "/**\n * Bermudian dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BMD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/bmd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BMD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BND:var",
+          "docComment": "/**\n * Brunei dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BND: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/bnd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BND",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BOB:var",
+          "docComment": "/**\n * Bolivian boliviano.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BOB: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/bob.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BOB",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BOV:var",
+          "docComment": "/**\n * Bolivian Mvdol.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BOV: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/bov.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BOV",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BRL:var",
+          "docComment": "/**\n * Brazilian real.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BRL: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/brl.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BRL",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BSD:var",
+          "docComment": "/**\n * Bahamian dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BSD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/bsd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BSD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BTN:var",
+          "docComment": "/**\n * Bhutanese ngultrum.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BTN: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/btn.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BTN",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BWP:var",
+          "docComment": "/**\n * Botswana pula.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BWP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/bwp.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BWP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BYN:var",
+          "docComment": "/**\n * Belarusian ruble.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BYN: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/byn.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BYN",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!BZD:var",
+          "docComment": "/**\n * Belize dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "BZD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/bzd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "BZD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!CAD:var",
+          "docComment": "/**\n * Canadian dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CAD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/cad.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CAD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!CDF:var",
+          "docComment": "/**\n * Congolese franc.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CDF: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/cdf.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CDF",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!CHE:var",
+          "docComment": "/**\n * WIR Euro.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CHE: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/che.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CHE",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!CHF:var",
+          "docComment": "/**\n * Swiss franc.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CHF: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/chf.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CHF",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!CHW:var",
+          "docComment": "/**\n * WIR Franc.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CHW: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/chw.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CHW",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!CLF:var",
+          "docComment": "/**\n * Unidad de Fomento.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CLF: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/clf.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CLF",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!CLP:var",
+          "docComment": "/**\n * Chilean peso.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CLP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/clp.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CLP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!CNY:var",
+          "docComment": "/**\n * Renminbi (Chinese) yuan.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CNY: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/cny.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CNY",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!COP:var",
+          "docComment": "/**\n * Colombian peso.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "COP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/cop.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "COP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!COU:var",
+          "docComment": "/**\n * Unidad de Valor Real.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "COU: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/cou.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "COU",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!CRC:var",
+          "docComment": "/**\n * Costa Rican colón.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CRC: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/crc.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CRC",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!CUC:var",
+          "docComment": "/**\n * Cuban convertible peso.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CUC: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/cuc.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CUC",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!CUP:var",
+          "docComment": "/**\n * Cuban peso.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CUP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/cup.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CUP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@dinero.js/currencies!Currency:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type Currency<TAmount> = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    readonly code: string;\n    readonly base: TAmount | readonly TAmount[];\n    readonly exponent: TAmount;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/types/Currency.d.ts",
+          "releaseTag": "Public",
+          "name": "Currency",
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!CVE:var",
+          "docComment": "/**\n * Cape Verdean escudo.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CVE: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/cve.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CVE",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!CZK:var",
+          "docComment": "/**\n * Czech koruna.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CZK: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/czk.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CZK",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!DJF:var",
+          "docComment": "/**\n * Djiboutian franc.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "DJF: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/djf.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "DJF",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!DKK:var",
+          "docComment": "/**\n * Danish krone.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "DKK: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/dkk.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "DKK",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!DOP:var",
+          "docComment": "/**\n * Dominican peso.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "DOP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/dop.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "DOP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!DZD:var",
+          "docComment": "/**\n * Algerian dinar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "DZD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/dzd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "DZD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!EGP:var",
+          "docComment": "/**\n * Egyptian pound.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "EGP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/egp.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "EGP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!ERN:var",
+          "docComment": "/**\n * Eritrean nakfa.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "ERN: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/ern.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "ERN",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!ETB:var",
+          "docComment": "/**\n * Ethiopian birr.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "ETB: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/etb.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "ETB",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!EUR:var",
+          "docComment": "/**\n * Euro.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "EUR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/eur.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "EUR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!FJD:var",
+          "docComment": "/**\n * Fiji dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "FJD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/fjd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "FJD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!FKP:var",
+          "docComment": "/**\n * Falkland Islands pound.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "FKP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/fkp.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "FKP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!GBP:var",
+          "docComment": "/**\n * Pound sterling.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "GBP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/gbp.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "GBP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!GEL:var",
+          "docComment": "/**\n * Georgian lari.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "GEL: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/gel.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "GEL",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!GHS:var",
+          "docComment": "/**\n * Ghanaian cedi.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "GHS: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/ghs.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "GHS",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!GIP:var",
+          "docComment": "/**\n * Gibraltar pound.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "GIP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/gip.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "GIP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!GMD:var",
+          "docComment": "/**\n * Gambian dalasi.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "GMD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/gmd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "GMD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!GNF:var",
+          "docComment": "/**\n * Guinean franc.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "GNF: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/gnf.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "GNF",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!GTQ:var",
+          "docComment": "/**\n * Guatemalan quetzal.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "GTQ: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/gtq.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "GTQ",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!GYD:var",
+          "docComment": "/**\n * Guyanese dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "GYD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/gyd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "GYD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!HKD:var",
+          "docComment": "/**\n * Hong Kong dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "HKD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/hkd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "HKD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!HNL:var",
+          "docComment": "/**\n * Honduran lempira.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "HNL: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/hnl.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "HNL",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!HRK:var",
+          "docComment": "/**\n * Croatian kuna.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "HRK: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/hrk.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "HRK",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!HTG:var",
+          "docComment": "/**\n * Haitian gourde.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "HTG: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/htg.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "HTG",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!HUF:var",
+          "docComment": "/**\n * Hungarian forint.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "HUF: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/huf.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "HUF",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!IDR:var",
+          "docComment": "/**\n * Indonesian rupiah.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "IDR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/idr.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "IDR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!ILS:var",
+          "docComment": "/**\n * Israeli new shekel.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "ILS: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/ils.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "ILS",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!INR:var",
+          "docComment": "/**\n * Indian rupee.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "INR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/inr.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "INR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!IQD:var",
+          "docComment": "/**\n * Iraqi dinar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "IQD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/iqd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "IQD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!IRR:var",
+          "docComment": "/**\n * Iranian rial.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "IRR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/irr.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "IRR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!ISK:var",
+          "docComment": "/**\n * Icelandic króna.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "ISK: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/isk.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "ISK",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!JMD:var",
+          "docComment": "/**\n * Jamaican dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "JMD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/jmd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "JMD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!JOD:var",
+          "docComment": "/**\n * Jordanian dinar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "JOD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/jod.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "JOD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!JPY:var",
+          "docComment": "/**\n * Japanese yen.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "JPY: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/jpy.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "JPY",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!KES:var",
+          "docComment": "/**\n * Kenyan shilling.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "KES: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/kes.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "KES",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!KGS:var",
+          "docComment": "/**\n * Kyrgyzstani som.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "KGS: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/kgs.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "KGS",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!KHR:var",
+          "docComment": "/**\n * Cambodian riel.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "KHR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/khr.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "KHR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!KMF:var",
+          "docComment": "/**\n * Comoro franc.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "KMF: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/kmf.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "KMF",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!KPW:var",
+          "docComment": "/**\n * North Korean won.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "KPW: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/kpw.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "KPW",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!KRW:var",
+          "docComment": "/**\n * South Korean won.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "KRW: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/krw.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "KRW",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!KWD:var",
+          "docComment": "/**\n * Kuwaiti dinar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "KWD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/kwd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "KWD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!KYD:var",
+          "docComment": "/**\n * Cayman Islands dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "KYD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/kyd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "KYD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!KZT:var",
+          "docComment": "/**\n * Kazakhstani tenge.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "KZT: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/kzt.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "KZT",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!LAK:var",
+          "docComment": "/**\n * Lao kip.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "LAK: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/lak.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "LAK",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!LBP:var",
+          "docComment": "/**\n * Lebanese pound.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "LBP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/lbp.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "LBP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!LKR:var",
+          "docComment": "/**\n * Sri Lankan rupee.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "LKR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/lkr.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "LKR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!LRD:var",
+          "docComment": "/**\n * Liberian dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "LRD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/lrd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "LRD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!LSL:var",
+          "docComment": "/**\n * Lesotho loti.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "LSL: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/lsl.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "LSL",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!LYD:var",
+          "docComment": "/**\n * Libyan dinar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "LYD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/lyd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "LYD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MAD:var",
+          "docComment": "/**\n * Moroccan dirham.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MAD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/mad.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MAD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MDL:var",
+          "docComment": "/**\n * Moldovan leu.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MDL: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/mdl.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MDL",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MGA:var",
+          "docComment": "/**\n * Malagasy ariary.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MGA: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/mga.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MGA",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MKD:var",
+          "docComment": "/**\n * Macedonian denar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MKD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/mkd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MKD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MMK:var",
+          "docComment": "/**\n * Myanmar kyat.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MMK: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/mmk.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MMK",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MNT:var",
+          "docComment": "/**\n * Mongolian tögrög.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MNT: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/mnt.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MNT",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MOP:var",
+          "docComment": "/**\n * Macanese pataca.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MOP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/mop.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MOP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MRU:var",
+          "docComment": "/**\n * Mauritanian ouguiya.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MRU: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/mru.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MRU",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MUR:var",
+          "docComment": "/**\n * Mauritian rupee.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MUR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/mur.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MUR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MVR:var",
+          "docComment": "/**\n * Maldivian rufiyaa.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MVR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/mvr.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MVR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MWK:var",
+          "docComment": "/**\n * Malawian kwacha.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MWK: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/mwk.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MWK",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MXN:var",
+          "docComment": "/**\n * Mexican peso.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MXN: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/mxn.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MXN",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MXV:var",
+          "docComment": "/**\n * Mexican Unidad de Inversion.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MXV: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/mxv.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MXV",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MYR:var",
+          "docComment": "/**\n * Malaysian ringgit.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MYR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/myr.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MYR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!MZN:var",
+          "docComment": "/**\n * Mozambican metical.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "MZN: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/mzn.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "MZN",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!NAD:var",
+          "docComment": "/**\n * Namibian dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "NAD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/nad.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "NAD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!NGN:var",
+          "docComment": "/**\n * Nigerian naira.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "NGN: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/ngn.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "NGN",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!NIO:var",
+          "docComment": "/**\n * Nicaraguan córdoba.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "NIO: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/nio.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "NIO",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!NOK:var",
+          "docComment": "/**\n * Norwegian krone.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "NOK: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/nok.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "NOK",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!NPR:var",
+          "docComment": "/**\n * Nepalese rupee.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "NPR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/npr.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "NPR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!NZD:var",
+          "docComment": "/**\n * New Zealand dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "NZD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/nzd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "NZD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!OMR:var",
+          "docComment": "/**\n * Omani rial.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "OMR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/omr.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "OMR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!PAB:var",
+          "docComment": "/**\n * Panamanian balboa.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "PAB: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/pab.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "PAB",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!PEN:var",
+          "docComment": "/**\n * Peruvian sol.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "PEN: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/pen.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "PEN",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!PGK:var",
+          "docComment": "/**\n * Papua New Guinean kina.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "PGK: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/pgk.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "PGK",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!PHP:var",
+          "docComment": "/**\n * Philippine peso.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "PHP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/php.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "PHP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!PKR:var",
+          "docComment": "/**\n * Pakistani rupee.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "PKR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/pkr.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "PKR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!PLN:var",
+          "docComment": "/**\n * Polish złoty.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "PLN: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/pln.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "PLN",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!PYG:var",
+          "docComment": "/**\n * Paraguayan guaraní.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "PYG: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/pyg.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "PYG",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!QAR:var",
+          "docComment": "/**\n * Qatari riyal.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "QAR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/qar.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "QAR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!RON:var",
+          "docComment": "/**\n * Romanian leu.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "RON: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/ron.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "RON",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!RSD:var",
+          "docComment": "/**\n * Serbian dinar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "RSD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/rsd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "RSD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!RUB:var",
+          "docComment": "/**\n * Russian ruble.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "RUB: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/rub.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "RUB",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!RWF:var",
+          "docComment": "/**\n * Rwandan franc.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "RWF: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/rwf.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "RWF",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!SAR:var",
+          "docComment": "/**\n * Saudi riyal.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SAR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/sar.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SAR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!SBD:var",
+          "docComment": "/**\n * Solomon Islands dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SBD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/sbd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SBD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!SCR:var",
+          "docComment": "/**\n * Seychelles rupee.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SCR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/scr.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SCR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!SDG:var",
+          "docComment": "/**\n * Sudanese pound.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SDG: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/sdg.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SDG",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!SEK:var",
+          "docComment": "/**\n * Swedish krona.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SEK: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/sek.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SEK",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!SGD:var",
+          "docComment": "/**\n * Singapore dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SGD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/sgd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SGD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!SHP:var",
+          "docComment": "/**\n * Saint Helena pound.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SHP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/shp.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SHP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!SLL:var",
+          "docComment": "/**\n * Sierra Leonean leone.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SLL: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/sll.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SLL",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!SOS:var",
+          "docComment": "/**\n * Somali shilling.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SOS: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/sos.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SOS",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!SRD:var",
+          "docComment": "/**\n * Surinamese dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SRD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/srd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SRD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!SSP:var",
+          "docComment": "/**\n * South Sudanese pound.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SSP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/ssp.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SSP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!STN:var",
+          "docComment": "/**\n * São Tomé and Príncipe dobra.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "STN: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/stn.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "STN",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!SVC:var",
+          "docComment": "/**\n * Salvadoran colón.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SVC: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/svc.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SVC",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!SYP:var",
+          "docComment": "/**\n * Syrian pound.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SYP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/syp.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SYP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!SZL:var",
+          "docComment": "/**\n * Swazi lilangeni.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "SZL: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/szl.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "SZL",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!THB:var",
+          "docComment": "/**\n * Thai baht.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "THB: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/thb.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "THB",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!TJS:var",
+          "docComment": "/**\n * Tajikistani somoni.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "TJS: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/tjs.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "TJS",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!TMT:var",
+          "docComment": "/**\n * Turkmenistan manat.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "TMT: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/tmt.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "TMT",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!TND:var",
+          "docComment": "/**\n * Tunisian dinar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "TND: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/tnd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "TND",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!TOP:var",
+          "docComment": "/**\n * Tongan paʻanga.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "TOP: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/top.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "TOP",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!TRY:var",
+          "docComment": "/**\n * Turkish lira.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "TRY: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/try.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "TRY",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!TTD:var",
+          "docComment": "/**\n * Trinidad and Tobago dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "TTD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/ttd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "TTD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!TWD:var",
+          "docComment": "/**\n * New Taiwan dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "TWD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/twd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "TWD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!TZS:var",
+          "docComment": "/**\n * Tanzanian shilling.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "TZS: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/tzs.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "TZS",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!UAH:var",
+          "docComment": "/**\n * Ukrainian hryvnia.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "UAH: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/uah.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "UAH",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!UGX:var",
+          "docComment": "/**\n * Ugandan shilling.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "UGX: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/ugx.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "UGX",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!USD:var",
+          "docComment": "/**\n * United States dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "USD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/usd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "USD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!USN:var",
+          "docComment": "/**\n * United States dollar (next day).\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "USN: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/usn.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "USN",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!UYI:var",
+          "docComment": "/**\n * Uruguay Peso en Unidades Indexadas.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "UYI: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/uyi.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "UYI",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!UYU:var",
+          "docComment": "/**\n * Uruguayan peso.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "UYU: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/uyu.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "UYU",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!UYW:var",
+          "docComment": "/**\n * Unidad previsional.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "UYW: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/uyw.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "UYW",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!UZS:var",
+          "docComment": "/**\n * Uzbekistani soʻm.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "UZS: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/uzs.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "UZS",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!VES:var",
+          "docComment": "/**\n * Venezuelan bolívar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "VES: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/ves.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "VES",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!VND:var",
+          "docComment": "/**\n * Vietnamese đồng.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "VND: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/vnd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "VND",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!VUV:var",
+          "docComment": "/**\n * Vanuatu vatu.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "VUV: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/vuv.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "VUV",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!WST:var",
+          "docComment": "/**\n * Samoan tālā.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "WST: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/wst.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "WST",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!XAF:var",
+          "docComment": "/**\n * Central African CFA franc.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "XAF: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/xaf.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "XAF",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!XCD:var",
+          "docComment": "/**\n * East Caribbean dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "XCD: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/xcd.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "XCD",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!XOF:var",
+          "docComment": "/**\n * West African CFA franc.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "XOF: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/xof.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "XOF",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!XPF:var",
+          "docComment": "/**\n * CFP franc.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "XPF: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/xpf.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "XPF",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!YER:var",
+          "docComment": "/**\n * Yemeni rial.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "YER: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/yer.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "YER",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!ZAR:var",
+          "docComment": "/**\n * South African rand.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "ZAR: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/zar.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "ZAR",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!ZMW:var",
+          "docComment": "/**\n * Zambian kwacha.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "ZMW: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/zmw.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "ZMW",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@dinero.js/currencies!ZWL:var",
+          "docComment": "/**\n * Zimbabwean dollar.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "ZWL: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Currency",
+              "canonicalReference": "@dinero.js/currencies!Currency:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/iso4217/amendments/168/zwl.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "ZWL",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        }
+      ]
+    }
+  ]
+}

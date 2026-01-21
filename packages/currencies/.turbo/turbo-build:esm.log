@@ -1,0 +1,2 @@
+$ babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'
+Successfully compiled 172 files with Babel (723ms).

@@ -1,0 +1,2 @@
+$ node ../../scripts/lint.mjs --ext .js,.ts .
+eslint --ignore-pattern dist/ --ignore-pattern lib/ --ext .js,.ts .

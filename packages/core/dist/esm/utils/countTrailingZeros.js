@@ -1,0 +1,17 @@
+import { equal } from './equal';
+export function countTrailingZeros(calculator) {
+  var equalFn = equal(calculator);
+  return function (input, base) {
+    var zero = calculator.zero();
+    if (equalFn(zero, input)) {
+      return calculator.zero();
+    }
+    var i = zero;
+    var temp = input;
+    while (equalFn(calculator.modulo(temp, base), zero)) {
+      temp = calculator.integerDivide(temp, base);
+      i = calculator.increment(i);
+    }
+    return i;
+  };
+}

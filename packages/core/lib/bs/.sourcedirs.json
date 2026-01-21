@@ -1,0 +1,1 @@
+{"cmt_scan":[{"also_scan_build_root":true,"build_root":"lib/bs","scan_dirs":["src/api","src/checks","src/divide","src/helpers","src/types","src/utils"]}],"dirs":["src/api","src/checks","src/divide","src/helpers","src/types","src/utils"],"generated":[],"pkgs":[],"version":2}

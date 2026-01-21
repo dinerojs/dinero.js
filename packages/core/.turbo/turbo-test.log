@@ -1,0 +1,409 @@
+$ node ../../scripts/test.mjs --projects=./packages/core
+jest --projects=./packages/core
+FAIL core packages/core/src/utils/__tests__/isHalf.test.ts
+  ● Test suite failed to run
+
+    [BABEL] /Users/nathantranquilla/git/dinero.js/packages/core/src/api/add.ts: Requires Babel "^7.22.0 || ^8.0.0-0", but was loaded with "7.20.2". If you are sure you have a compatible version of @babel/core, it is likely that something in your build process is loading the wrong version. Inspect the stack trace of this error to look for the first entry that doesn't mention "@babel/core" or "babel-core" to see what is calling Babel. (While processing: "/Users/nathantranquilla/git/dinero.js/node_modules/@babel/plugin-syntax-import-attributes/lib/index.js")
+
+    > 1 | export * from './add';
+        | ^
+      2 | export * from './allocate';
+      3 | export * from './compare';
+      4 | export * from './convert';
+
+      at Object.assertVersion (../../node_modules/@babel/core/src/config/helpers/config-api.ts:134:15)
+      at assertVersion (../../node_modules/@babel/plugin-syntax-import-attributes/src/index.ts:8:7)
+      at builder (../../node_modules/@babel/helper-plugin-utils/src/index.ts:64:12)
+      at apply (../../node_modules/@babel/core/src/gensync-utils/async.ts:31:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at ../../node_modules/gensync/index.js:210:24
+      at factory (../../node_modules/@babel/core/src/config/full.ts:265:23)
+      at Function.<anonymous> (../../node_modules/@babel/core/src/gensync-utils/async.ts:10:3)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at Function.sync (../../node_modules/gensync/index.js:89:14)
+      at sync (../../node_modules/@babel/core/src/gensync-utils/async.ts:83:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at onFirstPause (../../node_modules/gensync/index.js:210:24)
+      at cachedFunction (../../node_modules/@babel/core/src/config/caching.ts:131:34)
+          at cachedFunction.next (<anonymous>)
+      at pluginDescriptorLoader (../../node_modules/@babel/core/src/config/full.ts:404:12)
+          at loadPluginDescriptor.next (<anonymous>)
+      at loadPluginDescriptor (../../node_modules/@babel/core/src/config/full.ts:185:33)
+          at loadPluginDescriptors.next (<anonymous>)
+      at fn (../../node_modules/@babel/core/src/config/full.ts:218:21)
+      at loadFullConfig (../../node_modules/@babel/core/src/config/full.ts:199:5)
+          at loadFullConfig.next (<anonymous>)
+      at transform (../../node_modules/@babel/core/src/transform.ts:26:58)
+          at transform.next (<anonymous>)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at sync (../../node_modules/gensync/index.js:89:14)
+      at fn (../../node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:97:14)
+      at transformSync (../../node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (../../node_modules/@jest/transform/build/ScriptTransformer.js:619:31)
+      at ScriptTransformer._transformAndBuildScript (../../node_modules/@jest/transform/build/ScriptTransformer.js:765:40)
+      at ScriptTransformer.transform (../../node_modules/@jest/transform/build/ScriptTransformer.js:822:19)
+      at Object.require (src/api/index.ts:1:1)
+      at Object.require (src/index.ts:1:1)
+
+FAIL core packages/core/src/utils/__tests__/sign.test.ts
+  ● Test suite failed to run
+
+    [BABEL] /Users/nathantranquilla/git/dinero.js/packages/core/src/api/add.ts: Requires Babel "^7.22.0 || ^8.0.0-0", but was loaded with "7.20.2". If you are sure you have a compatible version of @babel/core, it is likely that something in your build process is loading the wrong version. Inspect the stack trace of this error to look for the first entry that doesn't mention "@babel/core" or "babel-core" to see what is calling Babel. (While processing: "/Users/nathantranquilla/git/dinero.js/node_modules/@babel/plugin-syntax-import-attributes/lib/index.js")
+
+    > 1 | export * from './add';
+        | ^
+      2 | export * from './allocate';
+      3 | export * from './compare';
+      4 | export * from './convert';
+
+      at Object.assertVersion (../../node_modules/@babel/core/src/config/helpers/config-api.ts:134:15)
+      at assertVersion (../../node_modules/@babel/plugin-syntax-import-attributes/src/index.ts:8:7)
+      at builder (../../node_modules/@babel/helper-plugin-utils/src/index.ts:64:12)
+      at apply (../../node_modules/@babel/core/src/gensync-utils/async.ts:31:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at ../../node_modules/gensync/index.js:210:24
+      at factory (../../node_modules/@babel/core/src/config/full.ts:265:23)
+      at Function.<anonymous> (../../node_modules/@babel/core/src/gensync-utils/async.ts:10:3)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at Function.sync (../../node_modules/gensync/index.js:89:14)
+      at sync (../../node_modules/@babel/core/src/gensync-utils/async.ts:83:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at onFirstPause (../../node_modules/gensync/index.js:210:24)
+      at cachedFunction (../../node_modules/@babel/core/src/config/caching.ts:131:34)
+          at cachedFunction.next (<anonymous>)
+      at pluginDescriptorLoader (../../node_modules/@babel/core/src/config/full.ts:404:12)
+          at loadPluginDescriptor.next (<anonymous>)
+      at loadPluginDescriptor (../../node_modules/@babel/core/src/config/full.ts:185:33)
+          at loadPluginDescriptors.next (<anonymous>)
+      at fn (../../node_modules/@babel/core/src/config/full.ts:218:21)
+      at loadFullConfig (../../node_modules/@babel/core/src/config/full.ts:199:5)
+          at loadFullConfig.next (<anonymous>)
+      at transform (../../node_modules/@babel/core/src/transform.ts:26:58)
+          at transform.next (<anonymous>)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at sync (../../node_modules/gensync/index.js:89:14)
+      at fn (../../node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:97:14)
+      at transformSync (../../node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (../../node_modules/@jest/transform/build/ScriptTransformer.js:619:31)
+      at ScriptTransformer._transformAndBuildScript (../../node_modules/@jest/transform/build/ScriptTransformer.js:765:40)
+      at ScriptTransformer.transform (../../node_modules/@jest/transform/build/ScriptTransformer.js:822:19)
+      at Object.require (src/api/index.ts:1:1)
+      at Object.require (src/index.ts:1:1)
+
+FAIL core packages/core/src/utils/__tests__/minimum.test.ts
+  ● Test suite failed to run
+
+    [BABEL] /Users/nathantranquilla/git/dinero.js/packages/core/src/api/add.ts: Requires Babel "^7.22.0 || ^8.0.0-0", but was loaded with "7.20.2". If you are sure you have a compatible version of @babel/core, it is likely that something in your build process is loading the wrong version. Inspect the stack trace of this error to look for the first entry that doesn't mention "@babel/core" or "babel-core" to see what is calling Babel. (While processing: "/Users/nathantranquilla/git/dinero.js/node_modules/@babel/plugin-syntax-import-attributes/lib/index.js")
+
+    > 1 | export * from './add';
+        | ^
+      2 | export * from './allocate';
+      3 | export * from './compare';
+      4 | export * from './convert';
+
+      at Object.assertVersion (../../node_modules/@babel/core/src/config/helpers/config-api.ts:134:15)
+      at assertVersion (../../node_modules/@babel/plugin-syntax-import-attributes/src/index.ts:8:7)
+      at builder (../../node_modules/@babel/helper-plugin-utils/src/index.ts:64:12)
+      at apply (../../node_modules/@babel/core/src/gensync-utils/async.ts:31:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at ../../node_modules/gensync/index.js:210:24
+      at factory (../../node_modules/@babel/core/src/config/full.ts:265:23)
+      at Function.<anonymous> (../../node_modules/@babel/core/src/gensync-utils/async.ts:10:3)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at Function.sync (../../node_modules/gensync/index.js:89:14)
+      at sync (../../node_modules/@babel/core/src/gensync-utils/async.ts:83:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at onFirstPause (../../node_modules/gensync/index.js:210:24)
+      at cachedFunction (../../node_modules/@babel/core/src/config/caching.ts:131:34)
+          at cachedFunction.next (<anonymous>)
+      at pluginDescriptorLoader (../../node_modules/@babel/core/src/config/full.ts:404:12)
+          at loadPluginDescriptor.next (<anonymous>)
+      at loadPluginDescriptor (../../node_modules/@babel/core/src/config/full.ts:185:33)
+          at loadPluginDescriptors.next (<anonymous>)
+      at fn (../../node_modules/@babel/core/src/config/full.ts:218:21)
+      at loadFullConfig (../../node_modules/@babel/core/src/config/full.ts:199:5)
+          at loadFullConfig.next (<anonymous>)
+      at transform (../../node_modules/@babel/core/src/transform.ts:26:58)
+          at transform.next (<anonymous>)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at sync (../../node_modules/gensync/index.js:89:14)
+      at fn (../../node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:97:14)
+      at transformSync (../../node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (../../node_modules/@jest/transform/build/ScriptTransformer.js:619:31)
+      at ScriptTransformer._transformAndBuildScript (../../node_modules/@jest/transform/build/ScriptTransformer.js:765:40)
+      at ScriptTransformer.transform (../../node_modules/@jest/transform/build/ScriptTransformer.js:822:19)
+      at Object.require (src/api/index.ts:1:1)
+      at Object.require (src/index.ts:1:1)
+
+FAIL core packages/core/src/utils/__tests__/maximum.test.ts
+  ● Test suite failed to run
+
+    [BABEL] /Users/nathantranquilla/git/dinero.js/packages/core/src/api/add.ts: Requires Babel "^7.22.0 || ^8.0.0-0", but was loaded with "7.20.2". If you are sure you have a compatible version of @babel/core, it is likely that something in your build process is loading the wrong version. Inspect the stack trace of this error to look for the first entry that doesn't mention "@babel/core" or "babel-core" to see what is calling Babel. (While processing: "/Users/nathantranquilla/git/dinero.js/node_modules/@babel/plugin-syntax-import-attributes/lib/index.js")
+
+    > 1 | export * from './add';
+        | ^
+      2 | export * from './allocate';
+      3 | export * from './compare';
+      4 | export * from './convert';
+
+      at Object.assertVersion (../../node_modules/@babel/core/src/config/helpers/config-api.ts:134:15)
+      at assertVersion (../../node_modules/@babel/plugin-syntax-import-attributes/src/index.ts:8:7)
+      at builder (../../node_modules/@babel/helper-plugin-utils/src/index.ts:64:12)
+      at apply (../../node_modules/@babel/core/src/gensync-utils/async.ts:31:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at ../../node_modules/gensync/index.js:210:24
+      at factory (../../node_modules/@babel/core/src/config/full.ts:265:23)
+      at Function.<anonymous> (../../node_modules/@babel/core/src/gensync-utils/async.ts:10:3)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at Function.sync (../../node_modules/gensync/index.js:89:14)
+      at sync (../../node_modules/@babel/core/src/gensync-utils/async.ts:83:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at onFirstPause (../../node_modules/gensync/index.js:210:24)
+      at cachedFunction (../../node_modules/@babel/core/src/config/caching.ts:131:34)
+          at cachedFunction.next (<anonymous>)
+      at pluginDescriptorLoader (../../node_modules/@babel/core/src/config/full.ts:404:12)
+          at loadPluginDescriptor.next (<anonymous>)
+      at loadPluginDescriptor (../../node_modules/@babel/core/src/config/full.ts:185:33)
+          at loadPluginDescriptors.next (<anonymous>)
+      at fn (../../node_modules/@babel/core/src/config/full.ts:218:21)
+      at loadFullConfig (../../node_modules/@babel/core/src/config/full.ts:199:5)
+          at loadFullConfig.next (<anonymous>)
+      at transform (../../node_modules/@babel/core/src/transform.ts:26:58)
+          at transform.next (<anonymous>)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at sync (../../node_modules/gensync/index.js:89:14)
+      at fn (../../node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:97:14)
+      at transformSync (../../node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (../../node_modules/@jest/transform/build/ScriptTransformer.js:619:31)
+      at ScriptTransformer._transformAndBuildScript (../../node_modules/@jest/transform/build/ScriptTransformer.js:765:40)
+      at ScriptTransformer.transform (../../node_modules/@jest/transform/build/ScriptTransformer.js:822:19)
+      at Object.require (src/api/index.ts:1:1)
+      at Object.require (src/index.ts:1:1)
+
+FAIL core packages/core/src/utils/__tests__/lessThanOrEqual.test.ts
+  ● Test suite failed to run
+
+    [BABEL] /Users/nathantranquilla/git/dinero.js/packages/core/src/api/add.ts: Requires Babel "^7.22.0 || ^8.0.0-0", but was loaded with "7.20.2". If you are sure you have a compatible version of @babel/core, it is likely that something in your build process is loading the wrong version. Inspect the stack trace of this error to look for the first entry that doesn't mention "@babel/core" or "babel-core" to see what is calling Babel. (While processing: "/Users/nathantranquilla/git/dinero.js/node_modules/@babel/plugin-syntax-import-attributes/lib/index.js")
+
+    > 1 | export * from './add';
+        | ^
+      2 | export * from './allocate';
+      3 | export * from './compare';
+      4 | export * from './convert';
+
+      at Object.assertVersion (../../node_modules/@babel/core/src/config/helpers/config-api.ts:134:15)
+      at assertVersion (../../node_modules/@babel/plugin-syntax-import-attributes/src/index.ts:8:7)
+      at builder (../../node_modules/@babel/helper-plugin-utils/src/index.ts:64:12)
+      at apply (../../node_modules/@babel/core/src/gensync-utils/async.ts:31:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at ../../node_modules/gensync/index.js:210:24
+      at factory (../../node_modules/@babel/core/src/config/full.ts:265:23)
+      at Function.<anonymous> (../../node_modules/@babel/core/src/gensync-utils/async.ts:10:3)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at Function.sync (../../node_modules/gensync/index.js:89:14)
+      at sync (../../node_modules/@babel/core/src/gensync-utils/async.ts:83:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at onFirstPause (../../node_modules/gensync/index.js:210:24)
+      at cachedFunction (../../node_modules/@babel/core/src/config/caching.ts:131:34)
+          at cachedFunction.next (<anonymous>)
+      at pluginDescriptorLoader (../../node_modules/@babel/core/src/config/full.ts:404:12)
+          at loadPluginDescriptor.next (<anonymous>)
+      at loadPluginDescriptor (../../node_modules/@babel/core/src/config/full.ts:185:33)
+          at loadPluginDescriptors.next (<anonymous>)
+      at fn (../../node_modules/@babel/core/src/config/full.ts:218:21)
+      at loadFullConfig (../../node_modules/@babel/core/src/config/full.ts:199:5)
+          at loadFullConfig.next (<anonymous>)
+      at transform (../../node_modules/@babel/core/src/transform.ts:26:58)
+          at transform.next (<anonymous>)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at sync (../../node_modules/gensync/index.js:89:14)
+      at fn (../../node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:97:14)
+      at transformSync (../../node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (../../node_modules/@jest/transform/build/ScriptTransformer.js:619:31)
+      at ScriptTransformer._transformAndBuildScript (../../node_modules/@jest/transform/build/ScriptTransformer.js:765:40)
+      at ScriptTransformer.transform (../../node_modules/@jest/transform/build/ScriptTransformer.js:822:19)
+      at Object.require (src/api/index.ts:1:1)
+      at Object.require (src/index.ts:1:1)
+
+FAIL core packages/core/src/utils/__tests__/isEven.test.ts
+  ● Test suite failed to run
+
+    [BABEL] /Users/nathantranquilla/git/dinero.js/packages/core/src/api/add.ts: Requires Babel "^7.22.0 || ^8.0.0-0", but was loaded with "7.20.2". If you are sure you have a compatible version of @babel/core, it is likely that something in your build process is loading the wrong version. Inspect the stack trace of this error to look for the first entry that doesn't mention "@babel/core" or "babel-core" to see what is calling Babel. (While processing: "/Users/nathantranquilla/git/dinero.js/node_modules/@babel/plugin-syntax-import-attributes/lib/index.js")
+
+    > 1 | export * from './add';
+        | ^
+      2 | export * from './allocate';
+      3 | export * from './compare';
+      4 | export * from './convert';
+
+      at Object.assertVersion (../../node_modules/@babel/core/src/config/helpers/config-api.ts:134:15)
+      at assertVersion (../../node_modules/@babel/plugin-syntax-import-attributes/src/index.ts:8:7)
+      at builder (../../node_modules/@babel/helper-plugin-utils/src/index.ts:64:12)
+      at apply (../../node_modules/@babel/core/src/gensync-utils/async.ts:31:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at ../../node_modules/gensync/index.js:210:24
+      at factory (../../node_modules/@babel/core/src/config/full.ts:265:23)
+      at Function.<anonymous> (../../node_modules/@babel/core/src/gensync-utils/async.ts:10:3)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at Function.sync (../../node_modules/gensync/index.js:89:14)
+      at sync (../../node_modules/@babel/core/src/gensync-utils/async.ts:83:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at onFirstPause (../../node_modules/gensync/index.js:210:24)
+      at cachedFunction (../../node_modules/@babel/core/src/config/caching.ts:131:34)
+          at cachedFunction.next (<anonymous>)
+      at pluginDescriptorLoader (../../node_modules/@babel/core/src/config/full.ts:404:12)
+          at loadPluginDescriptor.next (<anonymous>)
+      at loadPluginDescriptor (../../node_modules/@babel/core/src/config/full.ts:185:33)
+          at loadPluginDescriptors.next (<anonymous>)
+      at fn (../../node_modules/@babel/core/src/config/full.ts:218:21)
+      at loadFullConfig (../../node_modules/@babel/core/src/config/full.ts:199:5)
+          at loadFullConfig.next (<anonymous>)
+      at transform (../../node_modules/@babel/core/src/transform.ts:26:58)
+          at transform.next (<anonymous>)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at sync (../../node_modules/gensync/index.js:89:14)
+      at fn (../../node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:97:14)
+      at transformSync (../../node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (../../node_modules/@jest/transform/build/ScriptTransformer.js:619:31)
+      at ScriptTransformer._transformAndBuildScript (../../node_modules/@jest/transform/build/ScriptTransformer.js:765:40)
+      at ScriptTransformer.transform (../../node_modules/@jest/transform/build/ScriptTransformer.js:822:19)
+      at Object.require (src/api/index.ts:1:1)
+      at Object.require (src/index.ts:1:1)
+
+FAIL core packages/core/src/utils/__tests__/lessThan.test.ts
+  ● Test suite failed to run
+
+    [BABEL] /Users/nathantranquilla/git/dinero.js/packages/core/src/api/add.ts: Requires Babel "^7.22.0 || ^8.0.0-0", but was loaded with "7.20.2". If you are sure you have a compatible version of @babel/core, it is likely that something in your build process is loading the wrong version. Inspect the stack trace of this error to look for the first entry that doesn't mention "@babel/core" or "babel-core" to see what is calling Babel. (While processing: "/Users/nathantranquilla/git/dinero.js/node_modules/@babel/plugin-syntax-import-attributes/lib/index.js")
+
+    > 1 | export * from './add';
+        | ^
+      2 | export * from './allocate';
+      3 | export * from './compare';
+      4 | export * from './convert';
+
+      at Object.assertVersion (../../node_modules/@babel/core/src/config/helpers/config-api.ts:134:15)
+      at assertVersion (../../node_modules/@babel/plugin-syntax-import-attributes/src/index.ts:8:7)
+      at builder (../../node_modules/@babel/helper-plugin-utils/src/index.ts:64:12)
+      at apply (../../node_modules/@babel/core/src/gensync-utils/async.ts:31:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at ../../node_modules/gensync/index.js:210:24
+      at factory (../../node_modules/@babel/core/src/config/full.ts:265:23)
+      at Function.<anonymous> (../../node_modules/@babel/core/src/gensync-utils/async.ts:10:3)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at Function.sync (../../node_modules/gensync/index.js:89:14)
+      at sync (../../node_modules/@babel/core/src/gensync-utils/async.ts:83:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at onFirstPause (../../node_modules/gensync/index.js:210:24)
+      at cachedFunction (../../node_modules/@babel/core/src/config/caching.ts:131:34)
+          at cachedFunction.next (<anonymous>)
+      at pluginDescriptorLoader (../../node_modules/@babel/core/src/config/full.ts:404:12)
+          at loadPluginDescriptor.next (<anonymous>)
+      at loadPluginDescriptor (../../node_modules/@babel/core/src/config/full.ts:185:33)
+          at loadPluginDescriptors.next (<anonymous>)
+      at fn (../../node_modules/@babel/core/src/config/full.ts:218:21)
+      at loadFullConfig (../../node_modules/@babel/core/src/config/full.ts:199:5)
+          at loadFullConfig.next (<anonymous>)
+      at transform (../../node_modules/@babel/core/src/transform.ts:26:58)
+          at transform.next (<anonymous>)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at sync (../../node_modules/gensync/index.js:89:14)
+      at fn (../../node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:97:14)
+      at transformSync (../../node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (../../node_modules/@jest/transform/build/ScriptTransformer.js:619:31)
+      at ScriptTransformer._transformAndBuildScript (../../node_modules/@jest/transform/build/ScriptTransformer.js:765:40)
+      at ScriptTransformer.transform (../../node_modules/@jest/transform/build/ScriptTransformer.js:822:19)
+      at Object.require (src/api/index.ts:1:1)
+      at Object.require (src/index.ts:1:1)
+
+PASS core packages/core/src/utils/__tests__/isScaledAmount.test.ts
+FAIL core packages/core/src/utils/__tests__/isArray.test.ts
+  ● Test suite failed to run
+
+    [BABEL] /Users/nathantranquilla/git/dinero.js/packages/core/src/types/Calculator.ts: Requires Babel "^7.22.0 || ^8.0.0-0", but was loaded with "7.20.2". If you are sure you have a compatible version of @babel/core, it is likely that something in your build process is loading the wrong version. Inspect the stack trace of this error to look for the first entry that doesn't mention "@babel/core" or "babel-core" to see what is calling Babel. (While processing: "/Users/nathantranquilla/git/dinero.js/node_modules/@babel/plugin-syntax-import-attributes/lib/index.js")
+
+      1 | export * from './BinaryOperation';
+    > 2 | export * from './Calculator';
+        | ^
+      3 | export * from './Dinero';
+      4 | export * from './DineroFactory';
+      5 | export * from './DineroOptions';
+
+      at Object.assertVersion (../../node_modules/@babel/core/src/config/helpers/config-api.ts:134:15)
+      at assertVersion (../../node_modules/@babel/plugin-syntax-import-attributes/src/index.ts:8:7)
+      at builder (../../node_modules/@babel/helper-plugin-utils/src/index.ts:64:12)
+      at apply (../../node_modules/@babel/core/src/gensync-utils/async.ts:31:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at ../../node_modules/gensync/index.js:210:24
+      at factory (../../node_modules/@babel/core/src/config/full.ts:265:23)
+      at Function.<anonymous> (../../node_modules/@babel/core/src/gensync-utils/async.ts:10:3)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at Function.sync (../../node_modules/gensync/index.js:89:14)
+      at sync (../../node_modules/@babel/core/src/gensync-utils/async.ts:83:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at onFirstPause (../../node_modules/gensync/index.js:210:24)
+      at cachedFunction (../../node_modules/@babel/core/src/config/caching.ts:131:34)
+          at cachedFunction.next (<anonymous>)
+      at pluginDescriptorLoader (../../node_modules/@babel/core/src/config/full.ts:404:12)
+          at loadPluginDescriptor.next (<anonymous>)
+      at loadPluginDescriptor (../../node_modules/@babel/core/src/config/full.ts:185:33)
+          at loadPluginDescriptors.next (<anonymous>)
+      at fn (../../node_modules/@babel/core/src/config/full.ts:218:21)
+      at loadFullConfig (../../node_modules/@babel/core/src/config/full.ts:199:5)
+          at loadFullConfig.next (<anonymous>)
+      at transform (../../node_modules/@babel/core/src/transform.ts:26:58)
+          at transform.next (<anonymous>)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at sync (../../node_modules/gensync/index.js:89:14)
+      at fn (../../node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:97:14)
+      at transformSync (../../node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (../../node_modules/@jest/transform/build/ScriptTransformer.js:619:31)
+      at ScriptTransformer._transformAndBuildScript (../../node_modules/@jest/transform/build/ScriptTransformer.js:765:40)
+      at ScriptTransformer.transform (../../node_modules/@jest/transform/build/ScriptTransformer.js:822:19)
+      at Object.require (src/types/index.ts:2:1)
+      at Object.require (src/utils/equal.ts:1:1)
+
+FAIL core packages/core/src/divide/__tests__/halfOdd.test.ts
+  ● Test suite failed to run
+
+    [BABEL] /Users/nathantranquilla/git/dinero.js/packages/core/src/api/add.ts: Requires Babel "^7.22.0 || ^8.0.0-0", but was loaded with "7.20.2". If you are sure you have a compatible version of @babel/core, it is likely that something in your build process is loading the wrong version. Inspect the stack trace of this error to look for the first entry that doesn't mention "@babel/core" or "babel-core" to see what is calling Babel. (While processing: "/Users/nathantranquilla/git/dinero.js/node_modules/@babel/plugin-syntax-import-attributes/lib/index.js")
+
+    > 1 | export * from './add';
+        | ^
+      2 | export * from './allocate';
+      3 | export * from './compare';
+      4 | export * from './convert';
+
+      at Object.assertVersion (../../node_modules/@babel/core/src/config/helpers/config-api.ts:134:15)
+      at assertVersion (../../node_modules/@babel/plugin-syntax-import-attributes/src/index.ts:8:7)
+      at builder (../../node_modules/@babel/helper-plugin-utils/src/index.ts:64:12)
+      at apply (../../node_modules/@babel/core/src/gensync-utils/async.ts:31:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at ../../node_modules/gensync/index.js:210:24
+      at factory (../../node_modules/@babel/core/src/config/full.ts:265:23)
+      at Function.<anonymous> (../../node_modules/@babel/core/src/gensync-utils/async.ts:10:3)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at Function.sync (../../node_modules/gensync/index.js:89:14)
+      at sync (../../node_modules/@babel/core/src/gensync-utils/async.ts:83:25)
+      at sync (../../node_modules/gensync/index.js:182:19)
+      at onFirstPause (../../node_modules/gensync/index.js:210:24)
+      at cachedFunction (../../node_modules/@babel/core/src/config/caching.ts:131:34)
+          at cachedFunction.next (<anonymous>)
+      at pluginDescriptorLoader (../../node_modules/@babel/core/src/config/full.ts:404:12)
+          at loadPluginDescriptor.next (<anonymous>)
+      at loadPluginDescriptor (../../node_modules/@babel/core/src/config/full.ts:185:33)
+          at loadPluginDescriptors.next (<anonymous>)
+      at fn (../../node_modules/@babel/core/src/config/full.ts:218:21)
+      at loadFullConfig (../../node_modules/@babel/core/src/config/full.ts:199:5)
+          at loadFullConfig.next (<anonymous>)
+      at transform (../../node_modules/@babel/core/src/transform.ts:26:58)
+          at transform.next (<anonymous>)
+      at evaluateSync (../../node_modules/gensync/index.js:251:28)
+      at sync (../../node_modules/gensync/index.js:89:14)
+      at fn (../../node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:97:14)
+      at transformSync (../../node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (../../node_modules/@jest/transform/build/ScriptTransformer.js:619:31)
+      at ScriptTransformer._transformAndBuildScript (../../node_modules/@jest/transform/build/ScriptTransformer.js:765:40)
+      at ScriptTransformer.transform (../../node_modules/@jest/transform/build/ScriptTransformer.js:822:19)
+      at Object.require (src/api/index.ts:1:1)
+      at Object.require (src/index.ts:1:1)
+

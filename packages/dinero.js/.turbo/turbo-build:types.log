@@ -1,0 +1,16 @@
+$ node ../../scripts/build-types.mjs
+api-extractor run --local
+
+[1mapi-extractor 7.33.5 [36m - https://api-extractor.com/[39m[22m
+[1m[22m
+Using configuration from ./api-extractor.json
+Analysis will use the bundled TypeScript version 4.8.4
+[33mWarning: lib/api/toDecimal.d.ts:2:1 - (ae-missing-release-tag) "toDecimal" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/toDecimal.d.ts:2:1 - (ae-missing-release-tag) "toDecimal" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/toUnits.d.ts:2:1 - (ae-missing-release-tag) "toUnits" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/toUnits.d.ts:2:1 - (ae-missing-release-tag) "toUnits" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/dinero.d.ts:4:4 - (tsdoc-param-tag-with-invalid-name) The @param block should be followed by a valid parameter name: The identifier cannot non-word characters[39m
+[33mWarning: lib/dinero.d.ts:5:4 - (tsdoc-param-tag-with-invalid-name) The @param block should be followed by a valid parameter name: The identifier cannot non-word characters[39m
+[33mWarning: lib/dinero.d.ts:6:4 - (tsdoc-param-tag-with-invalid-name) The @param block should be followed by a valid parameter name: The identifier cannot non-word characters[39m
+
+API Extractor completed successfully

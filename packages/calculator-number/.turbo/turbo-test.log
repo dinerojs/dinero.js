@@ -1,0 +1,2 @@
+$ node ../../scripts/test.mjs --projects=./packages/calculator-number
+jest --projects=./packages/calculator-number

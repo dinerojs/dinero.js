@@ -1,0 +1,2018 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.33.5",
+    "schemaVersion": 1010,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      },
+      "reportUnsupportedHtmlElements": false
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "dinero.js!",
+  "docComment": "",
+  "name": "dinero.js",
+  "preserveMemberOrder": false,
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "dinero.js!",
+      "name": "",
+      "preserveMemberOrder": false,
+      "members": [
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!add:function(1)",
+          "docComment": "/**\n * Add up the passed Dinero objects.\n *\n * @param augend - The Dinero object to add to.\n *\n * @param addend - The Dinero object to add.\n *\n * @returns A new Dinero object.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function add<TAmount>(...[augend, addend]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "AddParams",
+              "canonicalReference": "@dinero.js/core!AddParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "import(\"@dinero.js/core\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/add.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[augend, addend]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "add"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!allocate:function(1)",
+          "docComment": "/**\n * Distribute the amount of a Dinero object across a list of ratios.\n *\n * @param dineroObject - The Dinero object to allocate from.\n *\n * @param ratios - The ratios to allocate the amount to.\n *\n * @returns A new Dinero object.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function allocate<TAmount>(...[dineroObject, ratios]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "AllocateParams",
+              "canonicalReference": "@dinero.js/core!AllocateParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "import(\"@dinero.js/core\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/allocate.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObject, ratios]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "allocate"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!compare:function(1)",
+          "docComment": "/**\n * Compare the value of a Dinero object relative to another.\n *\n * @param dineroObject - The Dinero object to compare.\n *\n * @param comparator - The Dinero object to compare to.\n *\n * @returns One of -1, 0, or 1 depending on whether the first Dinero object is less than, equal to, or greater than the other.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function compare<TAmount>(...[dineroObject, comparator]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CompareParams",
+              "canonicalReference": "@dinero.js/core!CompareParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "import(\"@dinero.js/core\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "ComparisonOperator",
+              "canonicalReference": "@dinero.js/core!ComparisonOperator:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/compare.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObject, comparator]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "compare"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!convert:function(1)",
+          "docComment": "/**\n * Convert a Dinero object to another currency.\n *\n * @param dineroObject - The Dinero object to format.\n *\n * @param newCurrency - The currency to convert to.\n *\n * @param rates - The rates to convert with.\n *\n * @returns A converted Dinero object.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function convert<TAmount>(...[dineroObject, newCurrency, rates]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ConvertParams",
+              "canonicalReference": "@dinero.js/core!ConvertParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "import(\"@dinero.js/core\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/convert.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObject, newCurrency, rates]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "convert"
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "dinero.js!dinero:var",
+          "docComment": "/**\n * Create a Dinero object.\n *\n * @param  - options.amount - The amount in minor currency units.\n *\n * @param  - options.currency - The currency.\n *\n * @param  - options.scale - The number of decimal places to represent.\n *\n * @returns The created Dinero object.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "dinero: "
+            },
+            {
+              "kind": "Content",
+              "text": "({ amount, "
+            },
+            {
+              "kind": "Reference",
+              "text": "currency",
+              "canonicalReference": "@dinero.js/core!__type#currency"
+            },
+            {
+              "kind": "Content",
+              "text": ": { code, base, exponent }, scale, }: import(\"@dinero.js/core\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "DineroOptions",
+              "canonicalReference": "@dinero.js/core!DineroOptions:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>) => import(\"@dinero.js/core\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<number>"
+            }
+          ],
+          "fileUrlPath": "lib/dinero.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "dinero",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!equal:function(1)",
+          "docComment": "/**\n * Check whether the value of a Dinero object is equal to another.\n *\n * @param dineroObject - The first Dinero object to compare.\n *\n * @param comparator - The second Dinero object to compare.\n *\n * @returns Whether the Dinero objects are equal.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function equal<TAmount>(...[dineroObject, comparator]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "EqualParams",
+              "canonicalReference": "@dinero.js/core!EqualParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/equal.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObject, comparator]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "equal"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!greaterThan:function(1)",
+          "docComment": "/**\n * Check whether the value of a Dinero object is greater than another.\n *\n * @param dineroObject - The Dinero object to compare.\n *\n * @param comparator - The Dinero object to compare to.\n *\n * @returns Whether the Dinero to compare is greater than the other.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function greaterThan<TAmount>(...[dineroObject, comparator]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "GreaterThanParams",
+              "canonicalReference": "@dinero.js/core!GreaterThanParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/greaterThan.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObject, comparator]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "greaterThan"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!greaterThanOrEqual:function(1)",
+          "docComment": "/**\n * Check whether the value of a Dinero object is greater than or equal another.\n *\n * @param dineroObject - The Dinero object to compare.\n *\n * @param comparator - The Dinero object to compare to.\n *\n * @returns Whether the Dinero to compare is greater than or equal the other.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function greaterThanOrEqual<TAmount>(...[dineroObject, comparator]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "GreaterThanOrEqualParams",
+              "canonicalReference": "@dinero.js/core!GreaterThanOrEqualParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/greaterThanOrEqual.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObject, comparator]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "greaterThanOrEqual"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!hasSubUnits:function(1)",
+          "docComment": "/**\n * Check whether a Dinero object has minor currency units.\n *\n * @param dineroObject - The Dinero object to check.\n *\n * @returns Whether the Dinero object has minor currency units.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function hasSubUnits<TAmount>(...[dineroObject]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "HasSubUnitsParams",
+              "canonicalReference": "@dinero.js/core!HasSubUnitsParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/hasSubUnits.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObject]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "hasSubUnits"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!haveSameAmount:function(1)",
+          "docComment": "/**\n * Check whether a set of Dinero objects have the same amount.\n *\n * @param dineroObjects - The Dinero objects to compare.\n *\n * @returns Whether the Dinero objects have the same amount.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function haveSameAmount<TAmount>(...[dineroObjects]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "HaveSameAmountParams",
+              "canonicalReference": "@dinero.js/core!HaveSameAmountParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/haveSameAmount.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObjects]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "haveSameAmount"
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "dinero.js!haveSameCurrency:var",
+          "docComment": "/**\n * Check whether a set of Dinero objects have the same currency.\n *\n * @param dineroObjects - The Dinero objects to compare.\n *\n * @returns Whether the Dinero objects have the same currency.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "haveSameCurrency: "
+            },
+            {
+              "kind": "Content",
+              "text": "typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "coreHaveSameCurrency",
+              "canonicalReference": "@dinero.js/core!haveSameCurrency:function"
+            }
+          ],
+          "fileUrlPath": "lib/api/haveSameCurrency.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "haveSameCurrency",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!isNegative:function(1)",
+          "docComment": "/**\n * Check whether a Dinero object is negative.\n *\n * @param dineroObject - The Dinero object to check.\n *\n * @returns Whether the Dinero object is negative.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isNegative<TAmount>(...[dineroObject]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "IsNegativeParams",
+              "canonicalReference": "@dinero.js/core!IsNegativeParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/isNegative.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObject]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "isNegative"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!isPositive:function(1)",
+          "docComment": "/**\n * Check whether a Dinero object is positive.\n *\n * @param dineroObject - The Dinero object to check.\n *\n * @returns Whether the Dinero object is positive.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isPositive<TAmount>(...[dineroObject]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "IsPositiveParams",
+              "canonicalReference": "@dinero.js/core!IsPositiveParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/isPositive.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObject]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "isPositive"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!isZero:function(1)",
+          "docComment": "/**\n * Check whether the value of a Dinero object is zero.\n *\n * @param dineroObject - The Dinero object to check.\n *\n * @returns Whether the value of a Dinero object is zero.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isZero<TAmount>(...[dineroObject]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "IsZeroParams",
+              "canonicalReference": "@dinero.js/core!IsZeroParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/isZero.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObject]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "isZero"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!lessThan:function(1)",
+          "docComment": "/**\n * Check whether the value of a Dinero object is lesser than another.\n *\n * @param dineroObject - The Dinero object to compare.\n *\n * @param comparator - The Dinero object to compare to.\n *\n * @returns Whether the Dinero to compare is lesser than the other.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function lessThan<TAmount>(...[dineroObject, comparator]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "LessThanParams",
+              "canonicalReference": "@dinero.js/core!LessThanParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/lessThan.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObject, comparator]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "lessThan"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!lessThanOrEqual:function(1)",
+          "docComment": "/**\n * Check whether the value of a Dinero object is lesser than or equal to another.\n *\n * @param dineroObject - The Dinero object to compare.\n *\n * @param comparator - The Dinero object to compare to.\n *\n * @returns Whether the Dinero to compare is lesser than or equal to the other.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function lessThanOrEqual<TAmount>(...[dineroObject, comparator]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "LessThanOrEqualParams",
+              "canonicalReference": "@dinero.js/core!LessThanOrEqualParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/lessThanOrEqual.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObject, comparator]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "lessThanOrEqual"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!maximum:function(1)",
+          "docComment": "/**\n * Get the greatest of the passed Dinero objects.\n *\n * @param dineroObjects - The Dinero objects to maximum.\n *\n * @returns A new Dinero object.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function maximum<TAmount>(...[dineroObjects]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "MaximumParams",
+              "canonicalReference": "@dinero.js/core!MaximumParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "import(\"@dinero.js/core\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/maximum.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObjects]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "maximum"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!minimum:function(1)",
+          "docComment": "/**\n * Get the lowest of the passed Dinero objects.\n *\n * @param dineroObjects - The Dinero objects to minimum.\n *\n * @returns A new Dinero object.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function minimum<TAmount>(...[dineroObjects]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "MinimumParams",
+              "canonicalReference": "@dinero.js/core!MinimumParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "import(\"@dinero.js/core\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/minimum.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObjects]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "minimum"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!multiply:function(1)",
+          "docComment": "/**\n * Multiply the passed Dinero object.\n *\n * @param multiplicand - The Dinero object to multiply.\n *\n * @param multiplier - The number to multiply with.\n *\n * @returns A new Dinero object.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function multiply<TAmount>(...[multiplicand, multiplier]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "MultiplyParams",
+              "canonicalReference": "@dinero.js/core!MultiplyParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "import(\"@dinero.js/core\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/multiply.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[multiplicand, multiplier]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "multiply"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!normalizeScale:function(1)",
+          "docComment": "/**\n * Normalize a set of Dinero objects to the highest scale of the set.\n *\n * @param dineroObjects - The Dinero objects to normalize.\n *\n * @returns A new set of Dinero objects.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function normalizeScale<TAmount>(...[dineroObjects]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "NormalizeScaleParams",
+              "canonicalReference": "@dinero.js/core!NormalizeScaleParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "import(\"@dinero.js/core\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/normalizeScale.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObjects]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "normalizeScale"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!subtract:function(1)",
+          "docComment": "/**\n * Subtract the passed Dinero objects.\n *\n * @param minuend - The Dinero object to subtract from.\n *\n * @param subtrahend - The Dinero object to subtract.\n *\n * @returns A new Dinero object.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function subtract<TAmount>(...[minuend, subtrahend]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "SubtractParams",
+              "canonicalReference": "@dinero.js/core!SubtractParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "import(\"@dinero.js/core\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/subtract.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[minuend, subtrahend]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "subtract"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!toDecimal:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function toDecimal<TAmount>(dineroObject: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/toDecimal.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "dineroObject",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "toDecimal"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!toDecimal:function(2)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function toDecimal<TAmount, TOutput>(dineroObject: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": ", transformer: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Transformer",
+              "canonicalReference": "@dinero.js/core!Transformer_2:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount, TOutput, string>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "TOutput"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/toDecimal.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 7,
+            "endIndex": 8
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 2,
+          "parameters": [
+            {
+              "parameterName": "dineroObject",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "transformer",
+              "parameterTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TOutput",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "toDecimal"
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "dinero.js!toSnapshot:var",
+          "docComment": "/**\n * Get a snapshot of a Dinero object.\n *\n * @param dineroObject - The Dinero object to format.\n *\n * @param transformer - A transformer function.\n *\n * @returns A snapshot of the object.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "toSnapshot: "
+            },
+            {
+              "kind": "Content",
+              "text": "typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "coreToSnapshot",
+              "canonicalReference": "@dinero.js/core!toSnapshot:function"
+            }
+          ],
+          "fileUrlPath": "lib/api/toSnapshot.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "toSnapshot",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!toUnits:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function toUnits<TAmount>(dineroObject: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "readonly TAmount[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/toUnits.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "dineroObject",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "toUnits"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!toUnits:function(2)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function toUnits<TAmount, TOutput>(dineroObject: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": ", transformer: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Transformer",
+              "canonicalReference": "@dinero.js/core!Transformer_2:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount, TOutput, readonly TAmount[]>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "TOutput"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/toUnits.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 7,
+            "endIndex": 8
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 2,
+          "parameters": [
+            {
+              "parameterName": "dineroObject",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "transformer",
+              "parameterTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TOutput",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "toUnits"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!transformScale:function(1)",
+          "docComment": "/**\n * Transform a Dinero object to a new scale.\n *\n * @param dineroObject - The Dinero object to transform.\n *\n * @param newScale - The new scale.\n *\n * @param divide - A custom divide function.\n *\n * @returns A new Dinero object.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function transformScale<TAmount>(...[dineroObject, newScale, divide]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TransformScaleParams",
+              "canonicalReference": "@dinero.js/core!TransformScaleParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "import(\"@dinero.js/core\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/transformScale.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObject, newScale, divide]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "transformScale"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "dinero.js!trimScale:function(1)",
+          "docComment": "/**\n * Trim a Dinero object's scale as much as possible, down to the currency exponent.\n *\n * @param dineroObject - The Dinero object which scale to trim.\n *\n * @returns A new Dinero object.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function trimScale<TAmount>(...[dineroObject]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TrimScaleParams",
+              "canonicalReference": "@dinero.js/core!TrimScaleParams:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "import(\"@dinero.js/core\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "Dinero",
+              "canonicalReference": "@dinero.js/core!Dinero:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TAmount>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/api/trimScale.d.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "[dineroObject]",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TAmount",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "trimScale"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+$ node ../../scripts/build-types.mjs
+api-extractor run --local
+
+[1mapi-extractor 7.33.5 [36m - https://api-extractor.com/[39m[22m
+[1m[22m
+Using configuration from ./api-extractor.json
+Analysis will use the bundled TypeScript version 4.8.4
+[33mWarning: lib/api/add.d.ts:2:1 - (ae-missing-release-tag) "AddParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/add.d.ts:6:1 - (ae-missing-release-tag) "safeAdd" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/allocate.d.ts:2:1 - (ae-missing-release-tag) "AllocateParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/allocate.d.ts:6:1 - (ae-missing-release-tag) "safeAllocate" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/compare.d.ts:2:1 - (ae-missing-release-tag) "CompareParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/compare.d.ts:6:1 - (ae-missing-release-tag) "safeCompare" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/convert.d.ts:3:1 - (ae-missing-release-tag) "ConvertParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/convert.d.ts:8:1 - (ae-missing-release-tag) "convert" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/equal.d.ts:2:1 - (ae-missing-release-tag) "EqualParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/equal.d.ts:6:1 - (ae-missing-release-tag) "equal" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/greaterThan.d.ts:2:1 - (ae-missing-release-tag) "GreaterThanParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/greaterThan.d.ts:6:1 - (ae-missing-release-tag) "safeGreaterThan" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/greaterThanOrEqual.d.ts:2:1 - (ae-missing-release-tag) "GreaterThanOrEqualParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/greaterThanOrEqual.d.ts:6:1 - (ae-missing-release-tag) "safeGreaterThanOrEqual" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/hasSubUnits.d.ts:2:1 - (ae-missing-release-tag) "HasSubUnitsParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/hasSubUnits.d.ts:5:1 - (ae-missing-release-tag) "hasSubUnits" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/haveSameAmount.d.ts:2:1 - (ae-missing-release-tag) "HaveSameAmountParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/haveSameAmount.d.ts:5:1 - (ae-missing-release-tag) "haveSameAmount" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/haveSameCurrency.d.ts:2:1 - (ae-missing-release-tag) "haveSameCurrency" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/isNegative.d.ts:2:1 - (ae-missing-release-tag) "IsNegativeParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/isNegative.d.ts:5:1 - (ae-missing-release-tag) "isNegative" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/isPositive.d.ts:2:1 - (ae-missing-release-tag) "IsPositiveParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/isPositive.d.ts:5:1 - (ae-missing-release-tag) "isPositive" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/isZero.d.ts:2:1 - (ae-missing-release-tag) "IsZeroParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/isZero.d.ts:3:1 - (ae-missing-release-tag) "isZero" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/lessThan.d.ts:2:1 - (ae-missing-release-tag) "LessThanParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/lessThan.d.ts:6:1 - (ae-missing-release-tag) "safeLessThan" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/lessThanOrEqual.d.ts:2:1 - (ae-missing-release-tag) "LessThanOrEqualParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/lessThanOrEqual.d.ts:6:1 - (ae-missing-release-tag) "safeLessThanOrEqual" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/maximum.d.ts:2:1 - (ae-missing-release-tag) "MaximumParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/maximum.d.ts:5:1 - (ae-missing-release-tag) "safeMaximum" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/minimum.d.ts:2:1 - (ae-missing-release-tag) "MinimumParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/minimum.d.ts:5:1 - (ae-missing-release-tag) "safeMinimum" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/multiply.d.ts:2:1 - (ae-missing-release-tag) "MultiplyParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/multiply.d.ts:6:1 - (ae-missing-release-tag) "multiply" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/normalizeScale.d.ts:2:1 - (ae-missing-release-tag) "NormalizeScaleParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/normalizeScale.d.ts:5:1 - (ae-missing-release-tag) "normalizeScale" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/subtract.d.ts:2:1 - (ae-missing-release-tag) "SubtractParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/subtract.d.ts:6:1 - (ae-missing-release-tag) "safeSubtract" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/toDecimal.d.ts:2:1 - (ae-missing-release-tag) "ToDecimalParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/toDecimal.d.ts:6:1 - (ae-missing-release-tag) "toDecimal" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/toSnapshot.d.ts:2:1 - (ae-missing-release-tag) "toSnapshot" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/toUnits.d.ts:2:1 - (ae-missing-release-tag) "ToUnitsParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/toUnits.d.ts:6:1 - (ae-missing-release-tag) "toUnits" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/transformScale.d.ts:2:1 - (ae-missing-release-tag) "TransformScaleParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/transformScale.d.ts:7:1 - (ae-missing-release-tag) "transformScale" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/trimScale.d.ts:2:1 - (ae-missing-release-tag) "TrimScaleParams" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/api/trimScale.d.ts:3:1 - (ae-missing-release-tag) "trimScale" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/checks/messages.d.ts:1:22 - (ae-missing-release-tag) "INVALID_AMOUNT_MESSAGE" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/checks/messages.d.ts:2:22 - (ae-missing-release-tag) "INVALID_SCALE_MESSAGE" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/checks/messages.d.ts:3:22 - (ae-missing-release-tag) "INVALID_RATIOS_MESSAGE" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/checks/messages.d.ts:4:22 - (ae-missing-release-tag) "UNEQUAL_SCALES_MESSAGE" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/checks/messages.d.ts:5:22 - (ae-missing-release-tag) "UNEQUAL_CURRENCIES_MESSAGE" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/checks/messages.d.ts:6:22 - (ae-missing-release-tag) "NON_DECIMAL_CURRENCY_MESSAGE" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/divide/down.d.ts:13:22 - (ae-missing-release-tag) "down" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/divide/halfAwayFromZero.d.ts:12:22 - (ae-missing-release-tag) "halfAwayFromZero" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/divide/halfDown.d.ts:17:22 - (ae-missing-release-tag) "halfDown" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/divide/halfEven.d.ts:12:22 - (ae-missing-release-tag) "halfEven" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/divide/halfOdd.d.ts:12:22 - (ae-missing-release-tag) "halfOdd" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/divide/halfTowardsZero.d.ts:12:22 - (ae-missing-release-tag) "halfTowardsZero" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/divide/halfUp.d.ts:17:22 - (ae-missing-release-tag) "halfUp" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/divide/up.d.ts:13:22 - (ae-missing-release-tag) "up" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/helpers/assert.d.ts:9:1 - (ae-missing-release-tag) "assert" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/helpers/createDinero.d.ts:2:1 - (ae-missing-release-tag) "CreateDineroOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/helpers/createDinero.d.ts:7:1 - (ae-missing-release-tag) "createDinero" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/BinaryOperation.d.ts:1:1 - (ae-missing-release-tag) "BinaryOperation" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/Calculator.d.ts:2:1 - (ae-missing-release-tag) "ComparisonOperator" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/Calculator.d.ts:7:1 - (ae-missing-release-tag) "Calculator" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/Dinero.d.ts:2:1 - (ae-missing-release-tag) "Dinero" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/DineroFactory.d.ts:2:1 - (ae-missing-release-tag) "DineroFactory" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/DineroOptions.d.ts:2:1 - (ae-missing-release-tag) "DineroOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/DineroSnapshot.d.ts:2:1 - (ae-missing-release-tag) "DineroSnapshot" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/DivideOperation.d.ts:2:1 - (ae-missing-release-tag) "DivideOperation" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/Formatter.d.ts:1:1 - (ae-missing-release-tag) "Formatter" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/Rates.d.ts:2:1 - (ae-missing-release-tag) "Rate" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/Rates.d.ts:3:1 - (ae-missing-release-tag) "Rates" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/ScaledAmount.d.ts:1:1 - (ae-missing-release-tag) "ScaledAmount" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/Transformer.d.ts:2:1 - (ae-missing-release-tag) "TransformerOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/Transformer.d.ts:6:1 - (ae-missing-release-tag) "Transformer" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+[33mWarning: lib/types/UnaryOperation.d.ts:1:1 - (ae-missing-release-tag) "UnaryOperation" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)[39m
+
+API Extractor completed successfully
