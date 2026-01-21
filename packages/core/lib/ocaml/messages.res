@@ -1,6 +1,0 @@
-let invalidAmountMessage = "Amount is invalid."
-let invalidScaleMessage = "Scale is invalid."
-let invalidRatiosMessage = "Ratios are invalid."
-let unequalScalesMessage = "Objects must have the same scale."
-let unequalCurrenciesMessage = "Objects must have the same currency."
-let nonDecimalCurrencyMessage = "Currency is not decimal."
