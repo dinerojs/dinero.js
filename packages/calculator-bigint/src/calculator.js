@@ -15,7 +15,37 @@ let calculator = {
   zero: Api.zero
 };
 
+let add = Api.add;
+
+let compare = Api.compare;
+
+let decrement = Api.decrement;
+
+let increment = Api.increment;
+
+let integerDivide = Api.integerDivide;
+
+let modulo = Api.modulo;
+
+let multiply = Api.multiply;
+
+let power = Api.power;
+
+let subtract = Api.subtract;
+
+let zero = Api.zero;
+
 export {
+  add,
+  compare,
+  decrement,
+  increment,
+  integerDivide,
+  modulo,
+  multiply,
+  power,
+  subtract,
+  zero,
   calculator,
 }
 /* No side effect */
