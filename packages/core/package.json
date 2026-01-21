@@ -32,12 +32,9 @@
     "lint": "node ../../scripts/lint.mjs --ext .js,.ts .",
     "test": "node ../../scripts/test.mjs --projects=./packages/core"
   },
-  "dependencies": {
-    "@dinero.js/currencies": "2.0.0-alpha.14"
-  },
   "devDependencies": {
-    "@dinero.js/calculator-number": "2.0.0-alpha.14",
-    "@dinero.js/calculator-bigint": "2.0.0-alpha.14",
+    "@dinero.js/calculator-number": "workspace:*",
+    "@dinero.js/calculator-bigint": "workspace:*",
     "fast-check": "^3.15.0"
   }
 }

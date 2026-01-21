@@ -1,0 +1,25 @@
+// Core API functions
+include Add
+include Allocate
+include Compare
+include Convert  
+include Equal
+include GreaterThan
+include GreaterThanOrEqual
+include HaveSameAmount
+include HaveSameCurrency
+include IsNegative
+include IsPositive
+include IsZero
+include LessThan
+include LessThanOrEqual
+include Maximum
+include Minimum
+include Multiply
+include NormalizeScale
+include Subtract
+include ToDecimal
+include ToSnapshot
+include ToUnits
+include TransformScale
+include TrimScale

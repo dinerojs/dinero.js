@@ -1,0 +1,11 @@
+/**
+ * Returns the difference between two numbers.
+ *
+ * @param minuend - The number to subtract from.
+ * @param subtrahend - The number to subtract.
+ *
+ * @returns The difference of the two numbers.
+ */
+let subtract = (minuend: float, subtrahend: float): float => {
+  minuend - subtrahend
+}

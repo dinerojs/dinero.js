@@ -3,9 +3,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "res:build": "rescript",
-    "res:clean": "rescript clean",
-    "res:dev": "rescript watch",
+    "res:build": "npm run res:build:core && npm run res:build:calculator-number",
+    "res:build:core": "cd packages/core && npx rescript",
+    "res:build:calculator-number": "cd packages/calculator-number && npx rescript",
+    "res:clean": "npm run res:clean:core && npm run res:clean:calculator-number",
+    "res:clean:core": "cd packages/core && npx rescript clean",
+    "res:clean:calculator-number": "cd packages/calculator-number && npx rescript clean",
+    "res:dev": "npm run res:dev:core & npm run res:dev:calculator-number",
+    "res:dev:core": "cd packages/core && npx rescript watch",
+    "res:dev:calculator-number": "cd packages/calculator-number && npx rescript watch",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest --coverage"
