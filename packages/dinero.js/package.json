@@ -35,7 +35,8 @@
     "res:build": "rescript",
     "res:clean": "rescript clean",
     "res:dev": "rescript watch",
-    "res:format": "rescript format"
+    "res:format": "rescript format",
+    "res:format:check": "rescript format --check"
   },
   "dependencies": {
     "@dinero.js/calculator-number": "3.0.0",
