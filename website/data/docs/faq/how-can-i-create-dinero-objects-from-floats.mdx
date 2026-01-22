@@ -1,0 +1,29 @@
+---
+title: How can I create Dinero objects from floats?
+description: How to instantiate Dinero objects with float inputs using your own factory.
+---
+
+Dinero objects must be instantiated with integers, in minor currency units. For example, to create an object for $19.99, you should write the following code:
+
+```js
+import { dinero, add, subtract } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 1999, currency: USD });
+```
+
+If you have amounts as floats (in this case, `19.99`) and you want to abstract object creation, you can write your own helper.
+
+```js
+function dineroFromFloat({ amount: float, currency, scale }) {
+  const factor = currency.base ** currency.exponent || scale;
+  const amount = Math.round(float * factor);
+
+  return dinero({ amount, currency, scale });
+}
+```
+<Alert type="info">
+
+This code isn't tested and not guaranteed to cover edge cases. Use it as a starter and make sure it works for you by testing it in your application.
+
+</Alert>

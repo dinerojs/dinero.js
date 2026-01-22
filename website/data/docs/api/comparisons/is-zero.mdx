@@ -1,0 +1,43 @@
+---
+title: isZero
+description: Check whether the value of a Dinero object is zero.
+returns: boolean
+---
+
+Check whether the value of a Dinero object is zero.
+
+## Parameters
+
+<Parameters>
+
+<Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
+
+The Dinero object to check.
+
+</Parameter>
+
+</Parameters>
+
+## Code examples
+
+### Check a zero object
+
+```js
+import { dinero, isZero } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 0, currency: USD });
+
+isZero(d); // true
+```
+
+### Check a non-zero object
+
+```js
+import { dinero, isZero } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 100, currency: USD });
+
+isZero(d); // false
+```

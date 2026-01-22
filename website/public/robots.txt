@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://v2.dinerojs.com/sitemap.xml

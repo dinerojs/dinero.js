@@ -1,0 +1,54 @@
+---
+title: hasSubUnits
+description: Check whether a Dinero object has minor currency units.
+returns: boolean
+---
+
+Check whether a Dinero object has minor currency units.
+
+## Parameters
+
+<Parameters>
+
+<Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
+
+The Dinero object to check.
+
+</Parameter>
+
+</Parameters>
+
+## Code examples
+
+### Check an object with sub-units
+
+```js
+import { dinero, hasSubUnits } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 1150, currency: USD });
+
+hasSubUnits(d); // true
+```
+
+### Check an object without sub-units
+
+```js
+import { dinero, hasSubUnits } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 1100, currency: USD });
+
+hasSubUnits(d); // false
+```
+
+### Check an object with sub-units based on the scale
+
+```js
+import { dinero, hasSubUnits } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 1100, currency: USD, scale: 3 });
+
+hasSubUnits(d); // true
+```

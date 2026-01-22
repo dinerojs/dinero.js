@@ -1,0 +1,110 @@
+---
+title: allocate
+description: Distribute the amount of a Dinero object across a list of ratios.
+returns: Dinero<TAmount>[]
+---
+
+Distribute the amount of a Dinero object across a list of ratios.
+
+Monetary values have indivisible units, meaning you can't always exactly split them. With `allocate`, you can split a monetary amount then distribute the remainder as evenly as possible.
+
+You can use percentage or ratio style for `ratios`: `[25, 75]` and `[1, 3]` do the same thing. You can also pass zero ratios (such as `[0, 50, 50]`). If there's a remainder to distribute, zero ratios are skipped and return a Dinero object with amount zero.
+
+If you need to use fractional ratios, you shouldn't use floats, but scaled amounts instead. For example, instead of passing `[50.5, 49.5]`, you should pass `[{ amount: 505, scale: 1 }, { amount: 495, scale: 1 }]`. When using scaled amounts, the function converts the returned objects to the safest scale.
+
+**All ratios must be positive, and you can't only pass zero ratios.**
+
+## Parameters
+
+<Parameters>
+
+<Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
+
+The Dinero object to allocate from.
+
+</Parameter>
+
+<Parameter name="ratios" type="Array<ScaledAmount<TAmount> | TAmount>" required={true}>
+
+The ratios to allocate the amount to.
+
+</Parameter>
+
+</Parameters>
+
+## Code examples
+
+### Allocate to percentages
+
+```js
+import { dinero, allocate } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 500, currency: USD });
+
+const [d1, d2] = allocate(d, [50, 50]);
+
+d1; // a Dinero object with amount 250
+d2; // a Dinero object with amount 250
+```
+
+### Allocate to ratios
+
+```js
+import { dinero, allocate } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 100, currency: USD });
+
+const [d1, d2] = allocate(d, [1, 3]);
+
+d1; // a Dinero object with amount 25
+d2; // a Dinero object with amount 75
+```
+
+### Distribute as fairly as possible
+
+```js
+import { dinero, allocate } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 1003, currency: USD });
+
+const [d1, d2] = allocate(d, [50, 50]);
+
+d1; // a Dinero object with amount 502
+d2; // a Dinero object with amount 501
+```
+
+### Ignore zero ratios
+
+```js
+import { dinero, allocate } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 1003, currency: USD });
+
+const [d1, d2, d3] = allocate(d, [0, 50, 50]);
+
+d1; // a Dinero object with amount 0
+d2; // a Dinero object with amount 502
+d3; // a Dinero object with amount 501
+```
+
+### Use scaled ratios and convert to the safest scale
+
+```js
+import { dinero, allocate } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const ratios = [
+  { amount: 505, scale: 1 },
+  { amount: 495, scale: 1 },
+]; // translates to ratios 50.5 and 49.5
+const d = dinero({ amount: 100, currency: USD });
+
+const [d1, d2] = allocate(d, ratios);
+
+d1; // a Dinero object with amount 505 and scale 3
+d2; // a Dinero object with amount 495 and scale 3
+```

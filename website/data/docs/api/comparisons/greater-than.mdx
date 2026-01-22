@@ -1,0 +1,53 @@
+---
+title: greaterThan
+description: Check whether the value of a Dinero object is greater than another.
+returns: boolean
+---
+
+Check whether the value of a Dinero object is greater than another.
+
+**You can only compare objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before comparing them.
+
+## Parameters
+
+<Parameters>
+
+<Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
+
+The first Dinero object to compare.
+
+</Parameter>
+
+<Parameter name="comparator" type="Dinero<TAmount>" required={true}>
+
+The second Dinero object to compare.
+
+</Parameter>
+
+</Parameters>
+
+## Code examples
+
+### Compare two objects
+
+```js
+import { dinero, greaterThan } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 500, currency: USD });
+const d2 = dinero({ amount: 800, currency: USD });
+
+greaterThan(d1, d2); // false
+```
+
+### Compare two objects after normalization
+
+```js
+import { dinero, greaterThan } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 800, currency: USD });
+const d2 = dinero({ amount: 5000, currency: USD, scale: 3 });
+
+greaterThan(d1, d2); // true
+```

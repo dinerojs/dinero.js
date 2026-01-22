@@ -1,0 +1,126 @@
+---
+title: Transporting and restoring
+description: How to serialize Dinero objects for transport and storage, and restore snapshots into Dinero objects.
+---
+
+If you want to send a Dinero object over the network or save it into some storage system, you need to serialize it first. Conversely, when retrieving a serialized object, you need to restore it as an actual Dinero object before using it in your application and manipulating it with Dinero functions.
+
+**Dinero lets you turn objects into snapshots.** Snapshots are plain JavaScript objects, suited for transport and storage. To create a snapshot, you can use the `toSnapshot` function.
+
+```js
+import { dinero, toSnapshot } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const price = dinero({ amount: 500, currency: USD });
+
+const snapshot = toSnapshot(price);
+
+/**
+ * {
+ *   amount: 500,
+ *   currency: {
+ *     code: 'USD',
+ *     base: 10,
+ *     exponent: 2,
+ *   },
+ *   scale: 2,
+ * }
+ */
+```
+
+You can use snapshots with any API that accepts serializable data types.
+
+```js
+import { dinero, toSnapshot } from 'dinero.js';
+import { EUR } from '@dinero.js/currencies';
+import axios from 'axios';
+
+const price = dinero({ amount: 6999, currency: EUR });
+
+axios.post('http://example.org/api/products', {
+  name: 'Mass Effect: Legendary Edition',
+  platform: 'Xbox One',
+  price: toSnapshot(price),
+});
+```
+
+## Serializing an object
+
+If you want to serialize a Dinero object into JSON, you can directly call [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) on it, without turning them into a snapshot first.
+
+```js
+import { dinero } from 'dinero.js';
+import { EUR } from '@dinero.js/currencies';
+
+const product = {
+  name: 'Mass Effect: Legendary Edition',
+  platform: 'Xbox One',
+  price: dinero({ amount: 6999, currency: EUR }),
+};
+
+fetch('http://example.org/api/products', {
+  method: 'POST',
+  body: JSON.stringify(product),
+});
+```
+
+## Restoring an object
+
+When retrieving a snapshot, you can restore it into an actual Dinero object for usage in your application. To do so, you can pass the snapshot to the `dinero` function.
+
+```js
+import { dinero } from 'dinero.js';
+import axios from 'axios';
+
+axios.get('http://example.org/api/products', {
+  params: {
+    id: '69e89575-fe87-4eb2-8b1d-b445bbe41a47',
+  },
+})
+.then(({ data }) => {
+  const product = {
+    ...data,
+    price: dinero(data.price),
+  };
+});
+```
+
+## Handling arbitrary precision amounts
+
+If you're using Dinero.js with the [`bigint` calculator](/docs/guides/using-different-amount-types#using-dinero-with-bigint) or a [custom library](/docs/guides/using-different-amount-types#implementing-a-custom-calculator), you need to cast the number to a `string` for storage, so you can retain precision and safely restore it later.
+
+While many arbitrary precision libraries support this out of the box, **you can't use [`JSON.stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) directly with `bigint`s.**
+
+When serializing, make sure to pass a [custom replacer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#the_replacer_parameter) to coerce every `bigint` into a `string`.
+
+```js
+import { calculator } from '@dinero.js/calculator-bigint';
+import { createDinero } from 'dinero.js';
+import { EUR } from '@dinero.js/currencies';
+
+const dineroBigint = createDinero({ calculator });
+
+const product = {
+  name: 'Mass Effect: Legendary Edition',
+  platform: 'Xbox One',
+  price: dineroBigint({
+    amount: 6999n,
+    currency: {
+      ...EUR,
+      base: BigInt(EUR.base),
+      exponent: BigInt(EUR.exponent),
+    },
+  }),
+};
+
+fetch('http://example.org/api/products', {
+  method: 'POST',
+  body: JSON.stringify(product, (key, value) => {
+    if (typeof value === 'bigint') {
+      return String(value);
+    }
+
+    return value;
+  }),
+});
+```

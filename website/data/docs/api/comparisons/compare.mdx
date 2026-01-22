@@ -1,0 +1,79 @@
+---
+title: compare
+description: Compare the value of a Dinero object relative to another.
+returns: number
+---
+
+Compare the value of a Dinero object relative to another. This is useful for sorting Dinero objects.
+
+Possible return values are:
+- `-1` if the first Dinero object is less than the other
+- `1` if the first Dinero object is greater than the other
+- `0` if both objects are equal
+
+**You can only compare objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before comparing them.
+
+## Parameters
+
+<Parameters>
+
+<Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
+
+The first Dinero object to compare.
+
+</Parameter>
+
+<Parameter name="comparator" type="Dinero<TAmount>" required={true}>
+
+The second Dinero object to compare.
+
+</Parameter>
+
+</Parameters>
+
+## Code examples
+
+### Compare two objects
+
+```js
+import { dinero, compare } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 800, currency: USD });
+const d2 = dinero({ amount: 500, currency: USD });
+
+compare(d1, d2); // 1
+```
+
+### Compare two objects after normalization
+
+```js
+import { dinero, compare } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 5000, currency: USD, scale: 3 });
+const d2 = dinero({ amount: 800, currency: USD });
+
+compare(d1, d2); // -1
+
+const d3 = dinero({ amount: 5000, currency: USD, scale: 3 });
+const d4 = dinero({ amount: 500, currency: USD });
+
+compare(d3, d4); // 0
+```
+
+### Sort arrays of objects
+
+One of the main use cases of the `compare` function is to sort Dinero objects. For example, you can use it with [`Array.prototype.sort`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
+
+```js
+import { dinero, compare } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 900, currency: USD });
+const d2 = dinero({ amount: 500, currency: USD });
+const d3 = dinero({ amount: 800, currency: USD });
+
+const lowToHigh = [d1, d2, d3].sort(compare);
+const highToLow = [d1, d2, d3].sort((a, b) => compare(b, a));
+```

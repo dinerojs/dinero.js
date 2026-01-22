@@ -1,0 +1,70 @@
+---
+title: add
+description: Adding up two Dinero objects.
+returns: Dinero<TAmount>
+---
+
+Add up two Dinero objects.
+
+**You can only add objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before adding them up.
+
+## Parameters
+
+<Parameters>
+
+<Parameter name="augend" type="Dinero<TAmount>" required={true}>
+
+The Dinero object to add to.
+
+</Parameter>
+
+<Parameter name="addend" type="Dinero<TAmount>" required={true}>
+
+The Dinero object to add.
+
+</Parameter>
+
+</Parameters>
+
+## Code examples
+
+### Add objects
+
+```js
+import { dinero, add } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 500, currency: USD });
+const d2 = dinero({ amount: 100, currency: USD });
+
+add(d1, d2); // a Dinero object with amount 600
+```
+
+### Add objects with a different scale
+
+```js
+import { dinero, add } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 400, currency: USD });
+const d2 = dinero({ amount: 104545, currency: USD, scale: 4 });
+
+add(d1, d2); // a Dinero object with amount 144545 and scale 4
+```
+
+### Add more than two objects
+  
+To retrieve the sum of multiple objects, you can call the `add` function multiple times.
+
+```js
+import { dinero, add } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 300, currency: USD });
+const d2 = dinero({ amount: 200, currency: USD });
+const d3 = dinero({ amount: 100, currency: USD });
+
+const addMany = (addends) => addends.reduce(add);
+
+addMany([d1, d2, d3]); // a Dinero object with amount 600
+```

@@ -1,0 +1,90 @@
+.DocSearch {
+  --docsearch-highlight-color: theme('colors.blue.500');
+  --docsearch-primary-color: theme('colors.blue.500');
+}
+
+.DocSearch-Screen-Icon svg {
+  @apply inline-block;
+}
+
+.DocSearch-Title {
+  @apply my-5;
+}
+
+.DocSearch-Container a {
+  color: var(--docsearch-primary-color);
+}
+
+.token.deleted:not(.prefix),
+.token.inserted:not(.prefix) {
+  @apply block px-8 py-1 -mx-8;
+}
+
+.token.prefix {
+  @apply select-none;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply text-gray-500;
+}
+
+.token.namespace {
+  @apply text-opacity-70;
+}
+
+.token.string,
+.token.attr-value {
+  @apply text-red-600;
+}
+
+.token.punctuation,
+.token.operator {
+  @apply text-gray-900;
+}
+
+.token.entity,
+.token.url,
+.token.symbol,
+.token.number,
+.token.boolean,
+.token.variable,
+.token.constant,
+.token.property,
+.token.regex {
+  color: #007f80;
+}
+
+.token.inserted {
+  @apply leading-normal text-green-600 bg-green-100;
+}
+
+.token.atrule,
+.token.keyword,
+.token.attr-name,
+.language-autohotkey .token.selector {
+  color: #0072d6;
+}
+
+.token.function,
+.language-autohotkey .token.tag {
+  @apply text-red-800;
+}
+
+.token.deleted {
+  @apply leading-normal text-red-600 bg-red-100;
+}
+
+.token.tag,
+.token.selector,
+.language-autohotkey .token.keyword {
+  @apply text-blue-900;
+}
+
+.token.important,
+.token.function,
+.token.bold {
+  @apply font-semibold;
+}

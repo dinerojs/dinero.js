@@ -1,0 +1,44 @@
+---
+title: toSnapshot
+description: Get a snapshot of a Dinero object.
+returns: DineroSnapshot<TAmount>
+---
+
+Get a snapshot of a Dinero object.
+
+Snapshots are plain JavaScript objects, suited for [transport and storage](/docs/advanced/transporting-and-restoring). They're also useful when you need to retrieve raw data from a Dinero object.
+
+## Parameters
+
+<Parameters>
+
+<Parameter name="dineroObject" type="Dinero<TAmount>" required={true}>
+
+The Dinero object to snapshot.
+
+</Parameter>
+
+</Parameters>
+
+## Code examples
+
+### Get a snapshot of an object
+
+```js
+import { dinero, toSnapshot } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 500, currency: USD });
+
+toSnapshot(d);
+
+// {
+//   amount: 500,
+//   currency: {
+//     code: 'USD',
+//     base: 10,
+//     exponent: 2,
+//   },
+//   scale: 2,
+// }
+```
