@@ -29,6 +29,8 @@
   },
   "files": ["lib/"],
   "scripts": {
+    "pretest": "npm run res:build",
+    "test": "vitest --run --config ../../vitest.config.js",
     "res:build": "rescript",
     "res:clean": "rescript clean"
   },
