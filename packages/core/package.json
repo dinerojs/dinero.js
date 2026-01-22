@@ -8,10 +8,10 @@
     "amount",
     "immutable"
   ],
-  "bugs": "TODO",
+  "bugs": "https://github.com/dinerojs/dinero.js/issues",
   "repository": {
     "type": "git",
-    "url": "TODO"
+    "url": "https://github.com/dinerojs/dinero.js.git"
   },
   "license": "MIT",
   "author": {
