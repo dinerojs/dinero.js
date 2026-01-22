@@ -34,7 +34,8 @@
     "test": "vitest --run --config ../../vitest.config.js",
     "res:build": "rescript",
     "res:clean": "rescript clean",
-    "res:dev": "rescript watch"
+    "res:dev": "rescript watch",
+    "res:format": "rescript format"
   },
   "dependencies": {
     "@dinero.js/calculator-number": "2.0.0-alpha.14",

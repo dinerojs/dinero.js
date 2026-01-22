@@ -6,6 +6,7 @@
     "res:build": "npm run res:build --workspaces",
     "res:clean": "npm run res:clean --workspaces", 
     "res:dev": "npm run res:dev --workspaces",
+    "res:format": "npm run res:format --workspaces",
     "pretest": "npm run res:build",
     "test": "vitest run",
     "test:watch": "vitest"

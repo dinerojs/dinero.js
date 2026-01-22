@@ -33,6 +33,7 @@
     "test": "echo \"no tests\"",
     "res:build": "rescript",
     "res:clean": "rescript clean",
-    "res:dev": "rescript watch"
+    "res:dev": "rescript watch",
+    "res:format": "rescript format"
   }
 }
