@@ -1,6 +1,6 @@
 // Mongolian tögrög.
 let mnt: Currency.currency<int> = {
-  code: (#MNT: Currency.currencyCode),
+  code: #MNT,
   base: 10,
   exponent: 2,
 }

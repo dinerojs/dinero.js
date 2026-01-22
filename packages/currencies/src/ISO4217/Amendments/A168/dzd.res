@@ -1,6 +1,6 @@
 // Algerian dinar.
 let dzd: Currency.currency<int> = {
-  code: (#DZD: Currency.currencyCode),
+  code: #DZD,
   base: 10,
   exponent: 2,
 }

@@ -1,6 +1,6 @@
 // Polish złoty.
 let pln: Currency.currency<int> = {
-  code: (#PLN: Currency.currencyCode),
+  code: #PLN,
   base: 10,
   exponent: 2,
 }

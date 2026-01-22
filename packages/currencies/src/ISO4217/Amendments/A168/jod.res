@@ -1,6 +1,6 @@
 // Jordanian dinar.
 let jod: Currency.currency<int> = {
-  code: (#JOD: Currency.currencyCode),
+  code: #JOD,
   base: 10,
   exponent: 3,
 }

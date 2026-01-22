@@ -1,6 +1,6 @@
 // South Korean won.
 let krw: Currency.currency<int> = {
-  code: (#KRW: Currency.currencyCode),
+  code: #KRW,
   base: 10,
   exponent: 0,
 }

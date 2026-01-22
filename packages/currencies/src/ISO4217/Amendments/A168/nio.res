@@ -1,6 +1,6 @@
 // Nicaraguan córdoba.
 let nio: Currency.currency<int> = {
-  code: (#NIO: Currency.currencyCode),
+  code: #NIO,
   base: 10,
   exponent: 2,
 }

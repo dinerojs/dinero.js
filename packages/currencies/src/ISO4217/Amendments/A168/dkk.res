@@ -1,6 +1,6 @@
 // Danish krone.
 let dkk: Currency.currency<int> = {
-  code: (#DKK: Currency.currencyCode),
+  code: #DKK,
   base: 10,
   exponent: 2,
 }

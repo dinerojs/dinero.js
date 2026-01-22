@@ -1,6 +1,6 @@
 // Bermudian dollar.
 let bmd: Currency.currency<int> = {
-  code: (#BMD: Currency.currencyCode),
+  code: #BMD,
   base: 10,
   exponent: 2,
 }

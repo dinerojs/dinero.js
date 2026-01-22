@@ -1,6 +1,6 @@
 // Argentine peso.
 let ars: Currency.currency<int> = {
-  code: (#ARS: Currency.currencyCode),
+  code: #ARS,
   base: 10,
   exponent: 2,
 }

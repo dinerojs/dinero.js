@@ -1,6 +1,6 @@
 // Burundian franc.
 let bif: Currency.currency<int> = {
-  code: (#BIF: Currency.currencyCode),
+  code: #BIF,
   base: 10,
   exponent: 0,
 }

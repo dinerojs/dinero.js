@@ -1,6 +1,6 @@
 // Yemeni rial.
 let yer: Currency.currency<int> = {
-  code: (#YER: Currency.currencyCode),
+  code: #YER,
   base: 10,
   exponent: 2,
 }

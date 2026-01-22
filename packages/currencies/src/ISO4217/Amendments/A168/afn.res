@@ -1,6 +1,6 @@
 // Afghan afghani.
 let afn: Currency.currency<int> = {
-  code: (#AFN: Currency.currencyCode),
+  code: #AFN,
   base: 10,
   exponent: 2,
 }

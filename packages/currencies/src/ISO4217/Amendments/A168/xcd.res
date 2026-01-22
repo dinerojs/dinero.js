@@ -1,6 +1,6 @@
 // East Caribbean dollar.
 let xcd: Currency.currency<int> = {
-  code: (#XCD: Currency.currencyCode),
+  code: #XCD,
   base: 10,
   exponent: 2,
 }

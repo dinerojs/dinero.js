@@ -1,6 +1,6 @@
 // Uruguayan peso.
 let uyu: Currency.currency<int> = {
-  code: (#UYU: Currency.currencyCode),
+  code: #UYU,
   base: 10,
   exponent: 2,
 }

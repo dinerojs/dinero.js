@@ -1,6 +1,6 @@
 // Sudanese pound.
 let sdg: Currency.currency<int> = {
-  code: (#SDG: Currency.currencyCode),
+  code: #SDG,
   base: 10,
   exponent: 2,
 }

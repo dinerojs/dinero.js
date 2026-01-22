@@ -1,6 +1,6 @@
 // Japanese yen.
 let jpy: Currency.currency<int> = {
-  code: (#JPY: Currency.currencyCode),
+  code: #JPY,
   base: 10,
   exponent: 0,
 }

@@ -1,6 +1,6 @@
 // Guinean franc.
 let gnf: Currency.currency<int> = {
-  code: (#GNF: Currency.currencyCode),
+  code: #GNF,
   base: 10,
   exponent: 0,
 }

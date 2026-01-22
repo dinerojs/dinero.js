@@ -1,6 +1,6 @@
 // Central African CFA franc.
 let xaf: Currency.currency<int> = {
-  code: (#XAF: Currency.currencyCode),
+  code: #XAF,
   base: 10,
   exponent: 0,
 }

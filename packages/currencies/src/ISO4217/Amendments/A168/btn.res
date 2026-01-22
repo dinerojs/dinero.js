@@ -1,6 +1,6 @@
 // Bhutanese ngultrum.
 let btn: Currency.currency<int> = {
-  code: (#BTN: Currency.currencyCode),
+  code: #BTN,
   base: 10,
   exponent: 2,
 }

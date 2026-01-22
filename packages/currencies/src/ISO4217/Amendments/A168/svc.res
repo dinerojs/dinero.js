@@ -1,6 +1,6 @@
 // Salvadoran colón.
 let svc: Currency.currency<int> = {
-  code: (#SVC: Currency.currencyCode),
+  code: #SVC,
   base: 10,
   exponent: 2,
 }

@@ -1,6 +1,6 @@
 // Pound sterling.
 let gbp: Currency.currency<int> = {
-  code: (#GBP: Currency.currencyCode),
+  code: #GBP,
   base: 10,
   exponent: 2,
 }

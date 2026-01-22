@@ -1,6 +1,6 @@
 // Eritrean nakfa.
 let ern: Currency.currency<int> = {
-  code: (#ERN: Currency.currencyCode),
+  code: #ERN,
   base: 10,
   exponent: 2,
 }

@@ -1,6 +1,6 @@
 // New Zealand dollar.
 let nzd: Currency.currency<int> = {
-  code: (#NZD: Currency.currencyCode),
+  code: #NZD,
   base: 10,
   exponent: 2,
 }

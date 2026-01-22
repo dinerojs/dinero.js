@@ -1,6 +1,6 @@
 // Lesotho loti.
 let lsl: Currency.currency<int> = {
-  code: (#LSL: Currency.currencyCode),
+  code: #LSL,
   base: 10,
   exponent: 2,
 }

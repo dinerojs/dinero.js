@@ -1,6 +1,6 @@
 // WIR Euro.
 let che: Currency.currency<int> = {
-  code: (#CHE: Currency.currencyCode),
+  code: #CHE,
   base: 10,
   exponent: 2,
 }

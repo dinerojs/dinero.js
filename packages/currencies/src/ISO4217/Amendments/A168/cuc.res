@@ -1,6 +1,6 @@
 // Cuban convertible peso.
 let cuc: Currency.currency<int> = {
-  code: (#CUC: Currency.currencyCode),
+  code: #CUC,
   base: 10,
   exponent: 2,
 }

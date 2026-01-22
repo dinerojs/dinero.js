@@ -1,6 +1,6 @@
 // Georgian lari.
 let gel: Currency.currency<int> = {
-  code: (#GEL: Currency.currencyCode),
+  code: #GEL,
   base: 10,
   exponent: 2,
 }

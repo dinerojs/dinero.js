@@ -1,6 +1,6 @@
 // Hungarian forint.
 let huf: Currency.currency<int> = {
-  code: (#HUF: Currency.currencyCode),
+  code: #HUF,
   base: 10,
   exponent: 2,
 }

@@ -1,6 +1,6 @@
 // Kyrgyzstani som.
 let kgs: Currency.currency<int> = {
-  code: (#KGS: Currency.currencyCode),
+  code: #KGS,
   base: 10,
   exponent: 2,
 }

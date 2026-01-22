@@ -1,6 +1,6 @@
 // Somali shilling.
 let sos: Currency.currency<int> = {
-  code: (#SOS: Currency.currencyCode),
+  code: #SOS,
   base: 10,
   exponent: 2,
 }

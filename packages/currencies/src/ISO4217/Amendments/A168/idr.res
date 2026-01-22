@@ -1,6 +1,6 @@
 // Indonesian rupiah.
 let idr: Currency.currency<int> = {
-  code: (#IDR: Currency.currencyCode),
+  code: #IDR,
   base: 10,
   exponent: 2,
 }

@@ -1,6 +1,6 @@
 // Rwandan franc.
 let rwf: Currency.currency<int> = {
-  code: (#RWF: Currency.currencyCode),
+  code: #RWF,
   base: 10,
   exponent: 0,
 }

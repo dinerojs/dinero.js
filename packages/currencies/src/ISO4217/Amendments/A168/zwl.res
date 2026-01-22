@@ -1,6 +1,6 @@
 // Zimbabwean dollar.
 let zwl: Currency.currency<int> = {
-  code: (#ZWL: Currency.currencyCode),
+  code: #ZWL,
   base: 10,
   exponent: 2,
 }

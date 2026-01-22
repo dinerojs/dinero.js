@@ -1,6 +1,6 @@
 // Angolan kwanza.
 let aoa: Currency.currency<int> = {
-  code: (#AOA: Currency.currencyCode),
+  code: #AOA,
   base: 10,
   exponent: 2,
 }

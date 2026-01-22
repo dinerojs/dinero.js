@@ -1,6 +1,6 @@
 // Peruvian sol.
 let pen: Currency.currency<int> = {
-  code: (#PEN: Currency.currencyCode),
+  code: #PEN,
   base: 10,
   exponent: 2,
 }

@@ -1,6 +1,6 @@
 // Falkland Islands pound.
 let fkp: Currency.currency<int> = {
-  code: (#FKP: Currency.currencyCode),
+  code: #FKP,
   base: 10,
   exponent: 2,
 }

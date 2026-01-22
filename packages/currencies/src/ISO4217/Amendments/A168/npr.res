@@ -1,6 +1,6 @@
 // Nepalese rupee.
 let npr: Currency.currency<int> = {
-  code: (#NPR: Currency.currencyCode),
+  code: #NPR,
   base: 10,
   exponent: 2,
 }

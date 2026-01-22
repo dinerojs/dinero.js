@@ -1,6 +1,6 @@
 // Cuban peso.
 let cup: Currency.currency<int> = {
-  code: (#CUP: Currency.currencyCode),
+  code: #CUP,
   base: 10,
   exponent: 2,
 }

@@ -1,6 +1,6 @@
 // Malawian kwacha.
 let mwk: Currency.currency<int> = {
-  code: (#MWK: Currency.currencyCode),
+  code: #MWK,
   base: 10,
   exponent: 2,
 }

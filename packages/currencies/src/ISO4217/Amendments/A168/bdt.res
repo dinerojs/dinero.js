@@ -1,6 +1,6 @@
 // Bangladeshi taka.
 let bdt: Currency.currency<int> = {
-  code: (#BDT: Currency.currencyCode),
+  code: #BDT,
   base: 10,
   exponent: 2,
 }

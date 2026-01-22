@@ -1,6 +1,6 @@
 // Chilean peso.
 let clp: Currency.currency<int> = {
-  code: (#CLP: Currency.currencyCode),
+  code: #CLP,
   base: 10,
   exponent: 0,
 }

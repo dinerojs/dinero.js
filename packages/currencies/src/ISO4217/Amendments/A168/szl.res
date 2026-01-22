@@ -1,6 +1,6 @@
 // Swazi lilangeni.
 let szl: Currency.currency<int> = {
-  code: (#SZL: Currency.currencyCode),
+  code: #SZL,
   base: 10,
   exponent: 2,
 }

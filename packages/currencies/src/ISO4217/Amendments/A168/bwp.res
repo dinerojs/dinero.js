@@ -1,6 +1,6 @@
 // Botswana pula.
 let bwp: Currency.currency<int> = {
-  code: (#BWP: Currency.currencyCode),
+  code: #BWP,
   base: 10,
   exponent: 2,
 }

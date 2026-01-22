@@ -1,6 +1,6 @@
 // Macedonian denar.
 let mkd: Currency.currency<int> = {
-  code: (#MKD: Currency.currencyCode),
+  code: #MKD,
   base: 10,
   exponent: 2,
 }

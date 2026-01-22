@@ -1,6 +1,6 @@
 // South Sudanese pound.
 let ssp: Currency.currency<int> = {
-  code: (#SSP: Currency.currencyCode),
+  code: #SSP,
   base: 10,
   exponent: 2,
 }

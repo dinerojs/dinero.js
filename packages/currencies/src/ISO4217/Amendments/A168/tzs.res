@@ -1,6 +1,6 @@
 // Tanzanian shilling.
 let tzs: Currency.currency<int> = {
-  code: (#TZS: Currency.currencyCode),
+  code: #TZS,
   base: 10,
   exponent: 2,
 }

@@ -1,6 +1,6 @@
 // Namibian dollar.
 let nad: Currency.currency<int> = {
-  code: (#NAD: Currency.currencyCode),
+  code: #NAD,
   base: 10,
   exponent: 2,
 }

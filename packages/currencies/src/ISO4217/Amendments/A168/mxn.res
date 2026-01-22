@@ -1,6 +1,6 @@
 // Mexican peso.
 let mxn: Currency.currency<int> = {
-  code: (#MXN: Currency.currencyCode),
+  code: #MXN,
   base: 10,
   exponent: 2,
 }

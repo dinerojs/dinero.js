@@ -1,6 +1,6 @@
 // Ghanaian cedi.
 let ghs: Currency.currency<int> = {
-  code: (#GHS: Currency.currencyCode),
+  code: #GHS,
   base: 10,
   exponent: 2,
 }

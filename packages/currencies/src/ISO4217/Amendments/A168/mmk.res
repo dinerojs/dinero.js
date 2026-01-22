@@ -1,6 +1,6 @@
 // Myanmar kyat.
 let mmk: Currency.currency<int> = {
-  code: (#MMK: Currency.currencyCode),
+  code: #MMK,
   base: 10,
   exponent: 2,
 }

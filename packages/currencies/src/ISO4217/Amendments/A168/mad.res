@@ -1,6 +1,6 @@
 // Moroccan dirham.
 let mad: Currency.currency<int> = {
-  code: (#MAD: Currency.currencyCode),
+  code: #MAD,
   base: 10,
   exponent: 2,
 }

@@ -1,6 +1,6 @@
 // Aruban florin.
 let awg: Currency.currency<int> = {
-  code: (#AWG: Currency.currencyCode),
+  code: #AWG,
   base: 10,
   exponent: 2,
 }

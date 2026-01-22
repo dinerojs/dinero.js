@@ -1,6 +1,6 @@
 // Icelandic króna.
 let isk: Currency.currency<int> = {
-  code: (#ISK: Currency.currencyCode),
+  code: #ISK,
   base: 10,
   exponent: 0,
 }

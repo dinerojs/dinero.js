@@ -1,6 +1,6 @@
 // Egyptian pound.
 let egp: Currency.currency<int> = {
-  code: (#EGP: Currency.currencyCode),
+  code: #EGP,
   base: 10,
   exponent: 2,
 }

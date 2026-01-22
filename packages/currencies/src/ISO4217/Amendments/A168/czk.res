@@ -1,6 +1,6 @@
 // Czech koruna.
 let czk: Currency.currency<int> = {
-  code: (#CZK: Currency.currencyCode),
+  code: #CZK,
   base: 10,
   exponent: 2,
 }

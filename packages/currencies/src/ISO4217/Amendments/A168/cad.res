@@ -1,6 +1,6 @@
 // Canadian dollar.
 let cad: Currency.currency<int> = {
-  code: (#CAD: Currency.currencyCode),
+  code: #CAD,
   base: 10,
   exponent: 2,
 }

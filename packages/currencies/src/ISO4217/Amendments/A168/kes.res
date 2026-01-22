@@ -1,6 +1,6 @@
 // Kenyan shilling.
 let kes: Currency.currency<int> = {
-  code: (#KES: Currency.currencyCode),
+  code: #KES,
   base: 10,
   exponent: 2,
 }

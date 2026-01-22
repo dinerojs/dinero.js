@@ -1,6 +1,6 @@
 // Libyan dinar.
 let lyd: Currency.currency<int> = {
-  code: (#LYD: Currency.currencyCode),
+  code: #LYD,
   base: 10,
   exponent: 3,
 }

@@ -1,6 +1,6 @@
 // Bolivian boliviano.
 let bob: Currency.currency<int> = {
-  code: (#BOB: Currency.currencyCode),
+  code: #BOB,
   base: 10,
   exponent: 2,
 }

@@ -1,6 +1,6 @@
 // Mauritanian ouguiya.
 let mru: Currency.currency<int> = {
-  code: (#MRU: Currency.currencyCode),
+  code: #MRU,
   base: 5,
   exponent: 1,
 }

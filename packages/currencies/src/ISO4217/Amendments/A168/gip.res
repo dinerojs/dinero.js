@@ -1,6 +1,6 @@
 // Gibraltar pound.
 let gip: Currency.currency<int> = {
-  code: (#GIP: Currency.currencyCode),
+  code: #GIP,
   base: 10,
   exponent: 2,
 }

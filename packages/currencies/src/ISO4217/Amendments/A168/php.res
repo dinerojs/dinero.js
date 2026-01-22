@@ -1,6 +1,6 @@
 // Philippine peso.
 let php: Currency.currency<int> = {
-  code: (#PHP: Currency.currencyCode),
+  code: #PHP,
   base: 10,
   exponent: 2,
 }

@@ -1,6 +1,6 @@
 // Panamanian balboa.
 let pab: Currency.currency<int> = {
-  code: (#PAB: Currency.currencyCode),
+  code: #PAB,
   base: 10,
   exponent: 2,
 }

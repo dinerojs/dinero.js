@@ -1,6 +1,6 @@
 // Lao kip.
 let lak: Currency.currency<int> = {
-  code: (#LAK: Currency.currencyCode),
+  code: #LAK,
   base: 10,
   exponent: 2,
 }

@@ -1,6 +1,6 @@
 // Belarusian ruble.
 let byn: Currency.currency<int> = {
-  code: (#BYN: Currency.currencyCode),
+  code: #BYN,
   base: 10,
   exponent: 2,
 }

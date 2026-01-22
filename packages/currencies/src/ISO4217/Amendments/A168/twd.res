@@ -1,6 +1,6 @@
 // New Taiwan dollar.
 let twd: Currency.currency<int> = {
-  code: (#TWD: Currency.currencyCode),
+  code: #TWD,
   base: 10,
   exponent: 2,
 }

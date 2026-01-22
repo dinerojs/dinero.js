@@ -1,6 +1,6 @@
 // Saint Helena pound.
 let shp: Currency.currency<int> = {
-  code: (#SHP: Currency.currencyCode),
+  code: #SHP,
   base: 10,
   exponent: 2,
 }

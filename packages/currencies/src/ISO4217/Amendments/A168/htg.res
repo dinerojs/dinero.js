@@ -1,6 +1,6 @@
 // Haitian gourde.
 let htg: Currency.currency<int> = {
-  code: (#HTG: Currency.currencyCode),
+  code: #HTG,
   base: 10,
   exponent: 2,
 }

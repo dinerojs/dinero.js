@@ -1,6 +1,6 @@
 // Uzbekistani soʻm.
 let uzs: Currency.currency<int> = {
-  code: (#UZS: Currency.currencyCode),
+  code: #UZS,
   base: 10,
   exponent: 2,
 }

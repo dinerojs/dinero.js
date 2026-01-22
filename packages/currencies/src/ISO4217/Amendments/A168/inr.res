@@ -1,6 +1,6 @@
 // Indian rupee.
 let inr: Currency.currency<int> = {
-  code: (#INR: Currency.currencyCode),
+  code: #INR,
   base: 10,
   exponent: 2,
 }

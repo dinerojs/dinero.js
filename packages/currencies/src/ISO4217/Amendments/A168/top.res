@@ -1,6 +1,6 @@
 // Tongan paʻanga.
 let top: Currency.currency<int> = {
-  code: (#TOP: Currency.currencyCode),
+  code: #TOP,
   base: 10,
   exponent: 2,
 }

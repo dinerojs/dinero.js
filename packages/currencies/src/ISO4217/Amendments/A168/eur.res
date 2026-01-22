@@ -1,6 +1,6 @@
 // Euro.
 let eur: Currency.currency<int> = {
-  code: (#EUR: Currency.currencyCode),
+  code: #EUR,
   base: 10,
   exponent: 2,
 }
