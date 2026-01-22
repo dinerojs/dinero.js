@@ -1,11 +1,11 @@
-open DinerojsCore.Types
+open Calculator
+open Dinero
 
-@genType
-let hasSubUnits = (calculator: calculator<'a>) => {
+let hasSubUnits = (calculator: calculator<'tInput>) => {
   let equalFn = EqualUtil.equal(calculator)
   let computeBaseFn = ComputeBase.computeBase(calculator)
 
-  (dineroObject: dinero<'a>): bool => {
+  (dineroObject: dinero<'tInput>): bool => {
     let json = dineroObject.toJSON()
     let base = computeBaseFn(json.currency.base)
 
