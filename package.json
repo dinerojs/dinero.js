@@ -21,6 +21,7 @@
     "res:dev:calculator-bigint": "cd packages/calculator-bigint && npx rescript watch",
     "res:dev:currencies": "cd packages/currencies && npx rescript watch",
     "res:dev:dinero.js": "cd packages/dinero.js && npx rescript watch",
+    "pretest": "npm run res:build",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest --coverage"

@@ -21,6 +21,13 @@
     "name": "Sarah Dayan",
     "url": "https://sarahdayan.dev"
   },
+  "type": "module",
+  "main": "./lib/es6/src/index.js",
+  "module": "./lib/es6/src/index.js",
+  "exports": {
+    ".": "./lib/es6/src/index.js"
+  },
+  "files": ["lib/"],
   "scripts": {
     "res:build": "rescript",
     "res:clean": "rescript clean"

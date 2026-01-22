@@ -6,7 +6,7 @@
   },
   "package-specs": {
     "module": "esmodule",
-    "in-source": true
+    "in-source": false
   },
   "suffix": ".js",
   "namespace": true,

@@ -2,33 +2,38 @@
   "name": "@dinero.js/core",
   "version": "2.0.0-alpha.14",
   "description": "Common code between Dinero.js packages",
-  "keywords": ["money", "monetary", "amount", "immutable"],
-  "homepage": "https://v2.dinerojs.com",
-  "bugs": "https://github.com/dinerojs/dinero.js/issues",
+  "keywords": [
+    "money",
+    "monetary",
+    "amount",
+    "immutable"
+  ],
+  "bugs": "TODO",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dinerojs/dinero.js.git"
+    "url": "TODO"
   },
   "license": "MIT",
   "author": {
     "name": "Sarah Dayan",
     "url": "https://sarahdayan.dev"
   },
-  "sideEffects": false,
-  "main": "dist/cjs/index.js",
-  "umd:main": "dist/umd/index.production.js",
-  "jsdelivr": "dist/umd/index.production.js",
-  "unpkg": "dist/umd/index.production.js",
-  "module": "dist/esm/index.js",
-  "source": "src/index.ts",
-  "types": "dist/esm/index.d.ts",
-  "files": ["dist/"],
+  "type": "module",
+  "main": "./lib/es6/src/index.js",
+  "module": "./lib/es6/src/index.js",
+  "exports": {
+    ".": "./lib/es6/src/index.js"
+  },
+  "files": [
+    "lib/"
+  ],
   "scripts": {
     "res:build": "rescript",
     "res:clean": "rescript clean"
   },
   "dependencies": {
+    "@dinero.js/calculator-bigint": "2.0.0-alpha.14",
     "@dinero.js/calculator-number": "2.0.0-alpha.14",
-    "@dinero.js/calculator-bigint": "2.0.0-alpha.14"
+    "fast-check": "^4.5.3"
   }
 }

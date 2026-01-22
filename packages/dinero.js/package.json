@@ -22,14 +22,13 @@
     "url": "https://sarahdayan.dev"
   },
   "sideEffects": false,
-  "main": "dist/cjs/index.js",
-  "umd:main": "dist/umd/index.production.js",
-  "jsdelivr": "dist/umd/index.production.js",
-  "unpkg": "dist/umd/index.production.js",
-  "module": "dist/esm/index.js",
-  "source": "src/index.ts",
-  "types": "dist/esm/index.d.ts",
-  "files": ["dist/"],
+  "type": "module",
+  "main": "./lib/es6/src/index.js",
+  "module": "./lib/es6/src/index.js", 
+  "exports": {
+    ".": "./lib/es6/src/index.js"
+  },
+  "files": ["lib/"],
   "scripts": {
     "res:build": "rescript",
     "res:clean": "rescript clean"
