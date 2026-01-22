@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "res:build": "npm run res:build --workspaces",
-    "res:clean": "npm run res:clean --workspaces", 
-    "res:dev": "npm run res:dev --workspaces",
-    "res:format": "npm run res:format --workspaces",
+    "prebuild": "npm run format:check",
+    "build": "npm run res:build --workspaces",
+    "clean": "npm run res:clean --workspaces", 
+    "dev": "npm run res:dev --workspaces",
+    "format": "npm run res:format --workspaces",
+    "format:check": "npm run res:format:check --workspaces",
     "pretest": "npm run res:build",
     "test": "vitest run",
     "test:watch": "vitest"

@@ -33,7 +33,8 @@
     "res:build": "rescript",
     "res:clean": "rescript clean",
     "res:dev": "rescript watch",
-    "res:format": "rescript format"
+    "res:format": "rescript format",
+    "res:format:check": "rescript format --check"
   },
   "dependencies": {
     "@dinero.js/calculator-bigint": "2.0.0-alpha.14",
