@@ -1,2 +1,2 @@
-// Re-export dinero function  
+// Re-export dinero function
 include Dinero

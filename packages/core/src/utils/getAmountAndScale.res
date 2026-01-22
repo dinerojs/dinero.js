@@ -13,12 +13,12 @@ let getAmountAndScale = (value: 'amount, zero: float) => {
   let maybeScaled = fromValue(value)
   switch maybeScaled {
   | ScaledAmount(scaledValue) => {
-      \"amount": scaledValue.amount,
-      \"scale": scaledValue.scale->Option.getUnsafe
+      amount: scaledValue.amount,
+      scale: scaledValue.scale->Option.getUnsafe,
     }
   | Amount(plainValue) => {
-      \"amount": plainValue,
-      \"scale": zero
+      amount: plainValue,
+      scale: zero,
     }
   }
 }

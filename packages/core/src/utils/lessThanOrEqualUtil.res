@@ -12,7 +12,7 @@ open LessThanUtil
 let lessThanOrEqual = (calculator: calculator<'amount>) => {
   let lessThanFn = lessThan(calculator)
   let equalFn = equal(calculator)
-  
+
   (subject: 'amount, comparator: 'amount) => {
     lessThanFn(subject, comparator) || equalFn(subject, comparator)
   }

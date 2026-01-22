@@ -23,18 +23,18 @@ let rec createDinero = (options: createDineroOptions<'amount>) => {
     toString: (_: option<'amount>) => "",
   }
   let actualFormatter = options.formatter->Option.getOr(defaultFormatter)
-  
+
   (dineroOptions: dineroOptions<'amount>): dinero<'amount> => {
     let {amount, currency} = dineroOptions
     let {code, base, exponent} = currency
     let actualScale = dineroOptions.scale->Option.getOr(exponent)
-    
+
     // Call onCreate if provided
     switch options.onCreate {
     | Some(callback) => callback({amount, currency: {code, base, exponent}, scale: actualScale})
     | None => ()
     }
-    
+
     // Create the dinero object with recursive create function
     let rec dineroObj = {
       calculator,
@@ -47,11 +47,15 @@ let rec createDinero = (options: createDineroOptions<'amount>) => {
       },
     }
     and createFn = (opts: dineroOptions<'amount>) => {
-      // Recursive call to create new dinero objects  
-      let factory = createDinero({calculator, onCreate: ?options.onCreate, formatter: ?options.formatter})
+      // Recursive call to create new dinero objects
+      let factory = createDinero({
+        calculator,
+        onCreate: ?options.onCreate,
+        formatter: ?options.formatter,
+      })
       factory(opts)
     }
-    
+
     dineroObj
   }
 }

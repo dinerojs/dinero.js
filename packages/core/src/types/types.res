@@ -1,6 +1,6 @@
 // Import all types to make them available
 include BinaryOperation
-include UnaryOperation  
+include UnaryOperation
 include ScaledAmount
 include Transformer
 include Calculator

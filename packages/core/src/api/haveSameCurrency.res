@@ -6,12 +6,12 @@ let haveSameCurrency = (dineroObjects: array<dinero<'amount>>) => {
   } else {
     let firstDinero = dineroObjects[0]->Option.getOrThrow
     let otherDineros = dineroObjects->Array.slice(~start=1)
-    
+
     let computeBaseFn = ComputeBase.computeBase(firstDinero.calculator)
     let {currency: comparator} = firstDinero.toJSON()
     let equalFn = EqualUtil.equal(firstDinero.calculator)
     let comparatorBase = computeBaseFn(ComputeBase.fromValue(comparator.base))
-    
+
     otherDineros->Array.every(d => {
       let {currency: subject} = d.toJSON()
       let subjectBase = computeBaseFn(ComputeBase.fromValue(subject.base))

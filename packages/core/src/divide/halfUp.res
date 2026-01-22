@@ -31,7 +31,7 @@ let halfUp: divideOperation<'amount> = (amount, factor, calculator) => {
   let isLessThanHalf = greaterThanFn(difference, remainder)
   let isPositive = greaterThanFn(amount, zero)
 
-  if isHalfFn(amount, factor) || (isPositive && !isLessThanHalf) || (!isPositive && isLessThanHalf) {
+  if isHalfFn(amount, factor) || isPositive && !isLessThanHalf || (!isPositive && isLessThanHalf) {
     up(amount, factor, calculator)
   } else {
     down(amount, factor, calculator)

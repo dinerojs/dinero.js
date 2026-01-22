@@ -1,6 +1,6 @@
-type comparisonOperator = 
+type comparisonOperator =
   | @as(-1) LT
-  | @as(0) EQ  
+  | @as(0) EQ
   | @as(1) GT
 
 type calculator<'tInput> = {

@@ -25,16 +25,13 @@ let isScaledAmount = (value: maybeScaledAmount<'amount>) => {
  */
 let fromValue = (value: 'a): maybeScaledAmount<'b> => {
   switch Type.typeof(value) {
-  | #object => {
-      switch value {
-      | JSON.Object(dict{"amount": JSON.Number(amount), "scale": JSON.Number(scale)}) => {
-        ScaledAmount({ amount, scale})
-      }
-      | JSON.Object(dict{"amount": JSON.Number(amount)}) => {
-        ScaledAmount({ amount, scale: 0.0 })
-      }
-      | _ => Amount(Obj.magic(value))
-      }
+  | #object => switch value {
+    | JSON.Object(dict{
+        "amount": JSON.Number(amount),
+        "scale": JSON.Number(scale),
+      }) => ScaledAmount({amount, scale})
+    | JSON.Object(dict{"amount": JSON.Number(amount)}) => ScaledAmount({amount, scale: 0.0})
+    | _ => Amount(Obj.magic(value))
     }
   | #number => Amount(Obj.magic(value))
   | _ => JsError.throwWithMessage("Expected either a number or a scaled amount")

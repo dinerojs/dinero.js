@@ -18,8 +18,12 @@ let sign = (calculator: calculator<'amount>) => {
     } else {
       let one = calculator.increment(zero)
       let minusOne = calculator.decrement(zero)
-      
-      if lessThanFn(input, zero) { minusOne } else { one }
+
+      if lessThanFn(input, zero) {
+        minusOne
+      } else {
+        one
+      }
     }
   }
 }

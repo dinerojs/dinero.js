@@ -12,14 +12,12 @@ let computeBase = (calculator: calculator<'amount>) => {
   (base: [#Single('amount) | #Array(array<'amount>)]) => {
     switch base {
     | #Single(value) => value
-    | #Array(baseArray) => {
-        switch baseArray[0] {
-        | Some(first) => {
-            let rest = Js.Array.sliceFrom(1, baseArray)
-            Js.Array.reduce((acc, curr) => calculator.multiply(acc, curr), first, rest)
-          }
-        | None => JsError.throwWithMessage("baseArray is empty")
+    | #Array(baseArray) => switch baseArray[0] {
+      | Some(first) => {
+          let rest = Js.Array.sliceFrom(1, baseArray)
+          Js.Array.reduce((acc, curr) => calculator.multiply(acc, curr), first, rest)
         }
+      | None => JsError.throwWithMessage("baseArray is empty")
       }
     }
   }

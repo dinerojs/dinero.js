@@ -13,10 +13,14 @@ let maximum = (calculator: calculator<'amount>) => {
 
   (values: array<'amount>) => {
     switch values[0] {
-      | Some(first) => Js.Array.reduce((acc, curr) => {
-        if lessThanFn(acc, curr) { curr } else { acc }
+    | Some(first) => Js.Array.reduce((acc, curr) => {
+        if lessThanFn(acc, curr) {
+          curr
+        } else {
+          acc
+        }
       }, first, values->Array.slice(~start=1))
-      | None => JsError.throwWithMessage("Cannot find maximum of empty array")
+    | None => JsError.throwWithMessage("Cannot find maximum of empty array")
     }
   }
 }

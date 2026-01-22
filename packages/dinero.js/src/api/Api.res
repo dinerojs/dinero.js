@@ -1,6 +1,6 @@
 // Re-export all API functions
 include Add
-include Allocate  
+include Allocate
 include Compare
 include Convert
 include Equal

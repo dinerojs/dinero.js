@@ -22,7 +22,9 @@ let halfOdd: divideOperation<'amount> = (amount, factor, calculator) => {
 
   if !isHalfFn(amount, factor) {
     rounded
+  } else if isEvenFn(rounded) {
+    calculator.decrement(rounded)
   } else {
-    if isEvenFn(rounded) { calculator.decrement(rounded) } else { rounded }
+    rounded
   }
 }

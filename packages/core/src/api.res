@@ -2,7 +2,7 @@
 include Add
 include Allocate
 include Compare
-include Convert  
+include Convert
 include Equal
 include GreaterThan
 include GreaterThanOrEqual

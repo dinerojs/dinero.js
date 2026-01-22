@@ -5,7 +5,9 @@ type numberInput = [#Int(int) | #Float(float)]
  */
 let fromValue = (value: 'a): numberInput => {
   if Type.typeof(value) === #bigint {
-    JsError.throwWithMessage("BigInt values not supported in calculator-number. Use calculator-bigint package instead.")
+    JsError.throwWithMessage(
+      "BigInt values not supported in calculator-number. Use calculator-bigint package instead.",
+    )
   } else if Type.typeof(value) === #number {
     let num = (Obj.magic(value): float)
     if num == Math.floor(num) {

@@ -28,16 +28,24 @@ let distribute = (calculator: calculator<'amount>) => {
     } else {
       let remainder = ref(value)
 
-      // Calculate initial shares 
+      // Calculate initial shares
       let shares = ref(Js.Array.map(ratio => {
-        let share = calculator.integerDivide(calculator.multiply(value, ratio), total)
-        remainder := calculator.subtract(remainder.contents, share)
-        share
-      }, ratios))
+          let share = calculator.integerDivide(calculator.multiply(value, ratio), total)
+          remainder := calculator.subtract(remainder.contents, share)
+          share
+        }, ratios))
 
       let isPositive = greaterThanOrEqualFn(value, zero)
-      let compare = if isPositive { greaterThanFn } else { lessThanFn }
-      let amount = if isPositive { one } else { calculator.decrement(zero) }
+      let compare = if isPositive {
+        greaterThanFn
+      } else {
+        lessThanFn
+      }
+      let amount = if isPositive {
+        one
+      } else {
+        calculator.decrement(zero)
+      }
 
       // Distribute remainder - with proper looping
       let i = ref(0)

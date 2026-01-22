@@ -1,7 +1,3 @@
 open Calculator
 
-type divideOperation<'tAmount> = (
-  'tAmount,
-  'tAmount,
-  calculator<'tAmount>
-) => 'tAmount
+type divideOperation<'tAmount> = ('tAmount, 'tAmount, calculator<'tAmount>) => 'tAmount

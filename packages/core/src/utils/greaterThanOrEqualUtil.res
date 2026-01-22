@@ -12,7 +12,7 @@ open GreaterThanUtil
 let greaterThanOrEqual = (calculator: calculator<'amount>) => {
   let greaterThanFn = greaterThan(calculator)
   let equalFn = equal(calculator)
-  
+
   (subject: 'amount, comparator: 'amount) => {
     greaterThanFn(subject, comparator) || equalFn(subject, comparator)
   }

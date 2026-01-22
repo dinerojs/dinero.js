@@ -1,7 +1,7 @@
 // Currency type with proper record structure
 type currency<'tAmount> = {
   code: string,
-  base: 'tAmount, 
+  base: 'tAmount,
   exponent: 'tAmount,
 }
 

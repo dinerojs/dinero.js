@@ -1,6 +1,6 @@
 // Re-export all API functions
 include Add
-include Compare  
+include Compare
 include Decrement
 include Increment
 include IntegerDivide

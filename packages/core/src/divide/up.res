@@ -1,8 +1,6 @@
 open DivideOperation
 open Calculator
 
-
-
 /**
  * Divide and round up.
  *

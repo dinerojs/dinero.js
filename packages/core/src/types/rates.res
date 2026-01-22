@@ -1,6 +1,6 @@
 open ScaledAmount
 
-type rate<'tAmount> = 
+type rate<'tAmount> =
   | ScaledAmount(scaledAmount<'tAmount>)
   | DirectAmount('tAmount)
 
