@@ -14,8 +14,6 @@ export type Bundle = {
 };
 
 export async function getBundleSize(packages: string[], root: string) {
-  const bundles = ['index.development.js', 'index.production.js'];
-
   const filePaths = packages.map((pkg) => ({
     filePath: path.join(root, pkg),
     pkg,
@@ -27,18 +25,34 @@ export async function getBundleSize(packages: string[], root: string) {
       const { name } = JSON.parse(
         fs.readFileSync(pkgFilePath, { encoding: 'utf-8' })
       );
-      const [development, minified] = bundles.map((bundle) =>
-        path.join(filePath, 'dist/umd', bundle)
-      );
-      const gzip = await gzipSize.file(minified);
-      const fileContent = fs.readFileSync(minified);
+      // ReScript packages may output different file names
+      const possiblePaths = [
+        path.join(filePath, 'lib/es6/src', 'index.res.js'), // For packages with .res files
+        path.join(filePath, 'lib/es6/src', 'index.js')      // For packages with .js files
+      ];
+      
+      const bundlePath = possiblePaths.find(p => {
+        try {
+          fs.accessSync(p);
+          return true;
+        } catch {
+          return false;
+        }
+      });
+
+      if (!bundlePath) {
+        throw new Error(`Could not find index file for package ${pkg}`);
+      }
+      const gzip = await gzipSize.file(bundlePath);
+      const fileContent = fs.readFileSync(bundlePath);
       const brotli = brotliCompressSync(fileContent).length;
+      const size = fs.statSync(bundlePath).size;
 
       return {
         name,
         pkg,
-        development: fs.statSync(development).size,
-        minified: fs.statSync(minified).size,
+        development: size, // ReScript outputs single optimized version
+        minified: size,    // Same file for both development and production
         gzip,
         brotli,
       };
