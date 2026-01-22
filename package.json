@@ -3,28 +3,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "res:build": "npm run res:build:core && npm run res:build:calculator-number && npm run res:build:calculator-bigint && npm run res:build:currencies && npm run res:build:dinero.js",
-    "res:build:core": "cd packages/core && npx rescript",
-    "res:build:calculator-number": "cd packages/calculator-number && npx rescript",
-    "res:build:calculator-bigint": "cd packages/calculator-bigint && npx rescript",
-    "res:build:currencies": "cd packages/currencies && npx rescript",
-    "res:build:dinero.js": "cd packages/dinero.js && npx rescript",
-    "res:clean": "npm run res:clean:core && npm run res:clean:calculator-number && npm run res:clean:calculator-bigint && npm run res:clean:currencies && npm run res:clean:dinero.js",
-    "res:clean:core": "cd packages/core && npx rescript clean",
-    "res:clean:calculator-number": "cd packages/calculator-number && npx rescript clean",
-    "res:clean:calculator-bigint": "cd packages/calculator-bigint && npx rescript clean",
-    "res:clean:currencies": "cd packages/currencies && npx rescript clean",
-    "res:clean:dinero.js": "cd packages/dinero.js && npx rescript clean",
-    "res:dev": "npm run res:dev:core & npm run res:dev:calculator-number & npm run res:dev:calculator-bigint & npm run res:dev:currencies & npm run res:dev:dinero.js",
-    "res:dev:core": "cd packages/core && npx rescript watch",
-    "res:dev:calculator-number": "cd packages/calculator-number && npx rescript watch",
-    "res:dev:calculator-bigint": "cd packages/calculator-bigint && npx rescript watch",
-    "res:dev:currencies": "cd packages/currencies && npx rescript watch",
-    "res:dev:dinero.js": "cd packages/dinero.js && npx rescript watch",
+    "res:build": "npm run res:build --workspaces",
+    "res:clean": "npm run res:clean --workspaces", 
+    "res:dev": "npm run res:dev --workspaces",
     "pretest": "npm run res:build",
     "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest --coverage"
+    "test:watch": "vitest"
   },
   "keywords": [
     "rescript"

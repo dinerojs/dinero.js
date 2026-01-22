@@ -33,7 +33,8 @@
     "pretest": "npm run res:build",
     "test": "vitest --run --config ../../vitest.config.js",
     "res:build": "rescript",
-    "res:clean": "rescript clean"
+    "res:clean": "rescript clean",
+    "res:dev": "rescript watch"
   },
   "dependencies": {
     "@dinero.js/calculator-number": "2.0.0-alpha.14",
