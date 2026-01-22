@@ -6,6 +6,7 @@ include Convert
 include Equal
 include GreaterThan
 include GreaterThanOrEqual
+include HasSubUnits
 include HaveSameAmount
 include HaveSameCurrency
 include IsNegative
