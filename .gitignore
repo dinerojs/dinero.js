@@ -5,3 +5,4 @@
 .bsb.lock
 .merlin
 /packages/**/lib
+/coverage
