@@ -1,0 +1,16 @@
+{
+  "packages": [
+    "packages/calculator-bigint",
+    "packages/calculator-number",
+    "packages/core",
+    "packages/currencies",
+    "packages/dinero.js"
+  ],
+  "buildCommand": false,
+  "sandboxes": [
+    "/examples/cart-react",
+    "/examples/cart-vue",
+    "/examples/pricing-react",
+    "/examples/starter"
+  ]
+}
