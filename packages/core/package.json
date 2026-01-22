@@ -1,6 +1,6 @@
 {
   "name": "@dinero.js/core",
-  "version": "2.0.0-alpha.14",
+  "version": "3.0.0",
   "description": "Common code between Dinero.js packages",
   "keywords": [
     "money",
@@ -37,8 +37,8 @@
     "res:format:check": "rescript format --check"
   },
   "dependencies": {
-    "@dinero.js/calculator-bigint": "2.0.0-alpha.14",
-    "@dinero.js/calculator-number": "2.0.0-alpha.14",
+    "@dinero.js/calculator-bigint": "3.0.0",
+    "@dinero.js/calculator-number": "3.0.0",
     "fast-check": "^4.5.3"
   }
 }

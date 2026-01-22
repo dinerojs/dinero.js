@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "prebuild": "npm run format:check",
     "build": "npm run res:build --workspaces",
     "clean": "npm run res:clean --workspaces", 
     "dev": "npm run res:dev --workspaces",

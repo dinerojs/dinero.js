@@ -1,6 +1,6 @@
 {
   "name": "@dinero.js/calculator-bigint",
-  "version": "2.0.0-alpha.14",
+  "version": "3.0.0",
   "description": "Bigint calculator implementation for Dinero.js written in ReScript",
   "keywords": [
     "money",
@@ -38,6 +38,6 @@
     "res:format:check": "rescript format --check"
   },
   "dependencies": {
-    "@dinero.js/core": "2.0.0-alpha.14"
+    "@dinero.js/core": "3.0.0"
   }
 }
