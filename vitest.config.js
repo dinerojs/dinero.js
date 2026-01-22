@@ -7,7 +7,6 @@ export default defineConfig({
 
     // Test file patterns
     include: [
-      '**/__tests__/**/*.js',
       '**/*.test.js',
       '**/*.spec.js',
     ],
