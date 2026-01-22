@@ -9,5 +9,6 @@
     "in-source": true
   },
   "suffix": ".js",
+  "namespace": true,
   "dependencies": []
 }

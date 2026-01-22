@@ -9,5 +9,6 @@
     "in-source": true
   },
   "suffix": ".js",
-  "dependencies": []
+  "namespace": true,
+  "dependencies": ["@dinero.js/core"]
 }

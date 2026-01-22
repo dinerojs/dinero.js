@@ -6,12 +6,12 @@
  *
  * @returns Whether the two numbers are equal, or whether the first one is greater or less than the other.
  */
-let compare = (a: float, b: float): int => {
+let compare = (a: float, b: float): DinerojsCore.Calculator.comparisonOperator => {
   if a < b {
-    -1  // LT
+    LT
   } else if a > b {
-    1   // GT
+    GT
   } else {
-    0   // EQ
+    EQ
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@dinero.js/currencies",
+  "name": "dinero.js",
   "version": "11.1.0",
   "sources": [
     {
@@ -13,7 +13,11 @@
       "in-source": true
     }
   ],
-  "suffix": ".js",
+  "suffix": ".res.js",
   "namespace": true,
-  "dependencies": []
+  "dependencies": [
+    "@dinero.js/core",
+    "@dinero.js/calculator-number", 
+    "@dinero.js/currencies"
+  ]
 }

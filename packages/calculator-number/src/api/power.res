@@ -43,18 +43,13 @@ let powerFloat = (base: float, exponent: float): float => {
 }
 
 /**
- * General power function that accepts polymorphic variants.
+ * General power function that accepts floats.
  *
- * @param base - The base number as polymorphic variant.
- * @param exponent - The exponent to raise the base to as polymorphic variant.
+ * @param base - The base number as float.
+ * @param exponent - The exponent to raise the base to as float.
  *
- * @returns The base to the power of the exponent.
+ * @returns The base to the power of the exponent as float (for JavaScript parity).
  */
-let power = (base: numberInput, exponent: numberInput): numberInput => {
-  switch (base, exponent) {
-  | (#Int(b), #Int(e)) => #Int(powerInt(b, e))
-  | (#Float(b), #Float(e)) => #Float(powerFloat(b, e))
-  | (#Float(b), #Int(e)) => #Float(powerFloat(b, Float.fromInt(e)))
-  | (#Int(b), #Float(e)) => #Float(powerFloat(Float.fromInt(b), e))
-  }
+let power = (base: float, exponent: float): float => {
+  powerFloat(base, exponent)
 }

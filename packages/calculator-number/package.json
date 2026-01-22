@@ -22,8 +22,7 @@
     "url": "https://sarahdayan.dev"
   },
   "scripts": {
-  },
-  "devDependencies": {
-    "@dinero.js/core": "workspace:*"
+    "res:build": "rescript",
+    "res:clean": "rescript clean"
   }
 }

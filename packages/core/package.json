@@ -24,17 +24,11 @@
   "types": "dist/esm/index.d.ts",
   "files": ["dist/"],
   "scripts": {
-    "build:clean": "rimraf ./{dist,temp}",
-    "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
-    "build:definitions": "tsc -b",
-    "build:types": "node ../../scripts/build-types.mjs",
-    "build:umd:cjs": "rollup --config",
-    "lint": "node ../../scripts/lint.mjs --ext .js,.ts .",
-    "test": "node ../../scripts/test.mjs --projects=./packages/core"
+    "res:build": "rescript",
+    "res:clean": "rescript clean"
   },
-  "devDependencies": {
-    "@dinero.js/calculator-number": "workspace:*",
-    "@dinero.js/calculator-bigint": "workspace:*",
-    "fast-check": "^3.15.0"
+  "dependencies": {
+    "@dinero.js/calculator-number": "2.0.0-alpha.14",
+    "@dinero.js/calculator-bigint": "2.0.0-alpha.14"
   }
 }

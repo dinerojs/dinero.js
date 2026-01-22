@@ -1,7 +1,7 @@
 {
   "name": "@dinero.js/calculator-bigint",
   "version": "2.0.0-alpha.14",
-  "description": "Bigint calculator implementation for Dinero.js",
+  "description": "Bigint calculator implementation for Dinero.js written in ReScript",
   "keywords": [
     "money",
     "monetary",
@@ -10,34 +10,19 @@
     "calculator",
     "bigint"
   ],
-  "homepage": "https://v2.dinerojs.com",
-  "bugs": "https://github.com/dinerojs/dinero.js/issues",
+  "bugs": "TODO",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dinerojs/dinero.js.git"
+    "url": "TODO"
   },
   "license": "MIT",
   "author": {
     "name": "Sarah Dayan",
     "url": "https://sarahdayan.dev"
   },
-  "sideEffects": false,
-  "main": "dist/cjs/index.js",
-  "umd:main": "dist/umd/index.production.js",
-  "jsdelivr": "dist/umd/index.production.js",
-  "unpkg": "dist/umd/index.production.js",
-  "module": "dist/esm/index.js",
-  "source": "src/index.ts",
-  "types": "dist/esm/index.d.ts",
-  "files": ["dist/"],
   "scripts": {
-    "build:clean": "rimraf ./{dist,temp}",
-    "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
-    "build:definitions": "tsc -b",
-    "build:types": "node ../../scripts/build-types.mjs",
-    "build:umd:cjs": "rollup --config",
-    "lint": "node ../../scripts/lint.mjs --ext .js,.ts .",
-    "test": "node ../../scripts/test.mjs --projects=./packages/calculator-bigint"
+    "res:build": "rescript",
+    "res:clean": "rescript clean"
   },
   "dependencies": {
     "@dinero.js/core": "2.0.0-alpha.14"

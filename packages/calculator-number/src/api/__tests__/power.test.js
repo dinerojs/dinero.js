@@ -1,17 +1,17 @@
 import { power, powerInt, powerFloat, fromValue } from '../power.js';
 
-describe('power (with fromValue conversion)', () => {
+describe('power', () => {
   it('raises a positive number to the power of an exponent', () => {
-    expect(power(fromValue(2), fromValue(3))).toEqual({NAME: 'Int', VAL: 8});
+    expect(power(2.0, 3.0)).toBe(8);
   });
   it('raises a negative number to the power of an exponent', () => {
-    expect(power(fromValue(-2), fromValue(3))).toEqual({NAME: 'Int', VAL: -8});
+    expect(power(-2.0, 3.0)).toBe(-8);
   });
   it('raises a float to the power of an exponent', () => {
-    expect(power(fromValue(1.5), fromValue(3.0))).toEqual({NAME: 'Float', VAL: 3.375});
+    expect(power(1.5, 3.0)).toBe(3.375);
   });
   it('raises a number in scientific notation to the power of an exponent', () => {
-    expect(power(fromValue(1e5), fromValue(3))).toEqual({NAME: 'Int', VAL: 1000000000000000});
+    expect(power(1e5, 3.0)).toBe(1000000000000000);
   });
 });
 

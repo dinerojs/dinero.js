@@ -21,21 +21,6 @@
     "name": "Sarah Dayan",
     "url": "https://sarahdayan.dev"
   },
-  "sideEffects": false,
-  "main": "dist/cjs/index.js",
-  "umd:main": "dist/umd/index.production.js",
-  "jsdelivr": "dist/umd/index.production.js",
-  "unpkg": "dist/umd/index.production.js",
-  "module": "dist/esm/index.js",
-  "source": "src/index.ts",
-  "types": "dist/esm/index.d.ts",
-  "browser": {
-    "168": "dist/esm/168.js",
-    "latest": "dist/esm/latest.js"
-  },
-  "files": [
-    "dist/"
-  ],
   "scripts": {
     "res:build": "rescript",
     "res:clean": "rescript clean"

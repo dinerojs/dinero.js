@@ -31,20 +31,12 @@
   "types": "dist/esm/index.d.ts",
   "files": ["dist/"],
   "scripts": {
-    "build:clean": "rimraf ./{dist,temp}",
-    "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
-    "build:definitions": "tsc -b",
-    "build:types": "node ../../scripts/build-types.mjs",
-    "build:umd:cjs": "rollup --config",
-    "lint": "node ../../scripts/lint.mjs --ext .js,.ts .",
-    "test": "node ../../scripts/test.mjs --projects=./packages/dinero.js"
+    "res:build": "rescript",
+    "res:clean": "rescript clean"
   },
   "dependencies": {
     "@dinero.js/calculator-number": "2.0.0-alpha.14",
     "@dinero.js/core": "2.0.0-alpha.14",
     "@dinero.js/currencies": "2.0.0-alpha.14"
-  },
-  "devDependencies": {
-    "@dinero.js/calculator-bigint": "2.0.0-alpha.14"
   }
 }
