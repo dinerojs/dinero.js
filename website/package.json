@@ -11,7 +11,7 @@
   "dependencies": {
     "@dinero.js/currencies": "2.0.0-alpha.14",
     "@docsearch/css": "3.2.1",
-    "@docsearch/react": "3.3.0",
+    "@docsearch/react": "3.9.0",
     "classnames": "2.3.2",
     "dinero.js": "2.0.0-alpha.14",
     "fathom-client": "3.5.0",
