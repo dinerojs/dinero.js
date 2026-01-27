@@ -1,6 +1,5 @@
 {
   "name": "dinero.js",
-  "version": "3.0.0",
   "sources": [
     {
       "dir": "src",
@@ -13,7 +12,7 @@
       "in-source": false
     }
   ],
-  "suffix": ".res.js",
+  "suffix": ".js",
   "namespace": true,
   "dependencies": [
     "@dinero.js/core",
