@@ -8,7 +8,8 @@
 @send external round: ('a, int, int) => 'a = "round"
 @send external mod: ('a, 'a) => 'a = "mod"
 @send external times: ('a, 'a) => 'a = "times"
-@send external pow: ('a, float) => 'a = "pow"
+@send external toNumber: 'a => float = "toNumber"
+@send external pow: ('a, int) => 'a = "pow"
 
 // Big.js constants
 @module("big.js") @scope("default") external roundDown: int = "roundDown"
@@ -30,7 +31,7 @@ let bigCalculator: DinerojsCore.Calculator.calculator<'a> = {
   integerDivide: (a, b) => round(div(a, b), 0, roundDown),
   modulo: (a, b) => mod(a, b),
   multiply: (a, b) => times(a, b),
-  power: (a, b) => pow(a, Int.toFloat(Float.toInt(b))),
+  power: (a, b) => pow(a, b->Float.toInt),
   subtract: (a, b) => minus(a, b),
   zero: () => makeBig(0.0),
 }
