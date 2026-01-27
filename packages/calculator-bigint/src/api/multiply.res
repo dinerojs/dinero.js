@@ -7,5 +7,5 @@
  * @returns The product of the two bigints.
  */
 let multiply = (multiplicand: BigInt.t, multiplier: BigInt.t): BigInt.t => {
-  BigInt.mul(multiplicand, multiplier)
+  %raw(`BigInt(multiplicand) * BigInt(multiplier)`)
 }
