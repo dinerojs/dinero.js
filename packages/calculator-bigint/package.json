@@ -24,8 +24,7 @@
   "main": "./lib/es6/src/index.js",
   "module": "./lib/es6/src/index.js",
   "exports": {
-    ".": "./lib/es6/src/index.js",
-    "./calculator": "./lib/es6/src/calculator.js"
+    ".": "./lib/es6/src/index.js"
   },
   "files": ["lib/"],
   "scripts": {
