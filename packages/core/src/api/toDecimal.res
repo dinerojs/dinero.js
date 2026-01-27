@@ -13,8 +13,8 @@ let getDecimal = (calculator: calculator<'amount>, formatter: Formatter.formatte
   let zero = calculator.zero()
 
   (units: array<'amount>, scale: 'amount) => {
-    let wholeAmount = %raw("units[0]")
-    let fractionalAmount = %raw("units[1]")
+    let wholeAmount = units[0]->Option.getOrThrow
+    let fractionalAmount = units[1]->Option.getOrThrow
 
     let whole = formatter.toString(Some(wholeAmount))
     let fractional = formatter.toString(Some(absoluteFn(fractionalAmount)))
