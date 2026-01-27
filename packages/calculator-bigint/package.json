@@ -24,7 +24,8 @@
   "main": "./lib/es6/src/index.js",
   "module": "./lib/es6/src/index.js",
   "exports": {
-    ".": "./lib/es6/src/index.js"
+    ".": "./lib/es6/src/index.js",
+    "./lib/*": "./lib/*"
   },
   "files": ["lib/"],
   "scripts": {
