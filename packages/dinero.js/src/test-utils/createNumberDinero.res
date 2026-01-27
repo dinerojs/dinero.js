@@ -1,6 +1,6 @@
 @genType  
 let createNumberDinero = (options: DinerojsCore.Types.dineroOptions<float>): DinerojsCore.Types.dinero<float> => {
-  let dineroFactory = DinerojsCore.createDinero({
+  let dineroFactory = DinerojsCore.Api.createDinero({
     calculator: DinerojsCalculatorNumber.Calculator.calculator,
     onCreate: _ => ()
   })

@@ -30,14 +30,14 @@ let bigCalculator: DinerojsCore.Calculator.calculator<'a> = {
   integerDivide: (a, b) => round(div(a, b), 0, roundDown),
   modulo: (a, b) => mod(a, b),
   multiply: (a, b) => times(a, b),
-  power: (a, b) => pow(a, Belt.Int.toFloat(Belt.Float.toInt(b))),
+  power: (a, b) => pow(a, Int.toFloat(Float.toInt(b))),
   subtract: (a, b) => minus(a, b),
   zero: () => makeBig(0.0),
 }
 
 @genType
 let createBigjsDinero = (options: DinerojsCore.Types.dineroOptions<'a>): DinerojsCore.Types.dinero<'a> => {
-  let dineroFactory = DinerojsCore.createDinero({
+  let dineroFactory = DinerojsCore.Api.createDinero({
     calculator: bigCalculator,
     onCreate: _ => ()
   })

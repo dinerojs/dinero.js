@@ -1,5 +1,5 @@
 // Create a Dinero factory using ReScript core
-let dinero = DinerojsCore.CreateDinero.createDinero({
+let dinero = DinerojsCore.Api.createDinero({
   calculator: DinerojsCalculatorNumber.Calculator.calculator,
   onCreate: ?Some(
     _params => {

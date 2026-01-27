@@ -1,4 +1,4 @@
-import { EUR, USD } from '@dinero.js/currencies';
+import { eur as EUR, usd as USD } from '@dinero.js/currencies';
 import Big from 'big.js';
 import {
   castToBigintCurrency,
@@ -6,7 +6,7 @@ import {
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from 'test-utils';
+} from '../lib/es6/src/test-utils';
 
 import { haveSameCurrency } from '..';
 
