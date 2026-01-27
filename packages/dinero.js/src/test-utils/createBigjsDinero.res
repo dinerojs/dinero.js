@@ -14,6 +14,8 @@
 // Big.js constants
 @module("big.js") @scope("default") external roundDown: int = "roundDown"
 
+@send external bigToString: 'a => string = "toString"
+
 let bigCalculator: DinerojsCore.Calculator.calculator<'a> = {
   add: (a, b) => plus(a, b),
   compare: (a, b) => {
@@ -36,10 +38,26 @@ let bigCalculator: DinerojsCore.Calculator.calculator<'a> = {
   zero: () => makeBig(0.0),
 }
 
+let bigFormatter: DinerojsCore.Formatter.formatter<'a> = {
+  toNumber: (value) => {
+    switch value {
+    | Some(v) => toNumber(v)
+    | None => 0.0
+    }
+  },
+  toString: (value) => {
+    switch value {
+    | Some(v) => bigToString(v)
+    | None => ""
+    }
+  }
+}
+
 @genType
 let createBigjsDinero = (options: DinerojsCore.Types.dineroOptions<'a>): DinerojsCore.Types.dinero<'a> => {
   let dineroFactory = DinerojsCore.Api.createDinero({
     calculator: bigCalculator,
+    formatter: bigFormatter,
     onCreate: _ => ()
   })
   dineroFactory(options)

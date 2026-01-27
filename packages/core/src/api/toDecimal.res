@@ -13,15 +13,18 @@ let getDecimal = (calculator: calculator<'amount>, formatter: Formatter.formatte
   let zero = calculator.zero()
 
   (units: array<'amount>, scale: 'amount) => {
-    let whole = formatter.toString(Some(units[0]->Option.getOrThrow))
-    let fractional = formatter.toString(Some(absoluteFn(units[1]->Option.getOrThrow)))
+    let wholeAmount = %raw("units[0]")
+    let fractionalAmount = %raw("units[1]")
+    
+    let whole = formatter.toString(Some(wholeAmount))
+    let fractional = formatter.toString(Some(absoluteFn(fractionalAmount)))
 
     let scaleNumber = formatter.toNumber(Some(scale))->Float.toInt
     let paddedFractional = fractional->String.padStart(scaleNumber, "0")
     let decimal = `${whole}.${paddedFractional}`
 
-    let leadsWithZero = equalFn(units[0]->Option.getOrThrow, zero)
-    let isNegative = lessThanFn(units[1]->Option.getOrThrow, zero)
+    let leadsWithZero = equalFn(wholeAmount, zero)
+    let isNegative = lessThanFn(fractionalAmount, zero)
 
     // A leading negative zero is a special case because the `toString`
     // formatter won't preserve its negative sign (since 0 === -0).
@@ -53,7 +56,7 @@ let toDecimal = (calculator: calculator<'amount>) => {
     let isDecimal = !isMultiBase && isBaseTen
 
     if !isDecimal {
-      JsError.throwWithMessage("Cannot format a non-decimal currency to decimal.")
+      JsError.throwWithMessage("Currency is not decimal.")
     }
 
     let units = toUnitsFn(dineroObject, None)
