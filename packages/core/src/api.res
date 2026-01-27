@@ -1,12 +1,23 @@
 // Core API functions
 include Add
 include Allocate
+include Assert
 include Compare
+include ComputeBase
 include Convert
 include CreateDinero
+include Distribute
+include Down
 include Equal
+include GetDivisors
 include GreaterThan
 include GreaterThanOrEqual
+include HalfAwayFromZero
+include HalfDown
+include HalfEven
+include HalfOdd
+include HalfTowardsZero
+include HalfUp
 include HasSubUnits
 include HaveSameAmount
 include HaveSameCurrency
@@ -25,3 +36,4 @@ include ToSnapshot
 include ToUnits
 include TransformScale
 include TrimScale
+include Up
