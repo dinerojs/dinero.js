@@ -17,7 +17,7 @@ import {
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from '../lib/es6/src/test-utils';
+} from '../lib/es6/src/test-utils/index.js';
 
 import { toSnapshot, transformScale } from '..';
 
