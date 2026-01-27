@@ -23,14 +23,17 @@ let toUnits = (calculator: calculator<'amount>) => {
       let bases = currency.base
       let convertedBases = bases->Array.map(base => computeBaseFn(ComputeBase.fromValue(base)))
       let divisors = getDivisorsFn(convertedBases)
-      
+
       // Calculate units by dividing through each divisor
-      let (units, finalRemainder) = divisors->Array.reduce(([], amount), ((acc, remainder), divisor) => {
+      let (units, finalRemainder) = divisors->Array.reduce(([], amount), (
+        (acc, remainder),
+        divisor,
+      ) => {
         let quotient = integerDivide(remainder, divisor)
         let newRemainder = modulo(remainder, divisor)
         (acc->Array.concat([quotient]), newRemainder)
       })
-      
+
       // Add the final remainder as the last unit
       units->Array.concat([finalRemainder])
     } else {

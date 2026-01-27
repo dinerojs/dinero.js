@@ -14,13 +14,13 @@ let multiply = (calculator: calculator<'amount>) => {
 
   (multiplicand: dinero<'amount>, multiplier: 'amount) => {
     let {amount, currency, scale} = multiplicand.toJSON()
-    
+
     // Check if multiplier is an object with amount and scale properties
     let (multiplierAmount, multiplierScale) = try {
       let factorObj = Obj.magic(multiplier) // Cast to object to check properties
       let hasAmount = Js.typeof(factorObj["amount"]) !== "undefined"
       let hasScale = Js.typeof(factorObj["scale"]) !== "undefined"
-      
+
       if hasAmount && hasScale {
         (factorObj["amount"], factorObj["scale"])
       } else {

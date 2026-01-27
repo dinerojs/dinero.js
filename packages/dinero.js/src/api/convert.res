@@ -5,11 +5,11 @@ let transformRate = (rate: 'a): DinerojsCore.Rates.rate<'a> => {
     let rateDict = Obj.magic(rate)
     switch Dict.get(rateDict, "amount") {
     | Some(amount) =>
-      // ScaledAmount format: { amount: number, scale?: number }  
+      // ScaledAmount format: { amount: number, scale?: number }
       let scale = Dict.get(rateDict, "scale")
       DinerojsCore.Rates.ScaledAmount({
-        DinerojsCore.ScaledAmount.amount: amount,
-        scale: ?scale,
+        DinerojsCore.ScaledAmount.amount,
+        ?scale,
       })
     | None =>
       // Treat as DirectAmount if it's an object without 'amount' property
@@ -25,16 +25,15 @@ let transformRate = (rate: 'a): DinerojsCore.Rates.rate<'a> => {
 let convert = (dineroObject: DinerojsCore.Dinero.dinero<'a>, currency: 'b, rates: 'c) => {
   let calculator = dineroObject.calculator
   let convertFn = DinerojsCore.Api.convert(calculator)
-  
+
   // Transform JavaScript rates object to ReScript dict
   let ratesDict = Obj.magic(rates)
   let transformedRates = Dict.fromArray(
-    Dict.keysToArray(ratesDict)
-    ->Array.map(code => {
+    Dict.keysToArray(ratesDict)->Array.map(code => {
       let rate = Dict.get(ratesDict, code)->Option.getUnsafe
       (code, transformRate(rate))
-    })
+    }),
   )
-  
+
   convertFn(dineroObject, currency, transformedRates)
 }

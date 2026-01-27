@@ -2,7 +2,7 @@
 let allocate = (dineroObject: DinerojsCore.Dinero.dinero<'a>, ratios: array<'a>) => {
   let calculator = dineroObject.calculator
   let allocateFn = DinerojsCore.Api.safeAllocate(calculator)
-  
+
   // Convert ratios to ScaledAmount objects
   // If the ratio is already an object with 'amount' property, pass it as-is
   // Otherwise, wrap the plain value in a ScaledAmount object
@@ -14,18 +14,17 @@ let allocate = (dineroObject: DinerojsCore.Dinero.dinero<'a>, ratios: array<'a>)
         // Already a ScaledAmount-like object, cast it to the right type
         %raw(`ratio`)
       } else {
-        // Plain ratio value, wrap it in ScaledAmount structure  
+        // Plain ratio value, wrap it in ScaledAmount structure
         {
           DinerojsCore.ScaledAmount.amount: ratio,
         }
       }
-    | _ =>
-      // Plain ratio value, wrap it in ScaledAmount structure  
+    | _ => // Plain ratio value, wrap it in ScaledAmount structure
       {
         DinerojsCore.ScaledAmount.amount: ratio,
       }
     }
   })
-  
+
   allocateFn(dineroObject, scaledRatios)
 }

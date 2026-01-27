@@ -23,7 +23,7 @@ let convert = (calculator: calculator<'amount>) => {
     }
 
     let newScale = calculator.add(scale, rateScale)
-    
+
     // Determine target scale: for DirectAmount rates use destination exponent,
     // for ScaledAmount rates use calculated scale
     let targetScale = switch rate {

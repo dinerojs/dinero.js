@@ -23,13 +23,13 @@ let bigCalculator: DinerojsCore.Calculator.calculator<'a> = {
     if result < 0 {
       DinerojsCore.Calculator.LT
     } else if result > 0 {
-      DinerojsCore.Calculator.GT  
+      DinerojsCore.Calculator.GT
     } else {
       DinerojsCore.Calculator.EQ
     }
   },
-  decrement: (v) => minus(v, makeBig(1.0)),
-  increment: (v) => plus(v, makeBig(1.0)),
+  decrement: v => minus(v, makeBig(1.0)),
+  increment: v => plus(v, makeBig(1.0)),
   integerDivide: (a, b) => round(div(a, b), 0, roundDown),
   modulo: (a, b) => mod(a, b),
   multiply: (a, b) => times(a, b),
@@ -39,26 +39,28 @@ let bigCalculator: DinerojsCore.Calculator.calculator<'a> = {
 }
 
 let bigFormatter: DinerojsCore.Formatter.formatter<'a> = {
-  toNumber: (value) => {
+  toNumber: value => {
     switch value {
     | Some(v) => toNumber(v)
     | None => 0.0
     }
   },
-  toString: (value) => {
+  toString: value => {
     switch value {
     | Some(v) => bigToString(v)
     | None => ""
     }
-  }
+  },
 }
 
 @genType
-let createBigjsDinero = (options: DinerojsCore.Types.dineroOptions<'a>): DinerojsCore.Types.dinero<'a> => {
+let createBigjsDinero = (options: DinerojsCore.Types.dineroOptions<'a>): DinerojsCore.Types.dinero<
+  'a,
+> => {
   let dineroFactory = DinerojsCore.Api.createDinero({
     calculator: bigCalculator,
     formatter: bigFormatter,
-    onCreate: _ => ()
+    onCreate: _ => (),
   })
   dineroFactory(options)
 }

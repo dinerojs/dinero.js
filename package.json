@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "npm run res:build --workspaces",
-    "clean": "npm run res:clean --workspaces", 
+    "clean": "npm run res:clean --workspaces",
     "dev": "npm run res:dev --workspaces",
     "format": "npm run res:format --workspaces",
     "format:check": "npm run res:format:check --workspaces",
@@ -24,7 +24,7 @@
     "rescript": "^12.1.0"
   },
   "devDependencies": {
-    "vitest": "^1.0.0",
-    "@vitest/coverage-v8": "^1.0.0"
+    "@vitest/coverage-v8": "^1.0.0",
+    "vitest": "^1.0.0"
   }
 }
