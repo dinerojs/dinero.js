@@ -1,12 +1,10 @@
 import { mga as MGA, usd as USD } from '@dinero.js/currencies';
 import Big from 'big.js';
-import {
-  castToBigintCurrency,
-  castToBigjsCurrency,
-  createNumberDinero,
-  createBigintDinero,
-  createBigjsDinero,
-} from '../lib/es6/src/test-utils';
+import { castToBigintCurrency } from '../lib/es6/src/test-utils/castToBigintCurrency.js';
+import { castToBigjsCurrency } from '../lib/es6/src/test-utils/castToBigjsCurrency.js';
+import { createNumberDinero } from '../lib/es6/src/test-utils/createNumberDinero.js';
+import { createBigintDinero } from '../lib/es6/src/test-utils/createBigintDinero.js';
+import { createBigjsDinero } from '../lib/es6/src/test-utils/createBigjsDinero.js';
 
 import { toDecimal } from '..';
 
