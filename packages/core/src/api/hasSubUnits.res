@@ -7,7 +7,7 @@ let hasSubUnits = (calculator: calculator<'tInput>) => {
 
   (dineroObject: dinero<'tInput>): bool => {
     let json = dineroObject.toJSON()
-    let base = computeBaseFn(json.currency.base)
+    let base = computeBaseFn(ComputeBase.fromValue(json.currency.base))
 
     let remainder = calculator.modulo(json.amount, calculator.power(base, json.scale))
     !equalFn(remainder, calculator.zero())
