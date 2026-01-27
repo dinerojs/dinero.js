@@ -16,14 +16,12 @@ let allocate = (dineroObject: DinerojsCore.Dinero.dinero<'a>, ratios: array<'a>)
           DinerojsCore.ScaledAmount.amount,
           ?scale,
         }
-      | None =>
-        // Plain ratio value, wrap it in ScaledAmount structure
+      | None => // Plain ratio value, wrap it in ScaledAmount structure
         {
           DinerojsCore.ScaledAmount.amount: ratio,
         }
       }
-    | _ =>
-      // Plain ratio value, wrap it in ScaledAmount structure
+    | _ => // Plain ratio value, wrap it in ScaledAmount structure
       {
         DinerojsCore.ScaledAmount.amount: ratio,
       }
