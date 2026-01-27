@@ -1,4 +1,4 @@
-import { EUR, USD } from '@dinero.js/currencies';
+import { eur as EUR, usd as USD } from '@dinero.js/currencies';
 import Big from 'big.js';
 import {
   castToBigintCurrency,
@@ -6,7 +6,7 @@ import {
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from 'test-utils';
+} from '../lib/es6/src/test-utils';
 
 import { lessThan } from '..';
 
@@ -45,7 +45,7 @@ describe('lessThan', () => {
       expect(() => {
         lessThan(d1, d2);
       }).toThrowErrorMatchingInlineSnapshot(
-        `"[Dinero.js] Objects must have the same currency."`
+        `[Error: Objects must have the same currency.]`
       );
     });
   });
@@ -85,7 +85,7 @@ describe('lessThan', () => {
       expect(() => {
         lessThan(d1, d2);
       }).toThrowErrorMatchingInlineSnapshot(
-        `"[Dinero.js] Objects must have the same currency."`
+        `[Error: Objects must have the same currency.]`
       );
     });
   });
@@ -129,7 +129,7 @@ describe('lessThan', () => {
       expect(() => {
         lessThan(d1, d2);
       }).toThrowErrorMatchingInlineSnapshot(
-        `"[Dinero.js] Objects must have the same currency."`
+        `[Error: Objects must have the same currency.]`
       );
     });
   });
