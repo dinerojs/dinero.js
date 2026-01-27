@@ -1,5 +1,3 @@
-type comparisonOperator = LT | EQ | GT
-
 /**
  * Compare two bigints.
  *
@@ -8,12 +6,12 @@ type comparisonOperator = LT | EQ | GT
  *
  * @returns Whether the two bigints are equal, or whether the first one is greater or less than the other.
  */
-let compare = (a: BigInt.t, b: BigInt.t): comparisonOperator => {
+let compare = (a: BigInt.t, b: BigInt.t): DinerojsCore.Calculator.comparisonOperator => {
   if a < b {
-    LT
+    DinerojsCore.Calculator.LT
   } else if a > b {
-    GT
+    DinerojsCore.Calculator.GT
   } else {
-    EQ
+    DinerojsCore.Calculator.EQ
   }
 }

@@ -12,15 +12,15 @@ let subtract = Api.subtract
 let zero = Api.zero
 
 // Create calculator object with all operations
-let calculator = {
-  "add": add,
-  "compare": compare,
-  "decrement": decrement,
-  "increment": increment,
-  "integerDivide": integerDivide,
-  "modulo": modulo,
-  "multiply": multiply,
-  "power": power,
-  "subtract": subtract,
-  "zero": zero,
+let calculator: DinerojsCore.Calculator.calculator<bigint> = {
+  add: add,
+  compare: compare,
+  decrement: decrement,
+  increment: increment,
+  integerDivide: integerDivide,
+  modulo: modulo,
+  multiply: multiply,
+  power: power,
+  subtract: subtract,
+  zero: zero,
 }
