@@ -1,4 +1,4 @@
-import { EUR, USD, MGA } from '@dinero.js/currencies';
+import { eur as EUR, usd as USD, mga as MGA } from '@dinero.js/currencies';
 import Big from 'big.js';
 import {
   castToBigintCurrency,
@@ -6,7 +6,7 @@ import {
   createNumberDinero,
   createBigintDinero,
   createBigjsDinero,
-} from 'test-utils';
+} from '../lib/es6/src/test-utils';
 
 import { compare } from '..';
 
@@ -46,7 +46,7 @@ describe('compare', () => {
         expect(() => {
           compare(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: Objects must have the same currency.]`
         );
       });
     });
@@ -82,7 +82,7 @@ describe('compare', () => {
         expect(() => {
           compare(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: Objects must have the same currency.]`
         );
       });
     });
@@ -137,7 +137,7 @@ describe('compare', () => {
         expect(() => {
           compare(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: Objects must have the same currency.]`
         );
       });
     });
@@ -173,7 +173,7 @@ describe('compare', () => {
         expect(() => {
           compare(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: Objects must have the same currency.]`
         );
       });
     });
@@ -232,7 +232,7 @@ describe('compare', () => {
         expect(() => {
           compare(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: Objects must have the same currency.]`
         );
       });
     });
@@ -272,7 +272,7 @@ describe('compare', () => {
         expect(() => {
           compare(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: Objects must have the same currency.]`
         );
       });
     });
