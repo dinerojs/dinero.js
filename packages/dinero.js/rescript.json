@@ -1,6 +1,6 @@
 {
   "name": "dinero.js",
-  "version": "11.1.0",
+  "version": "3.0.0",
   "sources": [
     {
       "dir": "src",
@@ -17,7 +17,8 @@
   "namespace": true,
   "dependencies": [
     "@dinero.js/core",
-    "@dinero.js/calculator-number", 
+    "@dinero.js/calculator-number",
+    "@dinero.js/calculator-bigint",
     "@dinero.js/currencies"
   ]
 }

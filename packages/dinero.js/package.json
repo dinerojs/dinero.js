@@ -42,5 +42,9 @@
     "@dinero.js/calculator-number": "3.0.0",
     "@dinero.js/core": "3.0.0",
     "@dinero.js/currencies": "3.0.0"
+  },
+  "devDependencies": {
+    "@dinero.js/calculator-bigint": "3.0.0",
+    "big.js": "^6.2.1"
   }
 }

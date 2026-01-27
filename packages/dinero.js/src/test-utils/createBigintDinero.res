@@ -1,6 +1,6 @@
 @genType
 let createBigintDinero = (options: DinerojsCore.Types.dineroOptions<bigint>): DinerojsCore.Types.dinero<bigint> => {
-  let dineroFactory = DinerojsCore.Api.createDinero({
+  let dineroFactory = DinerojsCore.createDinero({
     calculator: DinerojsCalculatorBigint.Calculator.calculator,
     onCreate: _ => ()
   })

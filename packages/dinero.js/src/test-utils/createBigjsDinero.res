@@ -37,7 +37,7 @@ let bigCalculator: DinerojsCore.Calculator.calculator<'a> = {
 
 @genType
 let createBigjsDinero = (options: DinerojsCore.Types.dineroOptions<'a>): DinerojsCore.Types.dinero<'a> => {
-  let dineroFactory = DinerojsCore.Index.createDinero({
+  let dineroFactory = DinerojsCore.createDinero({
     calculator: bigCalculator,
     onCreate: _ => ()
   })
