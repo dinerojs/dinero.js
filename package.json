@@ -8,7 +8,6 @@
     "dev": "npm run res:dev --workspaces",
     "format": "npm run res:format --workspaces",
     "format:check": "npm run res:format:check --workspaces",
-    "pretest": "npm run build",
     "test": "vitest run",
     "test:watch": "vitest"
   },
