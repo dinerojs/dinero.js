@@ -1,6 +1,6 @@
 {
   "name": "@dinero.js/currencies",
-  "version": "3.0.0",
+  "version": "3.0.0-alpha.15",
   "description": "Common currency implementations for Dinero.js",
   "keywords": [
     "money",

@@ -1,6 +1,7 @@
 {
-  "name": "rescript-dinero",
-  "version": "0.0.0",
+  "name": "@dinero.js/monorepo",
+  "version": "3.0.0-alpha.1",
+  "private": true,
   "type": "module",
   "scripts": {
     "build": "npm run res:build --workspaces",

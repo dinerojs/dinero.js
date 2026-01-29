@@ -1,6 +1,5 @@
 {
   "name": "@dinero.js/currencies",
-  "version": "11.1.0",
   "sources": [
     {
       "dir": "src",
