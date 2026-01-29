@@ -1,3 +1,14 @@
+# [2.0.0-alpha.15](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.14...v2.0.0-alpha.15) (2025-01-29)
+
+
+### Bug Fixes
+
+* **allocate:** distribute remainder to largest ratio first ([#776](https://github.com/dinerojs/dinero.js/issues/776)) ([6049038](https://github.com/dinerojs/dinero.js/commit/60490387))
+* **allocate:** prevent infinite loop with large amounts ([#771](https://github.com/dinerojs/dinero.js/issues/771)) ([d787b98](https://github.com/dinerojs/dinero.js/commit/d787b988))
+* **toDecimal:** do not append decimal string when scale is zero ([#751](https://github.com/dinerojs/dinero.js/issues/751)) ([80a1dd7](https://github.com/dinerojs/dinero.js/commit/80a1dd7c))
+
+
+
 # [2.0.0-alpha.14](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.13...v2.0.0-alpha.14) (2023-02-27)
 
 
