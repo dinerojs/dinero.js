@@ -1,8 +1,13 @@
 {
   "name": "@dinero.js/core",
-  "version": "2.0.0-alpha.14",
+  "version": "2.0.0-alpha.15",
   "description": "Common code between Dinero.js packages",
-  "keywords": ["money", "monetary", "amount", "immutable"],
+  "keywords": [
+    "money",
+    "monetary",
+    "amount",
+    "immutable"
+  ],
   "homepage": "https://v2.dinerojs.com",
   "bugs": "https://github.com/dinerojs/dinero.js/issues",
   "repository": {
@@ -22,7 +27,9 @@
   "module": "dist/esm/index.js",
   "source": "src/index.ts",
   "types": "dist/esm/index.d.ts",
-  "files": ["dist/"],
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "build:clean": "rimraf ./{dist,temp}",
     "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
@@ -33,6 +40,6 @@
     "test": "node ../../scripts/test.mjs --projects=./packages/core"
   },
   "dependencies": {
-    "@dinero.js/currencies": "2.0.0-alpha.14"
+    "@dinero.js/currencies": "2.0.0-alpha.15"
   }
 }
