@@ -63,7 +63,19 @@ let distribute = (calculator: calculator<'amount>) => {
         let newShare = calculator.add(currentShare, amount)
         // Use mutable array assignment with ref
         shares.contents[currentIndex] = newShare
-        remainder := calculator.subtract(remainder.contents, amount)
+        
+        let newRemainder = calculator.subtract(remainder.contents, amount)
+        
+        // Guard against infinite loop due to floating-point precision loss.
+        // When using the number calculator with amounts larger than
+        // Number.MAX_SAFE_INTEGER, subtraction may have no effect.
+        if equalFn(newRemainder, remainder.contents) {
+          // Break out of the while loop
+          remainder := zero
+        } else {
+          remainder := newRemainder
+        }
+        
         i := i.contents + 1
       }
 
