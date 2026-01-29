@@ -61,7 +61,17 @@ export function distribute<TAmount>(calculator: DistributeCalculator<TAmount>) {
     while (compare(remainder, zero)) {
       const index = sortedIndices[i % sortedIndices.length];
       shares[index] = calculator.add(shares[index], amount);
-      remainder = calculator.subtract(remainder, amount);
+
+      const newRemainder = calculator.subtract(remainder, amount);
+
+      // Guard against infinite loop due to floating-point precision loss.
+      // When using the number calculator with amounts larger than
+      // Number.MAX_SAFE_INTEGER, subtraction may have no effect.
+      if (equalFn(newRemainder, remainder)) {
+        break;
+      }
+
+      remainder = newRemainder;
       i++;
     }
 
