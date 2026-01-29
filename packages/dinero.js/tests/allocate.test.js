@@ -155,12 +155,12 @@ describe('allocate', () => {
         const [firstAllocated, secondAllocated] = shares;
 
         expect(toSnapshot(firstAllocated)).toEqual({
-          amount: 2,
+          amount: 1,
           currency: MGA,
           scale: 1,
         });
         expect(toSnapshot(secondAllocated)).toEqual({
-          amount: 3,
+          amount: 4,
           currency: MGA,
           scale: 1,
         });
@@ -417,12 +417,12 @@ describe('allocate', () => {
         const [firstAllocated, secondAllocated] = shares;
 
         expect(toSnapshot(firstAllocated)).toEqual({
-          amount: 2n,
+          amount: 1n,
           currency: bigintMGA,
           scale: 1n,
         });
         expect(toSnapshot(secondAllocated)).toEqual({
-          amount: 3n,
+          amount: 4n,
           currency: bigintMGA,
           scale: 1n,
         });
@@ -681,13 +681,14 @@ describe('allocate', () => {
         const shares = allocate(d, [new Big(1), new Big(3)]);
         const [firstAllocated, secondAllocated] = shares;
 
+        // Remainder goes to largest ratio (3) per #776
         expect(toSnapshot(firstAllocated)).toEqual({
-          amount: new Big(2),
+          amount: new Big(1),
           currency: bigjsMGA,
           scale: new Big(1),
         });
         expect(toSnapshot(secondAllocated)).toEqual({
-          amount: new Big(3),
+          amount: new Big(4),
           currency: bigjsMGA,
           scale: new Big(1),
         });

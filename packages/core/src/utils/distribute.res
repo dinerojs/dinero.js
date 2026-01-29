@@ -47,18 +47,23 @@ let distribute = (calculator: calculator<'amount>) => {
         calculator.decrement(zero)
       }
 
+      // Create indices sorted by descending ratio for remainder distribution
+      // Indices with larger ratios receive remainder first
+      let sortedIndices = ratios
+        ->Array.mapWithIndex((ratio, index) => (ratio, index))
+        ->Array.filter(((ratio, _)) => !equalFn(ratio, zero))
+        ->Array.toSorted(((ratioA, _), (ratioB, _)) => greaterThanFn(ratioA, ratioB) ? -1.0 : 1.0)
+        ->Array.map(((_, index)) => index)
+
       // Distribute remainder - with proper looping
       let i = ref(0)
       while compare(remainder.contents, zero) {
-        let currentIndex = mod(i.contents, Array.length(ratios))
-        let ratio = ratios[currentIndex]->Option.getOr(zero)
-        if !equalFn(ratio, zero) {
-          let currentShare = shares.contents[currentIndex]->Option.getOr(zero)
-          let newShare = calculator.add(currentShare, amount)
-          // Use mutable array assignment with ref
-          shares.contents[currentIndex] = newShare
-          remainder := calculator.subtract(remainder.contents, amount)
-        }
+        let currentIndex = sortedIndices[mod(i.contents, Array.length(sortedIndices))]->Option.getOr(0)
+        let currentShare = shares.contents[currentIndex]->Option.getOr(zero)
+        let newShare = calculator.add(currentShare, amount)
+        // Use mutable array assignment with ref
+        shares.contents[currentIndex] = newShare
+        remainder := calculator.subtract(remainder.contents, amount)
         i := i.contents + 1
       }
 

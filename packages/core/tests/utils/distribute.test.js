@@ -29,4 +29,10 @@ describe('distribute', () => {
   it('distributes to empty ratios', () => {
     expect(distributeFn(1003, [])).toEqual([]);
   });
+  it('distributes remainder to largest ratio first', () => {
+    expect(distributeFn(5, [100, 101, 100, 100])).toEqual([1, 2, 1, 1]);
+  });
+  it('distributes remainder to multiple largest ratios in order', () => {
+    expect(distributeFn(801, [1, 3])).toEqual([200, 601]);
+  });
 });
