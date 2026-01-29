@@ -21,7 +21,8 @@ let getDecimal = (calculator: calculator<'amount>, formatter: Formatter.formatte
 
     let scaleNumber = formatter.toNumber(Some(scale))->Float.toInt
     let paddedFractional = fractional->String.padStart(scaleNumber, "0")
-    let decimal = `${whole}.${paddedFractional}`
+    let fractionalString = scaleNumber > 0 ? `.${paddedFractional}` : ""
+    let decimal = `${whole}${fractionalString}`
 
     let leadsWithZero = equalFn(wholeAmount, zero)
     let isNegative = lessThanFn(fractionalAmount, zero)
