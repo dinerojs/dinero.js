@@ -52,6 +52,7 @@ scripts/                  # Build and development scripts
 3. **Pure Functions**: All operations are side-effect free and return new Dinero objects
 4. **ReScript Implementation**: Core logic implemented in ReScript, compiled to JavaScript
 
+
 ### API Categories in `@dinero.js/core`
 
 - **Mutations**: add, subtract, multiply, allocate
@@ -60,14 +61,9 @@ scripts/                  # Build and development scripts
 - **Transformations**: normalizeScale, trimScale, transformScale
 - **Utilities**: toSnapshot, toUnits, toDecimal, convert
 
-## Path Aliases
-
-Test utilities use this path alias:
-- `test-utils` → `test/utils/`
-
 ## Build System
-
 - **ReScript**: Compiles `.res` files to JavaScript
+- **Babel**: Transpilation with TypeScript preset
 - **Rollup**: Generates ESM, CJS, and UMD bundles  
 - **ReScript @genType**: Generates `.d.ts` files from ReScript annotated source code
 
@@ -79,6 +75,18 @@ Each package outputs:
 - Vitest test runner
 - Test files: `src/**/*.test.js` 
 - ReScript source files: `src/**/*.res`
+
+Each package outputs:
+- `dist/esm/` - ES modules (main entry)
+- `dist/cjs/` - CommonJS
+- `dist/umd/` - UMD bundles
+- `lib/` - Intermediate TypeScript declarations
+
+## Testing
+
+- Jest with babel-jest transform
+- Test files: `src/**/__tests__/*.test.ts`
+- Shared utilities in `/test/utils/` (import as `test-utils`)
 
 ## Code Conventions
 

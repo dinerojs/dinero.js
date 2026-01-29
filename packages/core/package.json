@@ -37,7 +37,7 @@
     "res:format": "rescript format",
     "res:format:check": "rescript format --check"
   },
-  "dependencies": {
+  "devDependencies": {
     "fast-check": "^4.5.3"
   }
 }

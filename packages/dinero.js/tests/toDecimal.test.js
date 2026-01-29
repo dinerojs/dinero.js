@@ -1,4 +1,5 @@
 import { jpy, mga, usd } from '@dinero.js/currencies';
+
 import Big from 'big.js';
 import { castToBigintCurrency } from '../lib/es6/src/test-utils/castToBigintCurrency.js';
 import { castToBigjsCurrency } from '../lib/es6/src/test-utils/castToBigjsCurrency.js';
