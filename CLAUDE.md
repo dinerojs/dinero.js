@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Dinero.js is a JavaScript/TypeScript library for creating, calculating, and formatting money safely. It's a monorepo (v2.0.0-alpha) using Yarn Workspaces and Turborepo.
+Dinero.js is a JavaScript/TypeScript library for creating, calculating, and formatting money safely. It's a monorepo (v2.0.0-alpha) with core logic implemented in ReScript.
 
 ## Common Commands
 
@@ -12,21 +12,19 @@ All commands run from the repository root:
 
 ```bash
 # Build
-yarn build              # Build all packages (ESM, CJS, UMD, types)
-yarn build:clean        # Clean dist/lib directories before building
+npm run res:build       # Build ReScript files to JavaScript
+npm run build           # Build all packages (ESM, CJS, UMD, types)
 
-# Testing
-yarn test               # Run Jest test suite across all packages
-yarn test:types         # Type check with TypeScript (noEmit)
-yarn test:size          # Check bundle sizes against limits
+# Testing  
+npm test                # Run test suite across all packages
+npm run test:size       # Check bundle sizes against limits
 
 # Linting & Formatting
-yarn lint               # Run ESLint
-yarn lint --fix         # Auto-fix lint issues
-yarn format             # Format with Prettier
+npm run res:format      # Format ReScript files
+npm run format          # Format with Prettier
 
 # Documentation site
-yarn website:dev        # Run docs site locally (Next.js)
+npm run website:dev     # Run docs site locally (Next.js)
 ```
 
 ## Monorepo Structure
@@ -52,6 +50,7 @@ scripts/                  # Build and development scripts
 1. **Dinero Object**: Immutable representation of money with `amount` (in minor units), `currency`, and `scale`
 2. **Calculator Pattern**: Pluggable arithmetic backends (`calculator-number` for standard JS numbers, `calculator-bigint` for precision)
 3. **Pure Functions**: All operations are side-effect free and return new Dinero objects
+4. **ReScript Implementation**: Core logic implemented in ReScript, compiled to JavaScript
 
 ### API Categories in `@dinero.js/core`
 
@@ -63,34 +62,27 @@ scripts/                  # Build and development scripts
 
 ## Path Aliases
 
-TypeScript and Jest use these path aliases:
-- `@dinero.js/*` → `packages/*/src/`
-- `dinero.js` → `packages/dinero.js/src/`
+Test utilities use this path alias:
 - `test-utils` → `test/utils/`
 
 ## Build System
 
-- **Babel**: Transpilation with TypeScript preset
-- **Rollup**: Generates ESM, CJS, and UMD bundles
-- **API Extractor**: Generates rolled-up `.d.ts` files from TypeScript declarations
-- **Globals**: `__DEV__` and `__TEST__` flags replaced at build time for tree-shaking
+- **ReScript**: Compiles `.res` files to JavaScript
+- **Rollup**: Generates ESM, CJS, and UMD bundles  
+- **ReScript @genType**: Generates `.d.ts` files from ReScript annotated source code
 
 Each package outputs:
-- `dist/esm/` - ES modules (main entry)
-- `dist/cjs/` - CommonJS
-- `dist/umd/` - UMD bundles
-- `lib/` - Intermediate TypeScript declarations
+- `lib/` - Compiled JavaScript from ReScript
 
 ## Testing
 
-- Jest with babel-jest transform
-- Test files: `src/**/__tests__/*.test.ts`
-- Shared utilities in `/test/utils/` (import as `test-utils`)
+- Vitest test runner
+- Test files: `src/**/*.test.js` 
+- ReScript source files: `src/**/*.res`
 
 ## Code Conventions
 
 - **Functional programming**: All functions are pure and immutable
+- **ReScript**: Idiomatic ReScript patterns preferred over `%raw` JavaScript interop
 - **Conventional Commits**: `type(scope): subject` (types: feat, fix, docs, refactor, test, etc.)
-- **ESLint**: Extends 'algolia' config with functional and sonarjs plugins
-- **Prettier**: Single quotes, trailing commas (ES5)
 - Packages are always versioned together
