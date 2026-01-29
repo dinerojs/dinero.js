@@ -5,8 +5,11 @@ module.exports = {
     packagesToBump: ['packages/*', 'website'],
     packagesToPublish: ['packages/*'],
   },
+  installCommand() {
+    return 'true'; // Skip install, use existing node_modules
+  },
   publishCommand({ tag }) {
-    return `yarn publish --access public --tag ${tag}`;
+    return `npm publish --access public --tag ${tag}`;
   },
   // Skip preparation if it contains only `chore` commits
   shouldPrepare({ releaseType, commitNumbersPerType }) {
