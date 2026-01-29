@@ -58,7 +58,9 @@ function getDecimal<TAmount>(
     const fractional = formatter.toString(absoluteFn(units[1]));
 
     const scaleNumber = formatter.toNumber(scale);
-    const decimal = `${whole}.${fractional.padStart(scaleNumber, '0')}`;
+    const fractionalString =
+      scaleNumber > 0 ? `.${fractional.padStart(scaleNumber, '0')}` : '';
+    const decimal = `${whole}${fractionalString}`;
 
     const leadsWithZero = equalFn(units[0], zero);
     const isNegative = lessThanFn(units[1], zero);
