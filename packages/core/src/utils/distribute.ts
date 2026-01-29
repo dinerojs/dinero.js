@@ -46,14 +46,30 @@ export function distribute<TAmount>(calculator: DistributeCalculator<TAmount>) {
     const compare = isPositive ? greaterThanFn : lessThanFn;
     const amount = isPositive ? one : calculator.decrement(zero);
 
+    // Create indices sorted by descending ratio for remainder distribution
+    // Indices with larger ratios receive remainder first
+    const sortedIndices = ratios
+      .map((ratio, index) => ({ ratio, index }))
+      .filter(({ ratio }) => !equalFn(ratio, zero))
+      .sort((a, b) => (greaterThanFn(a.ratio, b.ratio) ? -1 : 1))
+      .map(({ index }) => index);
+
     let i = 0;
 
     while (compare(remainder, zero)) {
-      if (!equalFn(ratios[i], zero)) {
-        shares[i] = calculator.add(shares[i], amount);
-        remainder = calculator.subtract(remainder, amount);
+      const index = sortedIndices[i % sortedIndices.length];
+      shares[index] = calculator.add(shares[index], amount);
+
+      const newRemainder = calculator.subtract(remainder, amount);
+
+      // Guard against infinite loop due to floating-point precision loss.
+      // When using the number calculator with amounts larger than
+      // Number.MAX_SAFE_INTEGER, subtraction may have no effect.
+      if (equalFn(newRemainder, remainder)) {
+        break;
       }
 
+      remainder = newRemainder;
       i++;
     }
 

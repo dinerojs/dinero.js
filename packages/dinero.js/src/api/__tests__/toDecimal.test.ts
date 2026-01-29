@@ -1,4 +1,4 @@
-import { MGA, USD } from '@dinero.js/currencies';
+import { JPY, MGA, USD } from '@dinero.js/currencies';
 import Big from 'big.js';
 import {
   castToBigintCurrency,
@@ -62,6 +62,10 @@ describe('toDecimal', () => {
           toDecimal(d, ({ value, currency }) => `${currency.code} ${value}`)
         ).toBe('USD 10.50');
       });
+      it('returns whole numbers when scale is zero', () => {
+        const d = dinero({ amount: 100, currency: JPY });
+        expect(toDecimal(d)).toEqual('100');
+      });
     });
     describe('non-decimal currencies', () => {
       it('throws when passing a Dinero object using a non-decimal currency', () => {
@@ -91,6 +95,7 @@ describe('toDecimal', () => {
     const dinero = createBigintDinero;
     const bigintUSD = castToBigintCurrency(USD);
     const bigintMGA = castToBigintCurrency(MGA);
+    const bigintJPY = castToBigintCurrency(JPY);
 
     describe('decimal currencies', () => {
       it('returns the amount in decimal format', () => {
@@ -145,6 +150,10 @@ describe('toDecimal', () => {
           toDecimal(d, ({ value, currency }) => `${currency.code} ${value}`)
         ).toBe('USD 10.50');
       });
+      it('returns whole numbers when scale is zero', () => {
+        const d = dinero({ amount: 100n, currency: bigintJPY });
+        expect(toDecimal(d)).toEqual('100');
+      });
     });
     describe('non-decimal currencies', () => {
       it('throws when passing a Dinero object using a non-decimal currency', () => {
@@ -174,6 +183,7 @@ describe('toDecimal', () => {
     const dinero = createBigjsDinero;
     const bigjsUSD = castToBigjsCurrency(USD);
     const bigjsMGA = castToBigjsCurrency(MGA);
+    const bigjsJPY = castToBigjsCurrency(JPY);
 
     describe('decimal currencies', () => {
       it('returns the amount in decimal format', () => {
@@ -234,6 +244,10 @@ describe('toDecimal', () => {
         expect(
           toDecimal(d, ({ value, currency }) => `${currency.code} ${value}`)
         ).toBe('USD 10.50');
+      });
+      it('returns whole numbers when scale is zero', () => {
+        const d = dinero({ amount: new Big(100), currency: bigjsJPY });
+        expect(toDecimal(d)).toEqual('100');
       });
     });
     describe('non-decimal currencies', () => {
