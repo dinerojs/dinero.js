@@ -6,7 +6,7 @@ module.exports = {
     packagesToPublish: ['packages/*'],
   },
   publishCommand({ tag }) {
-    return `yarn publish --access public --tag ${tag}`;
+    return `yarn publish --access public --tag ${tag} --registry https://registry.npmjs.org`;
   },
   // Skip preparation if it contains only `chore` commits
   shouldPrepare({ releaseType, commitNumbersPerType }) {
