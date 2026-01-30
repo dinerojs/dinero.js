@@ -68,27 +68,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dinero.js/calculator-bigint@workspace:packages/calculator-bigint":
+"@dinero.js/calculator-bigint@workspace:*, @dinero.js/calculator-bigint@workspace:packages/calculator-bigint":
   version: 0.0.0-use.local
   resolution: "@dinero.js/calculator-bigint@workspace:packages/calculator-bigint"
+  dependencies:
+    "@dinero.js/core": "workspace:*"
+    rescript: "npm:^12.1.0"
   languageName: unknown
   linkType: soft
 
-"@dinero.js/calculator-number@workspace:packages/calculator-number":
+"@dinero.js/calculator-number@workspace:*, @dinero.js/calculator-number@workspace:packages/calculator-number":
   version: 0.0.0-use.local
   resolution: "@dinero.js/calculator-number@workspace:packages/calculator-number"
+  dependencies:
+    "@dinero.js/core": "workspace:*"
+    rescript: "npm:^12.1.0"
   languageName: unknown
   linkType: soft
 
-"@dinero.js/core@workspace:packages/core":
+"@dinero.js/core@workspace:*, @dinero.js/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@dinero.js/core@workspace:packages/core"
   dependencies:
     fast-check: "npm:^4.5.3"
+    rescript: "npm:^12.1.0"
   languageName: unknown
   linkType: soft
 
-"@dinero.js/currencies@workspace:packages/currencies":
+"@dinero.js/currencies@workspace:*, @dinero.js/currencies@workspace:packages/currencies":
   version: 0.0.0-use.local
   resolution: "@dinero.js/currencies@workspace:packages/currencies"
   languageName: unknown
@@ -1286,7 +1293,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dinero.js@workspace:packages/dinero.js"
   dependencies:
+    "@dinero.js/calculator-bigint": "workspace:*"
+    "@dinero.js/calculator-number": "workspace:*"
+    "@dinero.js/core": "workspace:*"
+    "@dinero.js/currencies": "workspace:*"
     big.js: "npm:^6.2.1"
+    rescript: "npm:^12.1.0"
   languageName: unknown
   linkType: soft
 

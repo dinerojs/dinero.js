@@ -34,6 +34,7 @@
   "scripts": {
     "prebuild": "yarn res:build",
     "build": "rollup --config",
+    "clean": "rm -rf dist lib node_modules .yarn yarn.lock.tmp rescript.lock; (rm -f .pnp.* || true)",
     "pretest": "yarn res:build",
     "test": "vitest --run --config ../../vitest.config.js",
     "res:build": "rescript",
@@ -42,7 +43,14 @@
     "res:format": "rescript format",
     "res:format:check": "rescript format --check"
   },
+  "dependencies": {
+    "@dinero.js/calculator-bigint": "workspace:*",
+    "@dinero.js/calculator-number": "workspace:*",
+    "@dinero.js/core": "workspace:*",
+    "@dinero.js/currencies": "workspace:*"
+  },
   "devDependencies": {
-    "big.js": "^6.2.1"
+    "big.js": "^6.2.1",
+    "rescript": "^12.1.0"
   }
 }

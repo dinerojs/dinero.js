@@ -6,7 +6,7 @@
   "scripts": {
     "build": "yarn workspaces foreach --all run build",
     "res:build": "yarn workspaces foreach --all run res:build",
-    "clean": "yarn workspaces foreach --all run res:clean",
+    "clean": "yarn workspaces foreach --all run clean && rm -rf node_modules .yarn/cache .pnp.* .yarn/install-state.gz yarn.lock.tmp",
     "dev": "yarn workspaces foreach --all run res:dev",
     "format": "yarn workspaces foreach --all run res:format",
     "test:size": "bundlesize",
@@ -25,12 +25,12 @@
   "dependencies": {
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-replace": "^6.0.3",
-    "rescript": "^12.1.0"
+    "@rollup/plugin-replace": "^6.0.3"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^1.0.0",
     "bundlesize": "^0.18.2",
+    "rescript": "^12.1.0",
     "rollup": "^4.24.0",
     "rollup-plugin-terser": "^7.0.2",
     "vitest": "^1.0.0"

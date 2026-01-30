@@ -32,8 +32,8 @@
     "lib/"
   ],
   "scripts": {
-    "prebuild": "yarn res:build",
     "build": "rollup --config",
+    "clean": "rm -rf dist lib node_modules .yarn yarn.lock.tmp rescript.lock; (rm -f .pnp.* || true)",
     "pretest": "yarn res:build",
     "test": "vitest --run --config ../../vitest.config.js",
     "res:build": "rescript",
@@ -41,5 +41,11 @@
     "res:dev": "rescript watch",
     "res:format": "rescript format",
     "res:format:check": "rescript format --check"
+  },
+  "dependencies": {
+    "@dinero.js/core": "workspace:*"
+  },
+  "devDependencies": {
+    "rescript": "^12.1.0"
   }
 }
