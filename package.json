@@ -8,6 +8,7 @@
     "clean": "npm run res:clean --workspaces",
     "dev": "npm run res:dev --workspaces",
     "format": "npm run res:format --workspaces",
+    "test:size": "bundlesize",
     "format:check": "npm run res:format:check --workspaces",
     "test": "vitest run",
     "test:watch": "vitest"
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^1.0.0",
+    "bundlesize": "^0.18.2",
     "vitest": "^1.0.0"
   }
 }
