@@ -23,13 +23,13 @@
     "build": "turbo build --filter=./packages/*",
     "format": "prettier --write .",
     "lint": "turbo lint --filter=./packages/*",
-    "prepare": "husky install && yarn build",
+    "prepare": "husky install && npm run build",
     "release": "shipjs prepare",
     "test:size": "bundlesize",
     "test:types": "tsc --noEmit",
     "test": "turbo test --filter=./packages/*",
-    "website:dev": "yarn --cwd website/ dev",
-    "website:start": "yarn --cwd website/ start",
+    "website:dev": "npm run dev -w website",
+    "website:start": "npm run start -w website",
     "website:build": "turbo build --filter=./packages/* --filter=./website"
   },
   "devDependencies": {

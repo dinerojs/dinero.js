@@ -31,15 +31,15 @@ Pushing your first contribution can be intimidating. A great way to start is by 
 
 ## 💻 Install
 
-The project relies on [Node.js](https://nodejs.org/) and [Yarn](https://yarnpkg.com/). It's also recommended to use [Node Version Manager](https://github.com/nvm-sh/nvm) to ensure you're using the right Node.js version.
+The project relies on [Node.js](https://nodejs.org/). It's also recommended to use [Node Version Manager](https://github.com/nvm-sh/nvm) to ensure you're using the right Node.js version.
 
 To get started, clone the project and install the dependencies from your terminal:
 
 ```sh
 git clone https://github.com/dinerojs/dinero.js.git
 cd dinero.js
-yarn install
 nvm use
+npm install
 ```
 
 ## 🖥️ Project organization
@@ -98,7 +98,7 @@ Pull requests should target the `main` branch unless fixing critical issues in p
 The project uses [Jest](https://jestjs.io/) for testing. **Every public API should be tested**. You should run tests before you commit, or at least before you open a pull request. Pull requests need to pass all checks to be reviewed, so doing it beforehand will save you time.
 
 ```sh
-yarn test
+npm test
 ```
 
 ### Linting
@@ -112,7 +112,7 @@ If ESLint finds issues it can't fix, you can fix it manually and try committing 
 The project lives in the `website/` directory. You can run it locally:
 
 ```sh
-yarn website:dev
+npm run website:dev
 ```
 
 All documentation files live in `website/data/docs/`. They use [MDX](https://mdxjs.com/), which is a mix of [Markdown](https://daringfireball.net/projects/markdown/syntax) and [JSX](https://reactjs.org/docs/introducing-jsx.html).

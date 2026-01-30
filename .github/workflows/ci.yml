@@ -25,18 +25,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 16
-
-      - name: Get yarn cache directory
-        id: yarn-cache-dir
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache yarn dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.yarn-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'npm'
 
       - name: Cache Turborepo
         uses: actions/cache@v4
@@ -47,10 +36,10 @@ jobs:
             ${{ runner.os }}-turbo-
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Build packages
-        run: yarn build
+        run: npm run build
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -78,21 +67,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 16
-
-      - name: Get yarn cache directory
-        id: yarn-cache-dir
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache yarn dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.yarn-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
@@ -101,7 +79,7 @@ jobs:
           path: packages
 
       - name: Run unit tests
-        run: yarn test
+        run: npm test
 
   types:
     name: Type Check
@@ -120,21 +98,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 16
-
-      - name: Get yarn cache directory
-        id: yarn-cache-dir
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache yarn dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.yarn-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
@@ -143,7 +110,7 @@ jobs:
           path: packages
 
       - name: Run type check
-        run: yarn test:types
+        run: npm run test:types
 
   lint:
     name: Lint
@@ -162,21 +129,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 16
-
-      - name: Get yarn cache directory
-        id: yarn-cache-dir
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache yarn dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.yarn-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
@@ -185,7 +141,7 @@ jobs:
           path: packages
 
       - name: Run linter
-        run: yarn lint
+        run: npm run lint
 
   size:
     name: Bundle Size
@@ -204,21 +160,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 16
-
-      - name: Get yarn cache directory
-        id: yarn-cache-dir
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache yarn dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.yarn-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
@@ -227,4 +172,4 @@ jobs:
           path: packages
 
       - name: Check bundle size
-        run: yarn test:size
+        run: npm run test:size
