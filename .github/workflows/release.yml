@@ -182,7 +182,7 @@ jobs:
     needs: [build, test, types, lint, size]
     permissions:
       id-token: write
-      contents: read
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -216,6 +216,6 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Release if needed
-        run: NPM_AUTH_TOKEN=$NODE_AUTH_TOKEN npx shipjs trigger
+        run: node scripts/release.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
