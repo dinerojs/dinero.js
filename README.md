@@ -24,7 +24,7 @@ Money is complex, and the primitives of the language aren't enough to properly r
 ## 📦 Install
 
 ```sh
-npm install dinero.js@alpha
+yarn add dinero.js@alpha
 
 # or
 

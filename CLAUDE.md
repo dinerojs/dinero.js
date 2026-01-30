@@ -12,19 +12,18 @@ All commands run from the repository root:
 
 ```bash
 # Build
-npm run res:build       # Build ReScript files to JavaScript
-npm run build           # Build all packages (ESM, CJS, UMD, types)
+yarn build              # Build all packages (ESM, CJS, UMD, types)
 
 # Testing  
-npm test                # Run test suite across all packages
-npm run test:size       # Check bundle sizes against limits
+yarn test               # Run test suite across all packages
+yarn test:size          # Check bundle sizes against limits
 
 # Linting & Formatting
-npm run res:format      # Format ReScript files
-npm run format          # Format with Prettier
+yarn res:format         # Format ReScript files
+yarn format             # Format with Prettier
 
 # Documentation site
-npm run website:dev     # Run docs site locally (Next.js)
+yarn website:dev        # Run docs site locally (Next.js)
 ```
 
 ## Monorepo Structure

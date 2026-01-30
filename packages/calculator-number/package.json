@@ -28,9 +28,11 @@
     ".": "./lib/es6/src/index.js",
     "./lib/*": "./lib/*"
   },
-  "files": ["lib/"],
+  "files": [
+    "lib/"
+  ],
   "scripts": {
-    "pretest": "npm run res:build",
+    "pretest": "yarn res:build",
     "test": "vitest --run --config ../../vitest.config.js",
     "res:build": "rescript",
     "res:clean": "rescript clean",

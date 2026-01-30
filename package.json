@@ -4,12 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "npm run res:build --workspaces",
-    "clean": "npm run res:clean --workspaces",
-    "dev": "npm run res:dev --workspaces",
-    "format": "npm run res:format --workspaces",
+    "build": "yarn workspaces foreach --all run res:build",
+    "clean": "yarn workspaces foreach --all run res:clean",
+    "dev": "yarn workspaces foreach --all run res:dev",
+    "format": "yarn workspaces foreach --all run res:format",
     "test:size": "bundlesize",
-    "format:check": "npm run res:format:check --workspaces",
+    "format:check": "yarn workspaces foreach --all run res:format:check",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -28,5 +28,6 @@
     "@vitest/coverage-v8": "^1.0.0",
     "bundlesize": "^0.18.2",
     "vitest": "^1.0.0"
-  }
+  },
+  "packageManager": "yarn@4.12.0"
 }

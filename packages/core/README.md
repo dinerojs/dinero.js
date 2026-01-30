@@ -7,7 +7,7 @@
 ## 📦 Install
 
 ```sh
-npm install @dinero.js/core@alpha
+yarn add @dinero.js/core@alpha
 
 # or
 
