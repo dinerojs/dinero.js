@@ -8,6 +8,11 @@ module.exports = {
   publishCommand({ tag }) {
     return `npm publish --access public --tag ${tag}`;
   },
+  getRegistryInfo() {
+    // Skip Ship.js auth token setup - it escapes ${NPM_AUTH_TOKEN} incorrectly.
+    // GitHub Actions already configures npm auth via actions/setup-node.
+    return null;
+  },
   installCommand() {
     return 'npm ci';
   },
