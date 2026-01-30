@@ -29,7 +29,6 @@
     "lib/"
   ],
   "scripts": {
-    "prebuild": "yarn res:build",
     "build": "rollup --config",
     "clean": "rm -rf dist lib node_modules .yarn yarn.lock.tmp rescript.lock; (rm -f .pnp.* || true)",
     "pretest": "yarn res:build",
