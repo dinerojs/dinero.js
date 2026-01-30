@@ -145,17 +145,24 @@ function createGitTag(version) {
 }
 
 async function main() {
+  const forceRelease = process.env.FORCE_RELEASE === 'true';
+
   console.log('Checking if this is a release commit...\n');
 
   const commitMessage = getLastCommitMessage();
   console.log(`Last commit: ${commitMessage.split('\n')[0]}`);
 
-  if (!isReleaseCommit(commitMessage)) {
+  if (!isReleaseCommit(commitMessage) && !forceRelease) {
     console.log('\nNot a release commit. Skipping publish.');
+    console.log('Set FORCE_RELEASE=true to publish anyway.');
     process.exit(0);
   }
 
-  console.log('\nThis is a release commit. Starting publish process...\n');
+  if (forceRelease) {
+    console.log('\nFORCE_RELEASE is set. Proceeding with publish...\n');
+  } else {
+    console.log('\nThis is a release commit. Starting publish process...\n');
+  }
 
   // Get version from root package.json
   const rootPackageJson = JSON.parse(
