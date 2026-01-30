@@ -1,4 +1,0 @@
-{
-  "name": "Node 22 Dev Environment",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:22"
-}
