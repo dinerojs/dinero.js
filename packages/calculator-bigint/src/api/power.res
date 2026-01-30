@@ -7,5 +7,7 @@
  * @returns The base to the power of the exponent.
  */
 let power = (base: BigInt.t, exponent: BigInt.t): BigInt.t => {
-  %raw(`BigInt(base) ** BigInt(exponent)`)
+  let _baseValue = base
+  let _exponentValue = exponent
+  %raw(`BigInt(_baseValue) ** BigInt(_exponentValue)`)
 }
