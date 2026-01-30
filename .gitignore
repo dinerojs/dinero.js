@@ -11,3 +11,4 @@
 .flox
 .yarn
 .pnp.*
+/**/dist/
