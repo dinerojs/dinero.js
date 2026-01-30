@@ -13,15 +13,15 @@ export const add: BinaryOperation<bigint>;
 
 // @public (undocumented)
 export const calculator: {
-    add: BinaryOperation<bigint, bigint>;
+    add: BinaryOperation<bigint>;
     compare: BinaryOperation<bigint, ComparisonOperator>;
-    decrement: UnaryOperation<bigint, bigint>;
-    increment: UnaryOperation<bigint, bigint>;
-    integerDivide: BinaryOperation<bigint, bigint>;
-    modulo: BinaryOperation<bigint, bigint>;
-    multiply: BinaryOperation<bigint, bigint>;
-    power: BinaryOperation<bigint, bigint>;
-    subtract: BinaryOperation<bigint, bigint>;
+    decrement: UnaryOperation<bigint>;
+    increment: UnaryOperation<bigint>;
+    integerDivide: BinaryOperation<bigint>;
+    modulo: BinaryOperation<bigint>;
+    multiply: BinaryOperation<bigint>;
+    power: BinaryOperation<bigint>;
+    subtract: BinaryOperation<bigint>;
     zero: typeof zero;
 };
 

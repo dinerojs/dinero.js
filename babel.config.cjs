@@ -1,5 +1,5 @@
 /* eslint-disable import/no-commonjs, functional/immutable-data, functional/no-expression-statement, @typescript-eslint/no-var-requires */
-const wrapWarningWithDevCheck = require('./scripts/babel/wrap-warning-with-dev-check');
+const wrapWarningWithDevCheck = require('./scripts/babel/wrap-warning-with-dev-check.cjs');
 
 module.exports = (api) => {
   const isTest = api.env('test');
@@ -22,7 +22,6 @@ module.exports = (api) => {
       ],
     ],
     plugins: clean([
-      '@babel/plugin-proposal-nullish-coalescing-operator',
       wrapWarningWithDevCheck,
       [
         'inline-replace-variables',

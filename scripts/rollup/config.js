@@ -1,10 +1,9 @@
-/* eslint-disable functional/no-throw-statement, functional/no-expression-statement */
+import babel from '@rollup/plugin-babel';
 import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
-import babel from 'rollup-plugin-babel';
+import terser from '@rollup/plugin-terser';
 import filesize from 'rollup-plugin-filesize';
-import { terser } from 'rollup-plugin-terser';
 
 import { getBundleBanner } from '../utils/getBundleBanner.mjs';
 
@@ -46,6 +45,7 @@ function createRollupConfig({ mode, format, input, pkg, config }) {
           exclude: 'node_modules/**',
           extensions,
           rootMode: 'upward',
+          babelHelpers: 'bundled',
         }),
         filesize({
           showMinifiedSize: false,
@@ -84,6 +84,7 @@ function createRollupConfig({ mode, format, input, pkg, config }) {
         exclude: 'node_modules/**',
         extensions,
         rootMode: 'upward',
+        babelHelpers: 'bundled',
       }),
       mode === 'production' && terser(),
       filesize({

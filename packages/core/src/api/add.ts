@@ -1,4 +1,3 @@
-/* eslint-disable functional/no-expression-statement */
 import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
 import { assert } from '../helpers';
 import type { Calculator, Dinero } from '../types';
@@ -8,7 +7,7 @@ import { normalizeScale } from './normalizeScale';
 
 export type AddParams<TAmount> = readonly [
   augend: Dinero<TAmount>,
-  addend: Dinero<TAmount>
+  addend: Dinero<TAmount>,
 ];
 
 function unsafeAdd<TAmount>(calculator: Calculator<TAmount>) {

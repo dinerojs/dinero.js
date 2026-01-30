@@ -17,7 +17,7 @@ const args = process.argv.slice(2);
  * it doesn't look up the file tree for `.eslintrc` or `.eslintignore`.
  */
 const eslintArgs = [
-  '--config=../../.eslintrc.js',
+  '--config=../../.eslintrc.cjs',
   '--ignore-path=../../.eslintignore',
   ...args,
 ];

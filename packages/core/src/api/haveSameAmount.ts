@@ -4,7 +4,7 @@ import { equal } from '../utils';
 import { normalizeScale } from './normalizeScale';
 
 export type HaveSameAmountParams<TAmount> = readonly [
-  dineroObjects: ReadonlyArray<Dinero<TAmount>>
+  dineroObjects: ReadonlyArray<Dinero<TAmount>>,
 ];
 
 export function haveSameAmount<TAmount>(calculator: Calculator<TAmount>) {

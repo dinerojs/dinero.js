@@ -2,7 +2,7 @@ import type { Calculator, Dinero } from '../types';
 import { lessThan } from '../utils';
 
 export type IsNegativeParams<TAmount> = readonly [
-  dineroObject: Dinero<TAmount>
+  dineroObject: Dinero<TAmount>,
 ];
 
 export function isNegative<TAmount>(calculator: Calculator<TAmount>) {

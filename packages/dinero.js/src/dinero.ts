@@ -1,4 +1,3 @@
-/* eslint-disable functional/no-expression-statement */
 import { calculator } from '@dinero.js/calculator-number';
 import {
   createDinero,

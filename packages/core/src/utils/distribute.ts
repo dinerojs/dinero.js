@@ -1,4 +1,4 @@
-/* eslint-disable functional/no-let, functional/no-loop-statement, functional/immutable-data, functional/no-expression-statement */
+/* eslint-disable functional/no-let, functional/immutable-data */
 
 import type { Calculator } from '../types';
 

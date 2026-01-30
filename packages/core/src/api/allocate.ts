@@ -1,4 +1,3 @@
-/* eslint-disable functional/no-expression-statement */
 import { INVALID_RATIOS_MESSAGE } from '../checks';
 import { assert } from '../helpers';
 import type { Calculator, Dinero, ScaledAmount } from '../types';
@@ -15,7 +14,7 @@ import { transformScale } from './transformScale';
 
 type UnsafeAllocateParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
-  ratios: ReadonlyArray<ScaledAmount<TAmount>>
+  ratios: ReadonlyArray<ScaledAmount<TAmount>>,
 ];
 
 function unsafeAllocate<TAmount>(calculator: Calculator<TAmount>) {
@@ -41,7 +40,7 @@ function unsafeAllocate<TAmount>(calculator: Calculator<TAmount>) {
 
 export type AllocateParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
-  ratios: ReadonlyArray<ScaledAmount<TAmount> | TAmount>
+  ratios: ReadonlyArray<ScaledAmount<TAmount> | TAmount>,
 ];
 
 export function safeAllocate<TAmount>(calculator: Calculator<TAmount>) {

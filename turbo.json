@@ -1,6 +1,6 @@
 {
-  "$schema": "https://turborepo.org/schema.json",
-  "pipeline": {
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
     "build:clean": {
       "cache": false
     },
@@ -39,11 +39,11 @@
     }
   },
   "globalDependencies": [
-    ".eslintrc.js",
+    ".eslintrc.cjs",
     ".prettierrc",
     "api-extractor.json",
-    "babel.config.js",
-    "bundlesize.config.json",
+    "babel.config.cjs",
+    ".size-limit.json",
     "jest.base.ts",
     "jest.config.ts",
     "tsconfig.json",

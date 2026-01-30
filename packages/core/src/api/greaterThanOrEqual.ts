@@ -1,4 +1,3 @@
-/* eslint-disable functional/no-expression-statement */
 import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
 import { assert } from '../helpers';
 import type { Calculator, Dinero } from '../types';
@@ -9,7 +8,7 @@ import { normalizeScale } from './normalizeScale';
 
 export type GreaterThanOrEqualParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
-  comparator: Dinero<TAmount>
+  comparator: Dinero<TAmount>,
 ];
 
 function unsafeGreaterThanOrEqual<TAmount>(calculator: Calculator<TAmount>) {

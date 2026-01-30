@@ -5,7 +5,7 @@ import { transformScale } from './transformScale';
 
 export type MultiplyParams<TAmount> = readonly [
   multiplicand: Dinero<TAmount>,
-  multiplier: ScaledAmount<TAmount> | TAmount
+  multiplier: ScaledAmount<TAmount> | TAmount,
 ];
 
 export function multiply<TAmount>(calculator: Calculator<TAmount>) {

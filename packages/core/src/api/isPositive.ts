@@ -2,7 +2,7 @@ import type { Calculator, Dinero } from '../types';
 import { greaterThan } from '../utils';
 
 export type IsPositiveParams<TAmount> = readonly [
-  dineroObject: Dinero<TAmount>
+  dineroObject: Dinero<TAmount>,
 ];
 
 export function isPositive<TAmount>(calculator: Calculator<TAmount>) {

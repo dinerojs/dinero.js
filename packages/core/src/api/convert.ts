@@ -8,7 +8,7 @@ import { transformScale } from './transformScale';
 export type ConvertParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   newCurrency: Currency<TAmount>,
-  rates: Rates<TAmount>
+  rates: Rates<TAmount>,
 ];
 
 export function convert<TAmount>(calculator: Calculator<TAmount>) {

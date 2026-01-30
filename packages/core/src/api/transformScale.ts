@@ -5,7 +5,7 @@ import { computeBase, greaterThan } from '../utils';
 export type TransformScaleParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   newScale: TAmount,
-  divide?: DivideOperation
+  divide?: DivideOperation,
 ];
 
 export function transformScale<TAmount>(calculator: Calculator<TAmount>) {

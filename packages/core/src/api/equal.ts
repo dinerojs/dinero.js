@@ -5,7 +5,7 @@ import { haveSameCurrency } from './haveSameCurrency';
 
 export type EqualParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
-  comparator: Dinero<TAmount>
+  comparator: Dinero<TAmount>,
 ];
 
 export function equal<TAmount>(calculator: Calculator<TAmount>) {

@@ -18,12 +18,12 @@ describe('toDecimal', () => {
       it('returns the amount in decimal format', () => {
         const d = dinero({ amount: 1050, currency: USD });
 
-        expect(toDecimal(d)).toEqual('10.50');
+        expect(toDecimal(d)).toBe('10.50');
       });
       it('returns the amount in decimal format based on a custom scale', () => {
         const d = dinero({ amount: 10545, currency: USD, scale: 3 });
 
-        expect(toDecimal(d)).toEqual('10.545');
+        expect(toDecimal(d)).toBe('10.545');
       });
       it('returns the amount in decimal format with trailing zeros', () => {
         const d = dinero({ amount: 1000, currency: USD });
@@ -43,17 +43,17 @@ describe('toDecimal', () => {
       it('returns the negative amount in decimal format', () => {
         const d = dinero({ amount: -1050, currency: USD });
 
-        expect(toDecimal(d)).toEqual('-10.50');
+        expect(toDecimal(d)).toBe('-10.50');
       });
       it('returns the negative amount with a leading zero in decimal format', () => {
         const d = dinero({ amount: -1, currency: USD });
 
-        expect(toDecimal(d)).toEqual('-0.01');
+        expect(toDecimal(d)).toBe('-0.01');
       });
       it('returns negative zero amount as a positive value in decimal format', () => {
         const d = dinero({ amount: -0, currency: USD });
 
-        expect(toDecimal(d)).toEqual('0.00');
+        expect(toDecimal(d)).toBe('0.00');
       });
       it('uses a custom transformer', () => {
         const d = dinero({ amount: 1050, currency: USD });
@@ -64,7 +64,7 @@ describe('toDecimal', () => {
       });
       it('returns whole numbers when scale is zero', () => {
         const d = dinero({ amount: 100, currency: JPY });
-        expect(toDecimal(d)).toEqual('100');
+        expect(toDecimal(d)).toBe('100');
       });
     });
     describe('non-decimal currencies', () => {
@@ -101,17 +101,17 @@ describe('toDecimal', () => {
       it('returns the amount in decimal format', () => {
         const d = dinero({ amount: 1050n, currency: bigintUSD });
 
-        expect(toDecimal(d)).toEqual('10.50');
+        expect(toDecimal(d)).toBe('10.50');
       });
       it('returns the amount in decimal format with large integers', () => {
         const d = dinero({ amount: 1000000000000000050n, currency: bigintUSD });
 
-        expect(toDecimal(d)).toEqual('10000000000000000.50');
+        expect(toDecimal(d)).toBe('10000000000000000.50');
       });
       it('returns the amount in decimal format based on a custom scale', () => {
         const d = dinero({ amount: 10545n, currency: bigintUSD, scale: 3n });
 
-        expect(toDecimal(d)).toEqual('10.545');
+        expect(toDecimal(d)).toBe('10.545');
       });
       it('returns the amount in decimal format with trailing zeros', () => {
         const d = dinero({ amount: 1000n, currency: bigintUSD });
@@ -131,17 +131,17 @@ describe('toDecimal', () => {
       it('returns the negative amount in decimal format', () => {
         const d = dinero({ amount: -1050n, currency: bigintUSD });
 
-        expect(toDecimal(d)).toEqual('-10.50');
+        expect(toDecimal(d)).toBe('-10.50');
       });
       it('returns the negative amount with a leading zero in decimal format', () => {
         const d = dinero({ amount: -1n, currency: bigintUSD });
 
-        expect(toDecimal(d)).toEqual('-0.01');
+        expect(toDecimal(d)).toBe('-0.01');
       });
       it('returns negative zero amount as a positive value in decimal format', () => {
         const d = dinero({ amount: -0n, currency: bigintUSD });
 
-        expect(toDecimal(d)).toEqual('0.00');
+        expect(toDecimal(d)).toBe('0.00');
       });
       it('uses a custom transformer', () => {
         const d = dinero({ amount: 1050n, currency: bigintUSD });
@@ -152,7 +152,7 @@ describe('toDecimal', () => {
       });
       it('returns whole numbers when scale is zero', () => {
         const d = dinero({ amount: 100n, currency: bigintJPY });
-        expect(toDecimal(d)).toEqual('100');
+        expect(toDecimal(d)).toBe('100');
       });
     });
     describe('non-decimal currencies', () => {
@@ -189,7 +189,7 @@ describe('toDecimal', () => {
       it('returns the amount in decimal format', () => {
         const d = dinero({ amount: new Big(1050), currency: bigjsUSD });
 
-        expect(toDecimal(d)).toEqual('10.50');
+        expect(toDecimal(d)).toBe('10.50');
       });
       it('returns the amount in decimal format with large integers', () => {
         const d = dinero({
@@ -197,7 +197,7 @@ describe('toDecimal', () => {
           currency: bigjsUSD,
         });
 
-        expect(toDecimal(d)).toEqual('10000000000000000.50');
+        expect(toDecimal(d)).toBe('10000000000000000.50');
       });
       it('returns the amount in decimal format based on a custom scale', () => {
         const d = dinero({
@@ -206,7 +206,7 @@ describe('toDecimal', () => {
           scale: new Big(3),
         });
 
-        expect(toDecimal(d)).toEqual('10.545');
+        expect(toDecimal(d)).toBe('10.545');
       });
       it('returns the amount in decimal format with trailing zeros', () => {
         const d = dinero({ amount: new Big(1000), currency: bigjsUSD });
@@ -226,17 +226,17 @@ describe('toDecimal', () => {
       it('returns the negative amount in decimal format', () => {
         const d = dinero({ amount: new Big(-1005), currency: bigjsUSD });
 
-        expect(toDecimal(d)).toEqual('-10.05');
+        expect(toDecimal(d)).toBe('-10.05');
       });
       it('returns the negative amount with a leading zero in decimal format', () => {
         const d = dinero({ amount: new Big(-1), currency: bigjsUSD });
 
-        expect(toDecimal(d)).toEqual('-0.01');
+        expect(toDecimal(d)).toBe('-0.01');
       });
       it('returns negative zero amount as a positive value in decimal format', () => {
         const d = dinero({ amount: new Big(-0), currency: bigjsUSD });
 
-        expect(toDecimal(d)).toEqual('0.00');
+        expect(toDecimal(d)).toBe('0.00');
       });
       it('uses a custom transformer', () => {
         const d = dinero({ amount: new Big(1050), currency: bigjsUSD });
@@ -247,7 +247,7 @@ describe('toDecimal', () => {
       });
       it('returns whole numbers when scale is zero', () => {
         const d = dinero({ amount: new Big(100), currency: bigjsJPY });
-        expect(toDecimal(d)).toEqual('100');
+        expect(toDecimal(d)).toBe('100');
       });
     });
     describe('non-decimal currencies', () => {

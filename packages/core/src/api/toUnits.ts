@@ -3,7 +3,7 @@ import { isArray, getDivisors } from '../utils';
 
 export type ToUnitsParams<TAmount, TOutput> = readonly [
   dineroObject: Dinero<TAmount>,
-  transformer?: Transformer<TAmount, TOutput, readonly TAmount[]>
+  transformer?: Transformer<TAmount, TOutput, readonly TAmount[]>,
 ];
 
 export function toUnits<TAmount, TOutput>(calculator: Calculator<TAmount>) {

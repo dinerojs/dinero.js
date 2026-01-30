@@ -49,20 +49,20 @@ import type { TrimScaleParams } from '@dinero.js/core';
 import { up } from '@dinero.js/core';
 
 // @public
-export function add<TAmount>(...[augend, addend]: AddParams<TAmount>): Dinero<TAmount>;
+export function add<TAmount>(...input: AddParams<TAmount>): Dinero<TAmount>;
 
 // @public
-export function allocate<TAmount>(...[dineroObject, ratios]: AllocateParams<TAmount>): Dinero<TAmount>[];
+export function allocate<TAmount>(...input: AllocateParams<TAmount>): Dinero<TAmount>[];
 
 export { Calculator }
 
 // @public
-export function compare<TAmount>(...[dineroObject, comparator]: CompareParams<TAmount>): ComparisonOperator;
+export function compare<TAmount>(...input: CompareParams<TAmount>): ComparisonOperator;
 
 export { ComparisonOperator }
 
 // @public
-export function convert<TAmount>(...[dineroObject, newCurrency, rates]: ConvertParams<TAmount>): Dinero<TAmount>;
+export function convert<TAmount>(...input: ConvertParams<TAmount>): Dinero<TAmount>;
 
 export { createDinero }
 
@@ -71,7 +71,7 @@ export { Currency }
 export { Dinero }
 
 // @public
-export const dinero: ({ amount, currency: { code, base, exponent }, scale, }: DineroOptions<number>) => Dinero<number>;
+export const dinero: (input: DineroOptions<number>) => Dinero<number>;
 
 export { DineroFactory }
 
@@ -84,15 +84,15 @@ export { DivideOperation }
 export { down }
 
 // @public
-export function equal<TAmount>(...[dineroObject, comparator]: EqualParams<TAmount>): boolean;
+export function equal<TAmount>(...input: EqualParams<TAmount>): boolean;
 
 export { Formatter }
 
 // @public
-export function greaterThan<TAmount>(...[dineroObject, comparator]: GreaterThanParams<TAmount>): boolean;
+export function greaterThan<TAmount>(...input: GreaterThanParams<TAmount>): boolean;
 
 // @public
-export function greaterThanOrEqual<TAmount>(...[dineroObject, comparator]: GreaterThanOrEqualParams<TAmount>): boolean;
+export function greaterThanOrEqual<TAmount>(...input: GreaterThanOrEqualParams<TAmount>): boolean;
 
 export { halfAwayFromZero }
 
@@ -107,45 +107,45 @@ export { halfTowardsZero }
 export { halfUp }
 
 // @public
-export function hasSubUnits<TAmount>(...[dineroObject]: HasSubUnitsParams<TAmount>): boolean;
+export function hasSubUnits<TAmount>(...input: HasSubUnitsParams<TAmount>): boolean;
 
 // @public
-export function haveSameAmount<TAmount>(...[dineroObjects]: HaveSameAmountParams<TAmount>): boolean;
+export function haveSameAmount<TAmount>(...input: HaveSameAmountParams<TAmount>): boolean;
 
 // @public
 export const haveSameCurrency: typeof haveSameCurrency_2;
 
 // @public
-export function isNegative<TAmount>(...[dineroObject]: IsNegativeParams<TAmount>): boolean;
+export function isNegative<TAmount>(...input: IsNegativeParams<TAmount>): boolean;
 
 // @public
-export function isPositive<TAmount>(...[dineroObject]: IsPositiveParams<TAmount>): boolean;
+export function isPositive<TAmount>(...input: IsPositiveParams<TAmount>): boolean;
 
 // @public
-export function isZero<TAmount>(...[dineroObject]: IsZeroParams<TAmount>): boolean;
+export function isZero<TAmount>(...input: IsZeroParams<TAmount>): boolean;
 
 // @public
-export function lessThan<TAmount>(...[dineroObject, comparator]: LessThanParams<TAmount>): boolean;
+export function lessThan<TAmount>(...input: LessThanParams<TAmount>): boolean;
 
 // @public
-export function lessThanOrEqual<TAmount>(...[dineroObject, comparator]: LessThanOrEqualParams<TAmount>): boolean;
+export function lessThanOrEqual<TAmount>(...input: LessThanOrEqualParams<TAmount>): boolean;
 
 // @public
-export function maximum<TAmount>(...[dineroObjects]: MaximumParams<TAmount>): Dinero<TAmount>;
+export function maximum<TAmount>(...input: MaximumParams<TAmount>): Dinero<TAmount>;
 
 // @public
-export function minimum<TAmount>(...[dineroObjects]: MinimumParams<TAmount>): Dinero<TAmount>;
+export function minimum<TAmount>(...input: MinimumParams<TAmount>): Dinero<TAmount>;
 
 // @public
-export function multiply<TAmount>(...[multiplicand, multiplier]: MultiplyParams<TAmount>): Dinero<TAmount>;
+export function multiply<TAmount>(...input: MultiplyParams<TAmount>): Dinero<TAmount>;
 
 // @public
-export function normalizeScale<TAmount>(...[dineroObjects]: NormalizeScaleParams<TAmount>): Dinero<TAmount>[];
+export function normalizeScale<TAmount>(...input: NormalizeScaleParams<TAmount>): Dinero<TAmount>[];
 
 export { Rates }
 
 // @public
-export function subtract<TAmount>(...[minuend, subtrahend]: SubtractParams<TAmount>): Dinero<TAmount>;
+export function subtract<TAmount>(...input: SubtractParams<TAmount>): Dinero<TAmount>;
 
 // @public (undocumented)
 export function toDecimal<TAmount>(dineroObject: Dinero<TAmount>): string;
@@ -165,10 +165,10 @@ export function toUnits<TAmount, TOutput>(dineroObject: Dinero<TAmount>, transfo
 export { Transformer_2 as Transformer }
 
 // @public
-export function transformScale<TAmount>(...[dineroObject, newScale, divide]: TransformScaleParams<TAmount>): Dinero<TAmount>;
+export function transformScale<TAmount>(...input: TransformScaleParams<TAmount>): Dinero<TAmount>;
 
 // @public
-export function trimScale<TAmount>(...[dineroObject]: TrimScaleParams<TAmount>): Dinero<TAmount>;
+export function trimScale<TAmount>(...input: TrimScaleParams<TAmount>): Dinero<TAmount>;
 
 export { up }
 

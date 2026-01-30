@@ -1,0 +1,22 @@
+[
+  {
+    "path": "packages/calculator-bigint/dist/umd/index.production.js",
+    "limit": "625 B"
+  },
+  {
+    "path": "packages/calculator-number/dist/umd/index.production.js",
+    "limit": "650 B"
+  },
+  {
+    "path": "packages/core/dist/umd/index.production.js",
+    "limit": "4 KB"
+  },
+  {
+    "path": "packages/currencies/dist/umd/index.production.js",
+    "limit": "1.5 KB"
+  },
+  {
+    "path": "packages/dinero.js/dist/umd/index.production.js",
+    "limit": "4.75 KB"
+  }
+]

@@ -1,5 +1,5 @@
-import { createRollupConfigs } from '../../scripts/rollup/config';
+import { createRollupConfigs } from '../../scripts/rollup/config.js';
 
-import pkg from './package.json';
+import pkg from './package.json' with { type: 'json' };
 
 export default createRollupConfigs({ pkg });

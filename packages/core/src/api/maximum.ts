@@ -1,4 +1,3 @@
-/* eslint-disable functional/no-expression-statement */
 import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
 import { assert } from '../helpers';
 import type { Calculator, Dinero } from '../types';
@@ -8,7 +7,7 @@ import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
 
 export type MaximumParams<TAmount> = readonly [
-  dineroObjects: ReadonlyArray<Dinero<TAmount>>
+  dineroObjects: ReadonlyArray<Dinero<TAmount>>,
 ];
 
 function unsafeMaximum<TAmount>(calculator: Calculator<TAmount>) {

@@ -2,7 +2,7 @@ import type { Calculator, Dinero } from '../types';
 import { computeBase, equal } from '../utils';
 
 export type HasSubUnitsParams<TAmount> = readonly [
-  dineroObject: Dinero<TAmount>
+  dineroObject: Dinero<TAmount>,
 ];
 
 export function hasSubUnits<TAmount>(calculator: Calculator<TAmount>) {
