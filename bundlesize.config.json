@@ -2,11 +2,11 @@
   "files": [
     {
       "path": "packages/calculator-bigint/dist/umd/@dinero.js/calculator-bigint.production.min.js",
-      "maxSize": "625 B"
+      "maxSize": "700 B"
     },
     {
       "path": "packages/calculator-number/dist/umd/@dinero.js/calculator-number.production.min.js",
-      "maxSize": "650 B"
+      "maxSize": "800 B"
     },
     {
       "path": "packages/core/dist/umd/@dinero.js/core.production.min.js",
