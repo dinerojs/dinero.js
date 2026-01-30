@@ -1,23 +1,23 @@
 {
   "files": [
     {
-      "path": "packages/calculator-bigint/lib/es6/src/index.js",
+      "path": "packages/calculator-bigint/dist/umd/@dinero.js/calculator-bigint.production.min.js",
       "maxSize": "625 B"
     },
     {
-      "path": "packages/calculator-number/lib/es6/src/index.js",
+      "path": "packages/calculator-number/dist/umd/@dinero.js/calculator-number.production.min.js",
       "maxSize": "650 B"
     },
     {
-      "path": "packages/core/lib/es6/src/index.js",
+      "path": "packages/core/dist/umd/@dinero.js/core.production.min.js",
       "maxSize": "4 KB"
     },
     {
-      "path": "packages/currencies/lib/es6/src/index.js",
+      "path": "packages/currencies/dist/umd/@dinero.js/currencies.production.min.js",
       "maxSize": "1.5 KB"
     },
     {
-      "path": "packages/dinero.js/lib/es6/src/index.js",
+      "path": "packages/dinero.js/dist/umd/dinero.js.production.min.js",
       "maxSize": "4.75 KB"
     }
   ]

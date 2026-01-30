@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "yarn workspaces foreach --all run res:build",
+    "build": "yarn workspaces foreach --all run build",
+    "res:build": "yarn workspaces foreach --all run res:build",
     "clean": "yarn workspaces foreach --all run res:clean",
     "dev": "yarn workspaces foreach --all run res:dev",
     "format": "yarn workspaces foreach --all run res:format",
@@ -22,11 +23,16 @@
     "packages/*"
   ],
   "dependencies": {
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-replace": "^6.0.3",
     "rescript": "^12.1.0"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^1.0.0",
     "bundlesize": "^0.18.2",
+    "rollup": "^4.24.0",
+    "rollup-plugin-terser": "^7.0.2",
     "vitest": "^1.0.0"
   },
   "packageManager": "yarn@4.12.0"

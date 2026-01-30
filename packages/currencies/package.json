@@ -32,6 +32,8 @@
     "lib/"
   ],
   "scripts": {
+    "prebuild": "yarn res:build",
+    "build": "rollup --config",
     "pretest": "yarn res:build",
     "test": "echo \"no tests\"",
     "res:build": "rescript",

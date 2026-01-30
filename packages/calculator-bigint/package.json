@@ -31,6 +31,8 @@
     "lib/"
   ],
   "scripts": {
+    "prebuild": "yarn res:build",
+    "build": "rollup --config",
     "pretest": "yarn res:build",
     "test": "vitest --run --config ../../vitest.config.js",
     "res:build": "rescript",
