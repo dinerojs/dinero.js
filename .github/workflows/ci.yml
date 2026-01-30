@@ -16,10 +16,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
+      - name: Setup Flox
+        uses: flox/flox-github-action@v1
 
       - name: Get yarn cache directory
         id: yarn-cache-dir
@@ -55,10 +53,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
+      - name: Setup Flox
+        uses: flox/flox-github-action@v1
 
       - name: Get yarn cache directory
         id: yarn-cache-dir
@@ -91,10 +87,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
+      - name: Setup Flox
+        uses: flox/flox-github-action@v1
 
       - name: Get yarn cache directory
         id: yarn-cache-dir
@@ -122,10 +116,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
+      - name: Setup Flox
+        uses: flox/flox-github-action@v1
 
       - name: Get yarn cache directory
         id: yarn-cache-dir
