@@ -6,7 +6,10 @@ module.exports = {
     packagesToPublish: ['packages/*'],
   },
   publishCommand({ tag }) {
-    return `yarn publish --access public --tag ${tag}`;
+    return `npm publish --access public --tag ${tag}`;
+  },
+  installCommand() {
+    return null; // Skip install in CI (already done)
   },
   // Skip preparation if it contains only `chore` commits
   shouldPrepare({ releaseType, commitNumbersPerType }) {

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Dinero.js is a JavaScript/TypeScript library for creating, calculating, and formatting money safely. It's a monorepo (v2.0.0-alpha) using Yarn Workspaces and Turborepo.
+Dinero.js is a JavaScript/TypeScript library for creating, calculating, and formatting money safely. It's a monorepo (v2.0.0-alpha) using npm workspaces and Turborepo.
 
 ## Common Commands
 
@@ -12,21 +12,21 @@ All commands run from the repository root:
 
 ```bash
 # Build
-yarn build              # Build all packages (ESM, CJS, UMD, types)
-yarn build:clean        # Clean dist/lib directories before building
+npm run build              # Build all packages (ESM, CJS, UMD, types)
+npm run build:clean        # Clean dist/lib directories before building
 
 # Testing
-yarn test               # Run Jest test suite across all packages
-yarn test:types         # Type check with TypeScript (noEmit)
-yarn test:size          # Check bundle sizes against limits
+npm test                   # Run Jest test suite across all packages
+npm run test:types         # Type check with TypeScript (noEmit)
+npm run test:size          # Check bundle sizes against limits
 
 # Linting & Formatting
-yarn lint               # Run ESLint
-yarn lint --fix         # Auto-fix lint issues
-yarn format             # Format with Prettier
+npm run lint               # Run ESLint
+npm run lint -- --fix      # Auto-fix lint issues
+npm run format             # Format with Prettier
 
 # Documentation site
-yarn website:dev        # Run docs site locally (Next.js)
+npm run website:dev        # Run docs site locally (Next.js)
 ```
 
 ## Monorepo Structure
