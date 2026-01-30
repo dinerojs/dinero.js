@@ -16,6 +16,7 @@ version = 1
 ## -------------------------------------------------------------------
 [install]
 nodejs.pkg-path = "nodejs"
+yarn.pkg-path = "yarn-berry"
 # gum.pkg-path = "gum"
 # gum.version = "^0.14.5"
 

@@ -6,3 +6,8 @@
 .merlin
 /packages/**/lib
 /coverage
+.env
+.turbo
+.flox
+.yarn
+.pnp.*
