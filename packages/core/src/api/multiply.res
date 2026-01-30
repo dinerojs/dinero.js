@@ -18,8 +18,14 @@ let multiply = (calculator: calculator<'amount>) => {
     // Check if multiplier is an object with amount and scale properties
     let (multiplierAmount, multiplierScale) = try {
       let factorObj = Obj.magic(multiplier) // Cast to object to check properties
-      let hasAmount = Js.typeof(factorObj["amount"]) !== "undefined"
-      let hasScale = Js.typeof(factorObj["scale"]) !== "undefined"
+      let hasAmount = switch factorObj["amount"]->Type.typeof {
+      | #undefined => false
+      | _ => true
+      }
+      let hasScale = switch factorObj["scale"]->Type.typeof {
+      | #undefined => false
+      | _ => true
+      }
 
       if hasAmount && hasScale {
         (factorObj["amount"], factorObj["scale"])

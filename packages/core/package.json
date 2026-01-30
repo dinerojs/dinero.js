@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "fast-check": "^4.5.3",
-    "rescript": "^12.1.0"
+    "rescript": "^12.1.0",
+    "vitest": "^4.0.18"
   }
 }

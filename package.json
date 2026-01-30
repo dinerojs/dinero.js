@@ -30,5 +30,8 @@
     "rollup-plugin-terser": "^7.0.2",
     "vitest": "^1.0.0"
   },
-  "packageManager": "yarn@4.12.0"
+  "packageManager": "yarn@4.12.0",
+  "dependencies": {
+    "reanalyze": "^2.23.0"
+  }
 }
