@@ -16,10 +16,13 @@ yarn build              # Build all packages (ESM, CJS, UMD, types)
 
 # Testing  
 yarn test               # Run test suite across all packages
+yarn test:types         # Type check with TypeScript (noEmit)
 yarn test:size          # Check bundle sizes against limits
 
 # Linting & Formatting
 yarn res:format         # Format ReScript files
+yarn lint               # Run ESLint
+yarn lint --fix         # Auto-fix lint issues
 yarn format             # Format with Prettier
 
 # Documentation site
@@ -62,29 +65,20 @@ scripts/                  # Build and development scripts
 
 ## Build System
 - **ReScript**: Compiles `.res` files to JavaScript
-- **Babel**: Transpilation with TypeScript preset
 - **Rollup**: Generates ESM, CJS, and UMD bundles  
 - **ReScript @genType**: Generates `.d.ts` files from ReScript annotated source code
 
 Each package outputs:
 - `lib/` - Compiled JavaScript from ReScript
+- `dist/esm/` - ES modules (main entry)
+- `dist/cjs/` - CommonJS
+- `dist/umd/` - UMD bundles
 
 ## Testing
 
 - Vitest test runner
 - Test files: `src/**/*.test.js` 
 - ReScript source files: `src/**/*.res`
-
-Each package outputs:
-- `dist/esm/` - ES modules (main entry)
-- `dist/cjs/` - CommonJS
-- `dist/umd/` - UMD bundles
-- `lib/` - Intermediate TypeScript declarations
-
-## Testing
-
-- Jest with babel-jest transform
-- Test files: `src/**/__tests__/*.test.ts`
 - Shared utilities in `/test/utils/` (import as `test-utils`)
 
 ## Code Conventions
