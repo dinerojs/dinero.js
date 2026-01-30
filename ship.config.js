@@ -6,14 +6,13 @@ module.exports = {
     packagesToPublish: ['packages/*'],
   },
   installCommand() {
-    return 'true'; // Skip install, use existing node_modules
+    return null; // Skip install in CI (already done)
+  },
+  buildCommand() {
+    return 'yarn build'; // Use yarn build for ReScript compilation
   },
   publishCommand({ tag }) {
-    return `npm publish --access public --tag ${tag}`;
-
-  },
-  installCommand() {
-    return null; // Skip install in CI (already done)
+    return `yarn publish --access public --tag ${tag}`;
   },
   // Skip preparation if it contains only `chore` commits
   shouldPrepare({ releaseType, commitNumbersPerType }) {
