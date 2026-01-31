@@ -152,8 +152,8 @@ allocate(d, ratios);
 
 **See also:**
 - [Convert](/api/conversions/convert)
-- [Multiply](/api/conversions/multiply)
-- [Allocate](/api/conversions/allocate)
+- [Multiply](/api/mutations/multiply)
+- [Allocate](/api/mutations/allocate)
 
 ## Replace getAmount, getCurrency and getPrecision with toSnapshot
 
@@ -174,7 +174,7 @@ The `getAmount`, `getCurrency`, and `getPrecision` methods have been replaced wi
 
 Dinero.js v2 no longer has a built-in `divide` function. Use [`allocate`](/api/mutations/allocate) instead.
 
-**See also:** [Allocate](/api/conversions/allocate)
+**See also:** [Allocate](/api/mutations/allocate)
 
 ## Replace percentage with allocate or multiply
 
@@ -187,7 +187,7 @@ Dinero.js v2 no longer has a built-in `percentage` function. You can build your 
 Dinero.js v2 no longer has a built-in `toUnit` and `toRoundedUnit` functions. Use [`toUnits`](/api/formatting/to-units) or [`toDecimal`](/api/formatting/to-decimal) instead.
 
 **See also:**
-- [To unit](/api/formatting/to-unit)
+- [To units](/api/formatting/to-units)
 - [To decimal](/api/formatting/to-decimal)
 
 ## Dropped support for locale
