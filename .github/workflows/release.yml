@@ -157,7 +157,7 @@ jobs:
     needs: [build, test, types, lint, size]
     permissions:
       id-token: write
-      contents: read
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
