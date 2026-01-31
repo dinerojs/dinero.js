@@ -4,6 +4,8 @@ description: Subtracting two Dinero objects.
 returns: Dinero<TAmount>
 ---
 
+# subtract
+
 Subtract two Dinero objects.
 
 **You can only subtract objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before subtracting them.

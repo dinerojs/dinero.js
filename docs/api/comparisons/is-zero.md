@@ -4,6 +4,8 @@ description: Check whether the value of a Dinero object is zero.
 returns: boolean
 ---
 
+# isZero
+
 Check whether the value of a Dinero object is zero.
 
 ## Parameters

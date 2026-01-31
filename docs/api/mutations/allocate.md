@@ -4,6 +4,8 @@ description: Distribute the amount of a Dinero object across a list of ratios.
 returns: Dinero<TAmount>[]
 ---
 
+# allocate
+
 Distribute the amount of a Dinero object across a list of ratios.
 
 Monetary values have indivisible units, meaning you can't always exactly split them. With `allocate`, you can split a monetary amount then distribute the remainder as evenly as possible.

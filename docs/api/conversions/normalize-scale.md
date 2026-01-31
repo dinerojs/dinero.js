@@ -4,6 +4,8 @@ description: Normalize a set of Dinero objects to the highest scale of the set.
 returns: Dinero<TAmount>[]
 ---
 
+# normalizeScale
+
 Normalize a set of Dinero objects to the highest scale of the set.
 
 Normalizing to a higher scale means that the internal `amount` value increases by orders of magnitude. If you're using the default Dinero.js implementation (with the `number` calculator), be careful not to exceed the minimum and maximum safe integers.

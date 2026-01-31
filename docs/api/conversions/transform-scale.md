@@ -4,6 +4,8 @@ description: Transform a Dinero object to a new scale.
 returns: Dinero<TAmount>
 ---
 
+# transformScale
+
 Transform a Dinero object to a new scale.
 
 When transforming to a higher scale, the internal `amount` value increases by orders of magnitude. If you're using the default Dinero.js implementation (with the `number` calculator), be careful not to exceed the minimum and maximum safe integers.

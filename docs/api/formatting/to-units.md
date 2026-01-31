@@ -4,6 +4,8 @@ description: Get the amount of a Dinero object in units.
 returns: TOutput = TAmount[]
 ---
 
+# toUnits
+
 Get the amount of a Dinero object in units.
 
 This function returns the total amount divided into each unit and sub-unit, as an array. For example, an object representing $10.45 expressed as `1045` (with currency `USD` and no custom `scale`) would return `[10, 45]` for 10 dollars and 45 cents.

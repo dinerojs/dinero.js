@@ -4,6 +4,8 @@ description: Adding up two Dinero objects.
 returns: Dinero<TAmount>
 ---
 
+# add
+
 Add up two Dinero objects.
 
 **You can only add objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before adding them up.

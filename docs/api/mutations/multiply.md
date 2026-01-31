@@ -4,6 +4,8 @@ description: Multiply a Dinero object.
 returns: Dinero<TAmount>
 ---
 
+# multiply
+
 Multiply a Dinero object.
 
 If you need to multiply by a fractional multiplier, you shouldn't use floats, but scaled amounts instead. For example, instead of passing `2.1`, you should pass `{ amount: 21, scale: 1 }`. When using scaled amounts, the function converts the returned objects to the safest scale.

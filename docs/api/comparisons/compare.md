@@ -4,6 +4,8 @@ description: Compare the value of a Dinero object relative to another.
 returns: number
 ---
 
+# compare
+
 Compare the value of a Dinero object relative to another. This is useful for sorting Dinero objects.
 
 Possible return values are:

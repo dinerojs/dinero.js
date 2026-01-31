@@ -4,6 +4,8 @@ description: Trim a Dinero object's scale as much as possible, down to the curre
 returns: Dinero<TAmount>
 ---
 
+# trimScale
+
 Trim a Dinero object's scale as much as possible, down to the currency exponent.
 
 ## Parameters

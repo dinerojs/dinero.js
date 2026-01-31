@@ -4,6 +4,8 @@ description: Get the greatest of the passed Dinero objects.
 returns: Dinero<TAmount>
 ---
 
+# maximum
+
 Get the greatest of the passed Dinero objects.
 
 **You can only compare objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before comparing them.

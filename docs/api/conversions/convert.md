@@ -4,6 +4,8 @@ description: Create a Dinero object converter.
 returns: Dinero<TAmount>
 ---
 
+# convert
+
 Convert a Dinero object from a currency to another.
 
 If you need to use fractional rates, you shouldn't use floats, but scaled amounts instead. For example, instead of passing `0.89`, you should pass `{ amount: 89, scale: 2 }`. When using scaled amounts, the function converts the returned object to the safest scale.

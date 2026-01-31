@@ -4,6 +4,8 @@ description: Check whether a Dinero object is negative.
 returns: boolean
 ---
 
+# isNegative
+
 Check whether a Dinero object is negative.
 
 ## Parameters

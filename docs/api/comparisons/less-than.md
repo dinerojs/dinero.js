@@ -4,6 +4,8 @@ description: Check whether the value of a Dinero object is lesser than another.
 returns: boolean
 ---
 
+# lessThan
+
 Check whether the value of a Dinero object is lesser than another.
 
 **You can only compare objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before comparing them.

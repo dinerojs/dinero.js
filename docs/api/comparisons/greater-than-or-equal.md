@@ -4,6 +4,8 @@ description: Check whether the value of a Dinero object is greater than or equal
 returns: boolean
 ---
 
+# greaterThanOrEqual
+
 Check whether the value of a Dinero object is greater than or equal another.
 
 **You can only compare objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before comparing them.

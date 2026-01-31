@@ -4,6 +4,8 @@ description: Get a snapshot of a Dinero object.
 returns: DineroSnapshot<TAmount>
 ---
 
+# toSnapshot
+
 Get a snapshot of a Dinero object.
 
 Snapshots are plain JavaScript objects, suited for [transport and storage](/guides/transporting-and-restoring). They're also useful when you need to retrieve raw data from a Dinero object.

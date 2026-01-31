@@ -4,6 +4,8 @@ description: Check whether a set of Dinero objects have the same amount.
 returns: boolean
 ---
 
+# haveSameAmount
+
 Check whether a set of Dinero objects have the same amount.
 
 ## Parameters

@@ -4,6 +4,8 @@ description: Check whether a Dinero object has minor currency units.
 returns: boolean
 ---
 
+# hasSubUnits
+
 Check whether a Dinero object has minor currency units.
 
 ## Parameters
