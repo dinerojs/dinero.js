@@ -55,6 +55,14 @@ export default defineConfig({
         content: 'https://v2.dinerojs.com/open-graph.jpg',
       },
     ],
+    [
+      'script',
+      {
+        src: 'https://cdn.usefathom.com/script.js',
+        'data-site': 'PSUFDDGC',
+        defer: '',
+      },
+    ],
   ],
   themeConfig: {
     logo: '/logo.svg',
