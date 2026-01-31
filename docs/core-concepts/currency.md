@@ -139,10 +139,6 @@ import { USD } from 'dinero.js/currencies/168';
 const d = dinero({ amount: 1000, currency: USD });
 ```
 
-::: info
-**Pinned amendments are only available for ESM and CommonJS.** If you're using UMD bundles (e.g., via a CDN), only the latest currencies are available as granular bundles. Pinned amendments are bundled as a single file containing all currencies for that amendment.
-:::
-
 ## Creating custom currencies
 
 You can build your own currency object if it isn't available in `dinero.js/currencies`.
