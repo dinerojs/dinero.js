@@ -1,17 +1,12 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  mode: 'jit',
-  purge: ['./**/*.html', './src/**/*.{js,jsx}'],
-  darkMode: false,
+  content: ['./**/*.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
-        gray: colors.blueGray,
+        gray: colors.slate,
       },
     },
-  },
-  variants: {
-    extend: {},
   },
 };
