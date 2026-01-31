@@ -35,7 +35,7 @@ If you need this often, you can abstract it into your own `percentage` function.
 function percentage(dineroObject, share, scale = 0) {
   const power = scale + 1;
   const rest = 100 ** power - share;
-  const [chunk] = allocate(price, [share, rest], { scale });
+  const [chunk] = allocate(dineroObject, [share, rest], { scale });
 
   return chunk;
 }

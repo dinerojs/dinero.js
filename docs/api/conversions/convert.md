@@ -52,11 +52,13 @@ If you're converting many objects, you might want to reuse the same rates withou
 import { dinero, convert } from 'dinero.js';
 import { USD, EUR } from '@dinero.js/currencies';
 
+const rates = { EUR: { amount: 89, scale: 2 } };
+
 function converter(dineroObject, newCurrency) {
-  return convert(dineroObject, newCurrency, { EUR: { amount: 89, scale: 2 } });
+  return convert(dineroObject, newCurrency, rates);
 }
 
-const converter = createConverter(rates);
+const d = dinero({ amount: 500, currency: USD });
 
 converter(d, EUR); // a Dinero object with amount 44500 and scale 4
 ```

@@ -8,7 +8,7 @@ description: Removing unused code from your production builds for maximum perfor
 When importing the full UMD version of Dinero.js, you can take advantage of various optimization techniques to reduce your bundle size.
 
 ::: info
-The size of `dinero.js` includes the one of its dependencies `@dinero.js/core` and `@dinero.js/calculator-number`.
+The size of `dinero.js` includes those of its dependencies `@dinero.js/core` and `@dinero.js/calculator-number`.
 :::
 
 ## Compress your assets

@@ -5,7 +5,7 @@ description: Mutating Dinero objects through mathematical operations.
 
 # Mutations
 
-At the core of manipulating money are mutations. The Dinero.js API provides functions to manipulate objects. Most of them are calculus-based: adding, multiplying, etc.
+At the core of manipulating money are mutations. The Dinero.js API provides functions to manipulate objects. Most of them are arithmetic-based: adding, multiplying, etc.
 
 ```js
 import { dinero, add } from 'dinero.js';
@@ -46,7 +46,7 @@ const discounted = subtract(subtotal, discount);
 
 const shipping = dinero({ amount: 1000, currency: USD });
 
-const total = add(subtotal, shipping);
+const total = add(discounted, shipping);
 ```
 
 ## Dinero objects are immutable
@@ -63,7 +63,7 @@ toSnapshot(add(d1, d2));
 // {
 //   amount: 1300,
 //   currency: {
-//     code: 'EUR',
+//     code: 'USD',
 //     base: 10,
 //     exponent: 2,
 //   },
@@ -75,7 +75,7 @@ toSnapshot(d1);
 // {
 //   amount: 500,
 //   currency: {
-//     code: 'EUR',
+//     code: 'USD',
 //     base: 10,
 //     exponent: 2,
 //   },
@@ -87,7 +87,7 @@ toSnapshot(d2);
 // {
 //   amount: 800,
 //   currency: {
-//     code: 'EUR',
+//     code: 'USD',
 //     base: 10,
 //     exponent: 2,
 //   },

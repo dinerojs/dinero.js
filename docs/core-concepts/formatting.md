@@ -5,7 +5,7 @@ description: Formatting Dinero objects into rounded numbers or string representa
 
 # Formatting
 
-When working with money on the front end, comes a time when you need to display amounts on the user interface. **The Dinero.js API provides functions to format Dinero objects.**
+When working with money on the front end, there comes a time when you need to display amounts on the user interface. **The Dinero.js API provides functions to format Dinero objects.**
 
 ```js
 import { dinero, toUnits, down } from 'dinero.js';
@@ -97,7 +97,7 @@ toSnapshot(d);
 // {
 //   amount: 5000,
 //   currency: {
-//     code: 'EUR',
+//     code: 'USD',
 //     base: 10,
 //     exponent: 2,
 //   },

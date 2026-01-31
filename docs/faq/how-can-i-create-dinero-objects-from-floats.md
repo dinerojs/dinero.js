@@ -18,7 +18,7 @@ If you have amounts as floats (in this case, `19.99`) and you want to abstract o
 
 ```js
 function dineroFromFloat({ amount: float, currency, scale }) {
-  const factor = currency.base ** currency.exponent || scale;
+  const factor = currency.base ** (currency.exponent || scale);
   const amount = Math.round(float * factor);
 
   return dinero({ amount, currency, scale });

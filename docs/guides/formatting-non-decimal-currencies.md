@@ -60,11 +60,11 @@ const labels = ['donut', 'cookie', 'lollipop'];
 function transformer({ value }) {
   return value
     .filter((amount) => amount > 0)
-    .map((amount, index) => `${amount} ${labels[index]}`)
+    .map((amount, index) => `${amount} ${amount > 1 ? `${labels[index]}s` : labels[index]}`)
     .join(' and ');
 }
 
 const d = dinero({ amount: 720, currency: POP });
 
-toUnits(d, transformer); // "1 donut and 15 cookie"
+toUnits(d, transformer); // "1 donut and 15 cookies"
 ```

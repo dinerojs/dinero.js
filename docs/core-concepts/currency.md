@@ -155,7 +155,7 @@ const FRF = {
 
 If you're a TypeScript user, you can implement the `Currency` type. It takes a generic parameter `TAmount` which represents the type you're using for numeric values (`number` by default).
 
-```js
+```ts
 import { Currency } from 'dinero.js';
 
 const FRF: Currency<number> = {

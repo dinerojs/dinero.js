@@ -8,7 +8,7 @@ returns: TOutput = string
 
 Get the amount of a Dinero object in a stringified decimal representation.
 
-The number of decimal places depends on the [`scale`](/core-concepts/scale) of your object--or, when unspecified, the [`exponent`](/core-concepts/currency#currency-exponent) of its currency.
+The number of decimal places depends on the [`scale`](/core-concepts/scale) of your object—or, when unspecified, the [`exponent`](/core-concepts/currency#currency-exponent) of its currency.
 
 ::: info
 You can only use this function with Dinero objects that are single-based and use a decimal currency.

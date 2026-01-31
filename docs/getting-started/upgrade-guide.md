@@ -103,7 +103,7 @@ Former methods and new functions don't all have the same signature. Refer to the
 
 In v1.x, methods like `convert`, `multiply`, or `allocate` used to accept floats for rates, factors or ratios. It then rounded the result before creating new objects, resulting is precision loss.
 
-**In v2, you should scaled amounts instead.** Scaled amounts represent a numeric value using an integer, and a scale that represents the position of the decimal point. For example, instead of passing `0.89`, you would pass `89` with a `scale` of `2`.
+**In v2, you should use scaled amounts instead.** Scaled amounts represent a numeric value using an integer, and a scale that represents the position of the decimal point. For example, instead of passing `0.89`, you would pass `89` with a `scale` of `2`.
 
 ```js
 const scaled = { amount: 89, scale: 2 };

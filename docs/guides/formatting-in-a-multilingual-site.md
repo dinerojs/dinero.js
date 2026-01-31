@@ -56,13 +56,13 @@ const languages = [
     locale: 'en-US',
   },
   {
-    label: 'Francais (Canada)',
+    label: 'Français (Canada)',
     locale: 'fr-CA',
   },
 ];
 
 function App() {
-  const [defaultLanguage] = locales;
+  const [defaultLanguage] = languages;
   const [language, setLanguage] = React.useState(defaultLanguage);
 
   const price = dinero({ amount: 1000, currency: USD });
@@ -71,7 +71,9 @@ function App() {
     <>
       <select
         value={language.locale}
-        onChange={(event) => setLanguage(event.target.value)}
+        onChange={(event) =>
+          setLanguage(languages.find(({ locale }) => locale === event.target.value))
+        }
       >
         {languages.map(({ label, locale }) => (
           <option key={locale} value={locale}>
