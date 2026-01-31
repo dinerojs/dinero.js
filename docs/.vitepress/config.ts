@@ -6,6 +6,9 @@ export default defineConfig({
     'Create, calculate, and format money in JavaScript and TypeScript.',
   lang: 'en',
   ignoreDeadLinks: true, // TODO: Remove once all content is ported
+  sitemap: {
+    hostname: 'https://v2.dinerojs.com/',
+  },
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     [
