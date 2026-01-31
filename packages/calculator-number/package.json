@@ -1,6 +1,6 @@
 {
   "name": "@dinero.js/calculator-number",
-  "version": "2.0.0-alpha.14",
+  "version": "2.0.0-alpha.15",
   "description": "Number calculator implementation for Dinero.js",
   "keywords": [
     "money",
@@ -29,9 +29,7 @@
   "module": "dist/esm/index.js",
   "source": "src/index.ts",
   "types": "dist/esm/index.d.ts",
-  "files": [
-    "dist/"
-  ],
+  "files": ["dist/"],
   "scripts": {
     "build:clean": "rimraf ./{dist,temp}",
     "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
@@ -42,6 +40,6 @@
     "test": "node ../../scripts/test.mjs --projects=./packages/calculator-number"
   },
   "dependencies": {
-    "@dinero.js/core": "2.0.0-alpha.14"
+    "@dinero.js/core": "2.0.0-alpha.15"
   }
 }

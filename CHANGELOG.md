@@ -1,3 +1,17 @@
+# [2.0.0-alpha.15](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.14...v2.0.0-alpha.15) (2026-01-31)
+
+
+### Bug Fixes
+
+* **allocate:** distribute remainder to largest ratio first ([6049038](https://github.com/dinerojs/dinero.js/commit/604903871ff14a67861534906ec5a28d6f10ff24)), closes [#776](https://github.com/dinerojs/dinero.js/issues/776)
+* **allocate:** prevent infinite loop with large amounts ([d787b98](https://github.com/dinerojs/dinero.js/commit/d787b9883f08f3e1ecf286979959b1628b0da2c0)), closes [#771](https://github.com/dinerojs/dinero.js/issues/771)
+* **release:** rename ship.config.js to .cjs for ESM compatibility ([5f5ed24](https://github.com/dinerojs/dinero.js/commit/5f5ed249cb274331f81ad6b2112cf42f835c150d))
+* **release:** upgrade Ship.js to 0.27.0 for Node 22 compatibility ([0121dc5](https://github.com/dinerojs/dinero.js/commit/0121dc5f588a011938b6d504877b922744852495))
+* **release:** use npm ci for install command in Ship.js ([d098801](https://github.com/dinerojs/dinero.js/commit/d0988012b8e0027d406dc58cb0143d3aab136c1b))
+* **toDecimal:** do not append decimal string when scale is zero. ([#759](https://github.com/dinerojs/dinero.js/issues/759)) ([80a1dd7](https://github.com/dinerojs/dinero.js/commit/80a1dd7c8c93ca48e6a93998da18df5ad533c38c)), closes [#751](https://github.com/dinerojs/dinero.js/issues/751)
+
+
+
 # [2.0.0-alpha.14](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.13...v2.0.0-alpha.14) (2023-02-27)
 
 
