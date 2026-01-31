@@ -1,0 +1,14 @@
+{
+  "name": "@dinero.js/docs",
+  "version": "2.0.0-alpha.15",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.0"
+  }
+}

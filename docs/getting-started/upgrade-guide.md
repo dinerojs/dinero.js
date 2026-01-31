@@ -1,0 +1,249 @@
+---
+title: Upgrade guide
+description: Upgrading from Dinero.js v1.x to v2.0.
+---
+
+## The Dinero function is now lowercase
+
+The Dinero function is not a constructor, so by convention, it shouldn't be capitalized. The function is now `dinero` so there's no confusion on whether you should call it with `new` or not (you shouldn't). No longer need to disable ESLint's [`new-cap` rule](https://eslint.org/docs/rules/new-cap).
+
+```diff
+- import Dinero from 'dinero.js';
++ import { dinero } from 'dinero.js';
+```
+
+## Currency is now an object
+
+The `currency` is now expressed as a currency object and no longer as a string. v2 provides ISO 4217 currency objects out of the box via the `@dinero.js/currencies` package.
+
+```diff
+- Dinero({ amount: 500, currency: 'USD' });
++ import { USD } from '@dinero.js/currencies';
++ dinero({ amount: 500, currency: USD });
+```
+
+**See also:** [Currency](/core-concepts/currency)
+
+## Precision is now scale
+
+The concept of `precision` from v1.x is now called `scale`. It works the same as before.
+
+```diff
+- Dinero({ amount: 5000, currency: 'USD', precision: 3 });
++ dinero({ amount: 5000, currency: USD, scale: 3 });
+```
+
+**See also:** [Scale](/core-concepts/scale)
+
+## Replace chainable methods with standalone functions
+
+Methods are no longer chainable, allowing you to get rid of unused code with tree-shaking. **Instead of calling methods on Dinero objects, you can import individual functions and pass Dinero objects to it.**
+
+Former methods and new functions don't all have the same signature. Refer to the correlation tables below and the API reference for each function.
+
+### Access
+
+| Dinero v1.x         | Dinero v2                                                                                    |
+|---------------------|----------------------------------------------------------------------------------------------|
+| `d1.getAmount()`    | Dropped, [see replacement](#replace-getamount-getcurrency-and-getprecision-with-tosnapshot). |
+| `d1.getCurrency()`  | Dropped, [see replacement](#replace-getamount-getcurrency-and-getprecision-with-tosnapshot). |
+| `d1.getPrecision()` | Dropped, [see replacement](#replace-getamount-getcurrency-and-getprecision-with-tosnapshot). |
+| `d1.getLocale()`    | [Dropped](#dropped-support-for-locale).                                                      |
+
+### Mutations
+
+| Dinero v1.x              | Dinero v2                                                                                          |
+|--------------------------|----------------------------------------------------------------------------------------------------|
+| `d1.add(d2)`             | [`add(d1, d2)`](/api/mutations/add)                                                           |
+| `d1.subtract(d2)`        | [`subtract(d1, d2)`](/api/mutations/subtract)                                                 |
+| `d1.multiply(...args)`   | [`multiply(d1, ...args)`](/api/mutations/multiply)                                            |
+| `d1.allocate(...args)`   | [`allocate(d1, ...args)`](/api/mutations/allocate)                                            |
+| `d1.divide(...args)`     | Dropped, [see replacement](#replace-divide-with-allocate).                                         |
+| `d1.percentage(...args)` | Dropped, [see replacement](#replace-percentage-with-a-custom-solution-using-allocate-or-multiply). |
+| `d1.setLocale(...args)`  | [Dropped](#dropped-support-for-locale).                                                            |
+
+### Conversions
+
+| Dinero v1.x                           | Dinero v2                                                              |
+|---------------------------------------|------------------------------------------------------------------------|
+| `d1.convert(...args)`                 | [`convert(d1, ...args)`](/api/conversions/convert)                |
+| `Dinero.normalizePrecision([d1, d2])` | [`normalizeScale([d1, d2])`](/api/conversions/normalize-scale)    |
+| `d1.convertPrecision(...args)`        | [`transformScale(d1, ...args)`](/api/conversions/transform-scale) |
+
+### Comparisons
+
+| Dinero v1.x                 | Dinero v2                                                                   |
+|-----------------------------|-----------------------------------------------------------------------------|
+| `d1.equalsTo(d2)`           | [`equal(d1, d2)`](/api/comparisons/equal)                              |
+| `d1.greaterThan(d2)`        | [`greaterThan(d1, d2)`](/api/comparisons/greater-than)                 |
+| `d1.greaterThanOrEqual(d2)` | [`greaterThanOrEqual(d1, d2)`](/api/comparisons/greater-than-or-equal) |
+| `d1.lessThan(d2)`           | [`lessThan(d1, d2)`](/api/comparisons/less-than)                       |
+| `d1.lessThanOrEqual(d2)`    | [`lessThanOrEqual(d1, d2)`](/api/comparisons/less-than-or-equal)       |
+| `Dinero.minimum([d1, d2])`  | [`minimum([d1, d2])`](/api/comparisons/minimum)                        |
+| `Dinero.maximum([d1, d2])`  | [`maximum([d1, d2])`](/api/comparisons/maximum)                        |
+| `d1.isZero()`               | [`isZero(d1)`](/api/comparisons/is-zero)                               |
+| `d1.isPositive()`           | [`isPositive(d1)`](/api/comparisons/is-positive)                       |
+| `d1.isNegative()`           | [`isNegative(d1)`](/api/comparisons/is-negative)                       |
+| `d1.hasSameAmount(d2)`      | [`haveSameAmount([d1, d2])`](/api/comparisons/have-same-amount)        |
+| `d1.hasSameCurrency(d2)`    | [`haveSameCurrency([d1, d2])`](/api/comparisons/have-same-currency)    |
+| `d1.hasSubUnits()`          | [`hasSubUnits(d1)`](/api/comparisons/has-sub-units)                    |
+
+### Formatting
+
+| Dinero v1.x                 | Dinero v2                                                                              |
+|-----------------------------|----------------------------------------------------------------------------------------|
+| `d1.toFormat(format)`       | Dropped, [see replacement](#replace-tounit-and-toroundedunit-with-tounits-or-todecimal) |
+| `d1.toObject()`             | [`toSnapshot(d1)`](/api/formatting/to-snapshot)                                   |
+| `d1.toUnit(...args)`        | Dropped, [see replacement](#replace-tounit-and-toroundedunit-with-tounits-or-todecimal) |
+| `d1.toRoundedUnit(...args)` | Dropped, [see replacement](#replace-tounit-and-toroundedunit-with-tounits-or-todecimal) |
+
+## Replace floats with scaled amounts
+
+In v1.x, methods like `convert`, `multiply`, or `allocate` used to accept floats for rates, factors or ratios. It then rounded the result before creating new objects, resulting is precision loss.
+
+**In v2, you should scaled amounts instead.** Scaled amounts represent a numeric value using an integer, and a scale that represents the position of the decimal point. For example, instead of passing `0.89`, you would pass `89` with a `scale` of `2`.
+
+```js
+const scaled = { amount: 89, scale: 2 };
+```
+
+To use fractional values, **pass scaled amounts instead of integers.**
+
+### Convert
+
+```js
+import { dinero, convert } from 'dinero.js';
+import { USD, EUR } from '@dinero.js/currencies';
+
+const rates = { EUR: { amount: 89, scale: 2 } }; // 0.89
+const d = dinero({ amount: 500, currency: USD });
+
+convert(d, EUR, { rates });
+```
+
+### Multiply
+
+```js
+import { dinero, multiply } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const multiplier = { amount: 2001, scale: 3 }; // 2.001
+const d = dinero({ amount: 401, currency: USD });
+
+multiply(d, multiplier);
+```
+
+### Allocate
+
+```js
+import { dinero, allocate } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const ratios = [
+  { amount: 505, scale: 1 }, // 50.5
+  { amount: 495, scale: 1 }, // 49.5
+];
+const d = dinero({ amount: 100, currency: USD });
+
+allocate(d, ratios);
+```
+
+**See also:**
+- [Convert](/api/conversions/convert)
+- [Multiply](/api/conversions/multiply)
+- [Allocate](/api/conversions/allocate)
+
+## Replace getAmount, getCurrency and getPrecision with toSnapshot
+
+The `getAmount`, `getCurrency`, and `getPrecision` methods have been replaced with `toSnapshot`, which returns a plain object with the amount, currency and scale (formerly known as precision).
+
+```diff
+- const amount = Dinero({ amount: 500, currency: 'USD' }).getAmount();
+- const currency = Dinero({ amount: 500, currency: 'USD' }).getCurrency();
+- const scale = Dinero({ amount: 500, currency: 'USD' }).getPrecision();
++ const { amount, scale, currency } = toSnapshot(
++   dinero({ amount: 500, currency: USD })
++ );
+```
+
+**See also:** [To snapshot](/api/formatting/to-snapshot)
+
+## Replace divide with allocate
+
+Dinero.js v2 no longer has a built-in `divide` function. Use [`allocate`](/api/mutations/allocate) instead.
+
+**See also:** [Allocate](/api/conversions/allocate)
+
+## Replace percentage with allocate or multiply
+
+Dinero.js v2 no longer has a built-in `percentage` function. You can build your own using either `allocate` or `multiply`.
+
+**See also:** [How do I calculate a percentage?](/faq/how-do-i-calculate-a-percentage)
+
+## Replace toUnit and toRoundedUnit with toUnits or toDecimal
+
+Dinero.js v2 no longer has a built-in `toUnit` and `toRoundedUnit` functions. Use [`toUnits`](/api/formatting/to-units) or [`toDecimal`](/api/formatting/to-decimal) instead.
+
+**See also:**
+- [To unit](/api/formatting/to-unit)
+- [To decimal](/api/formatting/to-decimal)
+
+## Dropped support for locale
+
+In v1.x, object formatting relied upon the [Internationalization API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl). You could pass a locale to each Dinero object to control how to format it. In v2, formatting is dependency-free and provides you full control. You no longer need to rely on a locale, therefore this concept is gone.
+
+To replicate the same formatting you had in v1.x, you can create a formatter that wraps around the Internationalization API.
+
+```js
+import { toDecimal } from 'dinero.js';
+
+function createIntlFormatter(locale, options = {}) {
+  function transformer({ value, currency }) {
+    return Number(value).toLocaleString(locale, {
+      ...options,
+      style: 'currency',
+      currency: currency.code,
+    });
+  }
+
+  return function formatter(dineroObject) {
+    return toDecimal(dineroObject, transformer);
+  };
+}
+
+export const intlFormat = createIntlFormatter('en-US');
+```
+
+You can then pass any Dinero object to the returned function.
+
+```js
+import { dinero } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 500, currency: USD });
+
+intlFormat(d); // "$5.00"
+```
+
+**See also:** [To decimal](/api/formatting/to-decimal)
+
+## Dropped support for globals
+
+Dinero.js v2 no longer supports global default and settings. The entire library is side-effects free, and every object needs explicit parameters.
+
+If you need defaults to create objects faster, you can create your own higher-order functions to partially apply Dinero objects. For example, you can write a function to creates US dollar Dinero objects.
+
+```js
+import { dinero } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+function dineroUSD(amount) {
+  return dinero({ amount, currency: USD });
+}
+```
+
+Then, you can create objects by just passing the amount.
+
+```js
+const d = dineroUSD(500);
+```

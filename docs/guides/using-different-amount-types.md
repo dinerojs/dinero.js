@@ -1,0 +1,170 @@
+---
+title: Using different amount types
+description: Using Dinero.js with any type of amount, such as JavaScript bigints or third-party arbitrary-precision libraries.
+---
+
+Dinero expects amounts as `number` by default. In most cases, this is more than enough, but there are times when you might hit the limitations of the [biggest](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) and [smallest](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MIN_SAFE_INTEGER) numbers you can safely represent.
+
+A typical use case is **when you need to represent colossal amounts of money.** Take the world debt, which reached $258 trillion in 2020. In JavaScript, the biggest number you can accurately represent is 9007199254740991 (9 quadrillions and some spare change). Still, since Dinero requires you to pass amounts in minor currency units, you actually "lose" two orders of magnitude, and can *only* represent around $90 trillion.
+
+```js
+import { dinero } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+// Don't do this!
+// 25800000000000000 is too big for accurate representation
+// in IEEE 754 numbers.
+const price = dinero({ amount: 25800000000000000, currency: USD });
+```
+
+Another example is when you need to represent cryptocurrencies, which typically have high exponents. In 2021, the Ether can be subdivided down to 18 fraction digits, meaning you can't even represent 1 ETH with the `number` type.
+
+```js
+import { dinero } from 'dinero.js';
+
+const ETH = {
+  code: 'ETH',
+  base: 10,
+  exponent: 18,
+};
+
+// Don't do this!
+// 1000000000000000000 is too big for accurate representation
+// in IEEE 754 numbers.
+const price = dinero({ amount: 1000000000000000000, currency: ETH });
+```
+
+In such cases, you need to rely on safer alternatives, such as the [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) primitive or third-parties like [big.js](https://github.com/MikeMcl/big.js).
+
+## Using Dinero with bigint
+
+Dinero provides a `bigint` calculator for you to use out of the box. You can create your own `dinero` function by passing the calculator to the `createDinero` factory.
+
+```js
+import { calculator } from '@dinero.js/calculator-bigint';
+import { createDinero } from 'dinero.js';
+
+const dineroBigint = createDinero({ calculator });
+```
+
+You can then use this function to create Dinero objects and manipulate them with any Dinero function. Keep in mind that once you're in `bigint` land, every numeric value you pass needs to be a `bigint` as well.
+
+```js
+import { add } from 'dinero.js';
+
+const USD = {
+  code: 'USD',
+  base: 10n,
+  exponent: 2n,
+};
+
+const d1 = dineroBigint({ amount: 500n, currency: USD });
+const d2 = dineroBigint({ amount: 100n, currency: USD });
+
+add(d1, d2); // a Dinero object with amount `600n`
+```
+
+## Using Dinero with a custom amount type
+
+Dinero.js delegates all calculations to a type-specific calculator object. **The calculator fully determines what amount type you can pass to Dinero objects.** Therefore, by changing the calculator with one of a different type, you can create Dinero objects of this type.
+
+You can implement your own if you want to use a third-party library.
+
+### Implementing a custom calculator
+
+Dinero.js delegates all calculations to a type-specific calculator object. You can implement a custom calculator for a given type and pass it to Dinero to use the library with amounts of this type.
+
+A calculator implements the `Calculator` interface. For example, here's what it can look like with [big.js](https://github.com/MikeMcl/big.js).
+
+```ts
+import Big from 'big.js';
+import { Calculator, ComparisonOperator } from 'dinero.js';
+
+const calculator: Calculator<Big> = {
+  add: (a, b) => a.plus(b),
+  compare: (a, b) => a.cmp(b) as unknown as ComparisonOperator,
+  decrement: (v) => v.minus(new Big(1)),
+  increment: (v) => v.plus(new Big(1)),
+  integerDivide: (a, b) => a.div(b).round(0, Big.roundDown),
+  modulo: (a, b) => a.mod(b),
+  multiply: (a, b) => a.times(b),
+  power: (a, b) => a.pow(Number(b)),
+  subtract: (a, b) => a.minus(b),
+  zero: () => new Big(0),
+};
+```
+
+Once you have your calculator, you can build a custom `dinero` function.
+
+```js
+import { createDinero } from 'dinero.js';
+
+// ...
+
+const bigDinero = createDinero({ calculator });
+```
+
+You might notice that you're passing the full calculator, meaning you're shipping calculator methods you might not use. **This is unlikely to represent a bottleneck**, especially if you're using Dinero with a third-party library like [big.js](https://github.com/MikeMcl/big.js) because you're only referencing methods that already exist on every `Big` object you create.
+
+## Picking the right amount type
+
+Depending on what you use Dinero.js for, you might want to choose a different amount type better suited to your needs. Knowing what to pick depends on **your constraints, use case, and what compromises you can to make.**
+
+With amount types, the main trade-off is between precision and performance. Safe arbitrary precision comes at the cost of speed, so you need to properly assess your needs before deciding.
+
+### When to use number
+
+By default, Dinero.js uses the [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) type. It's ideal when you need to **express monetary values that will never exceed what the type can safely represent.**
+
+The `number` primitive type lets you create double-precision floats (or "doubles") using the [IEEE 754 standard](https://wikipedia.org/wiki/IEEE_754). It works well for many use cases and provides excellent performance. However, doubles can only represent a limited range of numbers (from `-(2^53 - 1)` to `2^53 - 1`). Anything below or above gets truncated when converted to binary and stored in memory, resulting in imprecisions.
+
+Using Dinero.js with `number`s works well when you know and control the numbers to represent. It works for many use cases including dynamic pricing pages, ecommerce sites, or money management applications, as long as you're confident you'll never exceed the type limitations.
+
+#### Benefits
+
+- Great performance, [implemented in hardware](https://wikipedia.org/wiki/Floating-point_unit)
+- Full browser and Node.js compatibility (requires [some polyfills](/getting-started/compatibility#browser-support) for some static and `Math` functions)
+
+#### Drawbacks
+
+- Limited range of numbers that can be accurately represented
+
+### When to use bigint
+
+Dinero.js provides a [`bigint`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) calculator, allowing you to [use the library with native `bigint`s](#using-dinero-with-bigint). It's ideal when you need to **represent monetary values with large amounts, beyond what the `number` type safely supports.**
+
+The `bigint` primitive type lets you create arbitrarily large integers and ensures arithmetic precision. However, `bigint`s are much slower than `number`s, and not available in all environments. They're also [impossible to polyfill and hard to transpile](https://v8.dev/features/bigint#polyfilling-transpiling) without incurring significant performance costs.
+
+Using Dinero.js with the `bigint` type is recommended when you need to use numbers that exceed the `number` limitations. It can also act as a safeguard when you don't control the monetary amounts in your app, and you have reasons to believe you might exceed the limits. This applies to use cases such as cryptocurrency or stock trading applications.
+
+#### Benefits
+
+- Arbitrary-precision integer support
+- Faster than any userland arbitrary-precision library (see [Chrome benchmark](https://v8.dev/features/bigint#use-cases))
+
+#### Drawbacks
+
+- Significantly slower than `number`s, [implemented in software](https://v8.dev/blog/bigint)
+- Impossible to polyfill directly or to efficiently transpile down to ES5
+- No native [`JSON.stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) and [`JSON.parse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) support, requires a custom [replacer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#the_replacer_parameter) and [reviver](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#using_the_reviver_parameter)
+
+### When to use libraries
+
+If you need to support arbitrarily large integers in browsers that don't support `bigint`s, you can [write a custom calculator](#implementing-a-custom-calculator) to use Dinero.js with libraries like [big.js](https://github.com/MikeMcl/big.js) or [JSBI](https://github.com/GoogleChromeLabs/jsbi).
+
+Contrary to the `bigint` type which relies on operators, libraries expose APIs to safely manipulate arbitrarily large integers. Such solutions usually rely on `string`s or arrays of `number`s, making them more widely supported across browsers. However, this has a significant impact on performance because of the extra runtime logic, algorithmic complexity, and increase in bundle size.
+
+Using Dinero.js with arbitrary precision arithmetic libraries makes sense **when [you wish you could use `bigint`s](#when-to-use-bigint) but cannot because you need to support environments that don't implement them.**
+
+#### Benefits
+
+- Better browser and Node.js support than `bigint`s, transpilable and polyfillable
+
+#### Drawbacks
+
+- Significantly slower than `number`s and `bigint`s
+- Increase in bundle size, impacting download and parse time
+
+::: info
+Dinero.js doesn't endorse any specific arbitrary precision library, or guarantees they work correctly. If you need to use a library, make sure to verify it works as expected.
+:::

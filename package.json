@@ -8,7 +8,7 @@
   "workspaces": [
     "packages/*",
     "examples/*",
-    "website"
+    "docs"
   ],
   "scripts": {
     "build:clean": "turbo build:clean",
@@ -24,9 +24,9 @@
     "test:size": "size-limit",
     "test:types": "tsc --noEmit",
     "test": "vitest",
-    "website:dev": "npm run dev -w website",
-    "website:start": "npm run start -w website",
-    "website:build": "turbo build --filter=./packages/* --filter=./website"
+    "docs:dev": "npm run dev -w @dinero.js/docs",
+    "docs:build": "npm run build -w @dinero.js/docs",
+    "docs:preview": "npm run preview -w @dinero.js/docs"
   },
   "devDependencies": {
     "@babel/cli": "^7.26.4",

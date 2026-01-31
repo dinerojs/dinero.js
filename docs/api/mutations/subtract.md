@@ -1,0 +1,57 @@
+---
+title: subtract
+description: Subtracting two Dinero objects.
+returns: Dinero<TAmount>
+---
+
+Subtract two Dinero objects.
+
+**You can only subtract objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before subtracting them.
+
+## Parameters
+
+| Name | Type | Description | Required |
+|------|------|-------------|----------|
+| `minuend` | `Dinero<TAmount>` | The Dinero object to subtract from. | Yes |
+| `subtrahend` | `Dinero<TAmount>` | The Dinero object to subtract. | Yes |
+
+## Code examples
+
+### Subtract objects
+
+```js
+import { dinero, subtract } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 500, currency: USD });
+const d2 = dinero({ amount: 100, currency: USD });
+
+subtract(d1, d2); // a Dinero object with amount 400
+```
+
+### Subtract objects with a different scale
+
+```js
+import { dinero, subtract } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 500, currency: USD });
+const d2 = dinero({ amount: 1000, currency: USD, scale: 3 });
+
+subtract(d1, d2); // a Dinero object with amount 4000 and scale 3
+```
+
+### Subtract more than two objects
+
+```js
+import { dinero, subtract } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 400, currency: USD });
+const d2 = dinero({ amount: 200, currency: USD });
+const d3 = dinero({ amount: 100, currency: USD });
+
+const subtractMany = (subtrahends) => subtrahends.reduce(subtract);
+
+subtractMany([d1, d2, d3]); // a Dinero object with amount 100
+```

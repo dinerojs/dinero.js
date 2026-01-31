@@ -1,0 +1,48 @@
+---
+title: isPositive
+description: Check whether a Dinero object is positive.
+returns: boolean
+---
+
+Check whether a Dinero object is positive.
+
+## Parameters
+
+| Name | Type | Description | Required |
+|------|------|-------------|----------|
+| `dineroObject` | `Dinero<TAmount>` | The Dinero object to check. | Yes |
+
+## Code examples
+
+### Check a positive object
+
+```js
+import { dinero, isPositive } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 100, currency: USD });
+
+isPositive(d); // true
+```
+
+### Check a negative object
+
+```js
+import { dinero, isPositive } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: -100, currency: USD });
+
+isPositive(d); // false
+```
+
+### Check a zero object
+
+```js
+import { dinero, isPositive } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 0, currency: USD });
+
+isPositive(d); // false
+```

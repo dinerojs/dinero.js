@@ -1,0 +1,134 @@
+---
+title: Scale
+description: Passing a scale to a new Dinero object.
+---
+
+The scale is one of the three pieces of domain data necessary to create a Dinero object. It's conceptually close to the [currency exponent](/core-concepts/currency#currency-exponent) but serves the purpose of expressing precision as accurately as possible.
+
+Most of the time, you don't need to specify the scale. It defaults to the currency exponent.
+
+```js
+import { dinero, toSnapshot } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 5000, currency: USD });
+
+const { exponent } = USD; // `exponent` is 2
+const { scale } = toSnapshot(d); // `scale` is 2 (picked up `USD.exponent`)
+```
+
+This looks redundant. Why do we need a scale when we have the currency exponent?
+
+While you may think of money as its value in major or minor currency units—value that one can actually *pay*—it often needs a more precise representation. A good example is when you factor in tax rates, which are often fractional values. For example, let's say you have an item that costs EUR 19.95 with a VAT rate of 5.5%: you end up with a final price of EUR 21.04725. This gets rounded when it's time to pay, but **it's crucial to preserve the precision until the end of calculations**, especially if you're performing many of them.
+
+The scale is essential to **accurately represent monetary values without losing precision.** It automatically adapts as needed to ensure you always retain accurate amounts.
+
+Here's what the 5.5% VAT rate calculation looks like with Dinero.js:
+
+```js
+import { dinero, add, multiply, toSnapshot } from 'dinero.js';
+import { EUR } from '@dinero.js/currencies';
+
+const price = dinero({ amount: 1995, currency: EUR });
+const tax = multiply(price, { amount: 55, scale: 3 });
+const total = add(price, tax);
+
+toSnapshot(total);
+
+// {
+//   amount: 2104725,
+//   currency: {
+//     code: 'EUR',
+//     base: 10,
+//     exponent: 2,
+//   },
+//   scale: 5,
+// }
+```
+
+The final Dinero object `total` has transparently adjusted to a `scale` of 5 to satisfy the need for extra precision. The amount of 2104725 can be interpreted as 21.04725 based on that scale instead of 21047.25 based on the currency exponent.
+
+Note the usage of a scale when specifying the number by which to multiply. We want to calculate 5.5% of the price, or multiply it by 0.055 (5.5 / 100). We don't want to use floats, so instead, we're passing 55 with a scale of 3 (55 / 10^3 = 0.055).
+
+## When to specify a scale manually
+
+Most of the time, you don't need to specify the scale. You can let Dinero.js pick it up from the currency exponent. However, **there are times when you need to specify more precise amounts.**
+
+For example, imagine you're in the hardware business. You're likely not selling screws one by one but by kits instead. Let's say you sell kits of 250 for $8.75; you still might need to represent the price of a single screw for admin purposes. In this case, a screw costs $0.035, which can't be accurately represented with two digits, so you can manually pass a larger `scale`.
+
+```js
+import { dinero, toSnapshot } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const price = dinero({ amount: 35, currency: USD, scale: 3 });
+
+toSnapshot(total);
+
+// {
+//   amount: 35,
+//   currency: {
+//     code: 'USD',
+//     base: 10,
+//     exponent: 2,
+//   },
+//   scale: 3,
+// }
+```
+
+## Calculate objects of different scales
+
+When calculating Dinero objects, you don't have to care about their scale. Dinero.js automatically converts objects to the safest scale so you don't lose precision.
+
+```js
+import { dinero, add, subtract, allocate } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 400, currency: USD });
+const d2 = dinero({ amount: 104545, currency: USD, scale: 4 });
+
+add(d1, d2); // a Dinero object with amount 144545 and scale 4
+
+subtract(d2, d1); // a Dinero object with amount 64545 and scale 4
+```
+
+You might also need to use fractional values. For example, you may need to calculate 19.6% of a total cart, or convert a Dinero object to another currency with a 0.82 conversion rate.
+
+In such cases, you shouldn't use floats, but scaled multipliers. For example, instead of 0.82, you should pass 82 and a scale of 2.
+
+```js
+import { dinero, multiply, allocate } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 400, currency: USD });
+
+multiply(d, { amount: 82,  scale: 2 }); // a Dinero object with amount 32800 and scale 4
+
+const [d1, d2] = allocate(d1, [505, 495], { scale: 1 }); // translates to ratios 50.5 and 49.5
+
+d1; // a Dinero object with amount 2020 and scale 3
+d2; // a Dinero object with amount 1980 and scale 3
+```
+
+## Trimming scale
+
+When calculating Dinero objects of different scales, Dinero.js goes for the safest one to avoid losing precision. This means you can end up with a higher scale than necessary.
+
+In the previous example, both output objects have a trailing zero, meaning they could be adjusted to one order of magnitude down with a smaller scale. While using high scales isn't a problem per se, it does take more space, and can end up reaching the [minimum or maximum safe IEEE 754 integer](https://en.wikipedia.org/wiki/IEEE_754).
+
+In such cases, you can trim down Dinero objects to drop useless precision.
+
+```js
+import { dinero, add, trimScale } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 100, currency: USD });
+const d2 = dinero({ amount: 2000000, currency: USD, scale: 6 });
+
+const d3 = add(d1, d2); // a Dinero object with amount 3000000 and scale 6
+
+trimScale(d3); // a Dinero object with amount 300 and scale 2
+```
+
+::: info
+The `trimScale` function trims Dinero objects down to the smallest, safest possible scale, down to the currency exponent at most.
+:::

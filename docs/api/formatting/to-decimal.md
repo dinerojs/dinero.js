@@ -1,0 +1,48 @@
+---
+title: toDecimal
+description: Get the amount of a Dinero object in decimal format.
+returns: TOutput = string
+---
+
+Get the amount of a Dinero object in a stringified decimal representation.
+
+The number of decimal places depends on the [`scale`](/core-concepts/scale) of your object--or, when unspecified, the [`exponent`](/core-concepts/currency#currency-exponent) of its currency.
+
+::: info
+You can only use this function with Dinero objects that are single-based and use a decimal currency.
+:::
+
+## Parameters
+
+| Name | Type | Description | Required |
+|------|------|-------------|----------|
+| `dineroObject` | `Dinero<TAmount>` | The Dinero object to format. | Yes |
+| `transformer` | `Transformer<TAmount, TOutput>` | An optional transformer function. | No |
+
+## Code examples
+
+### Format an object in decimal format
+
+```js
+import { dinero, toDecimal } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d1 = dinero({ amount: 1050, currency: USD });
+const d2 = dinero({ amount: 10545, currency: USD, scale: 3 });
+
+toDecimal(d1); // "10.50"
+toDecimal(d2); // "10.545"
+```
+
+### Use a custom transformer
+
+If you need to further transform the value before returning it, you can pass a custom function.
+
+```js
+import { dinero, toDecimal } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+const d = dinero({ amount: 1050, currency: USD });
+
+toDecimal(d, ({ value, currency }) => `${currency.code} ${value}`); // "USD 10.50"
+```

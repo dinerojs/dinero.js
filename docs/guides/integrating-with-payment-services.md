@@ -1,0 +1,122 @@
+---
+title: Integrating with payment services
+description: How to integrate Dinero.js with payment services like Stripe, Adyen, or Square.
+---
+
+One of the most common use cases when manipulating money is payment. Many services such as [Stripe](https://stripe.com/) helps you process orders and payments programmatically.
+
+Such solutions integrate well with Dinero.js. If you're building an application that manipulates and charges money, you can use Dinero objects to represent prices and write small connectors for your payment service. **Most payment services represent money in minor units, making it straightforward to turn a Dinero object into a payment.**
+
+::: info
+The following code is purely illustrative. Make sure to test it out in your application.
+:::
+
+## Integrating with Stripe
+
+The [Stripe](https://stripe.com/) payment platform provides APIs to process payments and manage orders. Like many other platforms, it expects [money representations](https://stripe.com/docs/currencies#zero-decimal) with an amount in minor currency units, and a currency as an ISO 4217 currency code.
+
+When using Stripe's Node.js client, [the currency must be in lowercase](https://stripe.com/docs/api/charges/create?lang=node#create_charge-currency).
+
+```js
+import stripe from 'stripe';
+import { dinero, toSnapshot } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+function toStripeMoney(dineroObject) {
+  const { amount, currency } = toSnapshot(dineroObject);
+
+  return { amount, currency: currency.code.toLowerCase() };
+}
+
+// ... Stripe client setup
+
+const price = dinero({ amount: 2000, currency: USD });
+
+const response = await client.charges.create({
+  // ...
+  ...toStripeMoney(price),
+});
+```
+
+## Integrating with Paypal
+
+The [Paypal](https://www.paypal.com/) payment platform provides APIs to process payments and manage orders. Unlike most platforms, it expects a string representation with an amount in major currency units. You can use [`toDecimal`](/api/formatting/to-decimal) to format the object and pass this value to Paypal.
+
+```js
+const paypal = require('@paypal/checkout-server-sdk');
+const { dinero, toSnapshot, toDecimal } = require('dinero.js');
+const { USD } = require('@dinero.js/currencies');
+
+function toPaypalMoney(dineroObject) {
+  const { currency, scale } = toSnapshot(dineroObject);
+
+  return {
+    value: toDecimal(dineroObject),
+    currency_code: currency.code,
+  };
+}
+
+const price = dinero({ amount: 2000, currency: USD });
+
+let request = new paypal.orders.OrdersCreateRequest();
+request.requestBody({
+  // ...
+  purchase_units: [
+    {
+      amount: toPaypalMoney(price),
+    },
+  ],
+});
+```
+
+## Integrating with Adyen
+
+The [Adyen](https://www.adyen.com/) payment platform provides APIs to process payments and manage orders. Like many other platforms, it expects [money representations](https://developer.squareup.com/reference/square/objects/Money) with an amount in minor currency units and a currency as an ISO 4217 currency code.
+
+```js
+import { Client, Config, CheckoutAPI } from '@adyen/api-library';
+import { dinero, toSnapshot } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+function toAdyenMoney(dineroObject) {
+  const { amount, currency } = toSnapshot(dineroObject);
+
+  return { value: amount, currency: currency.code };
+};
+
+// ... Adyen client setup
+
+const price = dinero({ amount: 2000, currency: USD });
+
+const response = await checkout.paymentMethods({
+  // ...
+  amount: toAdyenMoney(price),
+});
+```
+
+## Integrating with Square
+
+The [Square](https://squareup.com/) digital payment platform provides APIs to process payments and manage orders. Like many other platforms, it expects [money representations](https://docs.adyen.com/development-resources/currency-codes) with an amount in minor currency units and a currency as an ISO 4217 currency code.
+
+When using Square's Node.js client, [the amount must be of type `bigint`](https://github.com/square/square-nodejs-sdk/blob/master/src/models/money.ts). If you're using Dinero.js with the `number` calculator (default behavior), you can cast the amount into a `bigint` when transforming your Dinero object into a Square `Money` object. Otherwise, if you're using Dinero with the `bigint` calculator, you can pass the amount directly.
+
+```js
+import { Client } from 'square';
+import { dinero, toSnapshot } from 'dinero.js';
+import { USD } from '@dinero.js/currencies';
+
+function toSquareMoney(dineroObject) {
+  const { amount, currency } = toSnapshot(dineroObject);
+
+  return { amount: BigInt(amount), currency: currency.code };
+}
+
+// ... Square client setup
+
+const price = dinero({ amount: 2000, currency: USD });
+
+const response = await client.paymentsApi.createPayment({
+  // ...
+  amountMoney: toSquareMoney(price),
+});
+```
