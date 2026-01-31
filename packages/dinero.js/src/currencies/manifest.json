@@ -1,6 +1,6 @@
 {
   "$schema": "./currencies-schema.json",
-  "latestAmendment": 169,
+  "latestAmendment": 170,
   "currencies": {
     "AED": {
       "code": "AED",
@@ -1079,6 +1079,13 @@
       "base": 10,
       "exponent": 2,
       "since": null
+    },
+    "VED": {
+      "code": "VED",
+      "name": "Venezuelan digital bolívar",
+      "base": 10,
+      "exponent": 2,
+      "since": 170
     },
     "VES": {
       "code": "VES",
