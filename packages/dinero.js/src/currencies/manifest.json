@@ -1,6 +1,6 @@
 {
   "$schema": "./currencies-schema.json",
-  "latestAmendment": 178,
+  "latestAmendment": 179,
   "currencies": {
     "AED": {
       "code": "AED",
@@ -1125,6 +1125,13 @@
       "base": 10,
       "exponent": 2,
       "since": null
+    },
+    "XAD": {
+      "code": "XAD",
+      "name": "Arab Accounting Dinar",
+      "base": 10,
+      "exponent": 2,
+      "since": 179
     },
     "XAF": {
       "code": "XAF",
