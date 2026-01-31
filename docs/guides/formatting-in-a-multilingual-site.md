@@ -35,10 +35,8 @@ intlFormat(d, 'en-US'); // "$10.00"
 intlFormat(d, 'fr-CA'); // "10,00 $ US"
 ```
 
-::: warning
-**The Internationalization API has different implementations across different runtimes. It's also not available in every environment.**
-
-When using it in the browser, make sure to load the appropriate [polyfill](https://polyfill.io/) depending on your target browsers. When using in Node.js, make sure to embed the [full International Components for Unicode (ICU)](https://nodejs.org/api/intl.html#intl_embed_the_entire_icu_full_icu).
+::: info
+The Internationalization API is well-supported in modern browsers and Node.js. For full locale data in Node.js, make sure to use a build with [full ICU support](https://nodejs.org/api/intl.html#intl_options_for_building_node_js).
 :::
 
 ## Using the custom formatter
