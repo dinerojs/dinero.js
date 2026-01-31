@@ -1,6 +1,6 @@
 {
   "$schema": "./currencies-schema.json",
-  "latestAmendment": 175,
+  "latestAmendment": 176,
   "currencies": {
     "AED": {
       "code": "AED",
@@ -35,7 +35,8 @@
       "name": "Netherlands Antillean guilder",
       "base": 10,
       "exponent": 2,
-      "since": null
+      "since": null,
+      "until": 175
     },
     "AOA": {
       "code": "AOA",
@@ -1137,6 +1138,13 @@
       "base": 10,
       "exponent": 2,
       "since": null
+    },
+    "XCG": {
+      "code": "XCG",
+      "name": "Caribbean guilder",
+      "base": 10,
+      "exponent": 2,
+      "since": 176
     },
     "XOF": {
       "code": "XOF",
