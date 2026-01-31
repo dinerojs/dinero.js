@@ -1,6 +1,6 @@
 {
   "$schema": "./currencies-schema.json",
-  "latestAmendment": 176,
+  "latestAmendment": 177,
   "currencies": {
     "AED": {
       "code": "AED",
@@ -1181,12 +1181,20 @@
       "exponent": 2,
       "since": null
     },
+    "ZWG": {
+      "code": "ZWG",
+      "name": "Zimbabwe Gold",
+      "base": 10,
+      "exponent": 2,
+      "since": 177
+    },
     "ZWL": {
       "code": "ZWL",
       "name": "Zimbabwean dollar",
       "base": 10,
       "exponent": 2,
-      "since": null
+      "since": null,
+      "until": 176
     }
   }
 }
