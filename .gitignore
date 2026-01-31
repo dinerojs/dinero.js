@@ -6,4 +6,4 @@ temp
 .DS_Store
 .env
 .turbo
-.vitepress/cache
+*/.vitepress/cache

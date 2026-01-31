@@ -4,6 +4,7 @@ export default defineConfig({
   title: 'Dinero.js',
   description:
     'Create, calculate, and format money in JavaScript and TypeScript.',
+  lang: 'en',
   ignoreDeadLinks: true, // TODO: Remove once all content is ported
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
@@ -198,7 +199,7 @@ export default defineConfig({
       provider: 'algolia',
       options: {
         appId: 'UV1B3CJN3X',
-        apiKey: '88540da8c96ccf8fe8dc0904c8d6c89c',
+        apiKey: 'fd50d842eb6683b120b6920b223d41f7',
         indexName: 'dinerojs',
         searchParameters: {
           facetFilters: ['tags:v2'],
