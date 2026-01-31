@@ -12,7 +12,4 @@ temp
 # Run: npm run generate:currencies
 packages/dinero.js/src/currencies/definitions/
 packages/dinero.js/src/currencies/historical/
-packages/dinero.js/src/currencies/iso4217/amendments/
-# Granular re-export files (3-letter currency codes)
-packages/dinero.js/src/currencies/[a-z][a-z][a-z].ts
-packages/dinero.js/src/currencies/[a-z][a-z][a-z][a-z].ts
+packages/dinero.js/src/currencies/iso4217/

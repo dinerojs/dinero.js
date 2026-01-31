@@ -4,12 +4,10 @@
  * Generate currency TypeScript files from manifest.json.
  *
  * Structure:
- * - definitions/     - Current version of each currency (one file per currency)
- * - historical/      - Previous versions of currencies whose properties changed
- * - amendments/XXX/  - Re-export barrels for each amendment
- *
- * Also generates:
- * - Individual re-export files for granular UMD bundles (e.g., usd.ts)
+ * - definitions/          - Current version of each currency (one file per currency)
+ * - historical/           - Previous versions of currencies whose properties changed
+ * - iso4217/amendments/X/ - Re-export barrels for each amendment
+ * - iso4217/latest/       - Re-exports pointing to latest amendment (for granular UMD)
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync, rmSync } from 'fs';
@@ -24,6 +22,7 @@ const manifestPath = join(currenciesDir, 'manifest.json');
 const definitionsDir = join(currenciesDir, 'definitions');
 const historicalDir = join(currenciesDir, 'historical');
 const amendmentsDir = join(currenciesDir, 'iso4217/amendments');
+const latestDir = join(currenciesDir, 'iso4217/latest');
 
 // Clean and recreate directories
 function cleanDir(dir) {
@@ -65,6 +64,7 @@ function main() {
   cleanDir(definitionsDir);
   cleanDir(historicalDir);
   cleanDir(amendmentsDir);
+  cleanDir(latestDir);
 
   // Track which amendments need to be generated
   const amendments = new Set();
@@ -184,7 +184,7 @@ function main() {
   }
 
   // Generate granular re-export files for UMD bundles (latest amendment only)
-  // These go in src/currencies/ directly (e.g., src/currencies/usd.ts)
+  // These go in iso4217/latest/ (e.g., iso4217/latest/usd.ts)
   const latestCurrencies = Object.keys(currencies).filter((code) => {
     const c = currencies[code];
     const until = c.until || Infinity;
@@ -192,12 +192,19 @@ function main() {
   });
 
   for (const code of latestCurrencies) {
-    const content = `export { ${code} } from './iso4217/amendments/${latestAmendment}/${code.toLowerCase()}';\n`;
-    writeFileSync(join(currenciesDir, `${code.toLowerCase()}.ts`), content);
+    const content = `export { ${code} } from '../amendments/${latestAmendment}/${code.toLowerCase()}';\n`;
+    writeFileSync(join(latestDir, `${code.toLowerCase()}.ts`), content);
   }
 
+  // Generate index for latest
+  const latestIndexExports = latestCurrencies
+    .sort()
+    .map((code) => `export * from './${code.toLowerCase()}';`)
+    .join('\n');
+  writeFileSync(join(latestDir, 'index.ts'), latestIndexExports + '\n');
+
   console.log(
-    `  Generated ${latestCurrencies.length} granular re-export files for UMD bundles`
+    `  Generated ${latestCurrencies.length} granular re-export files in iso4217/latest/`
   );
 
   console.log('Done!');
