@@ -2,7 +2,7 @@
 module.exports = {
   monorepo: {
     mainVersionFile: 'package.json',
-    packagesToBump: ['packages/*', 'website'],
+    packagesToBump: ['packages/*', 'examples/*', 'website'],
     packagesToPublish: ['packages/*'],
   },
   publishCommand({ tag }) {
