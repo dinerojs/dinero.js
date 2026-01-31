@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://www.npmjs.com/package/dinero.js?activeTab=versions"><img alt="Stability: alpha" src="https://img.shields.io/badge/stability-alpha-f4d03f.svg" /></a>
-  <a href="https://circleci.com/gh/dinerojs/dinero.js"><img alt="CircleCI" src="https://img.shields.io/circleci/build/gh/dinerojs/dinero.js"></a>
+  <a href="https://github.com/dinerojs/dinero.js/actions/workflows/ci.yml"><img alt="GitHub Actions" src="https://img.shields.io/github/actions/workflow/status/dinerojs/dinero.js/ci.yml?branch=main"></a>
   <a href="https://github.com/dinerojs/dinero.js/blob/master/LICENSE"><img alt="NPM" src="https://img.shields.io/npm/l/dinero.js"></a>
 </p>
 
