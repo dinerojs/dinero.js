@@ -30,6 +30,74 @@ The UMD build bundles the entire library. It's meant for usage in Node.js 13.1 o
 
 If you're using a modern build system like [webpack](https://webpack.js.org/), [Parcel](https://parceljs.org/) or [Vite](https://vitejs.dev/), you should use the ESM build and bundle it yourself. This lets you take advantage of performance features like [tree-shaking](#tree-shake-your-code) and code splitting.
 
+## Use granular UMD bundles
+
+If you're not using a bundler but still want to minimize your bundle size, Dinero.js provides **granular UMD bundles** for individual functions and currencies. This lets you load only what you need without a build step.
+
+### Loading individual functions
+
+Instead of loading the full bundle, you can load specific functions:
+
+```html
+<!-- Load only what you need -->
+<script src="https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/dinero.production.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/add.production.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/currencies/usd.production.js"></script>
+
+<script>
+  const { dinero } = window['dinero.js/dinero'];
+  const { add } = window['dinero.js/add'];
+  const { USD } = window['dinero.js/currencies/usd'];
+
+  const d1 = dinero({ amount: 500, currency: USD });
+  const d2 = dinero({ amount: 300, currency: USD });
+  const total = add(d1, d2);
+</script>
+```
+
+### Using jsDelivr's combine endpoint
+
+You can combine multiple files into a single request using jsDelivr's combine endpoint:
+
+```html
+<script src="https://cdn.jsdelivr.net/combine/npm/dinero.js@alpha/dist/umd/dinero.production.js,npm/dinero.js@alpha/dist/umd/add.production.js,npm/dinero.js@alpha/dist/umd/currencies/usd.production.js"></script>
+```
+
+### Available granular bundles
+
+- **Creation:** `dinero`
+- **Mutations:** `add`, `subtract`, `multiply`, `allocate`
+- **Comparisons:** `compare`, `equal`, `greaterThan`, `greaterThanOrEqual`, `lessThan`, `lessThanOrEqual`, `minimum`, `maximum`
+- **Checks:** `isZero`, `isPositive`, `isNegative`, `hasSubUnits`, `haveSameAmount`, `haveSameCurrency`
+- **Conversions:** `convert`, `normalizeScale`, `transformScale`, `trimScale`
+- **Formatting:** `toDecimal`, `toSnapshot`, `toUnits`
+- **Currencies:** all ISO 4217 currencies (e.g., `usd`, `eur`, `gbp`)
+
+Each bundle is available at:
+
+```
+https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/{name}.production.js
+https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/currencies/{code}.production.js
+```
+
+And accessible via:
+
+```js
+window['dinero.js/{name}']
+window['dinero.js/currencies/{code}']
+```
+
+### Full bundle (convenience)
+
+If you need all functions and currencies, use the full bundle:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/index.production.js"></script>
+<script>
+  const { dinero, add, USD } = window['dinero.js'];
+</script>
+```
+
 **Resources:**
 - [JavaScript modules](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)
 - [Tree-shaking](https://developer.mozilla.org/docs/Glossary/Tree_shaking)

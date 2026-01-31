@@ -90,7 +90,7 @@ export default defineConfig({
           items: [
             { text: 'Quick start', link: '/getting-started/quick-start' },
             {
-              text: 'Upgrade from v1',
+              text: 'Upgrade guide',
               link: '/getting-started/upgrade-guide',
             },
             {
