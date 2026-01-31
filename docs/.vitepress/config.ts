@@ -40,13 +40,13 @@ export default defineConfig({
         {
           text: 'Getting Started',
           items: [
-            { text: 'Quick Start', link: '/getting-started/quick-start' },
+            { text: 'Quick start', link: '/getting-started/quick-start' },
             {
               text: 'Upgrade from v1',
               link: '/getting-started/upgrade-guide',
             },
             {
-              text: 'Optimizing for Production',
+              text: 'Optimizing for production',
               link: '/getting-started/optimizing-for-production',
             },
             { text: 'Compatibility', link: '/getting-started/compatibility' },
@@ -67,23 +67,23 @@ export default defineConfig({
           text: 'Guides',
           items: [
             {
-              text: 'Different Amount Types',
+              text: 'Different amount types',
               link: '/guides/using-different-amount-types',
             },
             {
-              text: 'Transport and Restore',
+              text: 'Transport and restore',
               link: '/guides/transporting-and-restoring',
             },
             {
-              text: 'Multilingual Support',
+              text: 'Multilingual support',
               link: '/guides/formatting-in-a-multilingual-site',
             },
             {
-              text: 'Payment Services',
+              text: 'Payment services',
               link: '/guides/integrating-with-payment-services',
             },
             {
-              text: 'Non-Decimal Currencies',
+              text: 'Non-decimal currencies',
               link: '/guides/formatting-non-decimal-currencies',
             },
           ],
