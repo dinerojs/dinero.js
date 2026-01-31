@@ -30,4 +30,4 @@ add(d1, d2);
 
 ## 📚 Documentation
 
-For full documentation, visit the [online documentation](https://v2.dinerojs.com/docs).
+For full documentation, visit the [online documentation](https://v2.dinerojs.com).

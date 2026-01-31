@@ -16,4 +16,4 @@ yarn add @dinero.js/calculator-number@alpha
 
 ## 📚 Documentation
 
-For full documentation, visit the [online documentation](https://v2.dinerojs.com/docs).
+For full documentation, visit the [online documentation](https://v2.dinerojs.com).

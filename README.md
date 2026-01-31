@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://v2.dinerojs.com/docs">
+  <a href="https://v2.dinerojs.com">
     <img alt="Dinero.js" src="https://raw.githubusercontent.com/dinerojs/dinero.js/main/.github/banner.png">
   </a>
 </p>
@@ -12,7 +12,7 @@
 
 <p align="center">
   Dinero.js lets you create, calculate, and format money safely in JavaScript and TypeScript.<br>
-  <a href="https://v2.dinerojs.com/docs"><strong>v2.dinerojs.com/docs</strong></a>
+  <a href="https://v2.dinerojs.com"><strong>v2.dinerojs.com</strong></a>
 </p>
 
 ---
@@ -45,19 +45,19 @@ const d2 = dinero({ amount: 800, currency: USD });
 add(d1, d2);
 ```
 
-Check out the [quick start guide](https://v2.dinerojs.com/docs/getting-started/quick-start) on the documentation.
+Check out the [quick start guide](https://v2.dinerojs.com/getting-started/quick-start) on the documentation.
 
 ## 📚 Documentation
 
 The documentation lets you learn about all aspects of the library.
 
-- [**Getting started**](https://v2.dinerojs.com/docs/getting-started/quick-start) to get up and running quickly with Dinero.js
-- [**Core concepts**](https://v2.dinerojs.com/docs/core-concepts/amount) to learn about the underlying principles behind the library
-- [**Guides**](https://v2.dinerojs.com/docs/guides/using-different-amount-types) to dig deeper into specific use cases.
-- [**API**](https://v2.dinerojs.com/docs/api/mutations/add) for a comprehensive list of available functions and their parameters.
-- [**FAQ**](https://v2.dinerojs.com/docs/faq/does-dinerojs-support-cryptocurrencies) for common answers to questions you might have
+- [**Getting started**](https://v2.dinerojs.com/getting-started/quick-start) to get up and running quickly with Dinero.js
+- [**Core concepts**](https://v2.dinerojs.com/core-concepts/amount) to learn about the underlying principles behind the library
+- [**Guides**](https://v2.dinerojs.com/guides/using-different-amount-types) to dig deeper into specific use cases.
+- [**API**](https://v2.dinerojs.com/api/mutations/add) for a comprehensive list of available functions and their parameters.
+- [**FAQ**](https://v2.dinerojs.com/faq/does-dinerojs-support-cryptocurrencies) for common answers to questions you might have
 
-Visit the [full documentation](https://v2.dinerojs.com/docs) to know more.
+Visit the [full documentation](https://v2.dinerojs.com) to know more.
 
 ## 👥 Contributors
 
