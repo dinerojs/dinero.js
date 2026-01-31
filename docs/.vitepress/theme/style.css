@@ -5,46 +5,124 @@
  * Accent: #f7a (pink)
  */
 
+/* Custom fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
 :root {
+  /* Typography */
+  --vp-font-family-base: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', ui-monospace, monospace;
+
   /* Brand colors */
   --vp-c-brand-1: #1144ee;
   --vp-c-brand-2: #3366ff;
   --vp-c-brand-3: #5588ff;
   --vp-c-brand-soft: rgba(17, 68, 238, 0.14);
 
-  /* Override default green with brand blue */
+  /* Accent pink */
+  --dinero-pink: #ff77aa;
+  --dinero-pink-soft: rgba(255, 119, 170, 0.14);
+
+  /* Override tip color with brand */
   --vp-c-tip-1: var(--vp-c-brand-1);
   --vp-c-tip-2: var(--vp-c-brand-2);
   --vp-c-tip-3: var(--vp-c-brand-3);
   --vp-c-tip-soft: var(--vp-c-brand-soft);
 
-  /* Home hero gradient */
+  /* Home hero */
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(
     135deg,
     #1144ee 0%,
     #ff77aa 100%
   );
-
   --vp-home-hero-image-background-image: linear-gradient(
-    135deg,
-    #bbccff 0%,
-    #ff77aa 100%
+    -45deg,
+    #bbccff 50%,
+    #ffc0dd 50%
   );
-  --vp-home-hero-image-filter: blur(56px);
+  --vp-home-hero-image-filter: blur(68px);
+
+  /* Code blocks */
+  --vp-code-block-bg: #0d1117;
+  --vp-code-tab-divider: rgba(17, 68, 238, 0.2);
+  --vp-code-copy-code-border-color: rgba(17, 68, 238, 0.3);
+  --vp-code-copy-code-bg: rgba(17, 68, 238, 0.1);
+  --vp-code-copy-code-hover-border-color: var(--vp-c-brand-1);
+  --vp-code-copy-code-hover-bg: rgba(17, 68, 238, 0.2);
+  --vp-code-copy-code-active-text: var(--vp-c-brand-1);
 }
 
 .dark {
   --vp-c-brand-1: #5588ff;
   --vp-c-brand-2: #3366ff;
   --vp-c-brand-3: #1144ee;
-  --vp-c-brand-soft: rgba(85, 136, 255, 0.14);
+  --vp-c-brand-soft: rgba(85, 136, 255, 0.16);
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #1144ee 50%,
+    #ff77aa 50%
+  );
+  --vp-home-hero-image-filter: blur(68px) opacity(0.6);
 }
 
-/* Custom button styling */
+/* ===== Homepage ===== */
+
+/* Hero section */
+.VPHero .VPImage {
+  max-width: 280px;
+  max-height: 280px;
+}
+
+.VPHero .name {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.VPHero .text {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.VPHero .tagline {
+  font-size: 1.1rem;
+  opacity: 0.85;
+}
+
+/* Feature cards */
+.VPFeatures .VPFeature {
+  border: 1px solid var(--vp-c-brand-soft);
+  background: linear-gradient(
+    135deg,
+    var(--vp-c-bg-soft) 0%,
+    var(--vp-c-bg) 100%
+  );
+  transition: all 0.3s ease;
+}
+
+.VPFeatures .VPFeature:hover {
+  border-color: var(--vp-c-brand-1);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -8px var(--vp-c-brand-soft);
+}
+
+.VPFeature .icon {
+  font-size: 1.75rem;
+}
+
+.VPFeature .title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* ===== Buttons ===== */
+
 .VPButton.brand {
   border-color: var(--vp-c-brand-1);
   background-color: var(--vp-c-brand-1);
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .VPButton.brand:hover {
@@ -52,7 +130,119 @@
   background-color: var(--vp-c-brand-2);
 }
 
-/* Accent link color on hover */
+.VPButton.alt {
+  font-weight: 500;
+}
+
+/* ===== Navigation ===== */
+
+.VPNavBarTitle .title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuLink.active {
+  color: var(--vp-c-brand-1);
+}
+
+/* Sidebar */
+.VPSidebar .VPSidebarItem.is-active > .item > .link > .text {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+/* ===== Content ===== */
+
+.vp-doc h1 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.vp-doc h2 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 24px;
+}
+
+.vp-doc a {
+  font-weight: 500;
+}
+
 .vp-doc a:hover {
+  color: var(--vp-c-brand-1);
+}
+
+/* Inline code */
+.vp-doc :not(pre) > code {
+  background-color: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+
+.dark .vp-doc :not(pre) > code {
+  background-color: rgba(85, 136, 255, 0.16);
+}
+
+/* Code blocks */
+.vp-doc div[class*='language-'] {
+  border-radius: 12px;
+  border: 1px solid rgba(17, 68, 238, 0.1);
+}
+
+.dark .vp-doc div[class*='language-'] {
+  border-color: rgba(85, 136, 255, 0.15);
+}
+
+/* ===== Custom containers ===== */
+
+.vp-doc .custom-block.info {
+  border-color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-soft);
+}
+
+.vp-doc .custom-block.info code {
+  background-color: rgba(17, 68, 238, 0.15);
+}
+
+.vp-doc .custom-block.tip {
+  border-color: var(--vp-c-brand-1);
+}
+
+.vp-doc .custom-block.warning {
+  border-color: var(--dinero-pink);
+  background-color: var(--dinero-pink-soft);
+}
+
+/* ===== Footer ===== */
+
+.VPFooter {
+  border-top: 1px solid var(--vp-c-brand-soft);
+}
+
+/* ===== Misc ===== */
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vp-c-brand-soft);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-brand-1);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
 }
