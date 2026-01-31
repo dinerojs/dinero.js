@@ -33,11 +33,6 @@
       "import": "./dist/esm/currencies/index.js",
       "require": "./dist/cjs/currencies/index.js"
     },
-    "./currencies/bigint": {
-      "types": "./dist/esm/currencies/bigint/index.d.ts",
-      "import": "./dist/esm/currencies/bigint/index.js",
-      "require": "./dist/cjs/currencies/bigint/index.js"
-    },
     "./currencies/*": {
       "types": "./dist/esm/currencies/*.d.ts",
       "import": "./dist/esm/currencies/*.js",
