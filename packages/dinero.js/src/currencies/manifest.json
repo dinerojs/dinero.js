@@ -1,6 +1,6 @@
 {
   "$schema": "./currencies-schema.json",
-  "latestAmendment": 174,
+  "latestAmendment": 175,
   "currencies": {
     "AED": {
       "code": "AED",
