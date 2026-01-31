@@ -1,6 +1,6 @@
 {
   "name": "@dinero.js/example-starter",
-  "version": "2.0.0-alpha.13",
+  "version": "2.0.0-alpha.15",
   "scripts": {
     "build:clean": "rimraf ./dist",
     "dev": "vite",
@@ -11,7 +11,7 @@
     "vite": "^2.4.2"
   },
   "dependencies": {
-    "@dinero.js/currencies": "2.0.0-alpha.13",
-    "dinero.js": "2.0.0-alpha.13"
+    "@dinero.js/currencies": "2.0.0-alpha.15",
+    "dinero.js": "2.0.0-alpha.15"
   }
 }
