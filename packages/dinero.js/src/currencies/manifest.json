@@ -1,6 +1,6 @@
 {
   "$schema": "./currencies-schema.json",
-  "latestAmendment": 170,
+  "latestAmendment": 171,
   "currencies": {
     "AED": {
       "code": "AED",
@@ -911,6 +911,13 @@
       "base": 10,
       "exponent": 2,
       "since": null
+    },
+    "SLE": {
+      "code": "SLE",
+      "name": "Sierra Leonean leone",
+      "base": 10,
+      "exponent": 2,
+      "since": 171
     },
     "SOS": {
       "code": "SOS",
