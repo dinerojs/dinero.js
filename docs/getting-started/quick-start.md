@@ -75,10 +75,6 @@ You can load Dinero.js packages from [jsDelivr](https://cdn.jsdelivr.net/npm/din
 
 **Dinero.js lets you express monetary values in JavaScript.** You can perform mutations, conversions, comparisons, format them extensively, and overall make money manipulation in your application easier and safer.
 
-::: info
-The library is globally available in the docs for you to test it right in the browser console.
-:::
-
 To get started, you need to create a new Dinero object. Amounts are specified in minor currency units (like "cents" for the dollar) and currencies in `Currency` objects.
 
 This represents $50:
