@@ -7,1162 +7,1162 @@
       "name": "United Arab Emirates dirham",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "AFN": {
       "code": "AFN",
       "name": "Afghan afghani",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "ALL": {
       "code": "ALL",
       "name": "Albanian lek",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "AMD": {
       "code": "AMD",
       "name": "Armenian dram",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "ANG": {
       "code": "ANG",
       "name": "Netherlands Antillean guilder",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "AOA": {
       "code": "AOA",
       "name": "Angolan kwanza",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "ARS": {
       "code": "ARS",
       "name": "Argentine peso",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "AUD": {
       "code": "AUD",
       "name": "Australian dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "AWG": {
       "code": "AWG",
       "name": "Aruban florin",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "AZN": {
       "code": "AZN",
       "name": "Azerbaijani manat",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "BAM": {
       "code": "BAM",
       "name": "Bosnia and Herzegovina convertible mark",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "BBD": {
       "code": "BBD",
       "name": "Barbados dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "BDT": {
       "code": "BDT",
       "name": "Bangladeshi taka",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "BGN": {
       "code": "BGN",
       "name": "Bulgarian lev",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "BHD": {
       "code": "BHD",
       "name": "Bahraini dinar",
       "base": 10,
       "exponent": 3,
-      "since": 1
+      "since": null
     },
     "BIF": {
       "code": "BIF",
       "name": "Burundian franc",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "BMD": {
       "code": "BMD",
       "name": "Bermudian dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "BND": {
       "code": "BND",
       "name": "Brunei dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "BOB": {
       "code": "BOB",
       "name": "Bolivian boliviano",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "BOV": {
       "code": "BOV",
       "name": "Bolivian Mvdol",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "BRL": {
       "code": "BRL",
       "name": "Brazilian real",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "BSD": {
       "code": "BSD",
       "name": "Bahamian dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "BTN": {
       "code": "BTN",
       "name": "Bhutanese ngultrum",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "BWP": {
       "code": "BWP",
       "name": "Botswana pula",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "BYN": {
       "code": "BYN",
       "name": "Belarusian ruble",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "BZD": {
       "code": "BZD",
       "name": "Belize dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "CAD": {
       "code": "CAD",
       "name": "Canadian dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "CDF": {
       "code": "CDF",
       "name": "Congolese franc",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "CHE": {
       "code": "CHE",
       "name": "WIR Euro",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "CHF": {
       "code": "CHF",
       "name": "Swiss franc",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "CHW": {
       "code": "CHW",
       "name": "WIR Franc",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "CLF": {
       "code": "CLF",
       "name": "Unidad de Fomento",
       "base": 10,
       "exponent": 4,
-      "since": 1
+      "since": null
     },
     "CLP": {
       "code": "CLP",
       "name": "Chilean peso",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "CNY": {
       "code": "CNY",
       "name": "Renminbi (Chinese) yuan",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "COP": {
       "code": "COP",
       "name": "Colombian peso",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "COU": {
       "code": "COU",
       "name": "Unidad de Valor Real",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "CRC": {
       "code": "CRC",
       "name": "Costa Rican colón",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "CUC": {
       "code": "CUC",
       "name": "Cuban convertible peso",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "CUP": {
       "code": "CUP",
       "name": "Cuban peso",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "CVE": {
       "code": "CVE",
       "name": "Cape Verdean escudo",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "CZK": {
       "code": "CZK",
       "name": "Czech koruna",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "DJF": {
       "code": "DJF",
       "name": "Djiboutian franc",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "DKK": {
       "code": "DKK",
       "name": "Danish krone",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "DOP": {
       "code": "DOP",
       "name": "Dominican peso",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "DZD": {
       "code": "DZD",
       "name": "Algerian dinar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "EGP": {
       "code": "EGP",
       "name": "Egyptian pound",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "ERN": {
       "code": "ERN",
       "name": "Eritrean nakfa",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "ETB": {
       "code": "ETB",
       "name": "Ethiopian birr",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "EUR": {
       "code": "EUR",
       "name": "Euro",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "FJD": {
       "code": "FJD",
       "name": "Fiji dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "FKP": {
       "code": "FKP",
       "name": "Falkland Islands pound",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "GBP": {
       "code": "GBP",
       "name": "Pound sterling",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "GEL": {
       "code": "GEL",
       "name": "Georgian lari",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "GHS": {
       "code": "GHS",
       "name": "Ghanaian cedi",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "GIP": {
       "code": "GIP",
       "name": "Gibraltar pound",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "GMD": {
       "code": "GMD",
       "name": "Gambian dalasi",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "GNF": {
       "code": "GNF",
       "name": "Guinean franc",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "GTQ": {
       "code": "GTQ",
       "name": "Guatemalan quetzal",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "GYD": {
       "code": "GYD",
       "name": "Guyanese dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "HKD": {
       "code": "HKD",
       "name": "Hong Kong dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "HNL": {
       "code": "HNL",
       "name": "Honduran lempira",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "HRK": {
       "code": "HRK",
       "name": "Croatian kuna",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "HTG": {
       "code": "HTG",
       "name": "Haitian gourde",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "HUF": {
       "code": "HUF",
       "name": "Hungarian forint",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "IDR": {
       "code": "IDR",
       "name": "Indonesian rupiah",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "ILS": {
       "code": "ILS",
       "name": "Israeli new shekel",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "INR": {
       "code": "INR",
       "name": "Indian rupee",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "IQD": {
       "code": "IQD",
       "name": "Iraqi dinar",
       "base": 10,
       "exponent": 3,
-      "since": 1
+      "since": null
     },
     "IRR": {
       "code": "IRR",
       "name": "Iranian rial",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "ISK": {
       "code": "ISK",
       "name": "Icelandic króna",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "JMD": {
       "code": "JMD",
       "name": "Jamaican dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "JOD": {
       "code": "JOD",
       "name": "Jordanian dinar",
       "base": 10,
       "exponent": 3,
-      "since": 1
+      "since": null
     },
     "JPY": {
       "code": "JPY",
       "name": "Japanese yen",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "KES": {
       "code": "KES",
       "name": "Kenyan shilling",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "KGS": {
       "code": "KGS",
       "name": "Kyrgyzstani som",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "KHR": {
       "code": "KHR",
       "name": "Cambodian riel",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "KMF": {
       "code": "KMF",
       "name": "Comoro franc",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "KPW": {
       "code": "KPW",
       "name": "North Korean won",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "KRW": {
       "code": "KRW",
       "name": "South Korean won",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "KWD": {
       "code": "KWD",
       "name": "Kuwaiti dinar",
       "base": 10,
       "exponent": 3,
-      "since": 1
+      "since": null
     },
     "KYD": {
       "code": "KYD",
       "name": "Cayman Islands dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "KZT": {
       "code": "KZT",
       "name": "Kazakhstani tenge",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "LAK": {
       "code": "LAK",
       "name": "Lao kip",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "LBP": {
       "code": "LBP",
       "name": "Lebanese pound",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "LKR": {
       "code": "LKR",
       "name": "Sri Lankan rupee",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "LRD": {
       "code": "LRD",
       "name": "Liberian dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "LSL": {
       "code": "LSL",
       "name": "Lesotho loti",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "LYD": {
       "code": "LYD",
       "name": "Libyan dinar",
       "base": 10,
       "exponent": 3,
-      "since": 1
+      "since": null
     },
     "MAD": {
       "code": "MAD",
       "name": "Moroccan dirham",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "MDL": {
       "code": "MDL",
       "name": "Moldovan leu",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "MGA": {
       "code": "MGA",
       "name": "Malagasy ariary",
       "base": 5,
       "exponent": 1,
-      "since": 1
+      "since": null
     },
     "MKD": {
       "code": "MKD",
       "name": "Macedonian denar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "MMK": {
       "code": "MMK",
       "name": "Myanmar kyat",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "MNT": {
       "code": "MNT",
       "name": "Mongolian tögrög",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "MOP": {
       "code": "MOP",
       "name": "Macanese pataca",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "MRU": {
       "code": "MRU",
       "name": "Mauritanian ouguiya",
       "base": 5,
       "exponent": 1,
-      "since": 1
+      "since": null
     },
     "MUR": {
       "code": "MUR",
       "name": "Mauritian rupee",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "MVR": {
       "code": "MVR",
       "name": "Maldivian rufiyaa",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "MWK": {
       "code": "MWK",
       "name": "Malawian kwacha",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "MXN": {
       "code": "MXN",
       "name": "Mexican peso",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "MXV": {
       "code": "MXV",
       "name": "Mexican Unidad de Inversion",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "MYR": {
       "code": "MYR",
       "name": "Malaysian ringgit",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "MZN": {
       "code": "MZN",
       "name": "Mozambican metical",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "NAD": {
       "code": "NAD",
       "name": "Namibian dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "NGN": {
       "code": "NGN",
       "name": "Nigerian naira",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "NIO": {
       "code": "NIO",
       "name": "Nicaraguan córdoba",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "NOK": {
       "code": "NOK",
       "name": "Norwegian krone",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "NPR": {
       "code": "NPR",
       "name": "Nepalese rupee",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "NZD": {
       "code": "NZD",
       "name": "New Zealand dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "OMR": {
       "code": "OMR",
       "name": "Omani rial",
       "base": 10,
       "exponent": 3,
-      "since": 1
+      "since": null
     },
     "PAB": {
       "code": "PAB",
       "name": "Panamanian balboa",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "PEN": {
       "code": "PEN",
       "name": "Peruvian sol",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "PGK": {
       "code": "PGK",
       "name": "Papua New Guinean kina",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "PHP": {
       "code": "PHP",
       "name": "Philippine peso",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "PKR": {
       "code": "PKR",
       "name": "Pakistani rupee",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "PLN": {
       "code": "PLN",
       "name": "Polish złoty",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "PYG": {
       "code": "PYG",
       "name": "Paraguayan guaraní",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "QAR": {
       "code": "QAR",
       "name": "Qatari riyal",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "RON": {
       "code": "RON",
       "name": "Romanian leu",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "RSD": {
       "code": "RSD",
       "name": "Serbian dinar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "RUB": {
       "code": "RUB",
       "name": "Russian ruble",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "RWF": {
       "code": "RWF",
       "name": "Rwandan franc",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "SAR": {
       "code": "SAR",
       "name": "Saudi riyal",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "SBD": {
       "code": "SBD",
       "name": "Solomon Islands dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "SCR": {
       "code": "SCR",
       "name": "Seychelles rupee",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "SDG": {
       "code": "SDG",
       "name": "Sudanese pound",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "SEK": {
       "code": "SEK",
       "name": "Swedish krona",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "SGD": {
       "code": "SGD",
       "name": "Singapore dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "SHP": {
       "code": "SHP",
       "name": "Saint Helena pound",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "SLL": {
       "code": "SLL",
       "name": "Sierra Leonean leone",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "SOS": {
       "code": "SOS",
       "name": "Somali shilling",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "SRD": {
       "code": "SRD",
       "name": "Surinamese dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "SSP": {
       "code": "SSP",
       "name": "South Sudanese pound",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "STN": {
       "code": "STN",
       "name": "São Tomé and Príncipe dobra",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "SVC": {
       "code": "SVC",
       "name": "Salvadoran colón",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "SYP": {
       "code": "SYP",
       "name": "Syrian pound",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "SZL": {
       "code": "SZL",
       "name": "Swazi lilangeni",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "THB": {
       "code": "THB",
       "name": "Thai baht",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "TJS": {
       "code": "TJS",
       "name": "Tajikistani somoni",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "TMT": {
       "code": "TMT",
       "name": "Turkmenistan manat",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "TND": {
       "code": "TND",
       "name": "Tunisian dinar",
       "base": 10,
       "exponent": 3,
-      "since": 1
+      "since": null
     },
     "TOP": {
       "code": "TOP",
       "name": "Tongan paʻanga",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "TRY": {
       "code": "TRY",
       "name": "Turkish lira",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "TTD": {
       "code": "TTD",
       "name": "Trinidad and Tobago dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "TWD": {
       "code": "TWD",
       "name": "New Taiwan dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "TZS": {
       "code": "TZS",
       "name": "Tanzanian shilling",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "UAH": {
       "code": "UAH",
       "name": "Ukrainian hryvnia",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "UGX": {
       "code": "UGX",
       "name": "Ugandan shilling",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "USD": {
       "code": "USD",
       "name": "United States dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "USN": {
       "code": "USN",
       "name": "United States dollar (next day)",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "UYI": {
       "code": "UYI",
       "name": "Uruguay Peso en Unidades Indexadas",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "UYU": {
       "code": "UYU",
       "name": "Uruguayan peso",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "UYW": {
       "code": "UYW",
       "name": "Unidad previsional",
       "base": 10,
       "exponent": 4,
-      "since": 1
+      "since": null
     },
     "UZS": {
       "code": "UZS",
       "name": "Uzbekistani soʻm",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "VES": {
       "code": "VES",
       "name": "Venezuelan bolívar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "VND": {
       "code": "VND",
       "name": "Vietnamese đồng",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "VUV": {
       "code": "VUV",
       "name": "Vanuatu vatu",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "WST": {
       "code": "WST",
       "name": "Samoan tālā",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "XAF": {
       "code": "XAF",
       "name": "Central African CFA franc",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "XCD": {
       "code": "XCD",
       "name": "East Caribbean dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "XOF": {
       "code": "XOF",
       "name": "West African CFA franc",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "XPF": {
       "code": "XPF",
       "name": "CFP franc",
       "base": 10,
       "exponent": 0,
-      "since": 1
+      "since": null
     },
     "YER": {
       "code": "YER",
       "name": "Yemeni rial",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "ZAR": {
       "code": "ZAR",
       "name": "South African rand",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "ZMW": {
       "code": "ZMW",
       "name": "Zambian kwacha",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     },
     "ZWL": {
       "code": "ZWL",
       "name": "Zimbabwean dollar",
       "base": 10,
       "exponent": 2,
-      "since": 1
+      "since": null
     }
   }
 }

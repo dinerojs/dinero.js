@@ -59,9 +59,9 @@
           "description": "Number of decimal places (e.g., 2 for USD cents, 0 for JPY)"
         },
         "since": {
-          "type": "integer",
+          "type": ["integer", "null"],
           "minimum": 1,
-          "description": "Amendment number when this currency was introduced"
+          "description": "Amendment number when this currency was introduced (null = original/unknown)"
         },
         "until": {
           "type": "integer",
