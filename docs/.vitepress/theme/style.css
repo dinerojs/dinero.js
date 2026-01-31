@@ -1,0 +1,58 @@
+/**
+ * Dinero.js brand colors
+ * Primary: #14e (blue)
+ * Secondary: #bcf (light blue)
+ * Accent: #f7a (pink)
+ */
+
+:root {
+  /* Brand colors */
+  --vp-c-brand-1: #1144ee;
+  --vp-c-brand-2: #3366ff;
+  --vp-c-brand-3: #5588ff;
+  --vp-c-brand-soft: rgba(17, 68, 238, 0.14);
+
+  /* Override default green with brand blue */
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-2: var(--vp-c-brand-2);
+  --vp-c-tip-3: var(--vp-c-brand-3);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
+
+  /* Home hero gradient */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(
+    135deg,
+    #1144ee 0%,
+    #ff77aa 100%
+  );
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    135deg,
+    #bbccff 0%,
+    #ff77aa 100%
+  );
+  --vp-home-hero-image-filter: blur(56px);
+}
+
+.dark {
+  --vp-c-brand-1: #5588ff;
+  --vp-c-brand-2: #3366ff;
+  --vp-c-brand-3: #1144ee;
+  --vp-c-brand-soft: rgba(85, 136, 255, 0.14);
+}
+
+/* Custom button styling */
+.VPButton.brand {
+  border-color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-1);
+}
+
+.VPButton.brand:hover {
+  border-color: var(--vp-c-brand-2);
+  background-color: var(--vp-c-brand-2);
+}
+
+/* Accent link color on hover */
+.vp-doc a:hover {
+  color: var(--vp-c-brand-1);
+}
