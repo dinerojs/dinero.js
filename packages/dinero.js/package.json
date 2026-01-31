@@ -61,7 +61,7 @@
   ],
   "scripts": {
     "build:clean": "rimraf ./{dist,temp}",
-    "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
+    "build:esm": "node ../../scripts/generate-currencies.mjs && babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
     "build:definitions": "tsc -b",
     "build:types": "node ../../scripts/build-types.mjs && npm run build:types:subpaths",
     "build:types:subpaths": "cp -r lib/bigint dist/esm/ && cp -r lib/currencies/bigint dist/esm/currencies/ && cp lib/currencies/index.d.ts lib/currencies/168.d.ts dist/esm/currencies/",

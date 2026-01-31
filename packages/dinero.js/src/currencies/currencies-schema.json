@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Dinero.js Currency Manifest",
+  "description": "Schema for the currency manifest used to generate TypeScript currency definitions",
+  "type": "object",
+  "required": ["latestAmendment", "currencies"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "latestAmendment": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The latest ISO 4217 amendment number"
+    },
+    "currencies": {
+      "type": "object",
+      "description": "Map of currency codes to currency definitions",
+      "additionalProperties": {
+        "$ref": "#/definitions/currency"
+      }
+    }
+  },
+  "definitions": {
+    "currency": {
+      "type": "object",
+      "required": ["code", "name", "base", "exponent"],
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$",
+          "description": "ISO 4217 currency code (3 uppercase letters)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable currency name"
+        },
+        "base": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The base (radix) of the currency, typically 10"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "description": "Non-decimal base as array (e.g., [5, 10] for iraimbilanja)"
+            }
+          ]
+        },
+        "exponent": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of decimal places (e.g., 2 for USD cents, 0 for JPY)"
+        },
+        "since": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Amendment number when this currency was introduced"
+        },
+        "until": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Amendment number when this currency was removed (omit if still active)"
+        },
+        "history": {
+          "type": "array",
+          "description": "Historical versions of this currency when properties changed",
+          "items": {
+            "type": "object",
+            "required": ["until"],
+            "properties": {
+              "until": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Last amendment where this historical version was valid"
+              },
+              "base": {
+                "oneOf": [
+                  { "type": "integer", "minimum": 1 },
+                  {
+                    "type": "array",
+                    "items": { "type": "integer", "minimum": 1 }
+                  }
+                ],
+                "description": "Historical base value"
+              },
+              "exponent": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Historical exponent value"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
