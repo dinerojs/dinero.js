@@ -111,8 +111,12 @@ export default defineConfig({
               link: '/guides/using-different-amount-types',
             },
             {
-              text: 'Transport and restore',
+              text: 'Serialization',
               link: '/guides/transporting-and-restoring',
+            },
+            {
+              text: 'Database storage',
+              link: '/guides/storing-in-a-database',
             },
             {
               text: 'Multilingual support',

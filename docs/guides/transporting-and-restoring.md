@@ -1,11 +1,11 @@
 ---
-title: Transporting and restoring
-description: How to serialize Dinero objects for transport and storage, and restore snapshots into Dinero objects.
+title: Serialization
+description: How to serialize Dinero objects for transport over the network and restore them in your application.
 ---
 
-# Transporting and restoring
+# Serialization
 
-If you want to send a Dinero object over the network or save it into some storage system, you need to serialize it first. Conversely, when retrieving a serialized object, you need to restore it as an actual Dinero object before using it in your application and manipulating it with Dinero functions.
+If you want to send a Dinero object over the network, you need to serialize it first. Conversely, when retrieving a serialized object, you need to restore it as an actual Dinero object before using it in your application and manipulating it with Dinero functions.
 
 **Dinero lets you turn objects into snapshots.** Snapshots are plain JavaScript objects, suited for transport and storage. To create a snapshot, you can use the `toSnapshot` function.
 
@@ -46,7 +46,7 @@ axios.post('http://example.org/api/products', {
 });
 ```
 
-## Serializing an object
+## Serializing to JSON
 
 If you want to serialize a Dinero object into JSON, you can directly call [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) on it, without turning them into a snapshot first.
 
@@ -89,7 +89,7 @@ axios.get('http://example.org/api/products', {
 
 ## Handling arbitrary precision amounts
 
-If you're using Dinero.js with the [`bigint` calculator](/guides/using-different-amount-types#using-dinero-with-bigint) or a [custom library](/guides/using-different-amount-types#implementing-a-custom-calculator), you need to cast the number to a `string` for storage, so you can retain precision and safely restore it later.
+If you're using Dinero.js with the [`bigint` calculator](/guides/using-different-amount-types#using-dinero-with-bigint) or a [custom library](/guides/using-different-amount-types#implementing-a-custom-calculator), you need to cast the amount to a `string` for serialization, so you can retain precision and safely restore it later.
 
 While many arbitrary precision libraries support this out of the box, **you can't use [`JSON.stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) directly with `bigint`s.**
 

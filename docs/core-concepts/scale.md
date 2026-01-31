@@ -64,7 +64,7 @@ import { USD } from '@dinero.js/currencies';
 
 const price = dinero({ amount: 35, currency: USD, scale: 3 });
 
-toSnapshot(total);
+toSnapshot(price);
 
 // {
 //   amount: 35,
@@ -76,6 +76,10 @@ toSnapshot(total);
 //   scale: 3,
 // }
 ```
+
+::: tip
+When [storing Dinero objects in a database](/guides/storing-in-a-database), you typically only need to store the currency exponent. If you're working with custom scales, make sure to store the scale as well so you can accurately restore the object later.
+:::
 
 ## Calculate objects of different scales
 
