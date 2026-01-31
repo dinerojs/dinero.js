@@ -1,4 +1,3 @@
-/* eslint-disable functional/no-expression-statement, no-console */
 import { USD } from '@dinero.js/currencies';
 import { dinero, toDecimal, toSnapshot } from 'dinero.js';
 

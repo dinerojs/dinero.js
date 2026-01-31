@@ -1,4 +1,3 @@
-/* eslint-disable import/no-commonjs, functional/immutable-data, functional/no-expression-statement, @typescript-eslint/no-var-requires */
 const wrapWarningWithDevCheck = require('./scripts/babel/wrap-warning-with-dev-check.cjs');
 
 module.exports = (api) => {

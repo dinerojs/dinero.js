@@ -1,4 +1,3 @@
-/* eslint-disable functional/no-throw-statement, valid-jsdoc */
 /**
  * Assert a condition.
  *

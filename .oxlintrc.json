@@ -1,0 +1,43 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["import", "promise", "vitest", "typescript"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
+  "rules": {
+    "import/no-named-as-default": "off",
+    "no-console": "off"
+  },
+  "settings": {
+    "vitest": {
+      "typecheck": false
+    }
+  },
+  "env": {
+    "builtin": true
+  },
+  "globals": {
+    "describe": "readonly",
+    "it": "readonly",
+    "expect": "readonly",
+    "vi": "readonly",
+    "beforeEach": "readonly",
+    "afterEach": "readonly",
+    "beforeAll": "readonly",
+    "afterAll": "readonly",
+    "__DEV__": "readonly",
+    "__TEST__": "readonly"
+  },
+  "ignorePatterns": [
+    "dist",
+    "lib",
+    "temp",
+    "node_modules",
+    "website",
+    "examples",
+    "coverage",
+    "*.d.ts"
+  ]
+}

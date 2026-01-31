@@ -19,7 +19,8 @@ ratios: ReadonlyArray<ScaledAmount<TAmount> | TAmount>
 ];
 
 // @public
-export function assert(condition: boolean, message: string): void;
+function assert_2(condition: boolean, message: string): void;
+export { assert_2 as assert }
 
 // @public (undocumented)
 export type BinaryOperation<TInput, TOutput = TInput> = (a: TInput, b: TInput) => TOutput;

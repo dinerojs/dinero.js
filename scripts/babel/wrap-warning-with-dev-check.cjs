@@ -1,4 +1,3 @@
-/* eslint-disable functional/immutable-data, functional/no-expression-statement, import/no-commonjs, jsdoc/require-description-complete-sentence */
 /**
  * Babel plugin that wraps `warn` calls with development check to be
  * completely stripped from the production bundle.

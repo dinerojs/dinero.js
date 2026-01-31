@@ -1,4 +1,3 @@
-/* eslint-disable */
 // @ts-nocheck
 import cx from 'classnames';
 import { useRouter } from 'next/router';

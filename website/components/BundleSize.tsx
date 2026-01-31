@@ -1,4 +1,3 @@
-/* eslint-disable */
 import type { Bundle } from '../utils';
 
 import { InlineCode } from './InlineCode';

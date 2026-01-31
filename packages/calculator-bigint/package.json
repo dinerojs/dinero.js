@@ -36,7 +36,7 @@
     "build:definitions": "tsc -b",
     "build:types": "node ../../scripts/build-types.mjs",
     "build:umd:cjs": "rollup --config",
-    "lint": "node ../../scripts/lint.mjs --ext .js,.ts .",
+    "lint": "oxlint .",
     "test": "vitest --config ../../vitest.config.ts --dir src"
   },
   "dependencies": {

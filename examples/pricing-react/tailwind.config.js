@@ -1,4 +1,3 @@
-/* eslint-disable import/no-commonjs, functional/immutable-data, functional/no-expression-statement, @typescript-eslint/no-var-requires */
 const colors = require('tailwindcss/colors');
 
 module.exports = {

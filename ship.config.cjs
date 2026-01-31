@@ -1,4 +1,3 @@
-/* eslint-disable import/no-commonjs, functional/no-expression-statement, functional/immutable-data */
 module.exports = {
   monorepo: {
     mainVersionFile: 'package.json',

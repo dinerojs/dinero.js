@@ -39,7 +39,7 @@
     }
   },
   "globalDependencies": [
-    ".eslintrc.cjs",
+    ".oxlintrc.json",
     ".prettierrc",
     "api-extractor.json",
     "babel.config.cjs",

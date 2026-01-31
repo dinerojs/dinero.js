@@ -1,4 +1,3 @@
-/* eslint-disable functional/no-expression-statement */
 import { EUR, USD } from '@dinero.js/currencies';
 import cx from 'classnames';
 import { dinero, add, allocate, multiply } from 'dinero.js';

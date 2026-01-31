@@ -1,5 +1,3 @@
-/* eslint-disable functional/no-let, functional/immutable-data */
-
 import type { Calculator } from '../types';
 
 import { equal } from './equal';

@@ -21,8 +21,7 @@ npm run test:types         # Type check with TypeScript (noEmit)
 npm run test:size          # Check bundle sizes against limits
 
 # Linting & Formatting
-npm run lint               # Run ESLint
-npm run lint -- --fix      # Auto-fix lint issues
+npm run lint               # Run Oxlint (fast Rust-based linter)
 npm run format             # Format with Prettier
 
 # Documentation site
@@ -92,6 +91,6 @@ Each package outputs:
 
 - **Functional programming**: All functions are pure and immutable
 - **Conventional Commits**: `type(scope): subject` (types: feat, fix, docs, refactor, test, etc.)
-- **ESLint**: Extends 'algolia' config with functional and sonarjs plugins
+- **Oxlint**: Fast Rust-based linter for code quality
 - **Prettier**: Single quotes, trailing commas (ES5)
 - Packages are always versioned together

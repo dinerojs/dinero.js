@@ -103,9 +103,9 @@ npm test
 
 ### Linting
 
-The project uses [Prettier](https://prettier.io/) for code formatting and [ESLint](https://eslint.org/) for linting. Both run automatically when you commit, so you can go ahead and format as you like while writing code; it will be overridden anyway.
+The project uses [Prettier](https://prettier.io/) for code formatting and [Oxlint](https://oxc.rs/docs/guide/usage/linter.html) for linting. Both run automatically when you commit, so you can go ahead and format as you like while writing code; it will be overridden anyway.
 
-If ESLint finds issues it can't fix, you can fix it manually and try committing again.
+If Oxlint finds issues, you can fix them manually and try committing again.
 
 ## 📚 Documentation
 
