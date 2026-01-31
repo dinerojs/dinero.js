@@ -1,6 +1,6 @@
 {
   "$schema": "./currencies-schema.json",
-  "latestAmendment": 177,
+  "latestAmendment": 178,
   "currencies": {
     "AED": {
       "code": "AED",
@@ -267,7 +267,8 @@
       "name": "Cuban convertible peso",
       "base": 10,
       "exponent": 2,
-      "since": null
+      "since": null,
+      "until": 177
     },
     "CUP": {
       "code": "CUP",
