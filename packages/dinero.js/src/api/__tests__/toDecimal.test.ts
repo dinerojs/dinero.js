@@ -1,4 +1,4 @@
-import { JPY, MGA, USD } from '@dinero.js/currencies';
+import { JPY, MGA, USD } from '../../currencies';
 import Big from 'big.js';
 import {
   castToBigintCurrency,

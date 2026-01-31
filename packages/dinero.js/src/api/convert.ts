@@ -1,5 +1,5 @@
-import { convert as coreConvert } from '@dinero.js/core';
-import type { ConvertParams } from '@dinero.js/core';
+import { convert as coreConvert } from '../core';
+import type { ConvertParams } from '../core';
 
 /**
  * Convert a Dinero object to another currency.

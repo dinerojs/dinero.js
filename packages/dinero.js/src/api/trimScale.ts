@@ -1,5 +1,5 @@
-import { trimScale as coreTrimScale } from '@dinero.js/core';
-import type { TrimScaleParams } from '@dinero.js/core';
+import { trimScale as coreTrimScale } from '../core';
+import type { TrimScaleParams } from '../core';
 
 /**
  * Trim a Dinero object's scale as much as possible, down to the currency exponent.

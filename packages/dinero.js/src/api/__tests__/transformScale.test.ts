@@ -7,8 +7,8 @@ import {
   halfTowardsZero,
   halfUp,
   up,
-} from '@dinero.js/core';
-import { USD, MGA } from '@dinero.js/currencies';
+} from '../../core';
+import { USD, MGA } from '../../currencies';
 import Big from 'big.js';
 import {
   castToBigintCurrency,

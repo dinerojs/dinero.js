@@ -1,5 +1,5 @@
-import { toDecimal as coreToDecimal } from '@dinero.js/core';
-import type { ToDecimalParams, Dinero, Transformer } from '@dinero.js/core';
+import { toDecimal as coreToDecimal } from '../core';
+import type { ToDecimalParams, Dinero, Transformer } from '../core';
 
 export function toDecimal<TAmount>(dineroObject: Dinero<TAmount>): string;
 

@@ -11,7 +11,7 @@ export type {
   Formatter,
   Rates,
   Transformer,
-} from '@dinero.js/core';
+} from './core';
 export {
   createDinero,
   down,
@@ -22,5 +22,5 @@ export {
   halfTowardsZero,
   halfUp,
   up,
-} from '@dinero.js/core';
-export type { Currency } from '@dinero.js/currencies';
+} from './core';
+export type { Currency } from './currencies';

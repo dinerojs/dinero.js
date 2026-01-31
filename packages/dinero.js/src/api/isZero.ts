@@ -1,5 +1,5 @@
-import { isZero as coreIsZero } from '@dinero.js/core';
-import type { IsZeroParams } from '@dinero.js/core';
+import { isZero as coreIsZero } from '../core';
+import type { IsZeroParams } from '../core';
 
 /**
  * Check whether the value of a Dinero object is zero.

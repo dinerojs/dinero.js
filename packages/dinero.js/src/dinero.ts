@@ -1,10 +1,10 @@
-import { calculator } from '@dinero.js/calculator-number';
+import { calculator } from './calculator/number';
 import {
   createDinero,
   assert,
   INVALID_AMOUNT_MESSAGE,
   INVALID_SCALE_MESSAGE,
-} from '@dinero.js/core';
+} from './core';
 
 /**
  * Create a Dinero object.

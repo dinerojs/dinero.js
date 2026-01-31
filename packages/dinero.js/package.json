@@ -22,6 +22,33 @@
     "url": "https://sarahdayan.dev"
   },
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./currencies": {
+      "types": "./dist/esm/currencies/index.d.ts",
+      "import": "./dist/esm/currencies/index.js",
+      "require": "./dist/cjs/currencies/index.js"
+    },
+    "./currencies/168": {
+      "types": "./dist/esm/currencies/168.d.ts",
+      "import": "./dist/esm/currencies/168.js",
+      "require": "./dist/cjs/currencies/168.js"
+    },
+    "./bigint": {
+      "types": "./dist/esm/bigint/index.d.ts",
+      "import": "./dist/esm/bigint/index.js",
+      "require": "./dist/cjs/bigint/index.js"
+    },
+    "./currencies/bigint": {
+      "types": "./dist/esm/currencies/bigint/index.d.ts",
+      "import": "./dist/esm/currencies/bigint/index.js",
+      "require": "./dist/cjs/currencies/bigint/index.js"
+    }
+  },
   "main": "dist/cjs/index.js",
   "umd:main": "dist/umd/index.production.js",
   "jsdelivr": "dist/umd/index.production.js",
@@ -36,7 +63,8 @@
     "build:clean": "rimraf ./{dist,temp}",
     "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
     "build:definitions": "tsc -b",
-    "build:types": "node ../../scripts/build-types.mjs",
+    "build:types": "node ../../scripts/build-types.mjs && npm run build:types:subpaths",
+    "build:types:subpaths": "cp -r lib/bigint dist/esm/ && cp -r lib/currencies/bigint dist/esm/currencies/ && cp lib/currencies/index.d.ts lib/currencies/168.d.ts dist/esm/currencies/",
     "build:umd:cjs": "rollup --config",
     "lint": "oxlint .",
     "test": "vitest --config ../../vitest.config.ts --dir src"

@@ -1,5 +1,5 @@
-import { safeAllocate } from '@dinero.js/core';
-import type { AllocateParams } from '@dinero.js/core';
+import { safeAllocate } from '../core';
+import type { AllocateParams } from '../core';
 
 /**
  * Distribute the amount of a Dinero object across a list of ratios.

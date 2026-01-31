@@ -4,146 +4,202 @@
 
 ```ts
 
-import type { AddParams } from '@dinero.js/core';
-import type { AllocateParams } from '@dinero.js/core';
-import { Calculator } from '@dinero.js/core';
-import type { CompareParams } from '@dinero.js/core';
-import { ComparisonOperator } from '@dinero.js/core';
-import type { ConvertParams } from '@dinero.js/core';
-import { createDinero } from '@dinero.js/core';
-import { Currency } from '@dinero.js/currencies';
-import { Dinero } from '@dinero.js/core';
-import { DineroFactory } from '@dinero.js/core';
-import { DineroOptions } from '@dinero.js/core';
-import { DineroSnapshot } from '@dinero.js/core';
-import { DivideOperation } from '@dinero.js/core';
-import { down } from '@dinero.js/core';
-import type { EqualParams } from '@dinero.js/core';
-import { Formatter } from '@dinero.js/core';
-import type { GreaterThanOrEqualParams } from '@dinero.js/core';
-import type { GreaterThanParams } from '@dinero.js/core';
-import { halfAwayFromZero } from '@dinero.js/core';
-import { halfDown } from '@dinero.js/core';
-import { halfEven } from '@dinero.js/core';
-import { halfOdd } from '@dinero.js/core';
-import { halfTowardsZero } from '@dinero.js/core';
-import { halfUp } from '@dinero.js/core';
-import type { HasSubUnitsParams } from '@dinero.js/core';
-import type { HaveSameAmountParams } from '@dinero.js/core';
-import { haveSameCurrency as haveSameCurrency_2 } from '@dinero.js/core';
-import type { IsNegativeParams } from '@dinero.js/core';
-import type { IsPositiveParams } from '@dinero.js/core';
-import type { IsZeroParams } from '@dinero.js/core';
-import type { LessThanOrEqualParams } from '@dinero.js/core';
-import type { LessThanParams } from '@dinero.js/core';
-import type { MaximumParams } from '@dinero.js/core';
-import type { MinimumParams } from '@dinero.js/core';
-import type { MultiplyParams } from '@dinero.js/core';
-import type { NormalizeScaleParams } from '@dinero.js/core';
-import { Rates } from '@dinero.js/core';
-import type { SubtractParams } from '@dinero.js/core';
-import { toSnapshot as toSnapshot_2 } from '@dinero.js/core';
-import { Transformer as Transformer_2 } from '@dinero.js/core';
-import type { TransformScaleParams } from '@dinero.js/core';
-import type { TrimScaleParams } from '@dinero.js/core';
-import { up } from '@dinero.js/core';
-
+// Warning: (ae-forgotten-export) The symbol "AddParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function add<TAmount>(...input: AddParams<TAmount>): Dinero<TAmount>;
 
+// Warning: (ae-forgotten-export) The symbol "AllocateParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function allocate<TAmount>(...input: AllocateParams<TAmount>): Dinero<TAmount>[];
 
-export { Calculator }
+// @public (undocumented)
+export type Calculator<TInput> = {
+    readonly add: BinaryOperation<TInput>;
+    readonly compare: BinaryOperation<TInput, ComparisonOperator>;
+    readonly decrement: UnaryOperation<TInput>;
+    readonly integerDivide: BinaryOperation<TInput>;
+    readonly increment: UnaryOperation<TInput>;
+    readonly modulo: BinaryOperation<TInput>;
+    readonly multiply: BinaryOperation<TInput>;
+    readonly power: BinaryOperation<TInput>;
+    readonly subtract: BinaryOperation<TInput>;
+    readonly zero: () => TInput;
+};
 
+// Warning: (ae-forgotten-export) The symbol "CompareParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function compare<TAmount>(...input: CompareParams<TAmount>): ComparisonOperator;
 
-export { ComparisonOperator }
+// @public (undocumented)
+export enum ComparisonOperator {
+    // (undocumented)
+    EQ = 0,
+    // (undocumented)
+    GT = 1,
+    // (undocumented)
+    LT = -1
+}
 
+// Warning: (ae-forgotten-export) The symbol "ConvertParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function convert<TAmount>(...input: ConvertParams<TAmount>): Dinero<TAmount>;
 
-export { createDinero }
+// Warning: (ae-forgotten-export) The symbol "CreateDineroOptions" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export function createDinero<TAmount>(input: CreateDineroOptions<TAmount>): (input: DineroOptions<TAmount>) => Dinero<TAmount>;
 
-export { Currency }
+// @public (undocumented)
+export type Currency<TAmount> = {
+    readonly code: string;
+    readonly base: TAmount | readonly TAmount[];
+    readonly exponent: TAmount;
+};
 
-export { Dinero }
+// @public (undocumented)
+export type Dinero<TAmount> = {
+    readonly calculator: Calculator<TAmount>;
+    readonly formatter: Formatter<TAmount>;
+    readonly create: (options: DineroOptions<TAmount>) => Dinero<TAmount>;
+    readonly toJSON: () => DineroSnapshot<TAmount>;
+};
 
 // @public
 export const dinero: (input: DineroOptions<number>) => Dinero<number>;
 
-export { DineroFactory }
+// @public (undocumented)
+export type DineroFactory<TAmount> = (input: DineroOptions<TAmount>) => Dinero<TAmount>;
 
-export { DineroOptions }
+// @public (undocumented)
+export type DineroOptions<TAmount> = {
+    readonly amount: TAmount;
+    readonly currency: Currency<TAmount>;
+    readonly scale?: TAmount;
+};
 
-export { DineroSnapshot }
+// @public (undocumented)
+export type DineroSnapshot<TAmount> = {
+    readonly amount: TAmount;
+    readonly currency: Currency<TAmount>;
+    readonly scale: TAmount;
+};
 
-export { DivideOperation }
+// @public (undocumented)
+export type DivideOperation = <TAmount>(amount: TAmount, factor: TAmount, calculator: Calculator<TAmount>) => TAmount;
 
-export { down }
+// @public
+export const down: DivideOperation;
 
+// Warning: (ae-forgotten-export) The symbol "EqualParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function equal<TAmount>(...input: EqualParams<TAmount>): boolean;
 
-export { Formatter }
+// @public (undocumented)
+export type Formatter<TAmount> = {
+    readonly toNumber: (value?: TAmount) => number;
+    readonly toString: (value?: TAmount) => string;
+};
 
+// Warning: (ae-forgotten-export) The symbol "GreaterThanParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function greaterThan<TAmount>(...input: GreaterThanParams<TAmount>): boolean;
 
+// Warning: (ae-forgotten-export) The symbol "GreaterThanOrEqualParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function greaterThanOrEqual<TAmount>(...input: GreaterThanOrEqualParams<TAmount>): boolean;
 
-export { halfAwayFromZero }
+// @public
+export const halfAwayFromZero: DivideOperation;
 
-export { halfDown }
+// @public
+export const halfDown: DivideOperation;
 
-export { halfEven }
+// @public
+export const halfEven: DivideOperation;
 
-export { halfOdd }
+// @public
+export const halfOdd: DivideOperation;
 
-export { halfTowardsZero }
+// @public
+export const halfTowardsZero: DivideOperation;
 
-export { halfUp }
+// @public
+export const halfUp: DivideOperation;
 
+// Warning: (ae-forgotten-export) The symbol "HasSubUnitsParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function hasSubUnits<TAmount>(...input: HasSubUnitsParams<TAmount>): boolean;
 
+// Warning: (ae-forgotten-export) The symbol "HaveSameAmountParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function haveSameAmount<TAmount>(...input: HaveSameAmountParams<TAmount>): boolean;
 
+// Warning: (ae-forgotten-export) The symbol "haveSameCurrency_2" needs to be exported by the entry point index.d.ts
+//
 // @public
 export const haveSameCurrency: typeof haveSameCurrency_2;
 
+// Warning: (ae-forgotten-export) The symbol "IsNegativeParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function isNegative<TAmount>(...input: IsNegativeParams<TAmount>): boolean;
 
+// Warning: (ae-forgotten-export) The symbol "IsPositiveParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function isPositive<TAmount>(...input: IsPositiveParams<TAmount>): boolean;
 
+// Warning: (ae-forgotten-export) The symbol "IsZeroParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function isZero<TAmount>(...input: IsZeroParams<TAmount>): boolean;
 
+// Warning: (ae-forgotten-export) The symbol "LessThanParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function lessThan<TAmount>(...input: LessThanParams<TAmount>): boolean;
 
+// Warning: (ae-forgotten-export) The symbol "LessThanOrEqualParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function lessThanOrEqual<TAmount>(...input: LessThanOrEqualParams<TAmount>): boolean;
 
+// Warning: (ae-forgotten-export) The symbol "MaximumParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function maximum<TAmount>(...input: MaximumParams<TAmount>): Dinero<TAmount>;
 
+// Warning: (ae-forgotten-export) The symbol "MinimumParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function minimum<TAmount>(...input: MinimumParams<TAmount>): Dinero<TAmount>;
 
+// Warning: (ae-forgotten-export) The symbol "MultiplyParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function multiply<TAmount>(...input: MultiplyParams<TAmount>): Dinero<TAmount>;
 
+// Warning: (ae-forgotten-export) The symbol "NormalizeScaleParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function normalizeScale<TAmount>(...input: NormalizeScaleParams<TAmount>): Dinero<TAmount>[];
 
-export { Rates }
+// Warning: (ae-forgotten-export) The symbol "Rate" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type Rates<TAmount> = Record<string, Rate<TAmount>>;
 
+// Warning: (ae-forgotten-export) The symbol "SubtractParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function subtract<TAmount>(...input: SubtractParams<TAmount>): Dinero<TAmount>;
 
@@ -153,6 +209,8 @@ export function toDecimal<TAmount>(dineroObject: Dinero<TAmount>): string;
 // @public (undocumented)
 export function toDecimal<TAmount, TOutput>(dineroObject: Dinero<TAmount>, transformer: Transformer_2<TAmount, TOutput, string>): TOutput;
 
+// Warning: (ae-forgotten-export) The symbol "toSnapshot_2" needs to be exported by the entry point index.d.ts
+//
 // @public
 export const toSnapshot: typeof toSnapshot_2;
 
@@ -162,15 +220,29 @@ export function toUnits<TAmount>(dineroObject: Dinero<TAmount>): readonly TAmoun
 // @public (undocumented)
 export function toUnits<TAmount, TOutput>(dineroObject: Dinero<TAmount>, transformer: Transformer_2<TAmount, TOutput, readonly TAmount[]>): TOutput;
 
+// Warning: (ae-forgotten-export) The symbol "TransformerOptions" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+type Transformer_2<TAmount, TOutput, TValue> = (options: TransformerOptions<TAmount, TValue>) => TOutput;
 export { Transformer_2 as Transformer }
 
+// Warning: (ae-forgotten-export) The symbol "TransformScaleParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function transformScale<TAmount>(...input: TransformScaleParams<TAmount>): Dinero<TAmount>;
 
+// Warning: (ae-forgotten-export) The symbol "TrimScaleParams" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function trimScale<TAmount>(...input: TrimScaleParams<TAmount>): Dinero<TAmount>;
 
-export { up }
+// @public
+export const up: DivideOperation;
+
+// Warnings were encountered during analysis:
+//
+// lib/core/types/Calculator.d.ts:8:5 - (ae-forgotten-export) The symbol "BinaryOperation" needs to be exported by the entry point index.d.ts
+// lib/core/types/Calculator.d.ts:10:5 - (ae-forgotten-export) The symbol "UnaryOperation" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

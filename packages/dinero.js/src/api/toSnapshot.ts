@@ -1,4 +1,4 @@
-import { toSnapshot as coreToSnapshot } from '@dinero.js/core';
+import { toSnapshot as coreToSnapshot } from '../core';
 
 /**
  * Get a snapshot of a Dinero object.

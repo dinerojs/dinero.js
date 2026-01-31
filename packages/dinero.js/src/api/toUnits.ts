@@ -1,5 +1,5 @@
-import { toUnits as coreToUnits } from '@dinero.js/core';
-import type { ToUnitsParams, Dinero, Transformer } from '@dinero.js/core';
+import { toUnits as coreToUnits } from '../core';
+import type { ToUnitsParams, Dinero, Transformer } from '../core';
 
 export function toUnits<TAmount>(
   dineroObject: Dinero<TAmount>
