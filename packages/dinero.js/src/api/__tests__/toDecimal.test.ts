@@ -74,7 +74,7 @@ describe('toDecimal', () => {
         expect(() => {
           toDecimal(d);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Currency is not decimal."`
+          `[Error: [Dinero.js] Currency is not decimal.]`
         );
       });
       it('throws when passing a Dinero object using a multi-base currency which compiles to a multiple of 10', () => {
@@ -86,7 +86,7 @@ describe('toDecimal', () => {
         expect(() => {
           toDecimal(d);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Currency is not decimal."`
+          `[Error: [Dinero.js] Currency is not decimal.]`
         );
       });
     });
@@ -162,7 +162,7 @@ describe('toDecimal', () => {
         expect(() => {
           toDecimal(d);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Currency is not decimal."`
+          `[Error: [Dinero.js] Currency is not decimal.]`
         );
       });
       it('throws when passing a Dinero object using a multi-base currency which compiles to a multiple of 10', () => {
@@ -174,7 +174,7 @@ describe('toDecimal', () => {
         expect(() => {
           toDecimal(d);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Currency is not decimal."`
+          `[Error: [Dinero.js] Currency is not decimal.]`
         );
       });
     });
@@ -257,7 +257,7 @@ describe('toDecimal', () => {
         expect(() => {
           toDecimal(d);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Currency is not decimal."`
+          `[Error: [Dinero.js] Currency is not decimal.]`
         );
       });
       it('throws when passing a Dinero object using a multi-base currency which compiles to a multiple of 10', () => {
@@ -273,7 +273,7 @@ describe('toDecimal', () => {
         expect(() => {
           toDecimal(d);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Currency is not decimal."`
+          `[Error: [Dinero.js] Currency is not decimal.]`
         );
       });
     });

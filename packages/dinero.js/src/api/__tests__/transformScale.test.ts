@@ -140,7 +140,7 @@ describe('transformScale', () => {
         });
       });
       it('uses a custom divide function', () => {
-        const divideFn = jest.fn(() => 1045) as DivideOperation;
+        const divideFn = vi.fn(() => 1045) as DivideOperation;
         const d = dinero({ amount: 10455, currency: USD, scale: 3 });
 
         const snapshot = toSnapshot(transformScale(d, 2, divideFn));
@@ -400,7 +400,7 @@ describe('transformScale', () => {
         });
       });
       it('uses a custom divide function', () => {
-        const divideFn = jest.fn(() => 1045n) as DivideOperation;
+        const divideFn = vi.fn(() => 1045n) as DivideOperation;
         const d = dinero({ amount: 10455n, currency: bigintUSD, scale: 3n });
 
         const snapshot = toSnapshot(transformScale(d, 2n, divideFn));
@@ -758,7 +758,7 @@ describe('transformScale', () => {
         });
       });
       it('uses a custom divide function', () => {
-        const divideFn = jest.fn(() => new Big(1045)) as DivideOperation;
+        const divideFn = vi.fn(() => new Big(1045)) as DivideOperation;
         const d = dinero({
           amount: new Big(10455),
           currency: bigjsUSD,

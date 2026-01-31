@@ -26,7 +26,7 @@
     },
     "test": {
       "dependsOn": [],
-      "inputs": ["src/**/*.ts", "jest.config.ts"],
+      "inputs": ["src/**/*.ts"],
       "outputs": []
     },
     "build": {
@@ -44,8 +44,7 @@
     "api-extractor.json",
     "babel.config.cjs",
     ".size-limit.json",
-    "jest.base.ts",
-    "jest.config.ts",
+    "vitest.config.ts",
     "tsconfig.json",
     "tsconfig.declaration.json",
     "scripts/**/*"

@@ -95,7 +95,7 @@ Pull requests should target the `main` branch unless fixing critical issues in p
 
 ### Tests
 
-The project uses [Jest](https://jestjs.io/) for testing. **Every public API should be tested**. You should run tests before you commit, or at least before you open a pull request. Pull requests need to pass all checks to be reviewed, so doing it beforehand will save you time.
+The project uses [Vitest](https://vitest.dev/) for testing. **Every public API should be tested**. You should run tests before you commit, or at least before you open a pull request. Pull requests need to pass all checks to be reviewed, so doing it beforehand will save you time.
 
 ```sh
 npm test

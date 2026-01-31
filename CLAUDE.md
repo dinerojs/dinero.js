@@ -16,7 +16,7 @@ npm run build              # Build all packages (ESM, CJS, UMD, types)
 npm run build:clean        # Clean dist/lib directories before building
 
 # Testing
-npm test                   # Run Jest test suite across all packages
+npm test                   # Run Vitest test suite across all packages
 npm run test:types         # Type check with TypeScript (noEmit)
 npm run test:size          # Check bundle sizes against limits
 
@@ -63,7 +63,7 @@ scripts/                  # Build and development scripts
 
 ## Path Aliases
 
-TypeScript and Jest use these path aliases:
+TypeScript and Vitest use these path aliases:
 - `@dinero.js/*` → `packages/*/src/`
 - `dinero.js` → `packages/dinero.js/src/`
 - `test-utils` → `test/utils/`
@@ -83,9 +83,10 @@ Each package outputs:
 
 ## Testing
 
-- Jest with babel-jest transform
+- Vitest with native TypeScript support
 - Test files: `src/**/__tests__/*.test.ts`
 - Shared utilities in `/test/utils/` (import as `test-utils`)
+- Global test APIs available (`describe`, `it`, `expect`, `vi`)
 
 ## Code Conventions
 

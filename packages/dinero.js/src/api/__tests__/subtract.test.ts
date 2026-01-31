@@ -57,7 +57,7 @@ describe('subtract', () => {
       expect(() => {
         subtract(d1, d2);
       }).toThrowErrorMatchingInlineSnapshot(
-        `"[Dinero.js] Objects must have the same currency."`
+        `[Error: [Dinero.js] Objects must have the same currency.]`
       );
     });
   });
@@ -109,7 +109,7 @@ describe('subtract', () => {
       expect(() => {
         subtract(d1, d2);
       }).toThrowErrorMatchingInlineSnapshot(
-        `"[Dinero.js] Objects must have the same currency."`
+        `[Error: [Dinero.js] Objects must have the same currency.]`
       );
     });
   });
@@ -165,7 +165,7 @@ describe('subtract', () => {
       expect(() => {
         subtract(d1, d2);
       }).toThrowErrorMatchingInlineSnapshot(
-        `"[Dinero.js] Objects must have the same currency."`
+        `[Error: [Dinero.js] Objects must have the same currency.]`
       );
     });
   });

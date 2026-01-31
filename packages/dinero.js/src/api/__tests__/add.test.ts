@@ -58,7 +58,7 @@ describe('add', () => {
         expect(() => {
           add(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: [Dinero.js] Objects must have the same currency.]`
         );
       });
     });
@@ -106,7 +106,7 @@ describe('add', () => {
         expect(() => {
           add(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: [Dinero.js] Objects must have the same currency.]`
         );
       });
     });
@@ -192,7 +192,7 @@ describe('add', () => {
         expect(() => {
           add(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: [Dinero.js] Objects must have the same currency.]`
         );
       });
     });
@@ -240,7 +240,7 @@ describe('add', () => {
         expect(() => {
           add(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: [Dinero.js] Objects must have the same currency.]`
         );
       });
     });
@@ -330,7 +330,7 @@ describe('add', () => {
         expect(() => {
           add(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: [Dinero.js] Objects must have the same currency.]`
         );
       });
     });
@@ -382,7 +382,7 @@ describe('add', () => {
         expect(() => {
           add(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: [Dinero.js] Objects must have the same currency.]`
         );
       });
     });

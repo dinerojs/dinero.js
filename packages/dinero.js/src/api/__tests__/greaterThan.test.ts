@@ -46,7 +46,7 @@ describe('greaterThan', () => {
         expect(() => {
           greaterThan(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: [Dinero.js] Objects must have the same currency.]`
         );
       });
     });
@@ -82,7 +82,7 @@ describe('greaterThan', () => {
         expect(() => {
           greaterThan(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: [Dinero.js] Objects must have the same currency.]`
         );
       });
     });
@@ -125,7 +125,7 @@ describe('greaterThan', () => {
         expect(() => {
           greaterThan(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: [Dinero.js] Objects must have the same currency.]`
         );
       });
     });
@@ -161,7 +161,7 @@ describe('greaterThan', () => {
         expect(() => {
           greaterThan(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: [Dinero.js] Objects must have the same currency.]`
         );
       });
     });
@@ -208,7 +208,7 @@ describe('greaterThan', () => {
         expect(() => {
           greaterThan(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: [Dinero.js] Objects must have the same currency.]`
         );
       });
     });
@@ -248,7 +248,7 @@ describe('greaterThan', () => {
         expect(() => {
           greaterThan(d1, d2);
         }).toThrowErrorMatchingInlineSnapshot(
-          `"[Dinero.js] Objects must have the same currency."`
+          `[Error: [Dinero.js] Objects must have the same currency.]`
         );
       });
     });

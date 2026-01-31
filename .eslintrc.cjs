@@ -3,7 +3,6 @@ module.exports = {
   plugins: ['functional', 'sonarjs', 'promise', 'import'],
   extends: [
     'algolia',
-    'algolia/jest',
     'algolia/typescript',
     'plugin:sonarjs/recommended',
     'plugin:promise/recommended',

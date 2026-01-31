@@ -37,7 +37,7 @@
     "build:types": "node ../../scripts/build-types.mjs",
     "build:umd:cjs": "rollup --config",
     "lint": "node ../../scripts/lint.mjs --ext .js,.ts .",
-    "test": "node ../../scripts/test.mjs --projects=./packages/calculator-number"
+    "test": "vitest --config ../../vitest.config.ts --dir src"
   },
   "dependencies": {
     "@dinero.js/core": "2.0.0-alpha.15"

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["vitest/globals"],
     "allowSyntheticDefaultImports": true,
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
