@@ -1,22 +1,38 @@
----
-layout: page
----
-
 <script setup>
-import { useData } from 'vitepress'
-const { site } = useData()
+import { useRouter } from 'vitepress';
+
+const router = useRouter();
+
+function goHome() {
+  router.go('/');
+}
 </script>
+
+<template>
+  <div class="not-found">
+    <img class="mascot" src="/logo.svg" alt="Dinero.js" />
+    <div class="code">404</div>
+    <h1 class="title">Page not found</h1>
+    <p class="message">This page doesn't exist or may have moved.</p>
+    <button class="action" @click="goHome">Take me home</button>
+  </div>
+</template>
 
 <style scoped>
 .not-found {
   padding: 64px 24px 96px;
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.cat {
+.mascot {
   width: 180px;
   height: auto;
-  margin: 0 auto 32px;
+  margin-bottom: 32px;
   opacity: 0.6;
   filter: grayscale(30%);
 }
@@ -51,7 +67,9 @@ const { site } = useData()
   color: white;
   font-weight: 600;
   border-radius: 8px;
-  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
   transition: background-color 0.2s;
 }
 
@@ -59,11 +77,3 @@ const { site } = useData()
   background-color: var(--vp-c-brand-2);
 }
 </style>
-
-<div class="not-found">
-  <img class="cat" src="/logo.svg" alt="Dinero.js" />
-  <div class="code">404</div>
-  <h1 class="title">Page not found</h1>
-  <p class="message">This page doesn't exist or may have moved.</p>
-  <a class="action" href="/">Take me home</a>
-</div>
