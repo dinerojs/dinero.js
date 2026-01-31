@@ -263,7 +263,7 @@
 }
 
 /* Hero mascot animation */
-.VPHero .VPImage {
+.VPHero .image {
   animation: float 6s ease-in-out infinite;
 }
 

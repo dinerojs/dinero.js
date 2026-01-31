@@ -31,7 +31,10 @@ export default defineConfig({
     ],
     [
       'meta',
-      { property: 'og:image', content: 'https://v2.dinerojs.com/og-image.png' },
+      {
+        property: 'og:image',
+        content: 'https://v2.dinerojs.com/open-graph.jpg',
+      },
     ],
     ['meta', { property: 'og:url', content: 'https://v2.dinerojs.com' }],
     // Twitter
@@ -49,7 +52,7 @@ export default defineConfig({
       'meta',
       {
         name: 'twitter:image',
-        content: 'https://v2.dinerojs.com/og-image.png',
+        content: 'https://v2.dinerojs.com/open-graph.jpg',
       },
     ],
   ],
