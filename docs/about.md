@@ -3,6 +3,8 @@ title: About
 description: Dinero.js is an open-source library by Sarah Dayan and contributors.
 ---
 
+# About
+
 Dinero.js is an open-source library by [Sarah Dayan](https://sarahdayan.dev/) and [contributors](https://github.com/dinerojs/dinero.js/graphs/contributors).
 
 It's licensed under [MIT](https://opensource.org/licenses/MIT).

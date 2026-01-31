@@ -3,6 +3,8 @@ title: Sandboxes
 description: Check out Dinero.js in action in working sandboxes.
 ---
 
+# Sandboxes
+
 If you learn better by seeing code in action, or want to start from an existing project, check out the Dinero.js sandboxes on [CodeSandbox](https://codesandbox.io/).
 
 ## Shopping cart with React

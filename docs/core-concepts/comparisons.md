@@ -3,6 +3,8 @@ title: Comparisons
 description: Comparing Dinero objects for amount, currency, equality, sign, and more.
 ---
 
+# Comparisons
+
 Within the control flow of your application, you'll inevitably need to write conditional expressions to make decisions. The Dinero.js API provides functions to compare objects.
 
 ```js

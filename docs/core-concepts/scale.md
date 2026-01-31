@@ -3,6 +3,8 @@ title: Scale
 description: Passing a scale to a new Dinero object.
 ---
 
+# Scale
+
 The scale is one of the three pieces of domain data necessary to create a Dinero object. It's conceptually close to the [currency exponent](/core-concepts/currency#currency-exponent) but serves the purpose of expressing precision as accurately as possible.
 
 Most of the time, you don't need to specify the scale. It defaults to the currency exponent.

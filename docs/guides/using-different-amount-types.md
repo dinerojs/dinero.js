@@ -3,6 +3,8 @@ title: Using different amount types
 description: Using Dinero.js with any type of amount, such as JavaScript bigints or third-party arbitrary-precision libraries.
 ---
 
+# Using different amount types
+
 Dinero expects amounts as `number` by default. In most cases, this is more than enough, but there are times when you might hit the limitations of the [biggest](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) and [smallest](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MIN_SAFE_INTEGER) numbers you can safely represent.
 
 A typical use case is **when you need to represent colossal amounts of money.** Take the world debt, which reached $258 trillion in 2020. In JavaScript, the biggest number you can accurately represent is 9007199254740991 (9 quadrillions and some spare change). Still, since Dinero requires you to pass amounts in minor currency units, you actually "lose" two orders of magnitude, and can *only* represent around $90 trillion.

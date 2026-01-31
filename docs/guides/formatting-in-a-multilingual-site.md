@@ -3,6 +3,8 @@ title: Formatting in a multilingual site
 description: Displaying currencies in a site or application that supports several languages.
 ---
 
+# Formatting in a multilingual site
+
 Different languages and locations can have radically different formatting styles when it comes to money. For example, ten U.S. dollars in American English should be written down "$10.00". However, in Canadian French, the same amount would be "10,00 $ US".
 
 Dinero.js provides formatting functions that give you full control over how to format a Dinero object.

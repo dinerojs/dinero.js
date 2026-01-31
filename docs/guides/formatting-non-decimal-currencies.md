@@ -3,6 +3,8 @@ title: Formatting non-decimal currencies
 description: Displaying non-decimal currencies and currencies with multiple subdivisions.
 ---
 
+# Formatting non-decimal currencies
+
 The great majority of circulating currencies are decimal. If you're working with those, the Dinero.js formatting utility should cover most of your use cases.
 
 However, **you might also work with non-decimal currencies**. Typical use cases are ancient currencies such as the ancient Greek drachma, or fictional currencies like the wizarding currencies in the Harry Potter universe. If you're building a numismatic site or a game with its own currency, you might have advanced formatting needs.

@@ -3,6 +3,8 @@ title: Amount
 description: Passing an amount to a new Dinero object.
 ---
 
+# Amount
+
 The amount is one of the three pieces of domain data necessary to create a Dinero object. It's expressed in the smallest subdivision of the currency, as an integer.
 
 For example, 50 US dollars equal to 5,000 cents.

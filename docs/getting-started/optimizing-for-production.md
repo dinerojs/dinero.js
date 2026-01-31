@@ -3,6 +3,8 @@ title: Optimizing for production
 description: Removing unused code from your production builds for maximum performance.
 ---
 
+# Optimizing for production
+
 When importing the full UMD version of Dinero.js, you can take advantage of various optimization techniques to reduce your bundle size.
 
 ::: info

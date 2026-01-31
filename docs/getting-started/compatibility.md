@@ -3,6 +3,8 @@ title: Compatibility
 description: Understand which browsers and Node.js versions Dinero.js supports and how to manage polyfills.
 ---
 
+# Compatibility
+
 ## Browser support
 
 Dinero.js supports the last two versions of major browsers (Chrome, Edge, Firefox, and Safari).

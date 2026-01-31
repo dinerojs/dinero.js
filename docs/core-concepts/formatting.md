@@ -3,6 +3,8 @@ title: Formatting
 description: Formatting Dinero objects into rounded numbers or string representation.
 ---
 
+# Formatting
+
 When working with money on the front end, comes a time when you need to display amounts on the user interface. **The Dinero.js API provides functions to format Dinero objects.**
 
 ```js

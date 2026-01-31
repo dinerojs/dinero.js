@@ -3,6 +3,8 @@ title: Integrating with payment services
 description: How to integrate Dinero.js with payment services like Stripe, Adyen, or Square.
 ---
 
+# Integrating with payment services
+
 One of the most common use cases when manipulating money is payment. Many services such as [Stripe](https://stripe.com/) helps you process orders and payments programmatically.
 
 Such solutions integrate well with Dinero.js. If you're building an application that manipulates and charges money, you can use Dinero objects to represent prices and write small connectors for your payment service. **Most payment services represent money in minor units, making it straightforward to turn a Dinero object into a payment.**

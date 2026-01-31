@@ -3,6 +3,8 @@ title: Currency
 description: Passing a currency to a new Dinero object.
 ---
 
+# Currency
+
 The currency is one of the three pieces of domain data necessary to create a Dinero object.
 
 A Dinero currency is composed of:

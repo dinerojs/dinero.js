@@ -3,6 +3,8 @@ title: Does Dinero.js support cryptocurrencies?
 description: How to create Dinero objects for cryptocurrencies like Bitcoin, Ethereum, and others.
 ---
 
+# Does Dinero.js support cryptocurrencies?
+
 Dinero.js works with cryptocurrencies like any other currency, as long as they implement the `Currency` type.
 
 When working with these, you should use `bigint` or a third-party library like [big.js](http://mikemcl.github.io/big.js/). Cryptos usually have high exponents, making them likely to exceed the range of safe JavaScript integers.

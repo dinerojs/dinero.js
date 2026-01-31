@@ -3,6 +3,8 @@ title: Mutations
 description: Mutating Dinero objects through mathematical operations.
 ---
 
+# Mutations
+
 At the core of manipulating money are mutations. The Dinero.js API provides functions to manipulate objects. Most of them are calculus-based: adding, multiplying, etc.
 
 ```js

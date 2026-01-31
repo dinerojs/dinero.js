@@ -3,6 +3,8 @@ title: Transporting and restoring
 description: How to serialize Dinero objects for transport and storage, and restore snapshots into Dinero objects.
 ---
 
+# Transporting and restoring
+
 If you want to send a Dinero object over the network or save it into some storage system, you need to serialize it first. Conversely, when retrieving a serialized object, you need to restore it as an actual Dinero object before using it in your application and manipulating it with Dinero functions.
 
 **Dinero lets you turn objects into snapshots.** Snapshots are plain JavaScript objects, suited for transport and storage. To create a snapshot, you can use the `toSnapshot` function.

@@ -3,6 +3,8 @@ title: Upgrade guide
 description: Upgrading from Dinero.js v1.x to v2.0.
 ---
 
+# Upgrade guide
+
 ## The Dinero function is now lowercase
 
 The Dinero function is not a constructor, so by convention, it shouldn't be capitalized. The function is now `dinero` so there's no confusion on whether you should call it with `new` or not (you shouldn't). No longer need to disable ESLint's [`new-cap` rule](https://eslint.org/docs/rules/new-cap).
