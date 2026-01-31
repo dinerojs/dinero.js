@@ -8,7 +8,7 @@ description: Removing unused code from your production builds for maximum perfor
 When importing the full UMD version of Dinero.js, you can take advantage of various optimization techniques to reduce your bundle size.
 
 ::: info
-The size of `dinero.js` includes those of its dependencies `@dinero.js/core` and `@dinero.js/calculator-number`.
+The `dinero.js` package includes all core functionality, currencies, and the default number calculator in a single consolidated package.
 :::
 
 ## Compress your assets
@@ -43,7 +43,7 @@ Dinero.js is a pure library, meaning it doesn't produce side-effects. If you're 
 
 ```js
 import { dinero, add, subtract } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 // ...
 ```

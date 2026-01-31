@@ -20,7 +20,7 @@ Check whether a set of Dinero objects have the same amount.
 
 ```js
 import { dinero, haveSameAmount } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 1000, currency: USD });
 const d2 = dinero({ amount: 1000, currency: USD });
@@ -32,7 +32,7 @@ haveSameAmount([d1, d2]); // true
 
 ```js
 import { dinero, haveSameAmount } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 1000, currency: USD });
 const d2 = dinero({ amount: 2000, currency: USD });
@@ -44,7 +44,7 @@ haveSameAmount([d1, d2]); // false
 
 ```js
 import { dinero, haveSameAmount } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 1000, currency: USD });
 const d2 = dinero({ amount: 10000, currency: USD, scale: 3 });

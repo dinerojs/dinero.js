@@ -23,7 +23,7 @@ This function does same-value equality, determining whether two Dinero objects a
 
 ```js
 import { dinero, equal } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 500, currency: USD });
 const d2 = dinero({ amount: 500, currency: USD });
@@ -35,7 +35,7 @@ equal(d1, d2); // true
 
 ```js
 import { dinero, equal } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 500, currency: USD });
 const d2 = dinero({ amount: 800, currency: USD });
@@ -47,7 +47,7 @@ equal(d1, d2); // false
 
 ```js
 import { dinero, equal } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 500, currency: USD });
 const d2 = dinero({ amount: 5000, currency: USD, scale: 3 });
@@ -59,7 +59,7 @@ equal(d1, d2); // true
 
 ```js
 import { dinero, equal } from 'dinero.js';
-import { USD, EUR } from '@dinero.js/currencies';
+import { USD, EUR } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 500, currency: USD });
 const d2 = dinero({ amount: 500, currency: EUR });

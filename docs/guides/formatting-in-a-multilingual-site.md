@@ -15,7 +15,7 @@ ECMAScript provides an [Internationalization API](https://developer.mozilla.org/
 
 ```js
 import { dinero, toDecimal } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 function intlFormat(dineroObject, locale, options = {}) {
   function transformer({ value, currency }) {
@@ -46,7 +46,7 @@ You can use the formatter to display monetary values differently according to th
 ```jsx
 import React from 'react';
 import { dinero } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 import { intlFormat } from './intlFormat';
 

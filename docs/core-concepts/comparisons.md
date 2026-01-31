@@ -9,7 +9,7 @@ Within the control flow of your application, you'll inevitably need to write con
 
 ```js
 import { dinero, lessThan } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 500, currency: USD });
 const d2 = dinero({ amount: 800, currency: USD });
@@ -23,7 +23,7 @@ For example, if you're building a shopping cart checkout page, you'll probably n
 
 ```js
 import { dinero, greaterThanOrEqual } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const total = dinero({ amount: 25000, currency: USD });
 const freeShippingThreshold = dinero({ amount: 10000, currency: USD });
@@ -36,7 +36,7 @@ You can also use comparison functions to control your user interface logic.
 ```js
 import React, { useState } from 'react';
 import { dinero, isZero } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 import { format } from './utils';
 

@@ -28,7 +28,7 @@ Possible return values are:
 
 ```js
 import { dinero, compare } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 800, currency: USD });
 const d2 = dinero({ amount: 500, currency: USD });
@@ -40,7 +40,7 @@ compare(d1, d2); // 1
 
 ```js
 import { dinero, compare } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 5000, currency: USD, scale: 3 });
 const d2 = dinero({ amount: 800, currency: USD });
@@ -59,7 +59,7 @@ One of the main use cases of the `compare` function is to sort Dinero objects. F
 
 ```js
 import { dinero, compare } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 900, currency: USD });
 const d2 = dinero({ amount: 500, currency: USD });

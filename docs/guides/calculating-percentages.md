@@ -11,7 +11,7 @@ For example, if you need to calculate 15% of a Dinero object, you can split it w
 
 ```js
 import { dinero, allocate } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const price = dinero({ amount: 5000, currency: USD });
 
@@ -22,7 +22,7 @@ You can do the same with `multiply`.
 
 ```js
 import { dinero, multiply } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const price = dinero({ amount: 5000, currency: USD });
 

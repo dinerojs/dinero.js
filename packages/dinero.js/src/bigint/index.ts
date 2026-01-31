@@ -23,4 +23,5 @@ export {
   up,
 } from '../core';
 export type { Currency } from '../currencies';
+export { calculator } from '../calculator/bigint';
 export * from './dinero';

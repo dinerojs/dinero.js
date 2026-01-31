@@ -9,7 +9,7 @@ At the core of manipulating money are mutations. The Dinero.js API provides func
 
 ```js
 import { dinero, add } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 500, currency: USD });
 const d2 = dinero({ amount: 800, currency: USD });
@@ -23,7 +23,7 @@ Any application that handles money needs to manipulate them. A classic example i
 
 ```js
 import { dinero, add, allocate, subtract } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const products = [
   {

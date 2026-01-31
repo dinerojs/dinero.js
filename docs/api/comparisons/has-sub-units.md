@@ -20,7 +20,7 @@ Check whether a Dinero object has minor currency units.
 
 ```js
 import { dinero, hasSubUnits } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 1150, currency: USD });
 
@@ -31,7 +31,7 @@ hasSubUnits(d); // true
 
 ```js
 import { dinero, hasSubUnits } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 1100, currency: USD });
 
@@ -42,7 +42,7 @@ hasSubUnits(d); // false
 
 ```js
 import { dinero, hasSubUnits } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 1100, currency: USD, scale: 3 });
 

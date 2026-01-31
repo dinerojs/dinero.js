@@ -22,7 +22,7 @@ Normalizing to a higher scale means that the internal `amount` value increases b
 
 ```js
 import { dinero, normalizeScale } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 100, currency: USD, scale: 2 });
 const d2 = dinero({ amount: 2000, currency: USD, scale: 3 });

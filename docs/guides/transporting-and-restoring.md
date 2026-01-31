@@ -11,7 +11,7 @@ If you want to send a Dinero object over the network, you need to serialize it f
 
 ```js
 import { dinero, toSnapshot } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const price = dinero({ amount: 500, currency: USD });
 
@@ -34,7 +34,7 @@ You can use snapshots with any API that accepts serializable data types.
 
 ```js
 import { dinero, toSnapshot } from 'dinero.js';
-import { EUR } from '@dinero.js/currencies';
+import { EUR } from 'dinero.js/currencies';
 import axios from 'axios';
 
 const price = dinero({ amount: 6999, currency: EUR });
@@ -52,7 +52,7 @@ If you want to serialize a Dinero object into JSON, you can directly call [JSON.
 
 ```js
 import { dinero } from 'dinero.js';
-import { EUR } from '@dinero.js/currencies';
+import { EUR } from 'dinero.js/currencies';
 
 const product = {
   name: 'Mass Effect: Legendary Edition',
@@ -96,9 +96,9 @@ While many arbitrary precision libraries support this out of the box, **you can'
 When serializing, make sure to pass a [custom replacer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#the_replacer_parameter) to coerce every `bigint` into a `string`.
 
 ```js
-import { calculator } from '@dinero.js/calculator-bigint';
+import { calculator } from 'dinero.js/bigint';
 import { createDinero } from 'dinero.js';
-import { EUR } from '@dinero.js/currencies';
+import { EUR } from 'dinero.js/currencies';
 
 const dineroBigint = createDinero({ calculator });
 

@@ -20,7 +20,7 @@ Check whether the value of a Dinero object is zero.
 
 ```js
 import { dinero, isZero } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 0, currency: USD });
 
@@ -31,7 +31,7 @@ isZero(d); // true
 
 ```js
 import { dinero, isZero } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 100, currency: USD });
 

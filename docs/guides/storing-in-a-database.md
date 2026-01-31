@@ -68,7 +68,7 @@ You can store a snapshot directly and restore it with minimal transformation.
 
 ```js
 import { dinero, toSnapshot } from 'dinero.js';
-import { EUR } from '@dinero.js/currencies';
+import { EUR } from 'dinero.js/currencies';
 
 const price = dinero({ amount: 6999, currency: EUR });
 
@@ -95,7 +95,7 @@ For typical use cases where amounts fit within JavaScript's safe integer range, 
 
 ```js
 import { dinero, toSnapshot } from 'dinero.js';
-import { EUR } from '@dinero.js/currencies';
+import { EUR } from 'dinero.js/currencies';
 
 const price = dinero({ amount: 6999, currency: EUR });
 
@@ -116,7 +116,7 @@ const product = {
 When working with very large amounts or using the [`bigint` calculator](/guides/using-different-amount-types#using-dinero-with-bigint), you should use `Decimal128` for the amount to ensure precision.
 
 ```js
-import { calculator } from '@dinero.js/calculator-bigint';
+import { calculator } from 'dinero.js/bigint';
 import { createDinero, toSnapshot } from 'dinero.js';
 import { Decimal128 } from 'mongodb';
 
@@ -174,7 +174,7 @@ CREATE TABLE products (
 
 ```js
 import { dinero, toDecimal } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const price = dinero({ amount: 6999, currency: USD });
 

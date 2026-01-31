@@ -29,7 +29,7 @@ If you need to use fractional ratios, you shouldn't use floats, but scaled amoun
 
 ```js
 import { dinero, allocate } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 500, currency: USD });
 
@@ -43,7 +43,7 @@ d2; // a Dinero object with amount 250
 
 ```js
 import { dinero, allocate } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 100, currency: USD });
 
@@ -57,7 +57,7 @@ d2; // a Dinero object with amount 75
 
 ```js
 import { dinero, allocate } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 1003, currency: USD });
 
@@ -71,7 +71,7 @@ d2; // a Dinero object with amount 501
 
 ```js
 import { dinero, allocate } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 1003, currency: USD });
 
@@ -86,7 +86,7 @@ d3; // a Dinero object with amount 501
 
 ```js
 import { dinero, allocate } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const ratios = [
   { amount: 505, scale: 1 },

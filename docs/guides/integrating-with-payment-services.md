@@ -22,7 +22,7 @@ When using Stripe's Node.js client, [the currency must be in lowercase](https://
 ```js
 import stripe from 'stripe';
 import { dinero, toSnapshot } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 function toStripeMoney(dineroObject) {
   const { amount, currency } = toSnapshot(dineroObject);
@@ -47,7 +47,7 @@ The [Paypal](https://www.paypal.com/) payment platform provides APIs to process 
 ```js
 const paypal = require('@paypal/checkout-server-sdk');
 const { dinero, toSnapshot, toDecimal } = require('dinero.js');
-const { USD } = require('@dinero.js/currencies');
+const { USD } = require('dinero.js/currencies');
 
 function toPaypalMoney(dineroObject) {
   const { currency, scale } = toSnapshot(dineroObject);
@@ -78,7 +78,7 @@ The [Adyen](https://www.adyen.com/) payment platform provides APIs to process pa
 ```js
 import { Client, Config, CheckoutAPI } from '@adyen/api-library';
 import { dinero, toSnapshot } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 function toAdyenMoney(dineroObject) {
   const { amount, currency } = toSnapshot(dineroObject);
@@ -105,7 +105,7 @@ When using Square's Node.js client, [the amount must be of type `bigint`](https:
 ```js
 import { Client } from 'square';
 import { dinero, toSnapshot } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 function toSquareMoney(dineroObject) {
   const { amount, currency } = toSnapshot(dineroObject);

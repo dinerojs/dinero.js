@@ -20,7 +20,7 @@ Trim a Dinero object's scale as much as possible, down to the currency exponent.
 
 ```js
 import { dinero, trimScale } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 500000, currency: USD, scale: 5 });
 
@@ -31,7 +31,7 @@ trimScale(d); // a Dinero object with amount 500 and scale 2
 
 ```js
 import { dinero, trimScale } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 99950, currency: USD, scale: 4 });
 

@@ -36,39 +36,29 @@ If you don't use a package manager, you can use the HTML `script` element:
 </script>
 ```
 
-### Install currencies
+### Import currencies
 
-The Dinero.js library provides the `@dinero.js/currencies` package so you can have access to currency objects out of the box.
-
-```bash
-npm install @dinero.js/currencies@alpha
-
-# or
-
-yarn add @dinero.js/currencies@alpha
-```
-
-Then import it in your project:
+Currencies are available via a subpath export from the main package:
 
 ```js
 // ES import
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 // Node.js
-const { USD } = require('@dinero.js/currencies');
+const { USD } = require('dinero.js/currencies');
 ```
 
 If you don't use a package manager, you can use the HTML `script` element:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@dinero.js/currencies@alpha/dist/umd/index.production.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/currencies/index.production.js"></script>
 <script>
-  const { USD } = window['@dinero.js/currencies'];
+  const { USD } = window['dinero.js/currencies'];
 </script>
 ```
 
 ::: info
-You can load Dinero.js packages from [jsDelivr](https://cdn.jsdelivr.net/npm/dinero.js) or [unpkg](https://unpkg.com/dinero.js), or download them and host them yourself.
+You can load Dinero.js from [jsDelivr](https://cdn.jsdelivr.net/npm/dinero.js) or [unpkg](https://unpkg.com/dinero.js), or download and host it yourself.
 :::
 
 ## First steps
@@ -87,7 +77,7 @@ You can add or subtract any amount you want, by passing it another Dinero object
 
 ```js
 import { dinero, add, subtract } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const price = dinero({ amount: 5000, currency: USD });
 
@@ -108,7 +98,7 @@ You can ask all kinds of questions to your Dinero objects.
 
 ```js
 import { dinero, equal, isZero, hasSubUnits } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 500, currency: USD });
 const d2 = dinero({ amount: 500, currency: USD });
@@ -125,7 +115,7 @@ Dinero.js provides [formatting functions](/core-concepts/formatting) that expose
 
 ```js
 import { dinero, toDecimal, toUnits } from 'dinero.js';
-import { USD, MGA } from '@dinero.js/currencies';
+import { USD, MGA } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 5000, currency: USD });
 const d2 = dinero({ amount: 13, currency: MGA });

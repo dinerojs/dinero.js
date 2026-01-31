@@ -11,7 +11,7 @@ A typical use case is **when you need to represent colossal amounts of money.** 
 
 ```js
 import { dinero } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 // Don't do this!
 // 25800000000000000 is too big for accurate representation
@@ -43,7 +43,7 @@ In such cases, you need to rely on safer alternatives, such as the [bigint](http
 Dinero provides a `bigint` calculator for you to use out of the box. You can create your own `dinero` function by passing the calculator to the `createDinero` factory.
 
 ```js
-import { calculator } from '@dinero.js/calculator-bigint';
+import { calculator } from 'dinero.js/bigint';
 import { createDinero } from 'dinero.js';
 
 const dineroBigint = createDinero({ calculator });

@@ -27,7 +27,7 @@ You can only use this function with Dinero objects that are single-based and use
 
 ```js
 import { dinero, toDecimal } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 1050, currency: USD });
 const d2 = dinero({ amount: 10545, currency: USD, scale: 3 });
@@ -42,7 +42,7 @@ If you need to further transform the value before returning it, you can pass a c
 
 ```js
 import { dinero, toDecimal } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 1050, currency: USD });
 

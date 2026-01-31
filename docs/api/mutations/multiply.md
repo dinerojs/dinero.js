@@ -23,7 +23,7 @@ If you need to multiply by a fractional multiplier, you shouldn't use floats, bu
 
 ```js
 import { dinero, multiply } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 400, currency: USD });
 
@@ -34,7 +34,7 @@ multiply(d, 4); // a Dinero object with amount 1600
 
 ```js
 import { dinero, multiply } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 401, currency: USD });
 

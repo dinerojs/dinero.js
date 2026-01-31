@@ -9,7 +9,7 @@ Dinero objects must be instantiated with integers, in minor currency units. For 
 
 ```js
 import { dinero, add, subtract } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 1999, currency: USD });
 ```

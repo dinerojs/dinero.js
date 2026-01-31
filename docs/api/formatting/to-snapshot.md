@@ -22,7 +22,7 @@ Snapshots are plain JavaScript objects, suited for [transport and storage](/guid
 
 ```js
 import { dinero, toSnapshot } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 500, currency: USD });
 

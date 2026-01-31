@@ -23,7 +23,7 @@ Check whether the value of a Dinero object is lesser than or equal to another.
 
 ```js
 import { dinero, lessThanOrEqual } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 800, currency: USD });
 const d2 = dinero({ amount: 500, currency: USD });
@@ -35,7 +35,7 @@ lessThanOrEqual(d1, d2); // false
 
 ```js
 import { dinero, lessThanOrEqual } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 500, currency: USD });
 const d2 = dinero({ amount: 500, currency: USD });
@@ -47,7 +47,7 @@ lessThanOrEqual(d1, d2); // true
 
 ```js
 import { dinero, lessThanOrEqual } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 5000, currency: USD, scale: 3 });
 const d2 = dinero({ amount: 800, currency: USD });

@@ -11,7 +11,7 @@ When working with these, you should use `bigint` or a third-party library like [
 
 **See also:** [Using different amount types](/guides/using-different-amount-types)
 
-The `@dinero.js/currencies` package doesn't provide ready-made implementations for cryptocurrencies due to their non-normative and unstable nature. Maintaining such a list would be too demanding, so it makes more sense to keep them in userland. If you want to write a Dinero.js-compatible cryptocurrency, you can implement the `Currency` type.
+The `dinero.js/currencies` subpath doesn't provide ready-made implementations for cryptocurrencies due to their non-normative and unstable nature. Maintaining such a list would be too demanding, so it makes more sense to keep them in userland. If you want to write a Dinero.js-compatible cryptocurrency, you can implement the `Currency` type.
 
 ::: warning
 **Be careful how you name your files.** Crypto mining scripts often use the unofficial ISO 4217 code of the currency they're mining, like `xbt.js` or `xmr.js`. Adblockers then flag these scripts by name, causing them not to load. Make sure not to use suspicious file names, especially if you don't bundle your code, or they might not load for users with adblockers.

@@ -23,7 +23,7 @@ Add up two Dinero objects.
 
 ```js
 import { dinero, add } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 500, currency: USD });
 const d2 = dinero({ amount: 100, currency: USD });
@@ -35,7 +35,7 @@ add(d1, d2); // a Dinero object with amount 600
 
 ```js
 import { dinero, add } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 400, currency: USD });
 const d2 = dinero({ amount: 104545, currency: USD, scale: 4 });
@@ -49,7 +49,7 @@ To retrieve the sum of multiple objects, you can call the `add` function multipl
 
 ```js
 import { dinero, add } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 300, currency: USD });
 const d2 = dinero({ amount: 200, currency: USD });

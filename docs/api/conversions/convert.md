@@ -24,7 +24,7 @@ If you need to use fractional rates, you shouldn't use floats, but scaled amount
 
 ```js
 import { dinero, convert } from 'dinero.js';
-import { USD, EUR } from '@dinero.js/currencies';
+import { USD, EUR } from 'dinero.js/currencies';
 
 const rates = { EUR: { amount: 89, scale: 2 } };
 const d = dinero({ amount: 500, currency: USD });
@@ -36,7 +36,7 @@ convert(d, EUR, rates); // a Dinero object with amount 44500 and scale 4
 
 ```js
 import { dinero, convert } from 'dinero.js';
-import { USD, IQD } from '@dinero.js/currencies';
+import { USD, IQD } from 'dinero.js/currencies';
 
 const rates = { IQD: 1199 };
 const d = dinero({ amount: 500, currency: USD });
@@ -50,7 +50,7 @@ If you're converting many objects, you might want to reuse the same rates withou
 
 ```js
 import { dinero, convert } from 'dinero.js';
-import { USD, EUR } from '@dinero.js/currencies';
+import { USD, EUR } from 'dinero.js/currencies';
 
 const rates = { EUR: { amount: 89, scale: 2 } };
 

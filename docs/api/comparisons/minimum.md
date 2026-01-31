@@ -22,7 +22,7 @@ Get the lowest of the passed Dinero objects.
 
 ```js
 import { dinero, minimum } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 150, currency: USD });
 const d2 = dinero({ amount: 50, currency: USD });
@@ -34,7 +34,7 @@ minimum([d1, d2]); // a Dinero object with amount 50
 
 ```js
 import { dinero, minimum } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 500, currency: USD });
 const d2 = dinero({ amount: 1000, currency: USD, scale: 3 });

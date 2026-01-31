@@ -11,7 +11,7 @@ For example, 50 US dollars equals 5,000 cents.
 
 ```js
 import { dinero } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 5000, currency: USD });
 ```
@@ -26,7 +26,7 @@ When using a currency with no minor units, you should express the amount in majo
 
 ```js
 import { dinero } from 'dinero.js';
-import { JPY } from '@dinero.js/currencies';
+import { JPY } from 'dinero.js/currencies';
 
 // This represents 5,000 Japanese yens
 const d = dinero({ amount: 5000, currency: JPY });

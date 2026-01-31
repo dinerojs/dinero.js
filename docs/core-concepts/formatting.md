@@ -9,7 +9,7 @@ When working with money on the front end, there comes a time when you need to di
 
 ```js
 import { dinero, toUnits, down } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 1055, currency: USD });
 
@@ -22,7 +22,7 @@ The [`toDecimal`](/api/formatting/to-decimal) function exposes a pre-formatted a
 
 ```js
 import { dinero, toDecimal, toUnits } from 'dinero.js';
-import { USD, MGA } from '@dinero.js/currencies';
+import { USD, MGA } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 5000, currency: USD });
 const d2 = dinero({ amount: 13, currency: MGA });
@@ -37,7 +37,7 @@ Dinero.js uses the object's scale to determine how many decimal places to repres
 
 ```js
 import { dinero, toDecimal, up } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const transformer = ({ value, currency }) => {
   return `${currency.code} ${Number(value).toFixed(1)}`;
@@ -52,7 +52,7 @@ If you're formatting many objects, you might want to reuse the same transformer 
 
 ```js
 import { dinero, toDecimal } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 // This function lets you pass a transformer and rounding options.
 // It returns a function that takes a Dinero object and applies
@@ -88,7 +88,7 @@ Whenever you need to access a Dinero object's raw data, `toSnapshot` is the go-t
 
 ```js
 import { dinero, toSnapshot } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 5000, currency: USD });
 

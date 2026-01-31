@@ -11,7 +11,7 @@ Most of the time, you don't need to specify the scale. It defaults to the curren
 
 ```js
 import { dinero, toSnapshot } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 5000, currency: USD });
 
@@ -29,7 +29,7 @@ Here's what the 5.5% VAT rate calculation looks like with Dinero.js:
 
 ```js
 import { dinero, add, multiply, toSnapshot } from 'dinero.js';
-import { EUR } from '@dinero.js/currencies';
+import { EUR } from 'dinero.js/currencies';
 
 const price = dinero({ amount: 1995, currency: EUR });
 const tax = multiply(price, { amount: 55, scale: 3 });
@@ -60,7 +60,7 @@ For example, imagine you're in the hardware business. You're likely not selling 
 
 ```js
 import { dinero, toSnapshot } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const price = dinero({ amount: 35, currency: USD, scale: 3 });
 
@@ -87,7 +87,7 @@ When calculating Dinero objects, you don't have to care about their scale. Diner
 
 ```js
 import { dinero, add, subtract, allocate } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 400, currency: USD });
 const d2 = dinero({ amount: 104545, currency: USD, scale: 4 });
@@ -103,7 +103,7 @@ In such cases, you shouldn't use floats, but scaled multipliers. For example, in
 
 ```js
 import { dinero, multiply, allocate } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 400, currency: USD });
 
@@ -125,7 +125,7 @@ In such cases, you can trim down Dinero objects to drop useless precision.
 
 ```js
 import { dinero, add, trimScale } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 100, currency: USD });
 const d2 = dinero({ amount: 2000000, currency: USD, scale: 6 });

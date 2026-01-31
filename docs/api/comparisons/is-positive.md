@@ -20,7 +20,7 @@ Check whether a Dinero object is positive.
 
 ```js
 import { dinero, isPositive } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 100, currency: USD });
 
@@ -31,7 +31,7 @@ isPositive(d); // true
 
 ```js
 import { dinero, isPositive } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: -100, currency: USD });
 
@@ -42,7 +42,7 @@ isPositive(d); // false
 
 ```js
 import { dinero, isPositive } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 0, currency: USD });
 

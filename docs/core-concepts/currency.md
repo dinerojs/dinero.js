@@ -103,13 +103,13 @@ When you pass a [scale](/core-concepts/scale) to a Dinero object, it overrides t
 
 ## Using built-in currencies
 
-Dinero.js provides ISO 4217 currency objects out of the box via the `@dinero.js/currencies` package.
+Dinero.js provides ISO 4217 currency objects out of the box via the `dinero.js/currencies` subpath export.
 
-Once you've [installed Dinero.js currencies](/getting-started/quick-start#install-currencies), you can use them in your project.
+Once you've [installed Dinero.js](/getting-started/quick-start#install-the-library), you can import currencies:
 
 ```js
 import { dinero } from 'dinero.js';
-import { USD, EUR } from '@dinero.js/currencies';
+import { USD, EUR } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 1000, currency: USD });
 const d2 = dinero({ amount: 1000, currency: EUR });
@@ -117,14 +117,12 @@ const d2 = dinero({ amount: 1000, currency: EUR });
 
 Currencies fluctuate, meaning their code and exponent can change, there can be new currencies, and existing currencies can disappear. ISO 4217 currencies account for these changes with amendments, maintained by the [Secretariat of the Maintenance Agency](https://www.six-group.com/en/products-services/financial-information/data-standards.html).
 
-Dinero.js tracks those amendments and updates currencies accordingly. Such changes are, by definition, breaking. To preserve fixed versioning, the library's entry point doesn't export updated currencies. In other words, if you import currencies from the path `@dinero.js/currencies`, they won't change.
-
-To access always up to date currencies, you can import them from the `latest` submodule.
+Dinero.js tracks those amendments and updates currencies accordingly. Such changes are, by definition, breaking. The default export (`dinero.js/currencies`) always points to the latest amendment.
 
 ```js
 // This imports the latest version of the currency, which might be different
 // from the last time you used it and break your application. Use with caution.
-import { USD } from '@dinero.js/currencies/latest';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 1000, currency: USD });
 ```
@@ -136,14 +134,14 @@ const d = dinero({ amount: 1000, currency: USD });
 To pin a currency to a specific amendment, you can import it from its submodule. Amendments follow the [numbering system of the maintenance agency](https://www.six-group.com/en/products-services/financial-information/data-standards.html#scrollTo=amendments).
 
 ```js
-import { USD } from '@dinero.js/currencies/168';
+import { USD } from 'dinero.js/currencies/168';
 
 const d = dinero({ amount: 1000, currency: USD });
 ```
 
 ## Creating custom currencies
 
-You can build your own currency object if it isn't available in `@dinero.js/currencies`.
+You can build your own currency object if it isn't available in `dinero.js/currencies`.
 
 ```js
 const FRF = {

@@ -16,11 +16,11 @@ The Dinero function is not a constructor, so by convention, it shouldn't be capi
 
 ## Currency is now an object
 
-The `currency` is now expressed as a currency object and no longer as a string. v2 provides ISO 4217 currency objects out of the box via the `@dinero.js/currencies` package.
+The `currency` is now expressed as a currency object and no longer as a string. v2 provides ISO 4217 currency objects out of the box via the `dinero.js/currencies` subpath.
 
 ```diff
 - Dinero({ amount: 500, currency: 'USD' });
-+ import { USD } from '@dinero.js/currencies';
++ import { USD } from 'dinero.js/currencies';
 + dinero({ amount: 500, currency: USD });
 ```
 
@@ -115,7 +115,7 @@ To use fractional values, **pass scaled amounts instead of integers.**
 
 ```js
 import { dinero, convert } from 'dinero.js';
-import { USD, EUR } from '@dinero.js/currencies';
+import { USD, EUR } from 'dinero.js/currencies';
 
 const rates = { EUR: { amount: 89, scale: 2 } }; // 0.89
 const d = dinero({ amount: 500, currency: USD });
@@ -127,7 +127,7 @@ convert(d, EUR, { rates });
 
 ```js
 import { dinero, multiply } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const multiplier = { amount: 2001, scale: 3 }; // 2.001
 const d = dinero({ amount: 401, currency: USD });
@@ -139,7 +139,7 @@ multiply(d, multiplier);
 
 ```js
 import { dinero, allocate } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const ratios = [
   { amount: 505, scale: 1 }, // 50.5
@@ -220,7 +220,7 @@ You can then pass any Dinero object to the returned function.
 
 ```js
 import { dinero } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 500, currency: USD });
 
@@ -237,7 +237,7 @@ If you need defaults to create objects faster, you can create your own higher-or
 
 ```js
 import { dinero } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 function dineroUSD(amount) {
   return dinero({ amount, currency: USD });

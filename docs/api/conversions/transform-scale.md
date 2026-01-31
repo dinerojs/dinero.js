@@ -28,7 +28,7 @@ For convenience, Dinero.js provides the following divide functions: `up`, `down`
 
 ```js
 import { dinero, transformScale } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 500, currency: USD, scale: 2 });
 
@@ -39,7 +39,7 @@ transformScale(d, 4); // a Dinero object with amount 50000 and scale 4
 
 ```js
 import { dinero, transformScale, up } from 'dinero.js';
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 10455, currency: USD, scale: 3 });
 
