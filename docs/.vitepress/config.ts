@@ -247,7 +247,7 @@ export default defineConfig({
     },
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2021-present Sarah Dayan',
+      copyright: 'Copyright © 2018-present Sarah Dayan',
     },
   },
 });
