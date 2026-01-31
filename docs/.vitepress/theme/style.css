@@ -111,6 +111,11 @@
   font-size: 1.75rem;
 }
 
+.VPFeature .VPImage {
+  width: 48px;
+  height: 48px;
+}
+
 .VPFeature .title {
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -245,4 +250,29 @@
 ::selection {
   background-color: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
+}
+
+/* ===== Logo Animation ===== */
+
+.VPNavBarTitle .logo {
+  transition: transform 0.3s ease;
+}
+
+.VPNavBarTitle:hover .logo {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+/* Hero mascot animation */
+.VPHero .VPImage {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }

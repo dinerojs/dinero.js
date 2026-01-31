@@ -18,6 +18,40 @@ export default defineConfig({
         crossorigin: '',
       },
     ],
+    // Open Graph
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:title', content: 'Dinero.js' }],
+    [
+      'meta',
+      {
+        property: 'og:description',
+        content:
+          'Create, calculate, and format money in JavaScript and TypeScript.',
+      },
+    ],
+    [
+      'meta',
+      { property: 'og:image', content: 'https://v2.dinerojs.com/og-image.png' },
+    ],
+    ['meta', { property: 'og:url', content: 'https://v2.dinerojs.com' }],
+    // Twitter
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:title', content: 'Dinero.js' }],
+    [
+      'meta',
+      {
+        name: 'twitter:description',
+        content:
+          'Create, calculate, and format money in JavaScript and TypeScript.',
+      },
+    ],
+    [
+      'meta',
+      {
+        name: 'twitter:image',
+        content: 'https://v2.dinerojs.com/og-image.png',
+      },
+    ],
   ],
   themeConfig: {
     logo: '/logo.svg',
