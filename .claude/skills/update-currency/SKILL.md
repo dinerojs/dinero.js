@@ -55,7 +55,9 @@ Ask for:
 
 Ask for:
 - **Code**: Currency code to remove
-- **Amendment**: Last amendment where currency was valid
+- **Amendment**: Last amendment where currency was valid (the currency will be removed starting from the next amendment)
+
+**Important**: When removing, bump `latestAmendment` to `until + 1` (the first amendment without this currency).
 
 #### For Modifying a Currency
 
@@ -90,7 +92,7 @@ Add to `currencies` object in alphabetical order:
 
 #### Removing a Currency
 
-Add `until` to existing currency:
+Add `until` to existing currency, and bump `latestAmendment` to `until + 1`:
 ```json
 "VEF": {
   "code": "VEF",
@@ -101,6 +103,7 @@ Add `until` to existing currency:
   "until": 163
 }
 ```
+Then set `"latestAmendment": 164` (the first amendment without this currency).
 
 Note: `since: null` means the currency was in the original ISO 4217 standard.
 
