@@ -29,7 +29,9 @@
   "module": "dist/esm/index.js",
   "source": "src/index.ts",
   "types": "dist/esm/index.d.ts",
-  "files": ["dist/"],
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "build:clean": "rimraf ./{dist,temp}",
     "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
