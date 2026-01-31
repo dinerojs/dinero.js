@@ -1,9 +1,9 @@
 ---
-title: How can I create Dinero objects from floats?
+title: Creating from floats
 description: How to instantiate Dinero objects with float inputs using your own factory.
 ---
 
-# How can I create Dinero objects from floats?
+# Creating from floats
 
 Dinero objects must be instantiated with integers, in minor currency units. For example, to create an object for $19.99, you should write the following code:
 

@@ -130,6 +130,18 @@ export default defineConfig({
               text: 'Non-decimal currencies',
               link: '/guides/formatting-non-decimal-currencies',
             },
+            {
+              text: 'Creating from floats',
+              link: '/guides/creating-from-floats',
+            },
+            {
+              text: 'Calculating percentages',
+              link: '/guides/calculating-percentages',
+            },
+            {
+              text: 'Cryptocurrency support',
+              link: '/guides/cryptocurrencies',
+            },
           ],
         },
         {
@@ -202,23 +214,6 @@ export default defineConfig({
                 { text: 'toUnits', link: '/api/formatting/to-units' },
                 { text: 'toDecimal', link: '/api/formatting/to-decimal' },
               ],
-            },
-          ],
-        },
-        {
-          text: 'FAQ',
-          items: [
-            {
-              text: 'Creating from floats',
-              link: '/faq/how-can-i-create-dinero-objects-from-floats',
-            },
-            {
-              text: 'Cryptocurrency support',
-              link: '/faq/does-dinerojs-support-cryptocurrencies',
-            },
-            {
-              text: 'Calculating percentages',
-              link: '/faq/how-do-i-calculate-a-percentage',
             },
           ],
         },

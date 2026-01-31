@@ -1,9 +1,9 @@
 ---
-title: How do I calculate a percentage?
+title: Calculating percentages
 description: How to create a Dinero object that represents a percentage of another.
 ---
 
-# How do I calculate a percentage?
+# Calculating percentages
 
 There are two ways to calculate a percentage with Dinero.js: using `allocate` or `multiply`.
 

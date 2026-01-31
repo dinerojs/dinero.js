@@ -1,9 +1,9 @@
 ---
-title: Does Dinero.js support cryptocurrencies?
+title: Cryptocurrency support
 description: How to create Dinero objects for cryptocurrencies like Bitcoin, Ethereum, and others.
 ---
 
-# Does Dinero.js support cryptocurrencies?
+# Cryptocurrency support
 
 Dinero.js works with cryptocurrencies like any other currency, as long as they implement the `Currency` type.
 
