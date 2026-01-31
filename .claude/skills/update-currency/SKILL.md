@@ -15,17 +15,22 @@ packages/dinero.js/src/currencies/manifest.json
 
 ## Generated Files
 
-The manifest generates these directories (all in `.gitignore`):
+The manifest generates these files and directories (all in `.gitignore`):
 
 ```
 packages/dinero.js/src/currencies/
 ├── definitions/           # Actual currency definitions
 ├── historical/            # Historical versions of modified currencies
-└── iso4217/
-    ├── amendments/168/    # Re-exports for amendment 168
-    ├── amendments/169/    # Re-exports for amendment 169
-    └── latest/            # Re-exports for latest amendment (UMD bundles)
+├── iso4217/
+│   ├── amendments/168/    # Re-exports for amendment 168
+│   ├── amendments/169/    # Re-exports for amendment 169
+│   └── latest/            # Re-exports for latest amendment (UMD bundles)
+├── 168.ts                 # Barrel: export * from './iso4217/amendments/168'
+├── 169.ts                 # Barrel: export * from './iso4217/amendments/169'
+└── ...                    # One barrel file per amendment
 ```
+
+The barrel files enable imports like `import { USD } from 'dinero.js/currencies/168'`.
 
 ## Workflow
 

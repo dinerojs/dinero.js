@@ -207,6 +207,18 @@ function main() {
     `  Generated ${latestCurrencies.length} granular re-export files in iso4217/latest/`
   );
 
+  // Generate barrel files for each amendment (e.g., 168.ts, 169.ts)
+  // These enable imports like: import { USD } from 'dinero.js/currencies/168'
+  const sortedAmendments = [...amendments].sort((a, b) => a - b);
+  for (const amendmentNum of sortedAmendments) {
+    const content = `export * from './iso4217/amendments/${amendmentNum}';\n`;
+    writeFileSync(join(currenciesDir, `${amendmentNum}.ts`), content);
+  }
+
+  console.log(
+    `  Generated ${sortedAmendments.length} amendment barrel files (${sortedAmendments[0]}.ts - ${sortedAmendments[sortedAmendments.length - 1]}.ts)`
+  );
+
   console.log('Done!');
 }
 
