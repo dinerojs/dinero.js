@@ -1,6 +1,6 @@
 {
   "$schema": "./currencies-schema.json",
-  "latestAmendment": 168,
+  "latestAmendment": 169,
   "currencies": {
     "AED": {
       "code": "AED",
@@ -1071,7 +1071,7 @@
       "name": "Unidad previsional",
       "base": 10,
       "exponent": 4,
-      "since": null
+      "since": 169
     },
     "UZS": {
       "code": "UZS",

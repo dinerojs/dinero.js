@@ -64,6 +64,7 @@ function main() {
   // Clean generated directories
   cleanDir(definitionsDir);
   cleanDir(historicalDir);
+  cleanDir(amendmentsDir);
 
   // Track which amendments need to be generated
   const amendments = new Set();
@@ -102,6 +103,7 @@ function main() {
     // Track amendment where currency was added
     if (currency.since && currency.since > 1) {
       amendments.add(currency.since);
+      amendments.add(currency.since - 1); // Last amendment without this currency
     }
 
     // Track amendment where currency was removed
