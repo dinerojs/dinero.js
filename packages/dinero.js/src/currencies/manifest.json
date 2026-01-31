@@ -1,6 +1,6 @@
 {
   "$schema": "./currencies-schema.json",
-  "latestAmendment": 173,
+  "latestAmendment": 174,
   "currencies": {
     "AED": {
       "code": "AED",
@@ -434,7 +434,8 @@
       "name": "Croatian kuna",
       "base": 10,
       "exponent": 2,
-      "since": null
+      "since": null,
+      "until": 173
     },
     "HTG": {
       "code": "HTG",
