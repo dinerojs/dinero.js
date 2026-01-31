@@ -13,6 +13,20 @@ This skill helps update the currency manifest when ISO 4217 publishes a new amen
 packages/dinero.js/src/currencies/manifest.json
 ```
 
+## Generated Files
+
+The manifest generates these directories (all in `.gitignore`):
+
+```
+packages/dinero.js/src/currencies/
+├── definitions/           # Actual currency definitions
+├── historical/            # Historical versions of modified currencies
+└── iso4217/
+    ├── amendments/168/    # Re-exports for amendment 168
+    ├── amendments/169/    # Re-exports for amendment 169
+    └── latest/            # Re-exports for latest amendment (UMD bundles)
+```
+
 ## Workflow
 
 ### Step 1: Determine Update Type
@@ -26,15 +40,15 @@ Ask the user using AskUserQuestion what kind of update they need:
 
 ### Step 2: Gather Information
 
-Based on the update type:
+Ask the user directly in plain text (AskUserQuestion requires multiple choice options, which doesn't work for free-form input like currency codes and names).
 
 #### For Adding a Currency
 
 Ask for:
-- **Code**: 3-letter ISO 4217 code (e.g., "XYZ")
-- **Name**: Full currency name (e.g., "Example currency")
+- **Code**: 3-letter ISO 4217 code (e.g., "VED")
+- **Name**: Full currency name (e.g., "Venezuelan digital bolívar")
 - **Base**: Usually 10 (or array for non-decimal, e.g., [5, 10])
-- **Exponent**: Number of decimal places (0, 2, 3, etc.)
+- **Exponent**: Number of decimal places (0, 2, 3, 4)
 - **Amendment**: Amendment number where this was introduced
 
 #### For Removing a Currency
@@ -53,24 +67,24 @@ Ask for:
 
 ### Step 3: Update Manifest
 
-Read the current manifest:
+Find the insertion point (currencies are alphabetically sorted):
 
 ```bash
-cat packages/dinero.js/src/currencies/manifest.json
+grep -n '"CODE"' packages/dinero.js/src/currencies/manifest.json
 ```
 
-Make the appropriate changes:
+Make the appropriate changes using the Edit tool:
 
 #### Adding a Currency
 
-Add to `currencies` object:
+Add to `currencies` object in alphabetical order:
 ```json
-"XYZ": {
-  "code": "XYZ",
-  "name": "Example currency",
+"VED": {
+  "code": "VED",
+  "name": "Venezuelan digital bolívar",
   "base": 10,
   "exponent": 2,
-  "since": 169
+  "since": 170
 }
 ```
 
@@ -83,23 +97,25 @@ Add `until` to existing currency:
   "name": "Venezuelan bolívar",
   "base": 10,
   "exponent": 2,
-  "since": 1,
-  "until": 168
+  "since": null,
+  "until": 163
 }
 ```
+
+Note: `since: null` means the currency was in the original ISO 4217 standard.
 
 #### Modifying a Currency
 
 Add `history` array with the old value:
 ```json
-"JPY": {
-  "code": "JPY",
-  "name": "Japanese yen",
+"MWK": {
+  "code": "MWK",
+  "name": "Malawian kwacha",
   "base": 10,
-  "exponent": 0,
-  "since": 1,
+  "exponent": 2,
+  "since": null,
   "history": [
-    { "until": 169, "exponent": 2 }
+    { "until": 169, "exponent": 0 }
   ]
 }
 ```
@@ -109,7 +125,7 @@ Add `history` array with the old value:
 Always update `latestAmendment` if processing a new amendment:
 ```json
 {
-  "latestAmendment": 169,
+  "latestAmendment": 170,
   ...
 }
 ```
@@ -121,6 +137,8 @@ Run the generation script:
 ```bash
 npm run generate:currencies
 ```
+
+This will output which amendments were generated and how many currencies each contains.
 
 Verify the build works:
 
@@ -140,15 +158,15 @@ Ask if the user wants to commit the changes using the /commit skill.
 
 ## Examples
 
-### Adding VES (Venezuelan bolívar soberano)
+### Adding VED (Venezuelan digital bolívar)
 
 ```json
-"VES": {
-  "code": "VES",
-  "name": "Venezuelan bolívar soberano",
+"VED": {
+  "code": "VED",
+  "name": "Venezuelan digital bolívar",
   "base": 10,
   "exponent": 2,
-  "since": 164
+  "since": 170
 }
 ```
 
@@ -160,7 +178,7 @@ Ask if the user wants to commit the changes using the /commit skill.
   "name": "Venezuelan bolívar",
   "base": 10,
   "exponent": 2,
-  "since": 1,
+  "since": null,
   "until": 163
 }
 ```
@@ -174,7 +192,7 @@ Old MRO marked as removed:
   "name": "Mauritanian ouguiya",
   "base": 5,
   "exponent": 1,
-  "since": 1,
+  "since": null,
   "until": 163
 }
 ```
