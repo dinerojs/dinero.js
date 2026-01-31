@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV !== 'production') {
+if (__DEV__) {
   console.warn(
     '[@dinero.js/calculator-number] This package is deprecated. ' +
       'The number calculator is now built into "dinero.js". ' +

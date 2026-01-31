@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV !== 'production') {
+if (__DEV__) {
   console.warn(
     '[@dinero.js/currencies] This package is deprecated. ' +
       'Please use "dinero.js/currencies" instead. ' +

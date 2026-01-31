@@ -5,6 +5,6 @@
     "rootDir": "src",
     "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
   },
-  "include": ["src"],
+  "include": ["src", "../../global.d.ts"],
   "exclude": ["**/__tests__/**/*"]
 }
