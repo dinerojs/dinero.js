@@ -8,7 +8,6 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@dinero.js/currencies": "2.0.0-alpha.15",
     "@heroicons/react": "^2.2.0",
     "classnames": "^2.5.0",
     "dinero.js": "2.0.0-alpha.15",

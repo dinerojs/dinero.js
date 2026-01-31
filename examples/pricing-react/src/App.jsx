@@ -1,4 +1,4 @@
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 import { CheckIcon } from '@heroicons/react/24/solid';
 import cx from 'classnames';
 import { dinero, allocate, subtract, multiply, isZero } from 'dinero.js';

@@ -193,7 +193,7 @@
 
 <script>
 import { dinero, add, allocate, multiply } from 'dinero.js';
-import { EUR, USD } from '@dinero.js/currencies';
+import { EUR, USD } from 'dinero.js/currencies';
 
 import CartLine from './components/CartLine.vue';
 

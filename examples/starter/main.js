@@ -1,4 +1,4 @@
-import { USD } from '@dinero.js/currencies';
+import { USD } from 'dinero.js/currencies';
 import { dinero, toDecimal, toSnapshot } from 'dinero.js';
 
 const transformer = ({ value, currency }) => `${currency.code} ${value}`;
