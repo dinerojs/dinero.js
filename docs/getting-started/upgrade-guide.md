@@ -180,7 +180,7 @@ Dinero.js v2 no longer has a built-in `divide` function. Use [`allocate`](/api/m
 
 Dinero.js v2 no longer has a built-in `percentage` function. You can build your own using either `allocate` or `multiply`.
 
-**See also:** [How do I calculate a percentage?](/faq/how-do-i-calculate-a-percentage)
+**See also:** [How do I calculate a percentage?](/guides/calculating-percentages)
 
 ## Replace toUnit and toRoundedUnit with toUnits or toDecimal
 
