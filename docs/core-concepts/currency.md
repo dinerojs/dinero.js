@@ -115,11 +115,11 @@ const d1 = dinero({ amount: 1000, currency: USD });
 const d2 = dinero({ amount: 1000, currency: EUR });
 ```
 
-If you're using the [bigint variant](/guides/precision-and-large-numbers#using-dinero-with-bigint), import currencies from `dinero.js/currencies/bigint` instead:
+If you're using the [bigint variant](/guides/precision-and-large-numbers#using-dinero-with-bigint), import currencies from `dinero.js/bigint/currencies` instead:
 
 ```js
 import { dinero } from 'dinero.js/bigint';
-import { USD, EUR } from 'dinero.js/currencies/bigint';
+import { USD, EUR } from 'dinero.js/bigint/currencies';
 
 const d1 = dinero({ amount: 1000n, currency: USD });
 const d2 = dinero({ amount: 1000n, currency: EUR });

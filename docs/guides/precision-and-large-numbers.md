@@ -40,11 +40,11 @@ In such cases, you need to rely on safer alternatives, such as the [bigint](http
 
 ## Using Dinero with bigint
 
-Dinero provides a ready-to-use `dinero` function for bigints via the `dinero.js/bigint` subpath. Bigint-compatible currencies are available from `dinero.js/currencies/bigint`:
+Dinero provides a ready-to-use `dinero` function for bigints via the `dinero.js/bigint` subpath. Bigint-compatible currencies are available from `dinero.js/bigint/currencies`:
 
 ```js
 import { dinero, add } from 'dinero.js/bigint';
-import { USD } from 'dinero.js/currencies/bigint';
+import { USD } from 'dinero.js/bigint/currencies';
 
 const d1 = dinero({ amount: 500n, currency: USD });
 const d2 = dinero({ amount: 100n, currency: USD });
@@ -53,7 +53,7 @@ add(d1, d2); // a Dinero object with amount `600n`
 ```
 
 ::: warning
-**You cannot use currencies from `dinero.js/currencies` with bigint.** Those have `number` values for `base` and `exponent`. Always import from `dinero.js/currencies/bigint` when using the bigint variant.
+**You cannot use currencies from `dinero.js/currencies` with bigint.** Those have `number` values for `base` and `exponent`. Always import from `dinero.js/bigint/currencies` when using the bigint variant.
 :::
 
 ## Using Dinero with a custom amount type

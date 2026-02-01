@@ -1,6 +1,6 @@
 ---
 title: Why can't I use currencies with bigint?
-description: Why currencies from dinero.js/currencies don't work with bigint and how to use dinero.js/currencies/bigint instead.
+description: Why currencies from dinero.js/currencies don't work with bigint and how to use dinero.js/bigint/currencies instead.
 ---
 
 # Why can't I use currencies with bigint?
@@ -18,11 +18,11 @@ When using `dinero.js/bigint`, **all arithmetic operations use bigint math.** Ja
 10n + 2  // TypeError: can't convert BigInt to number
 ```
 
-This is a JavaScript language constraint. To use the bigint variant, import currencies from `dinero.js/currencies/bigint` instead:
+This is a JavaScript language constraint. To use the bigint variant, import currencies from `dinero.js/bigint/currencies` instead:
 
 ```js
 import { dinero } from 'dinero.js/bigint';
-import { USD } from 'dinero.js/currencies/bigint';
+import { USD } from 'dinero.js/bigint/currencies';
 
 const d = dinero({ amount: 500n, currency: USD });
 ```
@@ -30,7 +30,7 @@ const d = dinero({ amount: 500n, currency: USD });
 These currencies have bigint values for `base` and `exponent`:
 
 ```js
-// From dinero.js/currencies/bigint
+// From dinero.js/bigint/currencies
 const USD = { code: 'USD', base: 10n, exponent: 2n };
 ```
 

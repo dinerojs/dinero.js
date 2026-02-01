@@ -7,7 +7,7 @@
  * @see https://www.six-group.com/en/products-services/financial-information/data-standards.html
  */
 
-import type { Currency } from '../types';
+import type { Currency } from '../../currencies/types';
 
 /**
  * United Arab Emirates dirham.
