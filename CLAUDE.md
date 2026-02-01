@@ -44,7 +44,6 @@ packages/
 docs/                     # VitePress documentation site
 examples/                 # Sample projects (cart-react, cart-vue, etc.)
 test/                     # Shared test utilities (imported as 'test-utils')
-scripts/                  # Build and development scripts
 ```
 
 ## Package Exports
@@ -88,15 +87,13 @@ TypeScript and Vitest use these path aliases:
 
 ## Build System
 
-- **Babel**: Transpilation with TypeScript preset
-- **Rollup**: Generates ESM and UMD bundles
-- **API Extractor**: Generates rolled-up `.d.ts` files
+- **tsdown**: Single tool for bundling (powered by Rolldown) and type generation
+- **Turborepo**: Build orchestration across workspaces
 - **Globals**: `__DEV__` and `__TEST__` flags replaced at build time for tree-shaking
 
 Package outputs:
-- `dist/esm/` - ES modules (main entry)
+- `dist/esm/` - ES modules with TypeScript declarations (main entry)
 - `dist/umd/` - UMD bundles (for script tags)
-- `lib/` - Intermediate TypeScript declarations
 
 ## Testing
 

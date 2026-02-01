@@ -51,14 +51,12 @@
     "dist/"
   ],
   "scripts": {
-    "build:clean": "rimraf ./{dist,temp}",
-    "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
-    "build:definitions": "tsc -b",
-    "build:types": "node ../../scripts/build-types.mjs && npm run build:types:subpaths",
-    "build:types:subpaths": "cp -r lib/bigint dist/esm/ && cp lib/currencies/index.d.ts dist/esm/currencies/",
-    "build:umd": "rollup --config",
+    "build:clean": "rimraf ./dist",
+    "build": "tsdown",
     "lint": "oxlint .",
     "test": "vitest --config ../../vitest.config.ts --dir src"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "tsdown": "^0.20.1"
+  }
 }

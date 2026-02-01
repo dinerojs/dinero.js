@@ -1,9 +1,7 @@
 {
-  "extends": "../../tsconfig.declaration",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "lib",
-    "rootDir": "src",
-    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+    "rootDir": "src"
   },
   "include": ["src"],
   "exclude": ["**/__tests__/**/*"]

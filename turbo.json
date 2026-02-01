@@ -4,34 +4,15 @@
     "build:clean": {
       "cache": false
     },
-    "build:definitions": {
-      "dependsOn": ["^build:definitions"],
-      "inputs": ["src/**/*.ts", "tsconfig.json"],
-      "outputs": ["lib/**/*.d.ts"]
-    },
-    "build:types": {
-      "dependsOn": ["^build:types", "build:definitions"],
-      "inputs": ["lib/**/*.d.ts", "api-extractor.json"],
-      "outputs": ["etc/**/*", "dist/esm/index.d.ts"]
-    },
-    "build:esm": {
-      "dependsOn": [],
-      "inputs": ["src/**/*.ts"],
-      "outputs": ["dist/esm/**/*.js"]
-    },
-    "build:umd": {
-      "dependsOn": ["build:esm"],
-      "inputs": ["src/**/*.ts"],
-      "outputs": ["dist/umd/**/*.js"]
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*.ts", "tsdown.config.ts", "tsconfig.json"],
+      "outputs": ["dist/**"]
     },
     "test": {
       "dependsOn": [],
       "inputs": ["src/**/*.ts"],
       "outputs": []
-    },
-    "build": {
-      "dependsOn": ["^build", "build:esm", "build:umd", "build:types"],
-      "outputs": ["dist/**", ".next/**"]
     },
     "lint": {
       "inputs": ["**/*.ts", "**/*.js"],
@@ -41,12 +22,8 @@
   "globalDependencies": [
     ".oxlintrc.json",
     ".prettierrc",
-    "api-extractor.json",
-    "babel.config.cjs",
     ".size-limit.json",
     "vitest.config.ts",
-    "tsconfig.json",
-    "tsconfig.declaration.json",
-    "scripts/**/*"
+    "tsconfig.json"
   ]
 }
