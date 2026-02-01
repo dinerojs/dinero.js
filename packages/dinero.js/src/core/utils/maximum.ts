@@ -1,8 +1,8 @@
-import type { Calculator } from '../types';
+import type { DineroCalculator } from '../types';
 
 import { lessThan } from './lessThan';
 
-type MaximumCalculator<TAmount> = Calculator<TAmount>;
+type MaximumCalculator<TAmount> = DineroCalculator<TAmount>;
 
 /**
  * Returns a maximum function.

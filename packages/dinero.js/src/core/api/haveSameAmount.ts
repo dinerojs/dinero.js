@@ -1,4 +1,4 @@
-import type { Calculator, Dinero } from '../types';
+import type { DineroCalculator, Dinero } from '../types';
 import { equal } from '../utils';
 
 import { normalizeScale } from './normalizeScale';
@@ -7,7 +7,7 @@ export type HaveSameAmountParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>,
 ];
 
-export function haveSameAmount<TAmount>(calculator: Calculator<TAmount>) {
+export function haveSameAmount<TAmount>(calculator: DineroCalculator<TAmount>) {
   const normalizeFn = normalizeScale(calculator);
   const equalFn = equal(calculator);
 

@@ -1,30 +1,30 @@
-import { ComparisonOperator } from '../../../../core';
+import { DineroComparisonOperator } from '../../../../core';
 
 import { compare } from '../compare';
 
 describe('compare', () => {
-  describe('ComparisonOperator.LT', () => {
-    it('returns `ComparisonOperator.LT` with positive numbers', () => {
-      expect(compare(1n, 2n)).toBe(ComparisonOperator.LT);
+  describe('DineroComparisonOperator.LT', () => {
+    it('returns `DineroComparisonOperator.LT` with positive numbers', () => {
+      expect(compare(1n, 2n)).toBe(DineroComparisonOperator.LT);
     });
-    it('returns `ComparisonOperator.LT` with negative numbers', () => {
-      expect(compare(-2n, -1n)).toBe(ComparisonOperator.LT);
-    });
-  });
-  describe('ComparisonOperator.GT', () => {
-    it('returns `ComparisonOperator.GT` with positive numbers', () => {
-      expect(compare(2n, 1n)).toBe(ComparisonOperator.GT);
-    });
-    it('returns `ComparisonOperator.GT` with negative numbers', () => {
-      expect(compare(-1n, -2n)).toBe(ComparisonOperator.GT);
+    it('returns `DineroComparisonOperator.LT` with negative numbers', () => {
+      expect(compare(-2n, -1n)).toBe(DineroComparisonOperator.LT);
     });
   });
-  describe('ComparisonOperator.EQ', () => {
-    it('returns `ComparisonOperator.EQ` with positive numbers', () => {
-      expect(compare(2n, 2n)).toBe(ComparisonOperator.EQ);
+  describe('DineroComparisonOperator.GT', () => {
+    it('returns `DineroComparisonOperator.GT` with positive numbers', () => {
+      expect(compare(2n, 1n)).toBe(DineroComparisonOperator.GT);
     });
-    it('returns `ComparisonOperator.EQ` with negative numbers', () => {
-      expect(compare(-2n, -2n)).toBe(ComparisonOperator.EQ);
+    it('returns `DineroComparisonOperator.GT` with negative numbers', () => {
+      expect(compare(-1n, -2n)).toBe(DineroComparisonOperator.GT);
+    });
+  });
+  describe('DineroComparisonOperator.EQ', () => {
+    it('returns `DineroComparisonOperator.EQ` with positive numbers', () => {
+      expect(compare(2n, 2n)).toBe(DineroComparisonOperator.EQ);
+    });
+    it('returns `DineroComparisonOperator.EQ` with negative numbers', () => {
+      expect(compare(-2n, -2n)).toBe(DineroComparisonOperator.EQ);
     });
   });
 });

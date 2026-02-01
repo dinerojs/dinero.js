@@ -1,8 +1,8 @@
-import type { Calculator } from '../types';
+import type { DineroCalculator } from '../types';
 
 import { greaterThan } from './greaterThan';
 
-type MinimumCalculator<TAmount> = Calculator<TAmount>;
+type MinimumCalculator<TAmount> = DineroCalculator<TAmount>;
 
 /**
  * Returns a minimum function.

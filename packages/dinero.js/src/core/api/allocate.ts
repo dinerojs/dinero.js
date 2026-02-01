@@ -1,6 +1,6 @@
 import { INVALID_RATIOS_MESSAGE } from '../checks';
 import { assert } from '../helpers';
-import type { Calculator, Dinero, ScaledAmount } from '../types';
+import type { DineroCalculator, Dinero, DineroScaledAmount } from '../types';
 import {
   distribute,
   equal,
@@ -14,10 +14,10 @@ import { transformScale } from './transformScale';
 
 type UnsafeAllocateParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
-  ratios: ReadonlyArray<ScaledAmount<TAmount>>,
+  ratios: ReadonlyArray<DineroScaledAmount<TAmount>>,
 ];
 
-function unsafeAllocate<TAmount>(calculator: Calculator<TAmount>) {
+function unsafeAllocate<TAmount>(calculator: DineroCalculator<TAmount>) {
   return function allocate(
     ...[dineroObject, ratios]: UnsafeAllocateParams<TAmount>
   ) {
@@ -40,10 +40,10 @@ function unsafeAllocate<TAmount>(calculator: Calculator<TAmount>) {
 
 export type AllocateParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
-  ratios: ReadonlyArray<ScaledAmount<TAmount> | TAmount>,
+  ratios: ReadonlyArray<DineroScaledAmount<TAmount> | TAmount>,
 ];
 
-export function safeAllocate<TAmount>(calculator: Calculator<TAmount>) {
+export function safeAllocate<TAmount>(calculator: DineroCalculator<TAmount>) {
   const allocateFn = unsafeAllocate(calculator);
   const greaterThanOrEqualFn = greaterThanOrEqual(calculator);
   const greaterThanFn = greaterThan(calculator);

@@ -1,7 +1,7 @@
-import { ComparisonOperator } from '../types';
-import type { Calculator } from '../types';
+import { DineroComparisonOperator } from '../types';
+import type { DineroCalculator } from '../types';
 
-type LessThanCalculator<TAmount> = Calculator<TAmount>;
+type LessThanCalculator<TAmount> = DineroCalculator<TAmount>;
 
 /**
  * Returns a lessThan function.
@@ -12,6 +12,8 @@ type LessThanCalculator<TAmount> = Calculator<TAmount>;
  */
 export function lessThan<TAmount>(calculator: LessThanCalculator<TAmount>) {
   return (subject: TAmount, comparator: TAmount) => {
-    return calculator.compare(subject, comparator) === ComparisonOperator.LT;
+    return (
+      calculator.compare(subject, comparator) === DineroComparisonOperator.LT
+    );
   };
 }

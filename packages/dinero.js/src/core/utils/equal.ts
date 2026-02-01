@@ -1,7 +1,7 @@
-import { ComparisonOperator } from '../types';
-import type { Calculator } from '../types';
+import { DineroComparisonOperator } from '../types';
+import type { DineroCalculator } from '../types';
 
-type EqualCalculator<TAmount> = Calculator<TAmount>;
+type EqualCalculator<TAmount> = DineroCalculator<TAmount>;
 
 /**
  * Returns an equal function.
@@ -12,6 +12,8 @@ type EqualCalculator<TAmount> = Calculator<TAmount>;
  */
 export function equal<TAmount>(calculator: EqualCalculator<TAmount>) {
   return (subject: TAmount, comparator: TAmount) => {
-    return calculator.compare(subject, comparator) === ComparisonOperator.EQ;
+    return (
+      calculator.compare(subject, comparator) === DineroComparisonOperator.EQ
+    );
   };
 }

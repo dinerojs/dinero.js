@@ -1,4 +1,4 @@
-import type { DivideOperation } from '..';
+import type { DineroDivideOperation } from '..';
 import { sign, isHalf, absolute } from '../utils';
 
 import { halfUp, up } from '.';
@@ -13,7 +13,7 @@ import { halfUp, up } from '.';
  *
  * @returns The rounded amount.
  */
-export const halfAwayFromZero: DivideOperation = (
+export const halfAwayFromZero: DineroDivideOperation = (
   amount,
   factor,
   calculator

@@ -1,6 +1,6 @@
-import type { Calculator } from '../types';
+import type { DineroCalculator } from '../types';
 
-type ComparisonCalculator<TAmount> = Calculator<TAmount>;
+type ComparisonCalculator<TAmount> = DineroCalculator<TAmount>;
 
 /**
  * Returns a compare function.

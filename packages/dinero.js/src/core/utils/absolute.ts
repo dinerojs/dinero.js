@@ -1,9 +1,9 @@
-import type { Calculator } from '../types';
+import type { DineroCalculator } from '../types';
 
 import { equal } from './equal';
 import { lessThan } from './lessThan';
 
-export function absolute<TAmount>(calculator: Calculator<TAmount>) {
+export function absolute<TAmount>(calculator: DineroCalculator<TAmount>) {
   const equalFn = equal(calculator);
   const lessThanFn = lessThan(calculator);
   const zero = calculator.zero();

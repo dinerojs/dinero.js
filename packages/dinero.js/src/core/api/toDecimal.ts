@@ -1,16 +1,23 @@
 import { NON_DECIMAL_CURRENCY_MESSAGE } from '../checks';
 import { assert } from '../helpers';
-import type { Calculator, Dinero, Formatter, Transformer } from '../types';
+import type {
+  DineroCalculator,
+  Dinero,
+  DineroFormatter,
+  DineroTransformer,
+} from '../types';
 import { absolute, computeBase, equal, isArray, lessThan } from '../utils';
 
 import { toUnits } from './toUnits';
 
 export type ToDecimalParams<TAmount, TOutput> = readonly [
   dineroObject: Dinero<TAmount>,
-  transformer?: Transformer<TAmount, TOutput, string>,
+  transformer?: DineroTransformer<TAmount, TOutput, string>,
 ];
 
-export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>) {
+export function toDecimal<TAmount, TOutput>(
+  calculator: DineroCalculator<TAmount>
+) {
   const toUnitsFn = toUnits<TAmount, readonly TAmount[]>(calculator);
   const computeBaseFn = computeBase(calculator);
   const equalFn = equal(calculator);
@@ -44,8 +51,8 @@ export function toDecimal<TAmount, TOutput>(calculator: Calculator<TAmount>) {
 }
 
 function getDecimal<TAmount>(
-  calculator: Calculator<TAmount>,
-  formatter: Formatter<TAmount>
+  calculator: DineroCalculator<TAmount>,
+  formatter: DineroFormatter<TAmount>
 ) {
   const absoluteFn = absolute(calculator);
   const equalFn = equal(calculator);

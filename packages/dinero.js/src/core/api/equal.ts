@@ -1,4 +1,4 @@
-import type { Calculator, Dinero } from '../types';
+import type { DineroCalculator, Dinero } from '../types';
 
 import { haveSameAmount } from './haveSameAmount';
 import { haveSameCurrency } from './haveSameCurrency';
@@ -8,7 +8,7 @@ export type EqualParams<TAmount> = readonly [
   comparator: Dinero<TAmount>,
 ];
 
-export function equal<TAmount>(calculator: Calculator<TAmount>) {
+export function equal<TAmount>(calculator: DineroCalculator<TAmount>) {
   return function _equal(...[dineroObject, comparator]: EqualParams<TAmount>) {
     return (
       haveSameAmount(calculator)([dineroObject, comparator]) &&

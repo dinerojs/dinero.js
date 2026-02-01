@@ -1,8 +1,8 @@
-import type { Calculator } from '../types';
+import type { DineroCalculator } from '../types';
 
 import { isArray } from './isArray';
 
-export function computeBase<TAmount>(calculator: Calculator<TAmount>) {
+export function computeBase<TAmount>(calculator: DineroCalculator<TAmount>) {
   return (base: TAmount | readonly TAmount[]) => {
     if (isArray(base)) {
       return base.reduce((acc, curr) => calculator.multiply(acc, curr));

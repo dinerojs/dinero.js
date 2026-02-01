@@ -1,9 +1,9 @@
-import type { ScaledAmount } from '../types';
+import type { DineroScaledAmount } from '../types';
 
 import { isScaledAmount } from './isScaledAmount';
 
 export function getAmountAndScale<TAmount>(
-  value: ScaledAmount<TAmount> | TAmount,
+  value: DineroScaledAmount<TAmount> | TAmount,
   zero: TAmount
 ) {
   if (isScaledAmount(value)) {

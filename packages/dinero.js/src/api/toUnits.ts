@@ -1,5 +1,5 @@
 import { toUnits as coreToUnits } from '../core';
-import type { ToUnitsParams, Dinero, Transformer } from '../core';
+import type { ToUnitsParams, Dinero, DineroTransformer } from '../core';
 
 export function toUnits<TAmount>(
   dineroObject: Dinero<TAmount>
@@ -7,7 +7,7 @@ export function toUnits<TAmount>(
 
 export function toUnits<TAmount, TOutput>(
   dineroObject: Dinero<TAmount>,
-  transformer: Transformer<TAmount, TOutput, readonly TAmount[]>
+  transformer: DineroTransformer<TAmount, TOutput, readonly TAmount[]>
 ): TOutput;
 
 /**

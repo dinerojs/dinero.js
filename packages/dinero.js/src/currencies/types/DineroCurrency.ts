@@ -1,4 +1,4 @@
-export type Currency<TAmount> = {
+export type DineroCurrency<TAmount> = {
   /**
    * The unique code of the currency.
    */

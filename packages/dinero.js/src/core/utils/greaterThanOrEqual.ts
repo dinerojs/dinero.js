@@ -1,9 +1,9 @@
-import type { Calculator } from '../types';
+import type { DineroCalculator } from '../types';
 
 import { equal } from './equal';
 import { greaterThan } from './greaterThan';
 
-type GreaterThanOrEqualCalculator<TAmount> = Calculator<TAmount>;
+type GreaterThanOrEqualCalculator<TAmount> = DineroCalculator<TAmount>;
 
 /**
  * Returns a greaterThanOrEqual function.

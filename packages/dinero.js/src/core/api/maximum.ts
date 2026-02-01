@@ -1,6 +1,6 @@
 import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
 import { assert } from '../helpers';
-import type { Calculator, Dinero } from '../types';
+import type { DineroCalculator, Dinero } from '../types';
 import { maximum as max } from '../utils';
 
 import { haveSameCurrency } from './haveSameCurrency';
@@ -10,7 +10,7 @@ export type MaximumParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>,
 ];
 
-function unsafeMaximum<TAmount>(calculator: Calculator<TAmount>) {
+function unsafeMaximum<TAmount>(calculator: DineroCalculator<TAmount>) {
   const maxFn = max(calculator);
 
   return function maximum(...[dineroObjects]: MaximumParams<TAmount>) {
@@ -33,7 +33,7 @@ function unsafeMaximum<TAmount>(calculator: Calculator<TAmount>) {
   };
 }
 
-export function safeMaximum<TAmount>(calculator: Calculator<TAmount>) {
+export function safeMaximum<TAmount>(calculator: DineroCalculator<TAmount>) {
   const normalizeFn = normalizeScale(calculator);
   const maxFn = unsafeMaximum(calculator);
 

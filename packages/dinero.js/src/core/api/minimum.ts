@@ -1,6 +1,6 @@
 import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
 import { assert } from '../helpers';
-import type { Calculator, Dinero } from '../types';
+import type { DineroCalculator, Dinero } from '../types';
 import { minimum as min } from '../utils';
 
 import { haveSameCurrency } from './haveSameCurrency';
@@ -10,7 +10,7 @@ export type MinimumParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>,
 ];
 
-function unsafeMinimum<TAmount>(calculator: Calculator<TAmount>) {
+function unsafeMinimum<TAmount>(calculator: DineroCalculator<TAmount>) {
   const minFn = min(calculator);
 
   return function minimum(...[dineroObjects]: MinimumParams<TAmount>) {
@@ -33,7 +33,7 @@ function unsafeMinimum<TAmount>(calculator: Calculator<TAmount>) {
   };
 }
 
-export function safeMinimum<TAmount>(calculator: Calculator<TAmount>) {
+export function safeMinimum<TAmount>(calculator: DineroCalculator<TAmount>) {
   const normalizeFn = normalizeScale(calculator);
   const minFn = unsafeMinimum(calculator);
 

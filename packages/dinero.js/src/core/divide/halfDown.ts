@@ -1,4 +1,4 @@
-import type { DivideOperation } from '..';
+import type { DineroDivideOperation } from '..';
 import { isHalf } from '../utils';
 
 import { down, halfUp } from '.';
@@ -18,7 +18,7 @@ import { down, halfUp } from '.';
  *
  * @returns The rounded amount.
  */
-export const halfDown: DivideOperation = (amount, factor, calculator) => {
+export const halfDown: DineroDivideOperation = (amount, factor, calculator) => {
   const isHalfFn = isHalf(calculator);
 
   if (isHalfFn(amount, factor)) {

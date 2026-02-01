@@ -1,4 +1,4 @@
-import type { BinaryOperation } from '../../../core';
+import type { DineroBinaryOperation } from '../../../core';
 
 /**
  * Returns an bigint to the power of an exponent.
@@ -8,6 +8,6 @@ import type { BinaryOperation } from '../../../core';
  *
  * @returns The base to the power of the exponent.
  */
-export const power: BinaryOperation<bigint> = (base, exponent) => {
+export const power: DineroBinaryOperation<bigint> = (base, exponent) => {
   return base ** exponent;
 };

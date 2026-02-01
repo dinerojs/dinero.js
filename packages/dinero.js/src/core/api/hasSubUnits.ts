@@ -1,11 +1,11 @@
-import type { Calculator, Dinero } from '../types';
+import type { DineroCalculator, Dinero } from '../types';
 import { computeBase, equal } from '../utils';
 
 export type HasSubUnitsParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
 ];
 
-export function hasSubUnits<TAmount>(calculator: Calculator<TAmount>) {
+export function hasSubUnits<TAmount>(calculator: DineroCalculator<TAmount>) {
   const equalFn = equal(calculator);
   const computeBaseFn = computeBase(calculator);
 

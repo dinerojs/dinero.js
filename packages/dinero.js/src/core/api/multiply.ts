@@ -1,14 +1,14 @@
-import type { Calculator, Dinero, ScaledAmount } from '../types';
+import type { DineroCalculator, Dinero, DineroScaledAmount } from '../types';
 import { getAmountAndScale } from '../utils';
 
 import { transformScale } from './transformScale';
 
 export type MultiplyParams<TAmount> = readonly [
   multiplicand: Dinero<TAmount>,
-  multiplier: ScaledAmount<TAmount> | TAmount,
+  multiplier: DineroScaledAmount<TAmount> | TAmount,
 ];
 
-export function multiply<TAmount>(calculator: Calculator<TAmount>) {
+export function multiply<TAmount>(calculator: DineroCalculator<TAmount>) {
   const convertScaleFn = transformScale(calculator);
   const zero = calculator.zero();
 

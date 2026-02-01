@@ -1,4 +1,4 @@
-import type { UnaryOperation } from '../../../core';
+import type { DineroUnaryOperation } from '../../../core';
 
 /**
  * Returns an decremented number.
@@ -7,6 +7,6 @@ import type { UnaryOperation } from '../../../core';
  *
  * @returns The decremented number.
  */
-export const decrement: UnaryOperation<number> = (value) => {
+export const decrement: DineroUnaryOperation<number> = (value) => {
   return value - 1;
 };

@@ -1,6 +1,6 @@
 import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
 import { assert } from '../helpers';
-import type { Calculator, Dinero } from '../types';
+import type { DineroCalculator, Dinero } from '../types';
 
 import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
@@ -10,7 +10,7 @@ export type AddParams<TAmount> = readonly [
   addend: Dinero<TAmount>,
 ];
 
-function unsafeAdd<TAmount>(calculator: Calculator<TAmount>) {
+function unsafeAdd<TAmount>(calculator: DineroCalculator<TAmount>) {
   return function add(...[augend, addend]: AddParams<TAmount>) {
     const { amount: augendAmount, currency, scale } = augend.toJSON();
     const { amount: addendAmount } = addend.toJSON();
@@ -25,7 +25,7 @@ function unsafeAdd<TAmount>(calculator: Calculator<TAmount>) {
   };
 }
 
-export function safeAdd<TAmount>(calculator: Calculator<TAmount>) {
+export function safeAdd<TAmount>(calculator: DineroCalculator<TAmount>) {
   const normalizeFn = normalizeScale(calculator);
   const addFn = unsafeAdd(calculator);
 

@@ -1,7 +1,7 @@
-import { ComparisonOperator } from '../types';
-import type { Calculator } from '../types';
+import { DineroComparisonOperator } from '../types';
+import type { DineroCalculator } from '../types';
 
-type GreaterThanCalculator<TAmount> = Calculator<TAmount>;
+type GreaterThanCalculator<TAmount> = DineroCalculator<TAmount>;
 
 /**
  * Returns a greaterThan function.
@@ -14,6 +14,8 @@ export function greaterThan<TAmount>(
   calculator: GreaterThanCalculator<TAmount>
 ) {
   return (subject: TAmount, comparator: TAmount) => {
-    return calculator.compare(subject, comparator) === ComparisonOperator.GT;
+    return (
+      calculator.compare(subject, comparator) === DineroComparisonOperator.GT
+    );
   };
 }

@@ -1,8 +1,10 @@
 import Big from 'big.js';
 
-import type { Currency } from 'dinero.js';
+import type { DineroCurrency } from 'dinero.js';
 
-export function castToBigjsCurrency(currency: Currency<number>): Currency<Big> {
+export function castToBigjsCurrency(
+  currency: DineroCurrency<number>
+): DineroCurrency<Big> {
   return {
     ...currency,
     base: Array.isArray(currency.base)

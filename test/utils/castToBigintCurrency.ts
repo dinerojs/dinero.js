@@ -1,8 +1,8 @@
-import type { Currency } from 'dinero.js';
+import type { DineroCurrency } from 'dinero.js';
 
 export function castToBigintCurrency(
-  currency: Currency<number>
-): Currency<bigint> {
+  currency: DineroCurrency<number>
+): DineroCurrency<bigint> {
   return {
     ...currency,
     base: Array.isArray(currency.base)

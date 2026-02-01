@@ -1,6 +1,6 @@
 import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
 import { assert } from '../helpers';
-import type { Calculator, Dinero } from '../types';
+import type { DineroCalculator, Dinero } from '../types';
 import { greaterThan as gt } from '../utils';
 
 import { haveSameCurrency } from './haveSameCurrency';
@@ -11,7 +11,7 @@ export type GreaterThanParams<TAmount> = readonly [
   comparator: Dinero<TAmount>,
 ];
 
-function unsafeGreaterThan<TAmount>(calculator: Calculator<TAmount>) {
+function unsafeGreaterThan<TAmount>(calculator: DineroCalculator<TAmount>) {
   const greaterThanFn = gt(calculator);
 
   return function greaterThan(
@@ -29,7 +29,9 @@ function unsafeGreaterThan<TAmount>(calculator: Calculator<TAmount>) {
   };
 }
 
-export function safeGreaterThan<TAmount>(calculator: Calculator<TAmount>) {
+export function safeGreaterThan<TAmount>(
+  calculator: DineroCalculator<TAmount>
+) {
   const normalizeFn = normalizeScale(calculator);
   const greaterThanFn = unsafeGreaterThan(calculator);
 

@@ -1,4 +1,4 @@
-import type { UnaryOperation } from '../../../core';
+import type { DineroUnaryOperation } from '../../../core';
 
 /**
  * Returns an incremented bigint.
@@ -7,6 +7,6 @@ import type { UnaryOperation } from '../../../core';
  *
  * @returns The incremented bigint.
  */
-export const increment: UnaryOperation<bigint> = (value) => {
+export const increment: DineroUnaryOperation<bigint> = (value) => {
   return value + 1n;
 };

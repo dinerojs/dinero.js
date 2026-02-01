@@ -1,8 +1,8 @@
-import type { Calculator } from '../types';
+import type { DineroCalculator } from '../types';
 
 import { equal } from './equal';
 
-type CountTrailingZerosCalculator<TAmount> = Calculator<TAmount>;
+type CountTrailingZerosCalculator<TAmount> = DineroCalculator<TAmount>;
 
 export function countTrailingZeros<TAmount>(
   calculator: CountTrailingZerosCalculator<TAmount>

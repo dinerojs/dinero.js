@@ -2,16 +2,16 @@ export * from './api';
 export * from './currencies';
 export * from './dinero';
 export type {
-  Calculator,
-  ComparisonOperator,
+  DineroCalculator,
+  DineroComparisonOperator,
   Dinero,
   DineroFactory,
   DineroOptions,
   DineroSnapshot,
-  DivideOperation,
-  Formatter,
-  Rates,
-  Transformer,
+  DineroDivideOperation,
+  DineroFormatter,
+  DineroRates,
+  DineroTransformer,
 } from './core';
 export {
   createDinero,

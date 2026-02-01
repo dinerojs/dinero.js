@@ -1,11 +1,11 @@
-import type { Calculator } from '../types';
+import type { DineroCalculator } from '../types';
 
 import { equal } from './equal';
 import { greaterThan } from './greaterThan';
 import { greaterThanOrEqual } from './greaterThanOrEqual';
 import { lessThan } from './lessThan';
 
-type DistributeCalculator<TAmount> = Calculator<TAmount>;
+type DistributeCalculator<TAmount> = DineroCalculator<TAmount>;
 
 /**
  * Returns a distribute function.

@@ -1,11 +1,11 @@
 import { toDecimal as coreToDecimal } from '../core';
-import type { ToDecimalParams, Dinero, Transformer } from '../core';
+import type { ToDecimalParams, Dinero, DineroTransformer } from '../core';
 
 export function toDecimal<TAmount>(dineroObject: Dinero<TAmount>): string;
 
 export function toDecimal<TAmount, TOutput>(
   dineroObject: Dinero<TAmount>,
-  transformer: Transformer<TAmount, TOutput, string>
+  transformer: DineroTransformer<TAmount, TOutput, string>
 ): TOutput;
 
 /**

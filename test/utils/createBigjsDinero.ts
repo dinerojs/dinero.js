@@ -1,12 +1,12 @@
 import Big from 'big.js';
 
 import { createDinero } from 'dinero.js';
-import type { DineroOptions, ComparisonOperator } from 'dinero.js';
+import type { DineroComparisonOperator, DineroOptions } from 'dinero.js';
 
 const dinero = createDinero({
   calculator: {
     add: (a, b) => a.plus(b),
-    compare: (a, b) => a.cmp(b) as unknown as ComparisonOperator,
+    compare: (a, b) => a.cmp(b) as unknown as DineroComparisonOperator,
     decrement: (v) => v.minus(new Big(1)),
     increment: (v) => v.plus(new Big(1)),
     integerDivide: (a, b) => a.div(b).round(0, Big.roundDown),

@@ -1,9 +1,9 @@
-import type { Calculator } from '../types';
+import type { DineroCalculator } from '../types';
 
 import { equal } from './equal';
 import { lessThan } from './lessThan';
 
-type LessThanOrEqualCalculator<TAmount> = Calculator<TAmount>;
+type LessThanOrEqualCalculator<TAmount> = DineroCalculator<TAmount>;
 
 /**
  * Returns a lessThanOrEqual function.

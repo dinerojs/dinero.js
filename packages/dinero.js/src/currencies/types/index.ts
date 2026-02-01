@@ -1,1 +1,1 @@
-export * from './Currency';
+export * from './DineroCurrency';

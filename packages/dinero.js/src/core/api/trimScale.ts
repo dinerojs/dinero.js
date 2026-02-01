@@ -1,11 +1,11 @@
-import type { Calculator, Dinero } from '../types';
+import type { DineroCalculator, Dinero } from '../types';
 import { computeBase, countTrailingZeros, equal, maximum } from '../utils';
 
 import { transformScale } from './transformScale';
 
 export type TrimScaleParams<TAmount> = readonly [dineroObject: Dinero<TAmount>];
 
-export function trimScale<TAmount>(calculator: Calculator<TAmount>) {
+export function trimScale<TAmount>(calculator: DineroCalculator<TAmount>) {
   const countTrailingZerosFn = countTrailingZeros(calculator);
   const equalFn = equal(calculator);
   const maximumFn = maximum(calculator);

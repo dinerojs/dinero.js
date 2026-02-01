@@ -1,6 +1,6 @@
 import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
 import { assert } from '../helpers';
-import type { Calculator, Dinero } from '../types';
+import type { DineroCalculator, Dinero } from '../types';
 import { lessThanOrEqual as lte } from '../utils';
 
 import { haveSameCurrency } from './haveSameCurrency';
@@ -11,7 +11,7 @@ export type LessThanOrEqualParams<TAmount> = readonly [
   comparator: Dinero<TAmount>,
 ];
 
-function unsafeLessThanOrEqual<TAmount>(calculator: Calculator<TAmount>) {
+function unsafeLessThanOrEqual<TAmount>(calculator: DineroCalculator<TAmount>) {
   const lessThanOrEqualFn = lte(calculator);
 
   return function lessThanOrEqual(
@@ -29,7 +29,9 @@ function unsafeLessThanOrEqual<TAmount>(calculator: Calculator<TAmount>) {
   };
 }
 
-export function safeLessThanOrEqual<TAmount>(calculator: Calculator<TAmount>) {
+export function safeLessThanOrEqual<TAmount>(
+  calculator: DineroCalculator<TAmount>
+) {
   const normalizeFn = normalizeScale(calculator);
   const lessThanOrEqualFn = unsafeLessThanOrEqual(calculator);
 

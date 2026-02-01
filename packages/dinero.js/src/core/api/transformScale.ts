@@ -1,14 +1,14 @@
 import { down } from '../divide';
-import type { Calculator, Dinero, DivideOperation } from '../types';
+import type { DineroCalculator, Dinero, DineroDivideOperation } from '../types';
 import { computeBase, greaterThan } from '../utils';
 
 export type TransformScaleParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
   newScale: TAmount,
-  divide?: DivideOperation,
+  divide?: DineroDivideOperation,
 ];
 
-export function transformScale<TAmount>(calculator: Calculator<TAmount>) {
+export function transformScale<TAmount>(calculator: DineroCalculator<TAmount>) {
   const greaterThanFn = greaterThan(calculator);
   const computeBaseFn = computeBase(calculator);
 

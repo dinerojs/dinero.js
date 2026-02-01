@@ -1,5 +1,5 @@
-import { ComparisonOperator } from '../../../core';
-import type { BinaryOperation } from '../../../core';
+import { DineroComparisonOperator } from '../../../core';
+import type { DineroBinaryOperation } from '../../../core';
 
 /**
  * Compare two numbers.
@@ -9,12 +9,15 @@ import type { BinaryOperation } from '../../../core';
  *
  * @returns Whether the two numbers are equal, or whether the first one is greater or less than the other.
  */
-export const compare: BinaryOperation<number, ComparisonOperator> = (a, b) => {
+export const compare: DineroBinaryOperation<
+  number,
+  DineroComparisonOperator
+> = (a, b) => {
   if (a < b) {
-    return ComparisonOperator.LT;
+    return DineroComparisonOperator.LT;
   }
   if (a > b) {
-    return ComparisonOperator.GT;
+    return DineroComparisonOperator.GT;
   }
-  return ComparisonOperator.EQ;
+  return DineroComparisonOperator.EQ;
 };

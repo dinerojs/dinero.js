@@ -1,8 +1,8 @@
-import type { Calculator } from '../types';
+import type { DineroCalculator } from '../types';
 
 import { equal, absolute } from '.';
 
-export function isHalf<TAmount>(calculator: Calculator<TAmount>) {
+export function isHalf<TAmount>(calculator: DineroCalculator<TAmount>) {
   const equalFn = equal(calculator);
   const absoluteFn = absolute(calculator);
 

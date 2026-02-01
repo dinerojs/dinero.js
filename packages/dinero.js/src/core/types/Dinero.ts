@@ -1,8 +1,13 @@
-import type { Calculator, DineroOptions, DineroSnapshot, Formatter } from '.';
+import type {
+  DineroCalculator,
+  DineroFormatter,
+  DineroOptions,
+  DineroSnapshot,
+} from '.';
 
 export type Dinero<TAmount> = {
-  readonly calculator: Calculator<TAmount>;
-  readonly formatter: Formatter<TAmount>;
+  readonly calculator: DineroCalculator<TAmount>;
+  readonly formatter: DineroFormatter<TAmount>;
   readonly create: (options: DineroOptions<TAmount>) => Dinero<TAmount>;
   readonly toJSON: () => DineroSnapshot<TAmount>;
 };

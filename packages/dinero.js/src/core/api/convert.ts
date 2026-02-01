@@ -1,17 +1,17 @@
-import type { Currency } from '../../currencies';
+import type { DineroCurrency } from '../../currencies';
 
-import type { Calculator, Dinero, Rates } from '../types';
+import type { DineroCalculator, Dinero, DineroRates } from '../types';
 import { getAmountAndScale, maximum } from '../utils';
 
 import { transformScale } from './transformScale';
 
 export type ConvertParams<TAmount> = readonly [
   dineroObject: Dinero<TAmount>,
-  newCurrency: Currency<TAmount>,
-  rates: Rates<TAmount>,
+  newCurrency: DineroCurrency<TAmount>,
+  rates: DineroRates<TAmount>,
 ];
 
-export function convert<TAmount>(calculator: Calculator<TAmount>) {
+export function convert<TAmount>(calculator: DineroCalculator<TAmount>) {
   const convertScaleFn = transformScale(calculator);
   const maximumFn = maximum(calculator);
   const zero = calculator.zero();

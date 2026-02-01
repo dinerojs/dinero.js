@@ -1,4 +1,4 @@
-import type { BinaryOperation } from '../../../core';
+import type { DineroBinaryOperation } from '../../../core';
 
 /**
  * Returns the product of two numbers.
@@ -8,6 +8,9 @@ import type { BinaryOperation } from '../../../core';
  *
  * @returns The product of the two numbers.
  */
-export const multiply: BinaryOperation<number> = (multiplicand, multiplier) => {
+export const multiply: DineroBinaryOperation<number> = (
+  multiplicand,
+  multiplier
+) => {
   return multiplicand * multiplier;
 };

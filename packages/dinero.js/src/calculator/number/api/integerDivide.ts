@@ -1,4 +1,4 @@
-import type { BinaryOperation } from '../../../core';
+import type { DineroBinaryOperation } from '../../../core';
 
 /**
  * Returns the quotient of two numbers with no fractional part.
@@ -8,6 +8,9 @@ import type { BinaryOperation } from '../../../core';
  *
  * @returns The quotient of the two numbers.
  */
-export const integerDivide: BinaryOperation<number> = (dividend, divisor) => {
+export const integerDivide: DineroBinaryOperation<number> = (
+  dividend,
+  divisor
+) => {
   return Math.trunc(dividend / divisor);
 };

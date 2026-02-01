@@ -1,4 +1,4 @@
-import type { Calculator, Dinero } from '../types';
+import type { DineroCalculator, Dinero } from '../types';
 import { equal, maximum } from '../utils';
 
 import { transformScale } from './transformScale';
@@ -7,7 +7,7 @@ export type NormalizeScaleParams<TAmount> = readonly [
   dineroObjects: ReadonlyArray<Dinero<TAmount>>,
 ];
 
-export function normalizeScale<TAmount>(calculator: Calculator<TAmount>) {
+export function normalizeScale<TAmount>(calculator: DineroCalculator<TAmount>) {
   const maximumFn = maximum(calculator);
   const convertScaleFn = transformScale(calculator);
   const equalFn = equal(calculator);

@@ -1,4 +1,4 @@
-import type { DivideOperation } from '..';
+import type { DineroDivideOperation } from '..';
 import { equal, greaterThan } from '../utils';
 
 /**
@@ -12,7 +12,7 @@ import { equal, greaterThan } from '../utils';
  *
  * @returns The rounded amount.
  */
-export const up: DivideOperation = (amount, factor, calculator) => {
+export const up: DineroDivideOperation = (amount, factor, calculator) => {
   const greaterThanFn = greaterThan(calculator);
   const equalFn = equal(calculator);
 

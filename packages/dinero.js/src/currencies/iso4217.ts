@@ -1,18 +1,18 @@
 /**
  * ISO 4217 currency definitions.
  *
- * These track the latest ISO 4217 standard. Currency properties may change
+ * These track the latest ISO 4217 standard. DineroCurrency properties may change
  * when you upgrade Dinero.js. If you need stability, pin your package version.
  *
  * @see https://www.six-group.com/en/products-services/financial-information/data-standards.html
  */
 
-import type { Currency } from './types';
+import type { DineroCurrency } from './types';
 
 /**
  * United Arab Emirates dirham.
  */
-export const AED: Currency<number> = {
+export const AED: DineroCurrency<number> = {
   code: 'AED',
   base: 10,
   exponent: 2,
@@ -21,7 +21,7 @@ export const AED: Currency<number> = {
 /**
  * Afghan afghani.
  */
-export const AFN: Currency<number> = {
+export const AFN: DineroCurrency<number> = {
   code: 'AFN',
   base: 10,
   exponent: 2,
@@ -30,7 +30,7 @@ export const AFN: Currency<number> = {
 /**
  * Albanian lek.
  */
-export const ALL: Currency<number> = {
+export const ALL: DineroCurrency<number> = {
   code: 'ALL',
   base: 10,
   exponent: 2,
@@ -39,7 +39,7 @@ export const ALL: Currency<number> = {
 /**
  * Armenian dram.
  */
-export const AMD: Currency<number> = {
+export const AMD: DineroCurrency<number> = {
   code: 'AMD',
   base: 10,
   exponent: 2,
@@ -48,7 +48,7 @@ export const AMD: Currency<number> = {
 /**
  * Angolan kwanza.
  */
-export const AOA: Currency<number> = {
+export const AOA: DineroCurrency<number> = {
   code: 'AOA',
   base: 10,
   exponent: 2,
@@ -57,7 +57,7 @@ export const AOA: Currency<number> = {
 /**
  * Argentine peso.
  */
-export const ARS: Currency<number> = {
+export const ARS: DineroCurrency<number> = {
   code: 'ARS',
   base: 10,
   exponent: 2,
@@ -66,7 +66,7 @@ export const ARS: Currency<number> = {
 /**
  * Australian dollar.
  */
-export const AUD: Currency<number> = {
+export const AUD: DineroCurrency<number> = {
   code: 'AUD',
   base: 10,
   exponent: 2,
@@ -75,7 +75,7 @@ export const AUD: Currency<number> = {
 /**
  * Aruban florin.
  */
-export const AWG: Currency<number> = {
+export const AWG: DineroCurrency<number> = {
   code: 'AWG',
   base: 10,
   exponent: 2,
@@ -84,7 +84,7 @@ export const AWG: Currency<number> = {
 /**
  * Azerbaijani manat.
  */
-export const AZN: Currency<number> = {
+export const AZN: DineroCurrency<number> = {
   code: 'AZN',
   base: 10,
   exponent: 2,
@@ -93,7 +93,7 @@ export const AZN: Currency<number> = {
 /**
  * Bosnia and Herzegovina convertible mark.
  */
-export const BAM: Currency<number> = {
+export const BAM: DineroCurrency<number> = {
   code: 'BAM',
   base: 10,
   exponent: 2,
@@ -102,7 +102,7 @@ export const BAM: Currency<number> = {
 /**
  * Barbados dollar.
  */
-export const BBD: Currency<number> = {
+export const BBD: DineroCurrency<number> = {
   code: 'BBD',
   base: 10,
   exponent: 2,
@@ -111,7 +111,7 @@ export const BBD: Currency<number> = {
 /**
  * Bangladeshi taka.
  */
-export const BDT: Currency<number> = {
+export const BDT: DineroCurrency<number> = {
   code: 'BDT',
   base: 10,
   exponent: 2,
@@ -120,7 +120,7 @@ export const BDT: Currency<number> = {
 /**
  * Bulgarian lev.
  */
-export const BGN: Currency<number> = {
+export const BGN: DineroCurrency<number> = {
   code: 'BGN',
   base: 10,
   exponent: 2,
@@ -129,7 +129,7 @@ export const BGN: Currency<number> = {
 /**
  * Bahraini dinar.
  */
-export const BHD: Currency<number> = {
+export const BHD: DineroCurrency<number> = {
   code: 'BHD',
   base: 10,
   exponent: 3,
@@ -138,7 +138,7 @@ export const BHD: Currency<number> = {
 /**
  * Burundian franc.
  */
-export const BIF: Currency<number> = {
+export const BIF: DineroCurrency<number> = {
   code: 'BIF',
   base: 10,
   exponent: 0,
@@ -147,7 +147,7 @@ export const BIF: Currency<number> = {
 /**
  * Bermudian dollar.
  */
-export const BMD: Currency<number> = {
+export const BMD: DineroCurrency<number> = {
   code: 'BMD',
   base: 10,
   exponent: 2,
@@ -156,7 +156,7 @@ export const BMD: Currency<number> = {
 /**
  * Brunei dollar.
  */
-export const BND: Currency<number> = {
+export const BND: DineroCurrency<number> = {
   code: 'BND',
   base: 10,
   exponent: 2,
@@ -165,7 +165,7 @@ export const BND: Currency<number> = {
 /**
  * Bolivian boliviano.
  */
-export const BOB: Currency<number> = {
+export const BOB: DineroCurrency<number> = {
   code: 'BOB',
   base: 10,
   exponent: 2,
@@ -174,7 +174,7 @@ export const BOB: Currency<number> = {
 /**
  * Bolivian Mvdol.
  */
-export const BOV: Currency<number> = {
+export const BOV: DineroCurrency<number> = {
   code: 'BOV',
   base: 10,
   exponent: 2,
@@ -183,7 +183,7 @@ export const BOV: Currency<number> = {
 /**
  * Brazilian real.
  */
-export const BRL: Currency<number> = {
+export const BRL: DineroCurrency<number> = {
   code: 'BRL',
   base: 10,
   exponent: 2,
@@ -192,7 +192,7 @@ export const BRL: Currency<number> = {
 /**
  * Bahamian dollar.
  */
-export const BSD: Currency<number> = {
+export const BSD: DineroCurrency<number> = {
   code: 'BSD',
   base: 10,
   exponent: 2,
@@ -201,7 +201,7 @@ export const BSD: Currency<number> = {
 /**
  * Bhutanese ngultrum.
  */
-export const BTN: Currency<number> = {
+export const BTN: DineroCurrency<number> = {
   code: 'BTN',
   base: 10,
   exponent: 2,
@@ -210,7 +210,7 @@ export const BTN: Currency<number> = {
 /**
  * Botswana pula.
  */
-export const BWP: Currency<number> = {
+export const BWP: DineroCurrency<number> = {
   code: 'BWP',
   base: 10,
   exponent: 2,
@@ -219,7 +219,7 @@ export const BWP: Currency<number> = {
 /**
  * Belarusian ruble.
  */
-export const BYN: Currency<number> = {
+export const BYN: DineroCurrency<number> = {
   code: 'BYN',
   base: 10,
   exponent: 2,
@@ -228,7 +228,7 @@ export const BYN: Currency<number> = {
 /**
  * Belize dollar.
  */
-export const BZD: Currency<number> = {
+export const BZD: DineroCurrency<number> = {
   code: 'BZD',
   base: 10,
   exponent: 2,
@@ -237,7 +237,7 @@ export const BZD: Currency<number> = {
 /**
  * Canadian dollar.
  */
-export const CAD: Currency<number> = {
+export const CAD: DineroCurrency<number> = {
   code: 'CAD',
   base: 10,
   exponent: 2,
@@ -246,7 +246,7 @@ export const CAD: Currency<number> = {
 /**
  * Congolese franc.
  */
-export const CDF: Currency<number> = {
+export const CDF: DineroCurrency<number> = {
   code: 'CDF',
   base: 10,
   exponent: 2,
@@ -255,7 +255,7 @@ export const CDF: Currency<number> = {
 /**
  * WIR Euro.
  */
-export const CHE: Currency<number> = {
+export const CHE: DineroCurrency<number> = {
   code: 'CHE',
   base: 10,
   exponent: 2,
@@ -264,7 +264,7 @@ export const CHE: Currency<number> = {
 /**
  * Swiss franc.
  */
-export const CHF: Currency<number> = {
+export const CHF: DineroCurrency<number> = {
   code: 'CHF',
   base: 10,
   exponent: 2,
@@ -273,7 +273,7 @@ export const CHF: Currency<number> = {
 /**
  * WIR Franc.
  */
-export const CHW: Currency<number> = {
+export const CHW: DineroCurrency<number> = {
   code: 'CHW',
   base: 10,
   exponent: 2,
@@ -282,7 +282,7 @@ export const CHW: Currency<number> = {
 /**
  * Unidad de Fomento.
  */
-export const CLF: Currency<number> = {
+export const CLF: DineroCurrency<number> = {
   code: 'CLF',
   base: 10,
   exponent: 4,
@@ -291,7 +291,7 @@ export const CLF: Currency<number> = {
 /**
  * Chilean peso.
  */
-export const CLP: Currency<number> = {
+export const CLP: DineroCurrency<number> = {
   code: 'CLP',
   base: 10,
   exponent: 0,
@@ -300,7 +300,7 @@ export const CLP: Currency<number> = {
 /**
  * Renminbi (Chinese) yuan.
  */
-export const CNY: Currency<number> = {
+export const CNY: DineroCurrency<number> = {
   code: 'CNY',
   base: 10,
   exponent: 2,
@@ -309,7 +309,7 @@ export const CNY: Currency<number> = {
 /**
  * Colombian peso.
  */
-export const COP: Currency<number> = {
+export const COP: DineroCurrency<number> = {
   code: 'COP',
   base: 10,
   exponent: 2,
@@ -318,7 +318,7 @@ export const COP: Currency<number> = {
 /**
  * Unidad de Valor Real.
  */
-export const COU: Currency<number> = {
+export const COU: DineroCurrency<number> = {
   code: 'COU',
   base: 10,
   exponent: 2,
@@ -327,7 +327,7 @@ export const COU: Currency<number> = {
 /**
  * Costa Rican colón.
  */
-export const CRC: Currency<number> = {
+export const CRC: DineroCurrency<number> = {
   code: 'CRC',
   base: 10,
   exponent: 2,
@@ -336,7 +336,7 @@ export const CRC: Currency<number> = {
 /**
  * Cuban peso.
  */
-export const CUP: Currency<number> = {
+export const CUP: DineroCurrency<number> = {
   code: 'CUP',
   base: 10,
   exponent: 2,
@@ -345,7 +345,7 @@ export const CUP: Currency<number> = {
 /**
  * Cape Verdean escudo.
  */
-export const CVE: Currency<number> = {
+export const CVE: DineroCurrency<number> = {
   code: 'CVE',
   base: 10,
   exponent: 2,
@@ -354,7 +354,7 @@ export const CVE: Currency<number> = {
 /**
  * Czech koruna.
  */
-export const CZK: Currency<number> = {
+export const CZK: DineroCurrency<number> = {
   code: 'CZK',
   base: 10,
   exponent: 2,
@@ -363,7 +363,7 @@ export const CZK: Currency<number> = {
 /**
  * Djiboutian franc.
  */
-export const DJF: Currency<number> = {
+export const DJF: DineroCurrency<number> = {
   code: 'DJF',
   base: 10,
   exponent: 0,
@@ -372,7 +372,7 @@ export const DJF: Currency<number> = {
 /**
  * Danish krone.
  */
-export const DKK: Currency<number> = {
+export const DKK: DineroCurrency<number> = {
   code: 'DKK',
   base: 10,
   exponent: 2,
@@ -381,7 +381,7 @@ export const DKK: Currency<number> = {
 /**
  * Dominican peso.
  */
-export const DOP: Currency<number> = {
+export const DOP: DineroCurrency<number> = {
   code: 'DOP',
   base: 10,
   exponent: 2,
@@ -390,7 +390,7 @@ export const DOP: Currency<number> = {
 /**
  * Algerian dinar.
  */
-export const DZD: Currency<number> = {
+export const DZD: DineroCurrency<number> = {
   code: 'DZD',
   base: 10,
   exponent: 2,
@@ -399,7 +399,7 @@ export const DZD: Currency<number> = {
 /**
  * Egyptian pound.
  */
-export const EGP: Currency<number> = {
+export const EGP: DineroCurrency<number> = {
   code: 'EGP',
   base: 10,
   exponent: 2,
@@ -408,7 +408,7 @@ export const EGP: Currency<number> = {
 /**
  * Eritrean nakfa.
  */
-export const ERN: Currency<number> = {
+export const ERN: DineroCurrency<number> = {
   code: 'ERN',
   base: 10,
   exponent: 2,
@@ -417,7 +417,7 @@ export const ERN: Currency<number> = {
 /**
  * Ethiopian birr.
  */
-export const ETB: Currency<number> = {
+export const ETB: DineroCurrency<number> = {
   code: 'ETB',
   base: 10,
   exponent: 2,
@@ -426,7 +426,7 @@ export const ETB: Currency<number> = {
 /**
  * Euro.
  */
-export const EUR: Currency<number> = {
+export const EUR: DineroCurrency<number> = {
   code: 'EUR',
   base: 10,
   exponent: 2,
@@ -435,7 +435,7 @@ export const EUR: Currency<number> = {
 /**
  * Fiji dollar.
  */
-export const FJD: Currency<number> = {
+export const FJD: DineroCurrency<number> = {
   code: 'FJD',
   base: 10,
   exponent: 2,
@@ -444,7 +444,7 @@ export const FJD: Currency<number> = {
 /**
  * Falkland Islands pound.
  */
-export const FKP: Currency<number> = {
+export const FKP: DineroCurrency<number> = {
   code: 'FKP',
   base: 10,
   exponent: 2,
@@ -453,7 +453,7 @@ export const FKP: Currency<number> = {
 /**
  * Pound sterling.
  */
-export const GBP: Currency<number> = {
+export const GBP: DineroCurrency<number> = {
   code: 'GBP',
   base: 10,
   exponent: 2,
@@ -462,7 +462,7 @@ export const GBP: Currency<number> = {
 /**
  * Georgian lari.
  */
-export const GEL: Currency<number> = {
+export const GEL: DineroCurrency<number> = {
   code: 'GEL',
   base: 10,
   exponent: 2,
@@ -471,7 +471,7 @@ export const GEL: Currency<number> = {
 /**
  * Ghanaian cedi.
  */
-export const GHS: Currency<number> = {
+export const GHS: DineroCurrency<number> = {
   code: 'GHS',
   base: 10,
   exponent: 2,
@@ -480,7 +480,7 @@ export const GHS: Currency<number> = {
 /**
  * Gibraltar pound.
  */
-export const GIP: Currency<number> = {
+export const GIP: DineroCurrency<number> = {
   code: 'GIP',
   base: 10,
   exponent: 2,
@@ -489,7 +489,7 @@ export const GIP: Currency<number> = {
 /**
  * Gambian dalasi.
  */
-export const GMD: Currency<number> = {
+export const GMD: DineroCurrency<number> = {
   code: 'GMD',
   base: 10,
   exponent: 2,
@@ -498,7 +498,7 @@ export const GMD: Currency<number> = {
 /**
  * Guinean franc.
  */
-export const GNF: Currency<number> = {
+export const GNF: DineroCurrency<number> = {
   code: 'GNF',
   base: 10,
   exponent: 0,
@@ -507,7 +507,7 @@ export const GNF: Currency<number> = {
 /**
  * Guatemalan quetzal.
  */
-export const GTQ: Currency<number> = {
+export const GTQ: DineroCurrency<number> = {
   code: 'GTQ',
   base: 10,
   exponent: 2,
@@ -516,7 +516,7 @@ export const GTQ: Currency<number> = {
 /**
  * Guyanese dollar.
  */
-export const GYD: Currency<number> = {
+export const GYD: DineroCurrency<number> = {
   code: 'GYD',
   base: 10,
   exponent: 2,
@@ -525,7 +525,7 @@ export const GYD: Currency<number> = {
 /**
  * Hong Kong dollar.
  */
-export const HKD: Currency<number> = {
+export const HKD: DineroCurrency<number> = {
   code: 'HKD',
   base: 10,
   exponent: 2,
@@ -534,7 +534,7 @@ export const HKD: Currency<number> = {
 /**
  * Honduran lempira.
  */
-export const HNL: Currency<number> = {
+export const HNL: DineroCurrency<number> = {
   code: 'HNL',
   base: 10,
   exponent: 2,
@@ -543,7 +543,7 @@ export const HNL: Currency<number> = {
 /**
  * Haitian gourde.
  */
-export const HTG: Currency<number> = {
+export const HTG: DineroCurrency<number> = {
   code: 'HTG',
   base: 10,
   exponent: 2,
@@ -552,7 +552,7 @@ export const HTG: Currency<number> = {
 /**
  * Hungarian forint.
  */
-export const HUF: Currency<number> = {
+export const HUF: DineroCurrency<number> = {
   code: 'HUF',
   base: 10,
   exponent: 2,
@@ -561,7 +561,7 @@ export const HUF: Currency<number> = {
 /**
  * Indonesian rupiah.
  */
-export const IDR: Currency<number> = {
+export const IDR: DineroCurrency<number> = {
   code: 'IDR',
   base: 10,
   exponent: 2,
@@ -570,7 +570,7 @@ export const IDR: Currency<number> = {
 /**
  * Israeli new shekel.
  */
-export const ILS: Currency<number> = {
+export const ILS: DineroCurrency<number> = {
   code: 'ILS',
   base: 10,
   exponent: 2,
@@ -579,7 +579,7 @@ export const ILS: Currency<number> = {
 /**
  * Indian rupee.
  */
-export const INR: Currency<number> = {
+export const INR: DineroCurrency<number> = {
   code: 'INR',
   base: 10,
   exponent: 2,
@@ -588,7 +588,7 @@ export const INR: Currency<number> = {
 /**
  * Iraqi dinar.
  */
-export const IQD: Currency<number> = {
+export const IQD: DineroCurrency<number> = {
   code: 'IQD',
   base: 10,
   exponent: 3,
@@ -597,7 +597,7 @@ export const IQD: Currency<number> = {
 /**
  * Iranian rial.
  */
-export const IRR: Currency<number> = {
+export const IRR: DineroCurrency<number> = {
   code: 'IRR',
   base: 10,
   exponent: 2,
@@ -606,7 +606,7 @@ export const IRR: Currency<number> = {
 /**
  * Icelandic króna.
  */
-export const ISK: Currency<number> = {
+export const ISK: DineroCurrency<number> = {
   code: 'ISK',
   base: 10,
   exponent: 0,
@@ -615,7 +615,7 @@ export const ISK: Currency<number> = {
 /**
  * Jamaican dollar.
  */
-export const JMD: Currency<number> = {
+export const JMD: DineroCurrency<number> = {
   code: 'JMD',
   base: 10,
   exponent: 2,
@@ -624,7 +624,7 @@ export const JMD: Currency<number> = {
 /**
  * Jordanian dinar.
  */
-export const JOD: Currency<number> = {
+export const JOD: DineroCurrency<number> = {
   code: 'JOD',
   base: 10,
   exponent: 3,
@@ -633,7 +633,7 @@ export const JOD: Currency<number> = {
 /**
  * Japanese yen.
  */
-export const JPY: Currency<number> = {
+export const JPY: DineroCurrency<number> = {
   code: 'JPY',
   base: 10,
   exponent: 0,
@@ -642,7 +642,7 @@ export const JPY: Currency<number> = {
 /**
  * Kenyan shilling.
  */
-export const KES: Currency<number> = {
+export const KES: DineroCurrency<number> = {
   code: 'KES',
   base: 10,
   exponent: 2,
@@ -651,7 +651,7 @@ export const KES: Currency<number> = {
 /**
  * Kyrgyzstani som.
  */
-export const KGS: Currency<number> = {
+export const KGS: DineroCurrency<number> = {
   code: 'KGS',
   base: 10,
   exponent: 2,
@@ -660,7 +660,7 @@ export const KGS: Currency<number> = {
 /**
  * Cambodian riel.
  */
-export const KHR: Currency<number> = {
+export const KHR: DineroCurrency<number> = {
   code: 'KHR',
   base: 10,
   exponent: 2,
@@ -669,7 +669,7 @@ export const KHR: Currency<number> = {
 /**
  * Comoro franc.
  */
-export const KMF: Currency<number> = {
+export const KMF: DineroCurrency<number> = {
   code: 'KMF',
   base: 10,
   exponent: 0,
@@ -678,7 +678,7 @@ export const KMF: Currency<number> = {
 /**
  * North Korean won.
  */
-export const KPW: Currency<number> = {
+export const KPW: DineroCurrency<number> = {
   code: 'KPW',
   base: 10,
   exponent: 2,
@@ -687,7 +687,7 @@ export const KPW: Currency<number> = {
 /**
  * South Korean won.
  */
-export const KRW: Currency<number> = {
+export const KRW: DineroCurrency<number> = {
   code: 'KRW',
   base: 10,
   exponent: 0,
@@ -696,7 +696,7 @@ export const KRW: Currency<number> = {
 /**
  * Kuwaiti dinar.
  */
-export const KWD: Currency<number> = {
+export const KWD: DineroCurrency<number> = {
   code: 'KWD',
   base: 10,
   exponent: 3,
@@ -705,7 +705,7 @@ export const KWD: Currency<number> = {
 /**
  * Cayman Islands dollar.
  */
-export const KYD: Currency<number> = {
+export const KYD: DineroCurrency<number> = {
   code: 'KYD',
   base: 10,
   exponent: 2,
@@ -714,7 +714,7 @@ export const KYD: Currency<number> = {
 /**
  * Kazakhstani tenge.
  */
-export const KZT: Currency<number> = {
+export const KZT: DineroCurrency<number> = {
   code: 'KZT',
   base: 10,
   exponent: 2,
@@ -723,7 +723,7 @@ export const KZT: Currency<number> = {
 /**
  * Lao kip.
  */
-export const LAK: Currency<number> = {
+export const LAK: DineroCurrency<number> = {
   code: 'LAK',
   base: 10,
   exponent: 2,
@@ -732,7 +732,7 @@ export const LAK: Currency<number> = {
 /**
  * Lebanese pound.
  */
-export const LBP: Currency<number> = {
+export const LBP: DineroCurrency<number> = {
   code: 'LBP',
   base: 10,
   exponent: 2,
@@ -741,7 +741,7 @@ export const LBP: Currency<number> = {
 /**
  * Sri Lankan rupee.
  */
-export const LKR: Currency<number> = {
+export const LKR: DineroCurrency<number> = {
   code: 'LKR',
   base: 10,
   exponent: 2,
@@ -750,7 +750,7 @@ export const LKR: Currency<number> = {
 /**
  * Liberian dollar.
  */
-export const LRD: Currency<number> = {
+export const LRD: DineroCurrency<number> = {
   code: 'LRD',
   base: 10,
   exponent: 2,
@@ -759,7 +759,7 @@ export const LRD: Currency<number> = {
 /**
  * Lesotho loti.
  */
-export const LSL: Currency<number> = {
+export const LSL: DineroCurrency<number> = {
   code: 'LSL',
   base: 10,
   exponent: 2,
@@ -768,7 +768,7 @@ export const LSL: Currency<number> = {
 /**
  * Libyan dinar.
  */
-export const LYD: Currency<number> = {
+export const LYD: DineroCurrency<number> = {
   code: 'LYD',
   base: 10,
   exponent: 3,
@@ -777,7 +777,7 @@ export const LYD: Currency<number> = {
 /**
  * Moroccan dirham.
  */
-export const MAD: Currency<number> = {
+export const MAD: DineroCurrency<number> = {
   code: 'MAD',
   base: 10,
   exponent: 2,
@@ -786,7 +786,7 @@ export const MAD: Currency<number> = {
 /**
  * Moldovan leu.
  */
-export const MDL: Currency<number> = {
+export const MDL: DineroCurrency<number> = {
   code: 'MDL',
   base: 10,
   exponent: 2,
@@ -795,7 +795,7 @@ export const MDL: Currency<number> = {
 /**
  * Malagasy ariary.
  */
-export const MGA: Currency<number> = {
+export const MGA: DineroCurrency<number> = {
   code: 'MGA',
   base: 5,
   exponent: 1,
@@ -804,7 +804,7 @@ export const MGA: Currency<number> = {
 /**
  * Macedonian denar.
  */
-export const MKD: Currency<number> = {
+export const MKD: DineroCurrency<number> = {
   code: 'MKD',
   base: 10,
   exponent: 2,
@@ -813,7 +813,7 @@ export const MKD: Currency<number> = {
 /**
  * Myanmar kyat.
  */
-export const MMK: Currency<number> = {
+export const MMK: DineroCurrency<number> = {
   code: 'MMK',
   base: 10,
   exponent: 2,
@@ -822,7 +822,7 @@ export const MMK: Currency<number> = {
 /**
  * Mongolian tögrög.
  */
-export const MNT: Currency<number> = {
+export const MNT: DineroCurrency<number> = {
   code: 'MNT',
   base: 10,
   exponent: 2,
@@ -831,7 +831,7 @@ export const MNT: Currency<number> = {
 /**
  * Macanese pataca.
  */
-export const MOP: Currency<number> = {
+export const MOP: DineroCurrency<number> = {
   code: 'MOP',
   base: 10,
   exponent: 2,
@@ -840,7 +840,7 @@ export const MOP: Currency<number> = {
 /**
  * Mauritanian ouguiya.
  */
-export const MRU: Currency<number> = {
+export const MRU: DineroCurrency<number> = {
   code: 'MRU',
   base: 5,
   exponent: 1,
@@ -849,7 +849,7 @@ export const MRU: Currency<number> = {
 /**
  * Mauritian rupee.
  */
-export const MUR: Currency<number> = {
+export const MUR: DineroCurrency<number> = {
   code: 'MUR',
   base: 10,
   exponent: 2,
@@ -858,7 +858,7 @@ export const MUR: Currency<number> = {
 /**
  * Maldivian rufiyaa.
  */
-export const MVR: Currency<number> = {
+export const MVR: DineroCurrency<number> = {
   code: 'MVR',
   base: 10,
   exponent: 2,
@@ -867,7 +867,7 @@ export const MVR: Currency<number> = {
 /**
  * Malawian kwacha.
  */
-export const MWK: Currency<number> = {
+export const MWK: DineroCurrency<number> = {
   code: 'MWK',
   base: 10,
   exponent: 2,
@@ -876,7 +876,7 @@ export const MWK: Currency<number> = {
 /**
  * Mexican peso.
  */
-export const MXN: Currency<number> = {
+export const MXN: DineroCurrency<number> = {
   code: 'MXN',
   base: 10,
   exponent: 2,
@@ -885,7 +885,7 @@ export const MXN: Currency<number> = {
 /**
  * Mexican Unidad de Inversion.
  */
-export const MXV: Currency<number> = {
+export const MXV: DineroCurrency<number> = {
   code: 'MXV',
   base: 10,
   exponent: 2,
@@ -894,7 +894,7 @@ export const MXV: Currency<number> = {
 /**
  * Malaysian ringgit.
  */
-export const MYR: Currency<number> = {
+export const MYR: DineroCurrency<number> = {
   code: 'MYR',
   base: 10,
   exponent: 2,
@@ -903,7 +903,7 @@ export const MYR: Currency<number> = {
 /**
  * Mozambican metical.
  */
-export const MZN: Currency<number> = {
+export const MZN: DineroCurrency<number> = {
   code: 'MZN',
   base: 10,
   exponent: 2,
@@ -912,7 +912,7 @@ export const MZN: Currency<number> = {
 /**
  * Namibian dollar.
  */
-export const NAD: Currency<number> = {
+export const NAD: DineroCurrency<number> = {
   code: 'NAD',
   base: 10,
   exponent: 2,
@@ -921,7 +921,7 @@ export const NAD: Currency<number> = {
 /**
  * Nigerian naira.
  */
-export const NGN: Currency<number> = {
+export const NGN: DineroCurrency<number> = {
   code: 'NGN',
   base: 10,
   exponent: 2,
@@ -930,7 +930,7 @@ export const NGN: Currency<number> = {
 /**
  * Nicaraguan córdoba.
  */
-export const NIO: Currency<number> = {
+export const NIO: DineroCurrency<number> = {
   code: 'NIO',
   base: 10,
   exponent: 2,
@@ -939,7 +939,7 @@ export const NIO: Currency<number> = {
 /**
  * Norwegian krone.
  */
-export const NOK: Currency<number> = {
+export const NOK: DineroCurrency<number> = {
   code: 'NOK',
   base: 10,
   exponent: 2,
@@ -948,7 +948,7 @@ export const NOK: Currency<number> = {
 /**
  * Nepalese rupee.
  */
-export const NPR: Currency<number> = {
+export const NPR: DineroCurrency<number> = {
   code: 'NPR',
   base: 10,
   exponent: 2,
@@ -957,7 +957,7 @@ export const NPR: Currency<number> = {
 /**
  * New Zealand dollar.
  */
-export const NZD: Currency<number> = {
+export const NZD: DineroCurrency<number> = {
   code: 'NZD',
   base: 10,
   exponent: 2,
@@ -966,7 +966,7 @@ export const NZD: Currency<number> = {
 /**
  * Omani rial.
  */
-export const OMR: Currency<number> = {
+export const OMR: DineroCurrency<number> = {
   code: 'OMR',
   base: 10,
   exponent: 3,
@@ -975,7 +975,7 @@ export const OMR: Currency<number> = {
 /**
  * Panamanian balboa.
  */
-export const PAB: Currency<number> = {
+export const PAB: DineroCurrency<number> = {
   code: 'PAB',
   base: 10,
   exponent: 2,
@@ -984,7 +984,7 @@ export const PAB: Currency<number> = {
 /**
  * Peruvian sol.
  */
-export const PEN: Currency<number> = {
+export const PEN: DineroCurrency<number> = {
   code: 'PEN',
   base: 10,
   exponent: 2,
@@ -993,7 +993,7 @@ export const PEN: Currency<number> = {
 /**
  * Papua New Guinean kina.
  */
-export const PGK: Currency<number> = {
+export const PGK: DineroCurrency<number> = {
   code: 'PGK',
   base: 10,
   exponent: 2,
@@ -1002,7 +1002,7 @@ export const PGK: Currency<number> = {
 /**
  * Philippine peso.
  */
-export const PHP: Currency<number> = {
+export const PHP: DineroCurrency<number> = {
   code: 'PHP',
   base: 10,
   exponent: 2,
@@ -1011,7 +1011,7 @@ export const PHP: Currency<number> = {
 /**
  * Pakistani rupee.
  */
-export const PKR: Currency<number> = {
+export const PKR: DineroCurrency<number> = {
   code: 'PKR',
   base: 10,
   exponent: 2,
@@ -1020,7 +1020,7 @@ export const PKR: Currency<number> = {
 /**
  * Polish złoty.
  */
-export const PLN: Currency<number> = {
+export const PLN: DineroCurrency<number> = {
   code: 'PLN',
   base: 10,
   exponent: 2,
@@ -1029,7 +1029,7 @@ export const PLN: Currency<number> = {
 /**
  * Paraguayan guaraní.
  */
-export const PYG: Currency<number> = {
+export const PYG: DineroCurrency<number> = {
   code: 'PYG',
   base: 10,
   exponent: 0,
@@ -1038,7 +1038,7 @@ export const PYG: Currency<number> = {
 /**
  * Qatari riyal.
  */
-export const QAR: Currency<number> = {
+export const QAR: DineroCurrency<number> = {
   code: 'QAR',
   base: 10,
   exponent: 2,
@@ -1047,7 +1047,7 @@ export const QAR: Currency<number> = {
 /**
  * Romanian leu.
  */
-export const RON: Currency<number> = {
+export const RON: DineroCurrency<number> = {
   code: 'RON',
   base: 10,
   exponent: 2,
@@ -1056,7 +1056,7 @@ export const RON: Currency<number> = {
 /**
  * Serbian dinar.
  */
-export const RSD: Currency<number> = {
+export const RSD: DineroCurrency<number> = {
   code: 'RSD',
   base: 10,
   exponent: 2,
@@ -1065,7 +1065,7 @@ export const RSD: Currency<number> = {
 /**
  * Russian ruble.
  */
-export const RUB: Currency<number> = {
+export const RUB: DineroCurrency<number> = {
   code: 'RUB',
   base: 10,
   exponent: 2,
@@ -1074,7 +1074,7 @@ export const RUB: Currency<number> = {
 /**
  * Rwandan franc.
  */
-export const RWF: Currency<number> = {
+export const RWF: DineroCurrency<number> = {
   code: 'RWF',
   base: 10,
   exponent: 0,
@@ -1083,7 +1083,7 @@ export const RWF: Currency<number> = {
 /**
  * Saudi riyal.
  */
-export const SAR: Currency<number> = {
+export const SAR: DineroCurrency<number> = {
   code: 'SAR',
   base: 10,
   exponent: 2,
@@ -1092,7 +1092,7 @@ export const SAR: Currency<number> = {
 /**
  * Solomon Islands dollar.
  */
-export const SBD: Currency<number> = {
+export const SBD: DineroCurrency<number> = {
   code: 'SBD',
   base: 10,
   exponent: 2,
@@ -1101,7 +1101,7 @@ export const SBD: Currency<number> = {
 /**
  * Seychelles rupee.
  */
-export const SCR: Currency<number> = {
+export const SCR: DineroCurrency<number> = {
   code: 'SCR',
   base: 10,
   exponent: 2,
@@ -1110,7 +1110,7 @@ export const SCR: Currency<number> = {
 /**
  * Sudanese pound.
  */
-export const SDG: Currency<number> = {
+export const SDG: DineroCurrency<number> = {
   code: 'SDG',
   base: 10,
   exponent: 2,
@@ -1119,7 +1119,7 @@ export const SDG: Currency<number> = {
 /**
  * Swedish krona.
  */
-export const SEK: Currency<number> = {
+export const SEK: DineroCurrency<number> = {
   code: 'SEK',
   base: 10,
   exponent: 2,
@@ -1128,7 +1128,7 @@ export const SEK: Currency<number> = {
 /**
  * Singapore dollar.
  */
-export const SGD: Currency<number> = {
+export const SGD: DineroCurrency<number> = {
   code: 'SGD',
   base: 10,
   exponent: 2,
@@ -1137,7 +1137,7 @@ export const SGD: Currency<number> = {
 /**
  * Saint Helena pound.
  */
-export const SHP: Currency<number> = {
+export const SHP: DineroCurrency<number> = {
   code: 'SHP',
   base: 10,
   exponent: 2,
@@ -1146,7 +1146,7 @@ export const SHP: Currency<number> = {
 /**
  * Sierra Leonean leone.
  */
-export const SLE: Currency<number> = {
+export const SLE: DineroCurrency<number> = {
   code: 'SLE',
   base: 10,
   exponent: 2,
@@ -1155,7 +1155,7 @@ export const SLE: Currency<number> = {
 /**
  * Somali shilling.
  */
-export const SOS: Currency<number> = {
+export const SOS: DineroCurrency<number> = {
   code: 'SOS',
   base: 10,
   exponent: 2,
@@ -1164,7 +1164,7 @@ export const SOS: Currency<number> = {
 /**
  * Surinamese dollar.
  */
-export const SRD: Currency<number> = {
+export const SRD: DineroCurrency<number> = {
   code: 'SRD',
   base: 10,
   exponent: 2,
@@ -1173,7 +1173,7 @@ export const SRD: Currency<number> = {
 /**
  * South Sudanese pound.
  */
-export const SSP: Currency<number> = {
+export const SSP: DineroCurrency<number> = {
   code: 'SSP',
   base: 10,
   exponent: 2,
@@ -1182,7 +1182,7 @@ export const SSP: Currency<number> = {
 /**
  * São Tomé and Príncipe dobra.
  */
-export const STN: Currency<number> = {
+export const STN: DineroCurrency<number> = {
   code: 'STN',
   base: 10,
   exponent: 2,
@@ -1191,7 +1191,7 @@ export const STN: Currency<number> = {
 /**
  * Salvadoran colón.
  */
-export const SVC: Currency<number> = {
+export const SVC: DineroCurrency<number> = {
   code: 'SVC',
   base: 10,
   exponent: 2,
@@ -1200,7 +1200,7 @@ export const SVC: Currency<number> = {
 /**
  * Syrian pound.
  */
-export const SYP: Currency<number> = {
+export const SYP: DineroCurrency<number> = {
   code: 'SYP',
   base: 10,
   exponent: 2,
@@ -1209,7 +1209,7 @@ export const SYP: Currency<number> = {
 /**
  * Swazi lilangeni.
  */
-export const SZL: Currency<number> = {
+export const SZL: DineroCurrency<number> = {
   code: 'SZL',
   base: 10,
   exponent: 2,
@@ -1218,7 +1218,7 @@ export const SZL: Currency<number> = {
 /**
  * Thai baht.
  */
-export const THB: Currency<number> = {
+export const THB: DineroCurrency<number> = {
   code: 'THB',
   base: 10,
   exponent: 2,
@@ -1227,7 +1227,7 @@ export const THB: Currency<number> = {
 /**
  * Tajikistani somoni.
  */
-export const TJS: Currency<number> = {
+export const TJS: DineroCurrency<number> = {
   code: 'TJS',
   base: 10,
   exponent: 2,
@@ -1236,7 +1236,7 @@ export const TJS: Currency<number> = {
 /**
  * Turkmenistan manat.
  */
-export const TMT: Currency<number> = {
+export const TMT: DineroCurrency<number> = {
   code: 'TMT',
   base: 10,
   exponent: 2,
@@ -1245,7 +1245,7 @@ export const TMT: Currency<number> = {
 /**
  * Tunisian dinar.
  */
-export const TND: Currency<number> = {
+export const TND: DineroCurrency<number> = {
   code: 'TND',
   base: 10,
   exponent: 3,
@@ -1254,7 +1254,7 @@ export const TND: Currency<number> = {
 /**
  * Tongan paʻanga.
  */
-export const TOP: Currency<number> = {
+export const TOP: DineroCurrency<number> = {
   code: 'TOP',
   base: 10,
   exponent: 2,
@@ -1263,7 +1263,7 @@ export const TOP: Currency<number> = {
 /**
  * Turkish lira.
  */
-export const TRY: Currency<number> = {
+export const TRY: DineroCurrency<number> = {
   code: 'TRY',
   base: 10,
   exponent: 2,
@@ -1272,7 +1272,7 @@ export const TRY: Currency<number> = {
 /**
  * Trinidad and Tobago dollar.
  */
-export const TTD: Currency<number> = {
+export const TTD: DineroCurrency<number> = {
   code: 'TTD',
   base: 10,
   exponent: 2,
@@ -1281,7 +1281,7 @@ export const TTD: Currency<number> = {
 /**
  * New Taiwan dollar.
  */
-export const TWD: Currency<number> = {
+export const TWD: DineroCurrency<number> = {
   code: 'TWD',
   base: 10,
   exponent: 2,
@@ -1290,7 +1290,7 @@ export const TWD: Currency<number> = {
 /**
  * Tanzanian shilling.
  */
-export const TZS: Currency<number> = {
+export const TZS: DineroCurrency<number> = {
   code: 'TZS',
   base: 10,
   exponent: 2,
@@ -1299,7 +1299,7 @@ export const TZS: Currency<number> = {
 /**
  * Ukrainian hryvnia.
  */
-export const UAH: Currency<number> = {
+export const UAH: DineroCurrency<number> = {
   code: 'UAH',
   base: 10,
   exponent: 2,
@@ -1308,7 +1308,7 @@ export const UAH: Currency<number> = {
 /**
  * Ugandan shilling.
  */
-export const UGX: Currency<number> = {
+export const UGX: DineroCurrency<number> = {
   code: 'UGX',
   base: 10,
   exponent: 0,
@@ -1317,7 +1317,7 @@ export const UGX: Currency<number> = {
 /**
  * United States dollar.
  */
-export const USD: Currency<number> = {
+export const USD: DineroCurrency<number> = {
   code: 'USD',
   base: 10,
   exponent: 2,
@@ -1326,7 +1326,7 @@ export const USD: Currency<number> = {
 /**
  * United States dollar (next day).
  */
-export const USN: Currency<number> = {
+export const USN: DineroCurrency<number> = {
   code: 'USN',
   base: 10,
   exponent: 2,
@@ -1335,7 +1335,7 @@ export const USN: Currency<number> = {
 /**
  * Uruguay Peso en Unidades Indexadas.
  */
-export const UYI: Currency<number> = {
+export const UYI: DineroCurrency<number> = {
   code: 'UYI',
   base: 10,
   exponent: 0,
@@ -1344,7 +1344,7 @@ export const UYI: Currency<number> = {
 /**
  * Uruguayan peso.
  */
-export const UYU: Currency<number> = {
+export const UYU: DineroCurrency<number> = {
   code: 'UYU',
   base: 10,
   exponent: 2,
@@ -1353,7 +1353,7 @@ export const UYU: Currency<number> = {
 /**
  * Unidad previsional.
  */
-export const UYW: Currency<number> = {
+export const UYW: DineroCurrency<number> = {
   code: 'UYW',
   base: 10,
   exponent: 4,
@@ -1362,7 +1362,7 @@ export const UYW: Currency<number> = {
 /**
  * Uzbekistani soʻm.
  */
-export const UZS: Currency<number> = {
+export const UZS: DineroCurrency<number> = {
   code: 'UZS',
   base: 10,
   exponent: 2,
@@ -1371,7 +1371,7 @@ export const UZS: Currency<number> = {
 /**
  * Venezuelan digital bolívar.
  */
-export const VED: Currency<number> = {
+export const VED: DineroCurrency<number> = {
   code: 'VED',
   base: 10,
   exponent: 2,
@@ -1380,7 +1380,7 @@ export const VED: Currency<number> = {
 /**
  * Venezuelan bolívar.
  */
-export const VES: Currency<number> = {
+export const VES: DineroCurrency<number> = {
   code: 'VES',
   base: 10,
   exponent: 2,
@@ -1389,7 +1389,7 @@ export const VES: Currency<number> = {
 /**
  * Vietnamese đồng.
  */
-export const VND: Currency<number> = {
+export const VND: DineroCurrency<number> = {
   code: 'VND',
   base: 10,
   exponent: 0,
@@ -1398,7 +1398,7 @@ export const VND: Currency<number> = {
 /**
  * Vanuatu vatu.
  */
-export const VUV: Currency<number> = {
+export const VUV: DineroCurrency<number> = {
   code: 'VUV',
   base: 10,
   exponent: 0,
@@ -1407,7 +1407,7 @@ export const VUV: Currency<number> = {
 /**
  * Samoan tālā.
  */
-export const WST: Currency<number> = {
+export const WST: DineroCurrency<number> = {
   code: 'WST',
   base: 10,
   exponent: 2,
@@ -1416,7 +1416,7 @@ export const WST: Currency<number> = {
 /**
  * Arab Accounting Dinar.
  */
-export const XAD: Currency<number> = {
+export const XAD: DineroCurrency<number> = {
   code: 'XAD',
   base: 10,
   exponent: 2,
@@ -1425,7 +1425,7 @@ export const XAD: Currency<number> = {
 /**
  * Central African CFA franc.
  */
-export const XAF: Currency<number> = {
+export const XAF: DineroCurrency<number> = {
   code: 'XAF',
   base: 10,
   exponent: 0,
@@ -1434,7 +1434,7 @@ export const XAF: Currency<number> = {
 /**
  * East Caribbean dollar.
  */
-export const XCD: Currency<number> = {
+export const XCD: DineroCurrency<number> = {
   code: 'XCD',
   base: 10,
   exponent: 2,
@@ -1443,7 +1443,7 @@ export const XCD: Currency<number> = {
 /**
  * Caribbean guilder.
  */
-export const XCG: Currency<number> = {
+export const XCG: DineroCurrency<number> = {
   code: 'XCG',
   base: 10,
   exponent: 2,
@@ -1452,7 +1452,7 @@ export const XCG: Currency<number> = {
 /**
  * West African CFA franc.
  */
-export const XOF: Currency<number> = {
+export const XOF: DineroCurrency<number> = {
   code: 'XOF',
   base: 10,
   exponent: 0,
@@ -1461,7 +1461,7 @@ export const XOF: Currency<number> = {
 /**
  * CFP franc.
  */
-export const XPF: Currency<number> = {
+export const XPF: DineroCurrency<number> = {
   code: 'XPF',
   base: 10,
   exponent: 0,
@@ -1470,7 +1470,7 @@ export const XPF: Currency<number> = {
 /**
  * Yemeni rial.
  */
-export const YER: Currency<number> = {
+export const YER: DineroCurrency<number> = {
   code: 'YER',
   base: 10,
   exponent: 2,
@@ -1479,7 +1479,7 @@ export const YER: Currency<number> = {
 /**
  * South African rand.
  */
-export const ZAR: Currency<number> = {
+export const ZAR: DineroCurrency<number> = {
   code: 'ZAR',
   base: 10,
   exponent: 2,
@@ -1488,7 +1488,7 @@ export const ZAR: Currency<number> = {
 /**
  * Zambian kwacha.
  */
-export const ZMW: Currency<number> = {
+export const ZMW: DineroCurrency<number> = {
   code: 'ZMW',
   base: 10,
   exponent: 2,
@@ -1497,7 +1497,7 @@ export const ZMW: Currency<number> = {
 /**
  * Zimbabwe Gold.
  */
-export const ZWG: Currency<number> = {
+export const ZWG: DineroCurrency<number> = {
   code: 'ZWG',
   base: 10,
   exponent: 2,

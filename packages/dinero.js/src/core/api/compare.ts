@@ -1,6 +1,6 @@
 import { UNEQUAL_CURRENCIES_MESSAGE } from '../checks';
 import { assert } from '../helpers';
-import type { Calculator, Dinero } from '../types';
+import type { DineroCalculator, Dinero } from '../types';
 import { compare as cmp } from '../utils';
 
 import { haveSameCurrency } from './haveSameCurrency';
@@ -11,7 +11,7 @@ export type CompareParams<TAmount> = readonly [
   comparator: Dinero<TAmount>,
 ];
 
-function unsafeCompare<TAmount>(calculator: Calculator<TAmount>) {
+function unsafeCompare<TAmount>(calculator: DineroCalculator<TAmount>) {
   const compareFn = cmp(calculator);
 
   return function compare(
@@ -29,7 +29,7 @@ function unsafeCompare<TAmount>(calculator: Calculator<TAmount>) {
   };
 }
 
-export function safeCompare<TAmount>(calculator: Calculator<TAmount>) {
+export function safeCompare<TAmount>(calculator: DineroCalculator<TAmount>) {
   const normalizeFn = normalizeScale(calculator);
   const compareFn = unsafeCompare(calculator);
 

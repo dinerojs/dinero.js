@@ -1,4 +1,4 @@
-import type { BinaryOperation } from '../../../core';
+import type { DineroBinaryOperation } from '../../../core';
 
 /**
  * Returns the remainder of two numbers.
@@ -8,6 +8,6 @@ import type { BinaryOperation } from '../../../core';
  *
  * @returns The remainder of the two numbers.
  */
-export const modulo: BinaryOperation<number> = (dividend, divisor) => {
+export const modulo: DineroBinaryOperation<number> = (dividend, divisor) => {
   return dividend % divisor;
 };

@@ -1,4 +1,4 @@
-import type { UnaryOperation } from '../../../core';
+import type { DineroUnaryOperation } from '../../../core';
 
 /**
  * Returns an incremented number.
@@ -7,6 +7,6 @@ import type { UnaryOperation } from '../../../core';
  *
  * @returns The incremented number.
  */
-export const increment: UnaryOperation<number> = (value) => {
+export const increment: DineroUnaryOperation<number> = (value) => {
   return value + 1;
 };

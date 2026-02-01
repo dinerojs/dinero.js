@@ -1,4 +1,4 @@
-import type { BinaryOperation } from '../../../core';
+import type { DineroBinaryOperation } from '../../../core';
 
 /**
  * Returns the difference between two numbers.
@@ -8,6 +8,9 @@ import type { BinaryOperation } from '../../../core';
  *
  * @returns The difference of the two numbers.
  */
-export const subtract: BinaryOperation<number> = (minuend, subtrahend) => {
+export const subtract: DineroBinaryOperation<number> = (
+  minuend,
+  subtrahend
+) => {
   return minuend - subtrahend;
 };

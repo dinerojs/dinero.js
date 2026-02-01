@@ -1,4 +1,4 @@
-export type ScaledAmount<TAmount> = {
+export type DineroScaledAmount<TAmount> = {
   readonly amount: TAmount;
   readonly scale?: TAmount;
 };

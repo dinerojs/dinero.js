@@ -1,4 +1,4 @@
-import type { BinaryOperation } from '../../../core';
+import type { DineroBinaryOperation } from '../../../core';
 
 /**
  * Returns the quotient of two bigints with no fractional part.
@@ -8,6 +8,9 @@ import type { BinaryOperation } from '../../../core';
  *
  * @returns The quotient of the two bigints.
  */
-export const integerDivide: BinaryOperation<bigint> = (dividend, divisor) => {
+export const integerDivide: DineroBinaryOperation<bigint> = (
+  dividend,
+  divisor
+) => {
   return dividend / divisor;
 };

@@ -1,4 +1,4 @@
-import type { BinaryOperation } from '../../../core';
+import type { DineroBinaryOperation } from '../../../core';
 
 /**
  * Returns the sum of two numbers.
@@ -8,6 +8,6 @@ import type { BinaryOperation } from '../../../core';
  *
  * @returns The sum of the two numbers.
  */
-export const add: BinaryOperation<number> = (augend, addend) => {
+export const add: DineroBinaryOperation<number> = (augend, addend) => {
   return augend + addend;
 };
