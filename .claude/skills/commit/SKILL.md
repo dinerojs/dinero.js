@@ -61,7 +61,7 @@ Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 ```
 
 **Types:** feat, fix, docs, refactor, test, chore, style, perf
-**Scopes:** core, currencies, calculator-number, calculator-bigint, dinero.js, examples, website, build, ci
+**Scopes:** core, currencies, calculator-number, calculator-bigint, dinero.js, examples, docs, build, ci
 
 ### Step 5: Execute
 

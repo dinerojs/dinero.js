@@ -29,7 +29,7 @@
     "**/lib",
     "**/temp",
     "**/node_modules",
-    "website",
+    "docs",
     "examples/deno"
   ]
 }

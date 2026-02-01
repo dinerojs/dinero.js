@@ -35,7 +35,7 @@
     "lib",
     "temp",
     "node_modules",
-    "website",
+    "docs",
     "examples",
     "coverage",
     "*.d.ts"
