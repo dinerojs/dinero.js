@@ -33,11 +33,6 @@
       "import": "./dist/esm/currencies/index.js",
       "require": "./dist/cjs/currencies/index.js"
     },
-    "./currencies/*": {
-      "types": "./dist/esm/currencies/*.d.ts",
-      "import": "./dist/esm/currencies/*.js",
-      "require": "./dist/cjs/currencies/*.js"
-    },
     "./bigint": {
       "types": "./dist/esm/bigint/index.d.ts",
       "import": "./dist/esm/bigint/index.js",
@@ -56,10 +51,10 @@
   ],
   "scripts": {
     "build:clean": "rimraf ./{dist,temp}",
-    "build:esm": "node ../../scripts/generate-currencies.mjs && babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
+    "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
     "build:definitions": "tsc -b",
     "build:types": "node ../../scripts/build-types.mjs && npm run build:types:subpaths",
-    "build:types:subpaths": "cp -r lib/bigint dist/esm/ && cp -r lib/currencies/bigint dist/esm/currencies/ && cp lib/currencies/index.d.ts lib/currencies/168.d.ts dist/esm/currencies/",
+    "build:types:subpaths": "cp -r lib/bigint dist/esm/ && cp lib/currencies/index.d.ts dist/esm/currencies/",
     "build:umd:cjs": "rollup --config",
     "lint": "oxlint .",
     "test": "vitest --config ../../vitest.config.ts --dir src"

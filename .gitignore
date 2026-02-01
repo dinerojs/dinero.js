@@ -7,10 +7,3 @@ temp
 .env
 .turbo
 */.vitepress/cache
-
-# Generated currency files (from manifest.json)
-# Run: npm run generate:currencies
-packages/dinero.js/src/currencies/definitions/
-packages/dinero.js/src/currencies/historical/
-packages/dinero.js/src/currencies/iso4217/
-packages/dinero.js/src/currencies/[0-9]*.ts

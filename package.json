@@ -11,7 +11,6 @@
     "docs"
   ],
   "scripts": {
-    "generate:currencies": "node scripts/generate-currencies.mjs",
     "build:clean": "turbo build:clean",
     "build:esm": "turbo build:esm --filter=./packages/*",
     "build:definitions": "turbo build:definitions --filter=./packages/*",

@@ -68,10 +68,6 @@ https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/currencies/{code}.production.js
 
 Individual ISO 4217 currency codes: `usd`, `eur`, `gbp`, etc.
 
-::: info
-Granular currency bundles are only available for the **latest** ISO 4217 amendment. [Pinned amendments](/core-concepts/currency#using-built-in-currencies) are available as full bundles (e.g., `currencies/168/index.production.js`).
-:::
-
 ### Full bundle
 
 If you need everything, use the full bundle:

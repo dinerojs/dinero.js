@@ -115,29 +115,11 @@ const d1 = dinero({ amount: 1000, currency: USD });
 const d2 = dinero({ amount: 1000, currency: EUR });
 ```
 
-Currencies fluctuate, meaning their code and exponent can change, there can be new currencies, and existing currencies can disappear. ISO 4217 currencies account for these changes with amendments, maintained by the [Secretariat of the Maintenance Agency](https://www.six-group.com/en/products-services/financial-information/data-standards.html).
-
-Dinero.js tracks those amendments and updates currencies accordingly. Such changes are, by definition, breaking. The default export (`dinero.js/currencies`) always points to the latest amendment.
-
-```js
-// This imports the latest version of the currency, which might be different
-// from the last time you used it and break your application. Use with caution.
-import { USD } from 'dinero.js/currencies';
-
-const d = dinero({ amount: 1000, currency: USD });
-```
+Dinero.js tracks the [ISO 4217 standard](https://www.six-group.com/en/products-services/financial-information/data-standards.html) and updates currencies when amendments are published. This means currency properties can occasionally change when you upgrade Dinero.js.
 
 ::: warning
-**Importing the latest version of a currency can break your application, as the currency data might change.** Make sure to know what you're doing, pin your dependencies, and look out for breaking changes in your own application when you update.
+**Currency data may change between Dinero.js versions.** If you need stability, pin your Dinero.js version in your package manager. You can also [define your own currency objects](#creating-custom-currencies) for full control.
 :::
-
-To pin a currency to a specific amendment, you can import it from its submodule. Amendments follow the [numbering system of the maintenance agency](https://www.six-group.com/en/products-services/financial-information/data-standards.html#scrollTo=amendments).
-
-```js
-import { USD } from 'dinero.js/currencies/168';
-
-const d = dinero({ amount: 1000, currency: USD });
-```
 
 ## Creating custom currencies
 
