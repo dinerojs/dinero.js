@@ -16,51 +16,17 @@ import {
   Summary,
 } from './components';
 import { useLocalStorage } from './hooks';
-import { codeSnippets } from './data/codeSnippets';
+import { calculateSettlements } from './utils/calculations';
+import {
+  generateSummarySnippet,
+  generateAddExpenseSnippet,
+  generateBalancesSnippet,
+  generateSettlementsSnippet,
+  generateExpenseListSnippet,
+  generateFormattingSnippet,
+} from './utils/codeSnippets';
 
 const currencies: DineroCurrency<number>[] = [USD, EUR, GBP];
-
-interface StoredExpense {
-  id: string;
-  description: string;
-  amount: number;
-  currencyCode: string;
-  paidBy: string;
-  splitType: 'equal' | 'percentage' | 'exact';
-  shares: { personId: string; value: number }[];
-  createdAt: string;
-}
-
-function serializeExpenses(expenses: Expense[]): StoredExpense[] {
-  return expenses.map((e) => {
-    const snapshot = toSnapshot(e.amount);
-    return {
-      id: e.id,
-      description: e.description,
-      amount: snapshot.amount,
-      currencyCode: snapshot.currency.code,
-      paidBy: e.paidBy,
-      splitType: e.splitType,
-      shares: e.shares,
-      createdAt: e.createdAt.toISOString(),
-    };
-  });
-}
-
-function deserializeExpenses(
-  stored: StoredExpense[],
-  currency: DineroCurrency<number>
-): Expense[] {
-  return stored.map((e) => ({
-    id: e.id,
-    description: e.description,
-    amount: dinero({ amount: e.amount, currency }),
-    paidBy: e.paidBy,
-    splitType: e.splitType,
-    shares: e.shares,
-    createdAt: new Date(e.createdAt),
-  }));
-}
 
 export default function App() {
   const [currency, setCurrency] = useState<DineroCurrency<number>>(USD);
@@ -86,43 +52,18 @@ export default function App() {
     setStoredExpenses(serializeExpenses(expenses));
   }, [expenses, setStoredExpenses]);
 
-  const handleAddPerson = (person: Person) => {
-    setPeople((prev) => [...prev, person]);
-  };
-
-  const handleRemovePerson = (id: string) => {
-    setPeople((prev) => prev.filter((p) => p.id !== id));
-    setExpenses((prev) =>
-      prev.filter((e) => {
-        if (e.paidBy === id) return false;
-        const remainingShares = e.shares.filter((s) => s.personId !== id);
-        return remainingShares.length > 0;
-      })
-    );
-  };
-
-  const handleAddExpense = (expense: Expense) => {
-    setExpenses((prev) => [expense, ...prev]);
-  };
-
-  const handleRemoveExpense = (id: string) => {
-    setExpenses((prev) => prev.filter((e) => e.id !== id));
-  };
-
-  const handleClearAll = () => {
-    if (
-      window.confirm(
-        'Are you sure you want to clear all people and expenses? This cannot be undone.'
-      )
-    ) {
-      setPeople([]);
-      setExpenses([]);
-    }
+  const settlements = calculateSettlements(expenses, people, currency);
+  const snippets = {
+    summary: generateSummarySnippet(expenses, currency),
+    formatting: generateFormattingSnippet(currency),
+    addExpense: generateAddExpenseSnippet(currency, people.length),
+    balances: generateBalancesSnippet(people, currency),
+    settlements: generateSettlementsSnippet(settlements, people, currency),
+    expenseList: generateExpenseListSnippet(expenses, people, currency),
   };
 
   return (
     <div className="min-h-screen py-8 px-4 sm:py-12 sm:px-6">
-      {/* Background effects */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl" />
@@ -130,7 +71,6 @@ export default function App() {
       </div>
 
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <header className="text-center mb-12 animate-fade-in">
           <div className="inline-flex items-center gap-3 mb-4">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-500/25">
@@ -165,7 +105,6 @@ export default function App() {
           </p>
         </header>
 
-        {/* Currency selector */}
         <div className="flex justify-end mb-8 animate-fade-in">
           <div className="flex items-center gap-3">
             <span className="text-sm text-slate-500">Currency</span>
@@ -199,12 +138,11 @@ export default function App() {
           </div>
         </div>
 
-        {/* Summary */}
         {expenses.length > 0 && (
           <div className="mb-10 animate-slide-up relative">
             <div className="absolute top-4 right-4 flex gap-2">
-              <CodeTooltip {...codeSnippets.summary} />
-              <CodeTooltip {...codeSnippets.formatting} />
+              <CodeTooltip {...snippets.summary} />
+              <CodeTooltip {...snippets.formatting} />
             </div>
             <Summary
               expenses={expenses}
@@ -215,9 +153,7 @@ export default function App() {
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Left column */}
           <div className="lg:col-span-5 space-y-8">
-            {/* People section */}
             <section className="card animate-slide-up">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500/20 to-purple-500/20 flex items-center justify-center">
@@ -238,12 +174,33 @@ export default function App() {
                 <h2 className="text-xl font-semibold text-white">People</h2>
               </div>
               <div className="space-y-4">
-                <AddPerson onAdd={handleAddPerson} />
-                <PersonList people={people} onRemove={handleRemovePerson} />
+                <AddPerson
+                  onAdd={(person) => {
+                    setPeople((prev) => [...prev, person]);
+                  }}
+                />
+                <PersonList
+                  people={people}
+                  onRemove={(id: string) => {
+                    setPeople((prev) => prev.filter((p) => p.id !== id));
+                    setExpenses((prev) =>
+                      prev.filter((expense) => {
+                        if (expense.paidBy === id) {
+                          return false;
+                        }
+
+                        const remainingShares = expense.shares.filter(
+                          ({ personId }) => personId !== id
+                        );
+
+                        return remainingShares.length > 0;
+                      })
+                    );
+                  }}
+                />
               </div>
             </section>
 
-            {/* Add expense section */}
             <section
               className="card animate-slide-up"
               style={{ animationDelay: '0.1s' }}
@@ -269,19 +226,19 @@ export default function App() {
                     Add Expense
                   </h2>
                 </div>
-                <CodeTooltip {...codeSnippets.addExpense} />
+                <CodeTooltip {...snippets.addExpense} />
               </div>
               <AddExpense
                 people={people}
                 currency={currency}
-                onAdd={handleAddExpense}
+                onAdd={(expense: Expense) => {
+                  setExpenses((prev) => [expense, ...prev]);
+                }}
               />
             </section>
           </div>
 
-          {/* Right column */}
           <div className="lg:col-span-7 space-y-8">
-            {/* Balances section */}
             <section
               className="card animate-slide-up"
               style={{ animationDelay: '0.2s' }}
@@ -305,7 +262,7 @@ export default function App() {
                   </div>
                   <h2 className="text-xl font-semibold text-white">Balances</h2>
                 </div>
-                <CodeTooltip {...codeSnippets.balances} />
+                <CodeTooltip {...snippets.balances} />
               </div>
               <Balances
                 expenses={expenses}
@@ -319,7 +276,6 @@ export default function App() {
               )}
             </section>
 
-            {/* Settlements section */}
             <section
               className="card animate-slide-up"
               style={{ animationDelay: '0.3s' }}
@@ -345,7 +301,7 @@ export default function App() {
                     Settle Up
                   </h2>
                 </div>
-                <CodeTooltip {...codeSnippets.settlements} />
+                <CodeTooltip {...snippets.settlements} />
               </div>
               <Settlements
                 expenses={expenses}
@@ -359,7 +315,6 @@ export default function App() {
               )}
             </section>
 
-            {/* Expense list */}
             <section
               className="card animate-slide-up"
               style={{ animationDelay: '0.4s' }}
@@ -389,10 +344,19 @@ export default function App() {
                   )}
                 </div>
                 <div className="flex items-center gap-3">
-                  <CodeTooltip {...codeSnippets.expenseList} />
+                  <CodeTooltip {...snippets.expenseList} />
                   {(people.length > 0 || expenses.length > 0) && (
                     <button
-                      onClick={handleClearAll}
+                      onClick={() => {
+                        if (
+                          window.confirm(
+                            'Are you sure you want to clear all people and expenses? This cannot be undone.'
+                          )
+                        ) {
+                          setPeople([]);
+                          setExpenses([]);
+                        }
+                      }}
                       className="text-sm text-slate-500 hover:text-red-400 transition-colors"
                     >
                       Clear all
@@ -404,13 +368,14 @@ export default function App() {
                 expenses={expenses}
                 people={people}
                 currency={currency}
-                onRemove={handleRemoveExpense}
+                onRemove={(id: string) => {
+                  setExpenses((prev) => prev.filter((e) => e.id !== id));
+                }}
               />
             </section>
           </div>
         </div>
 
-        {/* Footer */}
         <footer className="mt-16 text-center animate-fade-in">
           <p className="text-slate-500 text-sm">
             Built with{' '}
@@ -426,4 +391,47 @@ export default function App() {
       </div>
     </div>
   );
+}
+
+interface StoredExpense {
+  id: string;
+  description: string;
+  amount: number;
+  currencyCode: string;
+  paidBy: string;
+  splitType: 'equal' | 'percentage' | 'exact';
+  shares: { personId: string; value: number }[];
+  createdAt: string;
+}
+
+function serializeExpenses(expenses: Expense[]): StoredExpense[] {
+  return expenses.map((expense) => {
+    const snapshot = toSnapshot(expense.amount);
+
+    return {
+      id: expense.id,
+      description: expense.description,
+      amount: snapshot.amount,
+      currencyCode: snapshot.currency.code,
+      paidBy: expense.paidBy,
+      splitType: expense.splitType,
+      shares: expense.shares,
+      createdAt: expense.createdAt.toISOString(),
+    };
+  });
+}
+
+function deserializeExpenses(
+  stored: StoredExpense[],
+  currency: DineroCurrency<number>
+): Expense[] {
+  return stored.map((expense) => ({
+    id: expense.id,
+    description: expense.description,
+    amount: dinero({ amount: expense.amount, currency }),
+    paidBy: expense.paidBy,
+    splitType: expense.splitType,
+    shares: expense.shares,
+    createdAt: new Date(expense.createdAt),
+  }));
 }
