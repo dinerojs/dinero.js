@@ -57,7 +57,9 @@ const d2 = dinero({ amount: 100n, currency: USD });
 add(d1, d2); // a Dinero object with amount `600n`
 ```
 
-Keep in mind that once you're in `bigint` land, every numeric value you pass needs to be a `bigint` as well, including currency `base` and `exponent`.
+::: warning
+**You cannot use currencies from `dinero.js/currencies` with bigint.** Those have `number` values for `base` and `exponent`. With bigint, you must define currencies with bigint values (`10n`, `2n`).
+:::
 
 ## Using Dinero with a custom amount type
 
