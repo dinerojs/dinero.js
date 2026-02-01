@@ -7,10 +7,6 @@ description: Removing unused code from your production builds for maximum perfor
 
 When importing the full UMD version of Dinero.js, you can take advantage of various optimization techniques to reduce your bundle size.
 
-::: info
-The `dinero.js` package includes all core functionality, currencies, and the default number calculator in a single consolidated package.
-:::
-
 ## Compress your assets
 
 If you're using the UMD build, **make sure to compress it before you serve it in production.**
@@ -34,7 +30,7 @@ Dinero.js ships in two formats:
 Modern bundlers like [webpack](https://webpack.js.org/), [Parcel](https://parceljs.org/), and [Vite](https://vitejs.dev/) use ESM and can [tree-shake](#tree-shake-your-code) unused code.
 
 ::: info
-Dinero.js v2 requires Node.js 14 or later with ES modules support. Use `import` syntax, not `require()`.
+Dinero.js requires Node.js 14+ with ES modules support. Use `import` syntax, not `require()`.
 :::
 
 ## Use the UMD build

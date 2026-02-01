@@ -24,10 +24,6 @@ import { dinero } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 ```
 
-::: info
-Dinero.js v2 requires Node.js 14+ with ES modules support.
-:::
-
 If you don't use a package manager, you can use the HTML `script` element:
 
 ```html
