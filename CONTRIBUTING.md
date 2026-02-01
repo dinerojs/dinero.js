@@ -44,15 +44,18 @@ npm install
 
 ## 🖥️ Project organization
 
-The project is organized as a monorepo under the `packages/` directory.
+The project source lives in the `packages/dinero.js/` directory.
 
 ```txt
 packages/
-├── calculator-bigint/
-├── calculator-number/
-├── core/
-├── currencies/
 └── dinero.js/
+    └── src/
+        ├── api/          # All API functions
+        ├── bigint/       # BigInt entry point
+        ├── calculator/   # Calculator implementations
+        ├── core/         # Types and utilities
+        ├── currencies/   # ISO 4217 currencies
+        └── dinero/       # Dinero factory
 ```
 
 ## 📖 Conventions
@@ -109,10 +112,10 @@ If Oxlint finds issues, you can fix them manually and try committing again.
 
 ## 📚 Documentation
 
-The project lives in the `website/` directory. You can run it locally:
+The documentation lives in the `docs/` directory and is built with [VitePress](https://vitepress.dev/). You can run it locally:
 
 ```sh
-npm run website:dev
+npm run docs:dev
 ```
 
-All documentation files live in `website/data/docs/`. They use [MDX](https://mdxjs.com/), which is a mix of [Markdown](https://daringfireball.net/projects/markdown/syntax) and [JSX](https://reactjs.org/docs/introducing-jsx.html).
+All documentation files are Markdown (`.md`) files organized by section.

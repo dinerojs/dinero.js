@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Dinero.js is a JavaScript/TypeScript library for creating, calculating, and formatting money safely. It's a monorepo (v2.0.0-alpha) using npm workspaces and Turborepo.
+Dinero.js is a JavaScript/TypeScript library for creating, calculating, and formatting money safely. It uses npm workspaces and Turborepo for build orchestration.
 
 ## Common Commands
 
@@ -12,11 +12,11 @@ All commands run from the repository root:
 
 ```bash
 # Build
-npm run build              # Build all packages (ESM, CJS, UMD, types)
+npm run build              # Build all packages (ESM, UMD, types)
 npm run build:clean        # Clean dist/lib directories before building
 
 # Testing
-npm test                   # Run Vitest test suite across all packages
+npm test                   # Run Vitest test suite
 npm run test:types         # Type check with TypeScript (noEmit)
 npm run test:size          # Check bundle sizes against limits
 
@@ -25,23 +25,41 @@ npm run lint               # Run Oxlint (fast Rust-based linter)
 npm run format             # Format with Prettier
 
 # Documentation site
-npm run website:dev        # Run docs site locally (Next.js)
+npm run docs:dev           # Run VitePress docs locally
 ```
 
-## Monorepo Structure
+## Project Structure
 
 ```
 packages/
-├── core/                 # Base types, helpers, and core API functions
-├── dinero.js/            # Main entry point (aggregates core functionality)
-├── currencies/           # Currency data and utilities
-├── calculator-number/    # JavaScript Number-based calculator (default)
-└── calculator-bigint/    # BigInt-based calculator (for precision)
+└── dinero.js/            # Main package (single consolidated package)
+    └── src/
+        ├── api/          # All API functions (add, subtract, allocate, etc.)
+        ├── bigint/       # BigInt entry point (dinero.js/bigint)
+        ├── calculator/   # Number and BigInt calculator implementations
+        ├── core/         # Types, helpers, utilities
+        ├── currencies/   # ISO 4217 currency exports (dinero.js/currencies)
+        └── dinero/       # Dinero factory function
 
-website/                  # Next.js documentation site
+docs/                     # VitePress documentation site
 examples/                 # Sample projects (cart-react, cart-vue, etc.)
 test/                     # Shared test utilities (imported as 'test-utils')
 scripts/                  # Build and development scripts
+```
+
+## Package Exports
+
+The `dinero.js` package has three entry points:
+
+```js
+// Main API
+import { dinero, add, subtract, allocate } from 'dinero.js';
+
+// ISO 4217 currencies
+import { USD, EUR } from 'dinero.js/currencies';
+
+// BigInt variant (for large amounts or high precision)
+import { dinero } from 'dinero.js/bigint';
 ```
 
 ## Architecture
@@ -49,10 +67,10 @@ scripts/                  # Build and development scripts
 ### Core Concepts
 
 1. **Dinero Object**: Immutable representation of money with `amount` (in minor units), `currency`, and `scale`
-2. **Calculator Pattern**: Pluggable arithmetic backends (`calculator-number` for standard JS numbers, `calculator-bigint` for precision)
+2. **Calculator Pattern**: Pluggable arithmetic backends (number by default, bigint for precision)
 3. **Pure Functions**: All operations are side-effect free and return new Dinero objects
 
-### API Categories in `@dinero.js/core`
+### API Categories
 
 - **Mutations**: add, subtract, multiply, allocate
 - **Comparisons**: equal, greaterThan, lessThan, compare
@@ -63,27 +81,27 @@ scripts/                  # Build and development scripts
 ## Path Aliases
 
 TypeScript and Vitest use these path aliases:
-- `@dinero.js/*` → `packages/*/src/`
 - `dinero.js` → `packages/dinero.js/src/`
+- `dinero.js/currencies` → `packages/dinero.js/src/currencies/`
+- `dinero.js/bigint` → `packages/dinero.js/src/bigint/`
 - `test-utils` → `test/utils/`
 
 ## Build System
 
 - **Babel**: Transpilation with TypeScript preset
-- **Rollup**: Generates ESM, CJS, and UMD bundles
-- **API Extractor**: Generates rolled-up `.d.ts` files from TypeScript declarations
+- **Rollup**: Generates ESM and UMD bundles
+- **API Extractor**: Generates rolled-up `.d.ts` files
 - **Globals**: `__DEV__` and `__TEST__` flags replaced at build time for tree-shaking
 
-Each package outputs:
+Package outputs:
 - `dist/esm/` - ES modules (main entry)
-- `dist/cjs/` - CommonJS
-- `dist/umd/` - UMD bundles
+- `dist/umd/` - UMD bundles (for script tags)
 - `lib/` - Intermediate TypeScript declarations
 
 ## Testing
 
 - Vitest with native TypeScript support
-- Test files: `src/**/__tests__/*.test.ts`
+- Test files: `packages/dinero.js/src/**/__tests__/*.test.ts`
 - Shared utilities in `/test/utils/` (import as `test-utils`)
 - Global test APIs available (`describe`, `it`, `expect`, `vi`)
 
@@ -93,7 +111,6 @@ Each package outputs:
 - **Conventional Commits**: `type(scope): subject` (types: feat, fix, docs, refactor, test, etc.)
 - **Oxlint**: Fast Rust-based linter for code quality
 - **Prettier**: Single quotes, trailing commas (ES5)
-- Packages are always versioned together
 
 ## Linear Integration
 

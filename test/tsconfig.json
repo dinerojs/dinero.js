@@ -3,9 +3,6 @@
   "compilerOptions": {
     "composite": true
   },
-  "references": [
-    { "path": "../packages/dinero.js" },
-    { "path": "../packages/calculator-bigint" }
-  ],
+  "references": [{ "path": "../packages/dinero.js" }],
   "include": ["utils"]
 }
