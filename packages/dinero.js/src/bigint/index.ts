@@ -1,4 +1,5 @@
 export * from '../api';
+export * from '../currencies/bigint';
 export type {
   Calculator,
   ComparisonOperator,
