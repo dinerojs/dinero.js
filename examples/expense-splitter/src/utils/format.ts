@@ -1,5 +1,5 @@
 import type { Dinero } from 'dinero.js';
-import { toDecimal, toSnapshot } from 'dinero.js';
+import { toDecimal } from 'dinero.js';
 
 function intlFormat(locale: string) {
   return function formatter(dineroObject: Dinero<number>): string {
@@ -12,15 +12,8 @@ function intlFormat(locale: string) {
   };
 }
 
-const formatters: Record<string, (dineroObject: Dinero<number>) => string> = {
-  USD: intlFormat('en-US'),
-  EUR: intlFormat('fr-FR'),
-  GBP: intlFormat('en-GB'),
-};
-
 export function format(dineroObject: Dinero<number>): string {
-  const { currency } = toSnapshot(dineroObject);
-  const formatFn = formatters[currency.code] || formatters.USD;
+  const formatFn = intlFormat('en-US');
 
   return formatFn(dineroObject);
 }

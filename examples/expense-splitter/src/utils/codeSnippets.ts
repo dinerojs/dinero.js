@@ -12,45 +12,6 @@ function formatAmount(
   });
 }
 
-export function generateSummarySnippet(
-  expenses: Expense[],
-  currency: DineroCurrency<number>
-): { title: string; code: string } {
-  if (expenses.length === 0) {
-    return {
-      title: 'Summing expenses with add()',
-      code: `import { dinero, add } from 'dinero.js';
-
-// Add expenses together safely
-const total = expenses.reduce(
-  (sum, expense) => add(sum, expense.amount),
-  dinero({ amount: 0, currency: ${currency.code} })
-);`,
-    };
-  }
-
-  const amounts = expenses.slice(0, 3).map((e) => {
-    const snap = { amount: (e.amount as any).toJSON().amount };
-    return snap.amount;
-  });
-
-  return {
-    title: 'Summing expenses with add()',
-    code: `import { dinero, add } from 'dinero.js';
-import { ${currency.code} } from 'dinero.js/currencies';
-
-const expense1 = dinero({ amount: ${amounts[0]}, currency: ${currency.code} });
-${amounts[1] ? `const expense2 = dinero({ amount: ${amounts[1]}, currency: ${currency.code} });` : ''}
-
-// Add them safely - no floating point errors!
-const total = add(expense1${amounts[1] ? ', expense2' : ''});
-// Result: ${formatAmount(
-      amounts.reduce((a, b) => a + b, 0),
-      currency
-    )}`,
-  };
-}
-
 export function generateAddExpenseSnippet(
   currency: DineroCurrency<number>,
   peopleCount: number
@@ -191,26 +152,5 @@ const expense = dinero({
 // Split among ${shareCount} people
 const shares = allocate(expense, [${ratios.join(', ')}]);
 // Remainder distributed fairly - no cents lost!`,
-  };
-}
-
-export function generateFormattingSnippet(currency: DineroCurrency<number>): {
-  title: string;
-  code: string;
-} {
-  return {
-    title: 'Formatting for display',
-    code: `import { toDecimal } from 'dinero.js';
-
-const price = dinero({ amount: 1999, currency: ${currency.code} });
-
-// Format with Intl.NumberFormat
-const formatted = toDecimal(price, ({ value, currency }) =>
-  Number(value).toLocaleString('en-US', {
-    style: 'currency',
-    currency: currency.code,
-  })
-);
-// Returns: "${formatAmount(1999, currency)}"`,
   };
 }

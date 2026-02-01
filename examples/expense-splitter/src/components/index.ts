@@ -5,4 +5,3 @@ export * from './code-tooltip';
 export * from './expense-list';
 export * from './person-list';
 export * from './settlements';
-export * from './summary';

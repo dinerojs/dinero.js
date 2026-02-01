@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { dinero, toSnapshot } from 'dinero.js';
-import { USD, EUR, GBP } from 'dinero.js/currencies';
-import type { DineroCurrency } from 'dinero.js';
+import { USD } from 'dinero.js/currencies';
 
 import type { Person, Expense } from './types';
 
@@ -13,23 +12,17 @@ import {
   ExpenseList,
   PersonList,
   Settlements,
-  Summary,
 } from './components';
 import { useLocalStorage } from './hooks';
 import { calculateSettlements } from './utils/calculations';
 import {
-  generateSummarySnippet,
   generateAddExpenseSnippet,
   generateBalancesSnippet,
   generateSettlementsSnippet,
   generateExpenseListSnippet,
-  generateFormattingSnippet,
 } from './utils/codeSnippets';
 
-const currencies: DineroCurrency<number>[] = [USD, EUR, GBP];
-
 export default function App() {
-  const [currency, setCurrency] = useState<DineroCurrency<number>>(USD);
   const [storedPeople, setStoredPeople] = useLocalStorage<Person[]>(
     'expense-splitter-people',
     []
@@ -41,7 +34,7 @@ export default function App() {
 
   const [people, setPeople] = useState<Person[]>(storedPeople);
   const [expenses, setExpenses] = useState<Expense[]>(() =>
-    deserializeExpenses(storedExpenses, currency)
+    deserializeExpenses(storedExpenses)
   );
 
   useEffect(() => {
@@ -52,14 +45,12 @@ export default function App() {
     setStoredExpenses(serializeExpenses(expenses));
   }, [expenses, setStoredExpenses]);
 
-  const settlements = calculateSettlements(expenses, people, currency);
+  const settlements = calculateSettlements(expenses, people, USD);
   const snippets = {
-    summary: generateSummarySnippet(expenses, currency),
-    formatting: generateFormattingSnippet(currency),
-    addExpense: generateAddExpenseSnippet(currency, people.length),
-    balances: generateBalancesSnippet(people, currency),
-    settlements: generateSettlementsSnippet(settlements, people, currency),
-    expenseList: generateExpenseListSnippet(expenses, people, currency),
+    addExpense: generateAddExpenseSnippet(USD, people.length),
+    balances: generateBalancesSnippet(people, USD),
+    settlements: generateSettlementsSnippet(settlements, people, USD),
+    expenseList: generateExpenseListSnippet(expenses, people, USD),
   };
 
   return (
@@ -104,53 +95,6 @@ export default function App() {
             </a>
           </p>
         </header>
-
-        <div className="flex justify-end mb-8 animate-fade-in">
-          <div className="flex items-center gap-3">
-            <span className="text-sm text-slate-500">Currency</span>
-            <select
-              value={currency.code}
-              onChange={(e) => {
-                const newCurrency = currencies.find(
-                  (c) => c.code === e.target.value
-                );
-                if (newCurrency) {
-                  setCurrency(newCurrency);
-                  if (expenses.length > 0) {
-                    if (
-                      window.confirm(
-                        'Changing currency will clear all expenses. Continue?'
-                      )
-                    ) {
-                      setExpenses([]);
-                    }
-                  }
-                }
-              }}
-              className="input-modern w-auto"
-            >
-              {currencies.map((c) => (
-                <option key={c.code} value={c.code} className="bg-slate-800">
-                  {c.code}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {expenses.length > 0 && (
-          <div className="mb-10 animate-slide-up relative">
-            <div className="absolute top-4 right-4 flex gap-2">
-              <CodeTooltip {...snippets.summary} />
-              <CodeTooltip {...snippets.formatting} />
-            </div>
-            <Summary
-              expenses={expenses}
-              currency={currency}
-              peopleCount={people.length}
-            />
-          </div>
-        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-5 space-y-8">
@@ -230,7 +174,7 @@ export default function App() {
               </div>
               <AddExpense
                 people={people}
-                currency={currency}
+                currency={USD}
                 onAdd={(expense: Expense) => {
                   setExpenses((prev) => [expense, ...prev]);
                 }}
@@ -264,11 +208,7 @@ export default function App() {
                 </div>
                 <CodeTooltip {...snippets.balances} />
               </div>
-              <Balances
-                expenses={expenses}
-                people={people}
-                currency={currency}
-              />
+              <Balances expenses={expenses} people={people} currency={USD} />
               {expenses.length === 0 && (
                 <p className="text-slate-500 text-center py-6">
                   Add expenses to see balances
@@ -303,11 +243,7 @@ export default function App() {
                 </div>
                 <CodeTooltip {...snippets.settlements} />
               </div>
-              <Settlements
-                expenses={expenses}
-                people={people}
-                currency={currency}
-              />
+              <Settlements expenses={expenses} people={people} currency={USD} />
               {expenses.length === 0 && (
                 <p className="text-slate-500 text-center py-6">
                   Add expenses to see settlements
@@ -367,7 +303,7 @@ export default function App() {
               <ExpenseList
                 expenses={expenses}
                 people={people}
-                currency={currency}
+                currency={USD}
                 onRemove={(id: string) => {
                   setExpenses((prev) => prev.filter((e) => e.id !== id));
                 }}
@@ -421,14 +357,11 @@ function serializeExpenses(expenses: Expense[]): StoredExpense[] {
   });
 }
 
-function deserializeExpenses(
-  stored: StoredExpense[],
-  currency: DineroCurrency<number>
-): Expense[] {
+function deserializeExpenses(stored: StoredExpense[]): Expense[] {
   return stored.map((expense) => ({
     id: expense.id,
     description: expense.description,
-    amount: dinero({ amount: expense.amount, currency }),
+    amount: dinero({ amount: expense.amount, currency: USD }),
     paidBy: expense.paidBy,
     splitType: expense.splitType,
     shares: expense.shares,

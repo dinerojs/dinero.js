@@ -118,13 +118,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
           </label>
           <div className="relative">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-              <span className="text-slate-500">
-                {currency.code === 'USD'
-                  ? '$'
-                  : currency.code === 'EUR'
-                    ? '€'
-                    : '£'}
-              </span>
+              <span className="text-slate-500">$</span>
             </div>
             <input
               type="number"
