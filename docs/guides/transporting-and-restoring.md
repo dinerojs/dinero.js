@@ -7,7 +7,7 @@ description: How to serialize Dinero objects for transport over the network and 
 
 If you want to send a Dinero object over the network, you need to serialize it first. Conversely, when retrieving a serialized object, you need to restore it as an actual Dinero object before using it in your application and manipulating it with Dinero functions.
 
-**Dinero lets you turn objects into snapshots.** Snapshots are plain JavaScript objects, suited for transport and storage. To create a snapshot, you can use the `toSnapshot` function.
+**Dinero lets you turn objects into snapshots.** Snapshots are plain JavaScript objects, suited for transport and storage. To create a snapshot, you can use the [`toSnapshot`](/api/formatting/to-snapshot) function.
 
 ```js
 import { dinero, toSnapshot } from 'dinero.js';

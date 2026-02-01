@@ -146,7 +146,7 @@ Former methods and new functions don't all have the same signature. Refer to the
 
 ### Replace floats with scaled amounts
 
-In v1.x, methods like `convert`, `multiply`, or `allocate` used to accept floats for rates, factors or ratios. It then rounded the result before creating new objects, resulting is precision loss.
+In v1.x, methods like [`convert`](/api/conversions/convert), [`multiply`](/api/mutations/multiply), or [`allocate`](/api/mutations/allocate) used to accept floats for rates, factors or ratios. It then rounded the result before creating new objects, resulting is precision loss.
 
 **In v2, you should use scaled amounts instead.** Scaled amounts represent a numeric value using an integer, and a scale that represents the position of the decimal point. For example, instead of passing `0.89`, you would pass `89` with a `scale` of `2`.
 
@@ -202,7 +202,7 @@ allocate(d, ratios);
 
 ### Replace getAmount, getCurrency and getPrecision with toSnapshot
 
-The `getAmount`, `getCurrency`, and `getPrecision` methods have been replaced with `toSnapshot`, which returns a plain object with the amount, currency and scale (formerly known as precision).
+The `getAmount`, `getCurrency`, and `getPrecision` methods have been replaced with [`toSnapshot`](/api/formatting/to-snapshot), which returns a plain object with the amount, currency and scale (formerly known as precision).
 
 ```diff
 - const amount = Dinero({ amount: 500, currency: 'USD' }).getAmount();
@@ -223,7 +223,7 @@ Dinero.js v2 no longer has a built-in `divide` function. Use [`allocate`](/api/m
 
 ### Replace percentage with allocate or multiply
 
-Dinero.js v2 no longer has a built-in `percentage` function. You can build your own using either `allocate` or `multiply`.
+Dinero.js v2 no longer has a built-in `percentage` function. You can build your own using either [`allocate`](/api/mutations/allocate) or [`multiply`](/api/mutations/multiply).
 
 **See also:** [How do I calculate a percentage?](/guides/calculating-percentages)
 

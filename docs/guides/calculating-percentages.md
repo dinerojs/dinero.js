@@ -5,9 +5,9 @@ description: How to create a Dinero object that represents a percentage of anoth
 
 # Calculating percentages
 
-There are two ways to calculate a percentage with Dinero.js: using `allocate` or `multiply`.
+There are two ways to calculate a percentage with Dinero.js: using [`allocate`](/api/mutations/allocate) or [`multiply`](/api/mutations/multiply).
 
-For example, if you need to calculate 15% of a Dinero object, you can split it with `allocate`.
+For example, if you need to calculate 15% of a Dinero object, you can split it with [`allocate`](/api/mutations/allocate).
 
 ```js
 import { dinero, allocate } from 'dinero.js';
@@ -18,7 +18,7 @@ const price = dinero({ amount: 5000, currency: USD });
 const [tax] = allocate(price, [15, 85]);
 ```
 
-You can do the same with `multiply`.
+You can do the same with [`multiply`](/api/mutations/multiply).
 
 ```js
 import { dinero, multiply } from 'dinero.js';

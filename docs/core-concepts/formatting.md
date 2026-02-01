@@ -82,9 +82,9 @@ format(d); // "USD 50.00"
 
 ## Retrieving raw data
 
-One of the most convenient formatting functions in Dinero.js is `toSnapshot`. Its primary usage isn't the front end but to take snapshots of Dinero objects to inspect them.
+One of the most convenient formatting functions in Dinero.js is [`toSnapshot`](/api/formatting/to-snapshot). Its primary usage isn't the front end but to take snapshots of Dinero objects to inspect them.
 
-Whenever you need to access a Dinero object's raw data, `toSnapshot` is the go-to function.
+Whenever you need to access a Dinero object's raw data, [`toSnapshot`](/api/formatting/to-snapshot) is the go-to function.
 
 ```js
 import { dinero, toSnapshot } from 'dinero.js';
@@ -105,4 +105,4 @@ toSnapshot(d);
 // }
 ```
 
-Another useful usage of `toSnapshot` is transport and storage. To do so, check the advanced guide on [transporting and restoring](/guides/transporting-and-restoring).
+Another useful usage of [`toSnapshot`](/api/formatting/to-snapshot) is transport and storage. To do so, check the advanced guide on [transporting and restoring](/guides/transporting-and-restoring).

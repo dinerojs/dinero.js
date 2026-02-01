@@ -136,5 +136,5 @@ trimScale(d3); // a Dinero object with amount 300 and scale 2
 ```
 
 ::: info
-The `trimScale` function trims Dinero objects down to the smallest, safest possible scale, down to the currency exponent at most.
+The [`trimScale`](/api/conversions/trim-scale) function trims Dinero objects down to the smallest, safest possible scale, down to the currency exponent at most.
 :::
