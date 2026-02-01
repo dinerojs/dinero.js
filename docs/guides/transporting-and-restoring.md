@@ -96,23 +96,13 @@ While many arbitrary precision libraries support this out of the box, **you can'
 When serializing, make sure to pass a [custom replacer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#the_replacer_parameter) to coerce every `bigint` into a `string`.
 
 ```js
-import { calculator } from 'dinero.js/bigint';
-import { createDinero } from 'dinero.js';
-import { EUR } from 'dinero.js/currencies';
-
-const dineroBigint = createDinero({ calculator });
+import { dinero } from 'dinero.js/bigint';
+import { EUR } from 'dinero.js/bigint/currencies';
 
 const product = {
   name: 'Mass Effect: Legendary Edition',
   platform: 'Xbox One',
-  price: dineroBigint({
-    amount: 6999n,
-    currency: {
-      ...EUR,
-      base: BigInt(EUR.base),
-      exponent: BigInt(EUR.exponent),
-    },
-  }),
+  price: dinero({ amount: 6999n, currency: EUR }),
 };
 
 fetch('http://example.org/api/products', {
