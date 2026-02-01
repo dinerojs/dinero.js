@@ -2,6 +2,9 @@ import { defineConfig } from 'vitest/config';
 import path from 'path';
 
 export default defineConfig({
+  esbuild: {
+    tsconfigRaw: '{}',
+  },
   test: {
     globals: true,
     environment: 'node',
@@ -14,18 +17,13 @@ export default defineConfig({
     clearMocks: true,
     alias: {
       'test-utils': path.resolve(__dirname, 'test/utils/'),
-      '@dinero.js/core': path.resolve(__dirname, 'packages/core/src/'),
-      '@dinero.js/currencies': path.resolve(
+      'dinero.js/currencies': path.resolve(
         __dirname,
-        'packages/currencies/src/'
+        'packages/dinero.js/src/currencies/'
       ),
-      '@dinero.js/calculator-number': path.resolve(
+      'dinero.js/bigint': path.resolve(
         __dirname,
-        'packages/calculator-number/src/'
-      ),
-      '@dinero.js/calculator-bigint': path.resolve(
-        __dirname,
-        'packages/calculator-bigint/src/'
+        'packages/dinero.js/src/bigint/'
       ),
       'dinero.js': path.resolve(__dirname, 'packages/dinero.js/src/'),
     },

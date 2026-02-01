@@ -5,11 +5,6 @@
     "rootDir": "src",
     "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
   },
-  "references": [
-    { "path": "../calculator-number" },
-    { "path": "../core" },
-    { "path": "../currencies" }
-  ],
   "include": ["src"],
   "exclude": ["**/__tests__/**/*"]
 }

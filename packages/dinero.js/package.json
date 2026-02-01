@@ -56,12 +56,5 @@
     "lint": "oxlint .",
     "test": "vitest --config ../../vitest.config.ts --dir src"
   },
-  "dependencies": {
-    "@dinero.js/calculator-number": "2.0.0-alpha.15",
-    "@dinero.js/core": "2.0.0-alpha.15",
-    "@dinero.js/currencies": "2.0.0-alpha.15"
-  },
-  "devDependencies": {
-    "@dinero.js/calculator-bigint": "2.0.0-alpha.15"
-  }
+  "devDependencies": {}
 }
