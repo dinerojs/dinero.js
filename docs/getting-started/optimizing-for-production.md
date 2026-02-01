@@ -30,48 +30,9 @@ The UMD build bundles the entire library. It's meant for usage in Node.js 13.1 o
 
 If you're using a modern build system like [webpack](https://webpack.js.org/), [Parcel](https://parceljs.org/) or [Vite](https://vitejs.dev/), you should use the ESM build and bundle it yourself. This lets you take advantage of performance features like [tree-shaking](#tree-shake-your-code) and code splitting.
 
-## Use granular UMD bundles
+## Use the UMD build
 
-If you're not using a bundler but still want to minimize your bundle size, Dinero.js provides **granular UMD bundles** for individual functions. This lets you load only what you need without a build step.
-
-### Loading individual functions
-
-Instead of loading the full bundle, you can load specific functions:
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/dinero.production.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/add.production.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/currencies/index.production.js"></script>
-```
-
-Alternatively, you can use jsDelivr's combine feature to load multiple files in a single request, or load the complete bundle from the main endpoint.
-
-### Available bundles
-
-**Functions:**
-
-```
-https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/{name}.production.js
-```
-
-- `dinero` - Create Dinero objects
-- `add`, `subtract`, `multiply`, `allocate`
-- `compare`, `equal`, `greaterThan`, `greaterThanOrEqual`, `lessThan`, `lessThanOrEqual`, `minimum`, `maximum`
-- `isZero`, `isPositive`, `isNegative`, `hasSubUnits`, `haveSameAmount`, `haveSameCurrency`
-- `convert`, `normalizeScale`, `transformScale`, `trimScale`
-- `toDecimal`, `toSnapshot`, `toUnits`
-
-**Currencies:**
-
-```
-https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/currencies/index.production.js
-```
-
-All ISO 4217 currencies are bundled together. For granular currency imports, use the ESM build with a bundler that supports tree-shaking.
-
-### Full bundle
-
-If you need everything, use the full bundle:
+If you're not using a bundler, you can load Dinero.js via a CDN:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/index.production.js"></script>
@@ -79,6 +40,16 @@ If you need everything, use the full bundle:
   const { dinero, add, USD } = window['dinero.js'];
 </script>
 ```
+
+The UMD build includes all functions and currencies. For smaller bundles, use the ESM build with a bundler that supports tree-shaking.
+
+**Available UMD bundles:**
+
+| Bundle | Description |
+|--------|-------------|
+| `dist/umd/index.production.js` | Full library (functions + currencies) |
+| `dist/umd/bigint/index.production.js` | BigInt variant |
+| `dist/umd/currencies/index.production.js` | Currencies only |
 
 **Resources:**
 - [JavaScript modules](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)
