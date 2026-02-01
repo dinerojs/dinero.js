@@ -29,7 +29,7 @@ If you don't use a package manager, you can use the HTML `script` element:
 ```html
 <script src="https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/index.production.js"></script>
 <script>
-  const { dinero, add, USD } = window['dinero.js'];
+  const { dinero, add, USD } = window.dinerojs;
 </script>
 ```
 
