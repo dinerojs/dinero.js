@@ -9,12 +9,14 @@ import {
   AddExpense,
   AddPerson,
   Balances,
+  CodeTooltip,
   ExpenseList,
   PersonList,
   Settlements,
   Summary,
 } from './components';
 import { useLocalStorage } from './hooks';
+import { codeSnippets } from './data/codeSnippets';
 
 const currencies: DineroCurrency<number>[] = [USD, EUR, GBP];
 
@@ -199,7 +201,11 @@ export default function App() {
 
         {/* Summary */}
         {expenses.length > 0 && (
-          <div className="mb-10 animate-slide-up">
+          <div className="mb-10 animate-slide-up relative">
+            <div className="absolute top-4 right-4 flex gap-2">
+              <CodeTooltip {...codeSnippets.summary} />
+              <CodeTooltip {...codeSnippets.formatting} />
+            </div>
             <Summary
               expenses={expenses}
               currency={currency}
@@ -242,25 +248,28 @@ export default function App() {
               className="card animate-slide-up"
               style={{ animationDelay: '0.1s' }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center">
-                  <svg
-                    className="w-5 h-5 text-emerald-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                    />
-                  </svg>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center">
+                    <svg
+                      className="w-5 h-5 text-emerald-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                      />
+                    </svg>
+                  </div>
+                  <h2 className="text-xl font-semibold text-white">
+                    Add Expense
+                  </h2>
                 </div>
-                <h2 className="text-xl font-semibold text-white">
-                  Add Expense
-                </h2>
+                <CodeTooltip {...codeSnippets.addExpense} />
               </div>
               <AddExpense
                 people={people}
@@ -277,23 +286,26 @@ export default function App() {
               className="card animate-slide-up"
               style={{ animationDelay: '0.2s' }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center">
-                  <svg
-                    className="w-5 h-5 text-amber-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
-                    />
-                  </svg>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center">
+                    <svg
+                      className="w-5 h-5 text-amber-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
+                      />
+                    </svg>
+                  </div>
+                  <h2 className="text-xl font-semibold text-white">Balances</h2>
                 </div>
-                <h2 className="text-xl font-semibold text-white">Balances</h2>
+                <CodeTooltip {...codeSnippets.balances} />
               </div>
               <Balances
                 expenses={expenses}
@@ -312,23 +324,28 @@ export default function App() {
               className="card animate-slide-up"
               style={{ animationDelay: '0.3s' }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
-                  <svg
-                    className="w-5 h-5 text-cyan-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-                    />
-                  </svg>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
+                    <svg
+                      className="w-5 h-5 text-cyan-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                      />
+                    </svg>
+                  </div>
+                  <h2 className="text-xl font-semibold text-white">
+                    Settle Up
+                  </h2>
                 </div>
-                <h2 className="text-xl font-semibold text-white">Settle Up</h2>
+                <CodeTooltip {...codeSnippets.settlements} />
               </div>
               <Settlements
                 expenses={expenses}
@@ -371,14 +388,17 @@ export default function App() {
                     </span>
                   )}
                 </div>
-                {(people.length > 0 || expenses.length > 0) && (
-                  <button
-                    onClick={handleClearAll}
-                    className="text-sm text-slate-500 hover:text-red-400 transition-colors"
-                  >
-                    Clear all
-                  </button>
-                )}
+                <div className="flex items-center gap-3">
+                  <CodeTooltip {...codeSnippets.expenseList} />
+                  {(people.length > 0 || expenses.length > 0) && (
+                    <button
+                      onClick={handleClearAll}
+                      className="text-sm text-slate-500 hover:text-red-400 transition-colors"
+                    >
+                      Clear all
+                    </button>
+                  )}
+                </div>
               </div>
               <ExpenseList
                 expenses={expenses}
