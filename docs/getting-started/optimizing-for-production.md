@@ -32,7 +32,7 @@ If you're using a modern build system like [webpack](https://webpack.js.org/), [
 
 ## Use granular UMD bundles
 
-If you're not using a bundler but still want to minimize your bundle size, Dinero.js provides **granular UMD bundles** for individual functions and currencies. This lets you load only what you need without a build step.
+If you're not using a bundler but still want to minimize your bundle size, Dinero.js provides **granular UMD bundles** for individual functions. This lets you load only what you need without a build step.
 
 ### Loading individual functions
 
@@ -40,7 +40,8 @@ Instead of loading the full bundle, you can load specific functions:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/dinero.production.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/currencies/usd.production.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/add.production.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/currencies/index.production.js"></script>
 ```
 
 Alternatively, you can use jsDelivr's combine feature to load multiple files in a single request, or load the complete bundle from the main endpoint.
@@ -63,10 +64,10 @@ https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/{name}.production.js
 **Currencies:**
 
 ```
-https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/currencies/{code}.production.js
+https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/currencies/index.production.js
 ```
 
-Individual ISO 4217 currency codes: `usd`, `eur`, `gbp`, etc.
+All ISO 4217 currencies are bundled together. For granular currency imports, use the ESM build with a bundler that supports tree-shaking.
 
 ### Full bundle
 
