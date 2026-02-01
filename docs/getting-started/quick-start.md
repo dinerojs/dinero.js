@@ -109,12 +109,13 @@ This is only a preview of what you can do. Dinero.js provides extensive document
 
 ## Available exports
 
-Dinero.js provides three entry points:
+Dinero.js provides four entry points:
 
 | Import path | Description |
 |-------------|-------------|
 | `dinero.js` | Core functions with `number` amounts (default) |
-| `dinero.js/currencies` | ISO 4217 currency definitions |
+| `dinero.js/currencies` | ISO 4217 currency definitions for `number` |
+| `dinero.js/currencies/bigint` | ISO 4217 currency definitions for `bigint` |
 | `dinero.js/bigint` | Core functions with `bigint` amounts |
 
 ```js
@@ -124,6 +125,7 @@ import { USD, EUR } from 'dinero.js/currencies';
 
 // For large amounts (bigint)
 import { dinero } from 'dinero.js/bigint';
+import { USD, EUR } from 'dinero.js/currencies/bigint';
 ```
 
 ::: info
