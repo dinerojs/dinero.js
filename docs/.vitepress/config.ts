@@ -63,6 +63,20 @@ export default defineConfig({
         defer: '',
       },
     ],
+    [
+      'script',
+      {
+        src: 'https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/index.production.js',
+        defer: '',
+      },
+    ],
+    [
+      'script',
+      {},
+      `window.addEventListener('load', function() {
+  console.log('%cDinero.js is available globally!\\n\\n%cTry it out:\\n\\nconst { dinero, toDecimal, USD } = window.dinero.js;\\nconst price = dinero({ amount: 1999, currency: USD });\\ntoDecimal(price); // "19.99"', 'font-weight: bold; font-size: 14px;', '');
+});`,
+    ],
   ],
   themeConfig: {
     logo: '/logo.svg',
