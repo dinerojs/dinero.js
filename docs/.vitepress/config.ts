@@ -226,6 +226,27 @@ export default defineConfig({
           ],
         },
         {
+          text: 'FAQ',
+          items: [
+            {
+              text: "Why can't I use currencies with bigint?",
+              link: '/faq/why-cant-i-use-currencies-with-bigint',
+            },
+            {
+              text: 'Why no currency symbols?',
+              link: '/faq/why-no-currency-formatting',
+            },
+            {
+              text: 'Can I multiply by a decimal?',
+              link: '/faq/can-i-multiply-by-a-decimal',
+            },
+            {
+              text: 'Why functions instead of methods?',
+              link: '/faq/why-functions-instead-of-methods',
+            },
+          ],
+        },
+        {
           text: 'Resources',
           items: [
             { text: 'About', link: '/about' },
