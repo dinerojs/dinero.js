@@ -18,7 +18,7 @@ const d = dinero({ amount: 5000, currency: USD });
 
 You should always pass integers. The library throws whenever you try to pass a float or any non-integer value.
 
-Dinero.js comes with a [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) implementation, but the library is generic. This means you can use it with any data type you want: [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), third-parties like [big.js](https://github.com/MikeMcl/big.js), etc. To do so, check the advanced guide on [using different amount types](/guides/using-different-amount-types).
+Dinero.js comes with a [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) implementation, but the library is generic. This means you can use it with any data type you want: [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), third-parties like [big.js](https://github.com/MikeMcl/big.js), etc. To do so, check the advanced guide on [precision and large numbers](/guides/precision-and-large-numbers).
 
 ## No minor units
 

@@ -113,7 +113,7 @@ const product = {
 };
 ```
 
-When working with very large amounts or using the [`bigint` calculator](/guides/using-different-amount-types#using-dinero-with-bigint), you should use `Decimal128` for the amount to ensure precision.
+When working with very large amounts or using the [`bigint` calculator](/guides/precision-and-large-numbers#using-dinero-with-bigint), you should use `Decimal128` for the amount to ensure precision.
 
 ```js
 import { calculator } from 'dinero.js/bigint';

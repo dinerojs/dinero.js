@@ -89,7 +89,7 @@ axios.get('http://example.org/api/products', {
 
 ## Handling arbitrary precision amounts
 
-If you're using Dinero.js with the [`bigint` calculator](/guides/using-different-amount-types#using-dinero-with-bigint) or a [custom library](/guides/using-different-amount-types#implementing-a-custom-calculator), you need to cast the amount to a `string` for serialization, so you can retain precision and safely restore it later.
+If you're using Dinero.js with the [`bigint` calculator](/guides/precision-and-large-numbers#using-dinero-with-bigint) or a [custom library](/guides/precision-and-large-numbers#implementing-a-custom-calculator), you need to cast the amount to a `string` for serialization, so you can retain precision and safely restore it later.
 
 While many arbitrary precision libraries support this out of the box, **you can't use [`JSON.stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) directly with `bigint`s.**
 

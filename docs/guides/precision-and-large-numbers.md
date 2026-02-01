@@ -1,9 +1,9 @@
 ---
-title: Using different amount types
-description: Using Dinero.js with any type of amount, such as JavaScript bigints or third-party arbitrary-precision libraries.
+title: Precision and large numbers
+description: Using Dinero.js with bigint or third-party arbitrary-precision libraries for large amounts or high-precision currencies.
 ---
 
-# Using different amount types
+# Precision and large numbers
 
 Dinero expects amounts as `number` by default. In most cases, this is more than enough, but there are times when you might hit the limitations of the [biggest](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) and [smallest](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MIN_SAFE_INTEGER) numbers you can safely represent.
 

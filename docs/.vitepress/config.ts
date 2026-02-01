@@ -115,8 +115,8 @@ export default defineConfig({
           text: 'Guides',
           items: [
             {
-              text: 'Different amount types',
-              link: '/guides/using-different-amount-types',
+              text: 'Precision and large numbers',
+              link: '/guides/precision-and-large-numbers',
             },
             {
               text: 'Serialization',

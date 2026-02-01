@@ -147,4 +147,4 @@ const FRF: Currency<number> = {
 
 If you want to use a different amount type, you'll need to pass a custom `Calculator` to Dinero.
 
-**See also:** [Using different amount types](/guides/using-different-amount-types)
+**See also:** [Precision and large numbers](/guides/precision-and-large-numbers)

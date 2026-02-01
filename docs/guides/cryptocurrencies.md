@@ -9,7 +9,7 @@ Dinero.js works with cryptocurrencies like any other currency, as long as they i
 
 When working with these, you should use `bigint` or a third-party library like [big.js](http://mikemcl.github.io/big.js/). Cryptos usually have high exponents, making them likely to exceed the range of safe JavaScript integers.
 
-**See also:** [Using different amount types](/guides/using-different-amount-types)
+**See also:** [Precision and large numbers](/guides/precision-and-large-numbers)
 
 The `dinero.js/currencies` subpath doesn't provide ready-made implementations for cryptocurrencies due to their non-normative and unstable nature. Maintaining such a list would be too demanding, so it makes more sense to keep them in userland. If you want to write a Dinero.js-compatible cryptocurrency, you can implement the `Currency` type.
 
