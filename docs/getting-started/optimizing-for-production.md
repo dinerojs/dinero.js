@@ -24,15 +24,18 @@ If you're importing Dinero.js via a CDN such as [jsDelivr](https://www.jsdelivr.
 
 ## Module formats
 
-Dinero.js ships in three formats:
+Dinero.js ships in two formats:
 
 | Format | Path | Use case |
 |--------|------|----------|
-| **ESM** | `dist/esm/` | Modern bundlers, Node.js 14+ with `import` |
-| **CJS** | `dist/cjs/` | Node.js with `require()`, older bundlers |
+| **ESM** | `dist/esm/` | Node.js 14+, modern bundlers |
 | **UMD** | `dist/umd/` | Browser `<script>` tags, no build step |
 
-The format is selected automatically based on how you import the library. Modern bundlers like [webpack](https://webpack.js.org/), [Parcel](https://parceljs.org/), and [Vite](https://vitejs.dev/) use ESM and can [tree-shake](#tree-shake-your-code) unused code.
+Modern bundlers like [webpack](https://webpack.js.org/), [Parcel](https://parceljs.org/), and [Vite](https://vitejs.dev/) use ESM and can [tree-shake](#tree-shake-your-code) unused code.
+
+::: info
+Dinero.js v2 requires Node.js 14 or later with ES modules support. Use `import` syntax, not `require()`.
+:::
 
 ## Use the UMD build
 

@@ -20,40 +20,20 @@ yarn add dinero.js@alpha
 Then import it in your project:
 
 ```js
-// ES import
 import { dinero } from 'dinero.js';
-
-// Node.js
-const { dinero } = require('dinero.js');
+import { USD } from 'dinero.js/currencies';
 ```
+
+::: info
+Dinero.js v2 requires Node.js 14+ with ES modules support.
+:::
 
 If you don't use a package manager, you can use the HTML `script` element:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/index.production.js"></script>
 <script>
-  const { dinero } = window.dinero.js;
-</script>
-```
-
-### Import currencies
-
-Currencies are available via a subpath export from the main package:
-
-```js
-// ES import
-import { USD } from 'dinero.js/currencies';
-
-// Node.js
-const { USD } = require('dinero.js/currencies');
-```
-
-If you don't use a package manager, you can use the HTML `script` element:
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/currencies/index.production.js"></script>
-<script>
-  const { USD } = window['dinero.js/currencies'];
+  const { dinero, add, USD } = window['dinero.js'];
 </script>
 ```
 

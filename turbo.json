@@ -19,10 +19,10 @@
       "inputs": ["src/**/*.ts"],
       "outputs": ["dist/esm/**/*.js"]
     },
-    "build:umd:cjs": {
+    "build:umd": {
       "dependsOn": ["build:esm"],
       "inputs": ["src/**/*.ts"],
-      "outputs": ["dist/cjs/**/*.js", "dist/umd/**/*.js"]
+      "outputs": ["dist/umd/**/*.js"]
     },
     "test": {
       "dependsOn": [],
@@ -30,7 +30,7 @@
       "outputs": []
     },
     "build": {
-      "dependsOn": ["^build", "build:esm", "build:umd:cjs", "build:types"],
+      "dependsOn": ["^build", "build:esm", "build:umd", "build:types"],
       "outputs": ["dist/**", ".next/**"]
     },
     "lint": {

@@ -22,7 +22,7 @@
     "url": "https://sarahdayan.dev"
   },
   "sideEffects": false,
-  "main": "dist/cjs/index.js",
+  "main": "dist/esm/index.js",
   "umd:main": "dist/umd/index.production.js",
   "jsdelivr": "dist/umd/index.production.js",
   "unpkg": "dist/umd/index.production.js",
@@ -41,7 +41,7 @@
     "build:esm": "babel src --root-mode upward --extensions '.ts' --out-dir dist/esm --ignore '**/*/__tests__/'",
     "build:definitions": "tsc -b",
     "build:types": "node ../../scripts/build-types.mjs",
-    "build:umd:cjs": "rollup --config",
+    "build:umd": "rollup --config",
     "lint": "oxlint ."
   }
 }
