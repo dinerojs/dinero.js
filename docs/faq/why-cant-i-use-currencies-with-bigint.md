@@ -1,6 +1,6 @@
 ---
 title: Why can't I use currencies with bigint?
-description: Why currencies from dinero.js/currencies don't work with bigint and how to define your own.
+description: Why currencies from dinero.js/currencies don't work with bigint and how to use dinero.js/currencies/bigint instead.
 ---
 
 # Why can't I use currencies with bigint?
@@ -18,32 +18,20 @@ When using `dinero.js/bigint`, **all arithmetic operations use bigint math.** Ja
 10n + 2  // TypeError: can't convert BigInt to number
 ```
 
-This is a JavaScript language constraint. To work around it, you must define currencies with bigint values when using the bigint variant:
+This is a JavaScript language constraint. To use the bigint variant, import currencies from `dinero.js/currencies/bigint` instead:
 
 ```js
 import { dinero } from 'dinero.js/bigint';
-
-const USD = {
-  code: 'USD',
-  base: 10n,
-  exponent: 2n,
-};
+import { USD } from 'dinero.js/currencies/bigint';
 
 const d = dinero({ amount: 500n, currency: USD });
 ```
 
-::: tip
-If you're using bigint for a few currencies, defining them manually is straightforward. For many currencies, you can write a helper to convert them:
+These currencies have bigint values for `base` and `exponent`:
 
 ```js
-function toBigIntCurrency(currency) {
-  return {
-    code: currency.code,
-    base: BigInt(currency.base),
-    exponent: BigInt(currency.exponent),
-  };
-}
+// From dinero.js/currencies/bigint
+const USD = { code: 'USD', base: 10n, exponent: 2n };
 ```
-:::
 
 See the [Precision and large numbers](/guides/precision-and-large-numbers) guide for more on when to use bigint.
