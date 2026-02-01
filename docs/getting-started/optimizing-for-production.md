@@ -22,13 +22,17 @@ If you're importing Dinero.js via a CDN such as [jsDelivr](https://www.jsdelivr.
 - [Gzip](https://gnu.org/software/gzip/)
 - [Brotli](https://github.com/google/brotli)
 
-## Use the ESM build
+## Module formats
 
-Dinero.js comes in two builds: **Universal Module Definition (UMD) and ECMAScript Modules (ESM).**
+Dinero.js ships in three formats:
 
-The UMD build bundles the entire library. It's meant for usage in Node.js 13.1 or older (before ES modules support), or when your web project doesn't use a build system.
+| Format | Path | Use case |
+|--------|------|----------|
+| **ESM** | `dist/esm/` | Modern bundlers, Node.js 14+ with `import` |
+| **CJS** | `dist/cjs/` | Node.js with `require()`, older bundlers |
+| **UMD** | `dist/umd/` | Browser `<script>` tags, no build step |
 
-If you're using a modern build system like [webpack](https://webpack.js.org/), [Parcel](https://parceljs.org/) or [Vite](https://vitejs.dev/), you should use the ESM build and bundle it yourself. This lets you take advantage of performance features like [tree-shaking](#tree-shake-your-code) and code splitting.
+The format is selected automatically based on how you import the library. Modern bundlers like [webpack](https://webpack.js.org/), [Parcel](https://parceljs.org/), and [Vite](https://vitejs.dev/) use ESM and can [tree-shake](#tree-shake-your-code) unused code.
 
 ## Use the UMD build
 
@@ -49,7 +53,6 @@ The UMD build includes all functions and currencies. For smaller bundles, use th
 |--------|-------------|
 | `dist/umd/index.production.js` | Full library (functions + currencies) |
 | `dist/umd/bigint/index.production.js` | BigInt variant |
-| `dist/umd/currencies/index.production.js` | Currencies only |
 
 **Resources:**
 - [JavaScript modules](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)

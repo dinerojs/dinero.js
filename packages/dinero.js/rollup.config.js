@@ -4,5 +4,5 @@ import pkg from './package.json' with { type: 'json' };
 
 export default createRollupConfigs({
   pkg,
-  inputs: ['index', 'bigint/index', 'currencies/index'],
+  inputs: ['index', 'bigint/index'],
 });
