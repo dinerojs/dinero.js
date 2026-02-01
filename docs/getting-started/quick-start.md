@@ -17,30 +17,12 @@ npm install dinero.js@alpha
 yarn add dinero.js@alpha
 ```
 
-### Available exports
-
-Dinero.js provides three entry points:
-
-| Import path | Description |
-|-------------|-------------|
-| `dinero.js` | Core functions with `number` amounts (default) |
-| `dinero.js/currencies` | ISO 4217 currency definitions |
-| `dinero.js/bigint` | Core functions with `bigint` amounts |
+Then import it in your project:
 
 ```js
-// Standard usage
-import { dinero, add, subtract } from 'dinero.js';
-import { USD, EUR } from 'dinero.js/currencies';
-
-// For large amounts (bigint)
-import { dinero } from 'dinero.js/bigint';
+import { dinero, add } from 'dinero.js';
+import { USD } from 'dinero.js/currencies';
 ```
-
-::: info
-Dinero.js requires Node.js 14+ with ES modules. Use `import`, not `require()`.
-:::
-
-### Using without a bundler
 
 If you don't use a package manager, you can use the HTML `script` element:
 
@@ -50,12 +32,6 @@ If you don't use a package manager, you can use the HTML `script` element:
   const { dinero, add, USD } = window['dinero.js'];
 </script>
 ```
-
-The UMD build includes all functions and currencies.
-
-::: info
-You can load Dinero.js from [jsDelivr](https://cdn.jsdelivr.net/npm/dinero.js) or [unpkg](https://unpkg.com/dinero.js), or download and host it yourself.
-:::
 
 ## First steps
 
@@ -130,3 +106,26 @@ const price = dinero({ amount: 5000, currency: USD, scale: 3 });
 ```
 
 This is only a preview of what you can do. Dinero.js provides extensive documentation with examples and guides.
+
+## Available exports
+
+Dinero.js provides three entry points:
+
+| Import path | Description |
+|-------------|-------------|
+| `dinero.js` | Core functions with `number` amounts (default) |
+| `dinero.js/currencies` | ISO 4217 currency definitions |
+| `dinero.js/bigint` | Core functions with `bigint` amounts |
+
+```js
+// Standard usage
+import { dinero, add, subtract } from 'dinero.js';
+import { USD, EUR } from 'dinero.js/currencies';
+
+// For large amounts (bigint)
+import { dinero } from 'dinero.js/bigint';
+```
+
+::: info
+Dinero.js requires Node.js 14+ with ES modules. Use `import`, not `require()`.
+:::
