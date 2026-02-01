@@ -15,7 +15,7 @@
     "build:esm": "turbo build:esm --filter=./packages/*",
     "build:definitions": "turbo build:definitions --filter=./packages/*",
     "build:types": "turbo build:types --filter=./packages/*",
-    "build:umd:cjs": "turbo build:umd:cjs --filter=./packages/*",
+    "build:umd": "turbo build:umd --filter=./packages/*",
     "build": "turbo build --filter=./packages/*",
     "format": "prettier --write .",
     "lint": "oxlint packages/ scripts/ test/",
