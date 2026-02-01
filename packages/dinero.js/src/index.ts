@@ -1,4 +1,5 @@
 export * from './api';
+export * from './currencies';
 export * from './dinero';
 export type {
   Calculator,
@@ -23,4 +24,3 @@ export {
   halfUp,
   up,
 } from './core';
-export type { Currency } from './currencies';

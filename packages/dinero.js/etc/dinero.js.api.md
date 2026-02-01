@@ -9,10 +9,88 @@
 // @public
 export function add<TAmount>(...input: AddParams<TAmount>): Dinero<TAmount>;
 
+// @public
+export const AED: Currency<number>;
+
+// @public
+export const AFN: Currency<number>;
+
+// @public
+export const ALL: Currency<number>;
+
 // Warning: (ae-forgotten-export) The symbol "AllocateParams" needs to be exported by the entry point index.d.ts
 //
 // @public
 export function allocate<TAmount>(...input: AllocateParams<TAmount>): Dinero<TAmount>[];
+
+// @public
+export const AMD: Currency<number>;
+
+// @public
+export const AOA: Currency<number>;
+
+// @public
+export const ARS: Currency<number>;
+
+// @public
+export const AUD: Currency<number>;
+
+// @public
+export const AWG: Currency<number>;
+
+// @public
+export const AZN: Currency<number>;
+
+// @public
+export const BAM: Currency<number>;
+
+// @public
+export const BBD: Currency<number>;
+
+// @public
+export const BDT: Currency<number>;
+
+// @public
+export const BGN: Currency<number>;
+
+// @public
+export const BHD: Currency<number>;
+
+// @public
+export const BIF: Currency<number>;
+
+// @public
+export const BMD: Currency<number>;
+
+// @public
+export const BND: Currency<number>;
+
+// @public
+export const BOB: Currency<number>;
+
+// @public
+export const BOV: Currency<number>;
+
+// @public
+export const BRL: Currency<number>;
+
+// @public
+export const BSD: Currency<number>;
+
+// @public
+export const BTN: Currency<number>;
+
+// @public
+export const BWP: Currency<number>;
+
+// @public
+export const BYN: Currency<number>;
+
+// @public
+export const BZD: Currency<number>;
+
+// @public
+export const CAD: Currency<number>;
 
 // @public (undocumented)
 export type Calculator<TInput> = {
@@ -27,6 +105,27 @@ export type Calculator<TInput> = {
     readonly subtract: BinaryOperation<TInput>;
     readonly zero: () => TInput;
 };
+
+// @public
+export const CDF: Currency<number>;
+
+// @public
+export const CHE: Currency<number>;
+
+// @public
+export const CHF: Currency<number>;
+
+// @public
+export const CHW: Currency<number>;
+
+// @public
+export const CLF: Currency<number>;
+
+// @public
+export const CLP: Currency<number>;
+
+// @public
+export const CNY: Currency<number>;
 
 // Warning: (ae-forgotten-export) The symbol "CompareParams" needs to be exported by the entry point index.d.ts
 //
@@ -48,10 +147,22 @@ export enum ComparisonOperator {
 // @public
 export function convert<TAmount>(...input: ConvertParams<TAmount>): Dinero<TAmount>;
 
+// @public
+export const COP: Currency<number>;
+
+// @public
+export const COU: Currency<number>;
+
+// @public
+export const CRC: Currency<number>;
+
 // Warning: (ae-forgotten-export) The symbol "CreateDineroOptions" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
 export function createDinero<TAmount>(input: CreateDineroOptions<TAmount>): (input: DineroOptions<TAmount>) => Dinero<TAmount>;
+
+// @public
+export const CUP: Currency<number>;
 
 // @public (undocumented)
 export type Currency<TAmount> = {
@@ -59,6 +170,12 @@ export type Currency<TAmount> = {
     readonly base: TAmount | readonly TAmount[];
     readonly exponent: TAmount;
 };
+
+// @public
+export const CVE: Currency<number>;
+
+// @public
+export const CZK: Currency<number>;
 
 // @public (undocumented)
 export type Dinero<TAmount> = {
@@ -92,18 +209,66 @@ export type DineroSnapshot<TAmount> = {
 export type DivideOperation = <TAmount>(amount: TAmount, factor: TAmount, calculator: Calculator<TAmount>) => TAmount;
 
 // @public
+export const DJF: Currency<number>;
+
+// @public
+export const DKK: Currency<number>;
+
+// @public
+export const DOP: Currency<number>;
+
+// @public
 export const down: DivideOperation;
+
+// @public
+export const DZD: Currency<number>;
+
+// @public
+export const EGP: Currency<number>;
 
 // Warning: (ae-forgotten-export) The symbol "EqualParams" needs to be exported by the entry point index.d.ts
 //
 // @public
 export function equal<TAmount>(...input: EqualParams<TAmount>): boolean;
 
+// @public
+export const ERN: Currency<number>;
+
+// @public
+export const ETB: Currency<number>;
+
+// @public
+export const EUR: Currency<number>;
+
+// @public
+export const FJD: Currency<number>;
+
+// @public
+export const FKP: Currency<number>;
+
 // @public (undocumented)
 export type Formatter<TAmount> = {
     readonly toNumber: (value?: TAmount) => number;
     readonly toString: (value?: TAmount) => string;
 };
+
+// @public
+export const GBP: Currency<number>;
+
+// @public
+export const GEL: Currency<number>;
+
+// @public
+export const GHS: Currency<number>;
+
+// @public
+export const GIP: Currency<number>;
+
+// @public
+export const GMD: Currency<number>;
+
+// @public
+export const GNF: Currency<number>;
 
 // Warning: (ae-forgotten-export) The symbol "GreaterThanParams" needs to be exported by the entry point index.d.ts
 //
@@ -114,6 +279,12 @@ export function greaterThan<TAmount>(...input: GreaterThanParams<TAmount>): bool
 //
 // @public
 export function greaterThanOrEqual<TAmount>(...input: GreaterThanOrEqualParams<TAmount>): boolean;
+
+// @public
+export const GTQ: Currency<number>;
+
+// @public
+export const GYD: Currency<number>;
 
 // @public
 export const halfAwayFromZero: DivideOperation;
@@ -148,6 +319,36 @@ export function haveSameAmount<TAmount>(...input: HaveSameAmountParams<TAmount>)
 // @public
 export const haveSameCurrency: typeof haveSameCurrency_2;
 
+// @public
+export const HKD: Currency<number>;
+
+// @public
+export const HNL: Currency<number>;
+
+// @public
+export const HTG: Currency<number>;
+
+// @public
+export const HUF: Currency<number>;
+
+// @public
+export const IDR: Currency<number>;
+
+// @public
+export const ILS: Currency<number>;
+
+// @public
+export const INR: Currency<number>;
+
+// @public
+export const IQD: Currency<number>;
+
+// @public
+export const IRR: Currency<number>;
+
+// @public
+export const ISK: Currency<number>;
+
 // Warning: (ae-forgotten-export) The symbol "IsNegativeParams" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -163,6 +364,48 @@ export function isPositive<TAmount>(...input: IsPositiveParams<TAmount>): boolea
 // @public
 export function isZero<TAmount>(...input: IsZeroParams<TAmount>): boolean;
 
+// @public
+export const JMD: Currency<number>;
+
+// @public
+export const JOD: Currency<number>;
+
+// @public
+export const JPY: Currency<number>;
+
+// @public
+export const KES: Currency<number>;
+
+// @public
+export const KGS: Currency<number>;
+
+// @public
+export const KHR: Currency<number>;
+
+// @public
+export const KMF: Currency<number>;
+
+// @public
+export const KPW: Currency<number>;
+
+// @public
+export const KRW: Currency<number>;
+
+// @public
+export const KWD: Currency<number>;
+
+// @public
+export const KYD: Currency<number>;
+
+// @public
+export const KZT: Currency<number>;
+
+// @public
+export const LAK: Currency<number>;
+
+// @public
+export const LBP: Currency<number>;
+
 // Warning: (ae-forgotten-export) The symbol "LessThanParams" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -173,41 +416,215 @@ export function lessThan<TAmount>(...input: LessThanParams<TAmount>): boolean;
 // @public
 export function lessThanOrEqual<TAmount>(...input: LessThanOrEqualParams<TAmount>): boolean;
 
+// @public
+export const LKR: Currency<number>;
+
+// @public
+export const LRD: Currency<number>;
+
+// @public
+export const LSL: Currency<number>;
+
+// @public
+export const LYD: Currency<number>;
+
+// @public
+export const MAD: Currency<number>;
+
 // Warning: (ae-forgotten-export) The symbol "MaximumParams" needs to be exported by the entry point index.d.ts
 //
 // @public
 export function maximum<TAmount>(...input: MaximumParams<TAmount>): Dinero<TAmount>;
+
+// @public
+export const MDL: Currency<number>;
+
+// @public
+export const MGA: Currency<number>;
 
 // Warning: (ae-forgotten-export) The symbol "MinimumParams" needs to be exported by the entry point index.d.ts
 //
 // @public
 export function minimum<TAmount>(...input: MinimumParams<TAmount>): Dinero<TAmount>;
 
+// @public
+export const MKD: Currency<number>;
+
+// @public
+export const MMK: Currency<number>;
+
+// @public
+export const MNT: Currency<number>;
+
+// @public
+export const MOP: Currency<number>;
+
+// @public
+export const MRU: Currency<number>;
+
 // Warning: (ae-forgotten-export) The symbol "MultiplyParams" needs to be exported by the entry point index.d.ts
 //
 // @public
 export function multiply<TAmount>(...input: MultiplyParams<TAmount>): Dinero<TAmount>;
+
+// @public
+export const MUR: Currency<number>;
+
+// @public
+export const MVR: Currency<number>;
+
+// @public
+export const MWK: Currency<number>;
+
+// @public
+export const MXN: Currency<number>;
+
+// @public
+export const MXV: Currency<number>;
+
+// @public
+export const MYR: Currency<number>;
+
+// @public
+export const MZN: Currency<number>;
+
+// @public
+export const NAD: Currency<number>;
+
+// @public
+export const NGN: Currency<number>;
+
+// @public
+export const NIO: Currency<number>;
+
+// @public
+export const NOK: Currency<number>;
 
 // Warning: (ae-forgotten-export) The symbol "NormalizeScaleParams" needs to be exported by the entry point index.d.ts
 //
 // @public
 export function normalizeScale<TAmount>(...input: NormalizeScaleParams<TAmount>): Dinero<TAmount>[];
 
+// @public
+export const NPR: Currency<number>;
+
+// @public
+export const NZD: Currency<number>;
+
+// @public
+export const OMR: Currency<number>;
+
+// @public
+export const PAB: Currency<number>;
+
+// @public
+export const PEN: Currency<number>;
+
+// @public
+export const PGK: Currency<number>;
+
+// @public
+export const PHP: Currency<number>;
+
+// @public
+export const PKR: Currency<number>;
+
+// @public
+export const PLN: Currency<number>;
+
+// @public
+export const PYG: Currency<number>;
+
+// @public
+export const QAR: Currency<number>;
+
 // Warning: (ae-forgotten-export) The symbol "Rate" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
 export type Rates<TAmount> = Record<string, Rate<TAmount>>;
+
+// @public
+export const RON: Currency<number>;
+
+// @public
+export const RSD: Currency<number>;
+
+// @public
+export const RUB: Currency<number>;
+
+// @public
+export const RWF: Currency<number>;
+
+// @public
+export const SAR: Currency<number>;
+
+// @public
+export const SBD: Currency<number>;
+
+// @public
+export const SCR: Currency<number>;
+
+// @public
+export const SDG: Currency<number>;
+
+// @public
+export const SEK: Currency<number>;
+
+// @public
+export const SGD: Currency<number>;
+
+// @public
+export const SHP: Currency<number>;
+
+// @public
+export const SLE: Currency<number>;
+
+// @public
+export const SOS: Currency<number>;
+
+// @public
+export const SRD: Currency<number>;
+
+// @public
+export const SSP: Currency<number>;
+
+// @public
+export const STN: Currency<number>;
 
 // Warning: (ae-forgotten-export) The symbol "SubtractParams" needs to be exported by the entry point index.d.ts
 //
 // @public
 export function subtract<TAmount>(...input: SubtractParams<TAmount>): Dinero<TAmount>;
 
+// @public
+export const SVC: Currency<number>;
+
+// @public
+export const SYP: Currency<number>;
+
+// @public
+export const SZL: Currency<number>;
+
+// @public
+export const THB: Currency<number>;
+
+// @public
+export const TJS: Currency<number>;
+
+// @public
+export const TMT: Currency<number>;
+
+// @public
+export const TND: Currency<number>;
+
 // @public (undocumented)
 export function toDecimal<TAmount>(dineroObject: Dinero<TAmount>): string;
 
 // @public (undocumented)
 export function toDecimal<TAmount, TOutput>(dineroObject: Dinero<TAmount>, transformer: Transformer_2<TAmount, TOutput, string>): TOutput;
+
+// @public
+export const TOP: Currency<number>;
 
 // Warning: (ae-forgotten-export) The symbol "toSnapshot_2" needs to be exported by the entry point index.d.ts
 //
@@ -237,7 +654,88 @@ export function transformScale<TAmount>(...input: TransformScaleParams<TAmount>)
 export function trimScale<TAmount>(...input: TrimScaleParams<TAmount>): Dinero<TAmount>;
 
 // @public
+export const TRY: Currency<number>;
+
+// @public
+export const TTD: Currency<number>;
+
+// @public
+export const TWD: Currency<number>;
+
+// @public
+export const TZS: Currency<number>;
+
+// @public
+export const UAH: Currency<number>;
+
+// @public
+export const UGX: Currency<number>;
+
+// @public
 export const up: DivideOperation;
+
+// @public
+export const USD: Currency<number>;
+
+// @public
+export const USN: Currency<number>;
+
+// @public
+export const UYI: Currency<number>;
+
+// @public
+export const UYU: Currency<number>;
+
+// @public
+export const UYW: Currency<number>;
+
+// @public
+export const UZS: Currency<number>;
+
+// @public
+export const VED: Currency<number>;
+
+// @public
+export const VES: Currency<number>;
+
+// @public
+export const VND: Currency<number>;
+
+// @public
+export const VUV: Currency<number>;
+
+// @public
+export const WST: Currency<number>;
+
+// @public
+export const XAD: Currency<number>;
+
+// @public
+export const XAF: Currency<number>;
+
+// @public
+export const XCD: Currency<number>;
+
+// @public
+export const XCG: Currency<number>;
+
+// @public
+export const XOF: Currency<number>;
+
+// @public
+export const XPF: Currency<number>;
+
+// @public
+export const YER: Currency<number>;
+
+// @public
+export const ZAR: Currency<number>;
+
+// @public
+export const ZMW: Currency<number>;
+
+// @public
+export const ZWG: Currency<number>;
 
 // Warnings were encountered during analysis:
 //
