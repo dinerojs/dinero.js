@@ -115,6 +115,16 @@ const d1 = dinero({ amount: 1000, currency: USD });
 const d2 = dinero({ amount: 1000, currency: EUR });
 ```
 
+If you're using the [bigint variant](/guides/precision-and-large-numbers#using-dinero-with-bigint), import currencies from `dinero.js/currencies/bigint` instead:
+
+```js
+import { dinero } from 'dinero.js/bigint';
+import { USD, EUR } from 'dinero.js/currencies/bigint';
+
+const d1 = dinero({ amount: 1000n, currency: USD });
+const d2 = dinero({ amount: 1000n, currency: EUR });
+```
+
 Dinero.js tracks the [ISO 4217 standard](https://www.six-group.com/en/products-services/financial-information/data-standards.html) and updates currencies when amendments are published. This means currency properties can occasionally change when you upgrade Dinero.js.
 
 ::: warning
