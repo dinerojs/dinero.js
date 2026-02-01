@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gradient-start: #0f172a;
+    --gradient-end: #1e293b;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-2xl;
+  }
+
+  .glass-light {
+    @apply bg-white/[0.06] backdrop-blur-xl border border-white/[0.1];
+  }
+
+  .glass-hover {
+    @apply hover:bg-white/[0.08] hover:border-white/[0.15] transition-all duration-300;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent;
+  }
+
+  .gradient-border {
+    @apply relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-2xl p-[1px] -z-10;
+    background: linear-gradient(
+      135deg,
+      rgba(16, 185, 129, 0.5),
+      rgba(6, 182, 212, 0.5)
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .btn-primary {
+    @apply relative overflow-hidden px-6 py-3 rounded-xl font-semibold text-white;
+    @apply bg-gradient-to-r from-emerald-500 to-teal-500;
+    @apply hover:from-emerald-400 hover:to-teal-400;
+    @apply active:scale-[0.98] transition-all duration-200;
+    @apply shadow-lg shadow-emerald-500/25;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-transparent to-white/20 opacity-0;
+    @apply hover:opacity-100 transition-opacity duration-200;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 rounded-xl font-medium text-slate-300;
+    @apply bg-white/[0.05] border border-white/[0.1];
+    @apply hover:bg-white/[0.1] hover:text-white;
+    @apply active:scale-[0.98] transition-all duration-200;
+  }
+
+  .input-modern {
+    @apply w-full px-4 py-3 rounded-xl text-white placeholder-slate-500;
+    @apply bg-white/[0.05] border border-white/[0.1];
+    @apply focus:bg-white/[0.08] focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20;
+    @apply transition-all duration-200 outline-none;
+  }
+
+  .input-modern::placeholder {
+    @apply text-slate-500;
+  }
+
+  .card {
+    @apply glass rounded-2xl p-6;
+  }
+
+  .card-interactive {
+    @apply card glass-hover cursor-pointer;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium;
+    @apply bg-white/[0.08] border border-white/[0.1] text-slate-300;
+    @apply transition-all duration-200;
+  }
+
+  .pill-emerald {
+    @apply bg-emerald-500/20 border-emerald-500/30 text-emerald-400;
+  }
+
+  .pill-red {
+    @apply bg-red-500/20 border-red-500/30 text-red-400;
+  }
+
+  .glow-emerald {
+    box-shadow: 0 0 60px -15px rgba(16, 185, 129, 0.4);
+  }
+
+  .glow-teal {
+    box-shadow: 0 0 60px -15px rgba(20, 184, 166, 0.4);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+
+  .animate-pulse-soft {
+    animation: pulseSoft 2s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseSoft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-white/20;
+}
+
+/* Form elements */
+select.input-modern {
+  @apply appearance-none cursor-pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25em 1.25em;
+  padding-right: 2.5rem;
+}
+
+input[type='checkbox'] {
+  @apply w-5 h-5 rounded-md bg-white/[0.05] border-white/20;
+  @apply checked:bg-emerald-500 checked:border-emerald-500;
+  @apply focus:ring-2 focus:ring-emerald-500/20 focus:ring-offset-0;
+  @apply transition-all duration-200 cursor-pointer;
+}
+
+input[type='radio'] {
+  @apply w-5 h-5 bg-white/[0.05] border-white/20;
+  @apply checked:bg-emerald-500 checked:border-emerald-500;
+  @apply focus:ring-2 focus:ring-emerald-500/20 focus:ring-offset-0;
+  @apply transition-all duration-200 cursor-pointer;
+}

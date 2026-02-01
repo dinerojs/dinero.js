@@ -18,7 +18,7 @@
     "prepare": "husky && npm run build",
     "release": "shipjs prepare",
     "test:size": "size-limit",
-    "test:types": "tsc --noEmit",
+    "test:types": "tsc -p tsconfig.json --noEmit",
     "test": "vitest",
     "docs:dev": "npm run dev -w @dinero.js/docs",
     "docs:build": "npm run build -w @dinero.js/docs",
