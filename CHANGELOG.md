@@ -1,52 +1,54 @@
 # [2.0.0-alpha.16](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.15...v2.0.0-alpha.16) (2026-02-03)
 
+## ⚠️ Breaking Changes
+
+### Package Consolidation (RFC #722)
+
+**All `@dinero.js/*` packages have been removed.** The library is now distributed as a single `dinero.js` package with subpath exports.
+
+#### Before (alpha.15 and earlier):
+```js
+import { dinero, add } from '@dinero.js/core';
+import { USD } from '@dinero.js/currencies';
+import { calculator } from '@dinero.js/calculator-bigint';
+```
+
+#### After (alpha.16+):
+```js
+import { dinero, add } from 'dinero.js';
+import { USD } from 'dinero.js/currencies';
+import { dinero as dineroBigint } from 'dinero.js/bigint';
+```
+
+#### Migration steps:
+1. Uninstall all `@dinero.js/*` packages
+2. Install `dinero.js`
+3. Update imports as shown above
+
+### Type Renaming
+
+All public types now use a `Dinero` prefix to avoid naming conflicts:
+- `Calculator` → `DineroCalculator`
+- `Currency` → `DineroCurrency`
+- `Snapshot` → `DineroSnapshot`
+- `Options` → `DineroOptions`
+- etc.
+
+---
+
+### Features
+
+* **dinero.js:** consolidate packages with subpath exports ([16b0ad8](https://github.com/dinerojs/dinero.js/commit/16b0ad80315902e0893db8c3306bfcdd91835651))
+* **dinero.js:** add granular UMD bundles per RFC #722 ([aea9dc2](https://github.com/dinerojs/dinero.js/commit/aea9dc2b086f5d68b55d591d464c04d52a972fd3))
+* **bigint:** include bigint currencies in UMD bundle ([1054497](https://github.com/dinerojs/dinero.js/commit/10544971fd4eb1adb4b6e902d212e8a72021ba99))
+* **currencies:** add bigint currency definitions ([0e4aef8](https://github.com/dinerojs/dinero.js/commit/0e4aef8524ac3ec0d294a0b90fbbef329801cbe1)), closes [#582](https://github.com/dinerojs/dinero.js/issues/582)
+* **currencies:** add SLE, VED, XAD, XCG, ZWG (amendments 172-179)
+* **currencies:** remove HRK, SLL, CUC, ANG, ZWL (amendments 172-179)
 
 ### Bug Fixes
 
 * **currencies:** correct UYW to amendment 169 and fix generation ([0ea9d7e](https://github.com/dinerojs/dinero.js/commit/0ea9d7ef1e2096c763f72348af3bfe6ec0ba25d9))
 * **docs:** correct OG image path and hero animation target ([f9a8585](https://github.com/dinerojs/dinero.js/commit/f9a8585691b230ad3f0572ce64068319370cf15b))
-* **docs:** use Vue component for custom 404 page ([4a1024a](https://github.com/dinerojs/dinero.js/commit/4a1024a3e886805d2013a19e941b81fd6f1ba011))
-* **release:** grant write permissions to push tags ([42d980e](https://github.com/dinerojs/dinero.js/commit/42d980e38a161c1795e4fc8ac94dc2d936c88bea))
-* **release:** include examples in version bump ([750cd62](https://github.com/dinerojs/dinero.js/commit/750cd62b37823b4c2c2eb814437309193a2c5272))
-* use __DEV__ flag for deprecation warnings ([9fd5ce5](https://github.com/dinerojs/dinero.js/commit/9fd5ce5b34608b9bad776f2686354a2afa33ea0b))
-
-
-### Code Refactoring
-
-* **core:** add Dinero* prefix to all public types ([4486cb3](https://github.com/dinerojs/dinero.js/commit/4486cb3edce0356d5bc1d1517eca95986ef78528))
-
-
-### Features
-
-* **bigint:** include bigint currencies in UMD bundle ([1054497](https://github.com/dinerojs/dinero.js/commit/10544971fd4eb1adb4b6e902d212e8a72021ba99))
-* **currencies:** add barrel files for amendment pinning ([037d478](https://github.com/dinerojs/dinero.js/commit/037d4787fb78943cdddee45f8cab5f501989ddc6))
-* **currencies:** add bigint currency definitions ([0e4aef8](https://github.com/dinerojs/dinero.js/commit/0e4aef8524ac3ec0d294a0b90fbbef329801cbe1)), closes [#582](https://github.com/dinerojs/dinero.js/issues/582)
-* **currencies:** add SLE (Sierra Leonean leone) ([4a01474](https://github.com/dinerojs/dinero.js/commit/4a01474dbffa41edb751785995284c9dee464524))
-* **currencies:** add VED (Venezuelan digital bolívar) ([b95c85e](https://github.com/dinerojs/dinero.js/commit/b95c85ef34cb5bebb88ad0ddfd92e2a9c7a3c287))
-* **currencies:** add XAD (amendment 179) ([b1042b9](https://github.com/dinerojs/dinero.js/commit/b1042b9a3d94e5ef1d4e74f40105c9ef6d050a60))
-* **currencies:** add XCG, remove ANG (amendment 176) ([9aa5106](https://github.com/dinerojs/dinero.js/commit/9aa5106562aaaa95a1b241db68a66951d5201402))
-* **currencies:** add ZWG, remove ZWL (amendment 177) ([17ab255](https://github.com/dinerojs/dinero.js/commit/17ab255e63079529a1ca5819cc6230d51fea1468))
-* **currencies:** remove CUC (amendment 178) ([446a0a6](https://github.com/dinerojs/dinero.js/commit/446a0a60e2c2c5b015bad559296f74abd7b1b8a1))
-* **currencies:** remove HRK (Croatia adopted Euro in amendment 174) ([ab80905](https://github.com/dinerojs/dinero.js/commit/ab80905b4994898a495ddb2f15f8a5a213896141))
-* **currencies:** remove SLL (replaced by SLE in amendment 172) ([9763763](https://github.com/dinerojs/dinero.js/commit/97637636d9f78aa0a351a2015b74353f6950c4c4))
-* **dinero.js:** add granular UMD bundles per RFC [#722](https://github.com/dinerojs/dinero.js/issues/722) ([aea9dc2](https://github.com/dinerojs/dinero.js/commit/aea9dc2b086f5d68b55d591d464c04d52a972fd3))
-* **dinero.js:** consolidate packages with subpath exports ([16b0ad8](https://github.com/dinerojs/dinero.js/commit/16b0ad80315902e0893db8c3306bfcdd91835651))
-* include currencies in main UMD bundle ([fd608ae](https://github.com/dinerojs/dinero.js/commit/fd608aea6787bc98518215413f0663d3c3f2f692))
-
-
-### Reverts
-
-* **docs:** undo incorrect UMD amendment note ([ca5d2d2](https://github.com/dinerojs/dinero.js/commit/ca5d2d21cd47031047b29b57cd03db5eb80b8035))
-
-
-### BREAKING CHANGES
-
-* **core:** All type imports must use new names (e.g., DineroCalculator
-instead of Calculator).
-
-Fixes SAR-117
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 
 
 
