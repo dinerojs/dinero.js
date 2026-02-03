@@ -3,6 +3,7 @@ coverage
 lib
 dist
 temp
+*.tsbuildinfo
 .DS_Store
 .env
 .turbo
