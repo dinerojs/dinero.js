@@ -45,11 +45,10 @@ export default function App() {
     setStoredExpenses(serializeExpenses(expenses));
   }, [expenses, setStoredExpenses]);
 
-  const settlements = calculateSettlements(expenses, people, USD);
   const snippets = {
     addExpense: generateAddExpenseSnippet(USD, people.length),
     balances: generateBalancesSnippet(people, USD),
-    settlements: generateSettlementsSnippet(settlements, people, USD),
+    settlements: generateSettlementsSnippet(),
     expenseList: generateExpenseListSnippet(expenses, people, USD),
   };
 

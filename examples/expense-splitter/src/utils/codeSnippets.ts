@@ -6,6 +6,7 @@ function formatAmount(
   currency: DineroCurrency<number>
 ): string {
   const dollars = amount / Math.pow(10, currency.exponent);
+
   return dollars.toLocaleString('en-US', {
     style: 'currency',
     currency: currency.code,
@@ -23,15 +24,14 @@ export function generateAddExpenseSnippet(
     code: `import { dinero, allocate } from 'dinero.js';
 import { ${currency.code} } from 'dinero.js/currencies';
 
-// Create a Dinero object (amount in minor units)
+// Create a Dinero object (in minor units)
 const expense = dinero({
   amount: 4500,  // ${formatAmount(4500, currency)}
   currency: ${currency.code}
 });
 
 // Split equally among ${ratios.length} people
-const shares = allocate(expense, [${ratios.join(', ')}]);
-// Each person's share is calculated precisely`,
+const shares = allocate(expense, [${ratios.join(', ')}]);`,
   };
 }
 
@@ -61,53 +61,22 @@ if (isZero(balance)) {
   };
 }
 
-export function generateSettlementsSnippet(
-  settlements: Settlement[],
-  people: Person[],
-  currency: DineroCurrency<number>
-): { title: string; code: string } {
-  const getName = (id: string) =>
-    people.find((p) => p.id === id)?.name || 'Someone';
-
-  if (settlements.length === 0) {
-    return {
-      title: 'Optimizing payments',
-      code: `import { greaterThan, subtract } from 'dinero.js';
+export function generateSettlementsSnippet(): { title: string; code: string } {
+  return {
+    title: 'Optimizing payments',
+    code: `import { greaterThan, subtract } from 'dinero.js';
 
 // Match largest debtor with largest creditor
-function settle(debtorOwes, creditorGets) {
-  if (greaterThan(debtorOwes, creditorGets)) {
+function settle(due, owed) {
+  if (greaterThan(due, owed)) {
     // Debtor pays creditor's full amount
     return {
-      payment: creditorGets,
-      debtorRemaining: subtract(debtorOwes, creditorGets)
+      payment: owed,
+      remainingDue: subtract(due, owed)
     };
   }
   // Debtor pays their full debt
-  return { payment: debtorOwes, creditorRemaining: ... };
-}`,
-    };
-  }
-
-  const s = settlements[0];
-  const fromName = getName(s.from);
-  const toName = getName(s.to);
-  const amount = (s.amount as any).toJSON().amount;
-
-  return {
-    title: 'Settlement calculation',
-    code: `import { greaterThan, subtract } from 'dinero.js';
-
-// Current settlement: ${fromName} → ${toName}
-const payment = dinero({
-  amount: ${amount},  // ${formatAmount(amount, currency)}
-  currency: ${currency.code}
-});
-
-// Greedy algorithm minimizes transactions
-// by matching largest creditor with debtor
-if (greaterThan(${fromName.toLowerCase()}Owes, ${toName.toLowerCase()}Gets)) {
-  // ${fromName} pays ${toName}'s full balance
+  return { payment: due, remainingOwed: ... };
 }`,
   };
 }
@@ -140,7 +109,7 @@ const shares = allocate(bill, [1, 1, 1]);
   const ratios = expense.shares.map(() => 1);
 
   return {
-    title: `Splitting "${expense.description}"`,
+    title: `Splitting each expense`,
     code: `import { dinero, allocate } from 'dinero.js';
 
 // ${payer} paid ${formatAmount(amount, currency)}
