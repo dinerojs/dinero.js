@@ -25,21 +25,21 @@
     "docs:preview": "npm run preview -w @dinero.js/docs"
   },
   "devDependencies": {
-    "@size-limit/file": "^11.1.6",
+    "@size-limit/file": "11.2.0",
     "@types/big.js": "6.1.6",
-    "@vitest/coverage-v8": "^4.0.18",
+    "@vitest/coverage-v8": "4.0.18",
     "big.js": "6.2.1",
-    "fast-check": "^3.23.2",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
-    "oxlint": "^1.42.0",
-    "prettier": "^3.4.2",
-    "rimraf": "^6.0.1",
-    "shipjs": "^0.27.0",
-    "size-limit": "^11.1.6",
-    "turbo": "^2.8.1",
-    "typescript": "^5.7.3",
-    "vite": "^7.3.1",
-    "vitest": "^4.0.18"
+    "fast-check": "3.23.2",
+    "husky": "9.1.7",
+    "lint-staged": "15.5.2",
+    "oxlint": "1.42.0",
+    "prettier": "3.8.1",
+    "rimraf": "6.1.2",
+    "shipjs": "0.27.0",
+    "size-limit": "11.2.0",
+    "turbo": "2.8.1",
+    "typescript": "5.9.3",
+    "vite": "7.3.1",
+    "vitest": "4.0.18"
   }
 }

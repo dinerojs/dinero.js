@@ -57,6 +57,6 @@
     "test": "vitest --config ../../vitest.config.ts --dir src"
   },
   "devDependencies": {
-    "tsdown": "^0.20.1"
+    "tsdown": "0.20.1"
   }
 }
