@@ -26,9 +26,9 @@
   },
   "devDependencies": {
     "@size-limit/file": "^11.1.6",
-    "@types/big.js": "6.1.6",
+    "@types/big.js": "6.2.2",
     "@vitest/coverage-v8": "^4.0.18",
-    "big.js": "6.2.1",
+    "big.js": "6.2.2",
     "fast-check": "^3.23.2",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
