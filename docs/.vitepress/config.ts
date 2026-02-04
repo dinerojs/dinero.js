@@ -66,7 +66,7 @@ export default defineConfig({
     [
       'script',
       {
-        src: 'https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/index.production.js',
+        src: 'https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/index.production.min.js',
         defer: '',
       },
     ],
