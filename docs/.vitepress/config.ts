@@ -74,7 +74,7 @@ export default defineConfig({
       'script',
       {},
       `window.addEventListener('load', function() {
-  console.log('%cDinero.js is available globally!\\n\\n%cTry it out:\\n\\nconst { dinero, toDecimal, USD } = window.dinero.js;\\nconst price = dinero({ amount: 1999, currency: USD });\\ntoDecimal(price); // "19.99"', 'font-weight: bold; font-size: 14px;', '');
+  console.log('%cDinero.js is available globally!\\n\\n%cTry it out:\\n\\nconst { dinero, toDecimal, USD } = window.dinerojs;\\nconst price = dinero({ amount: 1999, currency: USD });\\ntoDecimal(price); // "19.99"', 'font-weight: bold; font-size: 14px;', '');
 });`,
     ],
   ],
