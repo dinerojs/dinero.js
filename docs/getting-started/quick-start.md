@@ -48,16 +48,19 @@ const price = dinero({ amount: 5000, currency: USD });
 You can add or subtract any amount you want, by passing it another Dinero object:
 
 ```js
-import { dinero, add, subtract } from 'dinero.js';
+import { dinero, add, subtract, toDecimal } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 
 const price = dinero({ amount: 5000, currency: USD });
 
 // returns a Dinero object with amount 6000
-add(price, dinero({ amount: 1000, currency: USD }));
+const priceWithShipping = add(price, dinero({ amount: 1000, currency: USD }));
 
 // returns a Dinero object with amount 4000
-subtract(price, dinero({ amount: 1000, currency: USD }));
+const priceWithDiscount = subtract(price, dinero({ amount: 1000, currency: USD }));
+
+// base variable `price` is immutable
+console.log(toDecimal(price)) // output : 50.00
 ```
 
 Dinero objects are immutable, meaning you always get a new Dinero object when performing transformations. Your original objects remain untouched.
