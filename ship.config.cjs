@@ -1,4 +1,5 @@
 module.exports = {
+  useOidcTokenProvider: true,
   monorepo: {
     mainVersionFile: 'package.json',
     packagesToBump: ['packages/*', 'examples/*', 'docs'],
