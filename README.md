@@ -59,17 +59,17 @@ const total = add(d1, d2);
 toDecimal(total); // "13.00"
 ```
 
-Check out the [quick start guide](https://v2.dinerojs.com/getting-started/quick-start) on the documentation.
+Check out the [quick start guide](https://v2.dinerojs.com/getting-started/quick-start.html) on the documentation.
 
 ## 📚 Documentation
 
 The documentation lets you learn about all aspects of the library.
 
-- [**Getting started**](https://v2.dinerojs.com/getting-started/quick-start) to get up and running quickly with Dinero.js
-- [**Core concepts**](https://v2.dinerojs.com/core-concepts/amount) to learn about the underlying principles behind the library
-- [**Guides**](https://v2.dinerojs.com/guides/precision-and-large-numbers) to dig deeper into specific use cases.
-- [**API**](https://v2.dinerojs.com/api/mutations/add) for a comprehensive list of available functions and their parameters.
-- [**FAQ**](https://v2.dinerojs.com/faq/does-dinerojs-support-cryptocurrencies) for common answers to questions you might have
+- [**Getting started**](https://v2.dinerojs.com/getting-started/quick-start.html) to get up and running quickly with Dinero.js
+- [**Core concepts**](https://v2.dinerojs.com/core-concepts/amount.html) to learn about the underlying principles behind the library
+- [**Guides**](https://v2.dinerojs.com/guides/precision-and-large-numbers.html) to dig deeper into specific use cases.
+- [**API**](https://v2.dinerojs.com/api/mutations/add.html) for a comprehensive list of available functions and their parameters.
+- [**FAQ**](https://v2.dinerojs.com/faq/does-dinerojs-support-cryptocurrencies.html) for common answers to questions you might have
 
 Visit the [full documentation](https://v2.dinerojs.com) to know more.
 
