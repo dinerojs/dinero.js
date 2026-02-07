@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npx vitepress build && npm run build -w @dinero.js/example-expense-splitter && cp -r ../examples/expense-splitter/dist .vitepress/dist/examples/expense-splitter",
+  "buildCommand": "npx vitepress build && cd ../examples/expense-splitter && npm install && npm run build && mkdir -p ../../docs/.vitepress/dist/examples/expense-splitter && cp -r dist/* ../../docs/.vitepress/dist/examples/expense-splitter",
   "outputDirectory": ".vitepress/dist",
   "redirects": [
     {
@@ -36,6 +36,11 @@
     {
       "source": "/docs/:path*",
       "destination": "/:path*",
+      "statusCode": 308
+    },
+    {
+      "source": "/sandboxes",
+      "destination": "/demos",
       "statusCode": 308
     }
   ]
