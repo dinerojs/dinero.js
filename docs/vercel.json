@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm install && npx vitepress build",
+  "buildCommand": "npx vitepress build",
   "outputDirectory": ".vitepress/dist",
   "redirects": [
     {
