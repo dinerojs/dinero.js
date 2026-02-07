@@ -125,10 +125,10 @@ const d1 = dinero({ amount: 1000n, currency: USD });
 const d2 = dinero({ amount: 1000n, currency: EUR });
 ```
 
-Dinero.js tracks the [ISO 4217 standard](https://www.six-group.com/en/products-services/financial-information/data-standards.html) and updates currencies when amendments are published. This means currency properties can occasionally change when you upgrade Dinero.js.
+Dinero.js tracks the [ISO 4217 standard](https://www.six-group.com/en/products-services/financial-information/data-standards.html) and updates currencies when amendments are published. This means currencies can be added, removed, or have their properties changed (e.g., exponent, code) when you upgrade Dinero.js.
 
 ::: warning
-**Currency data may change between Dinero.js versions.** If you need stability, pin your Dinero.js version in your package manager. You can also [define your own currency objects](#creating-custom-currencies) for full control.
+**Currency data may change between Dinero.js versions.** If you need stability, pin your Dinero.js version in your package manager. You can also [define your own currency objects](#creating-custom-currencies) for full control. If you look up currencies by code at runtime, always validate that the code exists. See [How to look up a currency by code](/faq/how-to-look-up-a-currency-by-code).
 :::
 
 ## Creating custom currencies

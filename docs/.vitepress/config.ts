@@ -258,6 +258,10 @@ export default defineConfig({
               text: 'Why functions instead of methods?',
               link: '/faq/why-functions-instead-of-methods',
             },
+            {
+              text: 'How to look up a currency by code',
+              link: '/faq/how-to-look-up-a-currency-by-code',
+            },
           ],
         },
         {
