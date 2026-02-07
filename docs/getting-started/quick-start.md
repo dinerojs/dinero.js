@@ -9,7 +9,7 @@ description: Learn how to get Dinero.js up and running in your project.
 
 To get started, you need to install the `dinero.js` package.
 
-```bash
+```sh
 npm install dinero.js@alpha
 
 # or
