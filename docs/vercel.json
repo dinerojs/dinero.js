@@ -1,5 +1,42 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "npm install && npx vitepress build",
-  "outputDirectory": ".vitepress/dist"
+  "outputDirectory": ".vitepress/dist",
+  "redirects": [
+    {
+      "source": "/docs/api/formatting/to-unit",
+      "destination": "/api/formatting/to-units",
+      "statusCode": 308
+    },
+    {
+      "source": "/docs/api/formatting/to-format",
+      "destination": "/api/formatting/to-decimal",
+      "statusCode": 308
+    },
+    {
+      "source": "/docs/advanced/:path*",
+      "destination": "/guides/:path*",
+      "statusCode": 308
+    },
+    {
+      "source": "/api/formatting/to-unit",
+      "destination": "/api/formatting/to-units",
+      "statusCode": 308
+    },
+    {
+      "source": "/api/formatting/to-format",
+      "destination": "/api/formatting/to-decimal",
+      "statusCode": 308
+    },
+    {
+      "source": "/advanced/:path*",
+      "destination": "/guides/:path*",
+      "statusCode": 308
+    },
+    {
+      "source": "/docs/:path*",
+      "destination": "/:path*",
+      "statusCode": 308
+    }
+  ]
 }
