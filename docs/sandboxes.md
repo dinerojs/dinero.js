@@ -31,6 +31,12 @@ This sandbox showcases Dinero.js in action in a [React](https://reactjs.org/)-po
 
 [View sandbox](https://codesandbox.io/s/github/dinerojs/dinero.js/tree/main/examples/pricing-react)
 
+## Expense splitter
+
+This sandbox showcases Dinero.js in action in a [React](https://reactjs.org/)-powered expense splitter. It demonstrates fair bill splitting with `allocate()`, balance tracking, and optimal debt settlement.
+
+[View sandbox](https://codesandbox.io/s/github/dinerojs/dinero.js/tree/main/examples/expense-splitter)
+
 ## Starter playground
 
 This sandbox lets you try Dinero.js in a minimal environment. It's ideal to reproduce issues.
