@@ -38,55 +38,60 @@ export default function App() {
   }, [expenses, setStoredExpenses]);
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:py-12 sm:px-6">
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-3xl" />
-      </div>
-
-      <div className="max-w-6xl mx-auto">
-        <header className="text-center mb-12 animate-fade-in">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-500/25">
-              <svg
-                className="w-6 h-6 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
+    <div className="min-h-screen">
+      <header className="sticky top-0 z-10 bg-base border-b border-border animate-fade-in">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-brand flex items-center justify-center flex-shrink-0">
+            <svg
+              className="w-4 h-4 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold gradient-text mb-3">
+          <h1 className="text-lg font-semibold text-text-1">
             Expense Splitter
           </h1>
-          <p className="text-slate-400 text-lg">
-            Split bills fairly with friends using{' '}
+          <p className="text-text-3 text-sm hidden sm:block">
+            Split bills fairly with{' '}
             <a
               href="https://v2.dinerojs.com/"
-              className="text-emerald-400 hover:text-emerald-300 transition-colors"
+              className="text-brand hover:text-brand-light transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
               Dinero.js
             </a>
           </p>
-        </header>
+          <a
+            href="https://github.com/dinerojs/dinero.js/tree/main/examples/expense-splitter"
+            className="ml-auto flex items-center gap-2 text-sm text-text-3 hover:text-text-1 transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+            <span className="hidden sm:inline">See code on GitHub</span>
+          </a>
+        </div>
+      </header>
 
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-5 space-y-8">
             <section className="card animate-slide-up">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500/20 to-purple-500/20 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-bg-alt border border-border flex items-center justify-center flex-shrink-0">
                   <svg
-                    className="w-5 h-5 text-violet-400"
+                    className="w-4 h-4 text-text-2"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -99,7 +104,7 @@ export default function App() {
                     />
                   </svg>
                 </div>
-                <h2 className="text-xl font-semibold text-white">People</h2>
+                <h2 className="text-xl font-semibold text-text-1">People</h2>
               </div>
               <div className="space-y-4">
                 <AddPerson
@@ -135,9 +140,9 @@ export default function App() {
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-border flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-5 h-5 text-emerald-400"
+                      className="w-4 h-4 text-text-2"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -150,7 +155,7 @@ export default function App() {
                       />
                     </svg>
                   </div>
-                  <h2 className="text-xl font-semibold text-white">
+                  <h2 className="text-xl font-semibold text-text-1">
                     Add Expense
                   </h2>
                 </div>
@@ -172,9 +177,9 @@ export default function App() {
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-border flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-5 h-5 text-amber-400"
+                      className="w-4 h-4 text-text-2"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -187,12 +192,14 @@ export default function App() {
                       />
                     </svg>
                   </div>
-                  <h2 className="text-xl font-semibold text-white">Balances</h2>
+                  <h2 className="text-xl font-semibold text-text-1">
+                    Balances
+                  </h2>
                 </div>
               </div>
               <Balances expenses={expenses} people={people} currency={USD} />
               {expenses.length === 0 && (
-                <p className="text-slate-500 text-center py-6">
+                <p className="text-text-3 text-center py-6">
                   Add expenses to see balances
                 </p>
               )}
@@ -204,9 +211,9 @@ export default function App() {
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-border flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-5 h-5 text-cyan-400"
+                      className="w-4 h-4 text-text-2"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -219,14 +226,14 @@ export default function App() {
                       />
                     </svg>
                   </div>
-                  <h2 className="text-xl font-semibold text-white">
+                  <h2 className="text-xl font-semibold text-text-1">
                     Settle Up
                   </h2>
                 </div>
               </div>
               <Settlements expenses={expenses} people={people} currency={USD} />
               {expenses.length === 0 && (
-                <p className="text-slate-500 text-center py-6">
+                <p className="text-text-3 text-center py-6">
                   Add expenses to see settlements
                 </p>
               )}
@@ -238,9 +245,9 @@ export default function App() {
             >
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500/20 to-rose-500/20 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-border flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-5 h-5 text-pink-400"
+                      className="w-4 h-4 text-text-2"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -253,9 +260,11 @@ export default function App() {
                       />
                     </svg>
                   </div>
-                  <h2 className="text-xl font-semibold text-white">Expenses</h2>
+                  <h2 className="text-xl font-semibold text-text-1">
+                    Expenses
+                  </h2>
                   {expenses.length > 0 && (
-                    <span className="text-sm text-slate-500">
+                    <span className="text-sm text-text-3">
                       ({expenses.length})
                     </span>
                   )}
@@ -273,7 +282,7 @@ export default function App() {
                           setExpenses([]);
                         }
                       }}
-                      className="text-sm text-slate-500 hover:text-red-400 transition-colors"
+                      className="text-sm text-text-3 hover:text-red-400 transition-colors"
                     >
                       Clear all
                     </button>
@@ -293,11 +302,13 @@ export default function App() {
         </div>
 
         <footer className="mt-16 text-center animate-fade-in">
-          <p className="text-slate-500 text-sm">
+          <p className="text-text-3 text-sm">
             Built with{' '}
             <a
               href="https://v2.dinerojs.com/"
-              className="text-emerald-400 hover:text-emerald-300 transition-colors"
+              className="text-brand hover:text-brand-light transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Dinero.js
             </a>{' '}

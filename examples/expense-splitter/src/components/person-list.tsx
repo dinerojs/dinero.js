@@ -9,9 +9,9 @@ export function PersonList({ people, onRemove }: PersonListProps) {
   if (people.length === 0) {
     return (
       <div className="text-center py-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/[0.03] mb-4">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-bg-alt mb-4">
           <svg
-            className="w-8 h-8 text-slate-600"
+            className="w-8 h-8 text-text-3"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -24,7 +24,7 @@ export function PersonList({ people, onRemove }: PersonListProps) {
             />
           </svg>
         </div>
-        <p className="text-slate-500">Add people to split expenses with</p>
+        <p className="text-text-3">Add people to split expenses with</p>
       </div>
     );
   }
@@ -32,10 +32,7 @@ export function PersonList({ people, onRemove }: PersonListProps) {
   return (
     <div className="flex flex-wrap gap-2">
       {people.map((person) => (
-        <div
-          key={person.id}
-          className="group pill pill-emerald animate-fade-in"
-        >
+        <div key={person.id} className="group pill animate-fade-in">
           <span className="font-medium">{person.name}</span>
           <button
             onClick={() => onRemove(person.id)}

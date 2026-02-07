@@ -28,9 +28,9 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
   if (people.length < 2) {
     return (
       <div className="text-center py-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/[0.03] mb-4">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-bg-alt mb-4">
           <svg
-            className="w-8 h-8 text-slate-600"
+            className="w-8 h-8 text-text-3"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -43,7 +43,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
             />
           </svg>
         </div>
-        <p className="text-slate-500">
+        <p className="text-text-3">
           Add at least 2 people to start splitting expenses
         </p>
       </div>
@@ -95,7 +95,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
         <div>
           <label
             htmlFor="description"
-            className="block text-sm font-medium text-slate-400 mb-2"
+            className="block text-sm font-medium text-text-2 mb-2"
           >
             Description
           </label>
@@ -112,13 +112,13 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
         <div>
           <label
             htmlFor="amount"
-            className="block text-sm font-medium text-slate-400 mb-2"
+            className="block text-sm font-medium text-text-2 mb-2"
           >
             Amount
           </label>
           <div className="relative">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-              <span className="text-slate-500">$</span>
+              <span className="text-text-3">$</span>
             </div>
             <input
               type="number"
@@ -137,7 +137,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
       <div>
         <label
           htmlFor="paidBy"
-          className="block text-sm font-medium text-slate-400 mb-2"
+          className="block text-sm font-medium text-text-2 mb-2"
         >
           Paid by
         </label>
@@ -148,7 +148,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
           className="input-modern"
         >
           {people.map((person) => (
-            <option key={person.id} value={person.id} className="bg-slate-800">
+            <option key={person.id} value={person.id} className="bg-base">
               {person.name}
             </option>
           ))}
@@ -156,15 +156,15 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-400 mb-3">
+        <label className="block text-sm font-medium text-text-2 mb-3">
           Split type
         </label>
         <div className="flex gap-3">
           <label
-            className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-xl cursor-pointer transition-all ${
+            className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-lg cursor-pointer transition-all ${
               splitType === 'equal'
-                ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-400'
-                : 'bg-white/[0.03] border border-white/[0.08] text-slate-400 hover:bg-white/[0.05]'
+                ? 'bg-brand/10 border border-brand/30 text-brand-light'
+                : 'bg-bg-alt border border-border text-text-2 hover:bg-bg-soft'
             }`}
           >
             <input
@@ -192,10 +192,10 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
             <span className="font-medium">Equal</span>
           </label>
           <label
-            className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-xl cursor-pointer transition-all ${
+            className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-lg cursor-pointer transition-all ${
               splitType === 'percentage'
-                ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-400'
-                : 'bg-white/[0.03] border border-white/[0.08] text-slate-400 hover:bg-white/[0.05]'
+                ? 'bg-brand/10 border border-brand/30 text-brand-light'
+                : 'bg-bg-alt border border-border text-text-2 hover:bg-bg-soft'
             }`}
           >
             <input
@@ -226,16 +226,16 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-400 mb-3">
+        <label className="block text-sm font-medium text-text-2 mb-3">
           Split among
         </label>
         <div className="space-y-2">
           {people.map((person) => (
             <div
               key={person.id}
-              className={`flex items-center gap-3 p-3 rounded-xl transition-all ${
+              className={`flex items-center gap-3 p-3 rounded-lg transition-all ${
                 selectedPeople.has(person.id)
-                  ? 'bg-white/[0.05] border border-white/[0.1]'
+                  ? 'bg-bg-alt border border-border'
                   : 'bg-transparent border border-transparent'
               }`}
             >
@@ -255,7 +255,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
                     setSelectedPeople(newSelected);
                   }}
                 />
-                <span className="ml-3 text-white">{person.name}</span>
+                <span className="ml-3 text-text-1">{person.name}</span>
               </label>
               {splitType === 'percentage' && selectedPeople.has(person.id) && (
                 <div className="flex items-center gap-2">
@@ -273,7 +273,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
                     max="100"
                     className="w-20 input-modern text-center py-2"
                   />
-                  <span className="text-slate-500">%</span>
+                  <span className="text-text-3">%</span>
                 </div>
               )}
             </div>

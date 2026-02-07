@@ -27,19 +27,19 @@ export function Balances({ expenses, people, currency }: BalancesProps) {
         return (
           <div
             key={personId}
-            className={`flex justify-between items-center p-3 rounded-xl transition-all ${
+            className={`flex justify-between items-center p-3 rounded-lg transition-all ${
               isOwed
-                ? 'bg-emerald-500/10 border border-emerald-500/20'
+                ? 'bg-emerald-500/[0.08] border border-emerald-500/20'
                 : owes
-                  ? 'bg-red-500/10 border border-red-500/20'
-                  : 'bg-white/[0.03] border border-white/[0.06]'
+                  ? 'bg-red-500/[0.08] border border-red-500/20'
+                  : 'bg-bg-alt border border-border'
             }`}
           >
-            <span className="font-medium text-white">
+            <span className="font-medium text-text-1">
               {people.find(({ id }) => id === personId)?.name || 'Unknown'}
             </span>
             {settled ? (
-              <span className="text-slate-500 flex items-center gap-1.5">
+              <span className="text-text-3 flex items-center gap-1.5">
                 <svg
                   className="w-4 h-4"
                   fill="none"
