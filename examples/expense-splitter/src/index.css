@@ -27,18 +27,18 @@
 
   .input-modern {
     @apply w-full px-4 py-3 rounded-lg text-text-1 placeholder-text-3;
-    @apply bg-bg-soft border border-border;
+    @apply bg-bg-soft border border-divider;
     @apply focus:border-brand focus:ring-2 focus:ring-brand/20;
     @apply transition-all duration-200 outline-none;
   }
 
   .card {
-    @apply bg-bg-soft border border-border rounded-lg p-6;
+    @apply bg-bg-soft border border-divider rounded-lg p-6;
   }
 
   .pill {
     @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium;
-    @apply bg-bg-soft border border-border text-text-2;
+    @apply bg-bg-soft border border-divider text-text-2;
     @apply transition-all duration-200;
   }
 
@@ -100,7 +100,7 @@ select.input-modern {
 }
 
 input[type='checkbox'] {
-  @apply w-5 h-5 rounded-md bg-bg-soft border-border;
+  @apply w-5 h-5 rounded-md bg-bg-soft border-divider;
   @apply checked:bg-brand checked:border-brand;
   @apply focus:ring-2 focus:ring-brand/20 focus:ring-offset-0;
   @apply transition-all duration-200 cursor-pointer;

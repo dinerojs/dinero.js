@@ -23,9 +23,9 @@ export function Settlements({ expenses, people, currency }: SettlementsProps) {
   if (settlements.length === 0) {
     return (
       <div className="text-center py-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-emerald-500/[0.08] mb-4">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-positive/[0.08] mb-4">
           <svg
-            className="w-8 h-8 text-emerald-400"
+            className="w-8 h-8 text-positive"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -38,9 +38,7 @@ export function Settlements({ expenses, people, currency }: SettlementsProps) {
             />
           </svg>
         </div>
-        <p className="text-emerald-400 font-semibold text-lg">
-          All settled up!
-        </p>
+        <p className="text-positive font-semibold text-lg">All settled up!</p>
         <p className="text-text-3 text-sm mt-1">No payments needed</p>
       </div>
     );
@@ -54,8 +52,8 @@ export function Settlements({ expenses, people, currency }: SettlementsProps) {
       </p>
       {settlements.map((settlement, index) => (
         <div
-          key={index}
-          className="bg-bg-alt border border-border rounded-lg p-4 animate-slide-up"
+          key={`${settlement.from}-${settlement.to}`}
+          className="bg-bg-alt border border-divider rounded-lg p-4 animate-slide-up"
           style={{ animationDelay: `${index * 0.1}s` }}
         >
           <div className="flex items-center justify-between gap-4">

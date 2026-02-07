@@ -80,14 +80,6 @@ export function calculateShares(
 
       break;
     }
-
-    case 'exact': {
-      for (const share of expense.shares) {
-        shares.set(share.personId, dinero({ amount: share.value, currency }));
-      }
-
-      break;
-    }
   }
 
   for (const person of people) {
@@ -178,17 +170,4 @@ export function calculateSettlements(
   }
 
   return settlements;
-}
-
-/**
- * Get the total amount spent across all expenses.
- */
-export function getTotalExpenses(
-  expenses: Expense[],
-  currency: DineroCurrency<number>
-): Dinero<number> {
-  return expenses.reduce(
-    (total, expense) => add(total, expense.amount),
-    dinero({ amount: 0, currency })
-  );
 }

@@ -28,6 +28,7 @@ export function AddPerson({ onAdd }: AddPersonProps) {
         value={name}
         onChange={(event) => setName(event.target.value)}
         placeholder="Enter name"
+        aria-label="Person name"
         className="input-modern flex-1"
       />
       <button

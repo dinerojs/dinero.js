@@ -20,8 +20,8 @@ export function Balances({ expenses, people, currency }: BalancesProps) {
   return (
     <div className="space-y-2">
       {Array.from(netBalances.entries()).map(([personId, balance]) => {
-        const isOwed = isPositive(balance) && !isZero(balance);
-        const owes = !isPositive(balance) && !isZero(balance);
+        const isOwed = isPositive(balance);
+        const owes = isNegative(balance);
         const settled = isZero(balance);
 
         return (
@@ -29,10 +29,10 @@ export function Balances({ expenses, people, currency }: BalancesProps) {
             key={personId}
             className={`flex justify-between items-center p-3 rounded-lg transition-all ${
               isOwed
-                ? 'bg-emerald-500/[0.08] border border-emerald-500/20'
+                ? 'bg-positive/[0.08] border border-positive/20'
                 : owes
-                  ? 'bg-red-500/[0.08] border border-red-500/20'
-                  : 'bg-bg-alt border border-border'
+                  ? 'bg-negative/[0.08] border border-negative/20'
+                  : 'bg-bg-alt border border-divider'
             }`}
           >
             <span className="font-medium text-text-1">
@@ -56,7 +56,7 @@ export function Balances({ expenses, people, currency }: BalancesProps) {
                 Settled
               </span>
             ) : isOwed ? (
-              <span className="text-emerald-400 font-semibold flex items-center gap-1.5">
+              <span className="text-positive font-semibold flex items-center gap-1.5">
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -73,7 +73,7 @@ export function Balances({ expenses, people, currency }: BalancesProps) {
                 {format(balance)}
               </span>
             ) : (
-              <span className="text-red-400 font-semibold flex items-center gap-1.5">
+              <span className="text-negative font-semibold flex items-center gap-1.5">
                 <svg
                   className="w-4 h-4"
                   fill="none"

@@ -1,6 +1,6 @@
 import type { Dinero } from 'dinero.js';
 
-export type SplitType = 'equal' | 'percentage' | 'exact';
+export type SplitType = 'equal' | 'percentage';
 
 export interface Person {
   id: string;
@@ -9,7 +9,7 @@ export interface Person {
 
 export interface ExpenseShare {
   personId: string;
-  value: number; // For percentage: 0-100, for exact: amount in cents
+  value: number; // For percentage: 0-100
 }
 
 export interface Expense {
@@ -20,12 +20,6 @@ export interface Expense {
   splitType: SplitType;
   shares: ExpenseShare[];
   createdAt: Date;
-}
-
-export interface Balance {
-  from: string;
-  to: string;
-  amount: Dinero<number>;
 }
 
 export interface Settlement {

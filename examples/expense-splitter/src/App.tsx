@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { dinero, toSnapshot } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 
@@ -14,8 +13,46 @@ import {
 } from './components';
 import { useLocalStorage } from './hooks';
 
+interface StoredExpense {
+  id: string;
+  description: string;
+  amount: number;
+  paidBy: string;
+  splitType: 'equal' | 'percentage';
+  shares: { personId: string; value: number }[];
+  createdAt: string;
+}
+
+function serializeExpenses(expenses: Expense[]): StoredExpense[] {
+  return expenses.map((expense) => {
+    const snapshot = toSnapshot(expense.amount);
+
+    return {
+      id: expense.id,
+      description: expense.description,
+      amount: snapshot.amount,
+      paidBy: expense.paidBy,
+      splitType: expense.splitType,
+      shares: expense.shares,
+      createdAt: expense.createdAt.toISOString(),
+    };
+  });
+}
+
+function deserializeExpenses(stored: StoredExpense[]): Expense[] {
+  return stored.map((expense) => ({
+    id: expense.id,
+    description: expense.description,
+    amount: dinero({ amount: expense.amount, currency: USD }),
+    paidBy: expense.paidBy,
+    splitType: expense.splitType,
+    shares: expense.shares,
+    createdAt: new Date(expense.createdAt),
+  }));
+}
+
 export default function App() {
-  const [storedPeople, setStoredPeople] = useLocalStorage<Person[]>(
+  const [people, setPeople] = useLocalStorage<Person[]>(
     'expense-splitter-people',
     []
   );
@@ -24,22 +61,21 @@ export default function App() {
     []
   );
 
-  const [people, setPeople] = useState<Person[]>(storedPeople);
-  const [expenses, setExpenses] = useState<Expense[]>(() =>
-    deserializeExpenses(storedExpenses)
-  );
+  const expenses = deserializeExpenses(storedExpenses);
 
-  useEffect(() => {
-    setStoredPeople(people);
-  }, [people, setStoredPeople]);
+  function setExpenses(updater: Expense[] | ((prev: Expense[]) => Expense[])) {
+    setStoredExpenses((prev) => {
+      const prevExpenses = deserializeExpenses(prev);
+      const next =
+        typeof updater === 'function' ? updater(prevExpenses) : updater;
 
-  useEffect(() => {
-    setStoredExpenses(serializeExpenses(expenses));
-  }, [expenses, setStoredExpenses]);
+      return serializeExpenses(next);
+    });
+  }
 
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-10 bg-base border-b border-border animate-fade-in">
+      <header className="sticky top-0 z-10 bg-base border-b border-divider animate-fade-in">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg bg-brand flex items-center justify-center flex-shrink-0">
             <svg
@@ -84,12 +120,12 @@ export default function App() {
         </div>
       </header>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-5 space-y-8">
             <section className="card animate-slide-up">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 rounded-lg bg-bg-alt border border-border flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-lg bg-bg-alt border border-divider flex items-center justify-center flex-shrink-0">
                   <svg
                     className="w-4 h-4 text-text-2"
                     fill="none"
@@ -117,17 +153,15 @@ export default function App() {
                   onRemove={(id: string) => {
                     setPeople((prev) => prev.filter((p) => p.id !== id));
                     setExpenses((prev) =>
-                      prev.filter((expense) => {
-                        if (expense.paidBy === id) {
-                          return false;
-                        }
-
-                        const remainingShares = expense.shares.filter(
-                          ({ personId }) => personId !== id
-                        );
-
-                        return remainingShares.length > 0;
-                      })
+                      prev
+                        .filter((expense) => expense.paidBy !== id)
+                        .map((expense) => ({
+                          ...expense,
+                          shares: expense.shares.filter(
+                            ({ personId }) => personId !== id
+                          ),
+                        }))
+                        .filter((expense) => expense.shares.length > 0)
                     );
                   }}
                 />
@@ -140,7 +174,7 @@ export default function App() {
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-border flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-divider flex items-center justify-center flex-shrink-0">
                     <svg
                       className="w-4 h-4 text-text-2"
                       fill="none"
@@ -177,7 +211,7 @@ export default function App() {
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-border flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-divider flex items-center justify-center flex-shrink-0">
                     <svg
                       className="w-4 h-4 text-text-2"
                       fill="none"
@@ -211,7 +245,7 @@ export default function App() {
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-border flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-divider flex items-center justify-center flex-shrink-0">
                     <svg
                       className="w-4 h-4 text-text-2"
                       fill="none"
@@ -245,7 +279,7 @@ export default function App() {
             >
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-border flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-divider flex items-center justify-center flex-shrink-0">
                     <svg
                       className="w-4 h-4 text-text-2"
                       fill="none"
@@ -282,7 +316,8 @@ export default function App() {
                           setExpenses([]);
                         }
                       }}
-                      className="text-sm text-text-3 hover:text-red-400 transition-colors"
+                      className="text-sm text-text-3 hover:text-negative transition-colors"
+                      aria-label="Clear all people and expenses"
                     >
                       Clear all
                     </button>
@@ -311,51 +346,11 @@ export default function App() {
               rel="noopener noreferrer"
             >
               Dinero.js
-            </a>{' '}
-            — Precise monetary calculations without floating point errors
+            </a>
+            . Precise monetary calculations without floating point errors.
           </p>
         </footer>
-      </div>
+      </main>
     </div>
   );
-}
-
-interface StoredExpense {
-  id: string;
-  description: string;
-  amount: number;
-  currencyCode: string;
-  paidBy: string;
-  splitType: 'equal' | 'percentage' | 'exact';
-  shares: { personId: string; value: number }[];
-  createdAt: string;
-}
-
-function serializeExpenses(expenses: Expense[]): StoredExpense[] {
-  return expenses.map((expense) => {
-    const snapshot = toSnapshot(expense.amount);
-
-    return {
-      id: expense.id,
-      description: expense.description,
-      amount: snapshot.amount,
-      currencyCode: snapshot.currency.code,
-      paidBy: expense.paidBy,
-      splitType: expense.splitType,
-      shares: expense.shares,
-      createdAt: expense.createdAt.toISOString(),
-    };
-  });
-}
-
-function deserializeExpenses(stored: StoredExpense[]): Expense[] {
-  return stored.map((expense) => ({
-    id: expense.id,
-    description: expense.description,
-    amount: dinero({ amount: expense.amount, currency: USD }),
-    paidBy: expense.paidBy,
-    splitType: expense.splitType,
-    shares: expense.shares,
-    createdAt: new Date(expense.createdAt),
-  }));
 }

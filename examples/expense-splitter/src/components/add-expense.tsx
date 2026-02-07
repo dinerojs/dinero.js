@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { DineroCurrency } from 'dinero.js';
 import { dinero } from 'dinero.js';
 
@@ -19,6 +19,26 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
     new Set(people.map((p) => p.id))
   );
   const [percentages, setPercentages] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    const peopleIds = new Set(people.map((p) => p.id));
+
+    if (!peopleIds.has(paidBy)) {
+      setPaidBy(people[0]?.id || '');
+    }
+
+    setSelectedPeople((prev) => {
+      const next = new Set([...prev].filter((id) => peopleIds.has(id)));
+
+      for (const person of people) {
+        if (!prev.has(person.id) && !next.has(person.id)) {
+          next.add(person.id);
+        }
+      }
+
+      return next;
+    });
+  }, [people]);
 
   const totalPercentage = Array.from(selectedPeople).reduce(
     (sum, id) => sum + (percentages[id] || 0),
@@ -164,7 +184,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
             className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-lg cursor-pointer transition-all ${
               splitType === 'equal'
                 ? 'bg-brand/10 border border-brand/30 text-brand-light'
-                : 'bg-bg-alt border border-border text-text-2 hover:bg-bg-soft'
+                : 'bg-bg-alt border border-divider text-text-2 hover:bg-bg-soft'
             }`}
           >
             <input
@@ -195,7 +215,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
             className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-lg cursor-pointer transition-all ${
               splitType === 'percentage'
                 ? 'bg-brand/10 border border-brand/30 text-brand-light'
-                : 'bg-bg-alt border border-border text-text-2 hover:bg-bg-soft'
+                : 'bg-bg-alt border border-divider text-text-2 hover:bg-bg-soft'
             }`}
           >
             <input
@@ -235,7 +255,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
               key={person.id}
               className={`flex items-center gap-3 p-3 rounded-lg transition-all ${
                 selectedPeople.has(person.id)
-                  ? 'bg-bg-alt border border-border'
+                  ? 'bg-bg-alt border border-divider'
                   : 'bg-transparent border border-transparent'
               }`}
             >
@@ -271,6 +291,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
                     placeholder="0"
                     min="0"
                     max="100"
+                    aria-label={`Percentage for ${person.name}`}
                     className="w-20 input-modern text-center py-2"
                   />
                   <span className="text-text-3">%</span>
@@ -282,7 +303,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
         {splitType === 'percentage' && (
           <p
             className={`mt-3 text-sm font-medium ${
-              totalPercentage === 100 ? 'text-emerald-400' : 'text-amber-400'
+              totalPercentage === 100 ? 'text-positive' : 'text-warning'
             }`}
           >
             Total: {totalPercentage}%

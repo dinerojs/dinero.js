@@ -54,7 +54,7 @@ export function ExpenseList({
         return (
           <div
             key={expense.id}
-            className="group bg-bg-alt border border-border rounded-lg p-4 animate-slide-up"
+            className="group bg-bg-alt border border-divider rounded-lg p-4 animate-slide-up"
             style={{ animationDelay: `${index * 0.05}s` }}
           >
             <div className="flex justify-between items-start gap-4">
@@ -73,14 +73,15 @@ export function ExpenseList({
                 </p>
                 <button
                   onClick={() => onRemove(expense.id)}
-                  className="text-xs text-text-3 hover:text-red-400 transition-colors mt-1 opacity-0 group-hover:opacity-100"
+                  aria-label={`Remove expense: ${expense.description}`}
+                  className="text-xs text-text-3 hover:text-negative transition-colors mt-1 sm:opacity-0 sm:group-hover:opacity-100"
                 >
                   Remove
                 </button>
               </div>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-border">
+            <div className="mt-4 pt-3 border-t border-divider">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-xs text-text-3 uppercase tracking-wider">
                   Split
