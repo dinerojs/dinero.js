@@ -8,6 +8,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@babel/runtime": "^7.28.6",
     "@heroicons/react": "^2.2.0",
     "classnames": "^2.5.0",
     "dinero.js": "2.0.0-alpha.16",

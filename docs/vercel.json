@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npx vitepress build && cd ../examples/expense-splitter && npm install && npm run build && mkdir -p ../../docs/.vitepress/dist/examples/expense-splitter && cp -r dist/* ../../docs/.vitepress/dist/examples/expense-splitter",
+  "buildCommand": "npx vitepress build && bash build-examples.sh",
   "outputDirectory": ".vitepress/dist",
   "redirects": [
     {
