@@ -3,7 +3,7 @@
   "version": "2.0.0-alpha.16",
   "private": true,
   "license": "MIT",
-  "packageManager": "npm@11.5.2",
+  "packageManager": "npm@11.9.0",
   "type": "module",
   "workspaces": [
     "packages/*",
