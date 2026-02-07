@@ -5,10 +5,10 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/dinero.js?activeTab=versions"><img alt="Stability: alpha" src="https://img.shields.io/badge/stability-alpha-f4d03f.svg" /></a>
-  <a href="https://www.npmjs.com/package/dinero.js"><img alt="npm version" src="https://img.shields.io/npm/v/dinero.js" /></a>
+  <a href="https://www.npmjs.com/package/dinero.js"><img alt="npm version" src="https://img.shields.io/npm/v/dinero.js/alpha" /></a>
   <a href="https://www.npmjs.com/package/dinero.js"><img alt="npm monthly downloads" src="https://img.shields.io/npm/dm/dinero.js" /></a>
   <a href="https://github.com/dinerojs/dinero.js/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/dinerojs/dinero.js" /></a>
+  <a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Ready-blue" /></a>
   <a href="https://github.com/dinerojs/dinero.js/actions/workflows/ci.yml"><img alt="GitHub Actions" src="https://img.shields.io/github/actions/workflow/status/dinerojs/dinero.js/ci.yml?branch=main"></a>
   <a href="https://github.com/dinerojs/dinero.js/blob/master/LICENSE"><img alt="NPM" src="https://img.shields.io/npm/l/dinero.js"></a>
 </p>
@@ -23,6 +23,15 @@
 Money is complex, and the primitives of the language aren't enough to properly represent it. Dinero.js is a JavaScript library that lets you express monetary values, but also perform mutations, conversions, comparisons, formatting, and overall make money manipulation easier and safer in your application.
 
 > ℹ️ Dinero.js v2 is currently in alpha. For v1, check the [`v1` branch](https://github.com/dinerojs/dinero.js/tree/v1) and [docs](https://v1.dinerojs.com/).
+
+## ✨ Features
+
+- **Immutable & pure:** every operation returns a new object, no side effects
+- **Type-safe:** first-class TypeScript support with full type inference
+- **Tree-shakeable:** import only what you use, keep bundles small
+- **Pluggable precision:** use `number` by default or `bigint` for large amounts
+- **Non-decimal currencies:** support for any base, including multi-subdivision currencies
+- **Framework-agnostic:** works everywhere JavaScript runs
 
 ## 📦 Install
 
@@ -39,13 +48,15 @@ yarn add dinero.js@alpha
 `Dinero` objects are minimal. Every function in `dinero.js` is side-effect free, allowing you only to bundle exactly what you use.
 
 ```js
-import { dinero, add } from 'dinero.js';
+import { dinero, add, toDecimal } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 
 const d1 = dinero({ amount: 500, currency: USD });
 const d2 = dinero({ amount: 800, currency: USD });
 
-add(d1, d2);
+const total = add(d1, d2);
+
+toDecimal(total); // "13.00"
 ```
 
 Check out the [quick start guide](https://v2.dinerojs.com/getting-started/quick-start) on the documentation.
@@ -62,211 +73,16 @@ The documentation lets you learn about all aspects of the library.
 
 Visit the [full documentation](https://v2.dinerojs.com) to know more.
 
+## 🏢 Used by
+
+Dinero.js is used by [WooCommerce](https://github.com/woocommerce/woocommerce), [Highlight](https://github.com/highlight/highlight), [Cypress](https://github.com/cypress-io/cypress-realworld-app), [Vercel](https://github.com/vercel/next-app-router-playground), [AWS Labs](https://github.com/awslabs/aws-lambda-web-adapter), [Module Federation](https://github.com/module-federation/core), and [many more](https://github.com/dinerojs/dinero.js/network/dependents).
+
 ## 👥 Contributors
 
 [![Dinero.js contributors](https://contrib.rocks/image?repo=dinerojs/dinero.js)](https://github.com/dinerojs/dinero.js/graphs/contributors)
 
-**From v1**
-
-<table>
-  <tbody>
-    <tr>
-      <td align="center">
-        <a href="https://sarahdayan.dev" rel="nofollow"
-          ><img
-            src="https://avatars1.githubusercontent.com/u/5370675?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Sarah Dayan</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="https://github.com/yacinehmito"
-          ><img
-            src="https://avatars1.githubusercontent.com/u/6893840?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Yacine Hmito</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="https://github.com/scotttrinh"
-          ><img
-            src="https://avatars1.githubusercontent.com/u/1682194?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Scott Trinh</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="https://rolandasb.com" rel="nofollow"
-          ><img
-            src="https://avatars0.githubusercontent.com/u/1409998?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Rolandas Barysas</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="https://www.luizpb.com/en/" rel="nofollow"
-          ><img
-            src="https://avatars1.githubusercontent.com/u/1798830?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Luiz "Bills"</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="https://kunst.com.br" rel="nofollow"
-          ><img
-            src="https://avatars2.githubusercontent.com/u/8649362?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Leonardo Dino</b></sub></a
-        >
-      </td>
-    </tr>
-    <tr>
-      <td align="center">
-        <a href="https://www.kizu.ru/" rel="nofollow"
-          ><img
-            src="https://avatars3.githubusercontent.com/u/177485?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Roman Komarov</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="http://jotaoncode.com/" rel="nofollow"
-          ><img
-            src="https://avatars3.githubusercontent.com/u/4575026?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Juan Garcia</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="https://github.com/frobinsonj"
-          ><img
-            src="https://avatars3.githubusercontent.com/u/16726902?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Freddy Robinson</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="https://twitter.com/andybrk" rel="nofollow"
-          ><img
-            src="https://avatars0.githubusercontent.com/u/273857?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Andy Burke</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="https://github.com/andrewiggins"
-          ><img
-            src="https://avatars3.githubusercontent.com/u/459878?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Andre Wiggins</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="https://desandro.com" rel="nofollow"
-          ><img
-            src="https://avatars0.githubusercontent.com/u/85566?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>David DeSandro</b></sub></a
-        >
-      </td>
-    </tr>
-    <tr>
-      <td align="center">
-        <a href="http://maxk.se" rel="nofollow"
-          ><img
-            src="https://avatars1.githubusercontent.com/u/19932622?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Max Körlinge</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="https://github.com/dotpack"
-          ><img
-            src="https://avatars2.githubusercontent.com/u/1175814?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Ilia Ermolin</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="https://coina.ge" rel="nofollow"
-          ><img
-            src="https://avatars1.githubusercontent.com/u/1531750?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Kevin Brown</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="https://seankwalker.com" rel="nofollow"
-          ><img
-            src="https://avatars.githubusercontent.com/u/20524136?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Sean Walker</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="http://jnguyen.me/" rel="nofollow"
-          ><img
-            src="https://avatars0.githubusercontent.com/u/1127677?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>John Nguyen</b></sub></a
-        >
-      </td>
-      <td align="center">
-        <a href="https://journal.artfuldev.com" rel="nofollow"
-          ><img
-            src="https://avatars.githubusercontent.com/u/3091087?v=4"
-            alt=""
-            width="50"
-            height="50"
-          /><br /><sub><b>Sudarsan Balaji</b></sub></a
-        >
-      </td>
-    </tr>
-  </tbody>
-</table>
+**From v1:** <a href="https://sarahdayan.dev"><img src="https://avatars1.githubusercontent.com/u/5370675?v=4" alt="Sarah Dayan" width="30" height="30" style="border-radius:50%" /></a> <a href="https://github.com/yacinehmito"><img src="https://avatars1.githubusercontent.com/u/6893840?v=4" alt="Yacine Hmito" width="30" height="30" style="border-radius:50%" /></a> <a href="https://github.com/scotttrinh"><img src="https://avatars1.githubusercontent.com/u/1682194?v=4" alt="Scott Trinh" width="30" height="30" style="border-radius:50%" /></a> <a href="https://rolandasb.com"><img src="https://avatars0.githubusercontent.com/u/1409998?v=4" alt="Rolandas Barysas" width="30" height="30" style="border-radius:50%" /></a> <a href="https://www.luizpb.com/en/"><img src="https://avatars1.githubusercontent.com/u/1798830?v=4" alt="Luiz Bills" width="30" height="30" style="border-radius:50%" /></a> <a href="https://kunst.com.br"><img src="https://avatars2.githubusercontent.com/u/8649362?v=4" alt="Leonardo Dino" width="30" height="30" style="border-radius:50%" /></a> <a href="https://www.kizu.ru/"><img src="https://avatars3.githubusercontent.com/u/177485?v=4" alt="Roman Komarov" width="30" height="30" style="border-radius:50%" /></a> <a href="http://jotaoncode.com/"><img src="https://avatars3.githubusercontent.com/u/4575026?v=4" alt="Juan Garcia" width="30" height="30" style="border-radius:50%" /></a> <a href="https://github.com/frobinsonj"><img src="https://avatars3.githubusercontent.com/u/16726902?v=4" alt="Freddy Robinson" width="30" height="30" style="border-radius:50%" /></a> <a href="https://twitter.com/andybrk"><img src="https://avatars0.githubusercontent.com/u/273857?v=4" alt="Andy Burke" width="30" height="30" style="border-radius:50%" /></a> <a href="https://github.com/andrewiggins"><img src="https://avatars3.githubusercontent.com/u/459878?v=4" alt="Andre Wiggins" width="30" height="30" style="border-radius:50%" /></a> <a href="https://desandro.com"><img src="https://avatars0.githubusercontent.com/u/85566?v=4" alt="David DeSandro" width="30" height="30" style="border-radius:50%" /></a> <a href="http://maxk.se"><img src="https://avatars1.githubusercontent.com/u/19932622?v=4" alt="Max Körlinge" width="30" height="30" style="border-radius:50%" /></a> <a href="https://github.com/dotpack"><img src="https://avatars2.githubusercontent.com/u/1175814?v=4" alt="Ilia Ermolin" width="30" height="30" style="border-radius:50%" /></a> <a href="https://coina.ge"><img src="https://avatars1.githubusercontent.com/u/1531750?v=4" alt="Kevin Brown" width="30" height="30" style="border-radius:50%" /></a> <a href="https://seankwalker.com"><img src="https://avatars.githubusercontent.com/u/20524136?v=4" alt="Sean Walker" width="30" height="30" style="border-radius:50%" /></a> <a href="http://jnguyen.me/"><img src="https://avatars0.githubusercontent.com/u/1127677?v=4" alt="John Nguyen" width="30" height="30" style="border-radius:50%" /></a> <a href="https://journal.artfuldev.com"><img src="https://avatars.githubusercontent.com/u/3091087?v=4" alt="Sudarsan Balaji" width="30" height="30" style="border-radius:50%" /></a>
 
 ## 📜 License
 
 [MIT](LICENSE)
-
----
-
-<div align="center">
-
-[![Powered by Vercel](.github/powered-by-vercel.svg)](https://vercel.com/?utm_source=dinerojs&utm_campaign=oss)
-
-</div>
