@@ -98,6 +98,26 @@ const bigDinero = createDinero({ calculator });
 
 You might notice that you're passing the full calculator, meaning you're shipping calculator methods you might not use. **This is unlikely to represent a bottleneck**, especially if you're using Dinero with a third-party library like [big.js](https://github.com/MikeMcl/big.js) because you're only referencing methods that already exist on every `Big` object you create.
 
+### Providing a custom formatter
+
+When using a custom amount type, you also need a **custom formatter** so that functions like `toDecimal` can correctly convert your amounts to strings. The default formatter uses JavaScript's `String` constructor, which produces scientific notation for large values (e.g., `"1e+22"` instead of `"10000000000000000000000"`). This breaks formatting when working with high-precision amounts.
+
+```ts
+import Big from 'big.js';
+import { Formatter } from 'dinero.js';
+
+const formatter: Formatter<Big> = {
+  toNumber: (value) => value.toNumber(),
+  toString: (value) => value.toFixed(),
+};
+```
+
+Pass it alongside the calculator when creating your custom `dinero` function:
+
+```js
+const bigDinero = createDinero({ calculator, formatter });
+```
+
 ## Picking the right amount type
 
 Depending on what you use Dinero.js for, you might want to choose a different amount type better suited to your needs. Knowing what to pick depends on **your constraints, use case, and what compromises you can to make.**
