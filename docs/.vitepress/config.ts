@@ -268,7 +268,7 @@ export default defineConfig({
           text: 'Resources',
           items: [
             { text: 'About', link: '/about' },
-            { text: 'Sandboxes', link: '/sandboxes' },
+            { text: 'Demos', link: '/demos' },
           ],
         },
       ],

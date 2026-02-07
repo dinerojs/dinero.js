@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-base min-h-screen text-text-1;
+    font-family:
+      'Plus Jakarta Sans',
+      system-ui,
+      -apple-system,
+      sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply relative overflow-hidden px-6 py-3 rounded-lg font-semibold text-white;
+    @apply bg-brand;
+    @apply hover:opacity-85;
+    @apply active:scale-[0.98] transition-all duration-200;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .input-modern {
+    @apply w-full px-4 py-3 rounded-lg text-text-1 placeholder-text-3;
+    @apply bg-bg-soft border border-divider;
+    @apply focus:border-brand focus:ring-2 focus:ring-brand/20;
+    @apply transition-all duration-200 outline-none;
+  }
+
+  .card {
+    @apply bg-bg-soft border border-divider rounded-lg p-6;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium;
+    @apply bg-bg-soft border border-divider text-text-2;
+    @apply transition-all duration-200;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-white/20;
+}
+
+/* Form elements */
+select.input-modern {
+  @apply appearance-none cursor-pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236e6e76' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25em 1.25em;
+  padding-right: 2.5rem;
+}
+
+input[type='checkbox'] {
+  @apply w-5 h-5 rounded-md bg-bg-soft border-divider;
+  @apply checked:bg-brand checked:border-brand;
+  @apply focus:ring-2 focus:ring-brand/20 focus:ring-offset-0;
+  @apply transition-all duration-200 cursor-pointer;
+}

@@ -30,6 +30,6 @@
     "**/temp",
     "**/node_modules",
     "docs",
-    "examples/deno"
+    "examples"
   ]
 }
