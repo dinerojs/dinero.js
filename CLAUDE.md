@@ -109,6 +109,13 @@ Package outputs:
 - **Oxlint**: Fast Rust-based linter for code quality
 - **Prettier**: Single quotes, trailing commas (ES5)
 
+## Pull Requests
+
+- Always branch from `main` (unless doing a stacked PR, in which case branch from the target branch)
+- Always create a dedicated branch for changes
+- Always reference the issue to close (e.g., `Fixes #123`) in the PR body so the issue closes on merge
+- Always use semantic PR titles following Conventional Commits: `type(scope): subject`
+
 ## Linear Integration
 
 This project uses Linear for project management (project: **Dinero.js v2.0.0 Stable Release**).
