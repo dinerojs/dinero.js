@@ -8,19 +8,11 @@ import {
   AddExpense,
   AddPerson,
   Balances,
-  CodeTooltip,
   ExpenseList,
   PersonList,
   Settlements,
 } from './components';
 import { useLocalStorage } from './hooks';
-import { calculateSettlements } from './utils/calculations';
-import {
-  generateAddExpenseSnippet,
-  generateBalancesSnippet,
-  generateSettlementsSnippet,
-  generateExpenseListSnippet,
-} from './utils/codeSnippets';
 
 export default function App() {
   const [storedPeople, setStoredPeople] = useLocalStorage<Person[]>(
@@ -44,13 +36,6 @@ export default function App() {
   useEffect(() => {
     setStoredExpenses(serializeExpenses(expenses));
   }, [expenses, setStoredExpenses]);
-
-  const snippets = {
-    addExpense: generateAddExpenseSnippet(USD, people.length),
-    balances: generateBalancesSnippet(people, USD),
-    settlements: generateSettlementsSnippet(),
-    expenseList: generateExpenseListSnippet(expenses, people, USD),
-  };
 
   return (
     <div className="min-h-screen py-8 px-4 sm:py-12 sm:px-6">
@@ -169,7 +154,6 @@ export default function App() {
                     Add Expense
                   </h2>
                 </div>
-                <CodeTooltip {...snippets.addExpense} />
               </div>
               <AddExpense
                 people={people}
@@ -205,7 +189,6 @@ export default function App() {
                   </div>
                   <h2 className="text-xl font-semibold text-white">Balances</h2>
                 </div>
-                <CodeTooltip {...snippets.balances} />
               </div>
               <Balances expenses={expenses} people={people} currency={USD} />
               {expenses.length === 0 && (
@@ -240,7 +223,6 @@ export default function App() {
                     Settle Up
                   </h2>
                 </div>
-                <CodeTooltip {...snippets.settlements} />
               </div>
               <Settlements expenses={expenses} people={people} currency={USD} />
               {expenses.length === 0 && (
@@ -279,7 +261,6 @@ export default function App() {
                   )}
                 </div>
                 <div className="flex items-center gap-3">
-                  <CodeTooltip {...snippets.expenseList} />
                   {(people.length > 0 || expenses.length > 0) && (
                     <button
                       onClick={() => {

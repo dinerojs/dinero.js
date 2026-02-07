@@ -9,8 +9,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "dinero.js": "2.0.0-alpha.15",
-    "prism-react-renderer": "^2.4.1",
+    "dinero.js": "2.0.0-alpha.16",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
