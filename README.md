@@ -77,7 +77,7 @@ Visit the [full documentation](https://v2.dinerojs.com) to know more.
 
 Dinero.js is used by [WooCommerce](https://github.com/woocommerce/woocommerce), [Highlight](https://github.com/highlight/highlight), [Cypress](https://github.com/cypress-io/cypress-realworld-app), [Vercel](https://github.com/vercel/next-app-router-playground), [AWS Labs](https://github.com/awslabs/aws-lambda-web-adapter), [Module Federation](https://github.com/module-federation/core), and [many more](https://github.com/dinerojs/dinero.js/network/dependents).
 
-![Used by](https://api.usedby.dev/npm/dinero.js?max=20&sort=stars)
+[![Used by](https://api.usedby.dev/npm/dinero.js?max=50&sort=stars)](https://github.com/dinerojs/dinero.js/network/dependents)
 
 ## 👥 Contributors
 
