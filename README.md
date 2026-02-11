@@ -7,7 +7,8 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/dinero.js"><img alt="npm version" src="https://img.shields.io/npm/v/dinero.js/alpha" /></a>
   <a href="https://www.npmjs.com/package/dinero.js"><img alt="npm monthly downloads" src="https://img.shields.io/npm/dm/dinero.js" /></a>
-  <a href="https://github.com/dinerojs/dinero.js/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/dinerojs/dinero.js" /></a>
+  <a href="https://github.com/dinerojs/dinero.js/network/dependents"><img alt="Used by" src="https://img.shields.io/endpoint?url=https://api.usedby.dev/npm/dinero.js/shield.json" /></a>
+  <a href="https://github.com/dinerojs/dinero.js/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/dinerojs/dinero.js" /></a><br />
   <a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Ready-blue" /></a>
   <a href="https://github.com/dinerojs/dinero.js/actions/workflows/ci.yml"><img alt="GitHub Actions" src="https://img.shields.io/github/actions/workflow/status/dinerojs/dinero.js/ci.yml?branch=main"></a>
   <a href="https://github.com/dinerojs/dinero.js/blob/master/LICENSE"><img alt="NPM" src="https://img.shields.io/npm/l/dinero.js"></a>
