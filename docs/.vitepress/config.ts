@@ -273,6 +273,7 @@ export default defineConfig({
           items: [
             { text: 'About', link: '/about' },
             { text: 'Demos', link: '/demos' },
+            { text: 'Agent Skills', link: '/agent-skills' },
           ],
         },
       ],

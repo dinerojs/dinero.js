@@ -74,6 +74,14 @@ The documentation lets you learn about all aspects of the library.
 
 Visit the [full documentation](https://v2.dinerojs.com) to know more.
 
+## 🤖 Agent Skills
+
+If you use AI coding agents (Claude Code, Cursor, GitHub Copilot, etc.), install the [Dinero.js skills](https://github.com/dinerojs/skills) to teach your agent best practices, common pitfalls, and correct usage patterns.
+
+```sh
+npx skills add dinerojs/skills
+```
+
 ## 🏢 Used by
 
 Dinero.js is used by [WooCommerce](https://github.com/woocommerce/woocommerce), [Highlight](https://github.com/highlight/highlight), [Cypress](https://github.com/cypress-io/cypress-realworld-app), [Vercel](https://github.com/vercel/next-app-router-playground), [AWS Labs](https://github.com/awslabs/aws-lambda-web-adapter), [Module Federation](https://github.com/module-federation/core), and [many more](https://github.com/dinerojs/dinero.js/network/dependents).
