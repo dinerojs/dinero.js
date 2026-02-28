@@ -55,6 +55,7 @@ describe('subtract', () => {
       const d2 = dinero({ amount: 100, currency: EUR });
 
       expect(() => {
+        // @ts-expect-error different currencies
         subtract(d1, d2);
       }).toThrowErrorMatchingInlineSnapshot(
         `[Error: [Dinero.js] Objects must have the same currency.]`
@@ -107,6 +108,7 @@ describe('subtract', () => {
       const d2 = dinero({ amount: 100n, currency: bigintEUR });
 
       expect(() => {
+        // @ts-expect-error different currencies
         subtract(d1, d2);
       }).toThrowErrorMatchingInlineSnapshot(
         `[Error: [Dinero.js] Objects must have the same currency.]`
@@ -163,6 +165,7 @@ describe('subtract', () => {
       const d2 = dinero({ amount: new Big(100), currency: bigjsEUR });
 
       expect(() => {
+        // @ts-expect-error different currencies
         subtract(d1, d2);
       }).toThrowErrorMatchingInlineSnapshot(
         `[Error: [Dinero.js] Objects must have the same currency.]`

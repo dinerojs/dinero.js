@@ -18,6 +18,8 @@ const dinero = createDinero({
   },
 });
 
-export function createBigjsDinero(options: DineroOptions<Big>) {
+export function createBigjsDinero<TCurrency extends string>(
+  options: DineroOptions<Big, TCurrency>
+) {
   return dinero(options);
 }

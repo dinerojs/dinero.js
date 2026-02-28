@@ -1,7 +1,7 @@
 ---
 title: minimum
 description: Get the lowest of the passed Dinero objects.
-returns: Dinero<TAmount>
+returns: Dinero<TAmount, TCurrency>
 ---
 
 # minimum
@@ -10,11 +10,13 @@ Get the lowest of the passed Dinero objects.
 
 **You can only compare objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before comparing them.
 
+In TypeScript, this is enforced at compile time when using [typed currencies](/guides/currency-type-safety).
+
 ## Parameters
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `dineroObjects` | `Dinero<TAmount>[]` | The Dinero objects to minimum. | Yes |
+| `dineroObjects` | `Dinero<TAmount, TCurrency>[]` | The Dinero objects to minimum. | Yes |
 
 ## Code examples
 

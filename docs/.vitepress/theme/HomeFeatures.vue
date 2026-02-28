@@ -13,7 +13,7 @@ const features = [
   {
     title: 'Multi-currency',
     details:
-      'Built-in support for ISO 4217 currencies and custom currency definitions.',
+      'Built-in ISO 4217 currencies with compile-time safety to catch mismatches.',
   },
   {
     title: 'Tree-shakeable',

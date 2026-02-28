@@ -43,6 +43,7 @@ describe('lessThanOrEqual', () => {
       const d2 = dinero({ amount: 800, currency: EUR });
 
       expect(() => {
+        // @ts-expect-error different currencies
         lessThanOrEqual(d1, d2);
       }).toThrowErrorMatchingInlineSnapshot(
         `[Error: [Dinero.js] Objects must have the same currency.]`
@@ -83,6 +84,7 @@ describe('lessThanOrEqual', () => {
       const d2 = dinero({ amount: 800n, currency: bigintEUR });
 
       expect(() => {
+        // @ts-expect-error different currencies
         lessThanOrEqual(d1, d2);
       }).toThrowErrorMatchingInlineSnapshot(
         `[Error: [Dinero.js] Objects must have the same currency.]`
@@ -127,6 +129,7 @@ describe('lessThanOrEqual', () => {
       const d2 = dinero({ amount: new Big(800), currency: bigjsEUR });
 
       expect(() => {
+        // @ts-expect-error different currencies
         lessThanOrEqual(d1, d2);
       }).toThrowErrorMatchingInlineSnapshot(
         `[Error: [Dinero.js] Objects must have the same currency.]`

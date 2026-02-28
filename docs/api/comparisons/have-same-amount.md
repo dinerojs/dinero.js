@@ -12,7 +12,7 @@ Check whether a set of Dinero objects have the same amount.
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `dineroObjects` | `Dinero<TAmount>[]` | The Dinero object to check. | Yes |
+| `dineroObjects` | `Dinero<TAmount, TCurrency>[]` | The Dinero object to check. | Yes |
 
 ## Code examples
 

@@ -11,8 +11,8 @@ import type { GreaterThanOrEqualParams } from '../core';
  *
  * @public
  */
-export function greaterThanOrEqual<TAmount>(
-  ...[dineroObject, comparator]: GreaterThanOrEqualParams<TAmount>
+export function greaterThanOrEqual<TAmount, TCurrency extends string>(
+  ...[dineroObject, comparator]: GreaterThanOrEqualParams<TAmount, TCurrency>
 ) {
   const { calculator } = dineroObject;
   const greaterThanOrEqualFn = safeGreaterThanOrEqual(calculator);

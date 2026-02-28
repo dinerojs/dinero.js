@@ -1,7 +1,7 @@
 ---
 title: allocate
 description: Distribute the amount of a Dinero object across a list of ratios.
-returns: Dinero<TAmount>[]
+returns: Dinero<TAmount, TCurrency>[]
 ---
 
 # allocate
@@ -20,7 +20,7 @@ If you need to use fractional ratios, you shouldn't use floats, but scaled amoun
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `dineroObject` | `Dinero<TAmount>` | The Dinero object to allocate from. | Yes |
+| `dineroObject` | `Dinero<TAmount, TCurrency>` | The Dinero object to allocate from. | Yes |
 | `ratios` | `Array<ScaledAmount<TAmount> \| TAmount>` | The ratios to allocate the amount to. | Yes |
 
 ## Code examples

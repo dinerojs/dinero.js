@@ -146,7 +146,7 @@ const FRF = {
 If you're a TypeScript user, you can implement the `Currency` type. It takes a generic parameter `TAmount` which represents the type you're using for numeric values (`number` by default).
 
 ```ts
-import { Currency } from 'dinero.js';
+import type { Currency } from 'dinero.js';
 
 const FRF: Currency<number> = {
   code: 'FRF',
@@ -155,6 +155,18 @@ const FRF: Currency<number> = {
 };
 ```
 
-If you want to use a different amount type, you'll need to pass a custom `Calculator` to Dinero.
+To opt into [compile-time currency safety](/guides/currency-type-safety), use `as const satisfies` to preserve the literal type of the currency code:
 
-**See also:** [Precision and large numbers](/guides/precision-and-large-numbers)
+```ts
+import type { Currency } from 'dinero.js';
+
+const FRF = {
+  code: 'FRF',
+  base: 10,
+  exponent: 2,
+} as const satisfies Currency<number, 'FRF'>;
+```
+
+This lets TypeScript catch currency mismatches (e.g., adding USD and EUR) at compile time. The built-in ISO 4217 currencies are already typed this way.
+
+**See also:** [Currency type safety](/guides/currency-type-safety), [Precision and large numbers](/guides/precision-and-large-numbers)

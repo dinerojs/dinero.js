@@ -12,8 +12,16 @@ import type { ConvertParams } from '../core';
  *
  * @public
  */
-export function convert<TAmount>(
-  ...[dineroObject, newCurrency, rates]: ConvertParams<TAmount>
+export function convert<
+  TAmount,
+  TCurrency extends string,
+  TNewCurrency extends string,
+>(
+  ...[dineroObject, newCurrency, rates]: ConvertParams<
+    TAmount,
+    TCurrency,
+    TNewCurrency
+  >
 ) {
   const { calculator } = dineroObject;
   const converter = coreConvert(calculator);

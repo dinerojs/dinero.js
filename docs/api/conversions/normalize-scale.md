@@ -1,7 +1,7 @@
 ---
 title: normalizeScale
 description: Normalize a set of Dinero objects to the highest scale of the set.
-returns: Dinero<TAmount>[]
+returns: Dinero<TAmount, TCurrency>[]
 ---
 
 # normalizeScale
@@ -14,7 +14,7 @@ Normalizing to a higher scale means that the internal `amount` value increases b
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `dineroObjects` | `Dinero<TAmount>[]` | The Dinero objects to normalize. | Yes |
+| `dineroObjects` | `Dinero<TAmount, TCurrency>[]` | The Dinero objects to normalize. | Yes |
 
 ## Code examples
 

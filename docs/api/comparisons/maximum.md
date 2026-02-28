@@ -1,7 +1,7 @@
 ---
 title: maximum
 description: Get the greatest of the passed Dinero objects.
-returns: Dinero<TAmount>
+returns: Dinero<TAmount, TCurrency>
 ---
 
 # maximum
@@ -10,11 +10,13 @@ Get the greatest of the passed Dinero objects.
 
 **You can only compare objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before comparing them.
 
+In TypeScript, this is enforced at compile time when using [typed currencies](/guides/currency-type-safety).
+
 ## Parameters
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `dineroObjects` | `Dinero<TAmount>[]` | The Dinero objects to maximum. | Yes |
+| `dineroObjects` | `Dinero<TAmount, TCurrency>[]` | The Dinero objects to maximum. | Yes |
 
 ## Code examples
 

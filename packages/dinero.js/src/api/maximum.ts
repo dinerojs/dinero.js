@@ -10,7 +10,9 @@ import type { MaximumParams } from '../core';
  *
  * @public
  */
-export function maximum<TAmount>(...[dineroObjects]: MaximumParams<TAmount>) {
+export function maximum<TAmount, TCurrency extends string>(
+  ...[dineroObjects]: MaximumParams<TAmount, TCurrency>
+) {
   const { calculator } = dineroObjects[0];
   const maximumFn = safeMaximum(calculator);
 

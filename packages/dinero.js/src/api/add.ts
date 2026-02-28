@@ -11,7 +11,9 @@ import type { AddParams } from '../core';
  *
  * @public
  */
-export function add<TAmount>(...[augend, addend]: AddParams<TAmount>) {
+export function add<TAmount, TCurrency extends string>(
+  ...[augend, addend]: AddParams<TAmount, TCurrency>
+) {
   const { calculator } = augend;
   const addFn = safeAdd(calculator);
 

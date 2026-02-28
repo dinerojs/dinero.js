@@ -10,12 +10,14 @@ Check whether the value of a Dinero object is lesser than or equal to another.
 
 **You can only compare objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before comparing them.
 
+In TypeScript, this is enforced at compile time when using [typed currencies](/guides/currency-type-safety).
+
 ## Parameters
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `dineroObject` | `Dinero<TAmount>` | The first Dinero object to compare. | Yes |
-| `comparator` | `Dinero<TAmount>` | The second Dinero object to compare. | Yes |
+| `dineroObject` | `Dinero<TAmount, TCurrency>` | The first Dinero object to compare. | Yes |
+| `comparator` | `Dinero<TAmount, TCurrency>` | The second Dinero object to compare. | Yes |
 
 ## Code examples
 

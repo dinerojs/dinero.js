@@ -11,8 +11,8 @@ import type { EqualParams } from '../core';
  *
  * @public
  */
-export function equal<TAmount>(
-  ...[dineroObject, comparator]: EqualParams<TAmount>
+export function equal<TAmount, TCurrency extends string>(
+  ...[dineroObject, comparator]: EqualParams<TAmount, TCurrency>
 ) {
   const { calculator } = dineroObject;
   const equalFn = coreEqual(calculator);

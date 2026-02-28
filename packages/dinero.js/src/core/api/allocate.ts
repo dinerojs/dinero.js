@@ -12,14 +12,17 @@ import {
 
 import { transformScale } from './transformScale';
 
-type UnsafeAllocateParams<TAmount> = readonly [
-  dineroObject: Dinero<TAmount>,
+type UnsafeAllocateParams<
+  TAmount,
+  TCurrency extends string = string,
+> = readonly [
+  dineroObject: Dinero<TAmount, TCurrency>,
   ratios: ReadonlyArray<DineroScaledAmount<TAmount>>,
 ];
 
 function unsafeAllocate<TAmount>(calculator: DineroCalculator<TAmount>) {
-  return function allocate(
-    ...[dineroObject, ratios]: UnsafeAllocateParams<TAmount>
+  return function allocate<TCurrency extends string>(
+    ...[dineroObject, ratios]: UnsafeAllocateParams<TAmount, TCurrency>
   ) {
     const { amount, currency, scale } = dineroObject.toJSON();
     const distributeFn = distribute(calculator);
@@ -38,8 +41,11 @@ function unsafeAllocate<TAmount>(calculator: DineroCalculator<TAmount>) {
   };
 }
 
-export type AllocateParams<TAmount> = readonly [
-  dineroObject: Dinero<TAmount>,
+export type AllocateParams<
+  TAmount,
+  TCurrency extends string = string,
+> = readonly [
+  dineroObject: Dinero<TAmount, TCurrency>,
   ratios: ReadonlyArray<DineroScaledAmount<TAmount> | TAmount>,
 ];
 
@@ -53,7 +59,9 @@ export function safeAllocate<TAmount>(calculator: DineroCalculator<TAmount>) {
   const zero = calculator.zero();
   const ten = new Array(10).fill(null).reduce(calculator.increment, zero);
 
-  return function allocate(...[dineroObject, ratios]: AllocateParams<TAmount>) {
+  return function allocate<TCurrency extends string>(
+    ...[dineroObject, ratios]: AllocateParams<TAmount, TCurrency>
+  ) {
     const hasRatios = ratios.length > 0;
     const scaledRatios = ratios.map((ratio) => getAmountAndScale(ratio, zero));
     const highestRatioScale = hasRatios

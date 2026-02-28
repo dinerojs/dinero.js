@@ -11,8 +11,8 @@ import type { SubtractParams } from '../core';
  *
  * @public
  */
-export function subtract<TAmount>(
-  ...[minuend, subtrahend]: SubtractParams<TAmount>
+export function subtract<TAmount, TCurrency extends string>(
+  ...[minuend, subtrahend]: SubtractParams<TAmount, TCurrency>
 ) {
   const { calculator } = minuend;
   const subtractFn = safeSubtract(calculator);

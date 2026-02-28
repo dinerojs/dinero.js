@@ -10,9 +10,13 @@ import { absolute, computeBase, equal, isArray, lessThan } from '../utils';
 
 import { toUnits } from './toUnits';
 
-export type ToDecimalParams<TAmount, TOutput> = readonly [
-  dineroObject: Dinero<TAmount>,
-  transformer?: DineroTransformer<TAmount, TOutput, string>,
+export type ToDecimalParams<
+  TAmount,
+  TOutput,
+  TCurrency extends string = string,
+> = readonly [
+  dineroObject: Dinero<TAmount, TCurrency>,
+  transformer?: DineroTransformer<TAmount, TOutput, string, TCurrency>,
 ];
 
 export function toDecimal<TAmount, TOutput>(
@@ -22,8 +26,8 @@ export function toDecimal<TAmount, TOutput>(
   const computeBaseFn = computeBase(calculator);
   const equalFn = equal(calculator);
 
-  return function toDecimalFn(
-    ...[dineroObject, transformer]: ToDecimalParams<TAmount, TOutput>
+  return function toDecimalFn<TCurrency extends string>(
+    ...[dineroObject, transformer]: ToDecimalParams<TAmount, TOutput, TCurrency>
   ) {
     const { currency, scale } = dineroObject.toJSON();
 

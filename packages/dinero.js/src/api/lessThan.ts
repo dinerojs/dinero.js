@@ -11,8 +11,8 @@ import type { LessThanParams } from '../core';
  *
  * @public
  */
-export function lessThan<TAmount>(
-  ...[dineroObject, comparator]: LessThanParams<TAmount>
+export function lessThan<TAmount, TCurrency extends string>(
+  ...[dineroObject, comparator]: LessThanParams<TAmount, TCurrency>
 ) {
   const { calculator } = dineroObject;
   const lessThanFn = safeLessThan(calculator);

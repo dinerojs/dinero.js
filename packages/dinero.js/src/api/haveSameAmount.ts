@@ -10,8 +10,8 @@ import type { HaveSameAmountParams } from '../core';
  *
  * @public
  */
-export function haveSameAmount<TAmount>(
-  ...[dineroObjects]: HaveSameAmountParams<TAmount>
+export function haveSameAmount<TAmount, TCurrency extends string>(
+  ...[dineroObjects]: HaveSameAmountParams<TAmount, TCurrency>
 ) {
   const { calculator } = dineroObjects[0];
   const haveSameAmountFn = coreHaveSameAmount(calculator);

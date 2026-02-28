@@ -3,7 +3,10 @@ import { computeBase, countTrailingZeros, equal, maximum } from '../utils';
 
 import { transformScale } from './transformScale';
 
-export type TrimScaleParams<TAmount> = readonly [dineroObject: Dinero<TAmount>];
+export type TrimScaleParams<
+  TAmount,
+  TCurrency extends string = string,
+> = readonly [dineroObject: Dinero<TAmount, TCurrency>];
 
 export function trimScale<TAmount>(calculator: DineroCalculator<TAmount>) {
   const countTrailingZerosFn = countTrailingZeros(calculator);
@@ -12,7 +15,9 @@ export function trimScale<TAmount>(calculator: DineroCalculator<TAmount>) {
   const transformScaleFn = transformScale(calculator);
   const computeBaseFn = computeBase(calculator);
 
-  return function trimScaleFn(...[dineroObject]: TrimScaleParams<TAmount>) {
+  return function trimScaleFn<TCurrency extends string>(
+    ...[dineroObject]: TrimScaleParams<TAmount, TCurrency>
+  ) {
     const { amount, currency, scale } = dineroObject.toJSON();
     const base = computeBaseFn(currency.base);
 

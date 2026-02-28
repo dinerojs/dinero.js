@@ -10,8 +10,8 @@ import type { TrimScaleParams } from '../core';
  *
  * @public
  */
-export function trimScale<TAmount>(
-  ...[dineroObject]: TrimScaleParams<TAmount>
+export function trimScale<TAmount, TCurrency extends string>(
+  ...[dineroObject]: TrimScaleParams<TAmount, TCurrency>
 ) {
   const { calculator } = dineroObject;
   const trimScaleFn = coreTrimScale(calculator);

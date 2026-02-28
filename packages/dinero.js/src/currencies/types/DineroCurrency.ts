@@ -1,8 +1,8 @@
-export type DineroCurrency<TAmount> = {
+export type DineroCurrency<TAmount, TCurrency extends string = string> = {
   /**
    * The unique code of the currency.
    */
-  readonly code: string;
+  readonly code: TCurrency;
   /**
    * The base, or radix of the currency.
    */

@@ -1,9 +1,18 @@
 import type { DineroCalculator, Dinero, DineroTransformer } from '../types';
 import { isArray, getDivisors } from '../utils';
 
-export type ToUnitsParams<TAmount, TOutput> = readonly [
-  dineroObject: Dinero<TAmount>,
-  transformer?: DineroTransformer<TAmount, TOutput, readonly TAmount[]>,
+export type ToUnitsParams<
+  TAmount,
+  TOutput,
+  TCurrency extends string = string,
+> = readonly [
+  dineroObject: Dinero<TAmount, TCurrency>,
+  transformer?: DineroTransformer<
+    TAmount,
+    TOutput,
+    readonly TAmount[],
+    TCurrency
+  >,
 ];
 
 export function toUnits<TAmount, TOutput>(
@@ -11,8 +20,8 @@ export function toUnits<TAmount, TOutput>(
 ) {
   const getDivisorsFn = getDivisors(calculator);
 
-  return function toUnitsFn(
-    ...[dineroObject, transformer]: ToUnitsParams<TAmount, TOutput>
+  return function toUnitsFn<TCurrency extends string>(
+    ...[dineroObject, transformer]: ToUnitsParams<TAmount, TOutput, TCurrency>
   ) {
     const { amount, currency, scale } = dineroObject.toJSON();
     const { power, integerDivide, modulo } = calculator;

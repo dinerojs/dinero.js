@@ -6,16 +6,19 @@ import { compare as cmp } from '../utils';
 import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
 
-export type CompareParams<TAmount> = readonly [
-  dineroObject: Dinero<TAmount>,
-  comparator: Dinero<TAmount>,
+export type CompareParams<
+  TAmount,
+  TCurrency extends string = string,
+> = readonly [
+  dineroObject: Dinero<TAmount, TCurrency>,
+  comparator: Dinero<TAmount, NoInfer<TCurrency>>,
 ];
 
 function unsafeCompare<TAmount>(calculator: DineroCalculator<TAmount>) {
   const compareFn = cmp(calculator);
 
-  return function compare(
-    ...[dineroObject, comparator]: CompareParams<TAmount>
+  return function compare<TCurrency extends string>(
+    ...[dineroObject, comparator]: CompareParams<TAmount, TCurrency>
   ) {
     const dineroObjects = [dineroObject, comparator];
 
@@ -33,8 +36,8 @@ export function safeCompare<TAmount>(calculator: DineroCalculator<TAmount>) {
   const normalizeFn = normalizeScale(calculator);
   const compareFn = unsafeCompare(calculator);
 
-  return function compare(
-    ...[dineroObject, comparator]: CompareParams<TAmount>
+  return function compare<TCurrency extends string>(
+    ...[dineroObject, comparator]: CompareParams<TAmount, TCurrency>
   ) {
     const condition = haveSameCurrency([dineroObject, comparator]);
     assert(condition, UNEQUAL_CURRENCIES_MESSAGE);

@@ -1,7 +1,7 @@
 ---
 title: toSnapshot
 description: Get a snapshot of a Dinero object.
-returns: DineroSnapshot<TAmount>
+returns: DineroSnapshot<TAmount, TCurrency>
 ---
 
 # toSnapshot
@@ -14,7 +14,7 @@ Snapshots are plain JavaScript objects, suited for [transport and storage](/guid
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `dineroObject` | `Dinero<TAmount>` | The Dinero object to snapshot. | Yes |
+| `dineroObject` | `Dinero<TAmount, TCurrency>` | The Dinero object to snapshot. | Yes |
 
 ## Code examples
 

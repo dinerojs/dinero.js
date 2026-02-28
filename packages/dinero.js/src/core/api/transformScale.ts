@@ -2,8 +2,11 @@ import { down } from '../divide';
 import type { DineroCalculator, Dinero, DineroDivideOperation } from '../types';
 import { computeBase, greaterThan } from '../utils';
 
-export type TransformScaleParams<TAmount> = readonly [
-  dineroObject: Dinero<TAmount>,
+export type TransformScaleParams<
+  TAmount,
+  TCurrency extends string = string,
+> = readonly [
+  dineroObject: Dinero<TAmount, TCurrency>,
   newScale: TAmount,
   divide?: DineroDivideOperation,
 ];
@@ -12,8 +15,11 @@ export function transformScale<TAmount>(calculator: DineroCalculator<TAmount>) {
   const greaterThanFn = greaterThan(calculator);
   const computeBaseFn = computeBase(calculator);
 
-  return function transformScaleFn(
-    ...[dineroObject, newScale, divide = down]: TransformScaleParams<TAmount>
+  return function transformScaleFn<TCurrency extends string>(
+    ...[dineroObject, newScale, divide = down]: TransformScaleParams<
+      TAmount,
+      TCurrency
+    >
   ) {
     const { amount, currency, scale } = dineroObject.toJSON();
 

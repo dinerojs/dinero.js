@@ -11,8 +11,8 @@ import type { CompareParams } from '../core';
  *
  * @public
  */
-export function compare<TAmount>(
-  ...[dineroObject, comparator]: CompareParams<TAmount>
+export function compare<TAmount, TCurrency extends string>(
+  ...[dineroObject, comparator]: CompareParams<TAmount, TCurrency>
 ) {
   const { calculator } = dineroObject;
   const compareFn = safeCompare(calculator);
