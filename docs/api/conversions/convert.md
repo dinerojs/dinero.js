@@ -12,6 +12,10 @@ If you need to use fractional rates, you shouldn't use floats, but scaled amount
 
 In TypeScript, the returned Dinero object carries the type of the new currency. See [Currency type safety](/guides/currency-type-safety).
 
+::: warning
+Both currencies must share the same base. Converting between currencies with different bases (e.g., USD base 10 and MGA base 5) will throw.
+:::
+
 ## Parameters
 
 | Name | Type | Description | Required |
