@@ -59,21 +59,19 @@ describe('convert', () => {
           scale: 1,
         });
       });
-      it('converts to the safest scale', () => {
-        const d = dinero({ amount: 100, currency: USD });
+      it('throws when converting between different bases', () => {
+        const d = dinero({ amount: 1000, currency: USD });
 
-        const converted = convert(d, MGA, {
-          MGA: {
-            amount: 3912566,
-            scale: 3,
-          },
-        });
-
-        expect(toSnapshot(converted)).toEqual({
-          amount: 391256600,
-          currency: MGA,
-          scale: 5,
-        });
+        expect(() => {
+          convert(d, MGA, {
+            MGA: {
+              amount: 3912566,
+              scale: 3,
+            },
+          });
+        }).toThrowErrorMatchingInlineSnapshot(
+          `[Error: [Dinero.js] Objects must have the same currency base.]`
+        );
       });
     });
   });
@@ -130,21 +128,19 @@ describe('convert', () => {
           scale: 1n,
         });
       });
-      it('converts to the safest scale', () => {
-        const d = dinero({ amount: 100n, currency: bigintUSD });
+      it('throws when converting between different bases', () => {
+        const d = dinero({ amount: 1000n, currency: bigintUSD });
 
-        const converted = convert(d, bigintMGA, {
-          MGA: {
-            amount: 3912566n,
-            scale: 3n,
-          },
-        });
-
-        expect(toSnapshot(converted)).toEqual({
-          amount: 391256600n,
-          currency: bigintMGA,
-          scale: 5n,
-        });
+        expect(() => {
+          convert(d, bigintMGA, {
+            MGA: {
+              amount: 3912566n,
+              scale: 3n,
+            },
+          });
+        }).toThrowErrorMatchingInlineSnapshot(
+          `[Error: [Dinero.js] Objects must have the same currency base.]`
+        );
       });
     });
   });
@@ -201,21 +197,19 @@ describe('convert', () => {
           scale: new Big(1),
         });
       });
-      it('converts to the safest scale', () => {
-        const d = dinero({ amount: new Big(100), currency: bigjsUSD });
+      it('throws when converting between different bases', () => {
+        const d = dinero({ amount: new Big(1000), currency: bigjsUSD });
 
-        const converted = convert(d, bigjsMGA, {
-          MGA: {
-            amount: new Big(3912566),
-            scale: new Big(3),
-          },
-        });
-
-        expect(toSnapshot(converted)).toEqual({
-          amount: new Big(391256600),
-          currency: bigjsMGA,
-          scale: new Big(5),
-        });
+        expect(() => {
+          convert(d, bigjsMGA, {
+            MGA: {
+              amount: new Big(3912566),
+              scale: new Big(3),
+            },
+          });
+        }).toThrowErrorMatchingInlineSnapshot(
+          `[Error: [Dinero.js] Objects must have the same currency base.]`
+        );
       });
     });
   });
