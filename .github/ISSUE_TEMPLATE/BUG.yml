@@ -27,7 +27,7 @@ body:
   - type: textarea
     attributes:
       label: Steps to reproduce
-      description: Steps to reproduce the behavior. You can also share a reproducible example by forking [this sandbox](https://codesandbox.io/s/github/dinerojs/dinero.js/tree/main/examples/starter).
+      description: Steps to reproduce the behavior.
       placeholder: |
         1. In this environment...
         2. Run '...'

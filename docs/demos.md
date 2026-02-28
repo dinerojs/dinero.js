@@ -92,17 +92,3 @@ If you learn better by seeing code in action, or want to start from an existing 
 This demo showcases Dinero.js in action in a [React](https://reactjs.org/)-powered expense splitter. It demonstrates fair bill splitting with `allocate()`, balance tracking, and optimal debt settlement.
 
 [View demo](https://v2.dinerojs.com/examples/expense-splitter/)
-
-## Starter playground
-
-<div class="demo-entry">
-  <div class="demo-text">
-    <p>A minimal playground to try Dinero.js with zero setup. Creates a Dinero object, inspects it with <code>toSnapshot</code>, and formats it with <code>toDecimal</code>. Ideal for quick experiments and reproducing issues.</p>
-    <p><a href="https://v2.dinerojs.com/examples/starter/">View demo</a></p>
-  </div>
-  <div class="demo-image">
-    <a href="https://v2.dinerojs.com/examples/starter/">
-      <img src="/images/examples/starter.png" alt="Starter playground">
-    </a>
-  </div>
-</div>
