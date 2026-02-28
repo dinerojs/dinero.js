@@ -11,7 +11,13 @@
     "amount",
     "immutable",
     "pure",
-    "side-effect free"
+    "side-effect free",
+    "currency",
+    "finance",
+    "typescript",
+    "formatting",
+    "bigint",
+    "decimal"
   ],
   "homepage": "https://v2.dinerojs.com",
   "bugs": "https://github.com/dinerojs/dinero.js/issues",
