@@ -5,6 +5,7 @@ export default defineConfig({
   description:
     'Create, calculate, and format money in JavaScript and TypeScript.',
   lang: 'en',
+  cleanUrls: true,
   sitemap: {
     hostname: 'https://v2.dinerojs.com/',
   },

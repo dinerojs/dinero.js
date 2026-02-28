@@ -19,7 +19,7 @@ function getCurrency(code: string) {
 }
 ```
 
-Since Dinero.js tracks the latest ISO 4217 standard, currency codes can be added or removed between versions. Always validate codes at runtime, especially if they come from stored data. See [Using built-in currencies](/core-concepts/currency.html#using-built-in-currencies) for more details.
+Since Dinero.js tracks the latest ISO 4217 standard, currency codes can be added or removed between versions. Always validate codes at runtime, especially if they come from stored data. See [Using built-in currencies](/core-concepts/currency#using-built-in-currencies) for more details.
 
 ```ts
 import { dinero } from 'dinero.js';
