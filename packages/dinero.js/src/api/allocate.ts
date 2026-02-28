@@ -11,8 +11,8 @@ import type { AllocateParams } from '../core';
  *
  * @public
  */
-export function allocate<TAmount>(
-  ...[dineroObject, ratios]: AllocateParams<TAmount>
+export function allocate<TAmount, TCurrency extends string>(
+  ...[dineroObject, ratios]: AllocateParams<TAmount, TCurrency>
 ) {
   const { calculator } = dineroObject;
   const allocateFn = safeAllocate(calculator);

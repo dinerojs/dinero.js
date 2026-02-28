@@ -14,8 +14,8 @@ This function does same-value equality, determining whether two Dinero objects a
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `dineroObject` | `Dinero<TAmount>` | The first Dinero object to compare. | Yes |
-| `comparator` | `Dinero<TAmount>` | The second Dinero object to compare. | Yes |
+| `dineroObject` | `Dinero<TAmount, TCurrency>` | The first Dinero object to compare. | Yes |
+| `comparator` | `Dinero<TAmount, TCurrency>` | The second Dinero object to compare. | Yes |
 
 ## Code examples
 

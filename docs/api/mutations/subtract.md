@@ -1,7 +1,7 @@
 ---
 title: subtract
 description: Subtracting two Dinero objects.
-returns: Dinero<TAmount>
+returns: Dinero<TAmount, TCurrency>
 ---
 
 # subtract
@@ -10,12 +10,14 @@ Subtract two Dinero objects.
 
 **You can only subtract objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before subtracting them.
 
+In TypeScript, this is enforced at compile time when using [typed currencies](/guides/currency-type-safety).
+
 ## Parameters
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `minuend` | `Dinero<TAmount>` | The Dinero object to subtract from. | Yes |
-| `subtrahend` | `Dinero<TAmount>` | The Dinero object to subtract. | Yes |
+| `minuend` | `Dinero<TAmount, TCurrency>` | The Dinero object to subtract from. | Yes |
+| `subtrahend` | `Dinero<TAmount, TCurrency>` | The Dinero object to subtract. | Yes |
 
 ## Code examples
 

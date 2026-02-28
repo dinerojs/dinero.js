@@ -10,7 +10,9 @@ import type { MinimumParams } from '../core';
  *
  * @public
  */
-export function minimum<TAmount>(...[dineroObjects]: MinimumParams<TAmount>) {
+export function minimum<TAmount, TCurrency extends string>(
+  ...[dineroObjects]: MinimumParams<TAmount, TCurrency>
+) {
   const { calculator } = dineroObjects[0];
   const minimumFn = safeMinimum(calculator);
 

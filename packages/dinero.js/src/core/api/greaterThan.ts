@@ -6,16 +6,19 @@ import { greaterThan as gt } from '../utils';
 import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
 
-export type GreaterThanParams<TAmount> = readonly [
-  dineroObject: Dinero<TAmount>,
-  comparator: Dinero<TAmount>,
+export type GreaterThanParams<
+  TAmount,
+  TCurrency extends string = string,
+> = readonly [
+  dineroObject: Dinero<TAmount, TCurrency>,
+  comparator: Dinero<TAmount, NoInfer<TCurrency>>,
 ];
 
 function unsafeGreaterThan<TAmount>(calculator: DineroCalculator<TAmount>) {
   const greaterThanFn = gt(calculator);
 
-  return function greaterThan(
-    ...[dineroObject, comparator]: GreaterThanParams<TAmount>
+  return function greaterThan<TCurrency extends string>(
+    ...[dineroObject, comparator]: GreaterThanParams<TAmount, TCurrency>
   ) {
     const dineroObjects = [dineroObject, comparator];
 
@@ -35,8 +38,8 @@ export function safeGreaterThan<TAmount>(
   const normalizeFn = normalizeScale(calculator);
   const greaterThanFn = unsafeGreaterThan(calculator);
 
-  return function greaterThan(
-    ...[dineroObject, comparator]: GreaterThanParams<TAmount>
+  return function greaterThan<TCurrency extends string>(
+    ...[dineroObject, comparator]: GreaterThanParams<TAmount, TCurrency>
   ) {
     const condition = haveSameCurrency([dineroObject, comparator]);
     assert(condition, UNEQUAL_CURRENCIES_MESSAGE);

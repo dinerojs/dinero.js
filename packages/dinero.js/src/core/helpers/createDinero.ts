@@ -1,3 +1,5 @@
+import type { DineroCurrency } from '../../currencies';
+
 import type {
   DineroCalculator,
   Dinero,
@@ -8,7 +10,7 @@ import type {
 export type CreateDineroOptions<TAmount> = {
   readonly calculator: DineroCalculator<TAmount>;
   readonly formatter?: DineroFormatter<TAmount>;
-  readonly onCreate?: (options: DineroOptions<TAmount>) => void;
+  readonly onCreate?: (options: DineroOptions<TAmount, string>) => void;
 };
 
 export function createDinero<TAmount>({
@@ -19,12 +21,15 @@ export function createDinero<TAmount>({
     toString: String,
   },
 }: CreateDineroOptions<TAmount>) {
-  return function dinero({
+  return function dinero<TCurrency extends string>({
     amount,
     currency: { code, base, exponent },
     scale = exponent,
-  }: DineroOptions<TAmount>): Dinero<TAmount> {
-    const currency = { code, base, exponent };
+  }: DineroOptions<TAmount, TCurrency>): Dinero<TAmount, TCurrency> {
+    const currency = { code, base, exponent } as DineroCurrency<
+      TAmount,
+      TCurrency
+    >;
 
     onCreate?.({ amount, currency, scale });
 

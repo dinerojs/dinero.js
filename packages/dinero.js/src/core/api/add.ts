@@ -5,13 +5,15 @@ import type { DineroCalculator, Dinero } from '../types';
 import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
 
-export type AddParams<TAmount> = readonly [
-  augend: Dinero<TAmount>,
-  addend: Dinero<TAmount>,
+export type AddParams<TAmount, TCurrency extends string = string> = readonly [
+  augend: Dinero<TAmount, TCurrency>,
+  addend: Dinero<TAmount, NoInfer<TCurrency>>,
 ];
 
 function unsafeAdd<TAmount>(calculator: DineroCalculator<TAmount>) {
-  return function add(...[augend, addend]: AddParams<TAmount>) {
+  return function add<TCurrency extends string>(
+    ...[augend, addend]: AddParams<TAmount, TCurrency>
+  ) {
     const { amount: augendAmount, currency, scale } = augend.toJSON();
     const { amount: addendAmount } = addend.toJSON();
 
@@ -29,7 +31,9 @@ export function safeAdd<TAmount>(calculator: DineroCalculator<TAmount>) {
   const normalizeFn = normalizeScale(calculator);
   const addFn = unsafeAdd(calculator);
 
-  return function add(...[augend, addend]: AddParams<TAmount>) {
+  return function add<TCurrency extends string>(
+    ...[augend, addend]: AddParams<TAmount, TCurrency>
+  ) {
     const condition = haveSameCurrency([augend, addend]);
     assert(condition, UNEQUAL_CURRENCIES_MESSAGE);
 

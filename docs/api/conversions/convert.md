@@ -1,7 +1,7 @@
 ---
 title: convert
 description: Create a Dinero object converter.
-returns: Dinero<TAmount>
+returns: Dinero<TAmount, TNewCurrency>
 ---
 
 # convert
@@ -10,12 +10,14 @@ Convert a Dinero object from a currency to another.
 
 If you need to use fractional rates, you shouldn't use floats, but scaled amounts instead. For example, instead of passing `0.89`, you should pass `{ amount: 89, scale: 2 }`. When using scaled amounts, the function converts the returned object to the safest scale.
 
+In TypeScript, the returned Dinero object carries the type of the new currency. See [Currency type safety](/guides/currency-type-safety).
+
 ## Parameters
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `dineroObject` | `Dinero<TAmount>` | The Dinero object to convert. | Yes |
-| `newCurrency` | `Currency<TAmount>` | The currency to convert into. | Yes |
+| `dineroObject` | `Dinero<TAmount, TCurrency>` | The Dinero object to convert. | Yes |
+| `newCurrency` | `Currency<TAmount, TNewCurrency>` | The currency to convert into. | Yes |
 | `rates` | `Rates<TAmount>` | The rates to convert with. | Yes |
 
 ## Code examples

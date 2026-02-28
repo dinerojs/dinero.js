@@ -16,8 +16,8 @@ When specifying multiple bases, the function returns as many units as necessary.
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `dineroObject` | `Dinero<TAmount>` | The Dinero object to format. | Yes |
-| `transformer` | `Transformer<TAmount, TOutput>` | An optional transformer function. | No |
+| `dineroObject` | `Dinero<TAmount, TCurrency>` | The Dinero object to format. | Yes |
+| `transformer` | `Transformer<TAmount, TOutput, TCurrency>` | An optional transformer function. | No |
 
 ## Code examples
 

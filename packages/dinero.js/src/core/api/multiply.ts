@@ -3,8 +3,11 @@ import { getAmountAndScale } from '../utils';
 
 import { transformScale } from './transformScale';
 
-export type MultiplyParams<TAmount> = readonly [
-  multiplicand: Dinero<TAmount>,
+export type MultiplyParams<
+  TAmount,
+  TCurrency extends string = string,
+> = readonly [
+  multiplicand: Dinero<TAmount, TCurrency>,
   multiplier: DineroScaledAmount<TAmount> | TAmount,
 ];
 
@@ -12,8 +15,8 @@ export function multiply<TAmount>(calculator: DineroCalculator<TAmount>) {
   const convertScaleFn = transformScale(calculator);
   const zero = calculator.zero();
 
-  return function multiplyFn(
-    ...[multiplicand, multiplier]: MultiplyParams<TAmount>
+  return function multiplyFn<TCurrency extends string>(
+    ...[multiplicand, multiplier]: MultiplyParams<TAmount, TCurrency>
   ) {
     const { amount, currency, scale } = multiplicand.toJSON();
     const { amount: multiplierAmount, scale: multiplierScale } =

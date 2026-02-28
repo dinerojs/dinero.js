@@ -6,16 +6,19 @@ import { lessThanOrEqual as lte } from '../utils';
 import { haveSameCurrency } from './haveSameCurrency';
 import { normalizeScale } from './normalizeScale';
 
-export type LessThanOrEqualParams<TAmount> = readonly [
-  dineroObject: Dinero<TAmount>,
-  comparator: Dinero<TAmount>,
+export type LessThanOrEqualParams<
+  TAmount,
+  TCurrency extends string = string,
+> = readonly [
+  dineroObject: Dinero<TAmount, TCurrency>,
+  comparator: Dinero<TAmount, NoInfer<TCurrency>>,
 ];
 
 function unsafeLessThanOrEqual<TAmount>(calculator: DineroCalculator<TAmount>) {
   const lessThanOrEqualFn = lte(calculator);
 
-  return function lessThanOrEqual(
-    ...[dineroObject, comparator]: LessThanOrEqualParams<TAmount>
+  return function lessThanOrEqual<TCurrency extends string>(
+    ...[dineroObject, comparator]: LessThanOrEqualParams<TAmount, TCurrency>
   ) {
     const dineroObjects = [dineroObject, comparator];
 
@@ -35,8 +38,8 @@ export function safeLessThanOrEqual<TAmount>(
   const normalizeFn = normalizeScale(calculator);
   const lessThanOrEqualFn = unsafeLessThanOrEqual(calculator);
 
-  return function lessThanOrEqual(
-    ...[dineroObject, comparator]: LessThanOrEqualParams<TAmount>
+  return function lessThanOrEqual<TCurrency extends string>(
+    ...[dineroObject, comparator]: LessThanOrEqualParams<TAmount, TCurrency>
   ) {
     const condition = haveSameCurrency([dineroObject, comparator]);
     assert(condition, UNEQUAL_CURRENCIES_MESSAGE);

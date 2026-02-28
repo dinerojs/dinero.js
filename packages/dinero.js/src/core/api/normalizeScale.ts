@@ -3,8 +3,14 @@ import { equal, maximum } from '../utils';
 
 import { transformScale } from './transformScale';
 
-export type NormalizeScaleParams<TAmount> = readonly [
-  dineroObjects: ReadonlyArray<Dinero<TAmount>>,
+export type NormalizeScaleParams<
+  TAmount,
+  TCurrency extends string = string,
+> = readonly [
+  dineroObjects: readonly [
+    Dinero<TAmount, TCurrency>,
+    ...Dinero<TAmount, NoInfer<TCurrency>>[],
+  ],
 ];
 
 export function normalizeScale<TAmount>(calculator: DineroCalculator<TAmount>) {
@@ -12,8 +18,8 @@ export function normalizeScale<TAmount>(calculator: DineroCalculator<TAmount>) {
   const convertScaleFn = transformScale(calculator);
   const equalFn = equal(calculator);
 
-  return function _normalizeScale(
-    ...[dineroObjects]: NormalizeScaleParams<TAmount>
+  return function _normalizeScale<TCurrency extends string>(
+    ...[dineroObjects]: NormalizeScaleParams<TAmount, TCurrency>
   ) {
     const highestScale = dineroObjects.reduce((highest, current) => {
       const { scale } = current.toJSON();

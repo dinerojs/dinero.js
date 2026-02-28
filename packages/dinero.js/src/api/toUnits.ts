@@ -1,13 +1,18 @@
 import { toUnits as coreToUnits } from '../core';
 import type { ToUnitsParams, Dinero, DineroTransformer } from '../core';
 
-export function toUnits<TAmount>(
-  dineroObject: Dinero<TAmount>
+export function toUnits<TAmount, TCurrency extends string>(
+  dineroObject: Dinero<TAmount, TCurrency>
 ): readonly TAmount[];
 
-export function toUnits<TAmount, TOutput>(
-  dineroObject: Dinero<TAmount>,
-  transformer: DineroTransformer<TAmount, TOutput, readonly TAmount[]>
+export function toUnits<TAmount, TOutput, TCurrency extends string>(
+  dineroObject: Dinero<TAmount, TCurrency>,
+  transformer: DineroTransformer<
+    TAmount,
+    TOutput,
+    readonly TAmount[],
+    TCurrency
+  >
 ): TOutput;
 
 /**
@@ -20,8 +25,8 @@ export function toUnits<TAmount, TOutput>(
  *
  * @public
  */
-export function toUnits<TAmount, TOutput>(
-  ...[dineroObject, transformer]: ToUnitsParams<TAmount, TOutput>
+export function toUnits<TAmount, TOutput, TCurrency extends string>(
+  ...[dineroObject, transformer]: ToUnitsParams<TAmount, TOutput, TCurrency>
 ) {
   const { calculator } = dineroObject;
   const toUnitsFn = coreToUnits<TAmount, TOutput>(calculator);

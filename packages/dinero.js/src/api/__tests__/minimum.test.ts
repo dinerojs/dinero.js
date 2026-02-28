@@ -43,6 +43,7 @@ describe('minimum', () => {
       const d2 = dinero({ amount: 50, currency: EUR });
 
       expect(() => {
+        // @ts-expect-error different currencies
         minimum([d1, d2]);
       }).toThrowErrorMatchingInlineSnapshot(
         `[Error: [Dinero.js] Objects must have the same currency.]`
@@ -83,6 +84,7 @@ describe('minimum', () => {
       const d2 = dinero({ amount: 50n, currency: bigintEUR });
 
       expect(() => {
+        // @ts-expect-error different currencies
         minimum([d1, d2]);
       }).toThrowErrorMatchingInlineSnapshot(
         `[Error: [Dinero.js] Objects must have the same currency.]`
@@ -127,6 +129,7 @@ describe('minimum', () => {
       const d2 = dinero({ amount: new Big(50), currency: bigjsEUR });
 
       expect(() => {
+        // @ts-expect-error different currencies
         minimum([d1, d2]);
       }).toThrowErrorMatchingInlineSnapshot(
         `[Error: [Dinero.js] Objects must have the same currency.]`

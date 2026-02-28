@@ -133,6 +133,10 @@ export default defineConfig({
               link: '/guides/precision-and-large-numbers',
             },
             {
+              text: 'Currency type safety',
+              link: '/guides/currency-type-safety',
+            },
+            {
               text: 'Serialization',
               link: '/guides/transporting-and-restoring',
             },

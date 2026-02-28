@@ -10,8 +10,8 @@ import type { NormalizeScaleParams } from '../core';
  *
  * @public
  */
-export function normalizeScale<TAmount>(
-  ...[dineroObjects]: NormalizeScaleParams<TAmount>
+export function normalizeScale<TAmount, TCurrency extends string>(
+  ...[dineroObjects]: NormalizeScaleParams<TAmount, TCurrency>
 ) {
   const { calculator } = dineroObjects[0];
   const normalizeScaleFn = coreNormalizeScale(calculator);

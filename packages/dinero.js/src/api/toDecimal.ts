@@ -1,11 +1,13 @@
 import { toDecimal as coreToDecimal } from '../core';
 import type { ToDecimalParams, Dinero, DineroTransformer } from '../core';
 
-export function toDecimal<TAmount>(dineroObject: Dinero<TAmount>): string;
+export function toDecimal<TAmount, TCurrency extends string>(
+  dineroObject: Dinero<TAmount, TCurrency>
+): string;
 
-export function toDecimal<TAmount, TOutput>(
-  dineroObject: Dinero<TAmount>,
-  transformer: DineroTransformer<TAmount, TOutput, string>
+export function toDecimal<TAmount, TOutput, TCurrency extends string>(
+  dineroObject: Dinero<TAmount, TCurrency>,
+  transformer: DineroTransformer<TAmount, TOutput, string, TCurrency>
 ): TOutput;
 
 /**
@@ -18,8 +20,8 @@ export function toDecimal<TAmount, TOutput>(
  *
  * @public
  */
-export function toDecimal<TAmount, TOutput>(
-  ...[dineroObject, transformer]: ToDecimalParams<TAmount, TOutput>
+export function toDecimal<TAmount, TOutput, TCurrency extends string>(
+  ...[dineroObject, transformer]: ToDecimalParams<TAmount, TOutput, TCurrency>
 ) {
   const { calculator } = dineroObject;
   const toDecimalFn = coreToDecimal<TAmount, TOutput>(calculator);

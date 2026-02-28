@@ -1,7 +1,7 @@
 ---
 title: transformScale
 description: Transform a Dinero object to a new scale.
-returns: Dinero<TAmount>
+returns: Dinero<TAmount, TCurrency>
 ---
 
 # transformScale
@@ -18,7 +18,7 @@ For convenience, Dinero.js provides the following divide functions: `up`, `down`
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `dineroObject` | `Dinero<TAmount>` | The Dinero object to transform. | Yes |
+| `dineroObject` | `Dinero<TAmount, TCurrency>` | The Dinero object to transform. | Yes |
 | `newScale` | `TAmount` | The new scale. | Yes |
 | `divide` | `DivideOperation` | A custom divide function. | No |
 

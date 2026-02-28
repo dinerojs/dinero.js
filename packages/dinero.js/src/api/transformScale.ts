@@ -12,8 +12,8 @@ import type { TransformScaleParams } from '../core';
  *
  * @public
  */
-export function transformScale<TAmount>(
-  ...[dineroObject, newScale, divide]: TransformScaleParams<TAmount>
+export function transformScale<TAmount, TCurrency extends string>(
+  ...[dineroObject, newScale, divide]: TransformScaleParams<TAmount, TCurrency>
 ) {
   const { calculator } = dineroObject;
   const transformScaleFn = coreTransformScale(calculator);

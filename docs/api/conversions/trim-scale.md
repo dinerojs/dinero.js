@@ -1,7 +1,7 @@
 ---
 title: trimScale
 description: Trim a Dinero object's scale as much as possible, down to the currency exponent.
-returns: Dinero<TAmount>
+returns: Dinero<TAmount, TCurrency>
 ---
 
 # trimScale
@@ -12,7 +12,7 @@ Trim a Dinero object's scale as much as possible, down to the currency exponent.
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `dineroObject` | `Dinero<TAmount>` | The Dinero object to trim. | Yes |
+| `dineroObject` | `Dinero<TAmount, TCurrency>` | The Dinero object to trim. | Yes |
 
 ## Code examples
 

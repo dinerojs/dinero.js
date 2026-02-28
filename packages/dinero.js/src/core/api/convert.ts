@@ -5,9 +5,13 @@ import { getAmountAndScale, maximum } from '../utils';
 
 import { transformScale } from './transformScale';
 
-export type ConvertParams<TAmount> = readonly [
-  dineroObject: Dinero<TAmount>,
-  newCurrency: DineroCurrency<TAmount>,
+export type ConvertParams<
+  TAmount,
+  TCurrency extends string = string,
+  TNewCurrency extends string = string,
+> = readonly [
+  dineroObject: Dinero<TAmount, TCurrency>,
+  newCurrency: DineroCurrency<TAmount, TNewCurrency>,
   rates: DineroRates<TAmount>,
 ];
 
@@ -16,8 +20,15 @@ export function convert<TAmount>(calculator: DineroCalculator<TAmount>) {
   const maximumFn = maximum(calculator);
   const zero = calculator.zero();
 
-  return function convertFn(
-    ...[dineroObject, newCurrency, rates]: ConvertParams<TAmount>
+  return function convertFn<
+    TCurrency extends string,
+    TNewCurrency extends string,
+  >(
+    ...[dineroObject, newCurrency, rates]: ConvertParams<
+      TAmount,
+      TCurrency,
+      TNewCurrency
+    >
   ) {
     const rate = rates[newCurrency.code];
     const { amount, scale } = dineroObject.toJSON();

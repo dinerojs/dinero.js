@@ -1,7 +1,7 @@
 ---
 title: multiply
 description: Multiply a Dinero object.
-returns: Dinero<TAmount>
+returns: Dinero<TAmount, TCurrency>
 ---
 
 # multiply
@@ -14,7 +14,7 @@ If you need to multiply by a fractional multiplier, you shouldn't use floats, bu
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `multiplicand` | `Dinero<TAmount>` | The Dinero object to multiply. | Yes |
+| `multiplicand` | `Dinero<TAmount, TCurrency>` | The Dinero object to multiply. | Yes |
 | `multiplier` | `ScaledAmount<TAmount> \| TAmount` | The number to multiply with. | Yes |
 
 ## Code examples

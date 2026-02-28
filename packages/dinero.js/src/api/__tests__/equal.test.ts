@@ -31,12 +31,14 @@ describe('equal', () => {
         const d1 = dinero({ amount: 500, currency: USD });
         const d2 = dinero({ amount: 500, currency: EUR });
 
+        // @ts-expect-error different currencies
         expect(equal(d1, d2)).toBe(false);
       });
       it('returns false when amounts and currencies are not equal', () => {
         const d1 = dinero({ amount: 500, currency: USD });
         const d2 = dinero({ amount: 800, currency: EUR });
 
+        // @ts-expect-error different currencies
         expect(equal(d1, d2)).toBe(false);
       });
       it('returns true when amounts are equal after normalization', () => {
@@ -69,12 +71,14 @@ describe('equal', () => {
         const d1 = dinero({ amount: 500, currency: USD });
         const d2 = dinero({ amount: 500, currency: MGA });
 
+        // @ts-expect-error different currencies
         expect(equal(d1, d2)).toBe(false);
       });
       it('returns false when amounts and currencies are not equal', () => {
         const d1 = dinero({ amount: 500, currency: USD });
         const d2 = dinero({ amount: 8, currency: MGA });
 
+        // @ts-expect-error different currencies
         expect(equal(d1, d2)).toBe(false);
       });
       it('returns true when amounts are equal after normalization', () => {
@@ -114,12 +118,14 @@ describe('equal', () => {
         const d1 = dinero({ amount: 500n, currency: bigintUSD });
         const d2 = dinero({ amount: 500n, currency: bigintEUR });
 
+        // @ts-expect-error different currencies
         expect(equal(d1, d2)).toBe(false);
       });
       it('returns false when amounts and currencies are not equal', () => {
         const d1 = dinero({ amount: 500n, currency: bigintUSD });
         const d2 = dinero({ amount: 800n, currency: bigintEUR });
 
+        // @ts-expect-error different currencies
         expect(equal(d1, d2)).toBe(false);
       });
       it('returns true when amounts are equal after normalization', () => {
@@ -152,12 +158,14 @@ describe('equal', () => {
         const d1 = dinero({ amount: 500n, currency: bigintUSD });
         const d2 = dinero({ amount: 500n, currency: bigintMGA });
 
+        // @ts-expect-error different currencies
         expect(equal(d1, d2)).toBe(false);
       });
       it('returns false when amounts and currencies are not equal', () => {
         const d1 = dinero({ amount: 500n, currency: bigintUSD });
         const d2 = dinero({ amount: 8n, currency: bigintMGA });
 
+        // @ts-expect-error different currencies
         expect(equal(d1, d2)).toBe(false);
       });
       it('returns true when amounts are equal after normalization', () => {
@@ -197,12 +205,14 @@ describe('equal', () => {
         const d1 = dinero({ amount: new Big(500), currency: bigjsUSD });
         const d2 = dinero({ amount: new Big(500), currency: bigjsEUR });
 
+        // @ts-expect-error different currencies
         expect(equal(d1, d2)).toBe(false);
       });
       it('returns false when amounts and currencies are not equal', () => {
         const d1 = dinero({ amount: new Big(500), currency: bigjsUSD });
         const d2 = dinero({ amount: new Big(800), currency: bigjsEUR });
 
+        // @ts-expect-error different currencies
         expect(equal(d1, d2)).toBe(false);
       });
       it('returns true when amounts are equal after normalization', () => {
@@ -243,12 +253,14 @@ describe('equal', () => {
         const d1 = dinero({ amount: new Big(500), currency: bigjsUSD });
         const d2 = dinero({ amount: new Big(500), currency: bigjsMGA });
 
+        // @ts-expect-error different currencies
         expect(equal(d1, d2)).toBe(false);
       });
       it('returns false when amounts and currencies are not equal', () => {
         const d1 = dinero({ amount: new Big(500), currency: bigjsUSD });
         const d2 = dinero({ amount: new Big(8), currency: bigjsMGA });
 
+        // @ts-expect-error different currencies
         expect(equal(d1, d2)).toBe(false);
       });
       it('returns true when amounts are equal after normalization', () => {

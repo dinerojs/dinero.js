@@ -11,8 +11,8 @@ import type { MultiplyParams } from '../core';
  *
  * @public
  */
-export function multiply<TAmount>(
-  ...[multiplicand, multiplier]: MultiplyParams<TAmount>
+export function multiply<TAmount, TCurrency extends string>(
+  ...[multiplicand, multiplier]: MultiplyParams<TAmount, TCurrency>
 ) {
   const { calculator } = multiplicand;
   const multiplyFn = coreMultiply(calculator);

@@ -1,7 +1,7 @@
 ---
 title: add
 description: Adding up two Dinero objects.
-returns: Dinero<TAmount>
+returns: Dinero<TAmount, TCurrency>
 ---
 
 # add
@@ -10,12 +10,14 @@ Add up two Dinero objects.
 
 **You can only add objects that share the same currency.** The function also normalizes objects to the same scale (the highest) before adding them up.
 
+In TypeScript, this is enforced at compile time when using [typed currencies](/guides/currency-type-safety).
+
 ## Parameters
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `augend` | `Dinero<TAmount>` | The Dinero object to add to. | Yes |
-| `addend` | `Dinero<TAmount>` | The Dinero object to add. | Yes |
+| `augend` | `Dinero<TAmount, TCurrency>` | The Dinero object to add to. | Yes |
+| `addend` | `Dinero<TAmount, TCurrency>` | The Dinero object to add. | Yes |
 
 ## Code examples
 
