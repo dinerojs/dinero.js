@@ -1,3 +1,21 @@
+# [2.0.0-alpha.17](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.16...v2.0.0-alpha.17) (2026-02-28)
+
+
+### Bug Fixes
+
+* **api:** throw when converting between currencies with different bases ([#832](https://github.com/dinerojs/dinero.js/issues/832)) ([47d6145](https://github.com/dinerojs/dinero.js/commit/47d6145ddcdb07fcc1dcea9c163cde94e070bf24)), closes [#477](https://github.com/dinerojs/dinero.js/issues/477)
+* **docs:** add .html extension to documentation links in README ([2536a1f](https://github.com/dinerojs/dinero.js/commit/2536a1fb8cfbb5ff9694886168ebe74b57281505))
+* **docs:** add Vercel redirects for old URLs ([4002439](https://github.com/dinerojs/dinero.js/commit/40024399ad16e7a84991f55a06023eafddbc1ca8))
+* **docs:** remove unnecessary npm install from Vercel build command ([72f0a91](https://github.com/dinerojs/dinero.js/commit/72f0a91249bc1912e9098872c3b7fb195fb73b52))
+
+
+### Features
+
+* add compile-time currency safety with `TCurrency` type parameter ([#833](https://github.com/dinerojs/dinero.js/issues/833)) ([ab5d4a3](https://github.com/dinerojs/dinero.js/commit/ab5d4a3245fc496b6d29e0fdfe2e628d8be1e3c7))
+* **docs:** add DocSearch AskAI integration ([a343fb2](https://github.com/dinerojs/dinero.js/commit/a343fb2687a4f500fd889b1a785b628d71b4f291))
+
+
+
 # [2.0.0-alpha.16](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.15...v2.0.0-alpha.16) (2026-02-03)
 
 ## ⚠️ Breaking Changes
