@@ -1,6 +1,6 @@
 {
   "name": "dinero.js",
-  "version": "2.0.0-alpha.16",
+  "version": "2.0.0-alpha.17",
   "description": "Create, calculate, and format money in JavaScript and TypeScript",
   "keywords": [
     "money",

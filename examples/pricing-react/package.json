@@ -1,6 +1,6 @@
 {
   "name": "@dinero.js/example-pricing-react",
-  "version": "2.0.0-alpha.16",
+  "version": "2.0.0-alpha.17",
   "scripts": {
     "build:clean": "rimraf ./dist",
     "dev": "vite",
@@ -11,7 +11,7 @@
     "@babel/runtime": "^7.28.6",
     "@heroicons/react": "^2.2.0",
     "classnames": "^2.5.0",
-    "dinero.js": "2.0.0-alpha.16",
+    "dinero.js": "2.0.0-alpha.17",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "react-slider": "^2.0.0"
