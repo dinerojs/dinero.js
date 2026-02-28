@@ -289,6 +289,20 @@ export default defineConfig({
         searchParameters: {
           facetFilters: ['tags:v2'],
         },
+        askAi: {
+          assistantId: 'iYbEdJJBSUWU',
+          searchParameters: {
+            facetFilters: ['tags:v2'],
+          },
+          sidePanel: {
+            panel: {
+              variant: 'floating',
+              side: 'right',
+              width: '360px',
+              expandedWidth: '580px',
+            },
+          },
+        },
       },
     },
     footer: {
