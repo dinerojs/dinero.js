@@ -2,6 +2,9 @@
   "name": "dinero.js",
   "version": "2.0.0-alpha.17",
   "description": "Create, calculate, and format money in JavaScript and TypeScript",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "keywords": [
     "money",
     "monetary",

@@ -174,6 +174,7 @@ export default defineConfig({
           text: 'API Reference',
           collapsed: false,
           items: [
+            { text: 'dinero', link: '/api/dinero' },
             {
               text: 'Mutations',
               collapsed: true,
@@ -239,6 +240,26 @@ export default defineConfig({
                 { text: 'toSnapshot', link: '/api/formatting/to-snapshot' },
                 { text: 'toUnits', link: '/api/formatting/to-units' },
                 { text: 'toDecimal', link: '/api/formatting/to-decimal' },
+              ],
+            },
+            {
+              text: 'Rounding',
+              collapsed: true,
+              items: [
+                { text: 'down', link: '/api/rounding/down' },
+                { text: 'halfUp', link: '/api/rounding/half-up' },
+                { text: 'halfDown', link: '/api/rounding/half-down' },
+                { text: 'halfEven', link: '/api/rounding/half-even' },
+                { text: 'halfOdd', link: '/api/rounding/half-odd' },
+                {
+                  text: 'halfAwayFromZero',
+                  link: '/api/rounding/half-away-from-zero',
+                },
+                {
+                  text: 'halfTowardsZero',
+                  link: '/api/rounding/half-towards-zero',
+                },
+                { text: 'up', link: '/api/rounding/up' },
               ],
             },
           ],
