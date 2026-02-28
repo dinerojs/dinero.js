@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "skills": {
+    "dinero-best-practices": {
+      "source": "dinerojs/skills",
+      "sourceType": "github",
+      "computedHash": "5782a3167685788e8dbd61cc594af9132e5adf29145d9f796193627093e9ce6c"
+    },
+    "dinero-currency-patterns": {
+      "source": "dinerojs/skills",
+      "sourceType": "github",
+      "computedHash": "50b60a4c1523f89d64717ca10c8156a7f0e2c28667f1a6d337c31eae3902f48d"
+    },
+    "dinero-formatting": {
+      "source": "dinerojs/skills",
+      "sourceType": "github",
+      "computedHash": "8f176bd8c9cc2a9b0d587fbbed1f3adf2fb9a66597c75a0bed9721dcaf763594"
+    },
+    "vercel-composition-patterns": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "computedHash": "f98931159fa9c7fed043bcd18a891a46dcf89ababa38df13a4c5b7b30dc0ce07"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "computedHash": "4365be772fd3b41994a72ad478472c6d680678e7f3859860ab010e9c46e48ee0"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "computedHash": "a6a44d5498f7e8f68289902f3dedfc6f38ae0cee1e96527c80724cf27f727c2a"
+    }
+  }
+}
