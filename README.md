@@ -19,7 +19,7 @@
   </a>
 </div>
 
-<div align="center"><a href="https://dinerojs.com/module-dinero">See full API docs</a></div>
+<div align="center"><a href="https://v1.dinerojs.com/module-dinero">See full API docs</a></div>
 
 <hr>
 
@@ -56,7 +56,7 @@ Include Dinero.js in a script tag and access its methods through the global `Din
 ```html
 <script src="path/to/umd/dinero.js"></script>
 <script>
-  Dinero();
+  Dinero()
 </script>
 ```
 
@@ -79,7 +79,7 @@ You will need at least Node 6+ [with full-icu support][node:full-icu].
 ### AMD (RequireJS, System.js, etc.)
 
 ```js
-requirejs(['path/to/amd/dinero'], function(Dinero) {
+requirejs(['path/to/amd/dinero'], function (Dinero) {
   //...
 })
 ```
@@ -169,9 +169,7 @@ Just set the locale before you call `toFormat`, and you'll get a display result 
 
 ```js
 // returns 5 000 $US
-Dinero({ amount: 500000 })
-  .setLocale('fr-FR')
-  .toFormat('$0,0')
+Dinero({ amount: 500000 }).setLocale('fr-FR').toFormat('$0,0')
 ```
 
 If you don't want to set the locale all the time, you can also define it globally:
@@ -298,7 +296,7 @@ Dinero.js is licensed under [MIT][license].
 [caniuse:intl]: https://caniuse.com/#feat=internationalization
 [node:full-icu]: https://nodejs.org/api/intl.html#intl_embed_the_entire_icu_full_icu
 [wiki:iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
-[dinero-docs]: https://dinerojs.com/module-dinero
+[dinero-docs]: https://v1.dinerojs.com/module-dinero
 [dinero-guidelines]: https://github.com/dinerojs/dinero.js/blob/master/CONTRIBUTING.md
 [producthunt:dinerojs]: https://www.producthunt.com/posts/dinero-js
 [fowler-money]: https://martinfowler.com/eaaCatalog/money.html
