@@ -75,7 +75,7 @@ function App({
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://v2.dinerojs.com/"
+          href="https://dinerojs.com/"
           className="font-semibold hover:underline"
         >
           Dinero.js

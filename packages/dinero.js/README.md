@@ -7,11 +7,11 @@
 ## 📦 Install
 
 ```sh
-npm install dinero.js@alpha
+npm install dinero.js
 
 # or
 
-yarn add dinero.js@alpha
+yarn add dinero.js
 ```
 
 ## ⚡️ Quick start
@@ -30,4 +30,4 @@ add(d1, d2);
 
 ## 📚 Documentation
 
-For full documentation, visit the [online documentation](https://v2.dinerojs.com).
+For full documentation, visit the [online documentation](https://dinerojs.com).

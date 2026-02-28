@@ -7,7 +7,7 @@ export default defineConfig({
   lang: 'en',
   cleanUrls: true,
   sitemap: {
-    hostname: 'https://v2.dinerojs.com/',
+    hostname: 'https://dinerojs.com/',
   },
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
@@ -34,10 +34,10 @@ export default defineConfig({
       'meta',
       {
         property: 'og:image',
-        content: 'https://v2.dinerojs.com/open-graph.jpg',
+        content: 'https://dinerojs.com/open-graph.jpg',
       },
     ],
-    ['meta', { property: 'og:url', content: 'https://v2.dinerojs.com' }],
+    ['meta', { property: 'og:url', content: 'https://dinerojs.com' }],
     // Twitter
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:title', content: 'Dinero.js' }],
@@ -53,7 +53,7 @@ export default defineConfig({
       'meta',
       {
         name: 'twitter:image',
-        content: 'https://v2.dinerojs.com/open-graph.jpg',
+        content: 'https://dinerojs.com/open-graph.jpg',
       },
     ],
     [
@@ -67,7 +67,7 @@ export default defineConfig({
     [
       'script',
       {
-        src: 'https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/index.production.min.js',
+        src: 'https://cdn.jsdelivr.net/npm/dinero.js@latest/dist/umd/index.production.min.js',
         defer: '',
       },
     ],
@@ -85,7 +85,7 @@ export default defineConfig({
       { text: 'Docs', link: '/getting-started/quick-start' },
       { text: 'API', link: '/api/mutations/add' },
       {
-        text: 'v2.0.0-alpha',
+        text: 'v2.0.0',
         items: [
           {
             text: 'Changelog',

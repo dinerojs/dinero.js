@@ -7,7 +7,7 @@
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://v2.dinerojs.com/"
+        href="https://dinerojs.com/"
         class="font-semibold hover:underline"
       >
         Dinero.js

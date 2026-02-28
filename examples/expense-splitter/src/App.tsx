@@ -98,7 +98,7 @@ export default function App() {
           <p className="text-text-3 text-sm hidden sm:block">
             Split bills fairly with{' '}
             <a
-              href="https://v2.dinerojs.com/"
+              href="https://dinerojs.com/"
               className="text-brand hover:text-brand-light transition-colors"
               target="_blank"
               rel="noopener noreferrer"
@@ -340,7 +340,7 @@ export default function App() {
           <p className="text-text-3 text-sm">
             Built with{' '}
             <a
-              href="https://v2.dinerojs.com/"
+              href="https://dinerojs.com/"
               className="text-brand hover:text-brand-light transition-colors"
               target="_blank"
               rel="noopener noreferrer"

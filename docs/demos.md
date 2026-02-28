@@ -50,10 +50,10 @@ If you learn better by seeing code in action, or want to start from an existing 
 <div class="demo-entry">
   <div class="demo-text">
     <p>A <a href="https://reactjs.org/">React</a>-powered shopping cart that calculates line totals with <code>multiply</code>, aggregates a subtotal with <code>add</code>, extracts VAT with <code>allocate</code>, and lets you switch between USD and EUR with <code>convert</code>.</p>
-    <p><a href="https://v2.dinerojs.com/examples/cart-react/">View demo</a></p>
+    <p><a href="https://dinerojs.com/examples/cart-react/">View demo</a></p>
   </div>
   <div class="demo-image">
-    <a href="https://v2.dinerojs.com/examples/cart-react/">
+    <a href="https://dinerojs.com/examples/cart-react/">
       <img src="/images/examples/cart-react.png" alt="Shopping cart with React">
     </a>
   </div>
@@ -64,10 +64,10 @@ If you learn better by seeing code in action, or want to start from an existing 
 <div class="demo-entry">
   <div class="demo-text">
     <p>The same shopping cart, built with <a href="https://vuejs.org/">Vue.js</a>. Uses computed properties to recalculate line totals, tax, and currency conversions reactively as you update quantities or switch currencies.</p>
-    <p><a href="https://v2.dinerojs.com/examples/cart-vue/">View demo</a></p>
+    <p><a href="https://dinerojs.com/examples/cart-vue/">View demo</a></p>
   </div>
   <div class="demo-image">
-    <a href="https://v2.dinerojs.com/examples/cart-vue/">
+    <a href="https://dinerojs.com/examples/cart-vue/">
       <img src="/images/examples/cart-vue.png" alt="Shopping cart with Vue.js">
     </a>
   </div>
@@ -78,10 +78,10 @@ If you learn better by seeing code in action, or want to start from an existing 
 <div class="demo-entry">
   <div class="demo-text">
     <p>A <a href="https://reactjs.org/">React</a>-powered SaaS pricing page with per-seat pricing. Uses <code>multiply</code> for seat-based totals, <code>allocate</code> to calculate annual discounts, and <code>hasSubUnits</code> to hide unnecessary decimals.</p>
-    <p><a href="https://v2.dinerojs.com/examples/pricing-react/">View demo</a></p>
+    <p><a href="https://dinerojs.com/examples/pricing-react/">View demo</a></p>
   </div>
   <div class="demo-image">
-    <a href="https://v2.dinerojs.com/examples/pricing-react/">
+    <a href="https://dinerojs.com/examples/pricing-react/">
       <img src="/images/examples/pricing-react.png" alt="Pricing page with React">
     </a>
   </div>
@@ -91,4 +91,4 @@ If you learn better by seeing code in action, or want to start from an existing 
 
 This demo showcases Dinero.js in action in a [React](https://reactjs.org/)-powered expense splitter. It demonstrates fair bill splitting with `allocate()`, balance tracking, and optimal debt settlement.
 
-[View demo](https://v2.dinerojs.com/examples/expense-splitter/)
+[View demo](https://dinerojs.com/examples/expense-splitter/)

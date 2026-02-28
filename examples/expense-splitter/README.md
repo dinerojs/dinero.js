@@ -1,6 +1,6 @@
 # Expense Splitter
 
-A React app that splits expenses between friends and calculates optimal settlements, powered by [Dinero.js](https://v2.dinerojs.com).
+A React app that splits expenses between friends and calculates optimal settlements, powered by [Dinero.js](https://dinerojs.com).
 
 ## What you'll learn
 
@@ -34,4 +34,4 @@ This example demonstrates how to use Dinero.js to solve real-world money problem
 
 ## Learn more
 
-Check out the [Dinero.js documentation](https://v2.dinerojs.com) to explore the full API.
+Check out the [Dinero.js documentation](https://dinerojs.com) to explore the full API.

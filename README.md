@@ -1,11 +1,11 @@
 <p align="center">
-  <a href="https://v2.dinerojs.com">
+  <a href="https://dinerojs.com">
     <img alt="Dinero.js" src="https://raw.githubusercontent.com/dinerojs/dinero.js/main/.github/banner.png">
   </a>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/dinero.js"><img alt="npm version" src="https://img.shields.io/npm/v/dinero.js/alpha" /></a>
+  <a href="https://www.npmjs.com/package/dinero.js"><img alt="npm version" src="https://img.shields.io/npm/v/dinero.js" /></a>
   <a href="https://www.npmjs.com/package/dinero.js"><img alt="npm monthly downloads" src="https://img.shields.io/npm/dm/dinero.js" /></a>
   <a href="https://github.com/dinerojs/dinero.js/network/dependents"><img alt="Used by" src="https://img.shields.io/endpoint?url=https://api.usedby.dev/npm/dinero.js/shield.json" /></a>
   <a href="https://github.com/dinerojs/dinero.js/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/dinerojs/dinero.js" /></a><br />
@@ -16,14 +16,12 @@
 
 <p align="center">
   Dinero.js lets you create, calculate, and format money safely in JavaScript and TypeScript.<br>
-  <a href="https://v2.dinerojs.com"><strong>v2.dinerojs.com</strong></a>
+  <a href="https://dinerojs.com"><strong>dinerojs.com</strong></a>
 </p>
 
 ---
 
 Money is complex, and the primitives of the language aren't enough to properly represent it. Dinero.js is a JavaScript library that lets you express monetary values, but also perform mutations, conversions, comparisons, formatting, and overall make money manipulation easier and safer in your application.
-
-> ℹ️ Dinero.js v2 is currently in alpha. For v1, check the [`v1` branch](https://github.com/dinerojs/dinero.js/tree/v1) and [docs](https://v1.dinerojs.com/).
 
 ## ✨ Features
 
@@ -37,11 +35,11 @@ Money is complex, and the primitives of the language aren't enough to properly r
 ## 📦 Install
 
 ```sh
-npm install dinero.js@alpha
+npm install dinero.js
 
 # or
 
-yarn add dinero.js@alpha
+yarn add dinero.js
 ```
 
 ## ⚡️ Quick start
@@ -60,19 +58,19 @@ const total = add(d1, d2);
 toDecimal(total); // "13.00"
 ```
 
-Check out the [quick start guide](https://v2.dinerojs.com/getting-started/quick-start) on the documentation.
+Check out the [quick start guide](https://dinerojs.com/getting-started/quick-start) on the documentation.
 
 ## 📚 Documentation
 
 The documentation lets you learn about all aspects of the library.
 
-- [**Getting started**](https://v2.dinerojs.com/getting-started/quick-start) to get up and running quickly with Dinero.js
-- [**Core concepts**](https://v2.dinerojs.com/core-concepts/amount) to learn about the underlying principles behind the library
-- [**Guides**](https://v2.dinerojs.com/guides/precision-and-large-numbers) to dig deeper into specific use cases.
-- [**API**](https://v2.dinerojs.com/api/mutations/add) for a comprehensive list of available functions and their parameters.
-- [**FAQ**](https://v2.dinerojs.com/faq/does-dinerojs-support-cryptocurrencies) for common answers to questions you might have
+- [**Getting started**](https://dinerojs.com/getting-started/quick-start) to get up and running quickly with Dinero.js
+- [**Core concepts**](https://dinerojs.com/core-concepts/amount) to learn about the underlying principles behind the library
+- [**Guides**](https://dinerojs.com/guides/precision-and-large-numbers) to dig deeper into specific use cases.
+- [**API**](https://dinerojs.com/api/mutations/add) for a comprehensive list of available functions and their parameters.
+- [**FAQ**](https://dinerojs.com/faq/why-no-currency-formatting) for common answers to questions you might have
 
-Visit the [full documentation](https://v2.dinerojs.com) to know more.
+Visit the [full documentation](https://dinerojs.com) to know more.
 
 ## 🤖 Agent Skills
 
