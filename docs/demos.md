@@ -106,3 +106,17 @@ This demo showcases Dinero.js in action in a [React](https://reactjs.org/)-power
     </a>
   </div>
 </div>
+
+## Portfolio tracker
+
+<div class="demo-entry">
+  <div class="demo-text">
+    <p>A multi-currency portfolio tracker. Uses <code>multiply</code> with scaled amounts for holding values, <code>convert</code> for cross-currency aggregation, <code>add</code> for portfolio totals, and <code>toDecimal</code> for locale-aware formatting across multiple currencies.</p>
+    <p><a href="https://dinerojs.com/examples/portfolio-tracker/">View demo</a></p>
+  </div>
+  <div class="demo-image">
+    <a href="https://dinerojs.com/examples/portfolio-tracker/">
+      <img src="/images/examples/portfolio-tracker.png" alt="Portfolio tracker">
+    </a>
+  </div>
+</div>
