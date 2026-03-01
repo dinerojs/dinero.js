@@ -31,7 +31,7 @@ export function CartLine({
   const canDecrease = quantity > 1;
 
   return (
-    <div className="flex items-center gap-4 rounded-lg px-4 py-4 transition-colors duration-150 hover:bg-muted/50">
+    <div className="flex flex-col gap-3 rounded-lg px-4 py-4 transition-colors duration-150 hover:bg-muted/50 sm:flex-row sm:items-center sm:gap-4">
       <div className="flex min-w-0 flex-1 items-center gap-4">
         <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-white p-2 xl:h-20 xl:w-20">
           <img
@@ -58,38 +58,40 @@ export function CartLine({
           </button>
         </div>
       </div>
-      <div className="flex items-center gap-1.5">
-        <button
-          className="touch-manipulation rounded-md border border-border p-1 transition-colors duration-150 hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-30"
-          disabled={!canDecrease}
-          onClick={onDecrease}
-          aria-label={`Decrease quantity of ${name}`}
-        >
-          <Minus
-            className="h-3.5 w-3.5 text-text-secondary"
-            aria-hidden="true"
-          />
-        </button>
-        <span className="w-8 text-center text-sm tabular-nums text-foreground">
-          {quantity}
+      <div className="flex items-center justify-between gap-4 pl-20 sm:justify-end sm:pl-0">
+        <div className="flex items-center gap-1.5">
+          <button
+            className="touch-manipulation rounded-md border border-border p-1 transition-colors duration-150 hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-30"
+            disabled={!canDecrease}
+            onClick={onDecrease}
+            aria-label={`Decrease quantity of ${name}`}
+          >
+            <Minus
+              className="h-3.5 w-3.5 text-text-secondary"
+              aria-hidden="true"
+            />
+          </button>
+          <span className="w-8 text-center text-sm tabular-nums text-foreground">
+            {quantity}
+          </span>
+          <button
+            className="touch-manipulation rounded-md border border-border p-1 transition-colors duration-150 hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"
+            onClick={onIncrease}
+            aria-label={`Increase quantity of ${name}`}
+          >
+            <Plus
+              className="h-3.5 w-3.5 text-text-secondary"
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+        <span className="text-right text-sm tabular-nums text-text-secondary sm:w-24">
+          {formatMoney(price, currencyCode)}
         </span>
-        <button
-          className="touch-manipulation rounded-md border border-border p-1 transition-colors duration-150 hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"
-          onClick={onIncrease}
-          aria-label={`Increase quantity of ${name}`}
-        >
-          <Plus
-            className="h-3.5 w-3.5 text-text-secondary"
-            aria-hidden="true"
-          />
-        </button>
+        <span className="text-right text-sm font-medium tabular-nums text-foreground sm:w-24">
+          {formatMoney(totalPrice, currencyCode)}
+        </span>
       </div>
-      <span className="w-24 text-right text-sm tabular-nums text-text-secondary">
-        {formatMoney(price, currencyCode)}
-      </span>
-      <span className="w-24 text-right text-sm font-medium tabular-nums text-foreground">
-        {formatMoney(totalPrice, currencyCode)}
-      </span>
     </div>
   );
 }
