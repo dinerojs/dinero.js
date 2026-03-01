@@ -1,0 +1,166 @@
+@import 'tailwindcss';
+
+:root {
+  --background: #0c0d0f;
+  --foreground: #ededef;
+  --card: #131416;
+  --card-foreground: #ededef;
+  --popover: #131416;
+  --popover-foreground: #ededef;
+  --primary: #4466ff;
+  --primary-foreground: #ffffff;
+  --secondary: #131416;
+  --secondary-foreground: #ededef;
+  --muted: #08090a;
+  --muted-foreground: #a1a1a9;
+  --accent: #131416;
+  --accent-foreground: #ededef;
+  --destructive: #f87171;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #4466ff;
+  --radius: 0.5rem;
+  --text-secondary: #a1a1a9;
+  --text-muted: #6e6e76;
+  --positive: #34d399;
+  --warning: #fbbf24;
+}
+
+@theme inline {
+  --font-sans:
+    'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-positive: var(--positive);
+  --color-warning: var(--warning);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Range slider */
+.range-slider {
+  --progress: 0%;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  height: 24px;
+}
+
+.range-slider::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(
+    to right,
+    var(--primary) var(--progress),
+    rgba(255, 255, 255, 0.12) var(--progress)
+  );
+}
+
+.range-slider::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.range-slider::-moz-range-progress {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--primary);
+}
+
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 3px solid var(--background);
+  margin-top: -9px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.range-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 3px solid var(--background);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.range-slider:focus-visible {
+  outline: none;
+}
+
+.range-slider:focus-visible::-webkit-slider-thumb {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.4),
+    0 0 0 3px var(--ring);
+}
+
+.range-slider:focus-visible::-moz-range-thumb {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.4),
+    0 0 0 3px var(--ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .range-slider::-webkit-slider-thumb {
+    transition: none;
+  }
+  .range-slider::-moz-range-thumb {
+    transition: none;
+  }
+}
