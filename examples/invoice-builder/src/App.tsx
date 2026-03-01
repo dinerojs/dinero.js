@@ -54,14 +54,14 @@ export default function App() {
   } = useInvoice();
 
   return (
-    <div className="flex h-screen flex-col overflow-hidden">
-      <header className="no-print flex shrink-0 items-center justify-between border-b border-border px-5 py-3">
-        <div className="flex items-center gap-3">
+    <div className="flex min-h-screen flex-col lg:h-screen lg:overflow-hidden">
+      <header className="no-print flex shrink-0 items-center justify-between gap-3 border-b border-border px-4 py-3 sm:px-5">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           {LOGO}
-          <span className="text-sm font-semibold text-foreground">
+          <span className="text-sm font-semibold text-foreground truncate">
             Invoice Builder
           </span>
-          <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-medium text-primary">
+          <span className="hidden sm:inline rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-medium text-primary whitespace-nowrap">
             Built with Dinero.js
           </span>
         </div>
@@ -69,13 +69,14 @@ export default function App() {
           href="https://github.com/dinerojs/dinero.js/tree/main/examples/invoice-builder"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs text-text-muted transition-colors hover:text-foreground"
+          className="shrink-0 text-xs text-text-muted transition-colors hover:text-foreground"
         >
-          View on GitHub
+          GitHub
+          <span className="hidden sm:inline"> source</span>
         </a>
       </header>
       <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
-        <div className="no-print w-full border-b border-border overflow-y-auto lg:w-120 lg:min-w-120 lg:border-r lg:border-b-0">
+        <div className="no-print w-full border-b border-border lg:overflow-y-auto lg:w-120 lg:min-w-120 lg:border-r lg:border-b-0">
           <EditorPanel
             invoice={invoice}
             onFieldChange={updateField}
@@ -87,7 +88,7 @@ export default function App() {
           />
         </div>
 
-        <div className="flex-1 overflow-y-auto bg-muted">
+        <div className="flex-1 lg:overflow-y-auto bg-muted">
           <PreviewPanel invoice={invoice} />
         </div>
       </div>

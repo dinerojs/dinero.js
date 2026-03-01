@@ -29,15 +29,15 @@ export function PreviewPanel({ invoice }: PreviewPanelProps) {
   const hasTax = invoice.taxRate > 0;
 
   return (
-    <div className="flex flex-col items-center gap-4 p-6 overflow-y-auto">
+    <div className="flex flex-col items-center gap-4 p-4 sm:p-6">
       <div
         id="invoice-preview"
         className="w-full max-w-170 rounded-lg bg-white shadow-2xl shadow-black/20 print-only"
         style={{ color: '#1a1a2e' }}
       >
-        <div className="p-10">
-          <div className="flex items-start justify-between gap-6">
-            <div className="flex-1">
+        <div className="p-5 sm:p-10">
+          <div className="flex flex-col-reverse gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+            <div className="flex-1 min-w-0">
               {invoice.businessLogo && (
                 <img
                   src={invoice.businessLogo}
@@ -62,9 +62,9 @@ export function PreviewPanel({ invoice }: PreviewPanelProps) {
               )}
             </div>
 
-            <div className="text-right">
+            <div className="sm:text-right">
               <h2
-                className="text-3xl font-extrabold tracking-tight uppercase"
+                className="text-2xl sm:text-3xl font-extrabold tracking-tight uppercase"
                 style={{ color: '#4466ff' }}
               >
                 Invoice
@@ -78,7 +78,7 @@ export function PreviewPanel({ invoice }: PreviewPanelProps) {
             </div>
           </div>
 
-          <div className="mt-8 flex items-start justify-between gap-6">
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
             <div>
               <p
                 className="text-xs font-semibold uppercase tracking-wider"
@@ -104,7 +104,7 @@ export function PreviewPanel({ invoice }: PreviewPanelProps) {
               )}
             </div>
 
-            <div className="text-right">
+            <div className="sm:text-right">
               <div className="flex flex-col gap-1">
                 <div>
                   <p
@@ -132,8 +132,8 @@ export function PreviewPanel({ invoice }: PreviewPanelProps) {
             </div>
           </div>
 
-          <div className="mt-8">
-            <table className="w-full text-sm">
+          <div className="mt-8 -mx-5 px-5 overflow-x-auto sm:mx-0 sm:px-0">
+            <table className="w-full text-sm min-w-80">
               <thead>
                 <tr style={{ borderBottom: '2px solid #e5e7eb' }}>
                   <th
@@ -199,7 +199,7 @@ export function PreviewPanel({ invoice }: PreviewPanelProps) {
           </div>
 
           <div className="mt-6 flex justify-end">
-            <div className="w-64">
+            <div className="w-full sm:w-64">
               <div
                 className="flex items-center justify-between py-2 text-sm"
                 style={{ borderBottom: '1px solid #f3f4f6' }}

@@ -63,7 +63,7 @@ export function EditorPanel({
   }
 
   return (
-    <div className="flex flex-col gap-4 p-5 overflow-y-auto">
+    <div className="flex flex-col gap-4 p-5">
       <div className="flex items-start justify-between gap-4">
         <div>
           <h2 className="text-base font-bold text-foreground">
@@ -373,7 +373,7 @@ function LineItemRow({
             autoComplete="off"
             className="w-full rounded-md border-0 bg-transparent px-0 py-1 text-sm font-medium text-foreground placeholder:text-text-muted focus:ring-0 focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
           />
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             <div className="flex items-center gap-1.5">
               <span className="text-[10px] font-medium text-text-muted uppercase tracking-wider">
                 Qty
@@ -422,7 +422,7 @@ function LineItemRow({
                 type="button"
                 onClick={onRemove}
                 disabled={!canRemove}
-                className="flex h-6 w-6 items-center justify-center rounded text-text-muted opacity-0 transition-all group-hover:opacity-100 hover:bg-destructive/10 hover:text-destructive disabled:opacity-0 disabled:cursor-not-allowed"
+                className="flex h-6 w-6 items-center justify-center rounded text-text-muted transition-all lg:opacity-0 lg:group-hover:opacity-100 hover:bg-destructive/10 hover:text-destructive disabled:opacity-0 disabled:cursor-not-allowed"
                 aria-label="Remove line item"
               >
                 <Trash2 className="h-3 w-3" aria-hidden="true" />
