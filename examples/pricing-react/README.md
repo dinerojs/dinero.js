@@ -2,6 +2,8 @@
 
 A React app that displays tiered pricing plans with annual discounts and per-seat pricing, powered by [Dinero.js](https://dinerojs.com).
 
+[**Live demo →**](https://dinerojs.com/examples/pricing-react/)
+
 ## What you'll learn
 
 - Creating monetary values with `dinero`

@@ -2,6 +2,8 @@
 
 A React app that creates, calculates, and previews professional invoices with multi-currency support, powered by [Dinero.js](https://dinerojs.com).
 
+[**Live demo →**](https://dinerojs.com/examples/invoice-builder/)
+
 ## What you'll learn
 
 - Creating monetary values with `dinero`

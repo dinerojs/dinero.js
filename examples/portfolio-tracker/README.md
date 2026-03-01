@@ -2,6 +2,8 @@
 
 A React app that tracks multi-currency investment holdings and converts them to a base currency, powered by [Dinero.js](https://dinerojs.com).
 
+[**Live demo →**](https://dinerojs.com/examples/portfolio-tracker/)
+
 ## What you'll learn
 
 - Creating monetary values with `dinero`

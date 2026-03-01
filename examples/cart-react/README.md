@@ -2,6 +2,8 @@
 
 A React app that manages a multi-currency shopping cart with VAT and shipping, powered by [Dinero.js](https://dinerojs.com).
 
+[**Live demo →**](https://dinerojs.com/examples/cart-react/)
+
 ## What you'll learn
 
 - Creating monetary values with `dinero`
