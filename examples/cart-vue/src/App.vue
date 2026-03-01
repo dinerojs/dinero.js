@@ -1,307 +1,269 @@
+<script setup lang="ts">
+import { ref, computed } from 'vue';
+
+import CartLine from '@/components/CartLine.vue';
+import OrderSummary from '@/components/OrderSummary.vue';
+import { items as initialItems, shipping as shippingOptions } from '@/data';
+import {
+  add,
+  multiply,
+  allocate,
+  fromMinorUnits,
+  convertCurrency,
+  zero,
+} from '@/lib/money';
+import type { CurrencyCode, CartItem } from '@/types';
+
+const CURRENCY_OPTIONS: Array<{ code: CurrencyCode; symbol: string }> = [
+  { code: 'USD', symbol: '$' },
+  { code: 'EUR', symbol: '€' },
+];
+
+const VAT_RATE = 20;
+
+const items = ref<CartItem[]>(initialItems as CartItem[]);
+const shipping = ref(shippingOptions[0].label);
+const currencyCode = ref<CurrencyCode>('USD');
+
+const hasItems = computed(() => items.value.length > 0);
+
+const convertedItems = computed(() =>
+  items.value.map((item) => ({
+    ...item,
+    dineroPrice: convertCurrency(
+      fromMinorUnits(item.price, 'USD'),
+      currencyCode.value
+    ),
+  }))
+);
+
+const convertedShippingOptions = computed(() =>
+  shippingOptions.map((option) => ({
+    ...option,
+    convertedPrice: convertCurrency(
+      fromMinorUnits(option.price, 'USD'),
+      currencyCode.value
+    ),
+  }))
+);
+
+const shippingOption = computed(
+  () =>
+    convertedShippingOptions.value.find(
+      ({ label }) => label === shipping.value
+    )!
+);
+
+const calculated = computed(() =>
+  convertedItems.value.reduce(
+    (acc, item) => ({
+      count: acc.count + item.quantity,
+      subtotal: add(acc.subtotal, multiply(item.dineroPrice, item.quantity)),
+    }),
+    { count: 0, subtotal: zero(currencyCode.value) }
+  )
+);
+
+const shippingAmount = computed(() =>
+  hasItems.value
+    ? shippingOption.value.convertedPrice
+    : zero(currencyCode.value)
+);
+
+const vatAmount = computed(
+  () => allocate(calculated.value.subtotal, [VAT_RATE, 100 - VAT_RATE])[0]
+);
+
+const total = computed(() =>
+  [calculated.value.subtotal, vatAmount.value, shippingAmount.value].reduce(add)
+);
+
+function updateItem(
+  name: string,
+  updater: (item: CartItem) => CartItem | null
+) {
+  const index = items.value.findIndex((item) => item.name === name);
+
+  if (index === -1) return;
+
+  const result = updater(items.value[index]);
+
+  if (result === null) {
+    items.value = items.value.filter((_, i) => i !== index);
+  } else {
+    items.value = items.value.map((item, i) => (i === index ? result : item));
+  }
+}
+</script>
+
 <template>
-  <main class="relative">
-    <div
-      class="fixed top-0 left-0 right-0 z-30 w-full px-4 py-2 text-sm text-center text-white bg-green-600 shadow-lg"
+  <main class="flex h-screen flex-col">
+    <header
+      class="flex shrink-0 items-center justify-between gap-3 border-b border-border px-4 py-3 sm:px-5"
     >
-      Built with
+      <div class="flex min-w-0 items-center gap-2 sm:gap-3">
+        <svg
+          viewBox="0 0 361.4 213.6"
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-auto"
+          aria-hidden="true"
+        >
+          <path
+            fill="#4466ff"
+            d="M361.4 147.8h-41.1v-8.2c0-2.8-.1-5.5-.3-8.2h41.4V115h-43.5c-3.4-16.7-10.2-32.1-19.6-45.6 8.7-21 7.3-45.3-4.2-65.3-1.5-2.5-4.2-4.1-7.2-4.1-20 0-39 8.2-52.7 22.1-11.7-3.7-24.2-5.7-37.1-5.7h-32.8c-12.9 0-25.4 2-37.1 5.7C113.5 8.2 94.5 0 74.5 0c-2.9 0-5.6 1.6-7.1 4.1-11.5 20-12.9 44.3-4.2 65.3C53.8 82.9 47 98.3 43.6 115H0v16.4h41.4c-.2 2.7-.3 5.5-.3 8.2v8.2H0v16.4h41.1v49.3h279.3v-49.3h41.1v-16.4h-.1z"
+          />
+          <path
+            fill="#fff"
+            d="M197.1 32.9h-32.8c-58.9 0-106.8 47.9-106.8 106.8v57.5h246.3v-57.5c.1-58.9-47.8-106.8-106.7-106.8z"
+          />
+          <path
+            fill="#4466ff"
+            d="M96.7 115c-3.3 0-5.3-3.7-3.4-6.4 3.2-4.6 9.5-10 21.7-10 17 0 26.2 9.8 30.3 15.9 1.1 1.6-.3 3.6-2.2 3.2-4.8-1.2-13.6-2.6-28.1-2.6H96.7v-.1z"
+          />
+          <path
+            fill="#f7a"
+            d="M180.7 123.7c11 0 16.4 0 16.4 5.5 0 4-8.7 8-13.5 9.9-1.9.8-4 .8-5.9 0-4.7-1.9-13.5-5.9-13.5-9.8.1-5.6 5.6-5.6 16.5-5.6z"
+          />
+          <path
+            fill="#4466ff"
+            d="M118.7 148.3c-.7-1.3 1-2.7 2.1-1.7 5 4.5 13.6 9.4 27.1 9.4 16.4 0 24.6-8.2 32.9-8.2 8.2 0 16.4 8.2 32.9 8.2 13.5 0 22.1-5 27.1-9.4 1.1-1 2.8.3 2.1 1.7-4.5 8.5-13.5 20.1-29.2 20.1-16.4 0-24.6-8.2-32.8-8.2-8.2 0-16.4 8.2-32.8 8.2-15.9 0-24.9-11.6-29.4-20.1z"
+          />
+          <circle cx="82.1" cy="147.8" r="16.4" fill="#bcf" />
+          <path
+            fill="#bcf"
+            d="M197.1 32.9h-32.8c-1 0-1.9.1-2.8.1-2.9 16.1 9.6 35.3 29.9 29.2 10.7-3.2 27.8-7.1 36.7 2.5 7.8 8.5 1.5 22.7 6.8 33 11.4 21.8 42.9 24.2 66.8 20.2-10.1-48.5-53.2-85-104.6-85z"
+          />
+          <path
+            fill="#4466ff"
+            d="M264.7 115c3.3 0 5.3-3.7 3.4-6.4-3.2-4.6-9.5-10-21.7-10-17 0-26.2 9.8-30.3 15.9-1 1.6.3 3.6 2.2 3.2 4.8-1.2 13.6-2.6 28.1-2.6h18.3v-.1z"
+          />
+          <circle cx="279.3" cy="147.8" r="16.4" fill="#bcf" />
+        </svg>
+        <h1 class="truncate text-sm font-semibold text-foreground">
+          Shopping Cart
+        </h1>
+        <span
+          class="hidden whitespace-nowrap rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-medium text-primary sm:inline"
+        >
+          Built with Dinero.js
+        </span>
+      </div>
       <a
+        href="https://github.com/dinerojs/dinero.js/tree/main/examples/cart-vue"
         target="_blank"
         rel="noopener noreferrer"
-        href="https://dinerojs.com/"
-        class="font-semibold hover:underline"
+        class="shrink-0 rounded-sm text-xs text-text-muted transition-colors duration-150 hover:text-foreground focus-visible:ring-2 focus-visible:ring-primary/50"
       >
-        Dinero.js
+        GitHub
+        <span class="hidden sm:inline"> source</span>
       </a>
-      and
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://vuejs.org/"
-        class="font-semibold hover:underline"
-      >
-        Vue.js
-      </a>
-    </div>
-    <div
-      class="container flex flex-col items-center justify-center min-h-screen mx-auto"
-    >
+    </header>
+
+    <div class="flex min-h-0 flex-1 flex-col lg:flex-row">
       <div
-        class="flex flex-col w-full my-10 overflow-hidden rounded-lg shadow-lg md:flex-row"
+        class="flex flex-1 flex-col border-b border-border lg:border-b-0 lg:border-r"
       >
-        <div class="w-full px-10 py-10 bg-white md:w-4/6">
-          <div class="flex items-center justify-between pb-8 border-b">
-            <h1 class="text-2xl font-semibold capitalize">Shopping cart</h1>
-            <div class="flex items-center">
-              <label htmlFor="language" class="mr-3 text-sm whitespace-nowrap">
-                Select a currency
-              </label>
-              <select
-                id="currency"
-                :value="currencyCode"
-                @change="(event) => (currencyCode = event.target.value)"
-                class="block w-full py-1 pl-1 text-sm border-gray-300 rounded-md shadow-sm pr-7 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+        <div
+          class="flex items-center justify-between border-b border-border px-5 py-3"
+        >
+          <span class="text-xs font-medium text-text-muted">
+            {{ items.length }} {{ items.length === 1 ? 'item' : 'items' }}
+          </span>
+          <div class="flex items-center gap-2">
+            <label for="currency" class="text-xs text-text-muted">
+              Currency
+            </label>
+            <select
+              id="currency"
+              name="currency"
+              :value="currencyCode"
+              @change="
+                currencyCode = ($event.target as HTMLSelectElement)
+                  .value as CurrencyCode
+              "
+              class="rounded-lg border border-border bg-muted px-3 py-1.5 text-sm text-foreground transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <option
+                v-for="option in CURRENCY_OPTIONS"
+                :key="option.code"
+                :value="option.code"
               >
-                <option
-                  v-for="option in currencyOptions"
-                  :key="option.currency"
-                  :value="option.currency"
-                >
-                  {{ option.currency }} ({{ option.symbol }})
-                </option>
-              </select>
-            </div>
+                {{ option.code }} ({{ option.symbol }})
+              </option>
+            </select>
           </div>
-          <div v-if="items.length > 0" class="-mx-6">
-            <div class="flex px-6 mt-10 mb-5">
+        </div>
+        <div class="flex-1 overflow-y-auto p-5">
+          <div v-if="hasItems">
+            <div class="mb-2 hidden items-center px-4 sm:flex">
               <span
-                className="w-2/5 text-xs font-semibold tracking-wide text-gray-500 uppercase"
+                class="min-w-0 flex-1 text-xs font-medium tracking-wide text-text-muted"
               >
                 Product
               </span>
               <span
-                className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase"
+                class="w-[7.5rem] text-right text-xs font-medium tracking-wide text-text-muted"
               >
                 Quantity
               </span>
               <span
-                className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase"
+                class="w-24 text-right text-xs font-medium tracking-wide text-text-muted"
               >
                 Price
               </span>
               <span
-                className="w-1/5 text-xs font-semibold tracking-wide text-right text-gray-500 uppercase"
+                class="w-24 text-right text-xs font-medium tracking-wide text-text-muted"
               >
                 Total
               </span>
             </div>
-            <CartLine
-              v-for="(item, index) in convertedItems"
-              :key="item.name"
-              :item="item"
-              :on-increase="
-                (item) => {
-                  setItemByName(item.name, {
-                    ...items[index],
-                    amount: item.amount + 1,
-                  });
-                }
-              "
-              :on-decrease="
-                (item) => {
-                  if (item.amount > 1) {
-                    setItemByName(item.name, {
-                      ...items[index],
-                      amount: item.amount - 1,
-                    });
-                  }
-                }
-              "
-              :on-remove="
-                (item) => {
-                  setItemByName(item.name, null);
-                }
-              "
-            />
-          </div>
-        </div>
-        <div
-          class="flex flex-col justify-between w-full px-8 py-10 bg-gray-100 md:w-2/6"
-        >
-          <div>
-            <div class="flex items-center justify-between pb-8 border-b">
-              <h1 class="text-2xl font-semibold capitalize">Order summary</h1>
-              <div class="relative mx-2">
-                <svg
-                  class="w-5 text-gray-800 stroke-current"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-                <span
-                  v-if="items.length > 0"
-                  class="absolute top-0 right-0 -mt-1.5 -mr-2 bg-green-200 text-green-700 font-normal rounded-full px-1 text-xs"
-                >
-                  {{ calculatedItems.count }}
-                </span>
-              </div>
-            </div>
-            <div class="flex justify-between mt-10 mb-5">
-              <span class="text-sm font-medium uppercase"> Subtotal </span>
-              <span class="text-sm font-semibold">{{
-                format(calculatedItems.subtotal)
-              }}</span>
-            </div>
-            <div class="flex justify-between mt-4 mb-5">
-              <span class="text-sm font-medium uppercase">
-                VAT ({{ vatRate }}%)
-              </span>
-              <span class="text-sm font-semibold">{{ format(vatAmount) }}</span>
-            </div>
-            <div class="mb-4">
-              <label
-                htmlFor="shipping"
-                class="inline-block mb-3 text-sm font-medium uppercase"
-              >
-                Shipping
-              </label>
-              <div :class="{ 'cursor-not-allowed': !hasItems }">
-                <select
-                  id="shipping"
-                  :value="shipping"
-                  @change="(event) => (shipping = event.target.value)"
-                  :class="[
-                    'block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50',
-                    { 'opacity-30 pointer-events-none': !hasItems },
-                  ]"
-                >
-                  <option
-                    v-for="{ label, price } in convertedShippingOptions"
-                    :key="label"
-                    :value="label"
-                  >
-                    {{ label }} — {{ format(price) }}
-                  </option>
-                </select>
-              </div>
+            <div class="space-y-1">
+              <CartLine
+                v-for="item in convertedItems"
+                :key="item.name"
+                :name="item.name"
+                :brand="item.brand"
+                :image="item.image"
+                :quantity="item.quantity"
+                :price="item.dineroPrice"
+                :currency-code="currencyCode"
+                @increase="
+                  updateItem(item.name, (prev) => ({
+                    ...prev,
+                    quantity: prev.quantity + 1,
+                  }))
+                "
+                @decrease="
+                  updateItem(item.name, (prev) =>
+                    prev.quantity > 1
+                      ? { ...prev, quantity: prev.quantity - 1 }
+                      : prev
+                  )
+                "
+                @remove="updateItem(item.name, () => null)"
+              />
             </div>
           </div>
-          <div class="mt-8 border-t">
-            <div
-              class="flex justify-between my-5 text-sm font-medium uppercase"
-            >
-              <span>Total</span>
-              <span>{{ format(total) }}</span>
-            </div>
-            <button
-              class="w-full py-3 text-sm font-semibold text-white uppercase transition-colors ease-in-out bg-green-600 rounded hover:bg-green-700"
-            >
-              Checkout
-            </button>
+          <div v-else class="flex h-full items-center justify-center">
+            <p class="text-sm text-text-muted">Your cart is empty.</p>
           </div>
         </div>
       </div>
+      <aside class="w-full shrink-0 bg-card p-6 lg:w-96">
+        <OrderSummary
+          :item-count="calculated.count"
+          :subtotal="calculated.subtotal"
+          :vat-amount="vatAmount"
+          :vat-rate="VAT_RATE"
+          :shipping-amount="shippingAmount"
+          :total="total"
+          :currency-code="currencyCode"
+          :shipping="shipping"
+          :shipping-options="convertedShippingOptions"
+          :has-items="hasItems"
+          @update:shipping="shipping = $event"
+        />
+      </aside>
     </div>
   </main>
 </template>
-
-<script>
-import { dinero, add, allocate, multiply } from 'dinero.js';
-import { EUR, USD } from 'dinero.js/currencies';
-
-import CartLine from './components/CartLine.vue';
-
-import { format, createConverter } from './utils';
-
-const currencies = { EUR, USD };
-const vatRate = 20;
-
-export default {
-  components: {
-    CartLine,
-  },
-  props: {
-    initialItems: Array,
-    currencyOptions: Array,
-    shippingOptions: Array,
-    defaultCurrencyCode: String,
-    defaultShippingOption: String,
-  },
-  data() {
-    return {
-      currencyCode: this.defaultCurrencyCode,
-      items: this.initialItems,
-      shipping: this.defaultShippingOption,
-      vatRate,
-    };
-  },
-  methods: {
-    format,
-    setItemByName(name, newValue) {
-      const index = this.items.findIndex((item) => item.name === name);
-
-      if (index !== undefined) {
-        const newItems = [...this.items];
-        newItems.splice(index, 1, newValue);
-
-        this.items = newItems.filter(Boolean);
-      }
-    },
-  },
-  computed: {
-    hasItems() {
-      return this.items.length !== 0;
-    },
-    currency() {
-      return currencies[this.currencyCode];
-    },
-    convert() {
-      return createConverter(this.currency);
-    },
-    convertedItems() {
-      return this.items.map((item) => ({
-        ...item,
-        price: this.convert(
-          dinero({
-            amount: item.price,
-            currency: currencies[this.defaultCurrencyCode],
-          }),
-          this.currency
-        ),
-      }));
-    },
-    convertedShippingOptions() {
-      return this.shippingOptions.map((option) => ({
-        ...option,
-        price: this.convert(
-          dinero({
-            amount: option.price,
-            currency: currencies[this.defaultCurrencyCode],
-          }),
-          this.currency
-        ),
-      }));
-    },
-    calculatedItems() {
-      const zero = dinero({ amount: 0, currency: this.currency });
-
-      return this.convertedItems.reduce(
-        (acc, item) => {
-          const count = acc.count + item.amount;
-          const subtotal = add(acc.subtotal, multiply(item.price, item.amount));
-
-          return { count, subtotal };
-        },
-        { count: 0, subtotal: zero }
-      );
-    },
-    vatAmount() {
-      const [vatAmount] = allocate(this.calculatedItems.subtotal, [
-        vatRate,
-        100 - vatRate,
-      ]);
-
-      return vatAmount;
-    },
-    total() {
-      const zero = dinero({ amount: 0, currency: this.currency });
-      const shippingOption = this.convertedShippingOptions.find(
-        ({ label }) => label === this.shipping
-      );
-      const shippingAmount = this.hasItems ? shippingOption.price : zero;
-
-      return [
-        this.calculatedItems.subtotal,
-        this.vatAmount,
-        shippingAmount,
-      ].reduce(add);
-    },
-  },
-};
-</script>

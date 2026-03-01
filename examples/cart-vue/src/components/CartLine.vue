@@ -1,108 +1,93 @@
+<script setup lang="ts">
+import type { Dinero } from 'dinero.js';
+import { Minus, Plus, Trash2 } from 'lucide-vue-next';
+import { computed } from 'vue';
+
+import { multiply, formatMoney } from '@/lib/money';
+import type { CurrencyCode } from '@/types';
+
+const props = defineProps<{
+  name: string;
+  brand: string;
+  image: string;
+  quantity: number;
+  price: Dinero<number>;
+  currencyCode: CurrencyCode;
+}>();
+
+const emit = defineEmits<{
+  increase: [];
+  decrease: [];
+  remove: [];
+}>();
+
+const totalPrice = computed(() => multiply(props.price, props.quantity));
+const canDecrease = computed(() => props.quantity > 1);
+</script>
+
 <template>
-  <div class="flex items-center px-6 py-5 hover:bg-gray-100">
-    <div class="flex w-2/5">
+  <div
+    class="flex flex-col gap-3 rounded-lg px-4 py-4 transition-colors duration-150 hover:bg-muted/50 sm:flex-row sm:items-center sm:gap-4"
+  >
+    <div class="flex min-w-0 flex-1 items-center gap-4">
       <div
-        class="flex items-center flex-none w-20 p-2 bg-white rounded xl:w-24"
+        class="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-white p-2 xl:h-20 xl:w-20"
       >
         <img
-          class="object-contain h-12 mx-auto xl:h-16"
-          :src="item.image"
+          class="h-12 w-auto object-contain xl:h-16"
+          :src="image"
           alt=""
+          :width="64"
+          :height="64"
+          loading="lazy"
         />
       </div>
-      <div class="flex flex-col items-start justify-between flex-grow ml-4">
-        <div>
-          <h2 class="mb-1 text-sm font-bold">{{ item.name }}</h2>
-          <h3 class="text-sm mb-1.5">{{ item.brand }}</h3>
-        </div>
+      <div class="flex min-w-0 flex-col gap-1">
+        <h3 class="truncate text-sm font-semibold text-foreground">
+          {{ name }}
+        </h3>
+        <p class="text-xs text-text-muted">{{ brand }}</p>
         <button
-          @click="onRemove(item)"
-          class="text-xs font-semibold text-left text-gray-500 transition-colors ease-in-out hover:text-red-500"
+          @click="emit('remove')"
+          class="mt-1 inline-flex w-fit items-center gap-1 rounded text-xs text-text-muted transition-colors duration-150 hover:text-destructive focus-visible:ring-2 focus-visible:ring-ring"
+          :aria-label="`Remove ${name} from cart`"
         >
+          <Trash2 class="h-3 w-3" aria-hidden="true" />
           Remove
         </button>
       </div>
     </div>
-    <div class="flex justify-end w-1/5">
-      <button
-        :class="[
-          'border rounded px-1',
-          canDecrease
-            ? 'border-gray-200 hover:bg-gray-200'
-            : 'border-gray-500 cursor-not-allowed opacity-10',
-        ]"
-        :disabled="!canDecrease"
-        @click="onDecrease(item)"
-        aria-label="Decrease amount"
-      >
-        <svg
-          class="w-4 text-gray-600 fill-current"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+    <div
+      class="flex items-center justify-between gap-4 pl-20 sm:justify-end sm:pl-0"
+    >
+      <div class="flex items-center gap-1.5">
+        <button
+          class="touch-manipulation rounded-md border border-border p-1 transition-colors duration-150 hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-30"
+          :disabled="!canDecrease"
+          @click="emit('decrease')"
+          :aria-label="`Decrease quantity of ${name}`"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M20 12H4"
-          />
-        </svg>
-      </button>
-      <div class="w-8 mx-2 text-center">{{ item.amount }}</div>
-      <button
-        class="px-1 border border-gray-200 rounded hover:bg-gray-200"
-        @click="onIncrease(item)"
-        aria-label="Increase amount"
-      >
-        <svg
-          class="w-4 text-gray-600 fill-current"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+          <Minus class="h-3.5 w-3.5 text-text-secondary" aria-hidden="true" />
+        </button>
+        <span class="w-8 text-center text-sm tabular-nums text-foreground">
+          {{ quantity }}
+        </span>
+        <button
+          class="touch-manipulation rounded-md border border-border p-1 transition-colors duration-150 hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"
+          @click="emit('increase')"
+          :aria-label="`Increase quantity of ${name}`"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-          />
-        </svg>
-      </button>
+          <Plus class="h-3.5 w-3.5 text-text-secondary" aria-hidden="true" />
+        </button>
+      </div>
+      <span class="text-right text-sm tabular-nums text-text-secondary sm:w-24">
+        {{ formatMoney(price, currencyCode) }}
+      </span>
+      <span
+        class="text-right text-sm font-medium tabular-nums text-foreground sm:w-24"
+      >
+        {{ formatMoney(totalPrice, currencyCode) }}
+      </span>
     </div>
-    <span class="w-1/5 text-sm font-semibold text-right">
-      {{ format(item.price) }}
-    </span>
-    <span class="w-1/5 text-sm font-semibold text-right">
-      {{ format(totalPrice) }}
-    </span>
   </div>
 </template>
-
-<script>
-import { multiply } from 'dinero.js';
-
-import { format } from '../utils';
-
-export default {
-  props: {
-    item: Object,
-    onDecrease: Function,
-    onIncrease: Function,
-    onRemove: Function,
-  },
-  data() {
-    return {
-      format,
-    };
-  },
-  computed: {
-    totalPrice() {
-      return multiply(this.item.price, this.item.amount);
-    },
-    canDecrease() {
-      return this.item.amount > 1;
-    },
-  },
-};
-</script>
