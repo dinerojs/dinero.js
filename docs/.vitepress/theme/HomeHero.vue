@@ -12,7 +12,7 @@ import { withBase } from 'vitepress';
           An immutable library for expressing monetary values in JavaScript and
           TypeScript.
         </p>
-        <p>Designed for humans, ready for agents.</p>
+        <p class="tagline">Designed for humans, ready for agents.</p>
         <div class="actions">
           <a
             class="action brand"
