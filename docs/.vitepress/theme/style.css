@@ -109,13 +109,18 @@
 
 /* ===== Navigation (frosted glass) ===== */
 
-.VPNav {
+/*
+ * Apply the frosted‐glass effect to VPNavBar, NOT VPNav.
+ * backdrop-filter on VPNav creates a stacking context that traps the
+ * position:fixed VPNavScreen (mobile menu) and makes it invisible.
+ */
+.VPNavBar {
   background: rgba(255, 255, 255, 0.8) !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-.dark .VPNav {
+.dark .VPNavBar {
   background: rgba(12, 13, 15, 0.8) !important;
 }
 
