@@ -37,7 +37,7 @@ If you don't use a package manager, you can use the HTML `script` element:
 
 **Dinero.js lets you express monetary values in JavaScript.** You can perform mutations, conversions, comparisons, format them extensively, and overall make money manipulation in your application easier and safer.
 
-To get started, you need to create a new Dinero object. Amounts are specified in minor currency units (like "cents" for the dollar) and currencies in `Currency` objects.
+To get started, you need to create a new Dinero object. Amounts are specified in minor currency units (like "cents" for the dollar) and currencies in `DineroCurrency` objects.
 
 This represents $50:
 

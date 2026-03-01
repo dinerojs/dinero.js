@@ -15,7 +15,7 @@ If you need to multiply by a fractional multiplier, you shouldn't use floats, bu
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
 | `multiplicand` | `Dinero<TAmount, TCurrency>` | The Dinero object to multiply. | Yes |
-| `multiplier` | `ScaledAmount<TAmount> \| TAmount` | The number to multiply with. | Yes |
+| `multiplier` | `DineroScaledAmount<TAmount> \| TAmount` | The number to multiply with. | Yes |
 
 ## Code examples
 

@@ -21,8 +21,8 @@ Both currencies must share the same base. Converting between currencies with dif
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
 | `dineroObject` | `Dinero<TAmount, TCurrency>` | The Dinero object to convert. | Yes |
-| `newCurrency` | `Currency<TAmount, TNewCurrency>` | The currency to convert into. | Yes |
-| `rates` | `Rates<TAmount>` | The rates to convert with. | Yes |
+| `newCurrency` | `DineroCurrency<TAmount, TNewCurrency>` | The currency to convert into. | Yes |
+| `rates` | `DineroRates<TAmount>` | The rates to convert with. | Yes |
 
 ## Code examples
 

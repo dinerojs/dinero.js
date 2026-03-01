@@ -21,7 +21,7 @@ If you need to use fractional ratios, you shouldn't use floats, but scaled amoun
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
 | `dineroObject` | `Dinero<TAmount, TCurrency>` | The Dinero object to allocate from. | Yes |
-| `ratios` | `Array<ScaledAmount<TAmount> \| TAmount>` | The ratios to allocate the amount to. | Yes |
+| `ratios` | `Array<DineroScaledAmount<TAmount> \| TAmount>` | The ratios to allocate the amount to. | Yes |
 
 ## Code examples
 

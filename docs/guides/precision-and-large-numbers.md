@@ -66,15 +66,15 @@ You can implement your own if you want to use a third-party library.
 
 Dinero.js delegates all calculations to a type-specific calculator object. You can implement a custom calculator for a given type and pass it to Dinero to use the library with amounts of this type.
 
-A calculator implements the `Calculator` interface. For example, here's what it can look like with [big.js](https://github.com/MikeMcl/big.js).
+A calculator implements the `DineroCalculator` interface. For example, here's what it can look like with [big.js](https://github.com/MikeMcl/big.js).
 
 ```ts
 import Big from 'big.js';
-import { Calculator, ComparisonOperator } from 'dinero.js';
+import { DineroCalculator, DineroComparisonOperator } from 'dinero.js';
 
-const calculator: Calculator<Big> = {
+const calculator: DineroCalculator<Big> = {
   add: (a, b) => a.plus(b),
-  compare: (a, b) => a.cmp(b) as unknown as ComparisonOperator,
+  compare: (a, b) => a.cmp(b) as unknown as DineroComparisonOperator,
   decrement: (v) => v.minus(new Big(1)),
   increment: (v) => v.plus(new Big(1)),
   integerDivide: (a, b) => a.div(b).round(0, Big.roundDown),
@@ -104,9 +104,9 @@ When using a custom amount type, you also need a **custom formatter** so that fu
 
 ```ts
 import Big from 'big.js';
-import { Formatter } from 'dinero.js';
+import { DineroFormatter } from 'dinero.js';
 
-const formatter: Formatter<Big> = {
+const formatter: DineroFormatter<Big> = {
   toNumber: (value) => value.toNumber(),
   toString: (value) => value.toFixed(),
 };

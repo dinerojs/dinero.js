@@ -84,16 +84,16 @@ toDecimal(d, ({ currency }) => {
 If you define custom currencies, you can opt into currency type safety by using `as const satisfies`:
 
 ```ts
-import type { Currency } from 'dinero.js';
+import type { DineroCurrency } from 'dinero.js';
 
 const BTC = {
   code: 'BTC',
   base: 10,
   exponent: 8,
-} as const satisfies Currency<number, 'BTC'>;
+} as const satisfies DineroCurrency<number, 'BTC'>;
 ```
 
-The `as const` gives the `code` field the literal type `'BTC'` instead of `string`, and `satisfies` validates the object conforms to the `Currency` shape.
+The `as const` gives the `code` field the literal type `'BTC'` instead of `string`, and `satisfies` validates the object conforms to the `DineroCurrency` shape.
 
 Without `as const`, the currency code is inferred as `string`, and Dinero objects using it won't enforce currency matching. This is intentional: it keeps Dinero.js backward compatible and lets you opt into stricter checking only when you want it.
 

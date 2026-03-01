@@ -19,7 +19,7 @@ You can only use this function with Dinero objects that are single-based and use
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
 | `dineroObject` | `Dinero<TAmount, TCurrency>` | The Dinero object to format. | Yes |
-| `transformer` | `Transformer<TAmount, TOutput, TCurrency>` | An optional transformer function. | No |
+| `transformer` | `DineroTransformer<TAmount, TOutput, TCurrency>` | An optional transformer function. | No |
 
 ## Code examples
 
