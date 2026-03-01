@@ -13,9 +13,23 @@ A React app that creates, calculates, and previews professional invoices with mu
 
 ## Getting started
 
-1. Install dependencies from the **repository root**: `npm install`
-2. Navigate to the example: `cd examples/invoice-builder`
-3. Start the dev server: `npm run dev`
+1. Install dependencies from the **repository root**:
+
+   ```sh
+   npm install
+   ```
+
+2. Navigate to the example:
+
+   ```sh
+   cd examples/invoice-builder
+   ```
+
+3. Start the dev server:
+
+   ```sh
+   npm run dev
+   ```
 
 ## Learn more
 
