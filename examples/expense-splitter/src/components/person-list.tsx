@@ -1,4 +1,6 @@
-import type { Person } from '../types';
+import { Users, X } from 'lucide-react';
+
+import type { Person } from '@/types';
 
 interface PersonListProps {
   people: Person[];
@@ -8,23 +10,13 @@ interface PersonListProps {
 export function PersonList({ people, onRemove }: PersonListProps) {
   if (people.length === 0) {
     return (
-      <div className="text-center py-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-bg-alt mb-4">
-          <svg
-            className="w-8 h-8 text-text-3"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-            />
-          </svg>
+      <div className="py-8 text-center">
+        <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-xl bg-muted">
+          <Users className="h-8 w-8 text-text-muted" />
         </div>
-        <p className="text-text-3">Add people to split expenses with</p>
+        <p className="text-sm text-text-muted">
+          Add people to split expenses with
+        </p>
       </div>
     );
   }
@@ -32,26 +24,17 @@ export function PersonList({ people, onRemove }: PersonListProps) {
   return (
     <div className="flex flex-wrap gap-2">
       {people.map((person) => (
-        <div key={person.id} className="group pill animate-fade-in">
+        <div
+          key={person.id}
+          className="group inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-text-secondary"
+        >
           <span className="font-medium">{person.name}</span>
           <button
             onClick={() => onRemove(person.id)}
-            className="opacity-60 hover:opacity-100 transition-opacity"
+            className="rounded-full opacity-60 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none focus-visible:opacity-100"
             aria-label={`Remove ${person.name}`}
           >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <X className="h-3.5 w-3.5" />
           </button>
         </div>
       ))}

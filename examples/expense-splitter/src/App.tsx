@@ -1,7 +1,6 @@
-import { dinero, toSnapshot } from 'dinero.js';
-import { USD } from 'dinero.js/currencies';
+import { useState } from 'react';
 
-import type { Person, Expense } from './types';
+import type { Person, Expense } from '@/types';
 
 import {
   AddExpense,
@@ -10,8 +9,8 @@ import {
   ExpenseList,
   PersonList,
   Settlements,
-} from './components';
-import { useLocalStorage } from './hooks';
+} from '@/components';
+import { fromAmount, snapshot } from '@/lib/money';
 
 interface StoredExpense {
   id: string;
@@ -23,43 +22,100 @@ interface StoredExpense {
   createdAt: string;
 }
 
-function serializeExpenses(expenses: Expense[]): StoredExpense[] {
-  return expenses.map((expense) => {
-    const snapshot = toSnapshot(expense.amount);
+const LOGO = (
+  <svg
+    viewBox="0 0 361.4 213.6"
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-6 w-auto"
+    aria-hidden="true"
+  >
+    <path
+      fill="#4466ff"
+      d="M361.4 147.8h-41.1v-8.2c0-2.8-.1-5.5-.3-8.2h41.4V115h-43.5c-3.4-16.7-10.2-32.1-19.6-45.6 8.7-21 7.3-45.3-4.2-65.3-1.5-2.5-4.2-4.1-7.2-4.1-20 0-39 8.2-52.7 22.1-11.7-3.7-24.2-5.7-37.1-5.7h-32.8c-12.9 0-25.4 2-37.1 5.7C113.5 8.2 94.5 0 74.5 0c-2.9 0-5.6 1.6-7.1 4.1-11.5 20-12.9 44.3-4.2 65.3C53.8 82.9 47 98.3 43.6 115H0v16.4h41.4c-.2 2.7-.3 5.5-.3 8.2v8.2H0v16.4h41.1v49.3h279.3v-49.3h41.1v-16.4h-.1z"
+    />
+    <path
+      fill="#fff"
+      d="M197.1 32.9h-32.8c-58.9 0-106.8 47.9-106.8 106.8v57.5h246.3v-57.5c.1-58.9-47.8-106.8-106.7-106.8z"
+    />
+    <path
+      fill="#4466ff"
+      d="M96.7 115c-3.3 0-5.3-3.7-3.4-6.4 3.2-4.6 9.5-10 21.7-10 17 0 26.2 9.8 30.3 15.9 1.1 1.6-.3 3.6-2.2 3.2-4.8-1.2-13.6-2.6-28.1-2.6H96.7v-.1z"
+    />
+    <path
+      fill="#f7a"
+      d="M180.7 123.7c11 0 16.4 0 16.4 5.5 0 4-8.7 8-13.5 9.9-1.9.8-4 .8-5.9 0-4.7-1.9-13.5-5.9-13.5-9.8.1-5.6 5.6-5.6 16.5-5.6z"
+    />
+    <path
+      fill="#4466ff"
+      d="M118.7 148.3c-.7-1.3 1-2.7 2.1-1.7 5 4.5 13.6 9.4 27.1 9.4 16.4 0 24.6-8.2 32.9-8.2 8.2 0 16.4 8.2 32.9 8.2 13.5 0 22.1-5 27.1-9.4 1.1-1 2.8.3 2.1 1.7-4.5 8.5-13.5 20.1-29.2 20.1-16.4 0-24.6-8.2-32.8-8.2-8.2 0-16.4 8.2-32.8 8.2-15.9 0-24.9-11.6-29.4-20.1z"
+    />
+    <circle cx="82.1" cy="147.8" r="16.4" fill="#bcf" />
+    <path
+      fill="#bcf"
+      d="M197.1 32.9h-32.8c-1 0-1.9.1-2.8.1-2.9 16.1 9.6 35.3 29.9 29.2 10.7-3.2 27.8-7.1 36.7 2.5 7.8 8.5 1.5 22.7 6.8 33 11.4 21.8 42.9 24.2 66.8 20.2-10.1-48.5-53.2-85-104.6-85z"
+    />
+    <path
+      fill="#4466ff"
+      d="M264.7 115c3.3 0 5.3-3.7 3.4-6.4-3.2-4.6-9.5-10-21.7-10-17 0-26.2 9.8-30.3 15.9-1 1.6.3 3.6 2.2 3.2 4.8-1.2 13.6-2.6 28.1-2.6h18.3v-.1z"
+    />
+    <circle cx="279.3" cy="147.8" r="16.4" fill="#bcf" />
+  </svg>
+);
 
-    return {
-      id: expense.id,
-      description: expense.description,
-      amount: snapshot.amount,
-      paidBy: expense.paidBy,
-      splitType: expense.splitType,
-      shares: expense.shares,
-      createdAt: expense.createdAt.toISOString(),
-    };
-  });
-}
+const DEFAULT_PEOPLE: Person[] = [
+  { id: 'alice', name: 'Alice' },
+  { id: 'bob', name: 'Bob' },
+  { id: 'charlie', name: 'Charlie' },
+  { id: 'diana', name: 'Diana' },
+];
 
-function deserializeExpenses(stored: StoredExpense[]): Expense[] {
-  return stored.map((expense) => ({
-    id: expense.id,
-    description: expense.description,
-    amount: dinero({ amount: expense.amount, currency: USD }),
-    paidBy: expense.paidBy,
-    splitType: expense.splitType,
-    shares: expense.shares,
-    createdAt: new Date(expense.createdAt),
-  }));
-}
+const DEFAULT_EXPENSES: StoredExpense[] = [
+  {
+    id: 'sample-1',
+    description: 'Dinner',
+    amount: 12000,
+    paidBy: 'alice',
+    splitType: 'equal',
+    shares: [
+      { personId: 'alice', value: 25 },
+      { personId: 'bob', value: 25 },
+      { personId: 'charlie', value: 25 },
+      { personId: 'diana', value: 25 },
+    ],
+    createdAt: '2026-02-28T19:00:00.000Z',
+  },
+  {
+    id: 'sample-2',
+    description: 'Uber ride',
+    amount: 3500,
+    paidBy: 'bob',
+    splitType: 'equal',
+    shares: [
+      { personId: 'alice', value: 34 },
+      { personId: 'bob', value: 33 },
+      { personId: 'charlie', value: 33 },
+    ],
+    createdAt: '2026-02-28T21:00:00.000Z',
+  },
+  {
+    id: 'sample-3',
+    description: 'Concert tickets',
+    amount: 20000,
+    paidBy: 'charlie',
+    splitType: 'percentage',
+    shares: [
+      { personId: 'charlie', value: 40 },
+      { personId: 'alice', value: 30 },
+      { personId: 'diana', value: 30 },
+    ],
+    createdAt: '2026-03-01T10:00:00.000Z',
+  },
+];
 
 export default function App() {
-  const [people, setPeople] = useLocalStorage<Person[]>(
-    'expense-splitter-people',
-    []
-  );
-  const [storedExpenses, setStoredExpenses] = useLocalStorage<StoredExpense[]>(
-    'expense-splitter-expenses',
-    []
-  );
+  const [people, setPeople] = useState<Person[]>(DEFAULT_PEOPLE);
+  const [storedExpenses, setStoredExpenses] =
+    useState<StoredExpense[]>(DEFAULT_EXPENSES);
 
   const expenses = deserializeExpenses(storedExpenses);
 
@@ -74,73 +130,36 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen">
-      <header className="sticky top-0 z-10 bg-base border-b border-divider animate-fade-in">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-brand flex items-center justify-center flex-shrink-0">
-            <svg
-              className="w-4 h-4 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-          </div>
-          <h1 className="text-lg font-semibold text-text-1">
+    <div className="flex min-h-screen touch-manipulation flex-col lg:h-screen lg:overflow-hidden">
+      <header className="flex shrink-0 items-center justify-between gap-3 border-b border-border px-4 py-3 sm:px-5">
+        <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+          {LOGO}
+          <span className="truncate text-sm font-semibold text-foreground">
             Expense Splitter
-          </h1>
-          <p className="text-text-3 text-sm hidden sm:block">
-            Split bills fairly with{' '}
-            <a
-              href="https://dinerojs.com/"
-              className="text-brand hover:text-brand-light transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Dinero.js
-            </a>
-          </p>
-          <a
-            href="https://github.com/dinerojs/dinero.js/tree/main/examples/expense-splitter"
-            className="ml-auto flex items-center gap-2 text-sm text-text-3 hover:text-text-1 transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-            </svg>
-            <span className="hidden sm:inline">See code on GitHub</span>
-          </a>
+          </span>
+          <span className="hidden whitespace-nowrap rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-medium text-primary sm:inline">
+            Built with Dinero.js
+          </span>
         </div>
+        <a
+          href="https://github.com/dinerojs/dinero.js/tree/main/examples/expense-splitter"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 text-xs text-text-muted transition-colors hover:text-foreground"
+        >
+          GitHub
+          <span className="hidden sm:inline"> source</span>
+        </a>
       </header>
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-5 space-y-8">
-            <section className="card animate-slide-up">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 rounded-lg bg-bg-alt border border-divider flex items-center justify-center flex-shrink-0">
-                  <svg
-                    className="w-4 h-4 text-text-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </div>
-                <h2 className="text-xl font-semibold text-text-1">People</h2>
+      <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
+        <div className="w-full border-b border-border lg:w-120 lg:min-w-120 lg:overflow-y-auto lg:border-b-0 lg:border-r">
+          <div className="space-y-6 p-5">
+            <section>
+              <div className="mb-4 flex items-center gap-3">
+                <h2 className="text-sm font-semibold text-foreground">
+                  People
+                </h2>
               </div>
               <div className="space-y-4">
                 <AddPerson
@@ -168,166 +187,97 @@ export default function App() {
               </div>
             </section>
 
-            <section
-              className="card animate-slide-up"
-              style={{ animationDelay: '0.1s' }}
-            >
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-divider flex items-center justify-center flex-shrink-0">
-                    <svg
-                      className="w-4 h-4 text-text-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                      />
-                    </svg>
-                  </div>
-                  <h2 className="text-xl font-semibold text-text-1">
-                    Add Expense
-                  </h2>
-                </div>
+            <div className="border-t border-border" />
+
+            <section>
+              <div className="mb-4 flex items-center gap-3">
+                <h2 className="text-sm font-semibold text-foreground">
+                  Add Expense
+                </h2>
               </div>
               <AddExpense
                 people={people}
-                currency={USD}
                 onAdd={(expense: Expense) => {
                   setExpenses((prev) => [expense, ...prev]);
                 }}
               />
             </section>
           </div>
+        </div>
 
-          <div className="lg:col-span-7 space-y-8">
-            <section
-              className="card animate-slide-up"
-              style={{ animationDelay: '0.2s' }}
-            >
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-divider flex items-center justify-center flex-shrink-0">
-                    <svg
-                      className="w-4 h-4 text-text-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
-                      />
-                    </svg>
-                  </div>
-                  <h2 className="text-xl font-semibold text-text-1">
-                    Balances
-                  </h2>
-                </div>
+        <div className="relative flex-1 overflow-y-auto bg-muted">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(68,102,255,0.08)_0%,_transparent_50%)]" />
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle, currentColor 1px, transparent 1px)',
+              backgroundSize: '24px 24px',
+            }}
+          />
+          <div className="relative space-y-5 p-5">
+            <section className="rounded-xl border border-border bg-card p-5 shadow-xl shadow-black/20">
+              <div className="mb-4 flex items-center justify-between">
+                <h2 className="text-sm font-semibold text-foreground">
+                  Balances
+                </h2>
               </div>
-              <Balances expenses={expenses} people={people} currency={USD} />
+              <Balances expenses={expenses} people={people} />
               {expenses.length === 0 && (
-                <p className="text-text-3 text-center py-6">
+                <p className="py-6 text-center text-sm text-text-muted">
                   Add expenses to see balances
                 </p>
               )}
             </section>
 
-            <section
-              className="card animate-slide-up"
-              style={{ animationDelay: '0.3s' }}
-            >
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-divider flex items-center justify-center flex-shrink-0">
-                    <svg
-                      className="w-4 h-4 text-text-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-                      />
-                    </svg>
-                  </div>
-                  <h2 className="text-xl font-semibold text-text-1">
-                    Settle Up
-                  </h2>
-                </div>
+            <section className="rounded-xl border border-border bg-card p-5 shadow-xl shadow-black/20">
+              <div className="mb-4 flex items-center justify-between">
+                <h2 className="text-sm font-semibold text-foreground">
+                  Settle Up
+                </h2>
               </div>
-              <Settlements expenses={expenses} people={people} currency={USD} />
+              <Settlements expenses={expenses} people={people} />
               {expenses.length === 0 && (
-                <p className="text-text-3 text-center py-6">
+                <p className="py-6 text-center text-sm text-text-muted">
                   Add expenses to see settlements
                 </p>
               )}
             </section>
 
-            <section
-              className="card animate-slide-up"
-              style={{ animationDelay: '0.4s' }}
-            >
-              <div className="flex justify-between items-center mb-6">
+            <section className="rounded-xl border border-border bg-card p-5 shadow-xl shadow-black/20">
+              <div className="mb-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-bg-alt border border-divider flex items-center justify-center flex-shrink-0">
-                    <svg
-                      className="w-4 h-4 text-text-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                      />
-                    </svg>
-                  </div>
-                  <h2 className="text-xl font-semibold text-text-1">
+                  <h2 className="text-sm font-semibold text-foreground">
                     Expenses
                   </h2>
                   {expenses.length > 0 && (
-                    <span className="text-sm text-text-3">
+                    <span className="text-xs text-text-muted">
                       ({expenses.length})
                     </span>
                   )}
                 </div>
-                <div className="flex items-center gap-3">
-                  {(people.length > 0 || expenses.length > 0) && (
-                    <button
-                      onClick={() => {
-                        if (
-                          window.confirm(
-                            'Are you sure you want to clear all people and expenses? This cannot be undone.'
-                          )
-                        ) {
-                          setPeople([]);
-                          setExpenses([]);
-                        }
-                      }}
-                      className="text-sm text-text-3 hover:text-negative transition-colors"
-                      aria-label="Clear all people and expenses"
-                    >
-                      Clear all
-                    </button>
-                  )}
-                </div>
+                {(people.length > 0 || expenses.length > 0) && (
+                  <button
+                    onClick={() => {
+                      if (
+                        window.confirm(
+                          'Are you sure you want to clear all people and expenses? This cannot be undone.'
+                        )
+                      ) {
+                        setPeople([]);
+                        setExpenses([]);
+                      }
+                    }}
+                    className="rounded text-xs text-text-muted transition-colors hover:text-destructive focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-card focus-visible:outline-none"
+                    aria-label="Clear all people and expenses"
+                  >
+                    Clear all
+                  </button>
+                )}
               </div>
               <ExpenseList
                 expenses={expenses}
                 people={people}
-                currency={USD}
                 onRemove={(id: string) => {
                   setExpenses((prev) => prev.filter((e) => e.id !== id));
                 }}
@@ -335,22 +285,31 @@ export default function App() {
             </section>
           </div>
         </div>
-
-        <footer className="mt-16 text-center animate-fade-in">
-          <p className="text-text-3 text-sm">
-            Built with{' '}
-            <a
-              href="https://dinerojs.com/"
-              className="text-brand hover:text-brand-light transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Dinero.js
-            </a>
-            . Precise monetary calculations without floating point errors.
-          </p>
-        </footer>
-      </main>
+      </div>
     </div>
   );
+}
+
+function serializeExpenses(expenses: Expense[]): StoredExpense[] {
+  return expenses.map((expense) => ({
+    id: expense.id,
+    description: expense.description,
+    amount: snapshot(expense.amount),
+    paidBy: expense.paidBy,
+    splitType: expense.splitType,
+    shares: expense.shares,
+    createdAt: expense.createdAt.toISOString(),
+  }));
+}
+
+function deserializeExpenses(stored: StoredExpense[]): Expense[] {
+  return stored.map((expense) => ({
+    id: expense.id,
+    description: expense.description,
+    amount: fromAmount(expense.amount),
+    paidBy: expense.paidBy,
+    splitType: expense.splitType,
+    shares: expense.shares,
+    createdAt: new Date(expense.createdAt),
+  }));
 }

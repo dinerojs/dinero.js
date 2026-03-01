@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { Plus } from 'lucide-react';
 
-import type { Person } from '../types';
+import type { Person } from '@/types';
 
 interface AddPersonProps {
   onAdd(person: Person): void;
@@ -27,29 +28,17 @@ export function AddPerson({ onAdd }: AddPersonProps) {
         type="text"
         value={name}
         onChange={(event) => setName(event.target.value)}
-        placeholder="Enter name"
+        placeholder="Enter name…"
         aria-label="Person name"
-        className="input-modern flex-1"
+        className="flex-1 rounded-md border border-border bg-input px-3 py-2 text-sm text-foreground placeholder:text-text-muted transition-[border-color,box-shadow] duration-150 focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
       />
       <button
         type="submit"
         disabled={!name.trim()}
-        className="btn-primary whitespace-nowrap"
+        className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
       >
         <span className="flex items-center gap-2">
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-            />
-          </svg>
+          <Plus className="h-4 w-4" />
           Add
         </span>
       </button>

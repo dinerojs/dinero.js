@@ -1,17 +1,22 @@
-import type { DineroCurrency } from 'dinero.js';
-import { isNegative, isPositive, isZero, multiply } from 'dinero.js';
+import { ArrowUp, ArrowDown, Check } from 'lucide-react';
 
-import type { Expense, Person } from '../types';
-import { calculateNetBalances, format } from '../utils';
+import {
+  calculateNetBalances,
+  formatMoney,
+  isNegative,
+  isPositive,
+  isZero,
+  negate,
+} from '@/lib/money';
+import type { Expense, Person } from '@/types';
 
 interface BalancesProps {
   expenses: Expense[];
   people: Person[];
-  currency: DineroCurrency<number>;
 }
 
-export function Balances({ expenses, people, currency }: BalancesProps) {
-  const netBalances = calculateNetBalances(expenses, people, currency);
+export function Balances({ expenses, people }: BalancesProps) {
+  const netBalances = calculateNetBalances(expenses, people);
 
   if (expenses.length === 0) {
     return null;
@@ -27,67 +32,31 @@ export function Balances({ expenses, people, currency }: BalancesProps) {
         return (
           <div
             key={personId}
-            className={`flex justify-between items-center p-3 rounded-lg transition-all ${
+            className={`flex items-center justify-between rounded-lg border p-3 ${
               isOwed
-                ? 'bg-positive/[0.08] border border-positive/20'
+                ? 'border-positive/20 bg-positive/[0.08]'
                 : owes
-                  ? 'bg-negative/[0.08] border border-negative/20'
-                  : 'bg-bg-alt border border-divider'
+                  ? 'border-destructive/20 bg-destructive/[0.08]'
+                  : 'border-border bg-muted'
             }`}
           >
-            <span className="font-medium text-text-1">
+            <span className="text-sm font-medium text-foreground">
               {people.find(({ id }) => id === personId)?.name || 'Unknown'}
             </span>
             {settled ? (
-              <span className="text-text-3 flex items-center gap-1.5">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
+              <span className="flex items-center gap-1.5 text-sm text-text-muted">
+                <Check className="h-3.5 w-3.5" />
                 Settled
               </span>
             ) : isOwed ? (
-              <span className="text-positive font-semibold flex items-center gap-1.5">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 10l7-7m0 0l7 7m-7-7v18"
-                  />
-                </svg>
-                {format(balance)}
+              <span className="flex items-center gap-1.5 text-sm font-semibold tabular-nums text-positive">
+                <ArrowUp className="h-3.5 w-3.5" />
+                {formatMoney(balance)}
               </span>
             ) : (
-              <span className="text-negative font-semibold flex items-center gap-1.5">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                  />
-                </svg>
-                {format(isNegative(balance) ? multiply(balance, -1) : balance)}
+              <span className="flex items-center gap-1.5 text-sm font-semibold tabular-nums text-destructive">
+                <ArrowDown className="h-3.5 w-3.5" />
+                {formatMoney(isNegative(balance) ? negate(balance) : balance)}
               </span>
             )}
           </div>

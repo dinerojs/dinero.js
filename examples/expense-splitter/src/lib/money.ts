@@ -1,47 +1,58 @@
-import type { Dinero, DineroCurrency } from 'dinero.js';
+import type { Dinero } from 'dinero.js';
 import {
   dinero,
   add,
   subtract,
+  multiply,
   allocate,
+  toDecimal,
+  toSnapshot,
   isZero,
   isPositive,
-  greaterThan,
   isNegative,
+  greaterThan,
   compare,
 } from 'dinero.js';
+import { USD } from 'dinero.js/currencies';
 
-import type { Expense, Person, Settlement } from '../types';
+import type { Expense, Person, Settlement } from '@/types';
+
+export const currency = USD;
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
+
+export function zero(): Dinero<number> {
+  return dinero({ amount: 0, currency: USD });
+}
+
+export function fromAmount(amount: number): Dinero<number> {
+  return dinero({ amount, currency: USD });
+}
 
 /**
- * Calculate what each person owes or is owed based on expenses.
- * Returns a map of net balance per `personId`
+ * Convert a decimal string (e.g. "19.99") to an integer amount in minor units.
  */
-export function calculateNetBalances(
-  expenses: Expense[],
-  people: Person[],
-  currency: DineroCurrency<number>
-): Map<string, Dinero<number>> {
-  const balances = new Map<string, Dinero<number>>();
+export function toMinorUnits(value: string): number {
+  return Math.round(parseFloat(value) * 100);
+}
 
-  for (const person of people) {
-    balances.set(person.id, dinero({ amount: 0, currency }));
-  }
+export function snapshot(amount: Dinero<number>): number {
+  return toSnapshot(amount).amount;
+}
 
-  for (const expense of expenses) {
-    const shares = calculateShares(expense, people, currency);
+export function formatMoney(amount: Dinero<number>): string {
+  return toDecimal(amount, ({ value }) => {
+    return formatter.format(Number(value));
+  });
+}
 
-    balances.set(
-      expense.paidBy,
-      add(balances.get(expense.paidBy)!, expense.amount)
-    );
+export { isZero, isPositive, isNegative };
 
-    for (const [personId, share] of shares) {
-      balances.set(personId, subtract(balances.get(personId)!, share));
-    }
-  }
-
-  return balances;
+export function negate(amount: Dinero<number>): Dinero<number> {
+  return multiply(amount, -1);
 }
 
 /**
@@ -49,8 +60,7 @@ export function calculateNetBalances(
  */
 export function calculateShares(
   expense: Expense,
-  people: Person[],
-  currency: DineroCurrency<number>
+  people: Person[]
 ): Map<string, Dinero<number>> {
   const shares = new Map<string, Dinero<number>>();
 
@@ -84,11 +94,41 @@ export function calculateShares(
 
   for (const person of people) {
     if (!shares.has(person.id)) {
-      shares.set(person.id, dinero({ amount: 0, currency }));
+      shares.set(person.id, zero());
     }
   }
 
   return shares;
+}
+
+/**
+ * Calculate what each person owes or is owed based on expenses.
+ * Returns a map of net balance per `personId`.
+ */
+export function calculateNetBalances(
+  expenses: Expense[],
+  people: Person[]
+): Map<string, Dinero<number>> {
+  const balances = new Map<string, Dinero<number>>();
+
+  for (const person of people) {
+    balances.set(person.id, zero());
+  }
+
+  for (const expense of expenses) {
+    const shares = calculateShares(expense, people);
+
+    balances.set(
+      expense.paidBy,
+      add(balances.get(expense.paidBy)!, expense.amount)
+    );
+
+    for (const [personId, share] of shares) {
+      balances.set(personId, subtract(balances.get(personId)!, share));
+    }
+  }
+
+  return balances;
 }
 
 /**
@@ -97,10 +137,9 @@ export function calculateShares(
  */
 export function calculateSettlements(
   expenses: Expense[],
-  people: Person[],
-  currency: DineroCurrency<number>
+  people: Person[]
 ): Settlement[] {
-  const netBalances = calculateNetBalances(expenses, people, currency);
+  const netBalances = calculateNetBalances(expenses, people);
   const settlements: Settlement[] = [];
 
   const creditors: { id: string; amount: Dinero<number> }[] = [];
@@ -110,10 +149,7 @@ export function calculateSettlements(
     if (isPositive(balance)) {
       creditors.push({ id: personId, amount: balance });
     } else if (isNegative(balance)) {
-      debtors.push({
-        id: personId,
-        amount: subtract(dinero({ amount: 0, currency }), balance),
-      });
+      debtors.push({ id: personId, amount: negate(balance) });
     }
   }
 
@@ -144,19 +180,19 @@ export function calculateSettlements(
     if (greaterThan(creditor.amount, debtor.amount)) {
       settlementAmount = debtor.amount;
       creditor.amount = subtract(creditor.amount, debtor.amount);
-      debtor.amount = dinero({ amount: 0, currency });
+      debtor.amount = zero();
 
       j++;
     } else if (greaterThan(debtor.amount, creditor.amount)) {
       settlementAmount = creditor.amount;
       debtor.amount = subtract(debtor.amount, creditor.amount);
-      creditor.amount = dinero({ amount: 0, currency });
+      creditor.amount = zero();
 
       i++;
     } else {
       settlementAmount = creditor.amount;
-      creditor.amount = dinero({ amount: 0, currency });
-      debtor.amount = dinero({ amount: 0, currency });
+      creditor.amount = zero();
+      debtor.amount = zero();
 
       i++;
       j++;

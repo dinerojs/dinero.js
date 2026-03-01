@@ -9,7 +9,7 @@ export interface Person {
 
 export interface ExpenseShare {
   personId: string;
-  value: number; // For percentage: 0-100
+  value: number;
 }
 
 export interface Expense {

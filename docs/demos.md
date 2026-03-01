@@ -89,9 +89,17 @@ If you learn better by seeing code in action, or want to start from an existing 
 
 ## Expense splitter
 
-This demo showcases Dinero.js in action in a [React](https://reactjs.org/)-powered expense splitter. It demonstrates fair bill splitting with `allocate()`, balance tracking, and optimal debt settlement.
-
-[View demo](https://dinerojs.com/examples/expense-splitter/)
+<div class="demo-entry">
+  <div class="demo-text">
+    <p>An expense splitter. Uses <code>allocate</code> for fair bill splitting, <code>add</code> and <code>subtract</code> for balance tracking, and <code>toDecimal</code> for locale-aware formatting. Supports equal and percentage-based splits with optimal debt settlement.</p>
+    <p><a href="https://dinerojs.com/examples/expense-splitter/">View demo</a></p>
+  </div>
+  <div class="demo-image">
+    <a href="https://dinerojs.com/examples/expense-splitter/">
+      <img src="/images/examples/expense-splitter.png" alt="Expense splitter">
+    </a>
+  </div>
+</div>
 
 ## Invoice builder
 

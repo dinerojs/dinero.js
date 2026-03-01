@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
-import type { DineroCurrency } from 'dinero.js';
-import { dinero } from 'dinero.js';
+import { Plus, Equal, Percent } from 'lucide-react';
 
-import type { Person, Expense, SplitType, ExpenseShare } from '../types';
+import { fromAmount, toMinorUnits } from '@/lib/money';
+import type { Person, Expense, SplitType, ExpenseShare } from '@/types';
 
 interface AddExpenseProps {
   people: Person[];
-  currency: DineroCurrency<number>;
   onAdd(expense: Expense): void;
 }
 
-export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
+export function AddExpense({ people, onAdd }: AddExpenseProps) {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
   const [paidBy, setPaidBy] = useState(people[0]?.id || '');
@@ -45,25 +44,16 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
     0
   );
 
+  const inputClasses =
+    'w-full rounded-md border border-border bg-input px-3 py-2 text-sm text-foreground placeholder:text-text-muted transition-[border-color,box-shadow] duration-150 focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none';
+
   if (people.length < 2) {
     return (
-      <div className="text-center py-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-bg-alt mb-4">
-          <svg
-            className="w-8 h-8 text-text-3"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-            />
-          </svg>
+      <div className="py-8 text-center">
+        <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-xl bg-muted">
+          <Plus className="h-8 w-8 text-text-muted" />
         </div>
-        <p className="text-text-3">
+        <p className="text-sm text-text-muted">
           Add at least 2 people to start splitting expenses
         </p>
       </div>
@@ -75,7 +65,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
       onSubmit={(event) => {
         event.preventDefault();
 
-        const amountInCents = Math.round(parseFloat(amount) * 100);
+        const amountInCents = toMinorUnits(amount);
 
         if (!description.trim() || isNaN(amountInCents) || amountInCents <= 0) {
           return;
@@ -98,7 +88,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
         const expense: Expense = {
           id: crypto.randomUUID(),
           description: description.trim(),
-          amount: dinero({ amount: amountInCents, currency }),
+          amount: fromAmount(amountInCents),
           paidBy,
           splitType,
           shares,
@@ -109,13 +99,13 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
         setDescription('');
         setAmount('');
       }}
-      className="space-y-5"
+      className="space-y-4"
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label
             htmlFor="description"
-            className="block text-sm font-medium text-text-2 mb-2"
+            className="mb-1.5 block text-xs font-medium text-text-secondary"
           >
             Description
           </label>
@@ -124,21 +114,21 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
             id="description"
             value={description}
             onChange={(event) => setDescription(event.target.value)}
-            placeholder="Dinner, Uber, etc."
-            className="input-modern"
+            placeholder="e.g., Dinner, Uber…"
+            className={inputClasses}
           />
         </div>
 
         <div>
           <label
             htmlFor="amount"
-            className="block text-sm font-medium text-text-2 mb-2"
+            className="mb-1.5 block text-xs font-medium text-text-secondary"
           >
             Amount
           </label>
           <div className="relative">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-              <span className="text-text-3">$</span>
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+              <span className="text-sm text-text-muted">$</span>
             </div>
             <input
               type="number"
@@ -148,7 +138,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
               placeholder="0.00"
               step="0.01"
               min="0"
-              className="input-modern pl-8"
+              className={`${inputClasses} pl-7`}
             />
           </div>
         </div>
@@ -157,7 +147,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
       <div>
         <label
           htmlFor="paidBy"
-          className="block text-sm font-medium text-text-2 mb-2"
+          className="mb-1.5 block text-xs font-medium text-text-secondary"
         >
           Paid by
         </label>
@@ -165,10 +155,10 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
           id="paidBy"
           value={paidBy}
           onChange={(event) => setPaidBy(event.target.value)}
-          className="input-modern"
+          className={inputClasses}
         >
           {people.map((person) => (
-            <option key={person.id} value={person.id} className="bg-base">
+            <option key={person.id} value={person.id} className="bg-background">
               {person.name}
             </option>
           ))}
@@ -176,15 +166,15 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-text-2 mb-3">
+        <label className="mb-2 block text-xs font-medium text-text-secondary">
           Split type
         </label>
         <div className="flex gap-3">
           <label
-            className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-lg cursor-pointer transition-all ${
+            className={`flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border p-2.5 text-sm transition-[border-color,background-color,color] ${
               splitType === 'equal'
-                ? 'bg-brand/10 border border-brand/30 text-brand-light'
-                : 'bg-bg-alt border border-divider text-text-2 hover:bg-bg-soft'
+                ? 'border-primary/30 bg-primary/10 text-primary'
+                : 'border-border bg-muted text-text-secondary hover:bg-card'
             }`}
           >
             <input
@@ -196,26 +186,14 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
               }
               className="sr-only"
             />
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-              />
-            </svg>
+            <Equal className="h-4 w-4" />
             <span className="font-medium">Equal</span>
           </label>
           <label
-            className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-lg cursor-pointer transition-all ${
+            className={`flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border p-2.5 text-sm transition-[border-color,background-color,color] ${
               splitType === 'percentage'
-                ? 'bg-brand/10 border border-brand/30 text-brand-light'
-                : 'bg-bg-alt border border-divider text-text-2 hover:bg-bg-soft'
+                ? 'border-primary/30 bg-primary/10 text-primary'
+                : 'border-border bg-muted text-text-secondary hover:bg-card'
             }`}
           >
             <input
@@ -227,39 +205,27 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
               }
               className="sr-only"
             />
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
-              />
-            </svg>
+            <Percent className="h-4 w-4" />
             <span className="font-medium">Percentage</span>
           </label>
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-text-2 mb-3">
+        <label className="mb-2 block text-xs font-medium text-text-secondary">
           Split among
         </label>
-        <div className="space-y-2">
+        <div className="space-y-1.5">
           {people.map((person) => (
             <div
               key={person.id}
-              className={`flex items-center gap-3 p-3 rounded-lg transition-all ${
+              className={`flex items-center gap-3 rounded-lg p-2.5 transition-[border-color,background-color,color] ${
                 selectedPeople.has(person.id)
-                  ? 'bg-bg-alt border border-divider'
-                  : 'bg-transparent border border-transparent'
+                  ? 'bg-muted border border-border'
+                  : 'border border-transparent'
               }`}
             >
-              <label className="inline-flex items-center flex-1 cursor-pointer">
+              <label className="inline-flex flex-1 cursor-pointer items-center">
                 <input
                   type="checkbox"
                   checked={selectedPeople.has(person.id)}
@@ -275,7 +241,9 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
                     setSelectedPeople(newSelected);
                   }}
                 />
-                <span className="ml-3 text-text-1">{person.name}</span>
+                <span className="ml-3 text-sm text-foreground">
+                  {person.name}
+                </span>
               </label>
               {splitType === 'percentage' && selectedPeople.has(person.id) && (
                 <div className="flex items-center gap-2">
@@ -292,9 +260,9 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
                     min="0"
                     max="100"
                     aria-label={`Percentage for ${person.name}`}
-                    className="w-20 input-modern text-center py-2"
+                    className="w-20 rounded-md border border-border bg-input px-3 py-1.5 text-center text-sm text-foreground placeholder:text-text-muted transition-[border-color,box-shadow] duration-150 focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
                   />
-                  <span className="text-text-3">%</span>
+                  <span className="text-sm text-text-muted">%</span>
                 </div>
               )}
             </div>
@@ -302,7 +270,7 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
         </div>
         {splitType === 'percentage' && (
           <p
-            className={`mt-3 text-sm font-medium ${
+            className={`mt-2 text-xs font-medium ${
               totalPercentage === 100 ? 'text-positive' : 'text-warning'
             }`}
           >
@@ -321,22 +289,10 @@ export function AddExpense({ people, currency, onAdd }: AddExpenseProps) {
           selectedPeople.size === 0 ||
           (splitType === 'percentage' && totalPercentage !== 100)
         }
-        className="btn-primary w-full"
+        className="w-full rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
       >
         <span className="flex items-center justify-center gap-2">
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-            />
-          </svg>
+          <Plus className="h-4 w-4" />
           Add Expense
         </span>
       </button>
