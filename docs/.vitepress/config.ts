@@ -176,6 +176,7 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: 'dinero', link: '/api/dinero' },
+            { text: 'Currencies', link: '/api/currencies' },
             {
               text: 'Mutations',
               collapsed: true,
