@@ -39,7 +39,7 @@ body:
     attributes:
       label: Version
       description: What version of Dinero.js are you running?
-      placeholder: e.g., 2.0.0-alpha.1
+      placeholder: e.g., 2.0.0
     validations:
       required: true
   - type: input
