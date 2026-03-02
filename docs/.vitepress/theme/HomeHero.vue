@@ -31,7 +31,7 @@ import { withBase } from 'vitepress';
       <div class="code-area">
         <div class="code-block">
           <p class="code-label">Install</p>
-          <pre><code><span class="fn">npm</span> install dinero.js@alpha</code></pre>
+          <pre><code><span class="fn">npm</span> install dinero.js</code></pre>
         </div>
         <div class="code-block">
           <p class="code-label">Usage</p>

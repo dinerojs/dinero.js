@@ -85,7 +85,7 @@ export default defineConfig({
       { text: 'Docs', link: '/getting-started/quick-start' },
       { text: 'API', link: '/api/mutations/add' },
       {
-        text: '2.0.0-alpha.17',
+        text: '2.0.0',
         items: [
           {
             text: 'Changelog',
