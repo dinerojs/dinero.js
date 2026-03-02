@@ -10,11 +10,11 @@ description: Learn how to get Dinero.js up and running in your project.
 To get started, you need to install the `dinero.js` package.
 
 ```sh
-npm install dinero.js@alpha
+npm install dinero.js
 
 # or
 
-yarn add dinero.js@alpha
+yarn add dinero.js
 ```
 
 Then import it in your project:
@@ -27,7 +27,7 @@ import { USD } from 'dinero.js/currencies';
 If you don't use a package manager, you can use the HTML `script` element:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/index.production.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dinero.js/dist/umd/index.production.js"></script>
 <script>
   const { dinero, add, USD } = window.dinerojs;
 </script>
