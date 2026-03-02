@@ -1,21 +1,164 @@
-# [2.0.0](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.17...v2.0.0) (2026-03-02)
+# [2.0.0](https://github.com/dinerojs/dinero.js/compare/v1.9.1...v2.0.0) (2026-03-02)
 
+Dinero.js v2 is a complete rewrite of the library, designed from the ground up for modern JavaScript and TypeScript. It replaces the object-oriented, chainable API with a functional architecture of pure, standalone functions that are fully tree-shakeable.
 
-### Bug Fixes
+For a step-by-step migration guide, see the [upgrade guide](https://dinerojs.com/getting-started/upgrade-guide).
 
-* **docs:** enable clean URLs for production builds ([ef23685](https://github.com/dinerojs/dinero.js/commit/ef236856f0154c968e07e3b6c468290621a14b86))
-* **docs:** fix mobile nav menu hidden by frosted glass stacking context ([32e9b18](https://github.com/dinerojs/dinero.js/commit/32e9b18b5a7a58c8458e71fdaf690ffa00374bb0))
-* **docs:** update type names to use Dinero prefix ([0cc3a13](https://github.com/dinerojs/dinero.js/commit/0cc3a13a193c492eadb1cce53bfcece42392d720))
-* **examples:** make cart-react line items responsive on mobile ([161378b](https://github.com/dinerojs/dinero.js/commit/161378b0e2a392faa26cdcf88d84b170ee6ccdec))
-* **examples:** make invoice builder responsive on mobile ([700c2d6](https://github.com/dinerojs/dinero.js/commit/700c2d67814067fa8884d4897022049481701576))
-* **examples:** polish expense splitter with sample data, centralized money lib, and UI improvements ([c028bf4](https://github.com/dinerojs/dinero.js/commit/c028bf47f51b9d1cb1ff784f6f0c4ab7cf9bdc78))
-* restore alpha tag on npm version badge ([37ed0a0](https://github.com/dinerojs/dinero.js/commit/37ed0a051740066827640ec7c728fa772afb2ae1))
+## Breaking Changes
 
+### Functional API
 
-### Features
+All chainable methods are now standalone functions. This enables bundlers to tree-shake unused operations.
 
-* **examples:** add invoice builder demo ([f3694be](https://github.com/dinerojs/dinero.js/commit/f3694be6c682fbe8106e1a379174e6a6b502b4db))
-* **examples:** add multi-currency portfolio tracker ([4547032](https://github.com/dinerojs/dinero.js/commit/4547032ceda92c0fefa8408a05e0dffa54c62426))
+```diff
+- import Dinero from 'dinero.js';
+- const price = Dinero({ amount: 500, currency: 'USD' });
+- price.add(Dinero({ amount: 100, currency: 'USD' }));
++ import { dinero, add } from 'dinero.js';
++ import { USD } from 'dinero.js/currencies';
++ const price = dinero({ amount: 500, currency: USD });
++ add(price, dinero({ amount: 100, currency: USD }));
+```
+
+### Structured currencies
+
+Currencies are now objects with `code`, `base`, and `exponent` properties instead of ISO 4217 strings. All 166 ISO 4217 currencies ship with the library.
+
+```diff
+- Dinero({ amount: 500, currency: 'USD' })
++ import { USD } from 'dinero.js/currencies';
++ dinero({ amount: 500, currency: USD })
+```
+
+### Scale replaces precision
+
+The `precision` parameter is renamed to `scale`. Scale tracks the decimal point position independently of the currency exponent, allowing Dinero to preserve full precision through multi-step calculations.
+
+```diff
+- Dinero({ amount: 500, currency: 'USD', precision: 3 })
++ dinero({ amount: 500, currency: USD, scale: 3 })
+```
+
+### Scaled amounts replace floats
+
+Operations like `multiply`, `allocate`, and `convert` no longer accept floating-point numbers. All fractional values must be passed as scaled amounts to prevent IEEE 754 rounding errors.
+
+```diff
+- price.multiply(0.055)
++ multiply(price, { amount: 55, scale: 3 })
+```
+
+### Removed APIs
+
+- **`divide`** — use `allocate` for lossless distribution
+- **`percentage`** — use `allocate` or `multiply`
+- **`toFormat`**, **`toUnit`**, **`toRoundedUnit`** — use `toDecimal` or `toUnits` with a transformer
+- **`getAmount`**, **`getCurrency`**, **`getPrecision`** — use `toSnapshot`
+- **`getLocale`**, **`setLocale`** — locale support removed; use `toDecimal` with `Intl.NumberFormat`
+- **Global defaults** (`Dinero.defaultCurrency`, `Dinero.globalLocale`, etc.) — no global state
+
+### Type renames
+
+All public types use a `Dinero` prefix to avoid naming conflicts:
+
+- `Calculator` → `DineroCalculator`
+- `Currency` → `DineroCurrency`
+- `Snapshot` → `DineroSnapshot`
+- `Options` → `DineroOptions`
+
+### Platform requirements
+
+- **Node.js 20+** required (v1 had no formal engine requirement)
+- **Internet Explorer** is no longer supported
+
+## New Features
+
+### BigInt support
+
+The `dinero.js/bigint` entry point provides a `dinero` function backed by native `bigint` arithmetic, enabling representation of amounts beyond `Number.MAX_SAFE_INTEGER` — essential for cryptocurrencies, high-precision finance, and currencies with many decimal places.
+
+```js
+import { dinero, add } from 'dinero.js/bigint';
+import { USD } from 'dinero.js/bigint/currencies';
+
+const d = dinero({ amount: 999999999999999999n, currency: USD });
+```
+
+### Pluggable calculator
+
+The `createDinero` factory accepts any object implementing `DineroCalculator<T>`, allowing third-party arbitrary-precision libraries (big.js, JSBI, etc.) as the numeric backend.
+
+### Non-decimal currencies
+
+The `currency.base` field supports arrays for currencies with multiple subdivisions (e.g., pre-decimal British pounds: `[20, 12]` for 20 shillings/pound and 12 pence/shilling). The `toUnits` function decomposes amounts across all subdivisions.
+
+### Compile-time currency safety
+
+Currency objects are typed with literal codes (`DineroCurrency<number, 'USD'>`), enabling TypeScript to catch currency mismatches at compile time — for example, preventing addition of USD and EUR values.
+
+### Automatic scale tracking
+
+Scale propagates automatically during calculations. The `trimScale` function reduces it back to the smallest safe representation when needed, eliminating manual precision management.
+
+### New functions
+
+- **`compare`** — three-way comparison returning `-1 | 0 | 1`
+- **`toDecimal`** — string decimal representation with optional transformer
+- **`toUnits`** — array of amounts per currency subdivision
+- **`trimScale`** — reduce scale to smallest safe representation
+- **`normalizeScale`** — align multiple Dinero objects to a common scale
+- **`transformScale`** — convert to a specific scale
+
+### Rounding modes
+
+Eight rounding functions for precise control: `up`, `down`, `halfUp`, `halfDown`, `halfEven`, `halfOdd`, `halfTowardsZero`, `halfAwayFromZero`.
+
+### Full tree-shaking
+
+The package is marked `sideEffects: false`. Only the functions you import are included in your bundle.
+
+## Bug Fixes
+
+* **allocate:** distribute remainder to largest ratio first ([#776](https://github.com/dinerojs/dinero.js/issues/776))
+* **allocate:** prevent infinite loop with large amounts ([#771](https://github.com/dinerojs/dinero.js/issues/771))
+* **convert:** throw when converting between currencies with different bases ([#477](https://github.com/dinerojs/dinero.js/issues/477))
+* **isPositive:** return `false` for zero values ([#728](https://github.com/dinerojs/dinero.js/issues/728))
+* **toDecimal:** handle negative units correctly ([#690](https://github.com/dinerojs/dinero.js/issues/690))
+* **toDecimal:** preserve negative sign for leading zeros ([#692](https://github.com/dinerojs/dinero.js/issues/692))
+* **toDecimal:** do not append decimal string when scale is zero ([#751](https://github.com/dinerojs/dinero.js/issues/751))
+* **rounding:** fix `up`, `down`, `halfUp` handling of numbers close to 0 ([#710](https://github.com/dinerojs/dinero.js/issues/710), [#713](https://github.com/dinerojs/dinero.js/issues/713))
+* **currencies:** use proper base and exponents for MRU and MGA
+* **currencies:** update to ISO 4217 amendments 169-179
+
+## Package Changes
+
+The library is distributed as a single `dinero.js` package with subpath exports:
+
+| Import path | Description |
+|---|---|
+| `dinero.js` | Core API (number amounts) |
+| `dinero.js/currencies` | ISO 4217 currency objects |
+| `dinero.js/bigint` | Core API (bigint amounts) |
+| `dinero.js/bigint/currencies` | ISO 4217 currency objects for bigint |
+
+ESM and UMD bundles are available. TypeScript declarations are included.
+
+## Infrastructure
+
+- **Build system:** [tsdown](https://tsdown.dev/) (powered by Rolldown) for bundling and type generation
+- **Linting:** [Oxlint](https://oxc.rs/) (Rust-based)
+- **Testing:** [Vitest](https://vitest.dev/) with native TypeScript support
+- **Documentation:** new [VitePress](https://vitepress.dev/) site at [dinerojs.com](https://dinerojs.com), with Algolia DocSearch and AskAI
+- **Node.js:** 20+ required
+
+## Documentation
+
+The documentation has been completely rewritten and is available at [dinerojs.com](https://dinerojs.com). It includes:
+
+- Core concepts guide (amount, currency, scale, mutations, comparisons, formatting)
+- Practical guides (serialization, database storage, payment services, cryptocurrencies, and more)
+- Full API reference with examples
+- Interactive examples: shopping cart (React + Vue), invoice builder, expense splitter, portfolio tracker, and pricing page
 
 
 
