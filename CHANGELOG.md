@@ -1,3 +1,24 @@
+# [2.0.0](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.17...v2.0.0) (2026-03-02)
+
+
+### Bug Fixes
+
+* **docs:** enable clean URLs for production builds ([ef23685](https://github.com/dinerojs/dinero.js/commit/ef236856f0154c968e07e3b6c468290621a14b86))
+* **docs:** fix mobile nav menu hidden by frosted glass stacking context ([32e9b18](https://github.com/dinerojs/dinero.js/commit/32e9b18b5a7a58c8458e71fdaf690ffa00374bb0))
+* **docs:** update type names to use Dinero prefix ([0cc3a13](https://github.com/dinerojs/dinero.js/commit/0cc3a13a193c492eadb1cce53bfcece42392d720))
+* **examples:** make cart-react line items responsive on mobile ([161378b](https://github.com/dinerojs/dinero.js/commit/161378b0e2a392faa26cdcf88d84b170ee6ccdec))
+* **examples:** make invoice builder responsive on mobile ([700c2d6](https://github.com/dinerojs/dinero.js/commit/700c2d67814067fa8884d4897022049481701576))
+* **examples:** polish expense splitter with sample data, centralized money lib, and UI improvements ([c028bf4](https://github.com/dinerojs/dinero.js/commit/c028bf47f51b9d1cb1ff784f6f0c4ab7cf9bdc78))
+* restore alpha tag on npm version badge ([37ed0a0](https://github.com/dinerojs/dinero.js/commit/37ed0a051740066827640ec7c728fa772afb2ae1))
+
+
+### Features
+
+* **examples:** add invoice builder demo ([f3694be](https://github.com/dinerojs/dinero.js/commit/f3694be6c682fbe8106e1a379174e6a6b502b4db))
+* **examples:** add multi-currency portfolio tracker ([4547032](https://github.com/dinerojs/dinero.js/commit/4547032ceda92c0fefa8408a05e0dffa54c62426))
+
+
+
 # [2.0.0-alpha.17](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.16...v2.0.0-alpha.17) (2026-02-28)
 
 
