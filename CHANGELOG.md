@@ -1,3 +1,12 @@
+## [2.0.1](https://github.com/dinerojs/dinero.js/compare/v2.0.0...v2.0.1) (2026-03-07)
+
+
+### Bug Fixes
+
+* **core:** add "type": "module" to package.json ([#845](https://github.com/dinerojs/dinero.js/issues/845)) ([c8098ad](https://github.com/dinerojs/dinero.js/commit/c8098adb2e92ca6969e39576be6fc186eb157200)), closes [#843](https://github.com/dinerojs/dinero.js/issues/843)
+
+
+
 # [2.0.0](https://github.com/dinerojs/dinero.js/compare/v2.0.0-alpha.17...v2.0.0) (2026-03-02)
 
 Dinero.js v2 is a complete rewrite of the library, designed from the ground up for modern JavaScript and TypeScript. It replaces the object-oriented, chainable API with a functional architecture of pure, standalone functions that are fully tree-shakeable.
