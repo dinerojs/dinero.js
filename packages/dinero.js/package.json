@@ -25,6 +25,7 @@
     "type": "git",
     "url": "https://github.com/dinerojs/dinero.js.git"
   },
+  "type": "module",
   "license": "MIT",
   "author": {
     "name": "Sarah Dayan",
