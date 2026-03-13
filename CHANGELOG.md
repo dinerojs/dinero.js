@@ -1,3 +1,12 @@
+## [2.0.2](https://github.com/dinerojs/dinero.js/compare/v2.0.1...v2.0.2) (2026-03-13)
+
+
+### Bug Fixes
+
+* **dinero.js:** export DineroComparisonOperator as value, not type-only ([124eb05](https://github.com/dinerojs/dinero.js/commit/124eb05f78f0964efd7bbc529880105ada3799f1)), closes [#847](https://github.com/dinerojs/dinero.js/issues/847)
+
+
+
 ## [2.0.1](https://github.com/dinerojs/dinero.js/compare/v2.0.0...v2.0.1) (2026-03-07)
 
 
