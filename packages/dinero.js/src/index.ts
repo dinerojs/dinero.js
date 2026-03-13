@@ -6,7 +6,6 @@ export type {
   Dinero,
   DineroBinaryOperation,
   DineroCalculator,
-  DineroComparisonOperator,
   DineroDivideOperation,
   DineroFactory,
   DineroFormatter,
@@ -20,6 +19,7 @@ export type {
   TransformerOptions,
 } from './core';
 export {
+  DineroComparisonOperator,
   createDinero,
   down,
   halfAwayFromZero,
