@@ -1,5 +1,6 @@
-export { useCurrencyInput } from './useCurrencyInput';
+export { createUseCurrencyInput } from './createUseCurrencyInput';
 export type {
   UseCurrencyInputOptions,
   UseCurrencyInputReturn,
-} from './useCurrencyInput';
+} from './createUseCurrencyInput';
+export { useCurrencyInput } from './useCurrencyInput';

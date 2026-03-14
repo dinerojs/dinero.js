@@ -618,7 +618,7 @@ describe('useCurrencyInput', () => {
   });
 });
 
-type TestHarnessProps = UseCurrencyInputOptions & {
+type TestHarnessProps = UseCurrencyInputOptions<number> & {
   onDineroChange?(value: Dinero<number>): void;
 };
 
