@@ -1,5 +1,6 @@
 import { USD, MGA } from '../../currencies';
 import Big from 'big.js';
+import * as fc from 'fast-check';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
@@ -781,6 +782,45 @@ describe('allocate', () => {
           `[Error: [Dinero.js] Ratios are invalid.]`
         );
       });
+    });
+  });
+  describe('properties', () => {
+    const dinero = createNumberDinero;
+    const safeAmount = fc.integer({ min: -100000, max: 100000 });
+    const positiveRatios = fc.array(fc.integer({ min: 1, max: 100 }), {
+      minLength: 1,
+      maxLength: 10,
+    });
+
+    it('preserves the total: sum of shares equals the original amount', () => {
+      fc.assert(
+        fc.property(safeAmount, positiveRatios, (amount, ratios) => {
+          const d = dinero({ amount, currency: USD });
+          const shares = allocate(d, ratios);
+          const total = shares.reduce(
+            (sum, share) => sum + toSnapshot(share).amount,
+            0
+          );
+
+          expect(total).toBe(amount);
+        })
+      );
+    });
+    it('distributes non-negatively for positive amounts', () => {
+      fc.assert(
+        fc.property(
+          fc.integer({ min: 0, max: 100000 }),
+          positiveRatios,
+          (amount, ratios) => {
+            const d = dinero({ amount, currency: USD });
+            const shares = allocate(d, ratios);
+
+            shares.forEach((share) => {
+              expect(toSnapshot(share).amount).toBeGreaterThanOrEqual(0);
+            });
+          }
+        )
+      );
     });
   });
 });

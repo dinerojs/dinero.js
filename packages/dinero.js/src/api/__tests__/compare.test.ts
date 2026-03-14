@@ -1,5 +1,6 @@
 import { EUR, USD, MGA } from '../../currencies';
 import Big from 'big.js';
+import * as fc from 'fast-check';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
@@ -8,7 +9,7 @@ import {
   createBigjsDinero,
 } from 'test-utils';
 
-import { compare } from '..';
+import { compare, equal, lessThanOrEqual, greaterThanOrEqual } from '..';
 
 describe('compare', () => {
   describe('number', () => {
@@ -281,6 +282,57 @@ describe('compare', () => {
           `[Error: [Dinero.js] Objects must have the same currency.]`
         );
       });
+    });
+  });
+  describe('properties', () => {
+    const dinero = createNumberDinero;
+    const safeAmount = fc.integer({ min: -100000, max: 100000 });
+
+    it('is antisymmetric: compare(a, b) equals -compare(b, a)', () => {
+      fc.assert(
+        fc.property(safeAmount, safeAmount, (a, b) => {
+          const d1 = dinero({ amount: a, currency: USD });
+          const d2 = dinero({ amount: b, currency: USD });
+
+          expect(compare(d1, d2)).toBe(-compare(d2, d1));
+        })
+      );
+    });
+    it('is transitive: if a <= b and b <= c, then a <= c', () => {
+      fc.assert(
+        fc.property(safeAmount, safeAmount, safeAmount, (a, b, c) => {
+          const sorted = [a, b, c].sort((x, y) => x - y);
+          const d1 = dinero({ amount: sorted[0], currency: USD });
+          const d2 = dinero({ amount: sorted[1], currency: USD });
+          const d3 = dinero({ amount: sorted[2], currency: USD });
+
+          expect(lessThanOrEqual(d1, d2)).toBe(true);
+          expect(lessThanOrEqual(d2, d3)).toBe(true);
+          expect(lessThanOrEqual(d1, d3)).toBe(true);
+        })
+      );
+    });
+    it('is consistent with equal: compare(a, b) === 0 iff equal(a, b)', () => {
+      fc.assert(
+        fc.property(safeAmount, safeAmount, (a, b) => {
+          const d1 = dinero({ amount: a, currency: USD });
+          const d2 = dinero({ amount: b, currency: USD });
+
+          expect(compare(d1, d2) === 0).toBe(equal(d1, d2));
+        })
+      );
+    });
+    it('is total: for any a, b either a <= b or b <= a', () => {
+      fc.assert(
+        fc.property(safeAmount, safeAmount, (a, b) => {
+          const d1 = dinero({ amount: a, currency: USD });
+          const d2 = dinero({ amount: b, currency: USD });
+
+          expect(lessThanOrEqual(d1, d2) || greaterThanOrEqual(d1, d2)).toBe(
+            true
+          );
+        })
+      );
     });
   });
 });

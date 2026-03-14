@@ -1,5 +1,6 @@
 import { USD } from '../../currencies';
 import Big from 'big.js';
+import * as fc from 'fast-check';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
@@ -8,7 +9,7 @@ import {
   createBigjsDinero,
 } from 'test-utils';
 
-import { multiply, toSnapshot } from '..';
+import { equal, multiply, toSnapshot } from '..';
 
 describe('multiply', () => {
   describe('number', () => {
@@ -142,6 +143,31 @@ describe('multiply', () => {
         scale: new Big(5),
         currency: bigjsUSD,
       });
+    });
+  });
+  describe('properties', () => {
+    const dinero = createNumberDinero;
+    const safeAmount = fc.integer({ min: -100000, max: 100000 });
+
+    it('has 1 as identity: multiply(a, 1) equals a', () => {
+      fc.assert(
+        fc.property(safeAmount, (a) => {
+          const d = dinero({ amount: a, currency: USD });
+
+          expect(equal(multiply(d, 1), d)).toBe(true);
+        })
+      );
+    });
+    it('by zero yields zero amount', () => {
+      fc.assert(
+        fc.property(safeAmount, (a) => {
+          const d = dinero({ amount: a, currency: USD });
+          const result = toSnapshot(multiply(d, 0)).amount;
+
+          // JavaScript produces -0 for negative * 0, so compare with ==
+          expect(result == 0).toBe(true);
+        })
+      );
     });
   });
 });

@@ -1,5 +1,6 @@
 import { EUR, USD, MGA, MRU } from '../../currencies';
 import Big from 'big.js';
+import * as fc from 'fast-check';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
@@ -8,7 +9,7 @@ import {
   createBigjsDinero,
 } from 'test-utils';
 
-import { add, toSnapshot } from '..';
+import { add, equal, subtract, toSnapshot } from '..';
 
 describe('add', () => {
   describe('number', () => {
@@ -391,6 +392,52 @@ describe('add', () => {
           `[Error: [Dinero.js] Objects must have the same currency.]`
         );
       });
+    });
+  });
+  describe('properties', () => {
+    const dinero = createNumberDinero;
+    const safeAmount = fc.integer({ min: -100000, max: 100000 });
+
+    it('is commutative: add(a, b) equals add(b, a)', () => {
+      fc.assert(
+        fc.property(safeAmount, safeAmount, (a, b) => {
+          const d1 = dinero({ amount: a, currency: USD });
+          const d2 = dinero({ amount: b, currency: USD });
+
+          expect(equal(add(d1, d2), add(d2, d1))).toBe(true);
+        })
+      );
+    });
+    it('is associative: add(add(a, b), c) equals add(a, add(b, c))', () => {
+      fc.assert(
+        fc.property(safeAmount, safeAmount, safeAmount, (a, b, c) => {
+          const d1 = dinero({ amount: a, currency: USD });
+          const d2 = dinero({ amount: b, currency: USD });
+          const d3 = dinero({ amount: c, currency: USD });
+
+          expect(equal(add(add(d1, d2), d3), add(d1, add(d2, d3)))).toBe(true);
+        })
+      );
+    });
+    it('has zero as identity: add(a, 0) equals a', () => {
+      fc.assert(
+        fc.property(safeAmount, (a) => {
+          const d = dinero({ amount: a, currency: USD });
+          const zero = dinero({ amount: 0, currency: USD });
+
+          expect(equal(add(d, zero), d)).toBe(true);
+        })
+      );
+    });
+    it('is the inverse of subtract: subtract(add(a, b), b) equals a', () => {
+      fc.assert(
+        fc.property(safeAmount, safeAmount, (a, b) => {
+          const d1 = dinero({ amount: a, currency: USD });
+          const d2 = dinero({ amount: b, currency: USD });
+
+          expect(equal(subtract(add(d1, d2), d2), d1)).toBe(true);
+        })
+      );
     });
   });
 });

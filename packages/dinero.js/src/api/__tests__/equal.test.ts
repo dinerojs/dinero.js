@@ -1,5 +1,6 @@
 import { EUR, MGA, USD } from '../../currencies';
 import Big from 'big.js';
+import * as fc from 'fast-check';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
@@ -283,6 +284,30 @@ describe('equal', () => {
 
         expect(equal(d1, d2)).toBe(false);
       });
+    });
+  });
+  describe('properties', () => {
+    const dinero = createNumberDinero;
+    const safeAmount = fc.integer({ min: -100000, max: 100000 });
+
+    it('is reflexive: equal(a, a) is always true', () => {
+      fc.assert(
+        fc.property(safeAmount, (a) => {
+          const d = dinero({ amount: a, currency: USD });
+
+          expect(equal(d, d)).toBe(true);
+        })
+      );
+    });
+    it('is symmetric: equal(a, b) equals equal(b, a)', () => {
+      fc.assert(
+        fc.property(safeAmount, safeAmount, (a, b) => {
+          const d1 = dinero({ amount: a, currency: USD });
+          const d2 = dinero({ amount: b, currency: USD });
+
+          expect(equal(d1, d2)).toBe(equal(d2, d1));
+        })
+      );
     });
   });
 });

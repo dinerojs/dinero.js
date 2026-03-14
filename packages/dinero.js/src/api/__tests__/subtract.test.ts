@@ -1,5 +1,6 @@
 import { EUR, USD } from '../../currencies';
 import Big from 'big.js';
+import * as fc from 'fast-check';
 import {
   castToBigintCurrency,
   castToBigjsCurrency,
@@ -8,7 +9,7 @@ import {
   createBigjsDinero,
 } from 'test-utils';
 
-import { subtract, toSnapshot } from '..';
+import { add, equal, subtract, toSnapshot } from '..';
 
 describe('subtract', () => {
   describe('number', () => {
@@ -169,6 +170,30 @@ describe('subtract', () => {
         subtract(d1, d2);
       }).toThrowErrorMatchingInlineSnapshot(
         `[Error: [Dinero.js] Objects must have the same currency.]`
+      );
+    });
+  });
+  describe('properties', () => {
+    const dinero = createNumberDinero;
+    const safeAmount = fc.integer({ min: -100000, max: 100000 });
+
+    it('self-subtraction yields zero: subtract(a, a) has amount 0', () => {
+      fc.assert(
+        fc.property(safeAmount, (a) => {
+          const d = dinero({ amount: a, currency: USD });
+
+          expect(toSnapshot(subtract(d, d)).amount).toBe(0);
+        })
+      );
+    });
+    it('is the inverse of add: add(subtract(a, b), b) equals a', () => {
+      fc.assert(
+        fc.property(safeAmount, safeAmount, (a, b) => {
+          const d1 = dinero({ amount: a, currency: USD });
+          const d2 = dinero({ amount: b, currency: USD });
+
+          expect(equal(add(subtract(d1, d2), d2), d1)).toBe(true);
+        })
       );
     });
   });

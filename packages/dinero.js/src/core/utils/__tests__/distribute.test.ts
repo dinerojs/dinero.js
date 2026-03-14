@@ -1,3 +1,5 @@
+import * as fc from 'fast-check';
+
 import { calculator } from '../../../calculator/number';
 
 import { distribute } from '../distribute';
@@ -43,5 +45,52 @@ describe('distribute', () => {
     // but the function should return without hanging
     expect(result).toHaveLength(2);
     expect(result[0] + result[1]).toBe(largeAmount);
+  });
+  describe('properties', () => {
+    const safeAmount = fc.integer({ min: -100000, max: 100000 });
+    const positiveRatios = fc.array(fc.integer({ min: 1, max: 100 }), {
+      minLength: 1,
+      maxLength: 10,
+    });
+
+    it('preserves the total: sum of shares equals the input', () => {
+      fc.assert(
+        fc.property(safeAmount, positiveRatios, (amount, ratios) => {
+          const shares = distributeFn(amount, ratios);
+
+          expect(shares.reduce((a, b) => a + b, 0)).toBe(amount);
+        })
+      );
+    });
+    it('distributes non-negatively for positive amounts', () => {
+      fc.assert(
+        fc.property(
+          fc.integer({ min: 0, max: 100000 }),
+          positiveRatios,
+          (amount, ratios) => {
+            const shares = distributeFn(amount, ratios);
+
+            shares.forEach((share) => {
+              expect(share).toBeGreaterThanOrEqual(0);
+            });
+          }
+        )
+      );
+    });
+    it('distributes non-positively for negative amounts', () => {
+      fc.assert(
+        fc.property(
+          fc.integer({ min: -100000, max: 0 }),
+          positiveRatios,
+          (amount, ratios) => {
+            const shares = distributeFn(amount, ratios);
+
+            shares.forEach((share) => {
+              expect(share).toBeLessThanOrEqual(0);
+            });
+          }
+        )
+      );
+    });
   });
 });
