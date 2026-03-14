@@ -1,4 +1,5 @@
 import type { DineroFactory } from 'dinero.js';
+import { toSnapshot } from 'dinero.js';
 import type { InputHTMLAttributes, Ref } from 'react';
 
 import { createUseCurrencyInput } from '../hooks/createUseCurrencyInput';
@@ -22,9 +23,10 @@ export function createCurrencyInput<TAmount>(
     scale,
     onValueChange,
     ref,
+    name,
     ...rest
   }: CurrencyInputProps<TAmount>) {
-    const { inputProps } = useCurrencyInput({
+    const { inputProps, dineroValue } = useCurrencyInput({
       currency,
       locale,
       defaultValue,
@@ -33,7 +35,16 @@ export function createCurrencyInput<TAmount>(
       onValueChange,
     });
 
-    return <input ref={ref} {...rest} {...inputProps} />;
+    return (
+      <>
+        <input ref={ref} {...rest} {...inputProps} />
+        <input
+          type="hidden"
+          name={name}
+          value={`${toSnapshot(dineroValue).amount}`}
+        />
+      </>
+    );
   }
 
   return CurrencyInput;
