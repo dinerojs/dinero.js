@@ -4,8 +4,8 @@ import type {
   DineroCalculator,
   DineroFactory,
 } from 'dinero.js';
-import { toDecimal } from 'dinero.js';
-import { useState, useMemo } from 'react';
+import { DineroComparisonOperator, toDecimal } from 'dinero.js';
+import { useState, useMemo, useRef } from 'react';
 import type {
   InputHTMLAttributes,
   ChangeEvent,
@@ -29,6 +29,12 @@ export type UseCurrencyInputOptions<TAmount> = {
    */
   defaultValue?: TAmount;
   /**
+   * The controlled amount in minor currency units.
+   * When provided, the hook uses this value instead of its internal state.
+   * Use with `onValueChange` to implement controlled inputs (e.g., form library integration).
+   */
+  value?: TAmount;
+  /**
    * The scale (number of decimal places) to use instead of the currency's exponent.
    * For example, `scale: 3` with USD formats `10545` as `$10.545`.
    */
@@ -42,7 +48,7 @@ export type UseCurrencyInputOptions<TAmount> = {
 export type UseCurrencyInputReturn<TAmount> = {
   /**
    * Props to spread onto an `<input>` element.
-   * Includes `value`, `onChange`, `onKeyDown`, `type`, and `inputMode`.
+   * Includes `value`, `onChange`, `onKeyDown`, `onPaste`, `type`, and `inputMode`.
    */
   inputProps: InputHTMLAttributes<HTMLInputElement>;
   /**
@@ -63,9 +69,41 @@ export function createUseCurrencyInput<TAmount>(
       currency,
       locale,
       defaultValue,
+      value: controlledValue,
       scale: scaleOption,
       onValueChange,
     } = options;
+
+    const isControlled = controlledValue !== undefined;
+    const wasControlledRef = useRef(isControlled);
+
+    if (__DEV__) {
+      if (controlledValue !== undefined && defaultValue !== undefined) {
+        console.warn(
+          '[Dinero.js] A component has both `value` and `defaultValue` props. ' +
+            'When `value` is provided, `defaultValue` is ignored. ' +
+            'Decide between a controlled or uncontrolled input and remove one of these props.'
+        );
+      }
+    }
+
+    if (__DEV__) {
+      if (wasControlledRef.current && !isControlled) {
+        console.warn(
+          '[Dinero.js] A component is changing a controlled input to be uncontrolled. ' +
+            'This is likely caused by the value changing from a defined to an undefined value. ' +
+            'Decide between a controlled or uncontrolled input for the lifetime of the component.'
+        );
+      } else if (!wasControlledRef.current && isControlled) {
+        console.warn(
+          '[Dinero.js] A component is changing an uncontrolled input to be controlled. ' +
+            'This is likely caused by the value changing from undefined to a defined value. ' +
+            'Decide between a controlled or uncontrolled input for the lifetime of the component.'
+        );
+      }
+    }
+
+    wasControlledRef.current = isControlled;
 
     // Create a reference Dinero to access the calculator and formatter.
     const { calculator, formatter } = useMemo(
@@ -78,7 +116,11 @@ export function createUseCurrencyInput<TAmount>(
       ? currency.base[0]
       : currency.base;
 
-    const [amount, setAmount] = useState<TAmount>(defaultValue ?? zero);
+    const [internalAmount, setInternalAmount] = useState<TAmount>(
+      controlledValue ?? defaultValue ?? zero
+    );
+
+    const amount = isControlled ? controlledValue : internalAmount;
     const scale = scaleOption ?? currency.exponent;
 
     const dineroValue = useMemo(
@@ -92,7 +134,9 @@ export function createUseCurrencyInput<TAmount>(
     );
 
     function updateAmount(newAmount: TAmount) {
-      setAmount(newAmount);
+      if (!isControlled) {
+        setInternalAmount(newAmount);
+      }
       const newDinero = dineroFactory({ amount: newAmount, currency, scale });
       onValueChange?.(newDinero);
     }
@@ -112,6 +156,11 @@ export function createUseCurrencyInput<TAmount>(
     function onKeyDown(event: KeyboardEvent<HTMLInputElement>) {
       if (event.key === 'Backspace') {
         event.preventDefault();
+
+        if (calculator.compare(amount, zero) === DineroComparisonOperator.EQ) {
+          return;
+        }
+
         updateAmount(calculator.integerDivide(amount, base));
       }
     }

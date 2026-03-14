@@ -33,6 +33,7 @@ function PriceField() {
 | `currency` | `DineroCurrency<TAmount>` | The currency to use. Its exponent determines decimal placement. |
 | `locale` | `string` | BCP 47 locale tag for formatting (e.g., `'en-US'`). |
 | `defaultValue` | `TAmount` | Initial amount in minor units (e.g., `1050` for $10.50). |
+| `value` | `TAmount` | Controlled amount in minor units. When provided, the hook uses this instead of internal state. |
 | `scale` | `TAmount` | Custom scale to override the currency's exponent. |
 | `onValueChange` | `(dinero: Dinero<TAmount>) => void` | Called with the current Dinero object on every change. |
 
@@ -82,7 +83,7 @@ function PriceField() {
 }
 ```
 
-It accepts the same options as `useCurrencyInput` (`currency`, `locale`, `defaultValue`, `scale`, `onValueChange`) plus any `InputHTMLAttributes<HTMLInputElement>` and `ref`.
+It accepts the same options as `useCurrencyInput` (`currency`, `locale`, `defaultValue`, `value`, `scale`, `onValueChange`) plus any `InputHTMLAttributes<HTMLInputElement>` and `ref`.
 
 For bigint support:
 
@@ -98,13 +99,152 @@ import { createCurrencyInput } from '@dinerojs/react';
 const CurrencyInput = createCurrencyInput(myCustomDinero);
 ```
 
+## Controlled value
+
+Use the `value` prop to control the input externally. This is useful for form library integration and form reset.
+
+Like React's native `<input>`, you must wire `onValueChange` back to the state that feeds `value` — otherwise keystrokes are ignored.
+
+```tsx
+import { useState } from 'react';
+import { toSnapshot } from 'dinero.js';
+import { CurrencyInput } from '@dinerojs/react';
+import { USD } from 'dinero.js/currencies';
+
+function PriceField() {
+  const [amount, setAmount] = useState(0);
+
+  return (
+    <CurrencyInput
+      currency={USD}
+      locale="en-US"
+      value={amount}
+      onValueChange={(dinero) => setAmount(toSnapshot(dinero).amount)}
+    />
+  );
+}
+```
+
+## Form libraries
+
+No adapters needed. Use `onValueChange` to push the value into your form library, and `value` to pull it back for controlled behavior like form reset.
+
+### React Hook Form
+
+```tsx
+import { useForm, Controller } from 'react-hook-form';
+import { toSnapshot } from 'dinero.js';
+import { CurrencyInput } from '@dinerojs/react';
+import { USD } from 'dinero.js/currencies';
+
+function PriceForm() {
+  const { handleSubmit, control, reset } = useForm({
+    defaultValues: { price: 1050 },
+  });
+
+  return (
+    <form onSubmit={handleSubmit(console.log)}>
+      <Controller
+        name="price"
+        control={control}
+        render={({ field }) => (
+          <CurrencyInput
+            currency={USD}
+            locale="en-US"
+            value={field.value}
+            onValueChange={(dinero) =>
+              field.onChange(toSnapshot(dinero).amount)
+            }
+          />
+        )}
+      />
+      <button type="button" onClick={() => reset()}>Reset</button>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+
+### Formik
+
+```tsx
+import { Formik, Form, useField } from 'formik';
+import { toSnapshot } from 'dinero.js';
+import { CurrencyInput } from '@dinerojs/react';
+import { USD } from 'dinero.js/currencies';
+
+function PriceField({ name }: { name: string }) {
+  const [field, , helpers] = useField<number>(name);
+
+  return (
+    <CurrencyInput
+      currency={USD}
+      locale="en-US"
+      name={name}
+      value={field.value}
+      onValueChange={(dinero) => helpers.setValue(toSnapshot(dinero).amount)}
+    />
+  );
+}
+
+function PriceForm() {
+  return (
+    <Formik initialValues={{ price: 1050 }} onSubmit={console.log}>
+      {({ resetForm }) => (
+        <Form>
+          <PriceField name="price" />
+          <button type="button" onClick={() => resetForm()}>Reset</button>
+          <button type="submit">Submit</button>
+        </Form>
+      )}
+    </Formik>
+  );
+}
+```
+
+### TanStack Form
+
+```tsx
+import { useForm } from '@tanstack/react-form';
+import { toSnapshot } from 'dinero.js';
+import { CurrencyInput } from '@dinerojs/react';
+import { USD } from 'dinero.js/currencies';
+
+function PriceForm() {
+  const form = useForm({
+    defaultValues: { price: 1050 },
+    onSubmit: ({ value }) => console.log(value),
+  });
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        form.handleSubmit();
+      }}
+    >
+      <form.Field name="price">
+        {(field) => (
+          <CurrencyInput
+            currency={USD}
+            locale="en-US"
+            value={field.state.value}
+            onValueChange={(dinero) =>
+              field.handleChange(toSnapshot(dinero).amount)
+            }
+          />
+        )}
+      </form.Field>
+      <button type="button" onClick={() => form.reset()}>Reset</button>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+
 ## Server-side parsing
 
 _Coming soon._ Parse `FormData` into Dinero objects in Next.js Server Actions and Remix actions via `@dinerojs/react/server`.
-
-## Form library adapters
-
-_Coming soon._ Adapters for React Hook Form, Formik, and other form libraries.
 
 ## Validation
 

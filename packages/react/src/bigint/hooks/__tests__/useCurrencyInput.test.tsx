@@ -390,6 +390,29 @@ describe('useCurrencyInput (bigint)', () => {
       });
     });
 
+    it('does not call `onValueChange` on Backspace when already at zero', async () => {
+      const user = userEvent.setup();
+      const onValueChange = vi.fn();
+
+      function TestWithOnValueChange() {
+        const { inputProps } = useCurrencyInput({
+          currency: bigintUSD,
+          locale: 'en-US',
+          onValueChange,
+        });
+
+        return <input {...inputProps} />;
+      }
+
+      render(<TestWithOnValueChange />);
+      const input = screen.getByRole('textbox');
+      await user.click(input);
+      await user.keyboard('{Backspace}');
+
+      expect(input).toHaveValue('0.00');
+      expect(onValueChange).not.toHaveBeenCalled();
+    });
+
     it('calls onValueChange exactly once on paste', async () => {
       const user = userEvent.setup();
       const onValueChange = vi.fn();

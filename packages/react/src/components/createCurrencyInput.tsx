@@ -5,7 +5,7 @@ import { createUseCurrencyInput } from '../hooks/createUseCurrencyInput';
 import type { UseCurrencyInputOptions } from '../hooks/createUseCurrencyInput';
 
 export type CurrencyInputProps<TAmount> = UseCurrencyInputOptions<TAmount> &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'defaultValue'> & {
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'value'> & {
     ref?: Ref<HTMLInputElement>;
   };
 
@@ -18,6 +18,7 @@ export function createCurrencyInput<TAmount>(
     currency,
     locale,
     defaultValue,
+    value,
     scale,
     onValueChange,
     ref,
@@ -27,6 +28,7 @@ export function createCurrencyInput<TAmount>(
       currency,
       locale,
       defaultValue,
+      value,
       scale,
       onValueChange,
     });
