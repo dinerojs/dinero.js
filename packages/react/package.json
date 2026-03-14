@@ -35,6 +35,10 @@
       "types": "./dist/esm/index.d.ts",
       "default": "./dist/esm/index.js"
     },
+    "./bigint": {
+      "types": "./dist/esm/bigint/index.d.ts",
+      "default": "./dist/esm/bigint/index.js"
+    },
     "./server": {
       "types": "./dist/esm/server/index.d.ts",
       "default": "./dist/esm/server/index.js"
