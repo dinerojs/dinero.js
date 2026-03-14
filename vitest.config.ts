@@ -25,6 +25,11 @@ export default defineConfig({
         __dirname,
         'packages/dinero.js/src/bigint/'
       ),
+      '@dinerojs/react/server': path.resolve(
+        __dirname,
+        'packages/react/src/server/'
+      ),
+      '@dinerojs/react': path.resolve(__dirname, 'packages/react/src/'),
       'dinero.js': path.resolve(__dirname, 'packages/dinero.js/src/'),
     },
   },

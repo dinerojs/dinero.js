@@ -1,0 +1,64 @@
+{
+  "name": "@dinerojs/react",
+  "version": "2.0.2",
+  "description": "Headless money input components and hooks for React, powered by Dinero.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "money",
+    "currency",
+    "input",
+    "react",
+    "hooks",
+    "headless",
+    "dinero",
+    "form",
+    "typescript"
+  ],
+  "homepage": "https://dinerojs.com",
+  "bugs": "https://github.com/dinerojs/dinero.js/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dinerojs/dinero.js.git",
+    "directory": "packages/react"
+  },
+  "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "Sarah Dayan",
+    "url": "https://sarahdayan.dev"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "default": "./dist/esm/index.js"
+    },
+    "./server": {
+      "types": "./dist/esm/server/index.d.ts",
+      "default": "./dist/esm/server/index.js"
+    }
+  },
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "source": "src/index.ts",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build:clean": "rimraf ./dist",
+    "build": "tsdown",
+    "lint": "oxlint .",
+    "test": "vitest --config ../../vitest.config.ts --dir src"
+  },
+  "peerDependencies": {
+    "dinero.js": "^2.0.0",
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "tsdown": "^0.20.1"
+  }
+}
