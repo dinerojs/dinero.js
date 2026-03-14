@@ -132,6 +132,10 @@ import { USD, EUR } from 'dinero.js/bigint/currencies';
 Dinero.js requires Node.js 14+ with ES modules. Use `import`, not `require()`.
 :::
 
+## React
+
+If you're building a React application, check out [`@dinerojs/react`](/react/getting-started)—headless money input components and hooks powered by Dinero.js.
+
 ## Agent skills
 
 If you use an AI coding agent (Claude Code, Cursor, GitHub Copilot, etc.), you can install the [Dinero.js skills](/agent-skills) to teach it best practices and common pitfalls.

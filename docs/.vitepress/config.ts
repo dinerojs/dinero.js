@@ -173,6 +173,45 @@ export default defineConfig({
           ],
         },
         {
+          text: 'React',
+          items: [
+            {
+              text: 'Getting started',
+              link: '/react/getting-started',
+            },
+            {
+              text: 'Controlled inputs',
+              link: '/react/controlled-inputs',
+            },
+            {
+              text: 'Form libraries',
+              link: '/react/form-libraries',
+            },
+            {
+              text: 'Bigint support',
+              link: '/react/bigint',
+            },
+            {
+              text: 'Custom calculators',
+              link: '/react/custom-calculators',
+            },
+            {
+              text: 'API',
+              collapsed: true,
+              items: [
+                {
+                  text: 'useCurrencyInput',
+                  link: '/react/api/use-currency-input',
+                },
+                {
+                  text: 'CurrencyInput',
+                  link: '/react/api/currency-input',
+                },
+              ],
+            },
+          ],
+        },
+        {
           text: 'API Reference',
           collapsed: false,
           items: [

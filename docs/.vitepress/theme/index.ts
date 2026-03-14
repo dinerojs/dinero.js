@@ -4,6 +4,7 @@ import DefaultTheme from 'vitepress/theme';
 import NotFound from './NotFound.vue';
 import HomeHero from './HomeHero.vue';
 import HomeFeatures from './HomeFeatures.vue';
+import HomeReact from './HomeReact.vue';
 import './style.css';
 
 export default {
@@ -13,6 +14,7 @@ export default {
       'not-found': () => h(NotFound),
       'home-hero-before': () => h(HomeHero),
       'home-features-before': () => h(HomeFeatures),
+      'home-features-after': () => h(HomeReact),
     });
   },
 } satisfies Theme;
