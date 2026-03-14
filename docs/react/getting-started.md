@@ -115,6 +115,31 @@ function PriceField() {
 }
 ```
 
+## Form submission
+
+`CurrencyInput` submits the raw minor-unit amount (e.g., `105000`) via a hidden input instead of the formatted display string. This means your server receives a clean integer string.
+
+```tsx
+<form action="/api/checkout" method="post">
+  <CurrencyInput
+    currency={USD}
+    locale="en-US"
+    name="price"
+    aria-label="Price"
+  />
+  <button type="submit">Pay</button>
+</form>
+```
+
+On the server:
+
+```ts
+const amount = Number(formData.get('price')); // 105000
+const price = dinero({ amount, currency: USD });
+```
+
+If you use the `useCurrencyInput` hook directly, you'll need to wire the hidden input yourself. See the [hook API reference](/react/api/use-currency-input#in-a-form) for details.
+
 ## Next steps
 
 - [Controlled inputs](/react/controlled-inputs) — Wire the input to external state for form library integration and form reset.

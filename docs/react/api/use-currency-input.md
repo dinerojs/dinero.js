@@ -8,6 +8,7 @@ description: A React hook that wires a native input to a Dinero object with ATM-
 A React hook that manages an ATM-style money input. It handles formatting, keystrokes, and paste, and exposes props to spread onto a native `<input>` element.
 
 ```tsx
+import { toSnapshot } from 'dinero.js';
 import { useCurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
@@ -17,7 +18,12 @@ function PriceField() {
     locale: 'en-US',
   });
 
-  return <input {...inputProps} />;
+  return (
+    <>
+      <input {...inputProps} />
+      <input type="hidden" name="price" value={`${toSnapshot(dineroValue).amount}`} />
+    </>
+  );
 }
 ```
 
@@ -47,7 +53,7 @@ function PriceField() {
 import { useCurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
-const { inputProps } = useCurrencyInput({
+const { inputProps, dineroValue } = useCurrencyInput({
   currency: USD,
   locale: 'en-US',
   defaultValue: 1050, // starts at $10.50
@@ -61,7 +67,7 @@ import { toSnapshot } from 'dinero.js';
 import { useCurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
-const { inputProps } = useCurrencyInput({
+const { inputProps, dineroValue } = useCurrencyInput({
   currency: USD,
   locale: 'en-US',
   onValueChange(dinero) {
@@ -79,7 +85,7 @@ See [Controlled inputs](/react/controlled-inputs) for a full explanation of the 
 import { useCurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
-const { inputProps } = useCurrencyInput({
+const { inputProps, dineroValue } = useCurrencyInput({
   currency: USD,
   locale: 'en-US',
   value: amount,
@@ -95,7 +101,7 @@ const { inputProps } = useCurrencyInput({
 import { useCurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
-const { inputProps } = useCurrencyInput({
+const { inputProps, dineroValue } = useCurrencyInput({
   currency: USD,
   locale: 'en-US',
   scale: 3, // three decimal places: $10.545
@@ -108,11 +114,35 @@ const { inputProps } = useCurrencyInput({
 import { useCurrencyInput } from '@dinerojs/react/bigint';
 import { USD } from 'dinero.js/bigint/currencies';
 
-const { inputProps } = useCurrencyInput({
+const { inputProps, dineroValue } = useCurrencyInput({
   currency: USD,
   locale: 'en-US',
   defaultValue: 1050n,
 });
+```
+
+### In a form
+
+To submit the value in a form, add a hidden input with the raw minor-unit amount from `dineroValue`. The [`CurrencyInput`](/react/api/currency-input) component handles this automatically.
+
+```tsx
+import { toSnapshot } from 'dinero.js';
+import { useCurrencyInput } from '@dinerojs/react';
+import { USD } from 'dinero.js/currencies';
+
+function PriceField() {
+  const { inputProps, dineroValue } = useCurrencyInput({
+    currency: USD,
+    locale: 'en-US',
+  });
+
+  return (
+    <>
+      <input {...inputProps} aria-label="Price" />
+      <input type="hidden" name="price" value={`${toSnapshot(dineroValue).amount}`} />
+    </>
+  );
+}
 ```
 
 ### Use with a custom calculator

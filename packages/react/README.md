@@ -64,7 +64,9 @@ const useCurrencyInput = createUseCurrencyInput(myCustomDinero);
 
 ## `<CurrencyInput>` component
 
-A thin component wrapper around `useCurrencyInput` for a more declarative API. It renders an `<input>` element, forwards a ref, and passes through all standard HTML input attributes.
+A thin component wrapper around `useCurrencyInput` for a more declarative API. It forwards a ref and passes through all standard HTML input attributes.
+
+`CurrencyInput` renders a hidden `<input>` that submits the raw minor-unit amount (e.g., `105000`), keeping the visible input for formatted display only. This means forms submit clean integer strings instead of locale-formatted values.
 
 ```tsx
 import { CurrencyInput } from '@dinerojs/react';
@@ -242,9 +244,26 @@ function PriceForm() {
 }
 ```
 
-## Server-side parsing
+## Form submission
 
-_Coming soon._ Parse `FormData` into Dinero objects in Next.js Server Actions and Remix actions via `@dinerojs/react/server`.
+When used inside a `<form>`, `CurrencyInput` submits the raw minor-unit amount as a string. On the server, parse it directly:
+
+```ts
+async function createInvoice(formData: FormData) {
+  'use server';
+  const amount = Number(formData.get('price')); // e.g., 105000
+  const price = dinero({ amount, currency: USD });
+}
+```
+
+If you use the `useCurrencyInput` hook directly, use `dineroValue` with `toSnapshot` to get the amount for a hidden input:
+
+```tsx
+const { inputProps, dineroValue } = useCurrencyInput({ currency: USD, locale: 'en-US' });
+
+<input {...inputProps} />
+<input type="hidden" name="price" value={toSnapshot(dineroValue).amount} />
+```
 
 ## Validation
 

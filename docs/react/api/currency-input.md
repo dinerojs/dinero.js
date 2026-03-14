@@ -5,7 +5,9 @@ description: A headless money input component for React that wraps useCurrencyIn
 
 # CurrencyInput
 
-A thin component wrapper around [`useCurrencyInput`](/react/api/use-currency-input). It renders an `<input>` element, forwards a ref, and passes through all standard HTML input attributes.
+A thin component wrapper around [`useCurrencyInput`](/react/api/use-currency-input). It forwards a ref and passes through all standard HTML input attributes.
+
+`CurrencyInput` renders a hidden `<input>` that submits the raw minor-unit amount (e.g., `105000`), keeping the visible input for formatted display only. This means forms submit clean integer strings instead of locale-formatted values.
 
 ```tsx
 import { CurrencyInput } from '@dinerojs/react';
@@ -108,6 +110,31 @@ function PriceField() {
   );
 }
 ```
+
+### In a form
+
+When used with a `name` prop, `CurrencyInput` submits raw minor units via a hidden input. The visible input stays formatted for the user.
+
+```tsx
+import { CurrencyInput } from '@dinerojs/react';
+import { USD } from 'dinero.js/currencies';
+
+function PriceForm() {
+  return (
+    <form action="/api/checkout" method="post">
+      <CurrencyInput
+        currency={USD}
+        locale="en-US"
+        name="price"
+        aria-label="Price"
+      />
+      <button type="submit">Pay</button>
+    </form>
+  );
+}
+```
+
+On the server, `formData.get('price')` returns the raw amount as a string (e.g., `"105000"` for $1,050.00).
 
 ### With a custom calculator
 
