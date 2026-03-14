@@ -68,7 +68,7 @@ const useCurrencyInput = createUseCurrencyInput(myCustomDinero);
 
 A thin component wrapper around `useCurrencyInput` for a more declarative API. It forwards a ref and passes through all standard HTML input attributes.
 
-`CurrencyInput` renders a hidden `<input>` that submits the raw minor-unit amount (e.g., `105000`), keeping the visible input for formatted display only. This means forms submit clean integer strings instead of formatted values.
+`CurrencyInput` renders hidden `<input>` fields that submit the amount, currency code, and scale using bracket notation (e.g., `price[amount]`, `price[currency]`, `price[scale]`). The visible input stays formatted for display only.
 
 ```tsx
 import { CurrencyInput } from '@dinerojs/react';
@@ -248,23 +248,29 @@ function PriceForm() {
 
 ## Form submission
 
-When used inside a `<form>`, `CurrencyInput` submits the raw minor-unit amount as a string. On the server, parse it directly:
+When used inside a `<form>`, `CurrencyInput` submits the amount, currency code, and scale as separate hidden inputs using bracket notation. On the server:
 
 ```ts
 async function createInvoice(formData: FormData) {
   'use server';
-  const amount = Number(formData.get('price')); // e.g., 105000
-  const price = dinero({ amount, currency: USD });
+  const amount = Number(formData.get('price[amount]'));  // e.g., 105000
+  const currency = formData.get('price[currency]');      // "USD"
+  const scale = Number(formData.get('price[scale]'));     // 2
 }
 ```
 
-If you use the `useCurrencyInput` hook directly, use `dineroValue` with `toSnapshot` to get the amount for a hidden input:
+Frameworks like PHP, Rails, and Express (with `qs`) automatically nest these into `{ price: { amount, currency, scale } }`.
+
+If you use the `useCurrencyInput` hook directly, wire the hidden inputs yourself using `toSnapshot`:
 
 ```tsx
 const { inputProps, dineroValue } = useCurrencyInput({ currency: USD, format: { locale: 'en-US' } });
+const { amount, currency, scale } = toSnapshot(dineroValue);
 
 <input {...inputProps} />
-<input type="hidden" name="price" value={toSnapshot(dineroValue).amount} />
+<input type="hidden" name="price[amount]" value={`${amount}`} />
+<input type="hidden" name="price[currency]" value={currency.code} />
+<input type="hidden" name="price[scale]" value={`${scale}`} />
 ```
 
 ## Documentation

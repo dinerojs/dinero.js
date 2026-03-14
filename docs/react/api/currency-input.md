@@ -7,7 +7,7 @@ description: A headless money input component for React that wraps useCurrencyIn
 
 A thin component wrapper around [`useCurrencyInput`](/react/api/use-currency-input). It forwards a ref and passes through all standard HTML input attributes.
 
-`CurrencyInput` renders a hidden `<input>` that submits the raw minor-unit amount (e.g., `105000`), keeping the visible input for formatted display only. This means forms submit clean integer strings instead of formatted values.
+`CurrencyInput` renders hidden `<input>` fields that submit the amount, currency code, and scale using bracket notation (e.g., `price[amount]`, `price[currency]`, `price[scale]`). The visible input stays formatted for display only.
 
 ```tsx
 import { CurrencyInput } from '@dinerojs/react';
@@ -113,7 +113,7 @@ function PriceField() {
 
 ### In a form
 
-When used with a `name` prop, `CurrencyInput` submits raw minor units via a hidden input. The visible input stays formatted for the user.
+When used with a `name` prop, `CurrencyInput` submits the amount, currency code, and scale as separate hidden inputs using bracket notation. The visible input stays formatted for the user.
 
 ```tsx
 import { CurrencyInput } from '@dinerojs/react';
@@ -134,7 +134,15 @@ function PriceForm() {
 }
 ```
 
-On the server, `formData.get('price')` returns the raw amount as a string (e.g., `"105000"` for $1,050.00).
+This renders three hidden inputs: `price[amount]`, `price[currency]`, and `price[scale]`. On the server:
+
+```ts
+const amount = Number(formData.get('price[amount]')); // 105000
+const currency = formData.get('price[currency]');      // "USD"
+const scale = Number(formData.get('price[scale]'));     // 2
+```
+
+Frameworks like PHP, Rails, and Express (with `qs`) automatically nest these into `{ price: { amount, currency, scale } }`.
 
 ### With a custom calculator
 

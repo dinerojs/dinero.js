@@ -123,7 +123,7 @@ const { inputProps, dineroValue } = useCurrencyInput({
 
 ### In a form
 
-To submit the value in a form, add a hidden input with the raw minor-unit amount from `dineroValue`. The [`CurrencyInput`](/react/api/currency-input) component handles this automatically.
+To submit the value in a form, add hidden inputs for the amount, currency, and scale from `dineroValue`. The [`CurrencyInput`](/react/api/currency-input) component handles this automatically.
 
 ```tsx
 import { toSnapshot } from 'dinero.js';
@@ -136,10 +136,14 @@ function PriceField() {
     format: { locale: 'en-US' },
   });
 
+  const { amount, currency, scale } = toSnapshot(dineroValue);
+
   return (
     <>
       <input {...inputProps} aria-label="Price" />
-      <input type="hidden" name="price" value={`${toSnapshot(dineroValue).amount}`} />
+      <input type="hidden" name="price[amount]" value={`${amount}`} />
+      <input type="hidden" name="price[currency]" value={currency.code} />
+      <input type="hidden" name="price[scale]" value={`${scale}`} />
     </>
   );
 }

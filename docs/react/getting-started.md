@@ -37,7 +37,7 @@ function PriceField() {
 }
 ```
 
-When you pass a `name` prop, `CurrencyInput` renders a hidden input with the raw minor-unit amount so forms submit a clean integer string (e.g., `"1050"` for $10.50).
+When you pass a `name` prop, `CurrencyInput` renders hidden inputs for the amount, currency code, and scale using bracket notation (e.g., `price[amount]`, `price[currency]`, `price[scale]`).
 
 For more control, use the [`useCurrencyInput`](/react/api/use-currency-input) hook directly. It returns `inputProps` to spread onto a native `<input>` and a `dineroValue` you can use with any Dinero.js function:
 
@@ -129,7 +129,7 @@ function PriceField() {
 
 ## Form submission
 
-`CurrencyInput` submits the raw minor-unit amount (e.g., `105000`) via a hidden input instead of the formatted display string. This means your server receives a clean integer string.
+When you pass a `name` prop, `CurrencyInput` submits the amount, currency code, and scale as separate hidden inputs using bracket notation.
 
 ```tsx
 <form action="/api/checkout" method="post">
@@ -143,14 +143,15 @@ function PriceField() {
 </form>
 ```
 
-On the server:
+This renders `price[amount]`, `price[currency]`, and `price[scale]` as hidden fields. Frameworks like PHP, Rails, and Express (with `qs`) automatically nest these into an object. In plain `FormData`:
 
 ```ts
-const amount = Number(formData.get('price')); // 105000
-const price = dinero({ amount, currency: USD });
+const amount = Number(formData.get('price[amount]')); // 105000
+const currency = formData.get('price[currency]');      // "USD"
+const scale = Number(formData.get('price[scale]'));     // 2
 ```
 
-If you use the `useCurrencyInput` hook directly, you'll need to wire the hidden input yourself. See the [hook API reference](/react/api/use-currency-input#in-a-form) for details.
+If you use the `useCurrencyInput` hook directly, you'll need to wire the hidden inputs yourself. See the [hook API reference](/react/api/use-currency-input#in-a-form) for details.
 
 ## Next steps
 
