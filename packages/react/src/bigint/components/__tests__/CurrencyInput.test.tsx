@@ -90,13 +90,33 @@ describe('CurrencyInput (bigint)', () => {
 
       expect(screen.getByRole('textbox')).toBeDisabled();
     });
+  });
 
-    it('passes through name', () => {
+  describe('form submission', () => {
+    it('submits the raw minor-unit amount via a hidden input', () => {
+      render(
+        <CurrencyInput
+          currency={bigintUSD}
+          locale="en-US"
+          name="price"
+          value={BigInt(105000)}
+        />
+      );
+
+      const hidden = document.querySelector(
+        'input[name="price"]'
+      ) as HTMLInputElement;
+      expect(hidden).not.toBeNull();
+      expect(hidden.type).toBe('hidden');
+      expect(hidden.value).toBe('105000');
+    });
+
+    it('does not set name on the visible input', () => {
       render(
         <CurrencyInput currency={bigintUSD} locale="en-US" name="price" />
       );
 
-      expect(screen.getByRole('textbox')).toHaveAttribute('name', 'price');
+      expect(screen.getByRole('textbox')).not.toHaveAttribute('name');
     });
   });
 
