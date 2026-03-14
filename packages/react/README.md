@@ -63,7 +63,40 @@ const useCurrencyInput = createUseCurrencyInput(myCustomDinero);
 
 ## `<CurrencyInput>` component
 
-_Coming soon._ A thin component wrapper around `useCurrencyInput` for a more declarative API.
+A thin component wrapper around `useCurrencyInput` for a more declarative API. It renders an `<input>` element, forwards a ref, and passes through all standard HTML input attributes.
+
+```tsx
+import { CurrencyInput } from '@dinerojs/react';
+import { USD } from 'dinero.js/currencies';
+
+function PriceField() {
+  return (
+    <CurrencyInput
+      currency={USD}
+      locale="en-US"
+      className="price-field"
+      aria-label="Price"
+      onValueChange={(dinero) => console.log(dinero)}
+    />
+  );
+}
+```
+
+It accepts the same options as `useCurrencyInput` (`currency`, `locale`, `defaultValue`, `scale`, `onValueChange`) plus any `InputHTMLAttributes<HTMLInputElement>` and `ref`.
+
+For bigint support:
+
+```tsx
+import { CurrencyInput } from '@dinerojs/react/bigint';
+```
+
+For third-party calculators, use `createCurrencyInput` with a custom `dinero` factory:
+
+```tsx
+import { createCurrencyInput } from '@dinerojs/react';
+
+const CurrencyInput = createCurrencyInput(myCustomDinero);
+```
 
 ## Server-side parsing
 

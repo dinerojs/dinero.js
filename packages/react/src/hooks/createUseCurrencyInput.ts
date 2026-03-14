@@ -88,7 +88,7 @@ export function createUseCurrencyInput<TAmount>(
 
     const value = useMemo(
       () => formatDinero(dineroValue, locale, formatter.toNumber(scale)),
-      [dineroValue, locale, scale]
+      [dineroValue, locale, formatter, scale]
     );
 
     function updateAmount(newAmount: TAmount) {
