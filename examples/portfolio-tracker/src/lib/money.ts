@@ -4,16 +4,19 @@ import { USD, EUR, GBP, JPY } from 'dinero.js/currencies';
 
 import type { CurrencyCode } from '@/lib/types';
 
-const CURRENCIES_MAP = { USD, EUR, GBP, JPY } as const;
+export const CURRENCIES_MAP: Record<CurrencyCode, DineroCurrency<number>> = {
+  USD,
+  EUR,
+  GBP,
+  JPY,
+};
 
-const CURRENCY_LOCALES: Record<CurrencyCode, string> = {
+export const CURRENCY_LOCALES: Record<CurrencyCode, string> = {
   USD: 'en-US',
   EUR: 'de-DE',
   GBP: 'en-GB',
   JPY: 'ja-JP',
 };
-
-const NON_NUMERIC = /[^0-9.-]/g;
 
 /**
  * Hardcoded realistic exchange rates (base: USD).
@@ -36,39 +39,6 @@ function scaleFor(code: CurrencyCode): number {
   const { base, exponent } = currencyFor(code);
 
   return (typeof base === 'number' ? base : base[0]) ** exponent;
-}
-
-/**
- * Convert a decimal string (e.g. "198.50") to an integer amount in minor units.
- */
-export function toMinorUnits(value: string, code: CurrencyCode): number {
-  const cleaned = value.replace(NON_NUMERIC, '');
-
-  if (cleaned === '' || cleaned === '-' || cleaned === '.') {
-    return 0;
-  }
-
-  return Math.round(parseFloat(cleaned) * scaleFor(code));
-}
-
-/**
- * Convert minor-unit amount back to a display string for input fields.
- */
-export function minorUnitsToInputString(
-  amount: number,
-  code: CurrencyCode
-): string {
-  if (amount === 0) {
-    return '';
-  }
-
-  const { exponent } = currencyFor(code);
-
-  if (exponent === 0) {
-    return String(amount);
-  }
-
-  return (amount / 10 ** exponent).toFixed(exponent);
 }
 
 export function zero<TCode extends CurrencyCode>(

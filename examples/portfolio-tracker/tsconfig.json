@@ -16,6 +16,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
+      "@dinerojs/react": ["../../packages/react/src/index.ts"],
       "@/*": ["./src/*"]
     }
   },

@@ -5,8 +5,16 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   base: '/examples/expense-splitter/',
   plugins: [react()],
+  define: {
+    __DEV__: JSON.stringify(true),
+    __TEST__: JSON.stringify(false),
+  },
   resolve: {
     alias: {
+      '@dinerojs/react': path.resolve(
+        __dirname,
+        '../../packages/react/src/index.ts'
+      ),
       '@': path.resolve(__dirname, './src'),
     },
   },

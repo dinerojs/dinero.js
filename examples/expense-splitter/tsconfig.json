@@ -17,6 +17,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "paths": {
+      "@dinerojs/react": ["../../packages/react/src/index.ts"],
       "@/*": ["./src/*"]
     }
   },

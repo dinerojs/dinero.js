@@ -9,6 +9,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@dinerojs/react": "2.0.2",
     "dinero.js": "2.0.2",
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",

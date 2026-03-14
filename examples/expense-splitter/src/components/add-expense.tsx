@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Plus, Equal, Percent } from 'lucide-react';
+import { toSnapshot } from 'dinero.js';
+import { CurrencyInput } from '@dinerojs/react';
 
-import { fromAmount, toMinorUnits } from '@/lib/money';
+import { currency, fromAmount } from '@/lib/money';
 import type { Person, Expense, SplitType, ExpenseShare } from '@/types';
 
 interface AddExpenseProps {
@@ -11,7 +13,7 @@ interface AddExpenseProps {
 
 export function AddExpense({ people, onAdd }: AddExpenseProps) {
   const [description, setDescription] = useState('');
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState(0);
   const [paidBy, setPaidBy] = useState(people[0]?.id || '');
   const [splitType, setSplitType] = useState<SplitType>('equal');
   const [selectedPeople, setSelectedPeople] = useState<Set<string>>(
@@ -51,7 +53,7 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
     return (
       <div className="py-8 text-center">
         <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-xl bg-muted">
-          <Plus className="h-8 w-8 text-text-muted" />
+          <Plus className="h-8 w-8 text-text-muted" aria-hidden="true" />
         </div>
         <p className="text-sm text-text-muted">
           Add at least 2 people to start splitting expenses
@@ -65,9 +67,7 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
       onSubmit={(event) => {
         event.preventDefault();
 
-        const amountInCents = toMinorUnits(amount);
-
-        if (!description.trim() || isNaN(amountInCents) || amountInCents <= 0) {
+        if (!description.trim() || amount <= 0) {
           return;
         }
 
@@ -88,7 +88,7 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
         const expense: Expense = {
           id: crypto.randomUUID(),
           description: description.trim(),
-          amount: fromAmount(amountInCents),
+          amount: fromAmount(amount),
           paidBy,
           splitType,
           shares,
@@ -97,7 +97,7 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
 
         onAdd(expense);
         setDescription('');
-        setAmount('');
+        setAmount(0);
       }}
       className="space-y-4"
     >
@@ -112,6 +112,7 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
           <input
             type="text"
             id="description"
+            name="description"
             value={description}
             onChange={(event) => setDescription(event.target.value)}
             placeholder="e.g., Dinner, Uber…"
@@ -130,14 +131,13 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <span className="text-sm text-text-muted">$</span>
             </div>
-            <input
-              type="number"
+            <CurrencyInput
+              currency={currency}
+              locale="en-US"
               id="amount"
+              name="amount"
               value={amount}
-              onChange={(event) => setAmount(event.target.value)}
-              placeholder="0.00"
-              step="0.01"
-              min="0"
+              onValueChange={(dinero) => setAmount(toSnapshot(dinero).amount)}
               className={`${inputClasses} pl-7`}
             />
           </div>
@@ -153,6 +153,7 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
         </label>
         <select
           id="paidBy"
+          name="paid-by"
           value={paidBy}
           onChange={(event) => setPaidBy(event.target.value)}
           className={inputClasses}
@@ -186,7 +187,7 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
               }
               className="sr-only"
             />
-            <Equal className="h-4 w-4" />
+            <Equal className="h-4 w-4" aria-hidden="true" />
             <span className="font-medium">Equal</span>
           </label>
           <label
@@ -205,7 +206,7 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
               }
               className="sr-only"
             />
-            <Percent className="h-4 w-4" />
+            <Percent className="h-4 w-4" aria-hidden="true" />
             <span className="font-medium">Percentage</span>
           </label>
         </div>
@@ -284,15 +285,14 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
         type="submit"
         disabled={
           !description.trim() ||
-          !amount ||
-          parseFloat(amount) <= 0 ||
+          amount <= 0 ||
           selectedPeople.size === 0 ||
           (splitType === 'percentage' && totalPercentage !== 100)
         }
         className="w-full rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
       >
         <span className="flex items-center justify-center gap-2">
-          <Plus className="h-4 w-4" />
+          <Plus className="h-4 w-4" aria-hidden="true" />
           Add Expense
         </span>
       </button>

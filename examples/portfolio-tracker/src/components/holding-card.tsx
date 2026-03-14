@@ -1,8 +1,10 @@
 import { Trash2 } from 'lucide-react';
+import { toSnapshot } from 'dinero.js';
+import { CurrencyInput } from '@dinerojs/react';
 
 import type { CurrencyCode, Category, Holding } from '@/lib/types';
 import { CURRENCIES, CATEGORIES, CATEGORY_COLORS } from '@/lib/types';
-import { toMinorUnits, minorUnitsToInputString } from '@/lib/money';
+import { CURRENCIES_MAP, CURRENCY_LOCALES } from '@/lib/money';
 
 interface HoldingCardProps {
   holding: Holding;
@@ -99,25 +101,17 @@ export function HoldingCard({ holding, onUpdate, onRemove }: HoldingCardProps) {
             >
               Unit Price
             </label>
-            <input
+            <CurrencyInput
               id={`unit-price-${holding.id}`}
-              type="text"
-              name="unit-price"
-              inputMode="decimal"
-              autoComplete="off"
-              value={minorUnitsToInputString(
-                holding.unitPriceCents,
-                holding.currency
-              )}
-              onChange={(e) =>
+              currency={CURRENCIES_MAP[holding.currency]}
+              locale={CURRENCY_LOCALES[holding.currency]}
+              value={holding.unitPriceCents}
+              onValueChange={(dinero) =>
                 onUpdate(holding.id, {
-                  unitPriceCents: toMinorUnits(
-                    e.target.value,
-                    holding.currency
-                  ),
+                  unitPriceCents: toSnapshot(dinero).amount,
                 })
               }
-              placeholder="0.00"
+              autoComplete="off"
               className="w-full rounded-md border border-white/8 bg-white/4 px-3 py-1.5 text-sm tabular-nums text-foreground transition-[border-color,box-shadow] duration-150 placeholder:text-muted-foreground focus-visible:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
             />
           </div>

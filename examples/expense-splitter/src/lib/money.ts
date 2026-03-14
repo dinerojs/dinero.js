@@ -32,13 +32,6 @@ export function fromAmount(amount: number): Dinero<number> {
   return dinero({ amount, currency: USD });
 }
 
-/**
- * Convert a decimal string (e.g. "19.99") to an integer amount in minor units.
- */
-export function toMinorUnits(value: string): number {
-  return Math.round(parseFloat(value) * 100);
-}
-
 export function snapshot(amount: Dinero<number>): number {
   return toSnapshot(amount).amount;
 }

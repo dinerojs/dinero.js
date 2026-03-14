@@ -11,62 +11,19 @@ import { USD, EUR, GBP, JPY } from 'dinero.js/currencies';
 
 import type { CurrencyCode, DiscountType, LineItem } from '@/lib/invoice-types';
 
-const CURRENCIES = {
+export const CURRENCIES: Record<CurrencyCode, DineroCurrency<number>> = {
   USD,
   EUR,
   GBP,
   JPY,
-} as const;
+};
 
-const CURRENCY_LOCALES: Record<CurrencyCode, string> = {
+export const CURRENCY_LOCALES: Record<CurrencyCode, string> = {
   USD: 'en-US',
   EUR: 'de-DE',
   GBP: 'en-GB',
   JPY: 'ja-JP',
 };
-
-const NON_NUMERIC = /[^0-9.-]/g;
-
-/**
- * Convert a decimal string (e.g. "19.99") to an integer amount in minor units.
- * Uses the currency base and exponent so JPY (exponent 0) stays in major units.
- */
-export function toMinorUnits<TCurrency extends CurrencyCode>(
-  value: string,
-  code: TCurrency
-): number {
-  const cleaned = value.replace(NON_NUMERIC, '');
-
-  if (cleaned === '' || cleaned === '-' || cleaned === '.') {
-    return 0;
-  }
-
-  const { base, exponent } = CURRENCIES[code];
-  const factor = (typeof base === 'number' ? base : base[0]) ** exponent;
-
-  return Math.round(parseFloat(cleaned) * factor);
-}
-
-/**
- * Convert an integer amount to a display string for input fields.
- * Uses the currency exponent so JPY returns the value as-is.
- */
-export function minorUnitsToInputString<TCurrency extends CurrencyCode>(
-  amount: number,
-  code: TCurrency
-): string {
-  if (amount === 0) {
-    return '';
-  }
-
-  const { exponent } = CURRENCIES[code];
-
-  if (exponent === 0) {
-    return String(amount);
-  }
-
-  return (amount / 10 ** exponent).toFixed(exponent);
-}
 
 /**
  * Compute the line total as a Dinero object.

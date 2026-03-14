@@ -5,11 +5,13 @@ import type {
   LineItem,
 } from '@/lib/invoice-types';
 import {
-  toMinorUnits,
-  minorUnitsToInputString,
+  CURRENCIES,
+  CURRENCY_LOCALES,
   lineTotal,
   formatMoney,
 } from '@/lib/money';
+import { toSnapshot } from 'dinero.js';
+import { CurrencyInput } from '@dinerojs/react';
 import {
   Plus,
   Trash2,
@@ -36,7 +38,7 @@ type EditorPanelProps = {
   onChangeDiscountType: (type: DiscountType) => void;
 };
 
-const CURRENCIES: { value: CurrencyCode; label: string }[] = [
+const CURRENCY_OPTIONS: { value: CurrencyCode; label: string }[] = [
   { value: 'USD', label: 'USD ($)' },
   { value: 'EUR', label: 'EUR (\u20AC)' },
   { value: 'GBP', label: 'GBP (\u00A3)' },
@@ -52,16 +54,6 @@ export function EditorPanel({
   onChangeCurrency,
   onChangeDiscountType,
 }: EditorPanelProps) {
-  function onMoneyInput(field: 'discountValue', value: string) {
-    if (invoice.discountType === 'percentage') {
-      const val = parseFloat(value) || 0;
-
-      onFieldChange(field, Math.max(0, Math.min(100, val)));
-    } else {
-      onFieldChange(field, toMinorUnits(value, invoice.currency));
-    }
-  }
-
   return (
     <div className="flex flex-col gap-4 p-5">
       <div className="flex items-start justify-between gap-4">
@@ -80,9 +72,9 @@ export function EditorPanel({
             aria-label="Currency"
             name="currency"
             autoComplete="off"
-            className="rounded-md border border-border bg-card px-2 py-1.5 text-xs text-foreground transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+            className="rounded-md border border-border bg-card px-2 py-1.5 text-xs text-foreground transition-colors focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
           >
-            {CURRENCIES.map((c) => (
+            {CURRENCY_OPTIONS.map((c) => (
               <option key={c.value} value={c.value}>
                 {c.label}
               </option>
@@ -177,7 +169,7 @@ export function EditorPanel({
         <button
           type="button"
           onClick={onAddLineItem}
-          className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-lg border border-dashed border-border py-2.5 text-xs font-medium text-text-secondary transition-colors hover:border-primary hover:text-primary hover:bg-primary/5"
+          className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-lg border border-dashed border-border py-2.5 text-xs font-medium text-text-secondary transition-colors hover:border-primary hover:text-primary hover:bg-primary/5 focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
         >
           <Plus className="h-3.5 w-3.5" aria-hidden="true" />
           Add line item
@@ -193,7 +185,7 @@ export function EditorPanel({
             type="date"
             value={invoice.issueDate}
             onChange={(e) => onFieldChange('issueDate', e.target.value)}
-            className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none scheme-dark"
+            className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground transition-colors focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none scheme-dark"
           />
         </div>
         <div>
@@ -204,7 +196,7 @@ export function EditorPanel({
             type="date"
             value={invoice.dueDate}
             onChange={(e) => onFieldChange('dueDate', e.target.value)}
-            className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none scheme-dark"
+            className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground transition-colors focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none scheme-dark"
           />
         </div>
       </div>
@@ -226,32 +218,45 @@ export function EditorPanel({
                 aria-label="Discount type"
                 name="discount-type"
                 autoComplete="off"
-                className="rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                className="rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground transition-colors focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
               >
                 <option value="percentage">%</option>
                 <option value="fixed">Fixed</option>
               </select>
-              <input
-                type="text"
-                name="discount-value"
-                value={
-                  invoice.discountType === 'percentage'
-                    ? invoice.discountValue === 0
+              {invoice.discountType === 'percentage' ? (
+                <input
+                  type="text"
+                  name="discount-value"
+                  value={
+                    invoice.discountValue === 0
                       ? ''
                       : String(invoice.discountValue)
-                    : minorUnitsToInputString(
-                        invoice.discountValue,
-                        invoice.currency
-                      )
-                }
-                onChange={(e) => onMoneyInput('discountValue', e.target.value)}
-                placeholder={
-                  invoice.discountType === 'percentage' ? '0' : '0.00'
-                }
-                aria-label="Discount value"
-                autoComplete="off"
-                className="flex-1 rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground text-right placeholder:text-text-muted transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
-              />
+                  }
+                  onChange={(e) => {
+                    const val = parseFloat(e.target.value) || 0;
+                    onFieldChange(
+                      'discountValue',
+                      Math.max(0, Math.min(100, val))
+                    );
+                  }}
+                  placeholder="0"
+                  aria-label="Discount value"
+                  autoComplete="off"
+                  className="flex-1 rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground text-right placeholder:text-text-muted transition-colors focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
+                />
+              ) : (
+                <CurrencyInput
+                  currency={CURRENCIES[invoice.currency]}
+                  locale={CURRENCY_LOCALES[invoice.currency]}
+                  value={invoice.discountValue}
+                  onValueChange={(dinero) =>
+                    onFieldChange('discountValue', toSnapshot(dinero).amount)
+                  }
+                  aria-label="Discount value"
+                  autoComplete="off"
+                  className="flex-1 rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground text-right placeholder:text-text-muted transition-colors focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
+                />
+              )}
             </div>
           </div>
           <div>
@@ -268,7 +273,7 @@ export function EditorPanel({
               placeholder="0"
               aria-label="Tax rate percentage"
               autoComplete="off"
-              className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground text-right placeholder:text-text-muted transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+              className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground text-right placeholder:text-text-muted transition-colors focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
             />
           </div>
         </div>
@@ -281,7 +286,7 @@ export function EditorPanel({
           onChange={(e) => onFieldChange('notes', e.target.value)}
           placeholder="Payment terms, thank you message, etc."
           rows={3}
-          className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-text-muted transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none resize-none"
+          className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-text-muted transition-colors focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none resize-none"
         />
       </CollapsibleSection>
     </div>
@@ -334,7 +339,7 @@ function TextInput({
       placeholder={placeholder}
       spellCheck={spellCheck}
       autoComplete={autoComplete}
-      className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-text-muted transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+      className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-text-muted transition-colors focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
     />
   );
 }
@@ -391,27 +396,23 @@ function LineItemRow({
                 }
                 aria-label={`Item ${index + 1} quantity`}
                 autoComplete="off"
-                className="w-14 rounded-md border border-border bg-card px-2 py-1 text-xs text-foreground text-center transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                className="w-14 rounded-md border border-border bg-card px-2 py-1 text-xs text-foreground text-center transition-colors focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
               />
             </div>
             <div className="flex items-center gap-1.5">
               <span className="text-[10px] font-medium text-text-muted uppercase tracking-wider">
                 Price
               </span>
-              <input
-                type="text"
-                name={`item-${index}-price`}
-                value={minorUnitsToInputString(item.unitPriceCents, currency)}
-                onChange={(e) =>
-                  onUpdate(
-                    'unitPriceCents',
-                    toMinorUnits(e.target.value, currency)
-                  )
+              <CurrencyInput
+                currency={CURRENCIES[currency]}
+                locale={CURRENCY_LOCALES[currency]}
+                value={item.unitPriceCents}
+                onValueChange={(dinero) =>
+                  onUpdate('unitPriceCents', toSnapshot(dinero).amount)
                 }
-                placeholder="0.00"
                 aria-label={`Item ${index + 1} unit price`}
                 autoComplete="off"
-                className="w-24 rounded-md border border-border bg-card px-2 py-1 text-xs text-foreground text-right placeholder:text-text-muted transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                className="w-24 rounded-md border border-border bg-card px-2 py-1 text-xs text-foreground text-right placeholder:text-text-muted transition-colors focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
               />
             </div>
             <div className="ml-auto flex items-center gap-2">
@@ -422,7 +423,7 @@ function LineItemRow({
                 type="button"
                 onClick={onRemove}
                 disabled={!canRemove}
-                className="flex h-6 w-6 items-center justify-center rounded text-text-muted transition-all lg:opacity-0 lg:group-hover:opacity-100 hover:bg-destructive/10 hover:text-destructive disabled:opacity-0 disabled:cursor-not-allowed"
+                className="flex h-6 w-6 items-center justify-center rounded text-text-muted transition-[background-color,color,opacity] lg:opacity-0 lg:group-hover:opacity-100 hover:bg-destructive/10 hover:text-destructive disabled:opacity-0 disabled:cursor-not-allowed"
                 aria-label="Remove line item"
               >
                 <Trash2 className="h-3 w-3" aria-hidden="true" />
