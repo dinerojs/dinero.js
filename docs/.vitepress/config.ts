@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress';
+import { version } from '../package.json';
 
 export default defineConfig({
   title: 'Dinero.js',
@@ -85,7 +86,7 @@ export default defineConfig({
       { text: 'Docs', link: '/getting-started/quick-start' },
       { text: 'API', link: '/api/mutations/add' },
       {
-        text: '2.0.2',
+        text: version,
         items: [
           {
             text: 'Changelog',

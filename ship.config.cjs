@@ -17,4 +17,8 @@ module.exports = {
 
     return releaseType !== 'patch' || fix !== 0;
   },
+  beforeCommitChanges({ exec }) {
+    // Regenerate the lockfile after version bumps
+    exec('npm install');
+  },
 };
