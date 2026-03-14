@@ -265,10 +265,6 @@ const { inputProps, dineroValue } = useCurrencyInput({ currency: USD, locale: 'e
 <input type="hidden" name="price" value={toSnapshot(dineroValue).amount} />
 ```
 
-## Validation
-
-_Coming soon._ Schema helpers for Zod, Valibot, and other validation libraries.
-
 ## Documentation
 
 For full documentation, visit the [online documentation](https://dinerojs.com).
