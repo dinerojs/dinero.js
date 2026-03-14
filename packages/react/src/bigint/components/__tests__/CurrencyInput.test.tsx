@@ -17,13 +17,17 @@ const bigintUSD = castToBigintCurrency(USD);
 describe('CurrencyInput (bigint)', () => {
   describe('rendering', () => {
     it('renders an input element', () => {
-      render(<CurrencyInput currency={bigintUSD} locale="en-US" />);
+      render(
+        <CurrencyInput currency={bigintUSD} format={{ locale: 'en-US' }} />
+      );
 
       expect(screen.getByRole('textbox')).toBeInTheDocument();
     });
 
     it('sets `inputMode` to decimal and type to text', () => {
-      render(<CurrencyInput currency={bigintUSD} locale="en-US" />);
+      render(
+        <CurrencyInput currency={bigintUSD} format={{ locale: 'en-US' }} />
+      );
 
       const input = screen.getByRole('textbox');
       expect(input).toHaveAttribute('type', 'text');
@@ -31,7 +35,9 @@ describe('CurrencyInput (bigint)', () => {
     });
 
     it('starts with a formatted zero value', () => {
-      render(<CurrencyInput currency={bigintUSD} locale="en-US" />);
+      render(
+        <CurrencyInput currency={bigintUSD} format={{ locale: 'en-US' }} />
+      );
 
       expect(screen.getByRole('textbox')).toHaveValue('0.00');
     });
@@ -40,7 +46,13 @@ describe('CurrencyInput (bigint)', () => {
   describe('ref', () => {
     it('forwards ref to the input element', () => {
       const ref = createRef<HTMLInputElement>();
-      render(<CurrencyInput ref={ref} currency={bigintUSD} locale="en-US" />);
+      render(
+        <CurrencyInput
+          ref={ref}
+          currency={bigintUSD}
+          format={{ locale: 'en-US' }}
+        />
+      );
 
       expect(ref.current).toBeInstanceOf(HTMLInputElement);
       expect(ref.current).toBe(screen.getByRole('textbox'));
@@ -52,7 +64,7 @@ describe('CurrencyInput (bigint)', () => {
       render(
         <CurrencyInput
           currency={bigintUSD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           className="price-field"
         />
       );
@@ -62,7 +74,11 @@ describe('CurrencyInput (bigint)', () => {
 
     it('passes through aria attributes', () => {
       render(
-        <CurrencyInput currency={bigintUSD} locale="en-US" aria-label="Price" />
+        <CurrencyInput
+          currency={bigintUSD}
+          format={{ locale: 'en-US' }}
+          aria-label="Price"
+        />
       );
 
       expect(
@@ -74,7 +90,7 @@ describe('CurrencyInput (bigint)', () => {
       render(
         <CurrencyInput
           currency={bigintUSD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           placeholder="Enter amount"
         />
       );
@@ -86,7 +102,13 @@ describe('CurrencyInput (bigint)', () => {
     });
 
     it('passes through disabled', () => {
-      render(<CurrencyInput currency={bigintUSD} locale="en-US" disabled />);
+      render(
+        <CurrencyInput
+          currency={bigintUSD}
+          format={{ locale: 'en-US' }}
+          disabled
+        />
+      );
 
       expect(screen.getByRole('textbox')).toBeDisabled();
     });
@@ -97,7 +119,7 @@ describe('CurrencyInput (bigint)', () => {
       render(
         <CurrencyInput
           currency={bigintUSD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           name="price"
           value={BigInt(105000)}
         />
@@ -113,7 +135,11 @@ describe('CurrencyInput (bigint)', () => {
 
     it('does not set name on the visible input', () => {
       render(
-        <CurrencyInput currency={bigintUSD} locale="en-US" name="price" />
+        <CurrencyInput
+          currency={bigintUSD}
+          format={{ locale: 'en-US' }}
+          name="price"
+        />
       );
 
       expect(screen.getByRole('textbox')).not.toHaveAttribute('name');
@@ -123,7 +149,11 @@ describe('CurrencyInput (bigint)', () => {
   describe('controlled value', () => {
     it('uses the controlled value instead of internal state', () => {
       render(
-        <CurrencyInput currency={bigintUSD} locale="en-US" value={1050n} />
+        <CurrencyInput
+          currency={bigintUSD}
+          format={{ locale: 'en-US' }}
+          value={1050n}
+        />
       );
 
       expect(screen.getByRole('textbox')).toHaveValue('10.50');
@@ -139,7 +169,7 @@ describe('CurrencyInput (bigint)', () => {
           <>
             <CurrencyInput
               currency={bigintUSD}
-              locale="en-US"
+              format={{ locale: 'en-US' }}
               value={value}
               aria-label="Price"
             />
@@ -169,7 +199,7 @@ describe('CurrencyInput (bigint)', () => {
           <>
             <CurrencyInput
               currency={bigintUSD}
-              locale="en-US"
+              format={{ locale: 'en-US' }}
               value={value}
               onValueChange={(dinero) => setValue(toSnapshot(dinero).amount)}
               aria-label="Price"
@@ -201,7 +231,7 @@ describe('CurrencyInput (bigint)', () => {
       render(
         <CurrencyInput
           currency={bigintUSD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           onValueChange={onValueChange}
         />
       );

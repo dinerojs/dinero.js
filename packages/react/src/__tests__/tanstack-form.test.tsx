@@ -36,7 +36,7 @@ describe('TanStack Form integration', () => {
             {(field) => (
               <CurrencyInput
                 currency={USD}
-                locale="en-US"
+                format={{ locale: 'en-US' }}
                 aria-label="Price"
                 onValueChange={(dinero) => field.handleChange(dinero)}
               />
@@ -79,7 +79,7 @@ describe('TanStack Form integration', () => {
             {(field) => (
               <CurrencyInput
                 currency={USD}
-                locale="en-US"
+                format={{ locale: 'en-US' }}
                 aria-label="Price"
                 name="price"
                 value={field.state.value}
@@ -167,7 +167,7 @@ function TanStackHookInput({
 }) {
   const { inputProps } = useCurrencyInput({
     currency: USD,
-    locale: 'en-US',
+    format: { locale: 'en-US' },
     onValueChange,
   });
 

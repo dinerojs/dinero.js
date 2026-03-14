@@ -28,7 +28,7 @@ describe('Formik integration', () => {
             <Form>
               <CurrencyInput
                 currency={USD}
-                locale="en-US"
+                format={{ locale: 'en-US' }}
                 aria-label="Price"
                 name="price"
                 onValueChange={(dinero) => setFieldValue('price', dinero)}
@@ -116,7 +116,7 @@ describe('Formik integration', () => {
     }) {
       const { inputProps } = useCurrencyInput({
         currency: USD,
-        locale: 'en-US',
+        format: { locale: 'en-US' },
         onValueChange: (dinero) => setFieldValue('price', dinero),
       });
 
@@ -164,7 +164,7 @@ function FormikCurrencyField({ name }: { name: string }) {
   return (
     <CurrencyInput
       currency={USD}
-      locale="en-US"
+      format={{ locale: 'en-US' }}
       aria-label="Price"
       name={name}
       value={field.value}

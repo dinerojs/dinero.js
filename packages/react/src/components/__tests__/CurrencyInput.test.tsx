@@ -14,13 +14,13 @@ import { CurrencyInput } from '..';
 describe('CurrencyInput', () => {
   describe('rendering', () => {
     it('renders an input element', () => {
-      render(<CurrencyInput currency={USD} locale="en-US" />);
+      render(<CurrencyInput currency={USD} format={{ locale: 'en-US' }} />);
 
       expect(screen.getByRole('textbox')).toBeInTheDocument();
     });
 
     it('sets `inputMode` to decimal and type to text', () => {
-      render(<CurrencyInput currency={USD} locale="en-US" />);
+      render(<CurrencyInput currency={USD} format={{ locale: 'en-US' }} />);
 
       const input = screen.getByRole('textbox');
       expect(input).toHaveAttribute('type', 'text');
@@ -28,7 +28,7 @@ describe('CurrencyInput', () => {
     });
 
     it('starts with a formatted zero value', () => {
-      render(<CurrencyInput currency={USD} locale="en-US" />);
+      render(<CurrencyInput currency={USD} format={{ locale: 'en-US' }} />);
 
       expect(screen.getByRole('textbox')).toHaveValue('0.00');
     });
@@ -37,7 +37,9 @@ describe('CurrencyInput', () => {
   describe('ref', () => {
     it('forwards ref to the input element', () => {
       const ref = createRef<HTMLInputElement>();
-      render(<CurrencyInput ref={ref} currency={USD} locale="en-US" />);
+      render(
+        <CurrencyInput ref={ref} currency={USD} format={{ locale: 'en-US' }} />
+      );
 
       expect(ref.current).toBeInstanceOf(HTMLInputElement);
       expect(ref.current).toBe(screen.getByRole('textbox'));
@@ -47,7 +49,11 @@ describe('CurrencyInput', () => {
   describe('HTML attributes', () => {
     it('passes through `className`', () => {
       render(
-        <CurrencyInput currency={USD} locale="en-US" className="price-field" />
+        <CurrencyInput
+          currency={USD}
+          format={{ locale: 'en-US' }}
+          className="price-field"
+        />
       );
 
       expect(screen.getByRole('textbox')).toHaveClass('price-field');
@@ -55,7 +61,11 @@ describe('CurrencyInput', () => {
 
     it('passes through aria attributes', () => {
       render(
-        <CurrencyInput currency={USD} locale="en-US" aria-label="Price" />
+        <CurrencyInput
+          currency={USD}
+          format={{ locale: 'en-US' }}
+          aria-label="Price"
+        />
       );
 
       expect(
@@ -67,7 +77,7 @@ describe('CurrencyInput', () => {
       render(
         <CurrencyInput
           currency={USD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           placeholder="Enter amount"
         />
       );
@@ -79,7 +89,9 @@ describe('CurrencyInput', () => {
     });
 
     it('passes through disabled', () => {
-      render(<CurrencyInput currency={USD} locale="en-US" disabled />);
+      render(
+        <CurrencyInput currency={USD} format={{ locale: 'en-US' }} disabled />
+      );
 
       expect(screen.getByRole('textbox')).toBeDisabled();
     });
@@ -90,7 +102,7 @@ describe('CurrencyInput', () => {
       render(
         <CurrencyInput
           currency={USD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           name="price"
           value={105000}
         />
@@ -105,7 +117,13 @@ describe('CurrencyInput', () => {
     });
 
     it('does not set name on the visible input', () => {
-      render(<CurrencyInput currency={USD} locale="en-US" name="price" />);
+      render(
+        <CurrencyInput
+          currency={USD}
+          format={{ locale: 'en-US' }}
+          name="price"
+        />
+      );
 
       expect(screen.getByRole('textbox')).not.toHaveAttribute('name');
     });
@@ -114,7 +132,7 @@ describe('CurrencyInput', () => {
       render(
         <CurrencyInput
           currency={USD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           name="price"
           value={105000}
         />
@@ -126,7 +144,13 @@ describe('CurrencyInput', () => {
     it('updates the hidden input value as the user types', async () => {
       const user = userEvent.setup();
 
-      render(<CurrencyInput currency={USD} locale="en-US" name="price" />);
+      render(
+        <CurrencyInput
+          currency={USD}
+          format={{ locale: 'en-US' }}
+          name="price"
+        />
+      );
 
       const input = screen.getByRole('textbox');
       await user.click(input);
@@ -142,7 +166,7 @@ describe('CurrencyInput', () => {
       render(
         <CurrencyInput
           currency={USD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           name="price"
           value={10545}
           scale={3}
@@ -158,7 +182,13 @@ describe('CurrencyInput', () => {
 
   describe('controlled value', () => {
     it('uses the controlled value instead of internal state', () => {
-      render(<CurrencyInput currency={USD} locale="en-US" value={1050} />);
+      render(
+        <CurrencyInput
+          currency={USD}
+          format={{ locale: 'en-US' }}
+          value={1050}
+        />
+      );
 
       expect(screen.getByRole('textbox')).toHaveValue('10.50');
     });
@@ -173,7 +203,7 @@ describe('CurrencyInput', () => {
           <>
             <CurrencyInput
               currency={USD}
-              locale="en-US"
+              format={{ locale: 'en-US' }}
               value={value}
               aria-label="Price"
             />
@@ -203,7 +233,7 @@ describe('CurrencyInput', () => {
           <>
             <CurrencyInput
               currency={USD}
-              locale="en-US"
+              format={{ locale: 'en-US' }}
               value={value}
               onValueChange={(dinero) => setValue(toSnapshot(dinero).amount)}
               aria-label="Price"
@@ -235,7 +265,7 @@ describe('CurrencyInput', () => {
       render(
         <CurrencyInput
           currency={USD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           onValueChange={onValueChange}
         />
       );

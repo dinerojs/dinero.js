@@ -17,7 +17,7 @@ describe('useCurrencyInput', () => {
   describe('inputProps', () => {
     it('sets `inputMode` to decimal and type to text', () => {
       const { result } = renderHook(() =>
-        useCurrencyInput({ currency: USD, locale: 'en-US' })
+        useCurrencyInput({ currency: USD, format: { locale: 'en-US' } })
       );
 
       expect(result.current.inputProps).toMatchObject({
@@ -28,7 +28,7 @@ describe('useCurrencyInput', () => {
 
     it('exposes the formatted value as `value`', () => {
       const { result } = renderHook(() =>
-        useCurrencyInput({ currency: USD, locale: 'en-US' })
+        useCurrencyInput({ currency: USD, format: { locale: 'en-US' } })
       );
 
       expect(result.current.inputProps.value).toBe('0.00');
@@ -38,7 +38,7 @@ describe('useCurrencyInput', () => {
   describe('dineroValue', () => {
     it('exposes a zero Dinero object on mount', () => {
       const { result } = renderHook(() =>
-        useCurrencyInput({ currency: USD, locale: 'en-US' })
+        useCurrencyInput({ currency: USD, format: { locale: 'en-US' } })
       );
 
       expect(toSnapshot(result.current.dineroValue)).toEqual({
@@ -50,7 +50,11 @@ describe('useCurrencyInput', () => {
 
     it('uses `defaultValue` as the initial amount', () => {
       const { result } = renderHook(() =>
-        useCurrencyInput({ currency: USD, locale: 'en-US', defaultValue: 2599 })
+        useCurrencyInput({
+          currency: USD,
+          format: { locale: 'en-US' },
+          defaultValue: 2599,
+        })
       );
 
       expect(toSnapshot(result.current.dineroValue)).toEqual({
@@ -67,7 +71,7 @@ describe('useCurrencyInput', () => {
       render(
         <TestHarness
           currency={USD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           onDineroChange={(d) => {
             const { amount, scale } = toSnapshot(d);
             snapshots.push({ amount, scale });
@@ -90,14 +94,14 @@ describe('useCurrencyInput', () => {
 
   describe('typing digits', () => {
     it('starts with a formatted zero value', () => {
-      render(<TestHarness currency={USD} locale="en-US" />);
+      render(<TestHarness currency={USD} format={{ locale: 'en-US' }} />);
 
       expect(screen.getByRole('textbox')).toHaveValue('0.00');
     });
 
     it('shifts digits left as they are typed', async () => {
       const user = userEvent.setup();
-      render(<TestHarness currency={USD} locale="en-US" />);
+      render(<TestHarness currency={USD} format={{ locale: 'en-US' }} />);
 
       const input = screen.getByRole('textbox');
       await user.click(input);
@@ -114,7 +118,7 @@ describe('useCurrencyInput', () => {
 
     it('inserts grouping separators', async () => {
       const user = userEvent.setup();
-      render(<TestHarness currency={USD} locale="en-US" />);
+      render(<TestHarness currency={USD} format={{ locale: 'en-US' }} />);
 
       const input = screen.getByRole('textbox');
       await user.click(input);
@@ -125,7 +129,7 @@ describe('useCurrencyInput', () => {
 
     it('ignores non-digit characters', async () => {
       const user = userEvent.setup();
-      render(<TestHarness currency={USD} locale="en-US" />);
+      render(<TestHarness currency={USD} format={{ locale: 'en-US' }} />);
 
       const input = screen.getByRole('textbox');
       await user.click(input);
@@ -136,7 +140,7 @@ describe('useCurrencyInput', () => {
 
     it('ignores decimal points', async () => {
       const user = userEvent.setup();
-      render(<TestHarness currency={USD} locale="en-US" />);
+      render(<TestHarness currency={USD} format={{ locale: 'en-US' }} />);
 
       const input = screen.getByRole('textbox');
       await user.click(input);
@@ -148,14 +152,26 @@ describe('useCurrencyInput', () => {
 
   describe('defaultValue', () => {
     it('formats the default amount on mount', () => {
-      render(<TestHarness currency={USD} locale="en-US" defaultValue={1050} />);
+      render(
+        <TestHarness
+          currency={USD}
+          format={{ locale: 'en-US' }}
+          defaultValue={1050}
+        />
+      );
 
       expect(screen.getByRole('textbox')).toHaveValue('10.50');
     });
 
     it('appends typed digits after the default value', async () => {
       const user = userEvent.setup();
-      render(<TestHarness currency={USD} locale="en-US" defaultValue={1050} />);
+      render(
+        <TestHarness
+          currency={USD}
+          format={{ locale: 'en-US' }}
+          defaultValue={1050}
+        />
+      );
 
       const input = screen.getByRole('textbox');
       await user.click(input);
@@ -170,7 +186,7 @@ describe('useCurrencyInput', () => {
       const { result } = renderHook(() =>
         useCurrencyInput({
           currency: USD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           defaultValue: 10545,
           scale: 3,
         })
@@ -191,7 +207,7 @@ describe('useCurrencyInput', () => {
       render(
         <TestHarness
           currency={USD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           scale={3}
           onDineroChange={(d) => {
             lastDinero = d;
@@ -217,7 +233,7 @@ describe('useCurrencyInput', () => {
   describe('Backspace', () => {
     it('removes digits from right to left', async () => {
       const user = userEvent.setup();
-      render(<TestHarness currency={USD} locale="en-US" />);
+      render(<TestHarness currency={USD} format={{ locale: 'en-US' }} />);
 
       const input = screen.getByRole('textbox');
       await user.click(input);
@@ -244,7 +260,7 @@ describe('useCurrencyInput', () => {
       render(
         <TestHarness
           currency={USD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           onDineroChange={(d) => {
             lastDinero = d;
           }}
@@ -274,7 +290,7 @@ describe('useCurrencyInput', () => {
       render(
         <TestHarness
           currency={USD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           onDineroChange={(d) => {
             lastDinero = d;
           }}
@@ -300,7 +316,7 @@ describe('useCurrencyInput', () => {
       render(
         <TestHarness
           currency={USD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           onDineroChange={(d) => {
             lastDinero = d;
           }}
@@ -329,7 +345,7 @@ describe('useCurrencyInput', () => {
       function TestWithOnValueChange() {
         const { inputProps } = useCurrencyInput({
           currency: USD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           onValueChange,
         });
 
@@ -356,7 +372,7 @@ describe('useCurrencyInput', () => {
       function TestWithOnValueChange() {
         const { inputProps } = useCurrencyInput({
           currency: USD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           defaultValue: 1050,
           onValueChange,
         });
@@ -384,7 +400,7 @@ describe('useCurrencyInput', () => {
       function TestWithOnValueChange() {
         const { inputProps } = useCurrencyInput({
           currency: USD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           onValueChange,
         });
 
@@ -407,7 +423,7 @@ describe('useCurrencyInput', () => {
       function TestWithOnValueChange() {
         const { inputProps } = useCurrencyInput({
           currency: USD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           onValueChange,
         });
 
@@ -436,7 +452,7 @@ describe('useCurrencyInput', () => {
       render(
         <TestHarness
           currency={JPY}
-          locale="ja-JP"
+          format={{ locale: 'ja-JP' }}
           onDineroChange={(d) => {
             lastDinero = d;
           }}
@@ -464,7 +480,7 @@ describe('useCurrencyInput', () => {
       render(
         <TestHarness
           currency={BHD}
-          locale="en-BH"
+          format={{ locale: 'en-BH' }}
           onDineroChange={(d) => {
             lastDinero = d;
           }}
@@ -493,10 +509,12 @@ describe('useCurrencyInput', () => {
 
       function CurrencySwitch() {
         const [currency, setCurrency] = useState<DineroCurrency<number>>(USD);
-        const [locale, setLocale] = useState('en-US');
+        const [format, setFormat] = useState<{ locale: string }>({
+          locale: 'en-US',
+        });
         const { inputProps, dineroValue } = useCurrencyInput({
           currency,
-          locale,
+          format,
           defaultValue: 1050,
         });
 
@@ -508,7 +526,7 @@ describe('useCurrencyInput', () => {
             <button
               onClick={() => {
                 setCurrency(JPY);
-                setLocale('ja-JP');
+                setFormat({ locale: 'ja-JP' });
               }}
             >
               Switch to JPY
@@ -536,10 +554,12 @@ describe('useCurrencyInput', () => {
 
       function CurrencySwitch() {
         const [currency, setCurrency] = useState<DineroCurrency<number>>(USD);
-        const [locale, setLocale] = useState('en-US');
+        const [format, setFormat] = useState<{ locale: string }>({
+          locale: 'en-US',
+        });
         const { inputProps, dineroValue } = useCurrencyInput({
           currency,
-          locale,
+          format,
           defaultValue: 1050,
         });
 
@@ -551,7 +571,7 @@ describe('useCurrencyInput', () => {
             <button
               onClick={() => {
                 setCurrency(BHD);
-                setLocale('en-BH');
+                setFormat({ locale: 'en-BH' });
               }}
             >
               Switch to BHD
@@ -583,7 +603,7 @@ describe('useCurrencyInput', () => {
         const [scale, setScale] = useState<number | undefined>(undefined);
         const { inputProps, dineroValue } = useCurrencyInput({
           currency: USD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           defaultValue: 1050,
           scale,
         });
@@ -614,7 +634,9 @@ describe('useCurrencyInput', () => {
 
   describe('controlled value', () => {
     it('uses the controlled value instead of internal state', () => {
-      render(<TestHarness currency={USD} locale="en-US" value={1050} />);
+      render(
+        <TestHarness currency={USD} format={{ locale: 'en-US' }} value={1050} />
+      );
 
       expect(screen.getByRole('textbox')).toHaveValue('10.50');
     });
@@ -626,7 +648,7 @@ describe('useCurrencyInput', () => {
         const [value, setValue] = useState(1050);
         const { inputProps } = useCurrencyInput({
           currency: USD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           value,
         });
 
@@ -652,7 +674,7 @@ describe('useCurrencyInput', () => {
         const [value, setValue] = useState(1050);
         const { inputProps } = useCurrencyInput({
           currency: USD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           value,
           onValueChange: (dinero) => {
             setValue(toSnapshot(dinero).amount);
@@ -688,7 +710,7 @@ describe('useCurrencyInput', () => {
         const [value, setValue] = useState(1050);
         const { inputProps, dineroValue } = useCurrencyInput({
           currency: USD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           value,
         });
 
@@ -724,7 +746,7 @@ describe('useCurrencyInput', () => {
         const [value, setValue] = useState(0);
         const { inputProps } = useCurrencyInput({
           currency: USD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           value,
           onValueChange: (dinero) => {
             setValue(toSnapshot(dinero).amount);
@@ -747,7 +769,7 @@ describe('useCurrencyInput', () => {
       render(
         <TestHarness
           currency={USD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           value={1050}
           defaultValue={2499}
         />
@@ -762,7 +784,7 @@ describe('useCurrencyInput', () => {
       render(
         <TestHarness
           currency={USD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           value={1050}
           defaultValue={2499}
         />
@@ -784,7 +806,7 @@ describe('useCurrencyInput', () => {
         const [value, setValue] = useState<number | undefined>(undefined);
         const { inputProps } = useCurrencyInput({
           currency: USD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           value,
         });
 
@@ -817,7 +839,7 @@ describe('useCurrencyInput', () => {
         const [value, setValue] = useState<number | undefined>(1050);
         const { inputProps } = useCurrencyInput({
           currency: USD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           value,
         });
 
@@ -843,31 +865,199 @@ describe('useCurrencyInput', () => {
     });
   });
 
-  describe('locale change', () => {
-    it('reformats the display with the new locale', async () => {
+  describe('format change', () => {
+    it('reformats the display with the new format', async () => {
       const user = userEvent.setup();
 
-      function LocaleSwitch() {
-        const [locale, setLocale] = useState('en-US');
+      function FormatSwitch() {
+        const [format, setFormat] = useState<{ locale: string }>({
+          locale: 'en-US',
+        });
         const { inputProps } = useCurrencyInput({
           currency: USD,
-          locale,
+          format,
           defaultValue: 123456,
         });
 
         return (
           <>
             <input {...inputProps} />
-            <button onClick={() => setLocale('de-DE')}>Switch locale</button>
+            <button onClick={() => setFormat({ locale: 'de-DE' })}>
+              Switch format
+            </button>
           </>
         );
       }
 
-      render(<LocaleSwitch />);
+      render(<FormatSwitch />);
       expect(screen.getByRole('textbox')).toHaveValue('1,234.56');
 
-      await user.click(screen.getByRole('button', { name: 'Switch locale' }));
+      await user.click(screen.getByRole('button', { name: 'Switch format' }));
       expect(screen.getByRole('textbox')).toHaveValue('1.234,56');
+    });
+  });
+
+  describe('object format', () => {
+    it('formats using Intl.NumberFormat when given a locale object', () => {
+      const { result } = renderHook(() =>
+        useCurrencyInput({
+          currency: USD,
+          format: { locale: 'en-US' },
+          defaultValue: 1050,
+        })
+      );
+
+      expect(result.current.inputProps.value).toBe('10.50');
+    });
+
+    it('passes through Intl.NumberFormat options', () => {
+      const { result } = renderHook(() =>
+        useCurrencyInput({
+          currency: USD,
+          format: { locale: 'en-US', useGrouping: false },
+          defaultValue: 123456789,
+        })
+      );
+
+      expect(result.current.inputProps.value).toBe('1234567.89');
+    });
+
+    it('formats with a different locale', () => {
+      const { result } = renderHook(() =>
+        useCurrencyInput({
+          currency: USD,
+          format: { locale: 'de-DE' },
+          defaultValue: 123456,
+        })
+      );
+
+      expect(result.current.inputProps.value).toBe('1.234,56');
+    });
+
+    it('formats zero-decimal currencies', () => {
+      const { result } = renderHook(() =>
+        useCurrencyInput({
+          currency: JPY,
+          format: { locale: 'ja-JP' },
+        })
+      );
+
+      expect(result.current.inputProps.value).toBe('0');
+    });
+
+    it('formats with custom scale', () => {
+      const { result } = renderHook(() =>
+        useCurrencyInput({
+          currency: USD,
+          format: { locale: 'en-US' },
+          defaultValue: 10545,
+          scale: 3,
+        })
+      );
+
+      expect(result.current.inputProps.value).toBe('10.545');
+    });
+  });
+
+  describe('custom format', () => {
+    it('uses a custom format for display', () => {
+      const { result } = renderHook(() =>
+        useCurrencyInput({
+          currency: USD,
+          format: ({ value }) => `$${value}`,
+          defaultValue: 1050,
+        })
+      );
+
+      expect(result.current.inputProps.value).toBe('$10.50');
+    });
+
+    it('receives value, currency, and scale', () => {
+      const format = vi.fn(({ value }) => value);
+
+      renderHook(() =>
+        useCurrencyInput({
+          currency: USD,
+          format,
+          defaultValue: 1050,
+        })
+      );
+
+      expect(format).toHaveBeenCalledWith({
+        value: '10.50',
+        currency: USD,
+        scale: 2,
+      });
+    });
+
+    it('receives the custom scale when provided', () => {
+      const format = vi.fn(({ value }) => value);
+
+      renderHook(() =>
+        useCurrencyInput({
+          currency: USD,
+          format,
+          defaultValue: 10545,
+          scale: 3,
+        })
+      );
+
+      expect(format).toHaveBeenCalledWith({
+        value: '10.545',
+        currency: USD,
+        scale: 3,
+      });
+    });
+
+    it('formats without grouping separators', async () => {
+      const user = userEvent.setup();
+
+      const noGroupingFormatter = ({
+        value,
+        scale,
+      }: {
+        value: string;
+        currency: DineroCurrency<number>;
+        scale: number;
+      }) =>
+        new Intl.NumberFormat('en-US', {
+          minimumFractionDigits: scale,
+          maximumFractionDigits: scale,
+          useGrouping: false,
+        }).format(value as string & number);
+
+      render(<TestHarness currency={USD} format={noGroupingFormatter} />);
+
+      const input = screen.getByRole('textbox');
+      await user.click(input);
+      await user.keyboard('123456789');
+
+      expect(input).toHaveValue('1234567.89');
+    });
+
+    it('formats with currency symbol', () => {
+      const currencyFormatter = ({
+        value,
+        currency,
+      }: {
+        value: string;
+        currency: DineroCurrency<number>;
+        scale: number;
+      }) =>
+        new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: currency.code,
+        }).format(value as string & number);
+
+      const { result } = renderHook(() =>
+        useCurrencyInput({
+          currency: USD,
+          format: currencyFormatter,
+          defaultValue: 1050,
+        })
+      );
+
+      expect(result.current.inputProps.value).toBe('$10.50');
     });
   });
 });

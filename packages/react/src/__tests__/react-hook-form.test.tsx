@@ -32,7 +32,7 @@ describe('React Hook Form integration', () => {
             render={({ field }) => (
               <CurrencyInput
                 currency={USD}
-                locale="en-US"
+                format={{ locale: 'en-US' }}
                 aria-label="Price"
                 onValueChange={(dinero) => field.onChange(dinero)}
                 onBlur={field.onBlur}
@@ -80,7 +80,7 @@ describe('React Hook Form integration', () => {
             render={({ field }) => (
               <CurrencyInput
                 currency={USD}
-                locale="en-US"
+                format={{ locale: 'en-US' }}
                 aria-label="Price"
                 value={field.value}
                 onValueChange={(dinero) =>
@@ -126,7 +126,7 @@ describe('React Hook Form integration', () => {
             render={({ field }) => (
               <CurrencyInput
                 currency={USD}
-                locale="en-US"
+                format={{ locale: 'en-US' }}
                 aria-label="Price"
                 name="price"
                 value={field.value}
@@ -168,7 +168,7 @@ describe('React Hook Form integration', () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <CurrencyInput
             currency={USD}
-            locale="en-US"
+            format={{ locale: 'en-US' }}
             aria-label="Price"
             name="price"
             onValueChange={(dinero) => setValue('price', dinero)}

@@ -22,7 +22,10 @@ describe('useCurrencyInput (bigint)', () => {
   describe('inputProps', () => {
     it('sets `inputMode` to decimal and type to text', () => {
       const { result } = renderHook(() =>
-        useCurrencyInput({ currency: bigintUSD, locale: 'en-US' })
+        useCurrencyInput({
+          currency: bigintUSD,
+          format: { locale: 'en-US' },
+        })
       );
 
       expect(result.current.inputProps).toMatchObject({
@@ -33,7 +36,10 @@ describe('useCurrencyInput (bigint)', () => {
 
     it('exposes the formatted value as `value`', () => {
       const { result } = renderHook(() =>
-        useCurrencyInput({ currency: bigintUSD, locale: 'en-US' })
+        useCurrencyInput({
+          currency: bigintUSD,
+          format: { locale: 'en-US' },
+        })
       );
 
       expect(result.current.inputProps.value).toBe('0.00');
@@ -43,7 +49,10 @@ describe('useCurrencyInput (bigint)', () => {
   describe('dineroValue', () => {
     it('exposes a zero Dinero object on mount', () => {
       const { result } = renderHook(() =>
-        useCurrencyInput({ currency: bigintUSD, locale: 'en-US' })
+        useCurrencyInput({
+          currency: bigintUSD,
+          format: { locale: 'en-US' },
+        })
       );
 
       expect(toSnapshot(result.current.dineroValue)).toEqual({
@@ -57,7 +66,7 @@ describe('useCurrencyInput (bigint)', () => {
       const { result } = renderHook(() =>
         useCurrencyInput({
           currency: bigintUSD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           defaultValue: 2599n,
         })
       );
@@ -76,7 +85,7 @@ describe('useCurrencyInput (bigint)', () => {
       render(
         <TestHarness
           currency={bigintUSD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           onDineroChange={(d) => {
             const { amount, scale } = toSnapshot(d);
             snapshots.push({ amount, scale });
@@ -99,14 +108,14 @@ describe('useCurrencyInput (bigint)', () => {
 
   describe('typing digits', () => {
     it('starts with a formatted zero value', () => {
-      render(<TestHarness currency={bigintUSD} locale="en-US" />);
+      render(<TestHarness currency={bigintUSD} format={{ locale: 'en-US' }} />);
 
       expect(screen.getByRole('textbox')).toHaveValue('0.00');
     });
 
     it('shifts digits left as they are typed', async () => {
       const user = userEvent.setup();
-      render(<TestHarness currency={bigintUSD} locale="en-US" />);
+      render(<TestHarness currency={bigintUSD} format={{ locale: 'en-US' }} />);
 
       const input = screen.getByRole('textbox');
       await user.click(input);
@@ -123,7 +132,7 @@ describe('useCurrencyInput (bigint)', () => {
 
     it('inserts grouping separators', async () => {
       const user = userEvent.setup();
-      render(<TestHarness currency={bigintUSD} locale="en-US" />);
+      render(<TestHarness currency={bigintUSD} format={{ locale: 'en-US' }} />);
 
       const input = screen.getByRole('textbox');
       await user.click(input);
@@ -134,7 +143,7 @@ describe('useCurrencyInput (bigint)', () => {
 
     it('ignores non-digit characters', async () => {
       const user = userEvent.setup();
-      render(<TestHarness currency={bigintUSD} locale="en-US" />);
+      render(<TestHarness currency={bigintUSD} format={{ locale: 'en-US' }} />);
 
       const input = screen.getByRole('textbox');
       await user.click(input);
@@ -145,7 +154,7 @@ describe('useCurrencyInput (bigint)', () => {
 
     it('ignores decimal points', async () => {
       const user = userEvent.setup();
-      render(<TestHarness currency={bigintUSD} locale="en-US" />);
+      render(<TestHarness currency={bigintUSD} format={{ locale: 'en-US' }} />);
 
       const input = screen.getByRole('textbox');
       await user.click(input);
@@ -158,7 +167,11 @@ describe('useCurrencyInput (bigint)', () => {
   describe('defaultValue', () => {
     it('formats the default amount on mount', () => {
       render(
-        <TestHarness currency={bigintUSD} locale="en-US" defaultValue={1050n} />
+        <TestHarness
+          currency={bigintUSD}
+          format={{ locale: 'en-US' }}
+          defaultValue={1050n}
+        />
       );
 
       expect(screen.getByRole('textbox')).toHaveValue('10.50');
@@ -167,7 +180,11 @@ describe('useCurrencyInput (bigint)', () => {
     it('appends typed digits after the default value', async () => {
       const user = userEvent.setup();
       render(
-        <TestHarness currency={bigintUSD} locale="en-US" defaultValue={1050n} />
+        <TestHarness
+          currency={bigintUSD}
+          format={{ locale: 'en-US' }}
+          defaultValue={1050n}
+        />
       );
 
       const input = screen.getByRole('textbox');
@@ -183,7 +200,7 @@ describe('useCurrencyInput (bigint)', () => {
       const { result } = renderHook(() =>
         useCurrencyInput({
           currency: bigintUSD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           defaultValue: 10545n,
           scale: 3n,
         })
@@ -204,7 +221,7 @@ describe('useCurrencyInput (bigint)', () => {
       render(
         <TestHarness
           currency={bigintUSD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           scale={3n}
           onDineroChange={(d) => {
             lastDinero = d;
@@ -230,7 +247,7 @@ describe('useCurrencyInput (bigint)', () => {
   describe('Backspace', () => {
     it('removes digits from right to left', async () => {
       const user = userEvent.setup();
-      render(<TestHarness currency={bigintUSD} locale="en-US" />);
+      render(<TestHarness currency={bigintUSD} format={{ locale: 'en-US' }} />);
 
       const input = screen.getByRole('textbox');
       await user.click(input);
@@ -257,7 +274,7 @@ describe('useCurrencyInput (bigint)', () => {
       render(
         <TestHarness
           currency={bigintUSD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           onDineroChange={(d) => {
             lastDinero = d;
           }}
@@ -287,7 +304,7 @@ describe('useCurrencyInput (bigint)', () => {
       render(
         <TestHarness
           currency={bigintUSD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           onDineroChange={(d) => {
             lastDinero = d;
           }}
@@ -313,7 +330,7 @@ describe('useCurrencyInput (bigint)', () => {
       render(
         <TestHarness
           currency={bigintUSD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           onDineroChange={(d) => {
             lastDinero = d;
           }}
@@ -342,7 +359,7 @@ describe('useCurrencyInput (bigint)', () => {
       function TestWithOnValueChange() {
         const { inputProps } = useCurrencyInput({
           currency: bigintUSD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           onValueChange,
         });
 
@@ -369,7 +386,7 @@ describe('useCurrencyInput (bigint)', () => {
       function TestWithOnValueChange() {
         const { inputProps } = useCurrencyInput({
           currency: bigintUSD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           defaultValue: 1050n,
           onValueChange,
         });
@@ -397,7 +414,7 @@ describe('useCurrencyInput (bigint)', () => {
       function TestWithOnValueChange() {
         const { inputProps } = useCurrencyInput({
           currency: bigintUSD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           onValueChange,
         });
 
@@ -420,7 +437,7 @@ describe('useCurrencyInput (bigint)', () => {
       function TestWithOnValueChange() {
         const { inputProps } = useCurrencyInput({
           currency: bigintUSD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           onValueChange,
         });
 
@@ -449,7 +466,7 @@ describe('useCurrencyInput (bigint)', () => {
       render(
         <TestHarness
           currency={bigintJPY}
-          locale="ja-JP"
+          format={{ locale: 'ja-JP' }}
           onDineroChange={(d) => {
             lastDinero = d;
           }}
@@ -477,7 +494,7 @@ describe('useCurrencyInput (bigint)', () => {
       render(
         <TestHarness
           currency={bigintBHD}
-          locale="en-BH"
+          format={{ locale: 'en-BH' }}
           onDineroChange={(d) => {
             lastDinero = d;
           }}
@@ -507,10 +524,12 @@ describe('useCurrencyInput (bigint)', () => {
       function CurrencySwitch() {
         const [currency, setCurrency] =
           useState<DineroCurrency<bigint>>(bigintUSD);
-        const [locale, setLocale] = useState('en-US');
+        const [format, setFormat] = useState<{ locale: string }>({
+          locale: 'en-US',
+        });
         const { inputProps, dineroValue } = useCurrencyInput({
           currency,
-          locale,
+          format,
           defaultValue: 1050n,
         });
 
@@ -522,7 +541,7 @@ describe('useCurrencyInput (bigint)', () => {
             <button
               onClick={() => {
                 setCurrency(bigintJPY);
-                setLocale('ja-JP');
+                setFormat({ locale: 'ja-JP' });
               }}
             >
               Switch to JPY
@@ -550,10 +569,12 @@ describe('useCurrencyInput (bigint)', () => {
       function CurrencySwitch() {
         const [currency, setCurrency] =
           useState<DineroCurrency<bigint>>(bigintUSD);
-        const [locale, setLocale] = useState('en-US');
+        const [format, setFormat] = useState<{ locale: string }>({
+          locale: 'en-US',
+        });
         const { inputProps, dineroValue } = useCurrencyInput({
           currency,
-          locale,
+          format,
           defaultValue: 1050n,
         });
 
@@ -565,7 +586,7 @@ describe('useCurrencyInput (bigint)', () => {
             <button
               onClick={() => {
                 setCurrency(bigintBHD);
-                setLocale('en-BH');
+                setFormat({ locale: 'en-BH' });
               }}
             >
               Switch to BHD
@@ -596,7 +617,7 @@ describe('useCurrencyInput (bigint)', () => {
         const [scale, setScale] = useState<bigint | undefined>(undefined);
         const { inputProps, dineroValue } = useCurrencyInput({
           currency: bigintUSD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           defaultValue: 1050n,
           scale,
         });
@@ -626,7 +647,13 @@ describe('useCurrencyInput (bigint)', () => {
 
   describe('controlled value', () => {
     it('uses the controlled value instead of internal state', () => {
-      render(<TestHarness currency={bigintUSD} locale="en-US" value={1050n} />);
+      render(
+        <TestHarness
+          currency={bigintUSD}
+          format={{ locale: 'en-US' }}
+          value={1050n}
+        />
+      );
 
       expect(screen.getByRole('textbox')).toHaveValue('10.50');
     });
@@ -638,7 +665,7 @@ describe('useCurrencyInput (bigint)', () => {
         const [value, setValue] = useState(1050n);
         const { inputProps } = useCurrencyInput({
           currency: bigintUSD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           value,
         });
 
@@ -664,7 +691,7 @@ describe('useCurrencyInput (bigint)', () => {
         const [value, setValue] = useState(1050n);
         const { inputProps } = useCurrencyInput({
           currency: bigintUSD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           value,
           onValueChange: (dinero) => {
             setValue(toSnapshot(dinero).amount);
@@ -700,7 +727,7 @@ describe('useCurrencyInput (bigint)', () => {
         const [value, setValue] = useState(1050n);
         const { inputProps, dineroValue } = useCurrencyInput({
           currency: bigintUSD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           value,
         });
 
@@ -736,7 +763,7 @@ describe('useCurrencyInput (bigint)', () => {
         const [value, setValue] = useState(0n);
         const { inputProps } = useCurrencyInput({
           currency: bigintUSD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           value,
           onValueChange: (dinero) => {
             setValue(toSnapshot(dinero).amount);
@@ -759,7 +786,7 @@ describe('useCurrencyInput (bigint)', () => {
       render(
         <TestHarness
           currency={bigintUSD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           value={1050n}
           defaultValue={2499n}
         />
@@ -774,7 +801,7 @@ describe('useCurrencyInput (bigint)', () => {
       render(
         <TestHarness
           currency={bigintUSD}
-          locale="en-US"
+          format={{ locale: 'en-US' }}
           value={1050n}
           defaultValue={2499n}
         />
@@ -796,7 +823,7 @@ describe('useCurrencyInput (bigint)', () => {
         const [value, setValue] = useState<bigint | undefined>(undefined);
         const { inputProps } = useCurrencyInput({
           currency: bigintUSD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           value,
         });
 
@@ -829,7 +856,7 @@ describe('useCurrencyInput (bigint)', () => {
         const [value, setValue] = useState<bigint | undefined>(1050n);
         const { inputProps } = useCurrencyInput({
           currency: bigintUSD,
-          locale: 'en-US',
+          format: { locale: 'en-US' },
           value,
         });
 
@@ -855,30 +882,34 @@ describe('useCurrencyInput (bigint)', () => {
     });
   });
 
-  describe('locale change', () => {
-    it('reformats the display with the new locale', async () => {
+  describe('format change', () => {
+    it('reformats the display with the new format', async () => {
       const user = userEvent.setup();
 
-      function LocaleSwitch() {
-        const [locale, setLocale] = useState('en-US');
+      function FormatSwitch() {
+        const [format, setFormat] = useState<{ locale: string }>({
+          locale: 'en-US',
+        });
         const { inputProps } = useCurrencyInput({
           currency: bigintUSD,
-          locale,
+          format,
           defaultValue: 123456n,
         });
 
         return (
           <>
             <input {...inputProps} />
-            <button onClick={() => setLocale('de-DE')}>Switch locale</button>
+            <button onClick={() => setFormat({ locale: 'de-DE' })}>
+              Switch format
+            </button>
           </>
         );
       }
 
-      render(<LocaleSwitch />);
+      render(<FormatSwitch />);
       expect(screen.getByRole('textbox')).toHaveValue('1,234.56');
 
-      await user.click(screen.getByRole('button', { name: 'Switch locale' }));
+      await user.click(screen.getByRole('button', { name: 'Switch format' }));
       expect(screen.getByRole('textbox')).toHaveValue('1.234,56');
     });
   });
