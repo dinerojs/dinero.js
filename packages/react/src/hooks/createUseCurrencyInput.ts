@@ -13,6 +13,23 @@ import type {
   ClipboardEvent,
 } from 'react';
 
+/**
+ * Object shape: delegates to `Intl.NumberFormat` under the hood.
+ * The `locale` field is required; all other `Intl.NumberFormatOptions` are forwarded.
+ */
+export type FormatObject = { locale: string } & Intl.NumberFormatOptions;
+
+/**
+ * Function shape: full control over how the decimal value is displayed.
+ * Receives the decimal string, currency, and scale so the caller can
+ * build any representation (e.g., currency symbols, custom grouping).
+ */
+export type FormatFunction<TAmount> = (snapshot: {
+  value: string;
+  currency: DineroCurrency<TAmount>;
+  scale: TAmount;
+}) => string;
+
 export type UseCurrencyInputOptions<TAmount> = {
   /**
    * The currency to use for formatting and creating Dinero objects.
@@ -20,9 +37,12 @@ export type UseCurrencyInputOptions<TAmount> = {
    */
   currency: DineroCurrency<TAmount>;
   /**
-   * The BCP 47 locale tag used to format the displayed value (e.g., grouping and decimal separators).
+   * How to format the displayed value.
+   *
+   * - **Object** `{ locale, ...intlOptions }`: uses `Intl.NumberFormat` internally.
+   * - **Function** `({ value, currency, scale }) => string`: full control.
    */
-  locale: string;
+  format: FormatObject | FormatFunction<TAmount>;
   /**
    * The initial amount in minor currency units (e.g., `1050` for $10.50 in USD).
    * Interpreted using the currency's exponent unless `scale` is provided.
@@ -67,7 +87,7 @@ export function createUseCurrencyInput<TAmount>(
   ): UseCurrencyInputReturn<TAmount> {
     const {
       currency,
-      locale,
+      format,
       defaultValue,
       value: controlledValue,
       scale: scaleOption,
@@ -129,8 +149,15 @@ export function createUseCurrencyInput<TAmount>(
     );
 
     const value = useMemo(
-      () => formatDinero(dineroValue, locale, formatter.toNumber(scale)),
-      [dineroValue, locale, formatter, scale]
+      () =>
+        formatDinero(
+          dineroValue,
+          format,
+          currency,
+          scale,
+          formatter.toNumber(scale)
+        ),
+      [dineroValue, format, currency, scale, formatter]
     );
 
     function updateAmount(newAmount: TAmount) {
@@ -217,14 +244,23 @@ function parseDigits<TAmount>(
 
 function formatDinero<TAmount>(
   dineroObject: Dinero<TAmount>,
-  locale: string,
-  scale: number
+  format: FormatObject | FormatFunction<TAmount>,
+  currency: DineroCurrency<TAmount>,
+  scale: TAmount,
+  scaleAsNumber: number
 ): string {
   return toDecimal(dineroObject, ({ value }) => {
+    if (typeof format === 'function') {
+      return format({ value, currency, scale });
+    }
+
+    const { locale, ...intlOptions } = format;
+
     return new Intl.NumberFormat(locale, {
-      minimumFractionDigits: scale,
-      maximumFractionDigits: scale,
+      minimumFractionDigits: scaleAsNumber,
+      maximumFractionDigits: scaleAsNumber,
       useGrouping: true,
+      ...intlOptions,
       // Intl.NumberFormat.format() accepts strings at runtime (preserving
       // full precision), but TypeScript's lib types only declare number | bigint.
     }).format(value as string & number);

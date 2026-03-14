@@ -17,7 +17,7 @@ export function createCurrencyInput<TAmount>(
 
   function CurrencyInput({
     currency,
-    locale,
+    format,
     defaultValue,
     value,
     scale,
@@ -28,7 +28,7 @@ export function createCurrencyInput<TAmount>(
   }: CurrencyInputProps<TAmount>) {
     const { inputProps, dineroValue } = useCurrencyInput({
       currency,
-      locale,
+      format,
       defaultValue,
       value,
       scale,

@@ -14,7 +14,11 @@ describe('createUseCurrencyInput', () => {
     const useCurrencyInput = createUseCurrencyInput(dinero);
 
     const { result } = renderHook(() =>
-      useCurrencyInput({ currency: USD, locale: 'en-US', defaultValue: 1050 })
+      useCurrencyInput({
+        currency: USD,
+        format: { locale: 'en-US' },
+        defaultValue: 1050,
+      })
     );
 
     expect(result.current.inputProps.value).toBe('10.50');
