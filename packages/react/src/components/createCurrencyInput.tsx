@@ -35,13 +35,25 @@ export function createCurrencyInput<TAmount>(
       onValueChange,
     });
 
+    const snapshot = toSnapshot(dineroValue);
+
     return (
       <>
         <input ref={ref} {...rest} {...inputProps} />
         <input
           type="hidden"
-          name={name}
-          value={`${toSnapshot(dineroValue).amount}`}
+          name={`${name}[amount]`}
+          value={`${snapshot.amount}`}
+        />
+        <input
+          type="hidden"
+          name={`${name}[currency]`}
+          value={snapshot.currency.code}
+        />
+        <input
+          type="hidden"
+          name={`${name}[scale]`}
+          value={`${snapshot.scale}`}
         />
       </>
     );
