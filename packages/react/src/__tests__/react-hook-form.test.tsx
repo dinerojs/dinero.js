@@ -146,11 +146,19 @@ describe('React Hook Form integration', () => {
     await user.click(input);
     await user.keyboard('1050');
 
-    const hidden = document.querySelector(
-      'input[name="price"]'
+    const amount = document.querySelector(
+      'input[name="price[amount]"]'
     ) as HTMLInputElement;
-    expect(hidden.type).toBe('hidden');
-    expect(hidden.value).toBe('1050');
+    const currency = document.querySelector(
+      'input[name="price[currency]"]'
+    ) as HTMLInputElement;
+    const scale = document.querySelector(
+      'input[name="price[scale]"]'
+    ) as HTMLInputElement;
+    expect(amount.type).toBe('hidden');
+    expect(amount.value).toBe('1050');
+    expect(currency.value).toBe('USD');
+    expect(scale.value).toBe('2');
   });
 
   it('works with the `useCurrencyInput` hook directly', async () => {

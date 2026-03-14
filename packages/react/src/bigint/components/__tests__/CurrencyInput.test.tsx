@@ -115,7 +115,7 @@ describe('CurrencyInput (bigint)', () => {
   });
 
   describe('form submission', () => {
-    it('submits the raw minor-unit amount via a hidden input', () => {
+    it('submits amount, currency, and scale as separate hidden inputs', () => {
       render(
         <CurrencyInput
           currency={bigintUSD}
@@ -125,12 +125,27 @@ describe('CurrencyInput (bigint)', () => {
         />
       );
 
-      const hidden = document.querySelector(
-        'input[name="price"]'
+      const amount = document.querySelector(
+        'input[name="price[amount]"]'
       ) as HTMLInputElement;
-      expect(hidden).not.toBeNull();
-      expect(hidden.type).toBe('hidden');
-      expect(hidden.value).toBe('105000');
+      const currency = document.querySelector(
+        'input[name="price[currency]"]'
+      ) as HTMLInputElement;
+      const scale = document.querySelector(
+        'input[name="price[scale]"]'
+      ) as HTMLInputElement;
+
+      expect(amount).not.toBeNull();
+      expect(amount.type).toBe('hidden');
+      expect(amount.value).toBe('105000');
+
+      expect(currency).not.toBeNull();
+      expect(currency.type).toBe('hidden');
+      expect(currency.value).toBe('USD');
+
+      expect(scale).not.toBeNull();
+      expect(scale.type).toBe('hidden');
+      expect(scale.value).toBe('2');
     });
 
     it('does not set name on the visible input', () => {
