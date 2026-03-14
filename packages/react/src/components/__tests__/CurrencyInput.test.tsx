@@ -83,11 +83,76 @@ describe('CurrencyInput', () => {
 
       expect(screen.getByRole('textbox')).toBeDisabled();
     });
+  });
 
-    it('passes through name', () => {
+  describe('form submission', () => {
+    it('submits the raw minor-unit amount, not the formatted display value', () => {
+      render(
+        <CurrencyInput
+          currency={USD}
+          locale="en-US"
+          name="price"
+          value={105000}
+        />
+      );
+
+      const hidden = document.querySelector(
+        'input[name="price"]'
+      ) as HTMLInputElement;
+      expect(hidden).not.toBeNull();
+      expect(hidden.type).toBe('hidden');
+      expect(hidden.value).toBe('105000');
+    });
+
+    it('does not set name on the visible input', () => {
       render(<CurrencyInput currency={USD} locale="en-US" name="price" />);
 
-      expect(screen.getByRole('textbox')).toHaveAttribute('name', 'price');
+      expect(screen.getByRole('textbox')).not.toHaveAttribute('name');
+    });
+
+    it('keeps the visible input formatted for display', () => {
+      render(
+        <CurrencyInput
+          currency={USD}
+          locale="en-US"
+          name="price"
+          value={105000}
+        />
+      );
+
+      expect(screen.getByRole('textbox')).toHaveValue('1,050.00');
+    });
+
+    it('updates the hidden input value as the user types', async () => {
+      const user = userEvent.setup();
+
+      render(<CurrencyInput currency={USD} locale="en-US" name="price" />);
+
+      const input = screen.getByRole('textbox');
+      await user.click(input);
+      await user.keyboard('1050');
+
+      const hidden = document.querySelector(
+        'input[name="price"]'
+      ) as HTMLInputElement;
+      expect(hidden.value).toBe('1050');
+    });
+
+    it('submits the correct value with custom scale', () => {
+      render(
+        <CurrencyInput
+          currency={USD}
+          locale="en-US"
+          name="price"
+          value={10545}
+          scale={3}
+        />
+      );
+
+      const hidden = document.querySelector(
+        'input[name="price"]'
+      ) as HTMLInputElement;
+      expect(hidden.value).toBe('10545');
     });
   });
 
