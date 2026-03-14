@@ -601,6 +601,237 @@ describe('useCurrencyInput (bigint)', () => {
     });
   });
 
+  describe('controlled value', () => {
+    it('uses the controlled value instead of internal state', () => {
+      render(<TestHarness currency={bigintUSD} locale="en-US" value={1050n} />);
+
+      expect(screen.getByRole('textbox')).toHaveValue('10.50');
+    });
+
+    it('updates the display when the controlled value changes', async () => {
+      const user = userEvent.setup();
+
+      function Controlled() {
+        const [value, setValue] = useState(1050n);
+        const { inputProps } = useCurrencyInput({
+          currency: bigintUSD,
+          locale: 'en-US',
+          value,
+        });
+
+        return (
+          <>
+            <input {...inputProps} />
+            <button onClick={() => setValue(2499n)}>Set to 2499</button>
+          </>
+        );
+      }
+
+      render(<Controlled />);
+      expect(screen.getByRole('textbox')).toHaveValue('10.50');
+
+      await user.click(screen.getByRole('button', { name: 'Set to 2499' }));
+      expect(screen.getByRole('textbox')).toHaveValue('24.99');
+    });
+
+    it('resets the display when the controlled value is set to zero', async () => {
+      const user = userEvent.setup();
+
+      function Controlled() {
+        const [value, setValue] = useState(1050n);
+        const { inputProps } = useCurrencyInput({
+          currency: bigintUSD,
+          locale: 'en-US',
+          value,
+          onValueChange: (dinero) => {
+            setValue(toSnapshot(dinero).amount);
+          },
+        });
+
+        return (
+          <>
+            <input {...inputProps} />
+            <button onClick={() => setValue(0n)}>Reset</button>
+          </>
+        );
+      }
+
+      render(<Controlled />);
+
+      const input = screen.getByRole('textbox');
+      expect(input).toHaveValue('10.50');
+
+      await user.click(input);
+      await user.keyboard('99');
+      expect(input).toHaveValue('1,050.99');
+
+      await user.click(screen.getByRole('button', { name: 'Reset' }));
+      expect(input).toHaveValue('0.00');
+    });
+
+    it('updates dineroValue when the controlled value changes', async () => {
+      const user = userEvent.setup();
+      let lastDinero!: Dinero<bigint>;
+
+      function Controlled() {
+        const [value, setValue] = useState(1050n);
+        const { inputProps, dineroValue } = useCurrencyInput({
+          currency: bigintUSD,
+          locale: 'en-US',
+          value,
+        });
+
+        lastDinero = dineroValue;
+
+        return (
+          <>
+            <input {...inputProps} />
+            <button onClick={() => setValue(2499n)}>Set to 2499</button>
+          </>
+        );
+      }
+
+      render(<Controlled />);
+      expect(toSnapshot(lastDinero)).toEqual({
+        amount: 1050n,
+        currency: bigintUSD,
+        scale: 2n,
+      });
+
+      await user.click(screen.getByRole('button', { name: 'Set to 2499' }));
+      expect(toSnapshot(lastDinero)).toEqual({
+        amount: 2499n,
+        currency: bigintUSD,
+        scale: 2n,
+      });
+    });
+
+    it('still allows typing when controlled', async () => {
+      const user = userEvent.setup();
+
+      function Controlled() {
+        const [value, setValue] = useState(0n);
+        const { inputProps } = useCurrencyInput({
+          currency: bigintUSD,
+          locale: 'en-US',
+          value,
+          onValueChange: (dinero) => {
+            setValue(toSnapshot(dinero).amount);
+          },
+        });
+
+        return <input {...inputProps} />;
+      }
+
+      render(<Controlled />);
+
+      const input = screen.getByRole('textbox');
+      await user.click(input);
+      await user.keyboard('342');
+
+      expect(input).toHaveValue('3.42');
+    });
+
+    it('ignores defaultValue when value is provided', () => {
+      render(
+        <TestHarness
+          currency={bigintUSD}
+          locale="en-US"
+          value={1050n}
+          defaultValue={2499n}
+        />
+      );
+
+      expect(screen.getByRole('textbox')).toHaveValue('10.50');
+    });
+
+    it('warns in dev mode when both value and defaultValue are provided', () => {
+      const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+      render(
+        <TestHarness
+          currency={bigintUSD}
+          locale="en-US"
+          value={1050n}
+          defaultValue={2499n}
+        />
+      );
+
+      expect(consoleSpy).toHaveBeenCalledOnce();
+      expect(consoleSpy).toHaveBeenCalledWith(
+        expect.stringContaining('defaultValue')
+      );
+
+      consoleSpy.mockRestore();
+    });
+
+    it('warns in dev mode when switching from uncontrolled to controlled', async () => {
+      const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      const user = userEvent.setup();
+
+      function SwitchToControlled() {
+        const [value, setValue] = useState<bigint | undefined>(undefined);
+        const { inputProps } = useCurrencyInput({
+          currency: bigintUSD,
+          locale: 'en-US',
+          value,
+        });
+
+        return (
+          <>
+            <input {...inputProps} />
+            <button onClick={() => setValue(1050n)}>Control</button>
+          </>
+        );
+      }
+
+      render(<SwitchToControlled />);
+      expect(consoleSpy).not.toHaveBeenCalled();
+
+      await user.click(screen.getByRole('button', { name: 'Control' }));
+
+      expect(consoleSpy).toHaveBeenCalledOnce();
+      expect(consoleSpy).toHaveBeenCalledWith(
+        expect.stringContaining('uncontrolled')
+      );
+
+      consoleSpy.mockRestore();
+    });
+
+    it('warns in dev mode when switching from controlled to uncontrolled', async () => {
+      const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      const user = userEvent.setup();
+
+      function SwitchToUncontrolled() {
+        const [value, setValue] = useState<bigint | undefined>(1050n);
+        const { inputProps } = useCurrencyInput({
+          currency: bigintUSD,
+          locale: 'en-US',
+          value,
+        });
+
+        return (
+          <>
+            <input {...inputProps} />
+            <button onClick={() => setValue(undefined)}>Uncontrol</button>
+          </>
+        );
+      }
+
+      render(<SwitchToUncontrolled />);
+      expect(consoleSpy).not.toHaveBeenCalled();
+
+      await user.click(screen.getByRole('button', { name: 'Uncontrol' }));
+
+      expect(consoleSpy).toHaveBeenCalledOnce();
+      expect(consoleSpy).toHaveBeenCalledWith(
+        expect.stringContaining('controlled')
+      );
+
+      consoleSpy.mockRestore();
+    });
+  });
+
   describe('locale change', () => {
     it('reformats the display with the new locale', async () => {
       const user = userEvent.setup();

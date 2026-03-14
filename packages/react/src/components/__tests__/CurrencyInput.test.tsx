@@ -5,7 +5,7 @@
 import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { createRef } from 'react';
+import { createRef, useState } from 'react';
 import { toSnapshot } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 
@@ -88,6 +88,77 @@ describe('CurrencyInput', () => {
       render(<CurrencyInput currency={USD} locale="en-US" name="price" />);
 
       expect(screen.getByRole('textbox')).toHaveAttribute('name', 'price');
+    });
+  });
+
+  describe('controlled value', () => {
+    it('uses the controlled value instead of internal state', () => {
+      render(<CurrencyInput currency={USD} locale="en-US" value={1050} />);
+
+      expect(screen.getByRole('textbox')).toHaveValue('10.50');
+    });
+
+    it('updates the display when the controlled value changes', async () => {
+      const user = userEvent.setup();
+
+      function Controlled() {
+        const [value, setValue] = useState(1050);
+
+        return (
+          <>
+            <CurrencyInput
+              currency={USD}
+              locale="en-US"
+              value={value}
+              aria-label="Price"
+            />
+            <button onClick={() => setValue(2499)}>Set to 2499</button>
+          </>
+        );
+      }
+
+      render(<Controlled />);
+      expect(screen.getByRole('textbox', { name: 'Price' })).toHaveValue(
+        '10.50'
+      );
+
+      await user.click(screen.getByRole('button', { name: 'Set to 2499' }));
+      expect(screen.getByRole('textbox', { name: 'Price' })).toHaveValue(
+        '24.99'
+      );
+    });
+
+    it('resets the display when the controlled value is set to zero', async () => {
+      const user = userEvent.setup();
+
+      function Controlled() {
+        const [value, setValue] = useState(1050);
+
+        return (
+          <>
+            <CurrencyInput
+              currency={USD}
+              locale="en-US"
+              value={value}
+              onValueChange={(dinero) => setValue(toSnapshot(dinero).amount)}
+              aria-label="Price"
+            />
+            <button onClick={() => setValue(0)}>Reset</button>
+          </>
+        );
+      }
+
+      render(<Controlled />);
+
+      const input = screen.getByRole('textbox', { name: 'Price' });
+      expect(input).toHaveValue('10.50');
+
+      await user.click(input);
+      await user.keyboard('99');
+      expect(input).toHaveValue('1,050.99');
+
+      await user.click(screen.getByRole('button', { name: 'Reset' }));
+      expect(input).toHaveValue('0.00');
     });
   });
 
