@@ -1,13 +1,14 @@
 /**
  * @vitest-environment jsdom
  */
+// oxlint-disable-next-line import/no-unassigned-import
 import '@testing-library/jest-dom/vitest';
 import { render, renderHook, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { toSnapshot } from 'dinero.js';
 import { USD, JPY, BHD } from 'dinero.js/currencies';
-import type { Dinero } from 'dinero.js';
+import type { Dinero, DineroCurrency } from 'dinero.js';
 
 import { useCurrencyInput } from '..';
 import type { UseCurrencyInputOptions } from '..';
@@ -74,7 +75,7 @@ describe('useCurrencyInput', () => {
         />
       );
 
-      const input = screen.getByTestId('input');
+      const input = screen.getByRole('textbox');
       await user.click(input);
       await user.keyboard('342');
 
@@ -91,14 +92,14 @@ describe('useCurrencyInput', () => {
     it('starts with a formatted zero value', () => {
       render(<TestHarness currency={USD} locale="en-US" />);
 
-      expect(screen.getByTestId('input')).toHaveValue('0.00');
+      expect(screen.getByRole('textbox')).toHaveValue('0.00');
     });
 
     it('shifts digits left as they are typed', async () => {
       const user = userEvent.setup();
       render(<TestHarness currency={USD} locale="en-US" />);
 
-      const input = screen.getByTestId('input');
+      const input = screen.getByRole('textbox');
       await user.click(input);
       await user.keyboard('1');
 
@@ -115,7 +116,7 @@ describe('useCurrencyInput', () => {
       const user = userEvent.setup();
       render(<TestHarness currency={USD} locale="en-US" />);
 
-      const input = screen.getByTestId('input');
+      const input = screen.getByRole('textbox');
       await user.click(input);
       await user.keyboard('123456789');
 
@@ -126,7 +127,7 @@ describe('useCurrencyInput', () => {
       const user = userEvent.setup();
       render(<TestHarness currency={USD} locale="en-US" />);
 
-      const input = screen.getByTestId('input');
+      const input = screen.getByRole('textbox');
       await user.click(input);
       await user.keyboard('1a2b3');
 
@@ -137,7 +138,7 @@ describe('useCurrencyInput', () => {
       const user = userEvent.setup();
       render(<TestHarness currency={USD} locale="en-US" />);
 
-      const input = screen.getByTestId('input');
+      const input = screen.getByRole('textbox');
       await user.click(input);
       await user.keyboard('12.3');
 
@@ -149,14 +150,14 @@ describe('useCurrencyInput', () => {
     it('formats the default amount on mount', () => {
       render(<TestHarness currency={USD} locale="en-US" defaultValue={1050} />);
 
-      expect(screen.getByTestId('input')).toHaveValue('10.50');
+      expect(screen.getByRole('textbox')).toHaveValue('10.50');
     });
 
     it('appends typed digits after the default value', async () => {
       const user = userEvent.setup();
       render(<TestHarness currency={USD} locale="en-US" defaultValue={1050} />);
 
-      const input = screen.getByTestId('input');
+      const input = screen.getByRole('textbox');
       await user.click(input);
       await user.keyboard('0');
 
@@ -198,7 +199,7 @@ describe('useCurrencyInput', () => {
         />
       );
 
-      const input = screen.getByTestId('input');
+      const input = screen.getByRole('textbox');
       expect(input).toHaveValue('0.000');
 
       await user.click(input);
@@ -218,7 +219,7 @@ describe('useCurrencyInput', () => {
       const user = userEvent.setup();
       render(<TestHarness currency={USD} locale="en-US" />);
 
-      const input = screen.getByTestId('input');
+      const input = screen.getByRole('textbox');
       await user.click(input);
       await user.keyboard('1050');
       expect(input).toHaveValue('10.50');
@@ -250,7 +251,7 @@ describe('useCurrencyInput', () => {
         />
       );
 
-      const input = screen.getByTestId('input');
+      const input = screen.getByRole('textbox');
       await user.click(input);
       await user.keyboard('5');
       expect(input).toHaveValue('0.05');
@@ -280,7 +281,7 @@ describe('useCurrencyInput', () => {
         />
       );
 
-      const input = screen.getByTestId('input');
+      const input = screen.getByRole('textbox');
       await user.click(input);
       await user.paste('$10.50');
 
@@ -306,7 +307,7 @@ describe('useCurrencyInput', () => {
         />
       );
 
-      const input = screen.getByTestId('input');
+      const input = screen.getByRole('textbox');
       await user.click(input);
       await user.keyboard('12');
       await user.paste('34');
@@ -320,29 +321,84 @@ describe('useCurrencyInput', () => {
     });
   });
 
-  describe('onChange', () => {
-    it('calls onChange with the current Dinero value on user input', async () => {
+  describe('onValueChange', () => {
+    it('calls onValueChange with the current Dinero value on user input', async () => {
       const user = userEvent.setup();
-      const onChange = vi.fn();
+      const onValueChange = vi.fn();
 
-      function TestWithOnChange() {
+      function TestWithOnValueChange() {
         const { inputProps } = useCurrencyInput({
           currency: USD,
           locale: 'en-US',
-          onChange,
+          onValueChange,
         });
 
-        return <input data-testid="input" {...inputProps} />;
+        return <input {...inputProps} />;
       }
 
-      render(<TestWithOnChange />);
-      const input = screen.getByTestId('input');
+      render(<TestWithOnValueChange />);
+      const input = screen.getByRole('textbox');
       await user.click(input);
       await user.keyboard('5');
 
-      expect(onChange).toHaveBeenCalledOnce();
-      expect(toSnapshot(onChange.mock.lastCall![0])).toEqual({
+      expect(onValueChange).toHaveBeenCalledOnce();
+      expect(toSnapshot(onValueChange.mock.lastCall![0])).toEqual({
         amount: 5,
+        currency: USD,
+        scale: 2,
+      });
+    });
+
+    it('calls onValueChange exactly once on Backspace', async () => {
+      const user = userEvent.setup();
+      const onValueChange = vi.fn();
+
+      function TestWithOnValueChange() {
+        const { inputProps } = useCurrencyInput({
+          currency: USD,
+          locale: 'en-US',
+          defaultValue: 1050,
+          onValueChange,
+        });
+
+        return <input {...inputProps} />;
+      }
+
+      render(<TestWithOnValueChange />);
+      const input = screen.getByRole('textbox');
+      await user.click(input);
+      await user.keyboard('{Backspace}');
+
+      expect(onValueChange).toHaveBeenCalledOnce();
+      expect(toSnapshot(onValueChange.mock.lastCall![0])).toEqual({
+        amount: 105,
+        currency: USD,
+        scale: 2,
+      });
+    });
+
+    it('calls onValueChange exactly once on paste', async () => {
+      const user = userEvent.setup();
+      const onValueChange = vi.fn();
+
+      function TestWithOnValueChange() {
+        const { inputProps } = useCurrencyInput({
+          currency: USD,
+          locale: 'en-US',
+          onValueChange,
+        });
+
+        return <input {...inputProps} />;
+      }
+
+      render(<TestWithOnValueChange />);
+      const input = screen.getByRole('textbox');
+      await user.click(input);
+      await user.paste('1050');
+
+      expect(onValueChange).toHaveBeenCalledOnce();
+      expect(toSnapshot(onValueChange.mock.lastCall![0])).toEqual({
+        amount: 1050,
         currency: USD,
         scale: 2,
       });
@@ -364,7 +420,7 @@ describe('useCurrencyInput', () => {
         />
       );
 
-      const input = screen.getByTestId('input');
+      const input = screen.getByRole('textbox');
       expect(input).toHaveValue('0');
 
       await user.click(input);
@@ -385,14 +441,14 @@ describe('useCurrencyInput', () => {
       render(
         <TestHarness
           currency={BHD}
-          locale="ar-BH"
+          locale="en-BH"
           onDineroChange={(d) => {
             lastDinero = d;
           }}
         />
       );
 
-      const input = screen.getByTestId('input');
+      const input = screen.getByRole('textbox');
       expect(input).toHaveValue('0.000');
 
       await user.click(input);
@@ -413,7 +469,7 @@ describe('useCurrencyInput', () => {
       let lastDinero!: Dinero<number>;
 
       function CurrencySwitch() {
-        const [currency, setCurrency] = useState(USD);
+        const [currency, setCurrency] = useState<DineroCurrency<number>>(USD);
         const [locale, setLocale] = useState('en-US');
         const { inputProps, dineroValue } = useCurrencyInput({
           currency,
@@ -425,24 +481,25 @@ describe('useCurrencyInput', () => {
 
         return (
           <>
-            <input data-testid="input" {...inputProps} />
+            <input {...inputProps} />
             <button
-              data-testid="switch-jpy"
               onClick={() => {
                 setCurrency(JPY);
                 setLocale('ja-JP');
               }}
-            />
+            >
+              Switch to JPY
+            </button>
           </>
         );
       }
 
       render(<CurrencySwitch />);
-      expect(screen.getByTestId('input')).toHaveValue('10.50');
+      expect(screen.getByRole('textbox')).toHaveValue('10.50');
 
       // 1050 digits + JPY (exponent 0) = 1,050
-      await user.click(screen.getByTestId('switch-jpy'));
-      expect(screen.getByTestId('input')).toHaveValue('1,050');
+      await user.click(screen.getByRole('button', { name: 'Switch to JPY' }));
+      expect(screen.getByRole('textbox')).toHaveValue('1,050');
       expect(toSnapshot(lastDinero)).toEqual({
         amount: 1050,
         currency: JPY,
@@ -455,7 +512,7 @@ describe('useCurrencyInput', () => {
       let lastDinero!: Dinero<number>;
 
       function CurrencySwitch() {
-        const [currency, setCurrency] = useState(USD);
+        const [currency, setCurrency] = useState<DineroCurrency<number>>(USD);
         const [locale, setLocale] = useState('en-US');
         const { inputProps, dineroValue } = useCurrencyInput({
           currency,
@@ -467,24 +524,25 @@ describe('useCurrencyInput', () => {
 
         return (
           <>
-            <input data-testid="input" {...inputProps} />
+            <input {...inputProps} />
             <button
-              data-testid="switch-bhd"
               onClick={() => {
                 setCurrency(BHD);
-                setLocale('ar-BH');
+                setLocale('en-BH');
               }}
-            />
+            >
+              Switch to BHD
+            </button>
           </>
         );
       }
 
       render(<CurrencySwitch />);
-      expect(screen.getByTestId('input')).toHaveValue('10.50');
+      expect(screen.getByRole('textbox')).toHaveValue('10.50');
 
       // 1050 digits + BHD (exponent 3) = 1.050
-      await user.click(screen.getByTestId('switch-bhd'));
-      expect(screen.getByTestId('input')).toHaveValue('1.050');
+      await user.click(screen.getByRole('button', { name: 'Switch to BHD' }));
+      expect(screen.getByRole('textbox')).toHaveValue('1.050');
       expect(toSnapshot(lastDinero)).toEqual({
         amount: 1050,
         currency: BHD,
@@ -511,18 +569,18 @@ describe('useCurrencyInput', () => {
 
         return (
           <>
-            <input data-testid="input" {...inputProps} />
-            <button data-testid="switch-scale" onClick={() => setScale(3)} />
+            <input {...inputProps} />
+            <button onClick={() => setScale(3)}>Switch scale</button>
           </>
         );
       }
 
       render(<ScaleSwitch />);
-      expect(screen.getByTestId('input')).toHaveValue('10.50');
+      expect(screen.getByRole('textbox')).toHaveValue('10.50');
 
       // 1050 digits + scale 3 = 1.050
-      await user.click(screen.getByTestId('switch-scale'));
-      expect(screen.getByTestId('input')).toHaveValue('1.050');
+      await user.click(screen.getByRole('button', { name: 'Switch scale' }));
+      expect(screen.getByRole('textbox')).toHaveValue('1.050');
       expect(toSnapshot(lastDinero)).toEqual({
         amount: 1050,
         currency: USD,
@@ -545,20 +603,17 @@ describe('useCurrencyInput', () => {
 
         return (
           <>
-            <input data-testid="input" {...inputProps} />
-            <button
-              data-testid="switch-locale"
-              onClick={() => setLocale('de-DE')}
-            />
+            <input {...inputProps} />
+            <button onClick={() => setLocale('de-DE')}>Switch locale</button>
           </>
         );
       }
 
       render(<LocaleSwitch />);
-      expect(screen.getByTestId('input')).toHaveValue('1,234.56');
+      expect(screen.getByRole('textbox')).toHaveValue('1,234.56');
 
-      await user.click(screen.getByTestId('switch-locale'));
-      expect(screen.getByTestId('input')).toHaveValue('1.234,56');
+      await user.click(screen.getByRole('button', { name: 'Switch locale' }));
+      expect(screen.getByRole('textbox')).toHaveValue('1.234,56');
     });
   });
 });
@@ -572,5 +627,5 @@ function TestHarness({ onDineroChange, ...options }: TestHarnessProps) {
 
   onDineroChange?.(dineroValue);
 
-  return <input data-testid="input" {...inputProps} />;
+  return <input {...inputProps} />;
 }
