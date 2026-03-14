@@ -4,11 +4,12 @@ import path from 'path';
 export default defineConfig({
   esbuild: {
     tsconfigRaw: '{}',
+    jsx: 'automatic',
   },
   test: {
     globals: true,
     environment: 'node',
-    include: ['packages/*/src/**/__tests__/**/*.test.ts'],
+    include: ['packages/*/src/**/__tests__/**/*.test.{ts,tsx}'],
     exclude: ['node_modules', 'dist'],
     coverage: {
       provider: 'v8',
