@@ -5,43 +5,40 @@
 import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useForm } from '@tanstack/react-form';
+import { useForm, Controller } from 'react-hook-form';
 import { toSnapshot } from 'dinero.js';
 import type { Dinero } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 
-import { CurrencyInput } from '../../components';
-import { useCurrencyInput } from '../../hooks';
+import { CurrencyInput } from '../components';
 
-describe('TanStack Form integration', () => {
-  it('works with `form.Field`', async () => {
+describe('React Hook Form integration', () => {
+  it('works with `Controller`', async () => {
     const user = userEvent.setup();
     const onSubmit = vi.fn();
 
     function TestForm() {
-      const form = useForm({
-        defaultValues: { price: null as Dinero<number> | null },
-        onSubmit: ({ value }) => onSubmit(value),
+      const { handleSubmit, control } = useForm<{
+        price: Dinero<number> | null;
+      }>({
+        defaultValues: { price: null },
       });
 
       return (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            form.handleSubmit();
-          }}
-        >
-          <form.Field name="price">
-            {(field) => (
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Controller
+            name="price"
+            control={control}
+            render={({ field }) => (
               <CurrencyInput
                 currency={USD}
                 locale="en-US"
                 aria-label="Price"
-                onValueChange={(dinero) => field.handleChange(dinero)}
+                onValueChange={(dinero) => field.onChange(dinero)}
+                onBlur={field.onBlur}
               />
             )}
-          </form.Field>
+          />
           <button type="submit">Submit</button>
         </form>
       );
@@ -69,27 +66,31 @@ describe('TanStack Form integration', () => {
     const user = userEvent.setup();
 
     function TestForm() {
-      const form = useForm({
+      const { handleSubmit, control, reset } = useForm<{
+        price: number;
+      }>({
         defaultValues: { price: 1050 },
       });
 
       return (
-        <form>
-          <form.Field name="price">
-            {(field) => (
+        <form onSubmit={handleSubmit(() => {})}>
+          <Controller
+            name="price"
+            control={control}
+            render={({ field }) => (
               <CurrencyInput
                 currency={USD}
                 locale="en-US"
                 aria-label="Price"
-                name="price"
-                value={field.state.value}
+                value={field.value}
                 onValueChange={(dinero) =>
-                  field.handleChange(toSnapshot(dinero).amount)
+                  field.onChange(toSnapshot(dinero).amount)
                 }
+                onBlur={field.onBlur}
               />
             )}
-          </form.Field>
-          <button type="button" onClick={() => form.reset()}>
+          />
+          <button type="button" onClick={() => reset()}>
             Reset
           </button>
         </form>
@@ -99,19 +100,56 @@ describe('TanStack Form integration', () => {
     render(<TestForm />);
 
     const input = screen.getByRole('textbox', { name: 'Price' });
-    const hidden = document.querySelector(
-      'input[name="price"]'
-    ) as HTMLInputElement;
     expect(input).toHaveValue('10.50');
-    expect(hidden.value).toBe('1050');
 
     await user.click(input);
     await user.keyboard('99');
     expect(input).toHaveValue('1,050.99');
-    expect(hidden.value).toBe('105099');
 
     await user.click(screen.getByRole('button', { name: 'Reset' }));
     expect(input).toHaveValue('10.50');
+  });
+
+  it('updates the hidden input value after typing', async () => {
+    const user = userEvent.setup();
+
+    function TestForm() {
+      const { control } = useForm<{ price: number }>({
+        defaultValues: { price: 0 },
+      });
+
+      return (
+        <form>
+          <Controller
+            name="price"
+            control={control}
+            render={({ field }) => (
+              <CurrencyInput
+                currency={USD}
+                locale="en-US"
+                aria-label="Price"
+                name="price"
+                value={field.value}
+                onValueChange={(dinero) =>
+                  field.onChange(toSnapshot(dinero).amount)
+                }
+              />
+            )}
+          />
+        </form>
+      );
+    }
+
+    render(<TestForm />);
+
+    const input = screen.getByRole('textbox', { name: 'Price' });
+    await user.click(input);
+    await user.keyboard('1050');
+
+    const hidden = document.querySelector(
+      'input[name="price"]'
+    ) as HTMLInputElement;
+    expect(hidden.type).toBe('hidden');
     expect(hidden.value).toBe('1050');
   });
 
@@ -120,21 +158,20 @@ describe('TanStack Form integration', () => {
     const onSubmit = vi.fn();
 
     function TestForm() {
-      const form = useForm({
-        defaultValues: { price: null as Dinero<number> | null },
-        onSubmit: ({ value }) => onSubmit(value),
+      const { handleSubmit, setValue } = useForm<{
+        price: Dinero<number> | null;
+      }>({
+        defaultValues: { price: null },
       });
 
       return (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            form.handleSubmit();
-          }}
-        >
-          <TanStackHookInput
-            onValueChange={(dinero) => form.setFieldValue('price', dinero)}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <CurrencyInput
+            currency={USD}
+            locale="en-US"
+            aria-label="Price"
+            name="price"
+            onValueChange={(dinero) => setValue('price', dinero)}
           />
           <button type="submit">Submit</button>
         </form>
@@ -159,17 +196,3 @@ describe('TanStack Form integration', () => {
     });
   });
 });
-
-function TanStackHookInput({
-  onValueChange,
-}: {
-  onValueChange: (dinero: Dinero<number>) => void;
-}) {
-  const { inputProps } = useCurrencyInput({
-    currency: USD,
-    locale: 'en-US',
-    onValueChange,
-  });
-
-  return <input aria-label="Price" name="price" {...inputProps} />;
-}

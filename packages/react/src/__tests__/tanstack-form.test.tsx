@@ -5,38 +5,45 @@
 import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Formik, Form, useField } from 'formik';
+import { useForm } from '@tanstack/react-form';
 import { toSnapshot } from 'dinero.js';
 import type { Dinero } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 
-import { CurrencyInput } from '../../components';
-import { useCurrencyInput } from '../../hooks';
+import { CurrencyInput } from '../components';
+import { useCurrencyInput } from '../hooks';
 
-describe('Formik integration', () => {
-  it('works with `onValueChange` and `setFieldValue`', async () => {
+describe('TanStack Form integration', () => {
+  it('works with `form.Field`', async () => {
     const user = userEvent.setup();
     const onSubmit = vi.fn();
 
     function TestForm() {
+      const form = useForm({
+        defaultValues: { price: null as Dinero<number> | null },
+        onSubmit: ({ value }) => onSubmit(value),
+      });
+
       return (
-        <Formik<{ price: Dinero<number> | null }>
-          initialValues={{ price: null }}
-          onSubmit={onSubmit}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            form.handleSubmit();
+          }}
         >
-          {({ setFieldValue }) => (
-            <Form>
+          <form.Field name="price">
+            {(field) => (
               <CurrencyInput
                 currency={USD}
                 locale="en-US"
                 aria-label="Price"
-                name="price"
-                onValueChange={(dinero) => setFieldValue('price', dinero)}
+                onValueChange={(dinero) => field.handleChange(dinero)}
               />
-              <button type="submit">Submit</button>
-            </Form>
-          )}
-        </Formik>
+            )}
+          </form.Field>
+          <button type="submit">Submit</button>
+        </form>
       );
     }
 
@@ -48,13 +55,6 @@ describe('Formik integration', () => {
     await user.click(screen.getByRole('button', { name: 'Submit' }));
 
     expect(input).toHaveValue('10.50');
-
-    const hidden = document.querySelector(
-      'input[name="price"]'
-    ) as HTMLInputElement;
-    expect(hidden.type).toBe('hidden');
-    expect(hidden.value).toBe('1050');
-
     expect(onSubmit).toHaveBeenCalledOnce();
 
     const formData = onSubmit.mock.calls[0][0];
@@ -69,20 +69,30 @@ describe('Formik integration', () => {
     const user = userEvent.setup();
 
     function TestForm() {
+      const form = useForm({
+        defaultValues: { price: 1050 },
+      });
+
       return (
-        <Formik<{ price: number }>
-          initialValues={{ price: 1050 }}
-          onSubmit={() => {}}
-        >
-          {({ resetForm }) => (
-            <Form>
-              <FormikCurrencyField name="price" />
-              <button type="button" onClick={() => resetForm()}>
-                Reset
-              </button>
-            </Form>
-          )}
-        </Formik>
+        <form>
+          <form.Field name="price">
+            {(field) => (
+              <CurrencyInput
+                currency={USD}
+                locale="en-US"
+                aria-label="Price"
+                name="price"
+                value={field.state.value}
+                onValueChange={(dinero) =>
+                  field.handleChange(toSnapshot(dinero).amount)
+                }
+              />
+            )}
+          </form.Field>
+          <button type="button" onClick={() => form.reset()}>
+            Reset
+          </button>
+        </form>
       );
     }
 
@@ -109,33 +119,25 @@ describe('Formik integration', () => {
     const user = userEvent.setup();
     const onSubmit = vi.fn();
 
-    function FormikHookInput({
-      setFieldValue,
-    }: {
-      setFieldValue: (field: string, value: Dinero<number>) => void;
-    }) {
-      const { inputProps } = useCurrencyInput({
-        currency: USD,
-        locale: 'en-US',
-        onValueChange: (dinero) => setFieldValue('price', dinero),
+    function TestForm() {
+      const form = useForm({
+        defaultValues: { price: null as Dinero<number> | null },
+        onSubmit: ({ value }) => onSubmit(value),
       });
 
-      return <input aria-label="Price" name="price" {...inputProps} />;
-    }
-
-    function TestForm() {
       return (
-        <Formik<{ price: Dinero<number> | null }>
-          initialValues={{ price: null }}
-          onSubmit={onSubmit}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            form.handleSubmit();
+          }}
         >
-          {({ setFieldValue }) => (
-            <Form>
-              <FormikHookInput setFieldValue={setFieldValue} />
-              <button type="submit">Submit</button>
-            </Form>
-          )}
-        </Formik>
+          <TanStackHookInput
+            onValueChange={(dinero) => form.setFieldValue('price', dinero)}
+          />
+          <button type="submit">Submit</button>
+        </form>
       );
     }
 
@@ -158,17 +160,16 @@ describe('Formik integration', () => {
   });
 });
 
-function FormikCurrencyField({ name }: { name: string }) {
-  const [field, , helpers] = useField<number>(name);
+function TanStackHookInput({
+  onValueChange,
+}: {
+  onValueChange: (dinero: Dinero<number>) => void;
+}) {
+  const { inputProps } = useCurrencyInput({
+    currency: USD,
+    locale: 'en-US',
+    onValueChange,
+  });
 
-  return (
-    <CurrencyInput
-      currency={USD}
-      locale="en-US"
-      aria-label="Price"
-      name={name}
-      value={field.value}
-      onValueChange={(dinero) => helpers.setValue(toSnapshot(dinero).amount)}
-    />
-  );
+  return <input aria-label="Price" name="price" {...inputProps} />;
 }
