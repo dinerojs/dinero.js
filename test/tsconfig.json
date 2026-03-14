@@ -1,8 +1,0 @@
-{
-  "extends": "../tsconfig",
-  "compilerOptions": {
-    "composite": true
-  },
-  "references": [{ "path": "../packages/dinero.js" }],
-  "include": ["utils"]
-}
