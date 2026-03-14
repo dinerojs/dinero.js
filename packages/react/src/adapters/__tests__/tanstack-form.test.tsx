@@ -81,6 +81,7 @@ describe('TanStack Form integration', () => {
                 currency={USD}
                 locale="en-US"
                 aria-label="Price"
+                name="price"
                 value={field.state.value}
                 onValueChange={(dinero) =>
                   field.handleChange(toSnapshot(dinero).amount)
@@ -98,14 +99,20 @@ describe('TanStack Form integration', () => {
     render(<TestForm />);
 
     const input = screen.getByRole('textbox', { name: 'Price' });
+    const hidden = document.querySelector(
+      'input[name="price"]'
+    ) as HTMLInputElement;
     expect(input).toHaveValue('10.50');
+    expect(hidden.value).toBe('1050');
 
     await user.click(input);
     await user.keyboard('99');
     expect(input).toHaveValue('1,050.99');
+    expect(hidden.value).toBe('105099');
 
     await user.click(screen.getByRole('button', { name: 'Reset' }));
     expect(input).toHaveValue('10.50');
+    expect(hidden.value).toBe('1050');
   });
 
   it('works with the `useCurrencyInput` hook directly', async () => {

@@ -110,6 +110,49 @@ describe('React Hook Form integration', () => {
     expect(input).toHaveValue('10.50');
   });
 
+  it('updates the hidden input value after typing', async () => {
+    const user = userEvent.setup();
+
+    function TestForm() {
+      const { control } = useForm<{ price: number }>({
+        defaultValues: { price: 0 },
+      });
+
+      return (
+        <form>
+          <Controller
+            name="price"
+            control={control}
+            render={({ field }) => (
+              <CurrencyInput
+                currency={USD}
+                locale="en-US"
+                aria-label="Price"
+                name="price"
+                value={field.value}
+                onValueChange={(dinero) =>
+                  field.onChange(toSnapshot(dinero).amount)
+                }
+              />
+            )}
+          />
+        </form>
+      );
+    }
+
+    render(<TestForm />);
+
+    const input = screen.getByRole('textbox', { name: 'Price' });
+    await user.click(input);
+    await user.keyboard('1050');
+
+    const hidden = document.querySelector(
+      'input[name="price"]'
+    ) as HTMLInputElement;
+    expect(hidden.type).toBe('hidden');
+    expect(hidden.value).toBe('1050');
+  });
+
   it('works with the `useCurrencyInput` hook directly', async () => {
     const user = userEvent.setup();
     const onSubmit = vi.fn();
