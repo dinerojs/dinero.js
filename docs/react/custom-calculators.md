@@ -23,7 +23,7 @@ const useCurrencyInput = createUseCurrencyInput(bigDinero);
 function PriceField() {
   const { inputProps } = useCurrencyInput({
     currency: USD,
-    locale: 'en-US',
+    format: { locale: 'en-US' },
   });
 
   return <input {...inputProps} />;
@@ -47,7 +47,7 @@ function PriceField() {
   return (
     <CurrencyInput
       currency={USD}
-      locale="en-US"
+      format={{ locale: 'en-US' }}
     />
   );
 }

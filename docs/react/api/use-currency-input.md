@@ -15,7 +15,7 @@ import { USD } from 'dinero.js/currencies';
 function PriceField() {
   const { inputProps, dineroValue } = useCurrencyInput({
     currency: USD,
-    locale: 'en-US',
+    format: { locale: 'en-US' },
   });
 
   return (
@@ -32,7 +32,7 @@ function PriceField() {
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
 | `currency` | `DineroCurrency<TAmount>` | The currency to use. Its exponent determines decimal placement (e.g., 2 for USD means two decimal places). | Yes |
-| `locale` | `string` | BCP 47 locale tag for formatting (e.g., `'en-US'`). Controls grouping and decimal separators. | Yes |
+| `format` | `FormatObject \| FormatFunction<TAmount>` | How to format the displayed value. Pass `{ locale: 'en-US' }` (with optional `Intl.NumberFormatOptions`) for built-in formatting, or a function `({ value, currency, scale }) => string` for full control. | Yes |
 | `defaultValue` | `TAmount` | Initial amount in minor currency units (e.g., `1050` for $10.50 in USD). Used for uncontrolled inputs. | No |
 | `value` | `TAmount` | Controlled amount in minor currency units. When provided, the hook uses this instead of internal state. Must be used with `onValueChange`. | No |
 | `scale` | `TAmount` | Custom scale to override the currency's exponent. For example, `3` with USD formats `10545` as `$10.545`. | No |
@@ -55,7 +55,7 @@ import { USD } from 'dinero.js/currencies';
 
 const { inputProps, dineroValue } = useCurrencyInput({
   currency: USD,
-  locale: 'en-US',
+  format: { locale: 'en-US' },
   defaultValue: 1050, // starts at $10.50
 });
 ```
@@ -69,7 +69,7 @@ import { USD } from 'dinero.js/currencies';
 
 const { inputProps, dineroValue } = useCurrencyInput({
   currency: USD,
-  locale: 'en-US',
+  format: { locale: 'en-US' },
   onValueChange(dinero) {
     const { amount } = toSnapshot(dinero);
     console.log('Amount in cents:', amount);
@@ -87,7 +87,7 @@ import { USD } from 'dinero.js/currencies';
 
 const { inputProps, dineroValue } = useCurrencyInput({
   currency: USD,
-  locale: 'en-US',
+  format: { locale: 'en-US' },
   value: amount,
   onValueChange(dinero) {
     setAmount(toSnapshot(dinero).amount);
@@ -103,7 +103,7 @@ import { USD } from 'dinero.js/currencies';
 
 const { inputProps, dineroValue } = useCurrencyInput({
   currency: USD,
-  locale: 'en-US',
+  format: { locale: 'en-US' },
   scale: 3, // three decimal places: $10.545
 });
 ```
@@ -116,7 +116,7 @@ import { USD } from 'dinero.js/bigint/currencies';
 
 const { inputProps, dineroValue } = useCurrencyInput({
   currency: USD,
-  locale: 'en-US',
+  format: { locale: 'en-US' },
   defaultValue: 1050n,
 });
 ```
@@ -133,7 +133,7 @@ import { USD } from 'dinero.js/currencies';
 function PriceField() {
   const { inputProps, dineroValue } = useCurrencyInput({
     currency: USD,
-    locale: 'en-US',
+    format: { locale: 'en-US' },
   });
 
   return (

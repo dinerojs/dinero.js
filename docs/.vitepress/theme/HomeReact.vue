@@ -7,26 +7,33 @@ import { withBase } from 'vitepress';
     <div class="container">
       <div class="content">
         <p class="label">React</p>
-        <h2 class="heading">Headless money inputs for React</h2>
+        <h2 class="heading">Money inputs for React</h2>
         <p class="details">
-          ATM-style currency inputs that handle formatting, keystrokes, and
-          paste. Works with any form library—no adapters needed.
+          ATM-style currency inputs for React. Use the
+          <code>CurrencyInput</code> component or drop down to the
+          <code>useCurrencyInput</code> hook for full control. Works with any
+          form library—no adapters needed.
         </p>
         <a class="link" :href="withBase('/react/getting-started')">
-          Get started with @dinerojs/react &rarr;
+          Get started with @dinerojs/react
         </a>
       </div>
       <div class="code-area">
         <div class="code-block">
-          <pre><code><span class="kw">import</span> { useCurrencyInput } <span class="kw">from</span> <span class="str">'@dinerojs/react'</span>;
+          <pre
+            v-pre
+          ><code><span class="kw">import</span> { CurrencyInput } <span class="kw">from</span> <span class="str">'@dinerojs/react'</span>;
 <span class="kw">import</span> { USD } <span class="kw">from</span> <span class="str">'dinero.js/currencies'</span>;
 
-<span class="kw">const</span> { inputProps } = <span class="fn">useCurrencyInput</span>({
-  currency: USD,
-  locale: <span class="str">'en-US'</span>,
-});
-
-<span class="kw">return</span> &lt;<span class="fn">input</span> {<span class="kw">...</span>inputProps} /&gt;;</code></pre>
+<span class="kw">function</span> <span class="fn">PriceField</span>() {
+  <span class="kw">return</span> (
+    &lt;<span class="fn">CurrencyInput</span>
+      currency={USD}
+      format={{ locale: <span class="str">'en-US'</span> }}
+      name=<span class="str">"price"</span>
+    /&gt;
+  );
+}</code></pre>
         </div>
       </div>
     </div>

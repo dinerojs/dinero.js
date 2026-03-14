@@ -33,7 +33,7 @@ function PriceForm() {
         render={({ field }) => (
           <CurrencyInput
             currency={USD}
-            locale="en-US"
+            format={{ locale: 'en-US' }}
             value={field.value}
             onValueChange={(dinero) =>
               field.onChange(toSnapshot(dinero).amount)
@@ -64,7 +64,7 @@ function PriceField({ name }: { name: string }) {
   return (
     <CurrencyInput
       currency={USD}
-      locale="en-US"
+      format={{ locale: 'en-US' }}
       name={name}
       value={field.value}
       onValueChange={(dinero) => helpers.setValue(toSnapshot(dinero).amount)}
@@ -114,7 +114,7 @@ function PriceForm() {
         {(field) => (
           <CurrencyInput
             currency={USD}
-            locale="en-US"
+            format={{ locale: 'en-US' }}
             value={field.state.value}
             onValueChange={(dinero) =>
               field.handleChange(toSnapshot(dinero).amount)

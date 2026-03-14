@@ -19,38 +19,50 @@ npm install @dinerojs/react dinero.js react
 
 ## Quick start
 
-Use the `useCurrencyInput` hook to wire a money input to a Dinero object. It uses an ATM-style input where digits shift left as the user types—typing "1", "0", "5", "0" with USD produces `$10.50`.
+Use the `CurrencyInput` component to add a money input. It uses ATM-style entry where digits shift left as the user types—typing "1", "0", "5", "0" with USD produces `$10.50`.
 
 ```tsx
+import { CurrencyInput } from '@dinerojs/react';
+import { USD } from 'dinero.js/currencies';
+
+function PriceField() {
+  return (
+    <CurrencyInput
+      currency={USD}
+      format={{ locale: 'en-US' }}
+      name="price"
+      aria-label="Price"
+    />
+  );
+}
+```
+
+When you pass a `name` prop, `CurrencyInput` renders a hidden input with the raw minor-unit amount so forms submit a clean integer string (e.g., `"1050"` for $10.50).
+
+For more control, use the [`useCurrencyInput`](/react/api/use-currency-input) hook directly. It returns `inputProps` to spread onto a native `<input>` and a `dineroValue` you can use with any Dinero.js function:
+
+```tsx
+import { toDecimal } from 'dinero.js';
 import { useCurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 function PriceField() {
   const { inputProps, dineroValue } = useCurrencyInput({
     currency: USD,
-    locale: 'en-US',
+    format: { locale: 'en-US' },
   });
+
+  const formatted = toDecimal(dineroValue, ({ value, currency }) => {
+    return `${currency.code} ${value}`;
+  }); // "USD 10.50"
 
   return <input {...inputProps} />;
 }
 ```
 
-Spread `inputProps` onto a native `<input>` element. It includes `value`, `onChange`, `onKeyDown`, `onPaste`, `type`, and `inputMode`—everything the input needs to behave correctly.
-
-`dineroValue` is the current value as a Dinero object. You can use it with any Dinero.js function:
-
-```tsx
-import { toDecimal } from 'dinero.js';
-
-// Inside your component
-const formatted = toDecimal(dineroValue, ({ value, currency }) => {
-  return `${currency.code} ${value}`;
-}); // "USD 10.50"
-```
-
 ## How it works
 
-The hook renders amounts using `Intl.NumberFormat`, so you get locale-aware grouping and decimal separators automatically. The user types raw digits—the hook takes care of placing the decimal point based on the currency's exponent.
+The hook formats amounts based on the `format` prop. Pass `{ locale: 'en-US' }` to use `Intl.NumberFormat` with locale-aware grouping and decimal separators, or pass a custom function for full control. The user types raw digits—the hook takes care of placing the decimal point based on the currency's exponent.
 
 | User types | Display (USD, en-US) | Amount (minor units) |
 |------------|---------------------|---------------------|
@@ -68,7 +80,7 @@ Pass `defaultValue` to start the input with a pre-filled amount. The value is in
 ```tsx
 const { inputProps } = useCurrencyInput({
   currency: USD,
-  locale: 'en-US',
+  format: { locale: 'en-US' },
   defaultValue: 1050, // starts at $10.50
 });
 ```
@@ -83,7 +95,7 @@ import { toSnapshot } from 'dinero.js';
 function PriceField() {
   const { inputProps } = useCurrencyInput({
     currency: USD,
-    locale: 'en-US',
+    format: { locale: 'en-US' },
     onValueChange(dinero) {
       const { amount } = toSnapshot(dinero);
       console.log('Amount in cents:', amount);
@@ -106,7 +118,7 @@ function PriceField() {
   return (
     <CurrencyInput
       currency={USD}
-      locale="en-US"
+      format={{ locale: 'en-US' }}
       className="price-field"
       aria-label="Price"
       onValueChange={(dinero) => console.log(dinero)}
@@ -123,7 +135,7 @@ function PriceField() {
 <form action="/api/checkout" method="post">
   <CurrencyInput
     currency={USD}
-    locale="en-US"
+    format={{ locale: 'en-US' }}
     name="price"
     aria-label="Price"
   />

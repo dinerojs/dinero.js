@@ -10,19 +10,21 @@ npm install @dinerojs/react dinero.js react
 
 ## Quick start
 
-Use the `useCurrencyInput` hook to wire a money input to a Dinero object. It uses an ATM-style input where digits shift left as the user types (e.g., typing "342" with USD produces `$3.42`).
+Use the `CurrencyInput` component to add a money input. It uses ATM-style entry where digits shift left as the user types (e.g., typing "342" with USD produces `$3.42`).
 
 ```tsx
-import { useCurrencyInput } from '@dinerojs/react';
+import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 function PriceField() {
-  const { inputProps, dineroValue } = useCurrencyInput({
-    currency: USD,
-    locale: 'en-US',
-  });
-
-  return <input {...inputProps} />;
+  return (
+    <CurrencyInput
+      currency={USD}
+      format={{ locale: 'en-US' }}
+      name="price"
+      aria-label="Price"
+    />
+  );
 }
 ```
 
@@ -31,7 +33,7 @@ function PriceField() {
 | Option | Type | Description |
 |--------|------|-------------|
 | `currency` | `DineroCurrency<TAmount>` | The currency to use. Its exponent determines decimal placement. |
-| `locale` | `string` | BCP 47 locale tag for formatting (e.g., `'en-US'`). |
+| `format` | `FormatObject \| FormatFunction<TAmount>` | How to format the displayed value. Pass `{ locale: 'en-US' }` or a custom function. |
 | `defaultValue` | `TAmount` | Initial amount in minor units (e.g., `1050` for $10.50). |
 | `value` | `TAmount` | Controlled amount in minor units. When provided, the hook uses this instead of internal state. |
 | `scale` | `TAmount` | Custom scale to override the currency's exponent. |
@@ -66,7 +68,7 @@ const useCurrencyInput = createUseCurrencyInput(myCustomDinero);
 
 A thin component wrapper around `useCurrencyInput` for a more declarative API. It forwards a ref and passes through all standard HTML input attributes.
 
-`CurrencyInput` renders a hidden `<input>` that submits the raw minor-unit amount (e.g., `105000`), keeping the visible input for formatted display only. This means forms submit clean integer strings instead of locale-formatted values.
+`CurrencyInput` renders a hidden `<input>` that submits the raw minor-unit amount (e.g., `105000`), keeping the visible input for formatted display only. This means forms submit clean integer strings instead of formatted values.
 
 ```tsx
 import { CurrencyInput } from '@dinerojs/react';
@@ -76,7 +78,7 @@ function PriceField() {
   return (
     <CurrencyInput
       currency={USD}
-      locale="en-US"
+      format={{ locale: 'en-US' }}
       className="price-field"
       aria-label="Price"
       onValueChange={(dinero) => console.log(dinero)}
@@ -85,7 +87,7 @@ function PriceField() {
 }
 ```
 
-It accepts the same options as `useCurrencyInput` (`currency`, `locale`, `defaultValue`, `value`, `scale`, `onValueChange`) plus any `InputHTMLAttributes<HTMLInputElement>` and `ref`.
+It accepts the same options as `useCurrencyInput` (`currency`, `format`, `defaultValue`, `value`, `scale`, `onValueChange`) plus any `InputHTMLAttributes<HTMLInputElement>` and `ref`.
 
 For bigint support:
 
@@ -119,7 +121,7 @@ function PriceField() {
   return (
     <CurrencyInput
       currency={USD}
-      locale="en-US"
+      format={{ locale: 'en-US' }}
       value={amount}
       onValueChange={(dinero) => setAmount(toSnapshot(dinero).amount)}
     />
@@ -152,7 +154,7 @@ function PriceForm() {
         render={({ field }) => (
           <CurrencyInput
             currency={USD}
-            locale="en-US"
+            format={{ locale: 'en-US' }}
             value={field.value}
             onValueChange={(dinero) =>
               field.onChange(toSnapshot(dinero).amount)
@@ -181,7 +183,7 @@ function PriceField({ name }: { name: string }) {
   return (
     <CurrencyInput
       currency={USD}
-      locale="en-US"
+      format={{ locale: 'en-US' }}
       name={name}
       value={field.value}
       onValueChange={(dinero) => helpers.setValue(toSnapshot(dinero).amount)}
@@ -229,7 +231,7 @@ function PriceForm() {
         {(field) => (
           <CurrencyInput
             currency={USD}
-            locale="en-US"
+            format={{ locale: 'en-US' }}
             value={field.state.value}
             onValueChange={(dinero) =>
               field.handleChange(toSnapshot(dinero).amount)
@@ -259,7 +261,7 @@ async function createInvoice(formData: FormData) {
 If you use the `useCurrencyInput` hook directly, use `dineroValue` with `toSnapshot` to get the amount for a hidden input:
 
 ```tsx
-const { inputProps, dineroValue } = useCurrencyInput({ currency: USD, locale: 'en-US' });
+const { inputProps, dineroValue } = useCurrencyInput({ currency: USD, format: { locale: 'en-US' } });
 
 <input {...inputProps} />
 <input type="hidden" name="price" value={toSnapshot(dineroValue).amount} />

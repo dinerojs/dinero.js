@@ -18,7 +18,7 @@ import { USD } from 'dinero.js/bigint/currencies';
 function PriceField() {
   const { inputProps } = useCurrencyInput({
     currency: USD,
-    locale: 'en-US',
+    format: { locale: 'en-US' },
     defaultValue: 1050n,
   });
 
@@ -36,7 +36,7 @@ function PriceField() {
   return (
     <CurrencyInput
       currency={USD}
-      locale="en-US"
+      format={{ locale: 'en-US' }}
       defaultValue={1050n}
     />
   );
@@ -63,7 +63,7 @@ function PriceField() {
   return (
     <CurrencyInput
       currency={USD}
-      locale="en-US"
+      format={{ locale: 'en-US' }}
       value={amount}
       onValueChange={(dinero) => setAmount(toSnapshot(dinero).amount)}
     />

@@ -25,7 +25,7 @@ function PriceField() {
 
   const { inputProps } = useCurrencyInput({
     currency: USD,
-    locale: 'en-US',
+    format: { locale: 'en-US' },
     value: amount,
     onValueChange(dinero) {
       setAmount(toSnapshot(dinero).amount);
@@ -57,7 +57,7 @@ function PriceForm() {
     <form>
       <CurrencyInput
         currency={USD}
-        locale="en-US"
+        format={{ locale: 'en-US' }}
         value={amount}
         onValueChange={(dinero) => setAmount(toSnapshot(dinero).amount)}
       />

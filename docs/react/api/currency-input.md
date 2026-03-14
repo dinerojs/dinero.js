@@ -7,7 +7,7 @@ description: A headless money input component for React that wraps useCurrencyIn
 
 A thin component wrapper around [`useCurrencyInput`](/react/api/use-currency-input). It forwards a ref and passes through all standard HTML input attributes.
 
-`CurrencyInput` renders a hidden `<input>` that submits the raw minor-unit amount (e.g., `105000`), keeping the visible input for formatted display only. This means forms submit clean integer strings instead of locale-formatted values.
+`CurrencyInput` renders a hidden `<input>` that submits the raw minor-unit amount (e.g., `105000`), keeping the visible input for formatted display only. This means forms submit clean integer strings instead of formatted values.
 
 ```tsx
 import { CurrencyInput } from '@dinerojs/react';
@@ -17,7 +17,7 @@ function PriceField() {
   return (
     <CurrencyInput
       currency={USD}
-      locale="en-US"
+      format={{ locale: 'en-US' }}
       className="price-field"
       aria-label="Price"
     />
@@ -32,7 +32,7 @@ function PriceField() {
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
 | `currency` | `DineroCurrency<TAmount>` | The currency to use. Its exponent determines decimal placement. | Yes |
-| `locale` | `string` | BCP 47 locale tag for formatting (e.g., `'en-US'`). | Yes |
+| `format` | `FormatObject \| FormatFunction<TAmount>` | How to format the displayed value. Pass `{ locale: 'en-US' }` or a custom function. | Yes |
 | `defaultValue` | `TAmount` | Initial amount in minor currency units. | No |
 | `value` | `TAmount` | Controlled amount in minor currency units. Must be used with `onValueChange`. | No |
 | `scale` | `TAmount` | Custom scale to override the currency's exponent. | No |
@@ -50,7 +50,7 @@ import { USD } from 'dinero.js/currencies';
 
 <CurrencyInput
   currency={USD}
-  locale="en-US"
+  format={{ locale: 'en-US' }}
   className="price-field"
   id="price"
   aria-label="Price"
@@ -72,7 +72,7 @@ function PriceField() {
     <CurrencyInput
       ref={inputRef}
       currency={USD}
-      locale="en-US"
+      format={{ locale: 'en-US' }}
     />
   );
 }
@@ -88,7 +88,7 @@ import { USD } from 'dinero.js/currencies';
 
 <CurrencyInput
   currency={USD}
-  locale="en-US"
+  format={{ locale: 'en-US' }}
   value={amount}
   onValueChange={(dinero) => setAmount(toSnapshot(dinero).amount)}
 />
@@ -104,7 +104,7 @@ function PriceField() {
   return (
     <CurrencyInput
       currency={USD}
-      locale="en-US"
+      format={{ locale: 'en-US' }}
       defaultValue={1050n}
     />
   );
@@ -124,7 +124,7 @@ function PriceForm() {
     <form action="/api/checkout" method="post">
       <CurrencyInput
         currency={USD}
-        locale="en-US"
+        format={{ locale: 'en-US' }}
         name="price"
         aria-label="Price"
       />
