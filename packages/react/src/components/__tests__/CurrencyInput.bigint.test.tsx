@@ -12,7 +12,7 @@ import { USD } from 'dinero.js/currencies';
 import { castToBigintCurrency } from 'test-utils';
 import { dinero } from 'dinero.js/bigint';
 
-import { CurrencyInput } from '@dinerojs/react/bigint';
+import { CurrencyInput } from '..';
 
 const bigintUSD = castToBigintCurrency(USD);
 

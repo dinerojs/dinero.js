@@ -12,8 +12,8 @@ import type { Dinero } from 'dinero.js';
 import { castToBigintCurrency } from 'test-utils';
 import { dinero } from 'dinero.js/bigint';
 
-import { useCurrencyInput } from '@dinerojs/react/bigint';
-import type { UseCurrencyInputOptions } from '@dinerojs/react';
+import { useCurrencyInput } from '..';
+import type { UseCurrencyInputOptions } from '..';
 
 const bigintUSD = castToBigintCurrency(USD);
 const bigintJPY = castToBigintCurrency(JPY);

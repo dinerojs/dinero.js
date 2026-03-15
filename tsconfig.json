@@ -20,7 +20,6 @@
       "dinero.js/currencies": ["packages/dinero.js/src/currencies/index"],
       "dinero.js/bigint": ["packages/dinero.js/src/bigint/index"],
       "@dinerojs/react": ["packages/react/src/index"],
-      "@dinerojs/react/bigint": ["packages/react/src/bigint/index"],
       "@dinerojs/react/server": ["packages/react/src/server/index"],
       "test-utils": ["test/utils/index"]
     }
