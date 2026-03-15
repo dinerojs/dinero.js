@@ -5,67 +5,69 @@ description: Use @dinerojs/react with bigint-based Dinero objects for large amou
 
 # Bigint support
 
-If you work with large amounts or high-precision currencies like cryptocurrencies, you can use the bigint variant of `@dinerojs/react`. It works identically to the default export but expects `bigint` values for amounts, scales, and default values.
+If you work with large amounts or high-precision currencies like cryptocurrencies, you can use `@dinerojs/react` with bigint-based Dinero objects. The `CurrencyInput` component and `useCurrencyInput` hook are generic — they work with any amount type, including `bigint`.
 
 ## Usage
 
-Import from `@dinerojs/react/bigint` instead of `@dinerojs/react`:
+Use the same imports from `@dinerojs/react`. The only difference is that you create Dinero objects with `dinero.js/bigint` and use currencies from `dinero.js/bigint/currencies`:
 
 ```tsx
-import { useCurrencyInput } from '@dinerojs/react/bigint';
+import { dinero } from 'dinero.js/bigint';
+import { useCurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/bigint/currencies';
 
 function PriceField() {
   const { inputProps } = useCurrencyInput({
-    currency: USD,
     format: { locale: 'en-US' },
-    defaultValue: 1050n,
+    defaultValue: dinero({ amount: 1050n, currency: USD }),
   });
 
   return <input {...inputProps} />;
 }
 ```
 
-The `CurrencyInput` component is also available:
+The `CurrencyInput` component works the same way:
 
 ```tsx
-import { CurrencyInput } from '@dinerojs/react/bigint';
+import { dinero } from 'dinero.js/bigint';
+import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/bigint/currencies';
 
 function PriceField() {
   return (
     <CurrencyInput
-      currency={USD}
       format={{ locale: 'en-US' }}
-      defaultValue={1050n}
+      defaultValue={dinero({ amount: 1050n, currency: USD })}
     />
   );
 }
 ```
 
 ::: warning
-**Use bigint currencies with the bigint variant.** Currencies from `dinero.js/currencies` use `number` values for `base` and `exponent`. Always import from `dinero.js/bigint/currencies` when using `@dinerojs/react/bigint`.
+**Use bigint currencies with bigint Dinero objects.** Currencies from `dinero.js/currencies` use `number` values for `base` and `exponent`. Always import from `dinero.js/bigint/currencies` when working with `bigint` amounts.
 :::
 
 ## Controlled inputs with bigint
 
-When using controlled inputs, the `value` prop and the amount extracted from `onValueChange` are both `bigint`:
+When using controlled inputs, the `value` prop and `onValueChange` both work with `Dinero<bigint>` objects:
 
 ```tsx
 import { useState } from 'react';
-import { toSnapshot } from 'dinero.js/bigint';
-import { CurrencyInput } from '@dinerojs/react/bigint';
+import { dinero } from 'dinero.js/bigint';
+import type { Dinero } from 'dinero.js';
+import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/bigint/currencies';
 
 function PriceField() {
-  const [amount, setAmount] = useState(0n);
+  const [amount, setAmount] = useState<Dinero<bigint>>(
+    dinero({ amount: 0n, currency: USD })
+  );
 
   return (
     <CurrencyInput
-      currency={USD}
       format={{ locale: 'en-US' }}
       value={amount}
-      onValueChange={(dinero) => setAmount(toSnapshot(dinero).amount)}
+      onValueChange={setAmount}
     />
   );
 }

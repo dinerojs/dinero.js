@@ -10,14 +10,15 @@ A thin component wrapper around [`useCurrencyInput`](/react/api/use-currency-inp
 When a `name` is provided, the component renders hidden `<input>` fields to submit the amount, currency code, and scale. The visible input stays formatted for display only.
 
 ```tsx
+import { dinero } from 'dinero.js';
 import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 function PriceField() {
   return (
     <CurrencyInput
-      currency={USD}
       format={{ locale: 'en-US' }}
+      defaultValue={dinero({ amount: 0, currency: USD })}
       name="price"
       className="price-field"
     />
@@ -31,11 +32,9 @@ The `CurrencyInput` component accepts the same options as [`useCurrencyInput`](/
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `currency` | `DineroCurrency<TAmount>` | The currency to use. Its exponent determines decimal placement. | Yes |
 | `format` | `FormatObject \| FormatFunction<TAmount>` | How to format the displayed value. Pass `{ locale: 'en-US' }` or a custom function. | Yes |
-| `defaultValue` | `TAmount` | Initial amount in minor currency units. | No |
-| `value` | `TAmount` | Controlled amount in minor currency units. Must be used with `onValueChange`. | No |
-| `scale` | `TAmount` | Custom scale to override the currency's exponent. | No |
+| `defaultValue` | `Dinero<TAmount>` | Initial value as a Dinero object. Used for uncontrolled inputs. | No |
+| `value` | `Dinero<TAmount>` | Controlled value as a Dinero object. Must be used with `onValueChange`. | No |
 | `onValueChange` | `(dinero: Dinero<TAmount>) => void` | Called with the current Dinero object on every change. | No |
 | `ref` | `Ref<HTMLInputElement>` | A ref to the underlying `<input>` element. | No |
 | `...rest` | `InputHTMLAttributes<HTMLInputElement>` | Any standard HTML input attribute (`className`, `aria-label`, `id`, etc.). | No |
@@ -45,12 +44,13 @@ The `CurrencyInput` component accepts the same options as [`useCurrencyInput`](/
 ### With HTML attributes
 
 ```tsx
+import { dinero } from 'dinero.js';
 import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 <CurrencyInput
-  currency={USD}
   format={{ locale: 'en-US' }}
+  defaultValue={dinero({ amount: 0, currency: USD })}
   className="price-field"
   name="price"
   id="price"
@@ -63,6 +63,7 @@ import { USD } from 'dinero.js/currencies';
 
 ```tsx
 import { useRef } from 'react';
+import { dinero } from 'dinero.js';
 import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
@@ -72,8 +73,8 @@ function PriceField() {
   return (
     <CurrencyInput
       ref={inputRef}
-      currency={USD}
       format={{ locale: 'en-US' }}
+      defaultValue={dinero({ amount: 0, currency: USD })}
     />
   );
 }
@@ -85,29 +86,26 @@ See [Controlled inputs](/react/controlled-inputs) for a full explanation of the 
 
 ```tsx
 import { CurrencyInput } from '@dinerojs/react';
-import { toSnapshot } from 'dinero.js';
-import { USD } from 'dinero.js/currencies';
 
 <CurrencyInput
-  currency={USD}
   format={{ locale: 'en-US' }}
   value={amount}
-  onValueChange={(dinero) => setAmount(toSnapshot(dinero).amount)}
+  onValueChange={setAmount}
 />
 ```
 
 ### With bigint
 
 ```tsx
-import { CurrencyInput } from '@dinerojs/react/bigint';
+import { dinero } from 'dinero.js/bigint';
+import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/bigint/currencies';
 
 function PriceField() {
   return (
     <CurrencyInput
-      currency={USD}
       format={{ locale: 'en-US' }}
-      defaultValue={1050n}
+      defaultValue={dinero({ amount: 1050n, currency: USD })}
     />
   );
 }
@@ -118,6 +116,7 @@ function PriceField() {
 When used with a `name` prop, the `CurrencyInput` component submits the amount, currency code, and scale as separate hidden inputs using bracket notation. The visible input stays formatted for the user.
 
 ```tsx
+import { dinero } from 'dinero.js';
 import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
@@ -125,8 +124,8 @@ function PriceForm() {
   return (
     <form action="/api/checkout" method="post">
       <CurrencyInput
-        currency={USD}
         format={{ locale: 'en-US' }}
+        defaultValue={dinero({ amount: 0, currency: USD })}
         name="price"
       />
       <button type="submit">Pay</button>
@@ -150,6 +149,7 @@ Server runtimes and frameworks like PHP, Rails, and Express (with `qs`) automati
 Uncontrolled `CurrencyInput` supports native form reset. When the form is reset, the input reverts to `defaultValue` (or zero).
 
 ```tsx
+import { dinero } from 'dinero.js';
 import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
@@ -157,10 +157,9 @@ function PriceForm() {
   return (
     <form>
       <CurrencyInput
-        currency={USD}
         format={{ locale: 'en-US' }}
         name="price"
-        defaultValue={1050}
+        defaultValue={dinero({ amount: 1050, currency: USD })}
       />
       <button type="reset">Reset</button>
     </form>

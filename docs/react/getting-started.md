@@ -30,6 +30,7 @@ yarn install @dinerojs/react dinero.js
 Use the `CurrencyInput` component to add a currency input. It uses ATM-style entry where digits shift left as the user types. In other words, typing "1", "0", "5", "0" with currency `USD` produces `$10.50`.
 
 ```tsx
+import { dinero } from 'dinero.js';
 import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
@@ -37,8 +38,8 @@ function PriceField() {
   return (
     <CurrencyInput
       name="price"
-      currency={USD}
       format={{ locale: 'en-US' }}
+      defaultValue={dinero({ amount: 0, currency: USD })}
     />
   );
 }
@@ -72,25 +73,25 @@ The user types raw digits. The input takes care of placing the decimal point bas
 |------------|---------------------|-----------------------|
 | `1`        | `0.01`              | `1`                   |
 | `10`       | `0.10`              | `10`                  |
-| `1050`.    | `10.50`             | `1050`.               |
+| `1050`     | `10.50`             | `1050`                |
 | `100000`   | `1,000.00`          | `100000`              |
 
 Backspace removes the last digit, shifting everything to the right. Pasting works as well: only digits are extracted from the pasted text and appended to the current value.
 
 ## Setting a default value
 
-You can pass `defaultValue` to start the input with a pre-filled amount. The value is in minor currency units, just like when creating a Dinero object.
+You can pass `defaultValue` to start the input with a pre-filled amount. Pass a Dinero object, just like you would anywhere else in your app.
 
 ```tsx
+import { dinero } from 'dinero.js';
 import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 function PriceField() {
   return (
     <CurrencyInput
-      currency={USD}
       format={{ locale: 'en-US' }}
-      defaultValue={1050} // starts at $10.50
+      defaultValue={dinero({ amount: 1050, currency: USD })} // starts at $10.50
     />
   );
 }
@@ -98,22 +99,25 @@ function PriceField() {
 
 ## Listening for changes
 
-You can use `onValueChange` to react to every change. It receives the current Dinero object.
+You can use `onValueChange` to react to every change. It receives the current Dinero object, which you can store directly in state or pass to any Dinero.js function.
 
 ```tsx
-import { toSnapshot } from 'dinero.js';
+import { useState } from 'react';
+import { dinero } from 'dinero.js';
+import type { Dinero } from 'dinero.js';
 import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 function PriceField() {
+  const [price, setPrice] = useState<Dinero<number>>(
+    dinero({ amount: 0, currency: USD })
+  );
+
   return (
     <CurrencyInput
-      currency={USD}
       format={{ locale: 'en-US' }}
-      onValueChange={(dinero) => {
-        const { amount } = toSnapshot(dinero);
-        console.log('Amount in cents:', amount);
-      }}
+      value={price}
+      onValueChange={setPrice}
     />
   );
 }
@@ -127,8 +131,8 @@ When you pass a `name` prop, `CurrencyInput` renders the amount, currency code, 
 <form action="/api/checkout" method="post">
   <CurrencyInput
     name="price"
-    currency={USD}
     format={{ locale: 'en-US' }}
+    defaultValue={dinero({ amount: 0, currency: USD })}
   />
   <button type="submit">Pay</button>
 </form>

@@ -20,10 +20,12 @@ import { USD } from './big-currencies';
 const bigDinero = createDinero({ calculator, formatter });
 const useCurrencyInput = createUseCurrencyInput(bigDinero);
 
+const zero = bigDinero({ amount: Big(0), currency: USD });
+
 function PriceField() {
   const { inputProps } = useCurrencyInput({
-    currency: USD,
     format: { locale: 'en-US' },
+    defaultValue: zero,
   });
 
   return <input {...inputProps} />;
@@ -43,11 +45,13 @@ import { USD } from './big-currencies';
 const bigDinero = createDinero({ calculator, formatter });
 const CurrencyInput = createCurrencyInput(bigDinero);
 
+const zero = bigDinero({ amount: Big(0), currency: USD });
+
 function PriceField() {
   return (
     <CurrencyInput
-      currency={USD}
       format={{ locale: 'en-US' }}
+      defaultValue={zero}
     />
   );
 }

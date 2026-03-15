@@ -91,7 +91,7 @@ If you learn better by seeing code in action, or want to start from an existing 
 
 <div class="demo-entry">
   <div class="demo-text">
-    <p>An expense splitter. Uses <code>allocate</code> for fair bill splitting, <code>add</code> and <code>subtract</code> for balance tracking, and <code>toDecimal</code> for locale-aware formatting. Supports equal and percentage-based splits with optimal debt settlement.</p>
+    <p>An expense splitter. Uses <code>allocate</code> for fair bill splitting, <code>add</code> and <code>subtract</code> for balance tracking, <code>toDecimal</code> for locale-aware formatting, and <code>@dinerojs/react</code> for currency input. Supports equal and percentage-based splits with optimal debt settlement.</p>
     <p><a href="https://dinerojs.com/examples/expense-splitter/">View demo</a></p>
   </div>
   <div class="demo-image">
@@ -105,7 +105,7 @@ If you learn better by seeing code in action, or want to start from an existing 
 
 <div class="demo-entry">
   <div class="demo-text">
-    <p>An invoice builder with live preview. Uses <code>multiply</code> for line totals, <code>add</code> for subtotals, <code>allocate</code> for discounts and tax, and <code>toDecimal</code> for locale-aware currency formatting across multiple currencies.</p>
+    <p>An invoice builder with live preview. Uses <code>multiply</code> for line totals, <code>add</code> for subtotals, <code>allocate</code> for discounts and tax, <code>toDecimal</code> for locale-aware currency formatting across multiple currencies, and <code>@dinerojs/react</code> for currency input.</p>
     <p><a href="https://dinerojs.com/examples/invoice-builder/">View demo</a></p>
   </div>
   <div class="demo-image">
@@ -119,7 +119,7 @@ If you learn better by seeing code in action, or want to start from an existing 
 
 <div class="demo-entry">
   <div class="demo-text">
-    <p>A multi-currency portfolio tracker. Uses <code>multiply</code> with scaled amounts for holding values, <code>convert</code> for cross-currency aggregation, <code>add</code> for portfolio totals, and <code>toDecimal</code> for locale-aware formatting across multiple currencies.</p>
+    <p>A multi-currency portfolio tracker. Uses <code>multiply</code> with scaled amounts for holding values, <code>convert</code> for cross-currency aggregation, <code>add</code> for portfolio totals, <code>toDecimal</code> for locale-aware formatting across multiple currencies, and <code>@dinerojs/react</code> for currency input.</p>
     <p><a href="https://dinerojs.com/examples/portfolio-tracker/">View demo</a></p>
   </div>
   <div class="demo-image">

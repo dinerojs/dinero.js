@@ -8,14 +8,14 @@ description: A React hook that wires a native input to a Dinero object with ATM-
 A React hook that manages an ATM-style money input. It handles formatting, keystrokes, and paste, and exposes props to spread onto a native `<input>` element.
 
 ```tsx
-import { toSnapshot } from 'dinero.js';
+import { dinero, toSnapshot } from 'dinero.js';
 import { useCurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 function PriceField() {
   const { inputProps, dineroValue } = useCurrencyInput({
-    currency: USD,
     format: { locale: 'en-US' },
+    defaultValue: dinero({ amount: 0, currency: USD }),
   });
 
   const { amount, currency, scale } = toSnapshot(dineroValue);
@@ -35,11 +35,9 @@ function PriceField() {
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
-| `currency` | `DineroCurrency<TAmount>` | The currency to use. Its exponent determines decimal placement (e.g., 2 for USD means two decimal places). | Yes |
 | `format` | `FormatObject \| FormatFunction<TAmount>` | How to format the displayed value. Pass `{ locale: 'en-US' }` (with optional `Intl.NumberFormatOptions`) for built-in formatting, or a function `({ value, currency, scale }) => string` for full control. | Yes |
-| `defaultValue` | `TAmount` | Initial amount in minor currency units (e.g., `1050` for $10.50 in USD). Used for uncontrolled inputs. | No |
-| `value` | `TAmount` | Controlled amount in minor currency units. When provided, the hook uses this instead of internal state. Must be used with `onValueChange`. | No |
-| `scale` | `TAmount` | Custom scale to override the currency's exponent. For example, `3` with USD formats `10545` as `$10.545`. | No |
+| `defaultValue` | `Dinero<TAmount>` | Initial value as a Dinero object. Used for uncontrolled inputs. | No |
+| `value` | `Dinero<TAmount>` | Controlled value as a Dinero object. When provided, the hook uses this instead of internal state. Must be used with `onValueChange`. | No |
 | `onValueChange` | `(dinero: Dinero<TAmount>) => void` | Called with the current Dinero object on every change. | No |
 
 ## Return value
@@ -55,26 +53,26 @@ function PriceField() {
 ### Set a default value
 
 ```tsx
+import { dinero } from 'dinero.js';
 import { useCurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 const { inputProps, dineroValue } = useCurrencyInput({
-  currency: USD,
   format: { locale: 'en-US' },
-  defaultValue: 1050, // starts at $10.50
+  defaultValue: dinero({ amount: 1050, currency: USD }), // starts at $10.50
 });
 ```
 
 ### Listen for changes
 
 ```tsx
-import { toSnapshot } from 'dinero.js';
+import { dinero, toSnapshot } from 'dinero.js';
 import { useCurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 const { inputProps, dineroValue } = useCurrencyInput({
-  currency: USD,
   format: { locale: 'en-US' },
+  defaultValue: dinero({ amount: 0, currency: USD }),
   onValueChange(dinero) {
     const { amount } = toSnapshot(dinero);
     console.log('Amount in cents:', amount);
@@ -88,41 +86,24 @@ See [Controlled inputs](/react/controlled-inputs) for a full explanation of the 
 
 ```tsx
 import { useCurrencyInput } from '@dinerojs/react';
-import { USD } from 'dinero.js/currencies';
 
 const { inputProps, dineroValue } = useCurrencyInput({
-  currency: USD,
   format: { locale: 'en-US' },
   value: amount,
-  onValueChange(dinero) {
-    setAmount(toSnapshot(dinero).amount);
-  },
-});
-```
-
-### Custom scale
-
-```tsx
-import { useCurrencyInput } from '@dinerojs/react';
-import { USD } from 'dinero.js/currencies';
-
-const { inputProps, dineroValue } = useCurrencyInput({
-  currency: USD,
-  format: { locale: 'en-US' },
-  scale: 3, // three decimal places: $10.545
+  onValueChange: setAmount,
 });
 ```
 
 ### Use with bigint
 
 ```tsx
-import { useCurrencyInput } from '@dinerojs/react/bigint';
+import { dinero } from 'dinero.js/bigint';
+import { useCurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/bigint/currencies';
 
 const { inputProps, dineroValue } = useCurrencyInput({
-  currency: USD,
   format: { locale: 'en-US' },
-  defaultValue: 1050n,
+  defaultValue: dinero({ amount: 1050n, currency: USD }),
 });
 ```
 
@@ -131,14 +112,14 @@ const { inputProps, dineroValue } = useCurrencyInput({
 Call `reset()` to restore the input to its `defaultValue` (or zero). This only affects uncontrolled inputs.
 
 ```tsx
+import { dinero } from 'dinero.js';
 import { useCurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 function PriceField() {
   const { inputProps, reset } = useCurrencyInput({
-    currency: USD,
     format: { locale: 'en-US' },
-    defaultValue: 1050,
+    defaultValue: dinero({ amount: 1050, currency: USD }),
   });
 
   return (
@@ -155,14 +136,14 @@ function PriceField() {
 To submit the value in a form, add hidden inputs for the amount, currency, and scale from `dineroValue`. The [`CurrencyInput`](/react/api/currency-input) component handles this automatically.
 
 ```tsx
-import { toSnapshot } from 'dinero.js';
+import { dinero, toSnapshot } from 'dinero.js';
 import { useCurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 function PriceField() {
   const { inputProps, dineroValue } = useCurrencyInput({
-    currency: USD,
     format: { locale: 'en-US' },
+    defaultValue: dinero({ amount: 0, currency: USD }),
   });
 
   const { amount, currency, scale } = toSnapshot(dineroValue);

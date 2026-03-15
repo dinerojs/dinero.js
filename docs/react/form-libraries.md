@@ -5,23 +5,24 @@ description: Integrate @dinerojs/react with React Hook Form, Formik, and TanStac
 
 # Form libraries
 
-The `@dinerojs/react` package works with any form library. Use `onValueChange` to push the value into the form library and `value` to pull it back for controlled behavior like form reset.
+The `@dinerojs/react` package works with any form library. Use `onValueChange` to push the Dinero object into the form library and `value` to pull it back for controlled behavior like form reset.
 
 The pattern is always the same:
-1. Pass the form field's current value as `value`.
-2. In `onValueChange`, extract the amount with `toSnapshot` and pass it to the form library's setter.
+1. Store a Dinero object as the form field's value.
+2. Pass it as `value` and wire `onValueChange` to the form library's setter.
 
 ## React Hook Form
 
 ```tsx
 import { useForm, Controller } from 'react-hook-form';
-import { toSnapshot } from 'dinero.js';
+import { dinero } from 'dinero.js';
+import type { Dinero } from 'dinero.js';
 import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 function PriceForm() {
   const { handleSubmit, control, reset } = useForm({
-    defaultValues: { price: 1050 },
+    defaultValues: { price: dinero({ amount: 1050, currency: USD }) },
   });
 
   return (
@@ -31,12 +32,9 @@ function PriceForm() {
         control={control}
         render={({ field }) => (
           <CurrencyInput
-            currency={USD}
             format={{ locale: 'en-US' }}
             value={field.value}
-            onValueChange={(dinero) =>
-              field.onChange(toSnapshot(dinero).amount)
-            }
+            onValueChange={field.onChange}
           />
         )}
       />
@@ -53,27 +51,30 @@ function PriceForm() {
 
 ```tsx
 import { Formik, Form, useField } from 'formik';
-import { toSnapshot } from 'dinero.js';
+import { dinero } from 'dinero.js';
+import type { Dinero } from 'dinero.js';
 import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 function PriceField({ name }: { name: string }) {
-  const [field, , helpers] = useField<number>(name);
+  const [field, , helpers] = useField<Dinero<number>>(name);
 
   return (
     <CurrencyInput
-      currency={USD}
       format={{ locale: 'en-US' }}
       name={name}
       value={field.value}
-      onValueChange={(dinero) => helpers.setValue(toSnapshot(dinero).amount)}
+      onValueChange={(d) => helpers.setValue(d)}
     />
   );
 }
 
 function PriceForm() {
   return (
-    <Formik initialValues={{ price: 1050 }} onSubmit={console.log}>
+    <Formik
+      initialValues={{ price: dinero({ amount: 1050, currency: USD }) }}
+      onSubmit={console.log}
+    >
       {({ resetForm }) => (
         <Form>
           <PriceField name="price" />
@@ -92,13 +93,14 @@ function PriceForm() {
 
 ```tsx
 import { useForm } from '@tanstack/react-form';
-import { toSnapshot } from 'dinero.js';
+import { dinero } from 'dinero.js';
+import type { Dinero } from 'dinero.js';
 import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 function PriceForm() {
   const form = useForm({
-    defaultValues: { price: 1050 },
+    defaultValues: { price: dinero({ amount: 1050, currency: USD }) },
     onSubmit: ({ value }) => console.log(value),
   });
 
@@ -112,12 +114,9 @@ function PriceForm() {
       <form.Field name="price">
         {(field) => (
           <CurrencyInput
-            currency={USD}
             format={{ locale: 'en-US' }}
             value={field.state.value}
-            onValueChange={(dinero) =>
-              field.handleChange(toSnapshot(dinero).amount)
-            }
+            onValueChange={field.handleChange}
           />
         )}
       </form.Field>
@@ -132,4 +131,4 @@ function PriceForm() {
 
 ## Other libraries
 
-The same pattern works with any form library that exposes a controlled value and a change handler. Extract the amount from the Dinero object with `toSnapshot` and feed it into whatever state management your library uses.
+The same pattern works with any form library that exposes a controlled value and a change handler. Store a Dinero object as the field value and pass it directly to `value` and `onValueChange`.
