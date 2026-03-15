@@ -40,21 +40,25 @@ export function createCurrencyInput<TAmount>(
     return (
       <>
         <input ref={ref} {...rest} {...inputProps} />
-        <input
-          type="hidden"
-          name={`${name}[amount]`}
-          value={`${snapshot.amount}`}
-        />
-        <input
-          type="hidden"
-          name={`${name}[currency]`}
-          value={snapshot.currency.code}
-        />
-        <input
-          type="hidden"
-          name={`${name}[scale]`}
-          value={`${snapshot.scale}`}
-        />
+        {name && (
+          <>
+            <input
+              type="hidden"
+              name={`${name}[amount]`}
+              value={`${snapshot.amount}`}
+            />
+            <input
+              type="hidden"
+              name={`${name}[currency]`}
+              value={snapshot.currency.code}
+            />
+            <input
+              type="hidden"
+              name={`${name}[scale]`}
+              value={`${snapshot.scale}`}
+            />
+          </>
+        )}
       </>
     );
   }
