@@ -1,13 +1,14 @@
 import type { DineroFactory } from 'dinero.js';
 import { toSnapshot } from 'dinero.js';
-import type { InputHTMLAttributes, Ref } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
+import type { InputHTMLAttributes } from 'react';
 
 import { createUseCurrencyInput } from '../hooks/createUseCurrencyInput';
 import type { UseCurrencyInputOptions } from '../hooks/createUseCurrencyInput';
 
 export type CurrencyInputProps<TAmount> = UseCurrencyInputOptions<TAmount> &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'value'> & {
-    ref?: Ref<HTMLInputElement>;
+    ref?: React.Ref<HTMLInputElement>;
   };
 
 export function createCurrencyInput<TAmount>(
@@ -26,7 +27,7 @@ export function createCurrencyInput<TAmount>(
     name,
     ...rest
   }: CurrencyInputProps<TAmount>) {
-    const { inputProps, dineroValue } = useCurrencyInput({
+    const { inputProps, dineroValue, reset } = useCurrencyInput({
       currency,
       format,
       defaultValue,
@@ -35,11 +36,37 @@ export function createCurrencyInput<TAmount>(
       onValueChange,
     });
 
+    const internalRef = useRef<HTMLInputElement>(null);
+    const mergedRef = useCallback(
+      (node: HTMLInputElement | null) => {
+        internalRef.current = node;
+
+        if (typeof ref === 'function') {
+          ref(node);
+        } else if (ref) {
+          (ref as React.RefObject<HTMLInputElement | null>).current = node;
+        }
+      },
+      [ref]
+    );
+
+    useEffect(() => {
+      const form = internalRef.current?.form;
+
+      if (!form) {
+        return;
+      }
+
+      form.addEventListener('reset', reset);
+
+      return () => form.removeEventListener('reset', reset);
+    }, [reset]);
+
     const snapshot = toSnapshot(dineroValue);
 
     return (
       <>
-        <input ref={ref} {...rest} {...inputProps} />
+        <input ref={mergedRef} {...rest} {...inputProps} />
         {name && (
           <>
             <input

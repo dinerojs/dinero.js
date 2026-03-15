@@ -5,7 +5,7 @@ import type {
   DineroFactory,
 } from 'dinero.js';
 import { DineroComparisonOperator, toDecimal } from 'dinero.js';
-import { useState, useMemo, useRef } from 'react';
+import { useCallback, useState, useMemo, useRef } from 'react';
 import type {
   InputHTMLAttributes,
   ChangeEvent,
@@ -75,6 +75,11 @@ export type UseCurrencyInputReturn<TAmount> = {
    * The current value as a Dinero object. Always defined (defaults to a zero-amount Dinero).
    */
   dineroValue: Dinero<TAmount>;
+  /**
+   * Resets the internal amount to `defaultValue` (or zero).
+   * Only affects uncontrolled inputs.
+   */
+  reset(): void;
 };
 
 const NON_DIGIT = /\D/g;
@@ -205,6 +210,12 @@ export function createUseCurrencyInput<TAmount>(
       updateAmount(parseDigits(combined, calculator, zero, base));
     }
 
+    const reset = useCallback(() => {
+      if (!isControlled) {
+        setInternalAmount(defaultValue ?? zero);
+      }
+    }, [isControlled, defaultValue, zero]);
+
     const inputProps: InputHTMLAttributes<HTMLInputElement> = {
       inputMode: 'decimal',
       type: 'text',
@@ -214,7 +225,7 @@ export function createUseCurrencyInput<TAmount>(
       onPaste,
     };
 
-    return { inputProps, dineroValue };
+    return { inputProps, dineroValue, reset };
   };
 }
 

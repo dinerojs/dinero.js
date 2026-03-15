@@ -913,6 +913,98 @@ describe('useCurrencyInput (bigint)', () => {
       expect(screen.getByRole('textbox')).toHaveValue('1.234,56');
     });
   });
+
+  describe('reset', () => {
+    it('resets to `defaultValue`', async () => {
+      const user = userEvent.setup();
+
+      function ResetHarness() {
+        const { inputProps, reset } = useCurrencyInput({
+          currency: bigintUSD,
+          format: { locale: 'en-US' },
+          defaultValue: 1050n,
+        });
+
+        return (
+          <>
+            <input {...inputProps} />
+            <button onClick={reset}>Reset</button>
+          </>
+        );
+      }
+
+      render(<ResetHarness />);
+
+      const input = screen.getByRole('textbox');
+      await user.click(input);
+      await user.keyboard('99');
+      expect(input).toHaveValue('1,050.99');
+
+      await user.click(screen.getByRole('button', { name: 'Reset' }));
+      expect(input).toHaveValue('10.50');
+    });
+
+    it('resets to zero when no `defaultValue` is set', async () => {
+      const user = userEvent.setup();
+
+      function ResetHarness() {
+        const { inputProps, reset } = useCurrencyInput({
+          currency: bigintUSD,
+          format: { locale: 'en-US' },
+        });
+
+        return (
+          <>
+            <input {...inputProps} />
+            <button onClick={reset}>Reset</button>
+          </>
+        );
+      }
+
+      render(<ResetHarness />);
+
+      const input = screen.getByRole('textbox');
+      await user.click(input);
+      await user.keyboard('1050');
+      expect(input).toHaveValue('10.50');
+
+      await user.click(screen.getByRole('button', { name: 'Reset' }));
+      expect(input).toHaveValue('0.00');
+    });
+
+    it('does nothing for controlled inputs', async () => {
+      const user = userEvent.setup();
+
+      function ResetHarness() {
+        const [amount, setAmount] = useState(1050n);
+        const { inputProps, reset } = useCurrencyInput({
+          currency: bigintUSD,
+          format: { locale: 'en-US' },
+          value: amount,
+          onValueChange(dinero) {
+            setAmount(toSnapshot(dinero).amount);
+          },
+        });
+
+        return (
+          <>
+            <input {...inputProps} />
+            <button onClick={reset}>Reset</button>
+          </>
+        );
+      }
+
+      render(<ResetHarness />);
+
+      const input = screen.getByRole('textbox');
+      await user.click(input);
+      await user.keyboard('99');
+      expect(input).toHaveValue('1,050.99');
+
+      await user.click(screen.getByRole('button', { name: 'Reset' }));
+      expect(input).toHaveValue('1,050.99');
+    });
+  });
 });
 
 type TestHarnessProps = UseCurrencyInputOptions<bigint> & {
