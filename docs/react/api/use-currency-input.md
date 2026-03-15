@@ -18,10 +18,14 @@ function PriceField() {
     format: { locale: 'en-US' },
   });
 
+  const { amount, currency, scale } = toSnapshot(dineroValue);
+
   return (
     <>
       <input {...inputProps} />
-      <input type="hidden" name="price" value={`${toSnapshot(dineroValue).amount}`} />
+      <input type="hidden" name="price[amount]" value={`${amount}`} />
+      <input type="hidden" name="price[currency]" value={currency.code} />
+      <input type="hidden" name="price[scale]" value={`${scale}`} />
     </>
   );
 }
@@ -44,6 +48,7 @@ function PriceField() {
 |----------|------|-------------|
 | `inputProps` | `InputHTMLAttributes<HTMLInputElement>` | Props to spread onto an `<input>` element. Includes `value`, `onChange`, `onKeyDown`, `onPaste`, `type`, and `inputMode`. |
 | `dineroValue` | `Dinero<TAmount>` | The current value as a Dinero object. Always defined (defaults to a zero-amount Dinero). |
+| `reset` | `() => void` | Resets the internal amount to `defaultValue` (or zero). Only affects uncontrolled inputs. |
 
 ## Code examples
 
@@ -119,6 +124,30 @@ const { inputProps, dineroValue } = useCurrencyInput({
   format: { locale: 'en-US' },
   defaultValue: 1050n,
 });
+```
+
+### Reset
+
+Call `reset()` to restore the input to its `defaultValue` (or zero). This only affects uncontrolled inputs.
+
+```tsx
+import { useCurrencyInput } from '@dinerojs/react';
+import { USD } from 'dinero.js/currencies';
+
+function PriceField() {
+  const { inputProps, reset } = useCurrencyInput({
+    currency: USD,
+    format: { locale: 'en-US' },
+    defaultValue: 1050,
+  });
+
+  return (
+    <>
+      <input {...inputProps} />
+      <button type="button" onClick={reset}>Reset</button>
+    </>
+  );
+}
 ```
 
 ### In a form

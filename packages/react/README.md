@@ -45,6 +45,7 @@ function PriceField() {
 |----------|------|-------------|
 | `inputProps` | `InputHTMLAttributes<HTMLInputElement>` | Props to spread onto an `<input>` element. |
 | `dineroValue` | `Dinero<TAmount>` | The current value as a Dinero object. |
+| `reset` | `() => void` | Resets the internal amount to `defaultValue` (or zero). Only affects uncontrolled inputs. |
 
 ## Bigint support
 

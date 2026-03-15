@@ -7,7 +7,7 @@ description: A headless money input component for React that wraps useCurrencyIn
 
 A thin component wrapper around [`useCurrencyInput`](/react/api/use-currency-input). It forwards a ref and passes through all standard HTML input attributes.
 
-`CurrencyInput` renders hidden `<input>` fields that submit the amount, currency code, and scale using bracket notation (e.g., `price[amount]`, `price[currency]`, `price[scale]`). The visible input stays formatted for display only.
+When a `name` is provided, the component renders hidden `<input>` fields to submit the amount, currency code, and scale. The visible input stays formatted for display only.
 
 ```tsx
 import { CurrencyInput } from '@dinerojs/react';
@@ -18,8 +18,8 @@ function PriceField() {
     <CurrencyInput
       currency={USD}
       format={{ locale: 'en-US' }}
+      name="price"
       className="price-field"
-      aria-label="Price"
     />
   );
 }
@@ -27,7 +27,7 @@ function PriceField() {
 
 ## Props
 
-`CurrencyInput` accepts the same options as [`useCurrencyInput`](/react/api/use-currency-input) plus any `InputHTMLAttributes<HTMLInputElement>` and `ref`.
+The `CurrencyInput` component accepts the same options as [`useCurrencyInput`](/react/api/use-currency-input), plus any `InputHTMLAttributes<HTMLInputElement>` and `ref`.
 
 | Name | Type | Description | Required |
 |------|------|-------------|----------|
@@ -52,6 +52,7 @@ import { USD } from 'dinero.js/currencies';
   currency={USD}
   format={{ locale: 'en-US' }}
   className="price-field"
+  name="price"
   id="price"
   aria-label="Price"
   placeholder="Enter price"
@@ -84,6 +85,7 @@ See [Controlled inputs](/react/controlled-inputs) for a full explanation of the 
 
 ```tsx
 import { CurrencyInput } from '@dinerojs/react';
+import { toSnapshot } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 
 <CurrencyInput
@@ -113,7 +115,7 @@ function PriceField() {
 
 ### In a form
 
-When used with a `name` prop, `CurrencyInput` submits the amount, currency code, and scale as separate hidden inputs using bracket notation. The visible input stays formatted for the user.
+When used with a `name` prop, the `CurrencyInput` component submits the amount, currency code, and scale as separate hidden inputs using bracket notation. The visible input stays formatted for the user.
 
 ```tsx
 import { CurrencyInput } from '@dinerojs/react';
@@ -126,7 +128,6 @@ function PriceForm() {
         currency={USD}
         format={{ locale: 'en-US' }}
         name="price"
-        aria-label="Price"
       />
       <button type="submit">Pay</button>
     </form>
@@ -142,7 +143,32 @@ const currency = formData.get('price[currency]');      // "USD"
 const scale = Number(formData.get('price[scale]'));     // 2
 ```
 
-Frameworks like PHP, Rails, and Express (with `qs`) automatically nest these into `{ price: { amount, currency, scale } }`.
+Server runtimes and frameworks like PHP, Rails, and Express (with `qs`) automatically nest these into `{ price: { amount, currency, scale } }`.
+
+### Form reset
+
+Uncontrolled `CurrencyInput` supports native form reset. When the form is reset, the input reverts to `defaultValue` (or zero).
+
+```tsx
+import { CurrencyInput } from '@dinerojs/react';
+import { USD } from 'dinero.js/currencies';
+
+function PriceForm() {
+  return (
+    <form>
+      <CurrencyInput
+        currency={USD}
+        format={{ locale: 'en-US' }}
+        name="price"
+        defaultValue={1050}
+      />
+      <button type="reset">Reset</button>
+    </form>
+  );
+}
+```
+
+For controlled inputs, reset the state that feeds `value`. See [Controlled inputs](/react/controlled-inputs#form-reset) for details.
 
 ### With a custom calculator
 

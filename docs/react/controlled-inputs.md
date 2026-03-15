@@ -17,7 +17,7 @@ This follows the same pattern as React's native `<input>`:
 ```tsx
 import { useState } from 'react';
 import { toSnapshot } from 'dinero.js';
-import { useCurrencyInput } from '@dinerojs/react';
+import { CurrencyInput } from '@dinerojs/react';
 import { USD } from 'dinero.js/currencies';
 
 function PriceField() {
@@ -25,7 +25,6 @@ function PriceField() {
 
   return (
     <CurrencyInput
-      name="price"
       currency={USD}
       format={{ locale: 'en-US' }}
       value={amount}
@@ -43,7 +42,31 @@ When `value` is provided, you **must** wire `onValueChange` back to the state th
 
 ## Form reset
 
-Controlled inputs make form reset straightforward. Reset the state feeding `value` and the input reflects the change immediately.
+Uncontrolled `CurrencyInput` supports native form reset out of the box.
+
+Clicking a [`reset` button](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/reset) calling the [`reset` method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/reset) on the parent form resets the input to `defaultValue` (or zero).
+
+```tsx
+import { CurrencyInput } from '@dinerojs/react';
+import { USD } from 'dinero.js/currencies';
+
+function PriceForm() {
+  return (
+    <form>
+      <CurrencyInput
+        currency={USD}
+        format={{ locale: 'en-US' }}
+        defaultValue={1050}
+      />
+      <button type="reset">Reset</button>
+    </form>
+  );
+}
+```
+
+For controlled inputs, you own the state, so you own the reset.
+
+Reset the state with the desired value for the input to reflect the change.
 
 ```tsx
 import { useState } from 'react';
