@@ -170,6 +170,57 @@ describe('CurrencyInput (bigint)', () => {
     });
   });
 
+  describe('form reset', () => {
+    it('resets to `defaultValue` when the form is reset', async () => {
+      const user = userEvent.setup();
+
+      render(
+        <form>
+          <CurrencyInput
+            currency={bigintUSD}
+            format={{ locale: 'en-US' }}
+            defaultValue={1050n}
+            aria-label="Price"
+          />
+          <button type="reset">Reset</button>
+        </form>
+      );
+
+      const input = screen.getByRole('textbox', { name: 'Price' });
+      expect(input).toHaveValue('10.50');
+
+      await user.click(input);
+      await user.keyboard('99');
+      expect(input).toHaveValue('1,050.99');
+
+      await user.click(screen.getByRole('button', { name: 'Reset' }));
+      expect(input).toHaveValue('10.50');
+    });
+
+    it('resets to zero when the form is reset and no `defaultValue` is set', async () => {
+      const user = userEvent.setup();
+
+      render(
+        <form>
+          <CurrencyInput
+            currency={bigintUSD}
+            format={{ locale: 'en-US' }}
+            aria-label="Price"
+          />
+          <button type="reset">Reset</button>
+        </form>
+      );
+
+      const input = screen.getByRole('textbox', { name: 'Price' });
+      await user.click(input);
+      await user.keyboard('1050');
+      expect(input).toHaveValue('10.50');
+
+      await user.click(screen.getByRole('button', { name: 'Reset' }));
+      expect(input).toHaveValue('0.00');
+    });
+  });
+
   describe('controlled value', () => {
     it('uses the controlled value instead of internal state', () => {
       render(
