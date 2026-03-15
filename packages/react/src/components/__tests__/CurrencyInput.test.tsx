@@ -98,6 +98,13 @@ describe('CurrencyInput', () => {
   });
 
   describe('form submission', () => {
+    it('does not render hidden inputs when `name` is not provided', () => {
+      render(<CurrencyInput currency={USD} format={{ locale: 'en-US' }} />);
+
+      const hiddenInputs = document.querySelectorAll('input[type="hidden"]');
+      expect(hiddenInputs).toHaveLength(0);
+    });
+
     it('submits amount, currency, and scale as separate hidden inputs', () => {
       render(
         <CurrencyInput
