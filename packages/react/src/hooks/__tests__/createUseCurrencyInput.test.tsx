@@ -15,9 +15,8 @@ describe('createUseCurrencyInput', () => {
 
     const { result } = renderHook(() =>
       useCurrencyInput({
-        currency: USD,
+        defaultValue: dinero({ amount: 1050, currency: USD }),
         format: { locale: 'en-US' },
-        defaultValue: 1050,
       })
     );
 

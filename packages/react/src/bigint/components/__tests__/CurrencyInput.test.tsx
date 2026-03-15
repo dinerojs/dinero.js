@@ -9,6 +9,7 @@ import { createRef, useState } from 'react';
 import { toSnapshot } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 import { castToBigintCurrency } from 'test-utils';
+import { dinero } from 'dinero.js/bigint';
 
 import { CurrencyInput } from '@dinerojs/react/bigint';
 
@@ -18,7 +19,10 @@ describe('CurrencyInput (bigint)', () => {
   describe('rendering', () => {
     it('renders an input element', () => {
       render(
-        <CurrencyInput currency={bigintUSD} format={{ locale: 'en-US' }} />
+        <CurrencyInput
+          defaultValue={dinero({ amount: 0n, currency: bigintUSD })}
+          format={{ locale: 'en-US' }}
+        />
       );
 
       expect(screen.getByRole('textbox')).toBeInTheDocument();
@@ -26,7 +30,10 @@ describe('CurrencyInput (bigint)', () => {
 
     it('sets `inputMode` to decimal and type to text', () => {
       render(
-        <CurrencyInput currency={bigintUSD} format={{ locale: 'en-US' }} />
+        <CurrencyInput
+          defaultValue={dinero({ amount: 0n, currency: bigintUSD })}
+          format={{ locale: 'en-US' }}
+        />
       );
 
       const input = screen.getByRole('textbox');
@@ -36,7 +43,10 @@ describe('CurrencyInput (bigint)', () => {
 
     it('starts with a formatted zero value', () => {
       render(
-        <CurrencyInput currency={bigintUSD} format={{ locale: 'en-US' }} />
+        <CurrencyInput
+          defaultValue={dinero({ amount: 0n, currency: bigintUSD })}
+          format={{ locale: 'en-US' }}
+        />
       );
 
       expect(screen.getByRole('textbox')).toHaveValue('0.00');
@@ -49,7 +59,7 @@ describe('CurrencyInput (bigint)', () => {
       render(
         <CurrencyInput
           ref={ref}
-          currency={bigintUSD}
+          defaultValue={dinero({ amount: 0n, currency: bigintUSD })}
           format={{ locale: 'en-US' }}
         />
       );
@@ -63,7 +73,7 @@ describe('CurrencyInput (bigint)', () => {
     it('passes through `className`', () => {
       render(
         <CurrencyInput
-          currency={bigintUSD}
+          defaultValue={dinero({ amount: 0n, currency: bigintUSD })}
           format={{ locale: 'en-US' }}
           className="price-field"
         />
@@ -75,7 +85,7 @@ describe('CurrencyInput (bigint)', () => {
     it('passes through aria attributes', () => {
       render(
         <CurrencyInput
-          currency={bigintUSD}
+          defaultValue={dinero({ amount: 0n, currency: bigintUSD })}
           format={{ locale: 'en-US' }}
           aria-label="Price"
         />
@@ -89,7 +99,7 @@ describe('CurrencyInput (bigint)', () => {
     it('passes through placeholder', () => {
       render(
         <CurrencyInput
-          currency={bigintUSD}
+          defaultValue={dinero({ amount: 0n, currency: bigintUSD })}
           format={{ locale: 'en-US' }}
           placeholder="Enter amount"
         />
@@ -104,7 +114,7 @@ describe('CurrencyInput (bigint)', () => {
     it('passes through disabled', () => {
       render(
         <CurrencyInput
-          currency={bigintUSD}
+          defaultValue={dinero({ amount: 0n, currency: bigintUSD })}
           format={{ locale: 'en-US' }}
           disabled
         />
@@ -117,7 +127,10 @@ describe('CurrencyInput (bigint)', () => {
   describe('form submission', () => {
     it('does not render hidden inputs when `name` is not provided', () => {
       render(
-        <CurrencyInput currency={bigintUSD} format={{ locale: 'en-US' }} />
+        <CurrencyInput
+          defaultValue={dinero({ amount: 0n, currency: bigintUSD })}
+          format={{ locale: 'en-US' }}
+        />
       );
 
       const hiddenInputs = document.querySelectorAll('input[type="hidden"]');
@@ -127,10 +140,9 @@ describe('CurrencyInput (bigint)', () => {
     it('submits amount, currency, and scale as separate hidden inputs', () => {
       render(
         <CurrencyInput
-          currency={bigintUSD}
+          value={dinero({ amount: 105000n, currency: bigintUSD })}
           format={{ locale: 'en-US' }}
           name="price"
-          value={BigInt(105000)}
         />
       );
 
@@ -160,7 +172,7 @@ describe('CurrencyInput (bigint)', () => {
     it('does not set name on the visible input', () => {
       render(
         <CurrencyInput
-          currency={bigintUSD}
+          defaultValue={dinero({ amount: 0n, currency: bigintUSD })}
           format={{ locale: 'en-US' }}
           name="price"
         />
@@ -177,9 +189,8 @@ describe('CurrencyInput (bigint)', () => {
       render(
         <form>
           <CurrencyInput
-            currency={bigintUSD}
+            defaultValue={dinero({ amount: 1050n, currency: bigintUSD })}
             format={{ locale: 'en-US' }}
-            defaultValue={1050n}
             aria-label="Price"
           />
           <button type="reset">Reset</button>
@@ -196,38 +207,14 @@ describe('CurrencyInput (bigint)', () => {
       await user.click(screen.getByRole('button', { name: 'Reset' }));
       expect(input).toHaveValue('10.50');
     });
-
-    it('resets to zero when the form is reset and no `defaultValue` is set', async () => {
-      const user = userEvent.setup();
-
-      render(
-        <form>
-          <CurrencyInput
-            currency={bigintUSD}
-            format={{ locale: 'en-US' }}
-            aria-label="Price"
-          />
-          <button type="reset">Reset</button>
-        </form>
-      );
-
-      const input = screen.getByRole('textbox', { name: 'Price' });
-      await user.click(input);
-      await user.keyboard('1050');
-      expect(input).toHaveValue('10.50');
-
-      await user.click(screen.getByRole('button', { name: 'Reset' }));
-      expect(input).toHaveValue('0.00');
-    });
   });
 
   describe('controlled value', () => {
     it('uses the controlled value instead of internal state', () => {
       render(
         <CurrencyInput
-          currency={bigintUSD}
+          value={dinero({ amount: 1050n, currency: bigintUSD })}
           format={{ locale: 'en-US' }}
-          value={1050n}
         />
       );
 
@@ -238,17 +225,25 @@ describe('CurrencyInput (bigint)', () => {
       const user = userEvent.setup();
 
       function Controlled() {
-        const [value, setValue] = useState(1050n);
+        const [value, setValue] = useState(
+          dinero({ amount: 1050n, currency: bigintUSD })
+        );
 
         return (
           <>
             <CurrencyInput
-              currency={bigintUSD}
-              format={{ locale: 'en-US' }}
               value={value}
+              format={{ locale: 'en-US' }}
+              onValueChange={(d) => setValue(d)}
               aria-label="Price"
             />
-            <button onClick={() => setValue(2499n)}>Set to 2499</button>
+            <button
+              onClick={() =>
+                setValue(dinero({ amount: 2499n, currency: bigintUSD }))
+              }
+            >
+              Set to 2499
+            </button>
           </>
         );
       }
@@ -268,18 +263,25 @@ describe('CurrencyInput (bigint)', () => {
       const user = userEvent.setup();
 
       function Controlled() {
-        const [value, setValue] = useState(1050n);
+        const [value, setValue] = useState(
+          dinero({ amount: 1050n, currency: bigintUSD })
+        );
 
         return (
           <>
             <CurrencyInput
-              currency={bigintUSD}
-              format={{ locale: 'en-US' }}
               value={value}
-              onValueChange={(dinero) => setValue(toSnapshot(dinero).amount)}
+              format={{ locale: 'en-US' }}
+              onValueChange={(d) => setValue(d)}
               aria-label="Price"
             />
-            <button onClick={() => setValue(0n)}>Reset</button>
+            <button
+              onClick={() =>
+                setValue(dinero({ amount: 0n, currency: bigintUSD }))
+              }
+            >
+              Reset
+            </button>
           </>
         );
       }
@@ -305,7 +307,7 @@ describe('CurrencyInput (bigint)', () => {
 
       render(
         <CurrencyInput
-          currency={bigintUSD}
+          defaultValue={dinero({ amount: 0n, currency: bigintUSD })}
           format={{ locale: 'en-US' }}
           onValueChange={onValueChange}
         />

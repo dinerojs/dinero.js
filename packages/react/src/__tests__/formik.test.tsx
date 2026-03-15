@@ -6,7 +6,7 @@ import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Formik, Form, useField } from 'formik';
-import { toSnapshot } from 'dinero.js';
+import { dinero, toSnapshot } from 'dinero.js';
 import type { Dinero } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 
@@ -27,11 +27,11 @@ describe('Formik integration', () => {
           {({ setFieldValue }) => (
             <Form>
               <CurrencyInput
-                currency={USD}
+                defaultValue={dinero({ amount: 0, currency: USD })}
                 format={{ locale: 'en-US' }}
                 aria-label="Price"
                 name="price"
-                onValueChange={(dinero) => setFieldValue('price', dinero)}
+                onValueChange={(d) => setFieldValue('price', d)}
               />
               <button type="submit">Submit</button>
             </Form>
@@ -78,8 +78,8 @@ describe('Formik integration', () => {
 
     function TestForm() {
       return (
-        <Formik<{ price: number }>
-          initialValues={{ price: 1050 }}
+        <Formik<{ price: Dinero<number> }>
+          initialValues={{ price: dinero({ amount: 1050, currency: USD }) }}
           onSubmit={() => {}}
         >
           {({ resetForm }) => (
@@ -123,9 +123,9 @@ describe('Formik integration', () => {
       setFieldValue: (field: string, value: Dinero<number>) => void;
     }) {
       const { inputProps } = useCurrencyInput({
-        currency: USD,
+        defaultValue: dinero({ amount: 0, currency: USD }),
         format: { locale: 'en-US' },
-        onValueChange: (dinero) => setFieldValue('price', dinero),
+        onValueChange: (d) => setFieldValue('price', d),
       });
 
       return <input aria-label="Price" name="price" {...inputProps} />;
@@ -167,16 +167,15 @@ describe('Formik integration', () => {
 });
 
 function FormikCurrencyField({ name }: { name: string }) {
-  const [field, , helpers] = useField<number>(name);
+  const [field, , helpers] = useField<Dinero<number>>(name);
 
   return (
     <CurrencyInput
-      currency={USD}
       format={{ locale: 'en-US' }}
       aria-label="Price"
       name={name}
       value={field.value}
-      onValueChange={(dinero) => helpers.setValue(toSnapshot(dinero).amount)}
+      onValueChange={(d) => helpers.setValue(d)}
     />
   );
 }

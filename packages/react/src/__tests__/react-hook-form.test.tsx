@@ -6,7 +6,7 @@ import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useForm, Controller } from 'react-hook-form';
-import { toSnapshot } from 'dinero.js';
+import { dinero, toSnapshot } from 'dinero.js';
 import type { Dinero } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 
@@ -31,10 +31,10 @@ describe('React Hook Form integration', () => {
             control={control}
             render={({ field }) => (
               <CurrencyInput
-                currency={USD}
+                defaultValue={dinero({ amount: 0, currency: USD })}
                 format={{ locale: 'en-US' }}
                 aria-label="Price"
-                onValueChange={(dinero) => field.onChange(dinero)}
+                onValueChange={(d) => field.onChange(d)}
                 onBlur={field.onBlur}
               />
             )}
@@ -67,9 +67,9 @@ describe('React Hook Form integration', () => {
 
     function TestForm() {
       const { handleSubmit, control, reset } = useForm<{
-        price: number;
+        price: Dinero<number>;
       }>({
-        defaultValues: { price: 1050 },
+        defaultValues: { price: dinero({ amount: 1050, currency: USD }) },
       });
 
       return (
@@ -79,13 +79,10 @@ describe('React Hook Form integration', () => {
             control={control}
             render={({ field }) => (
               <CurrencyInput
-                currency={USD}
                 format={{ locale: 'en-US' }}
                 aria-label="Price"
                 value={field.value}
-                onValueChange={(dinero) =>
-                  field.onChange(toSnapshot(dinero).amount)
-                }
+                onValueChange={(d) => field.onChange(d)}
                 onBlur={field.onBlur}
               />
             )}
@@ -114,8 +111,8 @@ describe('React Hook Form integration', () => {
     const user = userEvent.setup();
 
     function TestForm() {
-      const { control } = useForm<{ price: number }>({
-        defaultValues: { price: 0 },
+      const { control } = useForm<{ price: Dinero<number> }>({
+        defaultValues: { price: dinero({ amount: 0, currency: USD }) },
       });
 
       return (
@@ -125,14 +122,11 @@ describe('React Hook Form integration', () => {
             control={control}
             render={({ field }) => (
               <CurrencyInput
-                currency={USD}
                 format={{ locale: 'en-US' }}
                 aria-label="Price"
                 name="price"
                 value={field.value}
-                onValueChange={(dinero) =>
-                  field.onChange(toSnapshot(dinero).amount)
-                }
+                onValueChange={(d) => field.onChange(d)}
               />
             )}
           />
@@ -175,11 +169,11 @@ describe('React Hook Form integration', () => {
       return (
         <form onSubmit={handleSubmit(onSubmit)}>
           <CurrencyInput
-            currency={USD}
+            defaultValue={dinero({ amount: 0, currency: USD })}
             format={{ locale: 'en-US' }}
             aria-label="Price"
             name="price"
-            onValueChange={(dinero) => setValue('price', dinero)}
+            onValueChange={(d) => setValue('price', d)}
           />
           <button type="submit">Submit</button>
         </form>

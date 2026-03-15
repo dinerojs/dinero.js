@@ -15,9 +15,8 @@ describe('createCurrencyInput', () => {
 
     render(
       <CurrencyInput
-        currency={USD}
+        defaultValue={dinero({ amount: 1050, currency: USD })}
         format={{ locale: 'en-US' }}
-        defaultValue={1050}
       />
     );
 

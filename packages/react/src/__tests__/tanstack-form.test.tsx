@@ -6,7 +6,7 @@ import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useForm } from '@tanstack/react-form';
-import { toSnapshot } from 'dinero.js';
+import { dinero, toSnapshot } from 'dinero.js';
 import type { Dinero } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 
@@ -35,10 +35,10 @@ describe('TanStack Form integration', () => {
           <form.Field name="price">
             {(field) => (
               <CurrencyInput
-                currency={USD}
+                defaultValue={dinero({ amount: 0, currency: USD })}
                 format={{ locale: 'en-US' }}
                 aria-label="Price"
-                onValueChange={(dinero) => field.handleChange(dinero)}
+                onValueChange={(d) => field.handleChange(d)}
               />
             )}
           </form.Field>
@@ -70,7 +70,9 @@ describe('TanStack Form integration', () => {
 
     function TestForm() {
       const form = useForm({
-        defaultValues: { price: 1050 },
+        defaultValues: {
+          price: dinero({ amount: 1050, currency: USD }) as Dinero<number>,
+        },
       });
 
       return (
@@ -78,14 +80,11 @@ describe('TanStack Form integration', () => {
           <form.Field name="price">
             {(field) => (
               <CurrencyInput
-                currency={USD}
                 format={{ locale: 'en-US' }}
                 aria-label="Price"
                 name="price"
                 value={field.state.value}
-                onValueChange={(dinero) =>
-                  field.handleChange(toSnapshot(dinero).amount)
-                }
+                onValueChange={(d) => field.handleChange(d)}
               />
             )}
           </form.Field>
@@ -134,7 +133,7 @@ describe('TanStack Form integration', () => {
           }}
         >
           <TanStackHookInput
-            onValueChange={(dinero) => form.setFieldValue('price', dinero)}
+            onValueChange={(d) => form.setFieldValue('price', d)}
           />
           <button type="submit">Submit</button>
         </form>
@@ -166,7 +165,7 @@ function TanStackHookInput({
   onValueChange: (dinero: Dinero<number>) => void;
 }) {
   const { inputProps } = useCurrencyInput({
-    currency: USD,
+    defaultValue: dinero({ amount: 0, currency: USD }),
     format: { locale: 'en-US' },
     onValueChange,
   });

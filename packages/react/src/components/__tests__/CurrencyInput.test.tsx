@@ -6,7 +6,7 @@ import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createRef, useState } from 'react';
-import { toSnapshot } from 'dinero.js';
+import { dinero, toSnapshot } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 
 import { CurrencyInput } from '..';
@@ -14,13 +14,23 @@ import { CurrencyInput } from '..';
 describe('CurrencyInput', () => {
   describe('rendering', () => {
     it('renders an input element', () => {
-      render(<CurrencyInput currency={USD} format={{ locale: 'en-US' }} />);
+      render(
+        <CurrencyInput
+          defaultValue={dinero({ amount: 0, currency: USD })}
+          format={{ locale: 'en-US' }}
+        />
+      );
 
       expect(screen.getByRole('textbox')).toBeInTheDocument();
     });
 
     it('sets `inputMode` to decimal and type to text', () => {
-      render(<CurrencyInput currency={USD} format={{ locale: 'en-US' }} />);
+      render(
+        <CurrencyInput
+          defaultValue={dinero({ amount: 0, currency: USD })}
+          format={{ locale: 'en-US' }}
+        />
+      );
 
       const input = screen.getByRole('textbox');
       expect(input).toHaveAttribute('type', 'text');
@@ -28,7 +38,12 @@ describe('CurrencyInput', () => {
     });
 
     it('starts with a formatted zero value', () => {
-      render(<CurrencyInput currency={USD} format={{ locale: 'en-US' }} />);
+      render(
+        <CurrencyInput
+          defaultValue={dinero({ amount: 0, currency: USD })}
+          format={{ locale: 'en-US' }}
+        />
+      );
 
       expect(screen.getByRole('textbox')).toHaveValue('0.00');
     });
@@ -38,7 +53,11 @@ describe('CurrencyInput', () => {
     it('forwards ref to the input element', () => {
       const ref = createRef<HTMLInputElement>();
       render(
-        <CurrencyInput ref={ref} currency={USD} format={{ locale: 'en-US' }} />
+        <CurrencyInput
+          ref={ref}
+          defaultValue={dinero({ amount: 0, currency: USD })}
+          format={{ locale: 'en-US' }}
+        />
       );
 
       expect(ref.current).toBeInstanceOf(HTMLInputElement);
@@ -50,7 +69,7 @@ describe('CurrencyInput', () => {
     it('passes through `className`', () => {
       render(
         <CurrencyInput
-          currency={USD}
+          defaultValue={dinero({ amount: 0, currency: USD })}
           format={{ locale: 'en-US' }}
           className="price-field"
         />
@@ -62,7 +81,7 @@ describe('CurrencyInput', () => {
     it('passes through aria attributes', () => {
       render(
         <CurrencyInput
-          currency={USD}
+          defaultValue={dinero({ amount: 0, currency: USD })}
           format={{ locale: 'en-US' }}
           aria-label="Price"
         />
@@ -76,7 +95,7 @@ describe('CurrencyInput', () => {
     it('passes through placeholder', () => {
       render(
         <CurrencyInput
-          currency={USD}
+          defaultValue={dinero({ amount: 0, currency: USD })}
           format={{ locale: 'en-US' }}
           placeholder="Enter amount"
         />
@@ -90,7 +109,11 @@ describe('CurrencyInput', () => {
 
     it('passes through disabled', () => {
       render(
-        <CurrencyInput currency={USD} format={{ locale: 'en-US' }} disabled />
+        <CurrencyInput
+          defaultValue={dinero({ amount: 0, currency: USD })}
+          format={{ locale: 'en-US' }}
+          disabled
+        />
       );
 
       expect(screen.getByRole('textbox')).toBeDisabled();
@@ -99,7 +122,12 @@ describe('CurrencyInput', () => {
 
   describe('form submission', () => {
     it('does not render hidden inputs when `name` is not provided', () => {
-      render(<CurrencyInput currency={USD} format={{ locale: 'en-US' }} />);
+      render(
+        <CurrencyInput
+          defaultValue={dinero({ amount: 0, currency: USD })}
+          format={{ locale: 'en-US' }}
+        />
+      );
 
       const hiddenInputs = document.querySelectorAll('input[type="hidden"]');
       expect(hiddenInputs).toHaveLength(0);
@@ -108,10 +136,9 @@ describe('CurrencyInput', () => {
     it('submits amount, currency, and scale as separate hidden inputs', () => {
       render(
         <CurrencyInput
-          currency={USD}
+          value={dinero({ amount: 105000, currency: USD })}
           format={{ locale: 'en-US' }}
           name="price"
-          value={105000}
         />
       );
 
@@ -141,7 +168,7 @@ describe('CurrencyInput', () => {
     it('does not set name on the visible input', () => {
       render(
         <CurrencyInput
-          currency={USD}
+          defaultValue={dinero({ amount: 0, currency: USD })}
           format={{ locale: 'en-US' }}
           name="price"
         />
@@ -153,10 +180,9 @@ describe('CurrencyInput', () => {
     it('keeps the visible input formatted for display', () => {
       render(
         <CurrencyInput
-          currency={USD}
+          value={dinero({ amount: 105000, currency: USD })}
           format={{ locale: 'en-US' }}
           name="price"
-          value={105000}
         />
       );
 
@@ -168,7 +194,7 @@ describe('CurrencyInput', () => {
 
       render(
         <CurrencyInput
-          currency={USD}
+          defaultValue={dinero({ amount: 0, currency: USD })}
           format={{ locale: 'en-US' }}
           name="price"
         />
@@ -196,11 +222,9 @@ describe('CurrencyInput', () => {
     it('submits the correct values with custom scale', () => {
       render(
         <CurrencyInput
-          currency={USD}
+          value={dinero({ amount: 10545, currency: USD, scale: 3 })}
           format={{ locale: 'en-US' }}
           name="price"
-          value={10545}
-          scale={3}
         />
       );
 
@@ -223,9 +247,8 @@ describe('CurrencyInput', () => {
       render(
         <form>
           <CurrencyInput
-            currency={USD}
+            defaultValue={dinero({ amount: 1050, currency: USD })}
             format={{ locale: 'en-US' }}
-            defaultValue={1050}
             aria-label="Price"
           />
           <button type="reset">Reset</button>
@@ -242,38 +265,14 @@ describe('CurrencyInput', () => {
       await user.click(screen.getByRole('button', { name: 'Reset' }));
       expect(input).toHaveValue('10.50');
     });
-
-    it('resets to zero when the form is reset and no `defaultValue` is set', async () => {
-      const user = userEvent.setup();
-
-      render(
-        <form>
-          <CurrencyInput
-            currency={USD}
-            format={{ locale: 'en-US' }}
-            aria-label="Price"
-          />
-          <button type="reset">Reset</button>
-        </form>
-      );
-
-      const input = screen.getByRole('textbox', { name: 'Price' });
-      await user.click(input);
-      await user.keyboard('1050');
-      expect(input).toHaveValue('10.50');
-
-      await user.click(screen.getByRole('button', { name: 'Reset' }));
-      expect(input).toHaveValue('0.00');
-    });
   });
 
   describe('controlled value', () => {
     it('uses the controlled value instead of internal state', () => {
       render(
         <CurrencyInput
-          currency={USD}
+          value={dinero({ amount: 1050, currency: USD })}
           format={{ locale: 'en-US' }}
-          value={1050}
         />
       );
 
@@ -284,17 +283,23 @@ describe('CurrencyInput', () => {
       const user = userEvent.setup();
 
       function Controlled() {
-        const [value, setValue] = useState(1050);
+        const [value, setValue] = useState(
+          dinero({ amount: 1050, currency: USD })
+        );
 
         return (
           <>
             <CurrencyInput
-              currency={USD}
-              format={{ locale: 'en-US' }}
               value={value}
+              format={{ locale: 'en-US' }}
+              onValueChange={(d) => setValue(d)}
               aria-label="Price"
             />
-            <button onClick={() => setValue(2499)}>Set to 2499</button>
+            <button
+              onClick={() => setValue(dinero({ amount: 2499, currency: USD }))}
+            >
+              Set to 2499
+            </button>
           </>
         );
       }
@@ -314,18 +319,23 @@ describe('CurrencyInput', () => {
       const user = userEvent.setup();
 
       function Controlled() {
-        const [value, setValue] = useState(1050);
+        const [value, setValue] = useState(
+          dinero({ amount: 1050, currency: USD })
+        );
 
         return (
           <>
             <CurrencyInput
-              currency={USD}
-              format={{ locale: 'en-US' }}
               value={value}
-              onValueChange={(dinero) => setValue(toSnapshot(dinero).amount)}
+              format={{ locale: 'en-US' }}
+              onValueChange={(d) => setValue(d)}
               aria-label="Price"
             />
-            <button onClick={() => setValue(0)}>Reset</button>
+            <button
+              onClick={() => setValue(dinero({ amount: 0, currency: USD }))}
+            >
+              Reset
+            </button>
           </>
         );
       }
@@ -351,7 +361,7 @@ describe('CurrencyInput', () => {
 
       render(
         <CurrencyInput
-          currency={USD}
+          defaultValue={dinero({ amount: 0, currency: USD })}
           format={{ locale: 'en-US' }}
           onValueChange={onValueChange}
         />
