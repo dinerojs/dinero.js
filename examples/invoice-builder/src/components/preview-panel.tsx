@@ -1,3 +1,4 @@
+import { isZero } from 'dinero.js';
 import type { InvoiceData } from '@/lib/invoice-types';
 import {
   invoiceSubtotal,
@@ -6,7 +7,6 @@ import {
   grandTotal,
   lineTotal,
   formatMoney,
-  formatCents,
 } from '@/lib/money';
 
 interface PreviewPanelProps {
@@ -16,16 +16,11 @@ interface PreviewPanelProps {
 export function PreviewPanel({ invoice }: PreviewPanelProps) {
   const { currency } = invoice;
   const subtotal = invoiceSubtotal(invoice.lineItems, currency);
-  const discount = discountAmount(
-    subtotal,
-    invoice.discountType,
-    invoice.discountValue,
-    currency
-  );
+  const discount = discountAmount(subtotal, invoice, currency);
   const tax = taxAmount(subtotal, discount, invoice.taxRate, currency);
   const total = grandTotal(subtotal, discount, tax);
 
-  const hasDiscount = invoice.discountValue > 0;
+  const hasDiscount = !isZero(discount);
   const hasTax = invoice.taxRate > 0;
 
   return (
@@ -184,7 +179,7 @@ export function PreviewPanel({ invoice }: PreviewPanelProps) {
                       className="py-3 text-right tabular-nums"
                       style={{ color: '#4b5563' }}
                     >
-                      {formatCents(item.unitPriceCents, currency)}
+                      {formatMoney(item.unitPrice, currency)}
                     </td>
                     <td
                       className="py-3 text-right font-medium tabular-nums"
@@ -221,7 +216,7 @@ export function PreviewPanel({ invoice }: PreviewPanelProps) {
                   <span style={{ color: '#6b7280' }}>
                     Discount
                     {invoice.discountType === 'percentage'
-                      ? ` (${invoice.discountValue}%)`
+                      ? ` (${invoice.discountPercentage}%)`
                       : ''}
                   </span>
                   <span

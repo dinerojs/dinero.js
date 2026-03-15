@@ -9,7 +9,7 @@ import {
 import type { Dinero, DineroCurrency } from 'dinero.js';
 import { USD, EUR, GBP, JPY } from 'dinero.js/currencies';
 
-import type { CurrencyCode, DiscountType, LineItem } from '@/lib/invoice-types';
+import type { CurrencyCode, InvoiceData, LineItem } from '@/lib/invoice-types';
 
 export const CURRENCIES: Record<CurrencyCode, DineroCurrency<number>> = {
   USD,
@@ -32,12 +32,7 @@ export function lineTotal<TCurrency extends CurrencyCode>(
   item: LineItem,
   code: TCurrency
 ): Dinero<number, TCurrency> {
-  const price = dinero({
-    amount: item.unitPriceCents,
-    currency: currencyFor(code),
-  });
-
-  return multiply(price, item.quantity);
+  return multiply(item.unitPrice as Dinero<number, TCurrency>, item.quantity);
 }
 
 /**
@@ -68,21 +63,26 @@ function percentageRatios(percentage: number): [number, number] {
  */
 export function discountAmount<TCurrency extends CurrencyCode>(
   sub: Dinero<number, TCurrency>,
-  discountType: DiscountType,
-  discountValue: number,
+  discount: Pick<
+    InvoiceData,
+    'discountType' | 'discountPercentage' | 'discountAmount'
+  >,
   code: TCurrency
 ): Dinero<number, TCurrency> {
-  if (discountValue <= 0) {
-    return zero(code);
-  }
+  if (discount.discountType === 'percentage') {
+    if (discount.discountPercentage <= 0) {
+      return zero(code);
+    }
 
-  if (discountType === 'percentage') {
-    const [discounted] = allocate(sub, percentageRatios(discountValue));
+    const [discounted] = allocate(
+      sub,
+      percentageRatios(discount.discountPercentage)
+    );
 
     return discounted;
   }
 
-  return dinero({ amount: discountValue, currency: currencyFor(code) });
+  return discount.discountAmount as Dinero<number, TCurrency>;
 }
 
 /**
@@ -130,18 +130,6 @@ export function formatMoney<TCurrency extends CurrencyCode>(
       currency: currency.code,
     });
   });
-}
-
-/**
- * Format a raw minor-unit amount for display (used in preview for unit prices).
- */
-export function formatCents<TCurrency extends CurrencyCode>(
-  minorUnits: number,
-  code: TCurrency
-): string {
-  const d = dinero({ amount: minorUnits, currency: currencyFor(code) });
-
-  return formatMoney(d, code);
 }
 
 function zero<TCurrency extends CurrencyCode>(

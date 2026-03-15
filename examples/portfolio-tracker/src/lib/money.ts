@@ -47,13 +47,6 @@ export function zero<TCode extends CurrencyCode>(
   return dinero({ amount: 0, currency: currencyFor(code) });
 }
 
-export function fromMinorUnits<TCode extends CurrencyCode>(
-  amount: number,
-  code: TCode
-): Dinero<number, TCode> {
-  return dinero({ amount, currency: currencyFor(code) });
-}
-
 /**
  * Count the number of decimal places in a number.
  */
@@ -66,18 +59,20 @@ function countDecimals(n: number): number {
 
 /**
  * Compute the total value of a holding: quantity * unitPrice.
- * `unitPriceCents` is in minor units; `quantity` can be fractional.
+ * `unitPrice` is already a Dinero object; `quantity` can be fractional.
  * Uses a scaled amount for `multiply` to avoid non-integer intermediate results.
  */
 export function holdingValue<TCode extends CurrencyCode>(
-  unitPriceCents: number,
+  unitPrice: Dinero<number>,
   quantity: number,
-  code: TCode
+  _code: TCode
 ): Dinero<number, TCode> {
-  const price = fromMinorUnits(unitPriceCents, code);
   const scale = countDecimals(quantity);
 
-  return multiply(price, { amount: Math.round(quantity * 10 ** scale), scale });
+  return multiply(unitPrice, {
+    amount: Math.round(quantity * 10 ** scale),
+    scale,
+  }) as Dinero<number, TCode>;
 }
 
 /**
@@ -165,14 +160,4 @@ export function formatMoney<TCode extends CurrencyCode>(
       currency: currency.code,
     })
   );
-}
-
-/**
- * Format a raw minor-unit amount for display.
- */
-export function formatCents<TCode extends CurrencyCode>(
-  minorUnits: number,
-  code: TCode
-): string {
-  return formatMoney(fromMinorUnits(minorUnits, code), code);
 }

@@ -1,3 +1,5 @@
+import type { Dinero } from 'dinero.js';
+
 export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'JPY';
 
 export type Category =
@@ -13,7 +15,7 @@ export interface Holding {
   name: string;
   category: Category;
   quantity: number;
-  unitPriceCents: number;
+  unitPrice: Dinero<number>;
   currency: CurrencyCode;
 }
 

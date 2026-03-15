@@ -1,13 +1,15 @@
+import type { Dinero } from 'dinero.js';
+
 import type { CurrencyCode, Category } from '@/lib/types';
 import { CATEGORY_COLORS } from '@/lib/types';
-import { formatCents } from '@/lib/money';
+import { formatMoney } from '@/lib/money';
 
 interface HoldingRow {
   id: string;
   name: string;
   category: Category;
   quantity: number;
-  unitPriceCents: number;
+  unitPrice: Dinero<number>;
   currency: CurrencyCode;
   baseValueFormatted: string;
   baseValueNumber: number;
@@ -103,7 +105,7 @@ export function HoldingsTable({
                   </td>
 
                   <td className="hidden px-4 py-3 text-right tabular-nums text-muted-foreground sm:table-cell">
-                    {formatCents(h.unitPriceCents, h.currency)}
+                    {formatMoney(h.unitPrice, h.currency)}
                   </td>
 
                   <td className="px-4 py-3 text-right font-semibold tabular-nums text-foreground">

@@ -1,4 +1,7 @@
 import { useState, useCallback } from 'react';
+import { dinero } from 'dinero.js';
+import { USD } from 'dinero.js/currencies';
+import { CURRENCIES } from '@/lib/money';
 import type {
   InvoiceData,
   LineItem,
@@ -19,7 +22,7 @@ export function useInvoice() {
   const addLineItem = useCallback(() => {
     setInvoice((prev) => ({
       ...prev,
-      lineItems: [...prev.lineItems, createEmptyLineItem()],
+      lineItems: [...prev.lineItems, createEmptyLineItem(prev.currency)],
     }));
   }, []);
 
@@ -50,7 +53,15 @@ export function useInvoice() {
   }, []);
 
   const setDiscountType = useCallback((discountType: DiscountType) => {
-    setInvoice((prev) => ({ ...prev, discountType, discountValue: 0 }));
+    setInvoice((prev) => ({
+      ...prev,
+      discountType,
+      discountPercentage: 0,
+      discountAmount: dinero({
+        amount: 0,
+        currency: CURRENCIES[prev.currency],
+      }),
+    }));
   }, []);
 
   const setBusinessLogo = useCallback((logo: string | null) => {
@@ -89,12 +100,12 @@ function dueDateISO(): string {
   return d.toISOString().split('T')[0];
 }
 
-function createEmptyLineItem(): LineItem {
+function createEmptyLineItem(code: CurrencyCode): LineItem {
   return {
     id: crypto.randomUUID(),
     description: '',
     quantity: 1,
-    unitPriceCents: 0,
+    unitPrice: dinero({ amount: 0, currency: CURRENCIES[code] }),
   };
 }
 
@@ -116,23 +127,24 @@ function createInitialInvoice(): InvoiceData {
         id: crypto.randomUUID(),
         description: 'Website Redesign',
         quantity: 1,
-        unitPriceCents: 480000,
+        unitPrice: dinero({ amount: 480000, currency: USD }),
       },
       {
         id: crypto.randomUUID(),
         description: 'Logo & Brand Identity',
         quantity: 1,
-        unitPriceCents: 240000,
+        unitPrice: dinero({ amount: 240000, currency: USD }),
       },
       {
         id: crypto.randomUUID(),
         description: 'SEO Optimization',
         quantity: 3,
-        unitPriceCents: 45000,
+        unitPrice: dinero({ amount: 45000, currency: USD }),
       },
     ],
     discountType: 'percentage',
-    discountValue: 5,
+    discountPercentage: 5,
+    discountAmount: dinero({ amount: 0, currency: USD }),
     taxRate: 8.25,
     notes:
       'Payment due within 30 days. Please include the invoice number with your payment.',

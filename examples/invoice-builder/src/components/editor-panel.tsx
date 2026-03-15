@@ -4,13 +4,7 @@ import type {
   DiscountType,
   LineItem,
 } from '@/lib/invoice-types';
-import {
-  CURRENCIES,
-  CURRENCY_LOCALES,
-  lineTotal,
-  formatMoney,
-} from '@/lib/money';
-import { toSnapshot } from 'dinero.js';
+import { CURRENCY_LOCALES, lineTotal, formatMoney } from '@/lib/money';
 import { CurrencyInput } from '@dinerojs/react';
 import {
   Plus,
@@ -226,33 +220,30 @@ export function EditorPanel({
               {invoice.discountType === 'percentage' ? (
                 <input
                   type="text"
-                  name="discount-value"
+                  name="discount-percentage"
                   value={
-                    invoice.discountValue === 0
+                    invoice.discountPercentage === 0
                       ? ''
-                      : String(invoice.discountValue)
+                      : String(invoice.discountPercentage)
                   }
                   onChange={(e) => {
                     const val = parseFloat(e.target.value) || 0;
                     onFieldChange(
-                      'discountValue',
+                      'discountPercentage',
                       Math.max(0, Math.min(100, val))
                     );
                   }}
                   placeholder="0"
-                  aria-label="Discount value"
+                  aria-label="Discount percentage"
                   autoComplete="off"
                   className="flex-1 rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground text-right placeholder:text-text-muted transition-colors focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
                 />
               ) : (
                 <CurrencyInput
-                  currency={CURRENCIES[invoice.currency]}
-                  locale={CURRENCY_LOCALES[invoice.currency]}
-                  value={invoice.discountValue}
-                  onValueChange={(dinero) =>
-                    onFieldChange('discountValue', toSnapshot(dinero).amount)
-                  }
-                  aria-label="Discount value"
+                  format={{ locale: CURRENCY_LOCALES[invoice.currency] }}
+                  value={invoice.discountAmount}
+                  onValueChange={(d) => onFieldChange('discountAmount', d)}
+                  aria-label="Discount amount"
                   autoComplete="off"
                   className="flex-1 rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground text-right placeholder:text-text-muted transition-colors focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
                 />
@@ -404,12 +395,9 @@ function LineItemRow({
                 Price
               </span>
               <CurrencyInput
-                currency={CURRENCIES[currency]}
-                locale={CURRENCY_LOCALES[currency]}
-                value={item.unitPriceCents}
-                onValueChange={(dinero) =>
-                  onUpdate('unitPriceCents', toSnapshot(dinero).amount)
-                }
+                format={{ locale: CURRENCY_LOCALES[currency] }}
+                value={item.unitPrice}
+                onValueChange={(d) => onUpdate('unitPrice', d)}
                 aria-label={`Item ${index + 1} unit price`}
                 autoComplete="off"
                 className="w-24 rounded-md border border-border bg-card px-2 py-1 text-xs text-foreground text-right placeholder:text-text-muted transition-colors focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"

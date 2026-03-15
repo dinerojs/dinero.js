@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
+import type { Dinero } from 'dinero.js';
 import { Plus, Equal, Percent } from 'lucide-react';
-import { toSnapshot } from 'dinero.js';
+import { isZero } from 'dinero.js';
 import { CurrencyInput } from '@dinerojs/react';
 
-import { currency, fromAmount } from '@/lib/money';
+import { zero } from '@/lib/money';
 import type { Person, Expense, SplitType, ExpenseShare } from '@/types';
 
 interface AddExpenseProps {
@@ -13,7 +14,7 @@ interface AddExpenseProps {
 
 export function AddExpense({ people, onAdd }: AddExpenseProps) {
   const [description, setDescription] = useState('');
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState<Dinero<number>>(zero);
   const [paidBy, setPaidBy] = useState(people[0]?.id || '');
   const [splitType, setSplitType] = useState<SplitType>('equal');
   const [selectedPeople, setSelectedPeople] = useState<Set<string>>(
@@ -67,7 +68,7 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
       onSubmit={(event) => {
         event.preventDefault();
 
-        if (!description.trim() || amount <= 0) {
+        if (!description.trim() || isZero(amount)) {
           return;
         }
 
@@ -88,7 +89,7 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
         const expense: Expense = {
           id: crypto.randomUUID(),
           description: description.trim(),
-          amount: fromAmount(amount),
+          amount,
           paidBy,
           splitType,
           shares,
@@ -97,7 +98,7 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
 
         onAdd(expense);
         setDescription('');
-        setAmount(0);
+        setAmount(zero());
       }}
       className="space-y-4"
     >
@@ -132,12 +133,11 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
               <span className="text-sm text-text-muted">$</span>
             </div>
             <CurrencyInput
-              currency={currency}
-              locale="en-US"
+              format={{ locale: 'en-US' }}
               id="amount"
               name="amount"
               value={amount}
-              onValueChange={(dinero) => setAmount(toSnapshot(dinero).amount)}
+              onValueChange={setAmount}
               className={`${inputClasses} pl-7`}
             />
           </div>
@@ -285,7 +285,7 @@ export function AddExpense({ people, onAdd }: AddExpenseProps) {
         type="submit"
         disabled={
           !description.trim() ||
-          amount <= 0 ||
+          isZero(amount) ||
           selectedPeople.size === 0 ||
           (splitType === 'percentage' && totalPercentage !== 100)
         }

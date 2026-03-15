@@ -1,5 +1,7 @@
 import { useState, useMemo, useCallback } from 'react';
+import { dinero } from 'dinero.js';
 import type { Dinero } from 'dinero.js';
+import { USD, EUR, GBP } from 'dinero.js/currencies';
 
 import type { CurrencyCode, Category, Holding } from '@/lib/types';
 import {
@@ -8,6 +10,7 @@ import {
   sumDineros,
   formatMoney,
   zero,
+  currencyFor,
 } from '@/lib/money';
 
 const DEFAULT_HOLDINGS: Holding[] = [
@@ -16,7 +19,7 @@ const DEFAULT_HOLDINGS: Holding[] = [
     name: 'Apple Inc.',
     category: 'Stocks',
     quantity: 15,
-    unitPriceCents: 19850,
+    unitPrice: dinero({ amount: 19850, currency: USD }),
     currency: 'USD',
   },
   {
@@ -24,7 +27,7 @@ const DEFAULT_HOLDINGS: Holding[] = [
     name: 'Bitcoin',
     category: 'Crypto',
     quantity: 0.5,
-    unitPriceCents: 7843200,
+    unitPrice: dinero({ amount: 7843200, currency: EUR }),
     currency: 'EUR',
   },
   {
@@ -32,7 +35,7 @@ const DEFAULT_HOLDINGS: Holding[] = [
     name: 'Euro Savings',
     category: 'Cash',
     quantity: 10000,
-    unitPriceCents: 100,
+    unitPrice: dinero({ amount: 100, currency: EUR }),
     currency: 'EUR',
   },
   {
@@ -40,7 +43,7 @@ const DEFAULT_HOLDINGS: Holding[] = [
     name: 'UK Govt Bonds',
     category: 'Bonds',
     quantity: 50,
-    unitPriceCents: 10275,
+    unitPrice: dinero({ amount: 10275, currency: GBP }),
     currency: 'GBP',
   },
 ];
@@ -72,7 +75,7 @@ export function usePortfolio() {
       name: '',
       category: 'Stocks',
       quantity: 0,
-      unitPriceCents: 0,
+      unitPrice: dinero({ amount: 0, currency: currencyFor(baseCurrency) }),
       currency: baseCurrency,
     };
     setHoldings((prev) => [...prev, newHolding]);
@@ -93,11 +96,7 @@ export function usePortfolio() {
 
   const holdingsWithValues: HoldingWithValue[] = useMemo(() => {
     return holdings.map((h) => {
-      const originalValue = holdingValue(
-        h.unitPriceCents,
-        h.quantity,
-        h.currency
-      );
+      const originalValue = holdingValue(h.unitPrice, h.quantity, h.currency);
       const baseValue = convertToBase(originalValue, h.currency, baseCurrency);
       const baseValueFormatted = formatMoney(baseValue, baseCurrency);
 

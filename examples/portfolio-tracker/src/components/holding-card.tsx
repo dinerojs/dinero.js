@@ -1,10 +1,9 @@
 import { Trash2 } from 'lucide-react';
-import { toSnapshot } from 'dinero.js';
 import { CurrencyInput } from '@dinerojs/react';
 
 import type { CurrencyCode, Category, Holding } from '@/lib/types';
 import { CURRENCIES, CATEGORIES, CATEGORY_COLORS } from '@/lib/types';
-import { CURRENCIES_MAP, CURRENCY_LOCALES } from '@/lib/money';
+import { CURRENCY_LOCALES } from '@/lib/money';
 
 interface HoldingCardProps {
   holding: Holding;
@@ -103,12 +102,11 @@ export function HoldingCard({ holding, onUpdate, onRemove }: HoldingCardProps) {
             </label>
             <CurrencyInput
               id={`unit-price-${holding.id}`}
-              currency={CURRENCIES_MAP[holding.currency]}
-              locale={CURRENCY_LOCALES[holding.currency]}
-              value={holding.unitPriceCents}
-              onValueChange={(dinero) =>
+              format={{ locale: CURRENCY_LOCALES[holding.currency] }}
+              value={holding.unitPrice}
+              onValueChange={(d) =>
                 onUpdate(holding.id, {
-                  unitPriceCents: toSnapshot(dinero).amount,
+                  unitPrice: d,
                 })
               }
               autoComplete="off"

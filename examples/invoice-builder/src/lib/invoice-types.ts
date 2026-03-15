@@ -1,10 +1,12 @@
+import type { Dinero } from 'dinero.js';
+
 export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'JPY';
 
 export interface LineItem {
   id: string;
   description: string;
   quantity: number;
-  unitPriceCents: number;
+  unitPrice: Dinero<number>;
 }
 
 export type DiscountType = 'percentage' | 'fixed';
@@ -23,7 +25,8 @@ export interface InvoiceData {
   currency: CurrencyCode;
   lineItems: LineItem[];
   discountType: DiscountType;
-  discountValue: number;
+  discountPercentage: number;
+  discountAmount: Dinero<number>;
   taxRate: number;
   notes: string;
 }
