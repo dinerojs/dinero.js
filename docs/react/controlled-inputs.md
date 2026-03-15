@@ -5,7 +5,7 @@ description: Use the value prop to control the money input externally for form l
 
 # Controlled inputs
 
-By default, `useCurrencyInput` manages its own state. Pass the `value` prop to control the input externally—useful for form library integration, form reset, or any scenario where the amount is owned by a parent component.
+By default, `CurrencyInput` and `useCurrencyInput` manage their own state. You can pass the `value` prop to control the input externally, which is useful for form library integration, form reset, or any scenario where the amount is owned by a parent component.
 
 ## Controlled vs. uncontrolled
 
@@ -23,21 +23,22 @@ import { USD } from 'dinero.js/currencies';
 function PriceField() {
   const [amount, setAmount] = useState(0);
 
-  const { inputProps } = useCurrencyInput({
-    currency: USD,
-    format: { locale: 'en-US' },
-    value: amount,
-    onValueChange(dinero) {
-      setAmount(toSnapshot(dinero).amount);
-    },
-  });
-
-  return <input {...inputProps} />;
+  return (
+    <CurrencyInput
+      name="price"
+      currency={USD}
+      format={{ locale: 'en-US' }}
+      value={amount}
+      onValueChange={(dinero) => {
+        setAmount(toSnapshot(dinero).amount);
+      }}
+    />
+  );
 }
 ```
 
 ::: warning
-When `value` is provided, you **must** wire `onValueChange` back to the state that feeds `value`. Otherwise, keystrokes are ignored—the input becomes read-only. This is the standard React controlled input contract.
+When `value` is provided, you **must** wire `onValueChange` back to the state that feeds `value`. Otherwise, keystrokes are ignored and the input becomes read-only. This is the standard React controlled input contract.
 :::
 
 ## Form reset

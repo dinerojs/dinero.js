@@ -5,12 +5,20 @@ description: Get started with @dinerojs/react, headless money input components a
 
 # Getting started
 
-`@dinerojs/react` provides headless money input primitives for React, powered by Dinero.js. It gives you a [`useCurrencyInput`](/react/api/use-currency-input) hook and a [`CurrencyInput`](/react/api/currency-input) component that handle formatting, keystrokes, and paste.
+The `@dinerojs/react` package provides currency input primitives for React, powered by Dinero.js.
 
-## Install
+It gives you a [`CurrencyInput`](/react/api/currency-input) component and a [`useCurrencyInput`](/react/api/use-currency-input) hook that handle formatting, keystrokes, and paste. It also returns everything you need when used in a form so you can easily process the data on your server.
+
+## Install the library
+
+First, install `@dinerojs/react` and `dinero.js` in your React project.
 
 ```sh
-npm install @dinerojs/react dinero.js react
+npm install @dinerojs/react dinero.js
+
+# or
+
+yarn install @dinerojs/react dinero.js
 ```
 
 ::: info
@@ -19,7 +27,7 @@ npm install @dinerojs/react dinero.js react
 
 ## Quick start
 
-Use the `CurrencyInput` component to add a money input. It uses ATM-style entry where digits shift left as the user types—typing "1", "0", "5", "0" with USD produces `$10.50`.
+Use the `CurrencyInput` component to add a currency input. It uses ATM-style entry where digits shift left as the user types. In other words, typing "1", "0", "5", "0" with currency `USD` produces `$10.50`.
 
 ```tsx
 import { CurrencyInput } from '@dinerojs/react';
@@ -28,87 +36,50 @@ import { USD } from 'dinero.js/currencies';
 function PriceField() {
   return (
     <CurrencyInput
+      name="price"
       currency={USD}
       format={{ locale: 'en-US' }}
-      name="price"
-      aria-label="Price"
     />
   );
 }
 ```
 
-When you pass a `name` prop, `CurrencyInput` renders hidden inputs for the amount, currency code, and scale using bracket notation (e.g., `price[amount]`, `price[currency]`, `price[scale]`).
+The `CurrencyInput` component renders:
+- A visible, ATM-style entry for users to safely provide money values.
+- Hidden inputs that translate it to the right, serializable values to be sent to a server.
 
-For more control, use the [`useCurrencyInput`](/react/api/use-currency-input) hook directly. It returns `inputProps` to spread onto a native `<input>` and a `dineroValue` you can use with any Dinero.js function:
+```html
+<!-- The human-visible input to type into -->
+<input type="text" inputmode="numeric" value="10.50" />
 
-```tsx
-import { toDecimal } from 'dinero.js';
-import { useCurrencyInput } from '@dinerojs/react';
-import { USD } from 'dinero.js/currencies';
-
-function PriceField() {
-  const { inputProps, dineroValue } = useCurrencyInput({
-    currency: USD,
-    format: { locale: 'en-US' },
-  });
-
-  const formatted = toDecimal(dineroValue, ({ value, currency }) => {
-    return `${currency.code} ${value}`;
-  }); // "USD 10.50"
-
-  return <input {...inputProps} />;
-}
+<!-- The hidden fields to submit -->
+<input type="hidden" name="price[amount]" value="1050" />
+<input type="hidden" name="price[currency]" value="USD" />
+<input type="hidden" name="price[scale]" value="2" />
 ```
+
+::: warning
+To properly render the hidden fields, make sure you pass in a `name` prop.
+:::
 
 ## How it works
 
-The hook formats amounts based on the `format` prop. Pass `{ locale: 'en-US' }` to use `Intl.NumberFormat` with locale-aware grouping and decimal separators, or pass a custom function for full control. The user types raw digits—the hook takes care of placing the decimal point based on the currency's exponent.
+The input formats amounts using the `format` prop. You can either pass [options](/react/api/currency-input#props) to use `Intl.NumberFormat` with locale-aware grouping and decimal separators, or pass a custom function for full control.
+
+The user types raw digits. The input takes care of placing the decimal point based on the currency's exponent.
 
 | User types | Display (USD, en-US) | Amount (minor units) |
-|------------|---------------------|---------------------|
-| `1` | `0.01` | `1` |
-| `10` | `0.10` | `10` |
-| `1050` | `10.50` | `1050` |
-| `100000` | `1,000.00` | `100000` |
+|------------|---------------------|-----------------------|
+| `1`        | `0.01`              | `1`                   |
+| `10`       | `0.10`              | `10`                  |
+| `1050`.    | `10.50`             | `1050`.               |
+| `100000`   | `1,000.00`          | `100000`              |
 
-Backspace removes the last digit, shifting everything right. Pasting works too—only digits are extracted from the pasted text and appended to the current value.
+Backspace removes the last digit, shifting everything to the right. Pasting works as well: only digits are extracted from the pasted text and appended to the current value.
 
 ## Setting a default value
 
-Pass `defaultValue` to start the input with a pre-filled amount. The value is in minor currency units, just like when creating a Dinero object.
-
-```tsx
-const { inputProps } = useCurrencyInput({
-  currency: USD,
-  format: { locale: 'en-US' },
-  defaultValue: 1050, // starts at $10.50
-});
-```
-
-## Listening for changes
-
-Use `onValueChange` to react to every change. It receives the current Dinero object.
-
-```tsx
-import { toSnapshot } from 'dinero.js';
-
-function PriceField() {
-  const { inputProps } = useCurrencyInput({
-    currency: USD,
-    format: { locale: 'en-US' },
-    onValueChange(dinero) {
-      const { amount } = toSnapshot(dinero);
-      console.log('Amount in cents:', amount);
-    },
-  });
-
-  return <input {...inputProps} />;
-}
-```
-
-## Using CurrencyInput
-
-If you prefer a more declarative API, use the [`CurrencyInput`](/react/api/currency-input) component. It renders an `<input>` element, forwards a ref, and passes through all standard HTML input attributes.
+You can pass `defaultValue` to start the input with a pre-filled amount. The value is in minor currency units, just like when creating a Dinero object.
 
 ```tsx
 import { CurrencyInput } from '@dinerojs/react';
@@ -119,9 +90,30 @@ function PriceField() {
     <CurrencyInput
       currency={USD}
       format={{ locale: 'en-US' }}
-      className="price-field"
-      aria-label="Price"
-      onValueChange={(dinero) => console.log(dinero)}
+      defaultValue={1050} // starts at $10.50
+    />
+  );
+}
+```
+
+## Listening for changes
+
+You can use `onValueChange` to react to every change. It receives the current Dinero object.
+
+```tsx
+import { toSnapshot } from 'dinero.js';
+import { CurrencyInput } from '@dinerojs/react';
+import { USD } from 'dinero.js/currencies';
+
+function PriceField() {
+  return (
+    <CurrencyInput
+      currency={USD}
+      format={{ locale: 'en-US' }}
+      onValueChange={(dinero) => {
+        const { amount } = toSnapshot(dinero);
+        console.log('Amount in cents:', amount);
+      }}
     />
   );
 }
@@ -129,21 +121,22 @@ function PriceField() {
 
 ## Form submission
 
-When you pass a `name` prop, `CurrencyInput` submits the amount, currency code, and scale as separate hidden inputs using bracket notation.
+When you pass a `name` prop, `CurrencyInput` renders the amount, currency code, and scale as separate hidden inputs using bracket notation.
 
 ```tsx
 <form action="/api/checkout" method="post">
   <CurrencyInput
+    name="price"
     currency={USD}
     format={{ locale: 'en-US' }}
-    name="price"
-    aria-label="Price"
   />
   <button type="submit">Pay</button>
 </form>
 ```
 
-This renders `price[amount]`, `price[currency]`, and `price[scale]` as hidden fields. Frameworks like PHP, Rails, and Express (with `qs`) automatically nest these into an object. In plain `FormData`:
+This renders `price[amount]`, `price[currency]`, and `price[scale]` as hidden fields. Many server runtimes and frameworks like PHP, Ruby on Rails, and Express (via `qs`) automatically nest bracket-notated fields into objects.
+
+You can also retrieve those fields in plain `FormData`:
 
 ```ts
 const amount = Number(formData.get('price[amount]')); // 105000
@@ -151,11 +144,4 @@ const currency = formData.get('price[currency]');      // "USD"
 const scale = Number(formData.get('price[scale]'));     // 2
 ```
 
-If you use the `useCurrencyInput` hook directly, you'll need to wire the hidden inputs yourself. See the [hook API reference](/react/api/use-currency-input#in-a-form) for details.
-
-## Next steps
-
-- [Controlled inputs](/react/controlled-inputs) — Wire the input to external state for form library integration and form reset.
-- [Form libraries](/react/form-libraries) — Examples with React Hook Form, Formik, and TanStack Form.
-- [useCurrencyInput API](/react/api/use-currency-input) — Full options and return value reference.
-- [CurrencyInput API](/react/api/currency-input) — Component props reference.
+If you use the [`useCurrencyInput`](/react/api/use-currency-input) hook directly, you'll need to wire the hidden inputs yourself. See the [hook API reference](/react/api/use-currency-input#in-a-form) for details.

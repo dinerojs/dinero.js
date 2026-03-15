@@ -5,10 +5,9 @@ description: Integrate @dinerojs/react with React Hook Form, Formik, and TanStac
 
 # Form libraries
 
-`@dinerojs/react` works with any form library—no adapters needed. Use `onValueChange` to push the value into the form library and `value` to pull it back for controlled behavior like form reset.
+The `@dinerojs/react` package works with any form library. Use `onValueChange` to push the value into the form library and `value` to pull it back for controlled behavior like form reset.
 
 The pattern is always the same:
-
 1. Pass the form field's current value as `value`.
 2. In `onValueChange`, extract the amount with `toSnapshot` and pass it to the form library's setter.
 

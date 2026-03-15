@@ -73,4 +73,4 @@ function PriceField() {
 
 ## When to use bigint
 
-See the [Precision and large numbers](/guides/precision-and-large-numbers) guide for a detailed comparison of `number`, `bigint`, and third-party libraries—and when to pick each.
+See the [Precision and large numbers](/guides/precision-and-large-numbers) guide for a detailed comparison of `number`, `bigint`, and third-party libraries, and when to pick each.
