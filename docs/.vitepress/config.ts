@@ -188,6 +188,10 @@ export default defineConfig({
               link: '/react/form-libraries',
             },
             {
+              text: 'Validation',
+              link: '/react/validation',
+            },
+            {
               text: 'Bigint support',
               link: '/react/bigint',
             },
