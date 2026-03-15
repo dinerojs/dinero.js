@@ -548,7 +548,7 @@ describe('useCurrencyInput', () => {
       const user = userEvent.setup();
 
       function Controlled() {
-        const [value, setValue] = useState(
+        const [value, setValue] = useState<Dinero<number>>(
           dinero({ amount: 1050, currency: USD })
         );
         const { inputProps } = useCurrencyInput({
@@ -579,7 +579,7 @@ describe('useCurrencyInput', () => {
       const user = userEvent.setup();
 
       function Controlled() {
-        const [value, setValue] = useState(
+        const [value, setValue] = useState<Dinero<number>>(
           dinero({ amount: 1050, currency: USD })
         );
         const { inputProps } = useCurrencyInput({
@@ -659,7 +659,7 @@ describe('useCurrencyInput', () => {
       const user = userEvent.setup();
 
       function Controlled() {
-        const [value, setValue] = useState(
+        const [value, setValue] = useState<Dinero<number>>(
           dinero({ amount: 0, currency: USD })
         );
         const { inputProps } = useCurrencyInput({
@@ -833,7 +833,7 @@ describe('useCurrencyInput', () => {
       const user = userEvent.setup();
 
       function ResetHarness() {
-        const [value, setValue] = useState(
+        const [value, setValue] = useState<Dinero<number>>(
           dinero({ amount: 1050, currency: USD })
         );
         const { inputProps, reset } = useCurrencyInput({

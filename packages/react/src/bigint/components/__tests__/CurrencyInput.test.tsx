@@ -7,6 +7,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createRef, useState } from 'react';
 import { toSnapshot } from 'dinero.js';
+import type { Dinero } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 import { castToBigintCurrency } from 'test-utils';
 import { dinero } from 'dinero.js/bigint';
@@ -225,7 +226,7 @@ describe('CurrencyInput (bigint)', () => {
       const user = userEvent.setup();
 
       function Controlled() {
-        const [value, setValue] = useState(
+        const [value, setValue] = useState<Dinero<bigint>>(
           dinero({ amount: 1050n, currency: bigintUSD })
         );
 
@@ -263,7 +264,7 @@ describe('CurrencyInput (bigint)', () => {
       const user = userEvent.setup();
 
       function Controlled() {
-        const [value, setValue] = useState(
+        const [value, setValue] = useState<Dinero<bigint>>(
           dinero({ amount: 1050n, currency: bigintUSD })
         );
 

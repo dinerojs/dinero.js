@@ -17,22 +17,18 @@ export function createCurrencyInput<TAmount>(
   const useCurrencyInput = createUseCurrencyInput(dineroFactory);
 
   function CurrencyInput({
-    currency,
     format,
     defaultValue,
     value,
-    scale,
     onValueChange,
     ref,
     name,
     ...rest
   }: CurrencyInputProps<TAmount>) {
     const { inputProps, dineroValue, reset } = useCurrencyInput({
-      currency,
       format,
       defaultValue,
       value,
-      scale,
       onValueChange,
     });
 

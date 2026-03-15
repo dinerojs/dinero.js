@@ -7,6 +7,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createRef, useState } from 'react';
 import { dinero, toSnapshot } from 'dinero.js';
+import type { Dinero } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 
 import { CurrencyInput } from '..';
@@ -283,7 +284,7 @@ describe('CurrencyInput', () => {
       const user = userEvent.setup();
 
       function Controlled() {
-        const [value, setValue] = useState(
+        const [value, setValue] = useState<Dinero<number>>(
           dinero({ amount: 1050, currency: USD })
         );
 
@@ -319,7 +320,7 @@ describe('CurrencyInput', () => {
       const user = userEvent.setup();
 
       function Controlled() {
-        const [value, setValue] = useState(
+        const [value, setValue] = useState<Dinero<number>>(
           dinero({ amount: 1050, currency: USD })
         );
 

@@ -4,8 +4,8 @@ import type {
   DineroCalculator,
   DineroFactory,
 } from 'dinero.js';
-import { DineroComparisonOperator, toDecimal } from 'dinero.js';
-import { useCallback, useState, useMemo, useRef } from 'react';
+import { DineroComparisonOperator, toDecimal, toSnapshot } from 'dinero.js';
+import { useCallback, useState, useMemo } from 'react';
 import type {
   InputHTMLAttributes,
   ChangeEvent,
@@ -32,11 +32,6 @@ export type FormatFunction<TAmount> = (snapshot: {
 
 export type UseCurrencyInputOptions<TAmount> = {
   /**
-   * The currency to use for formatting and creating Dinero objects.
-   * The currency's exponent determines decimal placement (e.g., 2 for USD).
-   */
-  currency: DineroCurrency<TAmount>;
-  /**
    * How to format the displayed value.
    *
    * - **Object** `{ locale, ...intlOptions }`: uses `Intl.NumberFormat` internally.
@@ -44,21 +39,16 @@ export type UseCurrencyInputOptions<TAmount> = {
    */
   format: FormatObject | FormatFunction<TAmount>;
   /**
-   * The initial amount in minor currency units (e.g., `1050` for $10.50 in USD).
-   * Interpreted using the currency's exponent unless `scale` is provided.
+   * The initial value as a Dinero object.
+   * Used for uncontrolled inputs.
    */
-  defaultValue?: TAmount;
+  defaultValue?: Dinero<TAmount>;
   /**
-   * The controlled amount in minor currency units.
-   * When provided, the hook uses this value instead of its internal state.
-   * Use with `onValueChange` to implement controlled inputs (e.g., form library integration).
+   * The controlled value as a Dinero object.
+   * When provided, the hook uses this instead of its internal state.
+   * Use with `onValueChange` to implement controlled inputs.
    */
-  value?: TAmount;
-  /**
-   * The scale (number of decimal places) to use instead of the currency's exponent.
-   * For example, `scale: 3` with USD formats `10545` as `$10.545`.
-   */
-  scale?: TAmount;
+  value?: Dinero<TAmount>;
   /**
    * Called with the current Dinero object whenever the user changes the input value.
    */
@@ -72,11 +62,11 @@ export type UseCurrencyInputReturn<TAmount> = {
    */
   inputProps: InputHTMLAttributes<HTMLInputElement>;
   /**
-   * The current value as a Dinero object. Always defined (defaults to a zero-amount Dinero).
+   * The current value as a Dinero object.
    */
   dineroValue: Dinero<TAmount>;
   /**
-   * Resets the internal amount to `defaultValue` (or zero).
+   * Resets the internal amount to `defaultValue`.
    * Only affects uncontrolled inputs.
    */
   reset(): void;
@@ -91,19 +81,16 @@ export function createUseCurrencyInput<TAmount>(
     options: UseCurrencyInputOptions<TAmount>
   ): UseCurrencyInputReturn<TAmount> {
     const {
-      currency,
       format,
-      defaultValue,
-      value: controlledValue,
-      scale: scaleOption,
+      defaultValue: defaultDinero,
+      value: controlledDinero,
       onValueChange,
     } = options;
 
-    const isControlled = controlledValue !== undefined;
-    const wasControlledRef = useRef(isControlled);
+    const isControlled = controlledDinero !== undefined;
 
     if (__DEV__) {
-      if (controlledValue !== undefined && defaultValue !== undefined) {
+      if (controlledDinero !== undefined && defaultDinero !== undefined) {
         console.warn(
           '[Dinero.js] A component has both `value` and `defaultValue` props. ' +
             'When `value` is provided, `defaultValue` is ignored. ' +
@@ -112,41 +99,19 @@ export function createUseCurrencyInput<TAmount>(
       }
     }
 
-    if (__DEV__) {
-      if (wasControlledRef.current && !isControlled) {
-        console.warn(
-          '[Dinero.js] A component is changing a controlled input to be uncontrolled. ' +
-            'This is likely caused by the value changing from a defined to an undefined value. ' +
-            'Decide between a controlled or uncontrolled input for the lifetime of the component.'
-        );
-      } else if (!wasControlledRef.current && isControlled) {
-        console.warn(
-          '[Dinero.js] A component is changing an uncontrolled input to be controlled. ' +
-            'This is likely caused by the value changing from undefined to a defined value. ' +
-            'Decide between a controlled or uncontrolled input for the lifetime of the component.'
-        );
-      }
-    }
+    const sourceDinero = controlledDinero ?? defaultDinero;
+    const { amount: sourceAmount, currency, scale } = toSnapshot(sourceDinero!);
 
-    wasControlledRef.current = isControlled;
-
-    // Create a reference Dinero to access the calculator and formatter.
-    const { calculator, formatter } = useMemo(
-      () => dineroFactory({ amount: currency.exponent, currency }),
-      [currency]
-    );
+    const { calculator, formatter } = sourceDinero!;
 
     const zero = calculator.zero();
     const base = Array.isArray(currency.base)
       ? currency.base[0]
       : currency.base;
 
-    const [internalAmount, setInternalAmount] = useState<TAmount>(
-      controlledValue ?? defaultValue ?? zero
-    );
+    const [internalAmount, setInternalAmount] = useState<TAmount>(sourceAmount);
 
-    const amount = isControlled ? controlledValue : internalAmount;
-    const scale = scaleOption ?? currency.exponent;
+    const amount = isControlled ? sourceAmount : internalAmount;
 
     const dineroValue = useMemo(
       () => dineroFactory({ amount, currency, scale }),
@@ -169,6 +134,7 @@ export function createUseCurrencyInput<TAmount>(
       if (!isControlled) {
         setInternalAmount(newAmount);
       }
+
       const newDinero = dineroFactory({ amount: newAmount, currency, scale });
       onValueChange?.(newDinero);
     }
@@ -210,11 +176,15 @@ export function createUseCurrencyInput<TAmount>(
       updateAmount(parseDigits(combined, calculator, zero, base));
     }
 
+    const defaultAmount = defaultDinero
+      ? toSnapshot(defaultDinero).amount
+      : zero;
+
     const reset = useCallback(() => {
       if (!isControlled) {
-        setInternalAmount(defaultValue ?? zero);
+        setInternalAmount(defaultAmount);
       }
-    }, [isControlled, defaultValue, zero]);
+    }, [isControlled, defaultAmount]);
 
     const inputProps: InputHTMLAttributes<HTMLInputElement> = {
       inputMode: 'decimal',
