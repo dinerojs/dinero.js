@@ -77,6 +77,18 @@ describe('toDecimal', () => {
           `[Error: [Dinero.js] Currency is not decimal.]`
         );
       });
+      it('throws when passing a scalar base which is a multiple of 10', () => {
+        const d = dinero({
+          amount: 25,
+          currency: { code: 'ABC', exponent: 1, base: 20 },
+        });
+
+        expect(() => {
+          toDecimal(d);
+        }).toThrowErrorMatchingInlineSnapshot(
+          `[Error: [Dinero.js] Currency is not decimal.]`
+        );
+      });
       it('throws when passing a Dinero object using a multi-base currency which compiles to a multiple of 10', () => {
         const d = dinero({
           amount: 13,
@@ -158,6 +170,18 @@ describe('toDecimal', () => {
     describe('non-decimal currencies', () => {
       it('throws when passing a Dinero object using a non-decimal currency', () => {
         const d = dinero({ amount: 13n, currency: bigintMGA });
+
+        expect(() => {
+          toDecimal(d);
+        }).toThrowErrorMatchingInlineSnapshot(
+          `[Error: [Dinero.js] Currency is not decimal.]`
+        );
+      });
+      it('throws when passing a scalar base which is a multiple of 10', () => {
+        const d = dinero({
+          amount: 25n,
+          currency: { code: 'ABC', exponent: 1n, base: 20n },
+        });
 
         expect(() => {
           toDecimal(d);
@@ -253,6 +277,22 @@ describe('toDecimal', () => {
     describe('non-decimal currencies', () => {
       it('throws when passing a Dinero object using a non-decimal currency', () => {
         const d = dinero({ amount: new Big(13), currency: bigjsMGA });
+
+        expect(() => {
+          toDecimal(d);
+        }).toThrowErrorMatchingInlineSnapshot(
+          `[Error: [Dinero.js] Currency is not decimal.]`
+        );
+      });
+      it('throws when passing a scalar base which is a multiple of 10', () => {
+        const d = dinero({
+          amount: new Big(25),
+          currency: {
+            code: 'ABC',
+            exponent: new Big(1),
+            base: new Big(20),
+          },
+        });
 
         expect(() => {
           toDecimal(d);
