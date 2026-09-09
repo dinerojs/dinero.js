@@ -36,7 +36,7 @@ export function toDecimal<TAmount, TOutput>(
     const ten = new Array(10).fill(null).reduce(calculator.increment, zero);
 
     const isMultiBase = isArray(currency.base);
-    const isBaseTen = equalFn(calculator.modulo(base, ten), zero);
+    const isBaseTen = equalFn(base, ten);
     const isDecimal = !isMultiBase && isBaseTen;
 
     assert(isDecimal, NON_DECIMAL_CURRENCY_MESSAGE);
