@@ -107,6 +107,22 @@ describe('allocate', () => {
           scale: 4,
         });
       });
+      it('allocates a safe amount when the ratio product is not a safe integer', () => {
+        const ratios = [3002399751580333, 1000000000000000, 501199875790167];
+        const shares = allocate(dinero({ amount: 3, currency: USD }), ratios);
+
+        expect(shares.map((share) => toSnapshot(share).amount)).toEqual([
+          2, 1, 0,
+        ]);
+      });
+      it('allocates a negative safe amount when the ratio product is not a safe integer', () => {
+        const ratios = [3002399751580333, 1000000000000000, 501199875790167];
+        const shares = allocate(dinero({ amount: -3, currency: USD }), ratios);
+
+        expect(shares.map((share) => toSnapshot(share).amount)).toEqual([
+          -2, -1, 0,
+        ]);
+      });
       it('throws when using empty ratios', () => {
         const d = dinero({ amount: 100, currency: USD });
 

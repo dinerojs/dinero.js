@@ -37,6 +37,12 @@ describe('distribute', () => {
   it('distributes remainder to multiple largest ratios in order', () => {
     expect(distributeFn(801, [1, 3])).toEqual([200, 601]);
   });
+  it('divides a safe amount when the ratio product is not a safe integer', () => {
+    const ratios = [3002399751580333, 1000000000000000, 501199875790167];
+
+    expect(distributeFn(3, ratios)).toEqual([2, 1, 0]);
+    expect(distributeFn(-3, ratios)).toEqual([-2, -1, 0]);
+  });
   it('does not hang with amounts larger than `MAX_SAFE_INTEGER`', () => {
     const largeAmount = 337582417582417600000; // > Number.MAX_SAFE_INTEGER
     const result = distributeFn(largeAmount, [50, 50]);

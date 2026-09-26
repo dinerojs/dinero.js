@@ -7,6 +7,36 @@ import { lessThan } from './lessThan';
 
 type DistributeCalculator<TAmount> = DineroCalculator<TAmount>;
 
+// The number calculator multiplies before it divides. A safe amount times a
+// safe ratio can round to the next integer, so one share takes the whole amount.
+function exactNumberQuotient<TAmount>(
+  value: TAmount,
+  ratio: TAmount,
+  total: TAmount
+): number | undefined {
+  if (
+    typeof value !== 'number' ||
+    typeof ratio !== 'number' ||
+    typeof total !== 'number' ||
+    !Number.isSafeInteger(value) ||
+    !Number.isSafeInteger(ratio) ||
+    !Number.isSafeInteger(total)
+  ) {
+    return undefined;
+  }
+
+  const quotient = (BigInt(value) * BigInt(ratio)) / BigInt(total);
+
+  if (
+    quotient > BigInt(Number.MAX_SAFE_INTEGER) ||
+    quotient < BigInt(Number.MIN_SAFE_INTEGER)
+  ) {
+    return undefined;
+  }
+
+  return Number(quotient);
+}
+
 /**
  * Returns a distribute function.
  *
@@ -34,7 +64,8 @@ export function distribute<TAmount>(calculator: DistributeCalculator<TAmount>) {
 
     const shares = ratios.map((ratio) => {
       const share =
-        calculator.integerDivide(calculator.multiply(value, ratio), total) ||
+        (exactNumberQuotient(value, ratio, total) ??
+          calculator.integerDivide(calculator.multiply(value, ratio), total)) ||
         zero;
 
       remainder = calculator.subtract(remainder, share);
