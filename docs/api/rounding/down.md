@@ -13,19 +13,20 @@ This is the default rounding mode used by [`transformScale`](/api/conversions/tr
 
 ## Usage
 
-Pass this function as the last argument to [`multiply`](/api/mutations/multiply), [`allocate`](/api/mutations/allocate), or [`transformScale`](/api/conversions/transform-scale) to control how remainders are handled.
+Pass this function as the last argument to [`transformScale`](/api/conversions/transform-scale) to control how remainders are handled when reducing the scale. `multiply` and `allocate` preserve precision and don't accept a rounding function.
 
 ## Code examples
 
 ### Use with multiply
 
 ```js
-import { dinero, multiply, down } from 'dinero.js';
+import { dinero, multiply, transformScale, down } from 'dinero.js';
 import { USD } from 'dinero.js/currencies';
 
 const d = dinero({ amount: 401, currency: USD });
 
-multiply(d, { amount: 21, scale: 1 }, down); // a Dinero object with amount 8421 and scale 3
+const product = multiply(d, { amount: 21, scale: 1 });
+transformScale(product, 2, down); // a Dinero object with amount 842 and scale 2
 ```
 
 ### Use with transformScale

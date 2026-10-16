@@ -109,7 +109,10 @@ const d = dinero({ amount: 400, currency: USD });
 
 multiply(d, { amount: 82,  scale: 2 }); // a Dinero object with amount 32800 and scale 4
 
-const [d1, d2] = allocate(d1, [505, 495], { scale: 1 }); // translates to ratios 50.5 and 49.5
+const [d1, d2] = allocate(d, [
+  { amount: 505, scale: 1 },
+  { amount: 495, scale: 1 },
+]); // translates to ratios 50.5 and 49.5
 
 d1; // a Dinero object with amount 2020 and scale 3
 d2; // a Dinero object with amount 1980 and scale 3
