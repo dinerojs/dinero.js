@@ -125,6 +125,15 @@ describe('allocate', () => {
           `[Error: [Dinero.js] Ratios are invalid.]`
         );
       });
+      it('throws when mixing negative and positive ratios', () => {
+        const d = dinero({ amount: 100, currency: USD });
+
+        expect(() => {
+          allocate(d, [-50, 150]);
+        }).toThrowErrorMatchingInlineSnapshot(
+          `[Error: [Dinero.js] Ratios are invalid.]`
+        );
+      });
       it('throws when using only zero ratios', () => {
         const d = dinero({ amount: 100, currency: USD });
 
@@ -241,6 +250,15 @@ describe('allocate', () => {
 
         expect(() => {
           allocate(d, [-50, -50]);
+        }).toThrowErrorMatchingInlineSnapshot(
+          `[Error: [Dinero.js] Ratios are invalid.]`
+        );
+      });
+      it('throws when mixing negative and positive ratios', () => {
+        const d = dinero({ amount: 5, currency: MGA });
+
+        expect(() => {
+          allocate(d, [-50, 150]);
         }).toThrowErrorMatchingInlineSnapshot(
           `[Error: [Dinero.js] Ratios are invalid.]`
         );
@@ -387,6 +405,15 @@ describe('allocate', () => {
           `[Error: [Dinero.js] Ratios are invalid.]`
         );
       });
+      it('throws when mixing negative and positive ratios', () => {
+        const d = dinero({ amount: 100n, currency: bigintUSD });
+
+        expect(() => {
+          allocate(d, [-50n, 150n]);
+        }).toThrowErrorMatchingInlineSnapshot(
+          `[Error: [Dinero.js] Ratios are invalid.]`
+        );
+      });
       it('throws when using only zero ratios', () => {
         const d = dinero({ amount: 100n, currency: bigintUSD });
 
@@ -503,6 +530,15 @@ describe('allocate', () => {
 
         expect(() => {
           allocate(d, [-50n, -50n]);
+        }).toThrowErrorMatchingInlineSnapshot(
+          `[Error: [Dinero.js] Ratios are invalid.]`
+        );
+      });
+      it('throws when mixing negative and positive ratios', () => {
+        const d = dinero({ amount: 5n, currency: bigintMGA });
+
+        expect(() => {
+          allocate(d, [-50n, 150n]);
         }).toThrowErrorMatchingInlineSnapshot(
           `[Error: [Dinero.js] Ratios are invalid.]`
         );
@@ -629,6 +665,15 @@ describe('allocate', () => {
 
         expect(() => {
           allocate(d, [new Big(-50), new Big(-50)]);
+        }).toThrowErrorMatchingInlineSnapshot(
+          `[Error: [Dinero.js] Ratios are invalid.]`
+        );
+      });
+      it('throws when mixing negative and positive ratios', () => {
+        const d = dinero({ amount: new Big(100), currency: bigjsUSD });
+
+        expect(() => {
+          allocate(d, [new Big(-50), new Big(150)]);
         }).toThrowErrorMatchingInlineSnapshot(
           `[Error: [Dinero.js] Ratios are invalid.]`
         );
@@ -769,6 +814,15 @@ describe('allocate', () => {
 
         expect(() => {
           allocate(d, [new Big(-50), new Big(-50)]);
+        }).toThrowErrorMatchingInlineSnapshot(
+          `[Error: [Dinero.js] Ratios are invalid.]`
+        );
+      });
+      it('throws when mixing negative and positive ratios', () => {
+        const d = dinero({ amount: new Big(5), currency: bigjsMGA });
+
+        expect(() => {
+          allocate(d, [new Big(-50), new Big(150)]);
         }).toThrowErrorMatchingInlineSnapshot(
           `[Error: [Dinero.js] Ratios are invalid.]`
         );
