@@ -37,6 +37,11 @@ describe('distribute', () => {
   it('distributes remainder to multiple largest ratios in order', () => {
     expect(distributeFn(801, [1, 3])).toEqual([200, 601]);
   });
+  it('keeps the remainder with the largest ratio after reordering targets', () => {
+    expect(distributeFn(17, [2, 0, 5, 3])).toEqual([3, 0, 9, 5]);
+    expect(distributeFn(17, [5, 3, 2, 0])).toEqual([9, 5, 3, 0]);
+    expect(distributeFn(20, [2, 0, 5, 3])).toEqual([4, 0, 10, 6]);
+  });
   it('does not hang with amounts larger than `MAX_SAFE_INTEGER`', () => {
     const largeAmount = 337582417582417600000; // > Number.MAX_SAFE_INTEGER
     const result = distributeFn(largeAmount, [50, 50]);
